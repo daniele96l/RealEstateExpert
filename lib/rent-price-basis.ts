@@ -5,6 +5,13 @@ export type RentPriceBasis = "whole" | "room" | "unknown";
 const WHOLE_FLAT_TYPES = new Set(["flat", "studio", "duplex", "penthouse", "chalet", "countryhouse", "homes"]);
 const ROOM_TITLE_RE = /\b(stanza|camera|posto letto|room in|single room|bedroom in|shared flat)\b/i;
 
+/** Premium for ≤2 locali — whole unit, exclusive use. */
+export const SINGLE_RENTABLE_ROOM_PREMIUM = 1.5;
+
+export function hasUnderTwoLocali(rooms: number | null | undefined): boolean {
+  return rooms != null && rooms <= 2;
+}
+
 const LOW_RENT_PER_SQM_MONTHLY = 6;
 
 export function inferRentPriceBasis(listing: MapListing): RentPriceBasis {
@@ -103,4 +110,56 @@ export function averageMonthlyRentPerRoom(listings: MapListing[]): number | null
   const values = listings.map(monthlyRentPerRoom).filter((v): v is number => v != null);
   if (!values.length) return null;
   return Math.round(values.reduce((sum, v) => sum + v, 0) / values.length);
+}
+
+export type SimilarWholeRentMode = "under_two_locali" | "multi_room";
+
+export function estimateWholeMonthlyFromSimilarBenchmark(
+  sale: Pick<MapListing, "rooms">,
+  avgRentPerRoom: number,
+): { wholeMonthly: number; mode: SimilarWholeRentMode } {
+  if (hasUnderTwoLocali(sale.rooms)) {
+    return {
+      wholeMonthly: Math.round(avgRentPerRoom * SINGLE_RENTABLE_ROOM_PREMIUM),
+      mode: "under_two_locali",
+    };
+  }
+  const rentableRooms = estimateRentableRooms(sale.rooms);
+  if (rentableRooms != null && rentableRooms > 0) {
+    return {
+      wholeMonthly: Math.round(avgRentPerRoom * rentableRooms),
+      mode: "multi_room",
+    };
+  }
+  return {
+    wholeMonthly: Math.round(avgRentPerRoom),
+    mode: "multi_room",
+  };
+}
+
+export function similarRentEstimateSummary(
+  sale: Pick<MapListing, "rooms">,
+  similarRentals: MapListing[],
+): {
+  avgRentPerRoom: number | null;
+  avgWholeMonthly: number | null;
+  wholeEstimateMode: SimilarWholeRentMode | null;
+  underTwoLocali: boolean;
+} {
+  const avgRentPerRoom = averageMonthlyRentPerRoom(similarRentals);
+  const underTwoLocali = hasUnderTwoLocali(sale.rooms);
+  if (avgRentPerRoom == null) {
+    return { avgRentPerRoom: null, avgWholeMonthly: null, wholeEstimateMode: null, underTwoLocali };
+  }
+  const { wholeMonthly, mode } = estimateWholeMonthlyFromSimilarBenchmark(sale, avgRentPerRoom);
+  return {
+    avgRentPerRoom,
+    avgWholeMonthly: wholeMonthly,
+    wholeEstimateMode: mode,
+    underTwoLocali,
+  };
+}
+
+export function underTwoLocaliRentNote(): string {
+  return `Fino a 2 locali: si usa la media €/stanza in zona +${Math.round((SINGLE_RENTABLE_ROOM_PREMIUM - 1) * 100)}% per uso esclusivo dell'intero immobile.`;
 }

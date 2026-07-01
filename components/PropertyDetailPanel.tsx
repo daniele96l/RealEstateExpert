@@ -7,14 +7,17 @@ import { loadCityListingsCacheFirst } from "@/lib/cache-first";
 import { criteriaFromDetail, filterSimilarRentals } from "@/lib/similar-listings";
 import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client";
 import {
-  averageMonthlyRentPerRoom,
   estimateRentableRooms,
   estimateWholeFlatRent,
   inferRentPriceBasis,
   listingWithEffectiveRent,
+  underTwoLocaliRentNote,
+  hasUnderTwoLocali,
+  SINGLE_RENTABLE_ROOM_PREMIUM,
   rentableRoomsAssumption,
   rentPriceBasisBadgeClass,
   rentPriceBasisLabel,
+  similarRentEstimateSummary,
 } from "@/lib/rent-price-basis";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { ITALY_DEFAULTS } from "@/lib/constants";
@@ -172,18 +175,18 @@ export default function PropertyDetailPanel({
         : "";
 
   const showSimilarColumn = detail?.operation === "sale" && !loading;
-  const avgRentPerRoom =
-    similarRentals && similarRentals.length > 0
-      ? averageMonthlyRentPerRoom(similarRentals)
+  const similarRentSummary =
+    detail && similarRentals && similarRentals.length > 0
+      ? similarRentEstimateSummary(detail, similarRentals)
       : null;
+  const avgRentPerRoom = similarRentSummary?.avgRentPerRoom ?? null;
+  const avgWholeMonthly = similarRentSummary?.avgWholeMonthly ?? null;
+  const underTwoLocali =
+    similarRentSummary?.underTwoLocali ?? hasUnderTwoLocali(detail?.rooms);
 
   const rentableRooms = estimateRentableRooms(detail?.rooms);
-  const rentableRoomsNote = rentableRoomsAssumption(detail?.rooms);
-
-  const avgWholeMonthly =
-    avgRentPerRoom != null && rentableRooms != null
-      ? avgRentPerRoom * rentableRooms
-      : null;
+  const rentableRoomsNote =
+    underTwoLocali ? underTwoLocaliRentNote() : rentableRoomsAssumption(detail?.rooms);
 
   const quickMortgageMonthly =
     detail?.operation === "sale" && detail.price > 0
@@ -291,7 +294,7 @@ export default function PropertyDetailPanel({
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
               <Spec icon={Ruler} label="Superficie" value={detail.sqm != null ? `${detail.sqm} m²` : "—"} />
               <Spec icon={Building2} label="Locali" value={detail.rooms != null ? String(detail.rooms) : "—"} />
-              {rentableRooms != null && detail.rooms != null && detail.rooms > 1 && (
+              {rentableRooms != null && detail.rooms != null && detail.rooms > 2 && (
                 <Spec
                   icon={Building2}
                   label="Stanze affittabili (stima)"
@@ -453,26 +456,42 @@ export default function PropertyDetailPanel({
                     {avgRentPerRoom != null && (
                       <div className="mb-3 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2.5">
                         <p className="text-[10px] font-medium uppercase tracking-wide text-accent">
-                          Media affitto per stanza
+                          {underTwoLocali ? "Stima affitto intero" : "Media affitto per stanza"}
                         </p>
-                        <p className="mt-0.5 text-lg font-bold text-slate-100">
-                          {fmtEuro(avgRentPerRoom)}
-                          <span className="text-sm font-normal text-slate-400">/mese/stanza</span>
-                        </p>
-                        <p className="mt-0.5 text-xs text-slate-500">
-                          Su {similarRentals.length} annunci in zona
-                          {avgWholeMonthly != null && rentableRooms != null && (
-                            <>
-                              {" "}
-                              · intero stimato{" "}
-                              <span className="font-medium text-slate-300">
-                                {fmtEuro(avgWholeMonthly)}/mese
-                              </span>
-                              {" "}
-                              ({fmtEuro(avgRentPerRoom!)} × {rentableRooms} stanze)
-                            </>
-                          )}
-                        </p>
+                        {underTwoLocali && avgWholeMonthly != null ? (
+                          <>
+                            <p className="mt-0.5 text-lg font-bold text-slate-100">
+                              {fmtEuro(avgWholeMonthly)}
+                              <span className="text-sm font-normal text-slate-400">/mese</span>
+                            </p>
+                            <p className="mt-0.5 text-xs text-slate-500">
+                              Su {similarRentals.length} affitti in zona ·{" "}
+                              {fmtEuro(avgRentPerRoom)}/stanza × {SINGLE_RENTABLE_ROOM_PREMIUM.toLocaleString("it-IT")} ={" "}
+                              {fmtEuro(avgWholeMonthly)}/mese
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="mt-0.5 text-lg font-bold text-slate-100">
+                              {fmtEuro(avgRentPerRoom)}
+                              <span className="text-sm font-normal text-slate-400">/mese/stanza</span>
+                            </p>
+                            <p className="mt-0.5 text-xs text-slate-500">
+                              Su {similarRentals.length} annunci in zona
+                              {avgWholeMonthly != null && rentableRooms != null && (
+                                <>
+                                  {" "}
+                                  · intero stimato{" "}
+                                  <span className="font-medium text-slate-300">
+                                    {fmtEuro(avgWholeMonthly)}/mese
+                                  </span>
+                                  {" "}
+                                  ({fmtEuro(avgRentPerRoom)} × {rentableRooms} stanze)
+                                </>
+                              )}
+                            </p>
+                          </>
+                        )}
                         {rentableRoomsNote && (
                           <p className="mt-2 text-[11px] leading-relaxed text-slate-500">{rentableRoomsNote}</p>
                         )}
@@ -496,8 +515,9 @@ export default function PropertyDetailPanel({
                       </div>
                     )}
                     <p className="mb-3 text-xs text-slate-500">
-                      Per annunci «stanza»: stima intero = prezzo stanza × locali dell&apos;annuncio. Per
-                      l&apos;immobile in vendita si usano le stanze affittabili stimate (locali − 1 soggiorno).
+                      {underTwoLocali
+                        ? "Con fino a 2 locali si stima l'affitto intero dal benchmark €/stanza in zona, maggiorato del 50% per uso esclusivo."
+                        : "Per annunci «stanza»: stima intero = prezzo stanza × locali dell'annuncio. Per l'immobile in vendita si usano le stanze affittabili stimate (locali − 1 soggiorno)."}
                     </p>
                     <div className="space-y-2">
                       {similarRentals.map((rent) => {

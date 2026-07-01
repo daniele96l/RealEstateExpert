@@ -15,7 +15,7 @@ import {
   type SimpleScenario,
 } from "@/lib/defaults";
 import { runSimulation } from "@/lib/engine/simulator";
-import { estimateRentableRooms } from "@/lib/rent-price-basis";
+import { estimateRentableRooms, similarRentEstimateSummary } from "@/lib/rent-price-basis";
 import {
   scenarioFromListingAnalysis,
   type ListingAnalysisSource,
@@ -87,16 +87,23 @@ export default function HomePage() {
   const handleUseAverageRent = useCallback(
     (
       saleDetail: ListingDetail,
-      avgPerRoom: number,
-      wholeMonthly: number | null,
+      _avgPerRoom: number,
+      _wholeMonthly: number | null,
       similarRentals: MapListing[],
     ) => {
-      const next = scenarioFromListingAnalysis(saleDetail, avgPerRoom, wholeMonthly);
+      const summary = similarRentEstimateSummary(saleDetail, similarRentals);
+      if (summary.avgRentPerRoom == null) return;
+
+      const next = scenarioFromListingAnalysis(
+        saleDetail,
+        summary.avgRentPerRoom,
+        summary.avgWholeMonthly,
+      );
       const source: ListingAnalysisSource = {
         sale: saleDetail,
         similarRentals,
-        avgRentPerRoom: avgPerRoom,
-        avgWholeMonthly: wholeMonthly,
+        avgRentPerRoom: summary.avgRentPerRoom,
+        avgWholeMonthly: summary.avgWholeMonthly,
       };
       setAnalysisSource(source);
       setFormPrefill(next);
@@ -109,9 +116,22 @@ export default function HomePage() {
 
   const handleRestoreAnalysis = useCallback(
     (source: ListingAnalysisSource, restoredScenario: SimpleScenario) => {
-      setAnalysisSource(source);
-      setFormPrefill(restoredScenario);
-      updateScenario(restoredScenario);
+      const summary = similarRentEstimateSummary(source.sale, source.similarRentals);
+      const scenario =
+        summary.avgRentPerRoom != null
+          ? scenarioFromListingAnalysis(
+              source.sale,
+              summary.avgRentPerRoom,
+              summary.avgWholeMonthly,
+            )
+          : restoredScenario;
+      setAnalysisSource({
+        ...source,
+        avgRentPerRoom: summary.avgRentPerRoom ?? source.avgRentPerRoom,
+        avgWholeMonthly: summary.avgWholeMonthly,
+      });
+      setFormPrefill(scenario);
+      updateScenario(scenario);
       setFormSyncToken((n) => n + 1);
     },
     [updateScenario],

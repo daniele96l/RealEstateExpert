@@ -2,10 +2,13 @@
 
 import dynamic from "next/dynamic";
 import {
+  estimateRentableRooms,
   estimateWholeFlatRent,
   inferRentPriceBasis,
   rentPriceBasisBadgeClass,
   rentPriceBasisLabel,
+  similarRentEstimateSummary,
+  SINGLE_RENTABLE_ROOM_PREMIUM,
 } from "@/lib/rent-price-basis";
 import type { ListingAnalysisSource } from "@/lib/listing-analysis";
 import { resolveScenarioMonthlyRent, type SimpleScenario } from "@/lib/defaults";
@@ -74,7 +77,12 @@ function RentComparableRow({ rent }: { rent: ListingAnalysisSource["similarRenta
 }
 
 export default function AnalysisSourcesPanel({ source, scenario }: Props) {
-  const { sale, similarRentals, avgRentPerRoom, avgWholeMonthly } = source;
+  const { sale, similarRentals } = source;
+  const rentSummary = similarRentEstimateSummary(sale, similarRentals);
+  const avgRentPerRoom = rentSummary.avgRentPerRoom;
+  const avgWholeMonthly = rentSummary.avgWholeMonthly;
+  const underTwoLocali = rentSummary.underTwoLocali;
+  const rentableRooms = estimateRentableRooms(sale.rooms);
   const grossRent = resolveScenarioMonthlyRent(scenario);
 
   return (
@@ -167,15 +175,30 @@ export default function AnalysisSourcesPanel({ source, scenario }: Props) {
             <p className="text-[10px] font-medium uppercase tracking-wide text-accent">
               Media usata nell&apos;analisi
             </p>
-            <p className="mt-0.5 text-base font-bold text-slate-100">
-              {fmtEuro(avgRentPerRoom)}
-              <span className="text-sm font-normal text-slate-400">/mese/stanza</span>
-            </p>
-            {avgWholeMonthly != null && (
-              <p className="mt-0.5 text-xs text-slate-500">
-                Intero stimato: {fmtEuro(avgWholeMonthly)}/mese
-              </p>
-            )}
+            {underTwoLocali && avgWholeMonthly != null && avgRentPerRoom != null ? (
+              <>
+                <p className="mt-0.5 text-base font-bold text-slate-100">
+                  {fmtEuro(avgWholeMonthly)}
+                  <span className="text-sm font-normal text-slate-400">/mese intero</span>
+                </p>
+                <p className="mt-0.5 text-xs text-slate-500">
+                  {fmtEuro(avgRentPerRoom)}/stanza × {SINGLE_RENTABLE_ROOM_PREMIUM.toLocaleString("it-IT")} ={" "}
+                  {fmtEuro(avgWholeMonthly)}/mese
+                </p>
+              </>
+            ) : avgRentPerRoom != null ? (
+              <>
+                <p className="mt-0.5 text-base font-bold text-slate-100">
+                  {fmtEuro(avgRentPerRoom)}
+                  <span className="text-sm font-normal text-slate-400">/mese/stanza</span>
+                </p>
+                {avgWholeMonthly != null && rentableRooms != null && (
+                  <p className="mt-0.5 text-xs text-slate-500">
+                    {fmtEuro(avgRentPerRoom)}/stanza × {rentableRooms} stanze = {fmtEuro(avgWholeMonthly)}/mese
+                  </p>
+                )}
+              </>
+            ) : null}
           </div>
 
           <div className="max-h-[320px] space-y-2 overflow-y-auto pr-1">
