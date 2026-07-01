@@ -155,6 +155,29 @@ export interface MapListing {
   address: string | null;
 }
 
+export interface ListingDetail extends MapListing {
+  bathrooms: number | null;
+  floor: string | null;
+  energy_class: EnergyClass | null;
+  energy_kwh_sqm: number | null;
+  condition: string | null;
+  needs_renovation: boolean | null;
+  property_type_label: string | null;
+  zone: string | null;
+  city_label: string | null;
+  price_per_sqm: number | null;
+  condominio_monthly: number | null;
+  lift: boolean | null;
+  garden: boolean | null;
+  terrace: boolean | null;
+  garage: boolean | null;
+  furnished: string | null;
+  built_year: number | null;
+  description: string | null;
+  images: string[];
+  fetched_at: string;
+}
+
 export interface MapCenter {
   lat: number;
   lng: number;

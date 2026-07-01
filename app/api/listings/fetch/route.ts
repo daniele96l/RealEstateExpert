@@ -9,7 +9,23 @@ import type { ListingsProvider } from "@/lib/types";
 
 export const maxDuration = 120;
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const city = searchParams.get("city")?.trim();
+  const operation = searchParams.get("operation");
+
+  if (city && operation) {
+    if (operation !== "sale" && operation !== "rent") {
+      return NextResponse.json({ detail: "operation non valida" }, { status: 400 });
+    }
+
+    const cached = await getCache(city, operation);
+    if (!cached) {
+      return NextResponse.json({ detail: "Nessun dato in cache per questa città" }, { status: 404 });
+    }
+    return NextResponse.json(cached);
+  }
+
   return NextResponse.json({
     default_provider: getDefaultListingsProvider(),
     scrapingbee: hasScrapingBeeKey(),

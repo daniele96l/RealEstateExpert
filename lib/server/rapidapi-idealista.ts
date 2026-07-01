@@ -1,4 +1,5 @@
-import type { CityListingsCache, MapListing } from "@/lib/types";
+import type { CityListingsCache, ListingDetail, MapListing } from "@/lib/types";
+import { parseRapidPropertyPayload } from "./property-detail";
 import { getRapidApiKey } from "./config";
 import { geocodeCity, locationMatchesCity, normalizeCitySlug } from "./geocode";
 
@@ -175,20 +176,22 @@ function listingFromRapidDetail(item: RapidListing, sourceUrl: string): MapListi
   };
 }
 
-export async function fetchPropertyDetailsByUrl(url: string): Promise<MapListing> {
+export async function fetchPropertyDetailsByUrl(
+  url: string,
+  base?: MapListing,
+): Promise<ListingDetail> {
   const normalized = normalizeIdealistaListingUrl(url);
-  const data = await rapidApiGet<RapidListing | { property?: RapidListing }>("/property-details-by-url", {
+  const data = await rapidApiGet<{ property?: unknown; adId?: string }>("/property-details-by-url", {
     url: normalized,
     language: "it",
     country: "it",
   });
 
-  const item = "property" in data && data.property ? data.property : data;
-  const listing = listingFromRapidDetail(item as RapidListing, normalized);
-  if (!listing) {
+  const detail = parseRapidPropertyPayload(data, normalized, base);
+  if (!detail.id || detail.price <= 0) {
     throw new RapidApiIdealistaError("Impossibile estrarre i dati dall'annuncio");
   }
-  return listing;
+  return detail;
 }
 
 export async function fetchCityListingsViaRapidApi(

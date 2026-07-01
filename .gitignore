@@ -13,6 +13,7 @@ out/
 # Listings cache
 data/listings/*.json
 !data/listings/.gitkeep
+data/listings/details/
 
 # IDE
 .idea/

@@ -2,13 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { fetchListings, getCachedListings, getListingsProviders, importFromIdealista } from "@/lib/api";
+import { fetchListings, fetchPropertyDetail, getCachedListings, getListingsProviders, importFromIdealista } from "@/lib/api";
 import {
   cacheFileLabel,
   readLocalListingsCache,
   writeLocalListingsCache,
 } from "@/lib/listings-cache-client";
-import type { CityListingsCache, ListingsProvider, MapListing } from "@/lib/types";
+import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
+import PropertyDetailPanel from "@/components/PropertyDetailPanel";
 import { cn } from "@/lib/utils";
 import { Loader2, Link2, MapPin, RefreshCw } from "lucide-react";
 
@@ -29,7 +30,7 @@ function formatPrice(price: number, operation: "sale" | "rent") {
 }
 
 interface Props {
-  onSelectListing?: (listing: MapListing) => void;
+  onSelectListing?: (listing: MapListing, detail?: ListingDetail) => void;
 }
 
 export default function ListingsMap({ onSelectListing }: Props) {
@@ -45,6 +46,9 @@ export default function ListingsMap({ onSelectListing }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [fromCache, setFromCache] = useState(false);
   const [cacheSource, setCacheSource] = useState<"server" | "local" | null>(null);
+  const [selectedDetail, setSelectedDetail] = useState<ListingDetail | null>(null);
+  const [detailLoading, setDetailLoading] = useState(false);
+  const [detailError, setDetailError] = useState<string | null>(null);
   const autoLoaded = useRef(false);
 
   const applyListings = useCallback((payload: CityListingsCache, cached: boolean, source: "server" | "local" | null) => {
@@ -118,9 +122,27 @@ export default function ListingsMap({ onSelectListing }: Props) {
     }
   }, [listingUrl, provider, onSelectListing, applyListings]);
 
-  const handleSelect = (listing: MapListing) => {
+  const handleSelect = async (listing: MapListing) => {
     setSelectedId(listing.id);
+    setSelectedDetail(null);
+    setDetailError(null);
+    setDetailLoading(true);
     onSelectListing?.(listing);
+    try {
+      const detail = await fetchPropertyDetail(listing, false, provider);
+      setSelectedDetail(detail);
+      onSelectListing?.(listing, detail);
+    } catch (e) {
+      setDetailError(e instanceof Error ? e.message : "Dettaglio non disponibile");
+    } finally {
+      setDetailLoading(false);
+    }
+  };
+
+  const handleCloseDetail = () => {
+    setSelectedId(null);
+    setSelectedDetail(null);
+    setDetailError(null);
   };
 
   return (
@@ -269,6 +291,14 @@ export default function ListingsMap({ onSelectListing }: Props) {
           )}
         </div>
       </div>
+
+      <PropertyDetailPanel
+        detail={selectedDetail}
+        loading={detailLoading}
+        error={detailError}
+        onClose={handleCloseDetail}
+        onAnalyze={(detail) => onSelectListing?.(detail, detail)}
+      />
     </div>
   );
 }

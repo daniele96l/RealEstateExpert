@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import type { CityListingsCache, ListingsProvider, MapListing } from "@/lib/types";
+import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { geocodeCity, normalizeCitySlug } from "./geocode";
 import {
   RapidApiIdealistaError,
@@ -148,7 +148,7 @@ async function ensureCoordinates(listing: MapListing): Promise<MapListing> {
   }
 }
 
-async function fetchPropertyDetailsViaScrapingBee(url: string): Promise<MapListing> {
+export async function fetchPropertyDetailsViaScrapingBee(url: string): Promise<MapListing> {
   const normalized = normalizeIdealistaListingUrl(url);
   const html = await fetchUrl(normalized);
   const listing = parsePropertyDetailHtml(html, normalized);
@@ -209,7 +209,19 @@ export async function importListingFromUrl(
         provider === "rapidapi"
           ? await fetchPropertyDetailsByUrl(url)
           : await fetchPropertyDetailsViaScrapingBee(url);
-      return toCityListingsCache(listing, provider);
+      const mapListing: MapListing = {
+        id: listing.id,
+        title: listing.title,
+        price: listing.price,
+        operation: listing.operation,
+        url: listing.url,
+        lat: listing.lat,
+        lng: listing.lng,
+        sqm: listing.sqm,
+        rooms: listing.rooms,
+        address: listing.address,
+      };
+      return toCityListingsCache(mapListing, provider);
     } catch (err) {
       lastError = err;
     }

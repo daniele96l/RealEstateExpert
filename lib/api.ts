@@ -1,4 +1,4 @@
-import type { CityListingsCache, ListingsProvider } from "./types";
+import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "./types";
 
 async function parseError(res: Response, fallback: string): Promise<string> {
   const text = await res.text();
@@ -50,11 +50,26 @@ export async function getListingsProviders(): Promise<{
   return res.json();
 }
 
+export async function fetchPropertyDetail(
+  listing: MapListing,
+  refresh = false,
+  provider?: ListingsProvider,
+): Promise<ListingDetail> {
+  const res = await fetch("/api/listings/property", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url: listing.url, listing, refresh, provider }),
+  });
+  if (!res.ok) throw new Error(await parseError(res, "Dettaglio annuncio non disponibile"));
+  return res.json();
+}
+
 export async function getCachedListings(
   city: string,
   operation: "sale" | "rent",
 ): Promise<CityListingsCache | null> {
-  const res = await fetch(`/api/listings/${encodeURIComponent(city)}/${operation}`);
+  const params = new URLSearchParams({ city, operation });
+  const res = await fetch(`/api/listings/fetch?${params}`);
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(await parseError(res, "Errore lettura cache"));
   return res.json();

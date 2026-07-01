@@ -15,7 +15,7 @@ import {
   type SimpleScenario,
 } from "@/lib/defaults";
 import { runSimulation } from "@/lib/engine/simulator";
-import type { AnalysisResult, MapListing } from "@/lib/types";
+import type { AnalysisResult, ListingDetail, MapListing } from "@/lib/types";
 import { Building2, BarChart3 } from "lucide-react";
 
 export default function HomePage() {
@@ -30,12 +30,17 @@ export default function HomePage() {
     setResult(runSimulation(toInvestmentScenario(cleaned)));
   }, []);
 
-  const handleSelectListing = useCallback((listing: MapListing) => {
+  const handleSelectListing = useCallback((listing: MapListing, detail?: ListingDetail) => {
+    const d = detail ?? listing;
+    const sqm = d.sqm ?? listing.sqm;
     setFormPrefill({
-      ...(listing.operation === "sale"
-        ? { purchase_price: listing.price, rental_mode: "long_term" as const }
-        : { monthly_rent: listing.price, rental_mode: "long_term" as const }),
-      ...(listing.sqm != null && listing.sqm > 0 ? { sqm: listing.sqm } : {}),
+      ...(d.operation === "sale"
+        ? { purchase_price: d.price, rental_mode: "medium_term_semester" as const }
+        : { monthly_rent: d.price, rental_mode: "medium_term_semester" as const }),
+      ...(sqm != null && sqm > 0 ? { sqm } : {}),
+      ...(detail?.energy_class ? { energy_class: detail.energy_class } : {}),
+      ...(detail?.condominio_monthly ? { condominio_monthly: detail.condominio_monthly } : {}),
+      ...(detail?.needs_renovation === true ? { renovation_cost: 15_000 } : {}),
     });
   }, []);
 
