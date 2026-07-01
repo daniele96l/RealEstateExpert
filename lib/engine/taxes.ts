@@ -2,6 +2,8 @@ import type { InvestmentScenario } from "../types";
 import { effectiveCadastralValue, effectiveCedolareRate } from "./helpers";
 
 export function computeImuAnnual(scenario: InvestmentScenario): number {
+  if (scenario.property.property_type === "prima_casa") return 0;
+
   let rate = scenario.operating.imu_rate;
   if (
     scenario.rental.rental_mode === "short_term_airbnb" &&

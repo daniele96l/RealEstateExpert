@@ -76,3 +76,19 @@
 .recharts-tooltip-item {
   @apply !text-slate-100;
 }
+
+.leaflet-popup.listing-map-popup .leaflet-popup-content-wrapper {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.leaflet-popup.listing-map-popup .leaflet-popup-content {
+  margin: 0;
+  width: auto !important;
+}
+
+.leaflet-popup.listing-map-popup .leaflet-popup-tip-container {
+  display: none;
+}

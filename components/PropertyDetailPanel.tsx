@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { createPortal } from "react-dom";
 import { loadCityListingsCacheFirst } from "@/lib/cache-first";
 import { criteriaFromDetail, filterSimilarRentals } from "@/lib/similar-listings";
@@ -31,6 +32,15 @@ import {
   X,
   Zap,
 } from "lucide-react";
+
+const PropertySimilarRentMap = dynamic(() => import("./PropertySimilarRentMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[240px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-slate-500">
+      Caricamento mappa…
+    </div>
+  ),
+});
 
 interface Props {
   open: boolean;
@@ -299,6 +309,14 @@ export default function PropertyDetailPanel({
                 </div>
               ))}
             </div>
+
+            {detail.operation === "sale" && (
+              <PropertySimilarRentMap
+                saleProperty={detail}
+                similarRentals={similarRentals}
+                loading={similarLoading}
+              />
+            )}
 
             {detail.description && (
               <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 p-3">

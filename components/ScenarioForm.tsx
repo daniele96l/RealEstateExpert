@@ -8,7 +8,7 @@ import {
   getDefaultSimpleScenario,
   resolveUtilitiesAnnual,
 } from "@/lib/defaults";
-import { ENERGY_CLASS_OPTIONS, estimateSqmFromPrice, estimateUtilitiesAnnual, ITALY_DEFAULTS } from "@/lib/constants";
+import { estimateSqmFromPrice, estimateUtilitiesAnnual, ITALY_DEFAULTS } from "@/lib/constants";
 import { getRentalModeRules } from "@/lib/rental-presets";
 import { cn, fmtEuro } from "@/lib/utils";
 import { Home, Key, Sparkles, Info } from "lucide-react";
@@ -31,7 +31,7 @@ function Field({ label, hint, children }: { label: string; hint?: string; childr
   );
 }
 
-function RentalModeInfo({ mode }: { mode: RentalMode }) {
+function RentalModeInfo({ mode, propertyType }: { mode: RentalMode; propertyType: "prima_casa" | "investment" }) {
   const rules = getRentalModeRules(mode);
   return (
     <div className="sm:col-span-2 rounded-xl border border-accent/20 bg-accent/5 p-3 text-xs text-slate-400">
@@ -44,7 +44,10 @@ function RentalModeInfo({ mode }: { mode: RentalMode }) {
           <span className="text-slate-300">Cedolare secca:</span> {rules.cedolare_pct}% — {rules.cedolare_note}
         </li>
         <li>
-          <span className="text-slate-300">IMU:</span> {rules.imu_note}
+          <span className="text-slate-300">IMU:</span>{" "}
+          {propertyType === "prima_casa"
+            ? "Esonero — abitazione principale (prima casa)."
+            : rules.imu_note}
         </li>
         <li>
           <span className="text-slate-300">Occupazione tipica:</span> {rules.occupancy_pct}% — {rules.occupancy_note}
@@ -78,6 +81,7 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
   });
 
   const rentalMode = watch("rental_mode");
+  const propertyType = watch("property_type");
   const purchasePrice = watch("purchase_price");
   const sqm = watch("sqm");
   const energyClass = watch("energy_class");
@@ -200,32 +204,6 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
               <select className="select-field" {...register("property_type")}>
                 <option value="investment">Investimento</option>
                 <option value="prima_casa">Prima casa</option>
-              </select>
-            </Field>
-            <Field label="Valore catastale (€)" hint="Se vuoto: 55% del prezzo">
-              <input type="number" className="input-field" placeholder="Auto" {...register("cadastral_value", { valueAsNumber: true })} />
-            </Field>
-            <Field label="Superficie (m²)" hint="Stimata dal prezzo se cambi l'importo">
-              <input
-                type="number"
-                min={1}
-                className="input-field"
-                {...register("sqm", {
-                  valueAsNumber: true,
-                  setValueAs: (v) => {
-                    const n = typeof v === "string" ? Number(v) : v;
-                    return Number.isFinite(n) && n > 0 ? n : ITALY_DEFAULTS.default_sqm;
-                  },
-                })}
-              />
-            </Field>
-            <Field label="Classe energetica (APE)">
-              <select className="select-field" {...register("energy_class")}>
-                {ENERGY_CLASS_OPTIONS.map((o) => (
-                  <option key={o.value} value={o.value}>
-                    {o.label}
-                  </option>
-                ))}
               </select>
             </Field>
             <Field label="Anticipo (%)">
@@ -381,7 +359,7 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
                 </div>
               </Field>
             </div>
-            <RentalModeInfo mode={rentalMode} />
+            <RentalModeInfo mode={rentalMode} propertyType={propertyType} />
           </div>
         </section>
 

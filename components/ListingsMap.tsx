@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { getListingsProviders } from "@/lib/api";
 import {
@@ -12,7 +12,17 @@ import { writeLocalListingsCache } from "@/lib/listings-cache-client";
 import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import PropertyDetailPanel from "@/components/PropertyDetailPanel";
 import BatchFetchPanel from "@/components/BatchFetchPanel";
+import ListingsMapFilters from "@/components/ListingsMapFilters";
 import { cn } from "@/lib/utils";
+import {
+  EMPTY_LISTINGS_FILTERS,
+  filterListings,
+  hasActiveFilters,
+  resolveAreaFilterCenter,
+  resolveAreaFilterRadius,
+  type ListingsFilters,
+} from "@/lib/listings-filters";
+import { filterListingsByBounds, type GeoBounds } from "@/lib/geo-filter";
 import { Layers, MapPin } from "lucide-react";
 import type { CombinedListingsData } from "@/lib/types";
 
@@ -32,6 +42,10 @@ function formatPrice(price: number, operation: "sale" | "rent") {
   return operation === "rent" ? `${formatted}/mese` : formatted;
 }
 
+function listingKey(listing: MapListing): string {
+  return `${listing.operation}-${listing.id}`;
+}
+
 type ViewMode = "sale" | "rent" | "both";
 
 interface Props {
@@ -43,12 +57,13 @@ interface Props {
 
 export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAverageRent, onCityChange }: Props) {
   const [city, setCity] = useState("Reggio Calabria");
-  const [viewMode, setViewMode] = useState<ViewMode>("both");
+  const [viewMode, setViewMode] = useState<ViewMode>("sale");
   const [provider, setProvider] = useState<ListingsProvider>("rapidapi");
   const [providersAvailable, setProvidersAvailable] = useState({ scrapingbee: false, rapidapi: false });
   const [saleCache, setSaleCache] = useState<CityListingsCache | null>(null);
   const [rentCache, setRentCache] = useState<CityListingsCache | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [hoveredListingKey, setHoveredListingKey] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fromCache, setFromCache] = useState(false);
@@ -59,6 +74,8 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   const [detailCacheSource, setDetailCacheSource] = useState<"server" | "local" | null>(null);
   const [batchOpen, setBatchOpen] = useState(false);
   const [combinedData, setCombinedData] = useState<CombinedListingsData | null>(null);
+  const [filters, setFilters] = useState<ListingsFilters>(EMPTY_LISTINGS_FILTERS);
+  const [mapBounds, setMapBounds] = useState<GeoBounds | null>(null);
 
   useEffect(() => {
     getListingsProviders()
@@ -82,7 +99,10 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
       setRentCache(rentResult.data);
       setCombinedData(null);
       setFromCache(true);
+      setFilters(EMPTY_LISTINGS_FILTERS);
+      setMapBounds(null);
       setSelectedId(null);
+      setHoveredListingKey(null);
       setDetailOpen(false);
       setSelectedDetail(null);
 
@@ -174,7 +194,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   );
 
   const isCombinedView = viewMode === "both" || combinedData != null;
-  const displayListings =
+  const baseListings =
     combinedData?.listings ??
     (viewMode === "both"
       ? [...(saleCache?.listings ?? []), ...(rentCache?.listings ?? [])]
@@ -184,6 +204,21 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
 
   const activeCache = viewMode === "rent" ? rentCache : saleCache ?? rentCache;
   const center = combinedData?.center ?? saleCache?.center ?? rentCache?.center;
+  const mapCenterPoint = center ? { lat: center.lat, lng: center.lng } : null;
+
+  const displayListings = useMemo(
+    () => filterListings(baseListings, filters, mapCenterPoint),
+    [baseListings, filters, mapCenterPoint],
+  );
+
+  const visibleListings = useMemo(() => {
+    if (!mapBounds) return displayListings;
+    return filterListingsByBounds(displayListings, mapBounds);
+  }, [displayListings, mapBounds]);
+
+  const filtersActive = hasActiveFilters(filters);
+  const areaFilterCenter = resolveAreaFilterCenter(filters, mapCenterPoint);
+  const areaFilterRadius = resolveAreaFilterRadius(filters);
   const mapData: CityListingsCache | null = center
     ? {
         city:
@@ -249,13 +284,19 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             Importazione batch
           </button>
         </div>
+        <ListingsMapFilters
+          viewMode={viewMode}
+          filters={filters}
+          onChange={setFilters}
+          onReset={() => setFilters(EMPTY_LISTINGS_FILTERS)}
+        />
         {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
         {mapData && (
           <p className="mt-2 text-xs text-slate-500">
-            {displayListings.length} annunci
+            {filtersActive ? `${displayListings.length} di ${baseListings.length} annunci` : `${displayListings.length} annunci`}
             {isCombinedView && " (vendita + affitto)"}
             {" · "}
-            {center.display_name ?? city}
+            {mapData.center.display_name ?? city}
             {mapData.provider
               ? ` · ${mapData.provider === "rapidapi" ? "RapidAPI" : "ScrapingBee"}`
               : ""}
@@ -283,9 +324,17 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
               <ListingsMapView
                 data={mapData}
                 selectedId={selectedId}
+                hoveredListingKey={hoveredListingKey}
                 onSelect={handleSelect}
                 combinedListings={isCombinedView ? displayListings : undefined}
+                viewportListings={visibleListings}
+                onViewportBoundsChange={setMapBounds}
                 areaRadiusM={combinedData?.areaRadiusM}
+                filterAreaCenter={areaFilterCenter}
+                filterAreaRadiusM={areaFilterRadius}
+                onFilterAreaCenterChange={(lat, lng) =>
+                  setFilters((prev) => ({ ...prev, areaLat: lat, areaLng: lng }))
+                }
               />
             ) : (
               <div className="flex h-full items-center justify-center px-6 text-center text-sm text-slate-500">
@@ -294,16 +343,27 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             )}
           </div>
           <div className="max-h-[400px] overflow-y-auto p-3">
-            {displayListings.map((listing) => (
+            {mapBounds && visibleListings.length < displayListings.length && (
+              <p className="mb-2 text-[11px] text-slate-500">
+                {visibleListings.length} in vista · {displayListings.length} totali
+              </p>
+            )}
+            {visibleListings.map((listing) => {
+              const key = listingKey(listing);
+              return (
               <button
-                key={`${listing.operation}-${listing.id}`}
+                key={key}
                 type="button"
                 onClick={() => handleSelect(listing)}
+                onMouseEnter={() => setHoveredListingKey(key)}
+                onMouseLeave={() => setHoveredListingKey(null)}
                 className={cn(
                   "mb-2 w-full rounded-lg border p-3 text-left text-sm transition-colors",
                   selectedId === listing.id
                     ? "border-accent/50 bg-accent/10"
-                    : "border-surface-border/60 hover:bg-surface-raised/50",
+                    : hoveredListingKey === key
+                      ? "border-accent/30 bg-accent/5"
+                      : "border-surface-border/60 hover:bg-surface-raised/50",
                 )}
               >
                 <div className="mb-1 flex items-center gap-2">
@@ -328,9 +388,14 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                     .join(" · ")}
                 </p>
               </button>
-            ))}
-            {mapData && displayListings.length === 0 && (
-              <p className="text-sm text-slate-500">Nessun annuncio trovato</p>
+              );
+            })}
+            {mapData && visibleListings.length === 0 && (
+              <p className="text-sm text-slate-500">
+                {displayListings.length === 0
+                  ? "Nessun annuncio trovato"
+                  : "Nessun annuncio in questa area — sposta o zooma la mappa"}
+              </p>
             )}
           </div>
         </div>
