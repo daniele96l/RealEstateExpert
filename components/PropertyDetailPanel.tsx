@@ -281,7 +281,7 @@ export default function PropertyDetailPanel({
               <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 p-3">
                 <div className="mb-1.5 flex items-center justify-between gap-2">
                   <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Descrizione</p>
-                  {detail.description.length > 160 && (
+                  {detail.description.length > 120 && (
                     <button
                       type="button"
                       onClick={() => setDescriptionExpanded((v) => !v)}
@@ -292,9 +292,24 @@ export default function PropertyDetailPanel({
                   )}
                 </div>
                 <div
+                  role={descriptionExpanded ? undefined : "button"}
+                  tabIndex={descriptionExpanded ? undefined : 0}
+                  onClick={descriptionExpanded ? undefined : () => setDescriptionExpanded(true)}
+                  onKeyDown={
+                    descriptionExpanded
+                      ? undefined
+                      : (e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setDescriptionExpanded(true);
+                          }
+                        }
+                  }
                   className={cn(
-                    "text-sm leading-relaxed text-slate-300",
-                    descriptionExpanded ? "max-h-40 overflow-y-auto pr-1" : "line-clamp-3",
+                    "text-sm leading-snug text-slate-300",
+                    descriptionExpanded
+                      ? "max-h-36 overflow-y-auto pr-1"
+                      : "max-h-[3.25rem] cursor-pointer overflow-hidden line-clamp-2",
                   )}
                 >
                   {detail.description}
