@@ -1,4 +1,4 @@
-import type { CityListingsCache, IdealistaImportResult, ListingsProvider } from "./types";
+import type { CityListingsCache, ListingsProvider } from "./types";
 
 async function parseError(res: Response, fallback: string): Promise<string> {
   const text = await res.text();
@@ -12,11 +12,14 @@ async function parseError(res: Response, fallback: string): Promise<string> {
   return fallback;
 }
 
-export async function importFromIdealista(url: string): Promise<IdealistaImportResult> {
+export async function importFromIdealista(
+  url: string,
+  provider?: ListingsProvider,
+): Promise<CityListingsCache> {
   const res = await fetch("/api/import/idealista", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url }),
+    body: JSON.stringify({ url, provider }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Importazione non riuscita"));
   return res.json();

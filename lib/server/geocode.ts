@@ -15,9 +15,26 @@ export function normalizeCitySlug(city: string): string {
 
 export function citySlugVariants(city: string): string[] {
   const slug = normalizeCitySlug(city);
-  const variants = [slug];
-  if (!slug.includes("-") && !slug.includes("_")) variants.push(`${slug}-${slug}`);
-  return variants;
+  const set = new Set<string>();
+
+  if (slug.includes("_")) {
+    set.add(slug.replace(/_/g, "-"));
+    set.add(slug);
+  } else {
+    set.add(slug);
+    set.add(`${slug}-${slug}`);
+  }
+
+  // Alias Idealista per città con slug noti
+  const aliases: Record<string, string[]> = {
+    reggio_calabria: ["reggio-calabria"],
+    reggio_emilia: ["reggio-emilia"],
+    la_spezia: ["la-spezia"],
+    reggio_nell_emilia: ["reggio-emilia"],
+  };
+  for (const v of aliases[slug] ?? []) set.add(v);
+
+  return [...set];
 }
 
 export async function geocodeCity(city: string): Promise<{ lat: number; lng: number; display_name?: string }> {

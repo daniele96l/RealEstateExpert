@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { fetchListings, getCachedListings, getListingsProviders } from "@/lib/api";
+import { fetchListings, getCachedListings, getListingsProviders, importFromIdealista } from "@/lib/api";
 import type { CityListingsCache, ListingsProvider, MapListing } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { Loader2, MapPin, RefreshCw } from "lucide-react";
+import { Loader2, Link2, MapPin, RefreshCw } from "lucide-react";
 
 const ListingsMapView = dynamic(() => import("./ListingsMapView"), {
   ssr: false,
@@ -28,15 +28,18 @@ interface Props {
 }
 
 export default function ListingsMap({ onSelectListing }: Props) {
-  const [city, setCity] = useState("Milano");
+  const [city, setCity] = useState("Reggio Calabria");
+  const [listingUrl, setListingUrl] = useState("");
   const [operation, setOperation] = useState<"sale" | "rent">("sale");
   const [provider, setProvider] = useState<ListingsProvider>("rapidapi");
   const [providersAvailable, setProvidersAvailable] = useState({ scrapingbee: false, rapidapi: false });
   const [data, setData] = useState<CityListingsCache | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [importing, setImporting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fromCache, setFromCache] = useState(false);
+  const autoLoaded = useRef(false);
 
   useEffect(() => {
     getListingsProviders()
@@ -72,6 +75,36 @@ export default function ListingsMap({ onSelectListing }: Props) {
     }
   }, [city, operation, provider]);
 
+  useEffect(() => {
+    if (autoLoaded.current) return;
+    if (!providersAvailable.rapidapi && !providersAvailable.scrapingbee) return;
+    autoLoaded.current = true;
+    load(false);
+  }, [providersAvailable, load]);
+
+  const importUrl = useCallback(async () => {
+    if (!listingUrl.trim()) return;
+    setImporting(true);
+    setError(null);
+    try {
+      const result = await importFromIdealista(listingUrl.trim(), provider);
+      const listing = result.listings[0];
+      setData(result);
+      setFromCache(false);
+      setOperation(result.operation);
+      if (listing) {
+        setSelectedId(listing.id);
+        onSelectListing?.(listing);
+        const cityLabel = result.center.display_name?.split(",")[0]?.trim();
+        if (cityLabel) setCity(cityLabel);
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Importazione non riuscita");
+    } finally {
+      setImporting(false);
+    }
+  }, [listingUrl, provider, onSelectListing]);
+
   const handleSelect = (listing: MapListing) => {
     setSelectedId(listing.id);
     onSelectListing?.(listing);
@@ -84,11 +117,32 @@ export default function ListingsMap({ onSelectListing }: Props) {
           <MapPin size={18} className="text-accent" />
           <h2 className="font-semibold text-slate-100">Mappa annunci Idealista</h2>
         </div>
+        <div className="mb-3 flex flex-wrap gap-2">
+          <input
+            type="url"
+            className="input-field min-w-[200px] flex-1"
+            placeholder="URL annuncio (es. idealista.it/immobile/12345678/)"
+            value={listingUrl}
+            onChange={(e) => setListingUrl(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") importUrl();
+            }}
+          />
+          <button
+            type="button"
+            disabled={importing || !listingUrl.trim()}
+            onClick={importUrl}
+            className="flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-sm font-medium text-accent hover:bg-accent/20 disabled:opacity-50"
+          >
+            {importing ? <Loader2 size={14} className="animate-spin" /> : <Link2 size={14} />}
+            Importa URL
+          </button>
+        </div>
         <div className="flex flex-wrap gap-2">
           <input
             type="text"
             className="input-field min-w-[140px] flex-1"
-            placeholder="Città (es. Milano)"
+            placeholder="Città (es. Reggio Calabria)"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
@@ -130,12 +184,12 @@ export default function ListingsMap({ onSelectListing }: Props) {
               </button>
             ))}
           </div>
-          <button type="button" disabled={loading} onClick={() => load(false)} className="btn-primary px-4">
+          <button type="button" disabled={loading || importing} onClick={() => load(false)} className="btn-primary px-4">
             {loading ? <Loader2 size={16} className="animate-spin" /> : "Carica"}
           </button>
           <button
             type="button"
-            disabled={loading}
+            disabled={loading || importing}
             onClick={() => load(true)}
             className="flex items-center gap-1 rounded-lg border border-surface-border px-3 py-2 text-sm text-slate-300 hover:bg-surface-raised"
           >

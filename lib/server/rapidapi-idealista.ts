@@ -71,7 +71,16 @@ async function resolveLocationUrl(city: string, operation: "sale" | "rent"): Pro
     },
   );
 
+  const cityNorm = city.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
   const match =
+    data.results?.find(
+      (r) =>
+        r.type === "location" &&
+        r.url &&
+        r.name &&
+        r.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(cityNorm.split(" ")[0]),
+    ) ??
     data.results?.find((r) => r.type === "location" && r.url) ??
     data.results?.[0];
 
@@ -80,6 +89,13 @@ async function resolveLocationUrl(city: string, operation: "sale" | "rent"): Pro
   }
 
   return match.url.startsWith("http") ? match.url : `${IDEALISTA_BASE}${match.url}`;
+}
+
+function normalizeOperation(raw?: string, url?: string): "sale" | "rent" {
+  const op = (raw ?? "").toLowerCase();
+  if (op.includes("rent") || op.includes("affitto") || op.includes("alquiler")) return "rent";
+  if (url?.toLowerCase().includes("affitto")) return "rent";
+  return "sale";
 }
 
 function listingFromRapid(item: RapidListing, operation: "sale" | "rent"): MapListing | null {
@@ -111,6 +127,74 @@ function listingFromRapid(item: RapidListing, operation: "sale" | "rent"): MapLi
     rooms: item.rooms ?? null,
     address,
   };
+}
+
+export function normalizeIdealistaListingUrl(raw: string): string {
+  const trimmed = raw.trim();
+  if (!trimmed) throw new RapidApiIdealistaError("URL obbligatorio");
+
+  let url: URL;
+  try {
+    url = new URL(trimmed.startsWith("http") ? trimmed : `https://${trimmed}`);
+  } catch {
+    throw new RapidApiIdealistaError("URL non valido");
+  }
+
+  if (!url.hostname.includes("idealista.it")) {
+    throw new RapidApiIdealistaError("Inserisci un URL Idealista italiano (idealista.it)");
+  }
+
+  const idMatch = url.pathname.match(/\/immobile\/(\d+)/);
+  if (!idMatch) {
+    throw new RapidApiIdealistaError("URL non riconosciuto — usa un link del tipo idealista.it/immobile/12345678/");
+  }
+
+  return `https://www.idealista.it/immobile/${idMatch[1]}/`;
+}
+
+function listingFromRapidDetail(item: RapidListing, sourceUrl: string): MapListing | null {
+  const idMatch = sourceUrl.match(/\/immobile\/(\d+)/);
+  const id = String(item.propertyCode ?? idMatch?.[1] ?? "");
+  if (!id) return null;
+
+  const price = item.price ?? item.priceInfo?.price?.amount;
+  if (price == null || price <= 0) return null;
+
+  const operation = normalizeOperation(item.operation, sourceUrl);
+  let url = item.url ?? sourceUrl;
+  if (url.startsWith("/")) url = `${IDEALISTA_BASE}${url}`;
+
+  const address = item.address ?? null;
+  const title = (address ?? item.propertyType ?? `Immobile ${id}`).slice(0, 200);
+
+  return {
+    id,
+    title,
+    price,
+    operation,
+    url,
+    lat: item.latitude ?? 0,
+    lng: item.longitude ?? 0,
+    sqm: item.size ?? null,
+    rooms: item.rooms ?? null,
+    address,
+  };
+}
+
+export async function fetchPropertyDetailsByUrl(url: string): Promise<MapListing> {
+  const normalized = normalizeIdealistaListingUrl(url);
+  const data = await rapidApiGet<RapidListing | { property?: RapidListing }>("/property-details-by-url", {
+    url: normalized,
+    language: "it",
+    country: "it",
+  });
+
+  const item = "property" in data && data.property ? data.property : data;
+  const listing = listingFromRapidDetail(item as RapidListing, normalized);
+  if (!listing) {
+    throw new RapidApiIdealistaError("Impossibile estrarre i dati dall'annuncio");
+  }
+  return listing;
 }
 
 export async function fetchCityListingsViaRapidApi(
