@@ -33,7 +33,6 @@ const OPEX_BARS = [
   { key: "insurance", name: "Assicurazione", color: "#84cc16" },
   { key: "maintenance", name: "Manutenzione", color: "#22d3ee" },
   { key: "utilities", name: "Bollette", color: "#38bdf8" },
-  { key: "agency_fee", name: "Agenzia", color: "#a78bfa" },
   { key: "platform_fee", name: "Piattaforma", color: "#c084fc" },
   { key: "cleaning_fee", name: "Pulizie", color: "#f472b6" },
 ] as const;

@@ -23,32 +23,20 @@ export default function HomePage() {
     const s = sanitizeSimple(getDefaultSimpleScenario());
     return runSimulation(toInvestmentScenario(s));
   });
-  const [loading, setLoading] = useState(false);
   const [formPrefill, setFormPrefill] = useState<Partial<SimpleScenario> | undefined>();
 
-  const handleAnalyze = useCallback((simple: SimpleScenario) => {
-    setLoading(true);
-    requestAnimationFrame(() => {
-      const cleaned = sanitizeSimple(simple);
-      setResult(runSimulation(toInvestmentScenario(cleaned)));
-      setLoading(false);
-    });
+  const handleFormChange = useCallback((simple: SimpleScenario) => {
+    const cleaned = sanitizeSimple(simple);
+    setResult(runSimulation(toInvestmentScenario(cleaned)));
   }, []);
 
   const handleSelectListing = useCallback((listing: MapListing) => {
-    if (listing.operation === "sale") {
-      setFormPrefill({
-        purchase_price: listing.price,
-        rental_mode: "long_term",
-        ...(listing.sqm != null && listing.sqm > 0 ? { sqm: listing.sqm } : {}),
-      });
-    } else {
-      setFormPrefill({
-        monthly_rent: listing.price,
-        rental_mode: "long_term",
-        ...(listing.sqm != null && listing.sqm > 0 ? { sqm: listing.sqm } : {}),
-      });
-    }
+    setFormPrefill({
+      ...(listing.operation === "sale"
+        ? { purchase_price: listing.price, rental_mode: "long_term" as const }
+        : { monthly_rent: listing.price, rental_mode: "long_term" as const }),
+      ...(listing.sqm != null && listing.sqm > 0 ? { sqm: listing.sqm } : {}),
+    });
   }, []);
 
   return (
@@ -68,7 +56,7 @@ export default function HomePage() {
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,420px)_1fr]">
           <div className="lg:sticky lg:top-6 lg:max-h-[calc(100vh-3rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain lg:pr-1">
-            <ScenarioForm onSubmit={handleAnalyze} loading={loading} prefill={formPrefill} />
+            <ScenarioForm onChange={handleFormChange} prefill={formPrefill} />
           </div>
 
           <div className="space-y-6">

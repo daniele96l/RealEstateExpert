@@ -117,27 +117,31 @@ export default function ListingsMap({ onSelectListing }: Props) {
           <MapPin size={18} className="text-accent" />
           <h2 className="font-semibold text-slate-100">Mappa annunci Idealista</h2>
         </div>
-        <div className="mb-3 flex flex-wrap gap-2">
-          <input
-            type="url"
-            className="input-field min-w-[200px] flex-1"
-            placeholder="URL annuncio (es. idealista.it/immobile/12345678/)"
-            value={listingUrl}
-            onChange={(e) => setListingUrl(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") importUrl();
-            }}
-          />
-          <button
-            type="button"
-            disabled={importing || !listingUrl.trim()}
-            onClick={importUrl}
-            className="flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-sm font-medium text-accent hover:bg-accent/20 disabled:opacity-50"
-          >
-            {importing ? <Loader2 size={14} className="animate-spin" /> : <Link2 size={14} />}
-            Importa URL
-          </button>
+        <div className="mb-4 rounded-xl border border-accent/20 bg-accent/5 p-3">
+          <p className="mb-2 text-xs font-medium uppercase tracking-wide text-accent">Importa singolo annuncio</p>
+          <div className="flex flex-wrap gap-2">
+            <input
+              type="url"
+              className="input-field min-w-[200px] flex-1"
+              placeholder="https://www.idealista.it/immobile/12345678/"
+              value={listingUrl}
+              onChange={(e) => setListingUrl(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") importUrl();
+              }}
+            />
+            <button
+              type="button"
+              disabled={importing || !listingUrl.trim()}
+              onClick={importUrl}
+              className="flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-emerald-500 disabled:opacity-50"
+            >
+              {importing ? <Loader2 size={14} className="animate-spin" /> : <Link2 size={14} />}
+              Importa
+            </button>
+          </div>
         </div>
+        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">Cerca per città</p>
         <div className="flex flex-wrap gap-2">
           <input
             type="text"

@@ -1,6 +1,6 @@
 import type { CityListingsCache, MapListing } from "@/lib/types";
 import { getRapidApiKey } from "./config";
-import { geocodeCity, normalizeCitySlug } from "./geocode";
+import { geocodeCity, locationMatchesCity, normalizeCitySlug } from "./geocode";
 
 const RAPIDAPI_HOST = "idealista17.p.rapidapi.com";
 const IDEALISTA_BASE = "https://www.idealista.it";
@@ -71,15 +71,9 @@ async function resolveLocationUrl(city: string, operation: "sale" | "rent"): Pro
     },
   );
 
-  const cityNorm = city.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
   const match =
     data.results?.find(
-      (r) =>
-        r.type === "location" &&
-        r.url &&
-        r.name &&
-        r.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(cityNorm.split(" ")[0]),
+      (r) => r.type === "location" && r.url && r.name && locationMatchesCity(r.name, city),
     ) ??
     data.results?.find((r) => r.type === "location" && r.url) ??
     data.results?.[0];

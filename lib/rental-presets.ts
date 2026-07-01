@@ -18,7 +18,7 @@ export const RENTAL_MODE_RULES = {
     imu_note: "IMU intera sulla seconda casa — a carico del proprietario, nessuna esenzione per il solo fatto di affittare.",
     occupancy_pct: 92,
     occupancy_note: "~1 mese di vacanza/anno tra un inquilino e l'altro.",
-    agency_fee_months: 1,
+    agency_fee_months: 0,
     platform_fee_pct: 0,
     cleaning_fee_per_turnover: 0,
     utilities_landlord_annual: 0,
@@ -40,7 +40,7 @@ export const RENTAL_MODE_RULES = {
     occupancy_pct: 82,
     occupancy_note:
       "~2 mesi vuoti/anno tra un semestre e l'altro (estate studenti, cambio inquilino).",
-    agency_fee_months: 1.5,
+    agency_fee_months: 0,
     platform_fee_pct: 0,
     cleaning_fee_per_turnover: 120,
     utilities_landlord_annual: 0,

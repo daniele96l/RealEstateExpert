@@ -8,7 +8,7 @@ export const ITALY_DEFAULTS = {
   maintenance_pct_long: 0.008,
   maintenance_pct_medium: 0.01,
   maintenance_pct_short: 0.012,
-  agency_fee_months: 1,
+  agency_fee_months: 0,
   platform_fee_pct: 0.15,
   cleaning_fee_per_turnover: 55,
   avg_stay_nights: 3.5,

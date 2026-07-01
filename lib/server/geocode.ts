@@ -2,6 +2,21 @@ const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
 
 export class GeocodeError extends Error {}
 
+export function locationMatchesCity(locationName: string, city: string): boolean {
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/['']/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  const nName = norm(locationName);
+  const nCity = norm(city);
+  if (nName.includes(nCity) || nCity.includes(nName)) return true;
+  return nCity.split(" ").every((part) => part.length > 2 && nName.includes(part));
+}
+
 export function normalizeCitySlug(city: string): string {
   const slug = city
     .trim()
@@ -25,7 +40,6 @@ export function citySlugVariants(city: string): string[] {
     set.add(`${slug}-${slug}`);
   }
 
-  // Alias Idealista per città con slug noti
   const aliases: Record<string, string[]> = {
     reggio_calabria: ["reggio-calabria"],
     reggio_emilia: ["reggio-emilia"],

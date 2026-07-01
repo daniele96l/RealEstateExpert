@@ -10,13 +10,11 @@ import {
 } from "@/lib/defaults";
 import { ENERGY_CLASS_OPTIONS, estimateSqmFromPrice, estimateUtilitiesAnnual } from "@/lib/constants";
 import { getRentalModeRules } from "@/lib/rental-presets";
-import { cn } from "@/lib/utils";
-import { Home, Key, Sparkles, Loader2, Info } from "lucide-react";
+import { Home, Key, Sparkles, Info } from "lucide-react";
 import type { RentalMode } from "@/lib/types";
 
 interface Props {
-  onSubmit: (data: SimpleScenario) => void;
-  loading: boolean;
+  onChange: (data: SimpleScenario) => void;
   prefill?: Partial<SimpleScenario>;
 }
 
@@ -48,21 +46,14 @@ function RentalModeInfo({ mode }: { mode: RentalMode }) {
         <li>
           <span className="text-slate-300">Occupazione tipica:</span> {rules.occupancy_pct}% — {rules.occupancy_note}
         </li>
-        {mode === "long_term" ? (
-          <li>
-            <span className="text-slate-300">Agenzia:</span> ~{rules.agency_fee_months} mese di affitto/anno se delegata.
-          </li>
-        ) : mode === "medium_term_semester" ? (
+        {mode === "medium_term_semester" ? (
           <>
-            <li>
-              <span className="text-slate-300">Agenzia:</span> ~{rules.agency_fee_months} mesi di affitto/anno (più ricerca inquilini).
-            </li>
             <li>
               <span className="text-slate-300">Pulizie:</span> ~€{rules.cleaning_fee_per_turnover} × {rules.turnovers_per_year} cambi/anno tra semestri.
             </li>
             <li>{rules.utilities_note}</li>
           </>
-        ) : (
+        ) : mode === "short_term_airbnb" ? (
           <>
             <li>
               <span className="text-slate-300">Piattaforma:</span> ~{rules.platform_fee_pct * 100}% sul lordo (Airbnb/Booking).
@@ -72,14 +63,14 @@ function RentalModeInfo({ mode }: { mode: RentalMode }) {
             </li>
             <li>{rules.utilities_note}</li>
           </>
-        )}
+        ) : null}
       </ul>
     </div>
   );
 }
 
-export default function ScenarioForm({ onSubmit, loading, prefill }: Props) {
-  const { register, handleSubmit, watch, reset, setValue, getValues } = useForm<SimpleScenario>({
+export default function ScenarioForm({ onChange, prefill }: Props) {
+  const { register, watch, reset, setValue, getValues } = useForm<SimpleScenario>({
     defaultValues: getDefaultSimpleScenario(),
   });
 
@@ -94,10 +85,12 @@ export default function ScenarioForm({ onSubmit, loading, prefill }: Props) {
 
   useEffect(() => {
     if (prefill) {
-      reset({ ...getDefaultSimpleScenario(), ...prefill });
+      const merged = { ...getDefaultSimpleScenario(), ...prefill };
+      reset(merged);
       prevMode.current = prefill.rental_mode ?? "medium_term_semester";
+      onChange(merged);
     }
-  }, [prefill, reset]);
+  }, [prefill, reset, onChange]);
 
   useEffect(() => {
     if (prevMode.current === null) {
@@ -144,13 +137,26 @@ export default function ScenarioForm({ onSubmit, loading, prefill }: Props) {
     );
   }, [sqm, energyClass, rentalMode, occupancyPct, utilitiesAuto, setValue, getValues]);
 
+  useEffect(() => {
+    const subscription = watch((values) => {
+      onChange(values as SimpleScenario);
+    });
+    return () => subscription.unsubscribe();
+  }, [watch, onChange]);
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="card-glass overflow-hidden">
+    <div className="card-glass overflow-hidden">
       <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
-        <div className="flex items-center gap-2">
-          <Sparkles size={18} className="text-accent" />
-          <h2 className="font-semibold text-slate-100">Parametri</h2>
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <Sparkles size={18} className="text-accent" />
+            <h2 className="font-semibold text-slate-100">Parametri</h2>
+          </div>
+          <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-accent">
+            Live
+          </span>
         </div>
+        <p className="mt-1.5 text-xs text-slate-500">I grafici si aggiornano mentre modifichi i valori.</p>
       </div>
 
       <div className="space-y-6 p-5">
@@ -283,25 +289,9 @@ export default function ScenarioForm({ onSubmit, loading, prefill }: Props) {
           >
             Agenzia delle Entrate
           </a>
-          . Stime IMU, TARI, notaio e agenzia calcolate automaticamente per regime.
+          . Stime IMU, TARI e notaio calcolate automaticamente per regime.
         </p>
       </div>
-
-      <div className="border-t border-surface-border/80 p-5">
-        <button type="submit" disabled={loading} className={cn("btn-primary flex items-center justify-center gap-2")}>
-          {loading ? (
-            <>
-              <Loader2 size={18} className="animate-spin" />
-              Calcolo…
-            </>
-          ) : (
-            <>
-              <Sparkles size={18} />
-              Analizza
-            </>
-          )}
-        </button>
-      </div>
-    </form>
+    </div>
   );
 }
