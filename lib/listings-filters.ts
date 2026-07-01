@@ -24,7 +24,7 @@ export const EMPTY_LISTINGS_FILTERS: ListingsFilters = {
   rentPriceMin: null,
   rentPriceMax: null,
   sqmMin: null,
-  sqmMax: null,
+  sqmMax: 100,
   rooms: null,
   propertyType: null,
   areaPreset: "off",

@@ -5,7 +5,6 @@ import ScenarioForm from "@/components/ScenarioForm";
 import ListingsMap from "@/components/ListingsMap";
 import AnalysisSourcesPanel from "@/components/AnalysisSourcesPanel";
 import MarketPriceCharts from "@/components/MarketPriceCharts";
-import SummaryCards from "@/components/SummaryCards";
 import PurchaseBreakdown from "@/components/PurchaseBreakdown";
 import MonthlyBreakdownChart from "@/components/MonthlyBreakdownChart";
 import {
@@ -97,11 +96,9 @@ export default function HomePage() {
         avgWholeMonthly: wholeMonthly,
       });
       setFormPrefill(next);
-      updateScenario(next);
-      setFormSyncToken((n) => n + 1);
       document.getElementById("parametri")?.scrollIntoView({ behavior: "smooth", block: "start" });
     },
-    [updateScenario],
+    [],
   );
 
   return (
@@ -150,7 +147,6 @@ export default function HomePage() {
                 {analysisSource && (
                   <AnalysisSourcesPanel source={analysisSource} scenario={scenario} />
                 )}
-                <SummaryCards result={result} />
                 <PurchaseBreakdown
                   costs={result.summary.purchase_costs}
                   scenario={scenario}

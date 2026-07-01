@@ -137,7 +137,7 @@ export default function ListingsMapFilters({ viewMode, filters, onChange, onRese
           <FilterField label="m² max">
             <NumberInput
               value={filters.sqmMax}
-              placeholder="Max"
+              placeholder="100"
               onChange={(sqmMax) => onChange({ ...filters, sqmMax })}
             />
           </FilterField>

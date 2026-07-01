@@ -247,14 +247,30 @@ export default function PropertyDetailPanel({
                 </>
               ) : null}
             </div>
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-lg border border-surface-border p-1.5 text-slate-400 hover:bg-surface-border/40 hover:text-slate-200"
-              aria-label="Chiudi"
-            >
-              <X size={16} />
-            </button>
+            <div className="flex shrink-0 items-start gap-2">
+              {detail && !loading && !error && (
+                <a
+                  href={detail.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-surface-border px-4 py-2.5",
+                    "text-sm text-slate-300 hover:bg-surface-raised",
+                  )}
+                >
+                  <ExternalLink size={14} />
+                  Idealista
+                </a>
+              )}
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-lg border border-surface-border p-1.5 text-slate-400 hover:bg-surface-border/40 hover:text-slate-200"
+                aria-label="Chiudi"
+              >
+                <X size={16} />
+              </button>
+            </div>
           </div>
 
           {detail && !loading && (
@@ -379,21 +395,6 @@ export default function PropertyDetailPanel({
                 </div>
               </div>
             )}
-
-            <div className="flex flex-wrap gap-2 pb-1">
-              <a
-                href={detail.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  "inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-surface-border px-4 py-2.5",
-                  "text-sm text-slate-300 hover:bg-surface-raised",
-                )}
-              >
-                <ExternalLink size={14} />
-                Idealista
-              </a>
-            </div>
 
             {cacheSource && detail.fetched_at && (
               <p className="text-xs text-slate-600">

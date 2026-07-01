@@ -92,22 +92,27 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
   const monthlyRent = watch("monthly_rent");
   const prevMode = useRef<RentalMode | null>(null);
   const prevPrice = useRef<number | null>(null);
+  const syncScenarioRef = useRef(syncScenario);
+  syncScenarioRef.current = syncScenario;
 
   useEffect(() => {
     if (prefill) {
       const merged = { ...getDefaultSimpleScenario(), ...prefill };
       reset(merged);
       prevMode.current = prefill.rental_mode ?? "medium_term_semester";
+      prevPrice.current = prefill.purchase_price ?? merged.purchase_price;
       onChange(merged);
     }
   }, [prefill, reset, onChange]);
 
   useEffect(() => {
-    if (syncScenario == null || !syncToken) return;
-    reset(syncScenario);
-    prevMode.current = syncScenario.rental_mode;
-    prevPrice.current = syncScenario.purchase_price;
-  }, [syncScenario, syncToken, reset]);
+    if (!syncToken) return;
+    const synced = syncScenarioRef.current;
+    if (synced == null) return;
+    reset(synced);
+    prevMode.current = synced.rental_mode;
+    prevPrice.current = synced.purchase_price;
+  }, [syncToken, reset]);
 
   useEffect(() => {
     if (prevMode.current === null) {
