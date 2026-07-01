@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { fetchListings } from "@/lib/api";
 import { criteriaFromDetail, filterSimilarRentals } from "@/lib/similar-listings";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
@@ -67,9 +68,14 @@ export default function PropertyDetailPanel({
   onAnalyze,
   onUseSimilarRent,
 }: Props) {
+  const [mounted, setMounted] = useState(false);
   const [similarLoading, setSimilarLoading] = useState(false);
   const [similarError, setSimilarError] = useState<string | null>(null);
   const [similarRentals, setSimilarRentals] = useState<MapListing[] | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!open) {
@@ -113,7 +119,7 @@ export default function PropertyDetailPanel({
     }
   };
 
-  if (!open) return null;
+  if (!open || !mounted) return null;
 
   const priceLabel =
     detail?.operation === "rent"
@@ -122,9 +128,9 @@ export default function PropertyDetailPanel({
         ? fmtEuro(detail.price)
         : "";
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -334,6 +340,7 @@ export default function PropertyDetailPanel({
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

@@ -20,5 +20,6 @@ export async function getMarketCache(city: string): Promise<MarketPriceHistory |
 
 export async function saveMarketCache(data: MarketPriceHistory): Promise<void> {
   await mkdir(DATA_DIR, { recursive: true });
-  await writeFile(cacheFilePath(data.city), JSON.stringify(data, null, 2), "utf-8");
+  const slug = normalizeCitySlug(data.city_slug || data.city);
+  await writeFile(path.join(DATA_DIR, `${slug}.json`), JSON.stringify(data, null, 2), "utf-8");
 }

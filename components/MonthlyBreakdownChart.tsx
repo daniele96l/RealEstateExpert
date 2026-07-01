@@ -130,20 +130,22 @@ export default function MonthlyBreakdownChart({ result }: Props) {
           <h2 className="text-base font-semibold text-slate-100">Dettaglio mensile entrate/uscite</h2>
           <p className="text-sm text-slate-500">Affitto vs mutuo, cedolare secca e ogni voce di spesa</p>
         </div>
-        <div className="flex gap-1 rounded-lg bg-surface-border/40 p-1">
-          {years.map((y) => (
-            <button
-              key={y}
-              type="button"
-              onClick={() => setYear(y)}
-              className={cn(
-                "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
-                year === y ? "bg-accent/20 text-accent" : "text-slate-400 hover:text-slate-200",
-              )}
-            >
-              A{y}
-            </button>
-          ))}
+        <div className="min-w-0 max-w-full overflow-x-auto rounded-lg bg-surface-border/40 p-1">
+          <div className="flex w-max gap-1">
+            {years.map((y) => (
+              <button
+                key={y}
+                type="button"
+                onClick={() => setYear(y)}
+                className={cn(
+                  "shrink-0 rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
+                  year === y ? "bg-accent/20 text-accent" : "text-slate-400 hover:text-slate-200",
+                )}
+              >
+                A{y}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

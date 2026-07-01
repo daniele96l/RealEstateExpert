@@ -11,6 +11,11 @@ import {
   YAxis,
 } from "recharts";
 import { fetchMarketHistory, getCachedMarketHistory } from "@/lib/api";
+import {
+  marketCacheFileLabel,
+  readLocalMarketCache,
+  writeLocalMarketCache,
+} from "@/lib/market-cache-client";
 import type { MarketPriceHistory, PriceHistoryPoint } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ExternalLink, Loader2, RefreshCw, TrendingUp } from "lucide-react";
@@ -124,6 +129,7 @@ export default function MarketPriceCharts({ city }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fromCache, setFromCache] = useState(false);
+  const [cacheSource, setCacheSource] = useState<"server" | "local" | null>(null);
 
   const load = useCallback(
     async (refresh: boolean) => {
@@ -136,12 +142,23 @@ export default function MarketPriceCharts({ city }: Props) {
           if (cached) {
             setData(cached);
             setFromCache(true);
+            setCacheSource("server");
+            writeLocalMarketCache(cached);
+            return;
+          }
+          const local = readLocalMarketCache(city.trim());
+          if (local) {
+            setData(local);
+            setFromCache(true);
+            setCacheSource("local");
             return;
           }
         }
         const result = await fetchMarketHistory(city.trim(), refresh);
         setData(result);
         setFromCache(false);
+        setCacheSource(null);
+        writeLocalMarketCache(result);
       } catch (e) {
         setError(e instanceof Error ? e.message : "Errore caricamento dati mercato");
         setData(null);
@@ -156,7 +173,9 @@ export default function MarketPriceCharts({ city }: Props) {
     setData(null);
     setError(null);
     setFromCache(false);
-  }, [city]);
+    setCacheSource(null);
+    void load(false);
+  }, [city, load]);
 
   return (
     <div className="card-glass p-5">
@@ -168,27 +187,14 @@ export default function MarketPriceCharts({ city }: Props) {
           <div>
             <h2 className="text-base font-semibold text-slate-100">Andamento prezzi di mercato</h2>
             <p className="text-sm text-slate-500">
-              Storico prezzo medio €/m² — {city || "seleziona una città"}
+              Storico prezzo medio €/m² — {(data?.city ?? city) || "seleziona una città"}
             </p>
           </div>
         </div>
         <div className="flex items-center gap-2">
-          {!data && !loading && (
-            <button
-              type="button"
-              disabled={!city.trim()}
-              onClick={() => load(false)}
-              className={cn(
-                "rounded-lg bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-emerald-500",
-                !city.trim() && "cursor-not-allowed opacity-50",
-              )}
-            >
-              Carica dati mercato
-            </button>
-          )}
           <button
             type="button"
-            disabled={loading || !city.trim() || !data}
+            disabled={loading || !city.trim()}
             onClick={() => load(true)}
             className={cn(
               "flex items-center gap-1 rounded-lg border border-surface-border px-3 py-2 text-sm text-slate-300 hover:bg-surface-raised",
@@ -216,7 +222,7 @@ export default function MarketPriceCharts({ city }: Props) {
 
       {!data && !loading && !error && (
         <p className="py-8 text-center text-sm text-slate-500">
-          Clicca &quot;Carica dati mercato&quot; per vedere lo storico prezzi vendita/affitto da immobiliare.it.
+          Caricamento dati mercato da cache o immobiliare.it…
         </p>
       )}
 
@@ -236,7 +242,8 @@ export default function MarketPriceCharts({ city }: Props) {
         <p className="mt-4 text-xs text-slate-600">
           Dati mercato — immobiliare.it
           {data.provider === "insights" ? " (Insights API)" : " (ScrapingBee)"}
-          {fromCache ? " · da cache" : ""}
+          {fromCache && cacheSource === "server" && ` · cache ${marketCacheFileLabel(city)}`}
+          {fromCache && cacheSource === "local" && " · cache browser"}
           {data.fetched_at && ` · ${new Date(data.fetched_at).toLocaleString("it-IT")}`}
         </p>
       )}

@@ -62,7 +62,9 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
     setDetailOpen(false);
     setSelectedDetail(null);
     writeLocalListingsCache(payload);
-    onCityChange?.(payload.city);
+    const displayCity =
+      payload.center.display_name?.split(",")[0]?.trim() || payload.city.replace(/_/g, " ");
+    onCityChange?.(displayCity);
   }, [onCityChange]);
 
   useEffect(() => {
