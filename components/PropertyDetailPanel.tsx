@@ -42,6 +42,7 @@ interface Props {
   onClose: () => void;
   onAnalyze: (detail: ListingDetail) => void;
   onOpenSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
+  onUseAverageRent?: (saleDetail: ListingDetail, avgPerRoom: number, wholeMonthly: number | null) => void;
 }
 
 function Spec({
@@ -81,6 +82,7 @@ export default function PropertyDetailPanel({
   onClose,
   onAnalyze,
   onOpenSimilarRent,
+  onUseAverageRent,
 }: Props) {
   const [mounted, setMounted] = useState(false);
   const [descriptionExpanded, setDescriptionExpanded] = useState(false);
@@ -152,6 +154,11 @@ export default function PropertyDetailPanel({
   const avgRentPerRoom =
     similarRentals && similarRentals.length > 0
       ? averageMonthlyRentPerRoom(similarRentals)
+      : null;
+
+  const avgWholeMonthly =
+    avgRentPerRoom != null && detail?.rooms != null && detail.rooms > 0
+      ? avgRentPerRoom * detail.rooms
       : null;
 
   const closeSimilarColumn = () => {
@@ -421,16 +428,32 @@ export default function PropertyDetailPanel({
                         </p>
                         <p className="mt-0.5 text-xs text-slate-500">
                           Su {similarRentals.length} annunci in zona
-                          {detail.rooms != null && detail.rooms > 0 && (
+                          {avgWholeMonthly != null && (
                             <>
                               {" "}
                               · intero stimato{" "}
                               <span className="font-medium text-slate-300">
-                                {fmtEuro(avgRentPerRoom * detail.rooms)}/mese
+                                {fmtEuro(avgWholeMonthly)}/mese
                               </span>
                             </>
                           )}
                         </p>
+                        {onUseAverageRent && avgRentPerRoom != null && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              onUseAverageRent(detail, avgRentPerRoom, avgWholeMonthly);
+                              onClose();
+                            }}
+                            className={cn(
+                              "mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-accent/40",
+                              "bg-accent/15 px-3 py-2 text-xs font-medium text-accent hover:bg-accent/25",
+                            )}
+                          >
+                            <LayoutDashboard size={12} />
+                            Usa medie nell&apos;analisi
+                          </button>
+                        )}
                       </div>
                     )}
                     <p className="mb-3 text-xs text-slate-500">

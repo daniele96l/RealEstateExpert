@@ -34,7 +34,7 @@ export const ITALY_DEFAULTS = {
   /** Anticipo minimo tipico per investimento */
   investment_down_payment_pct: 25,
   /** Locali predefiniti per calcolo affitto per stanza */
-  default_rent_rooms: 3,
+  default_rent_rooms: 2,
 } as const;
 
 /** Canone mensile da rendimento lordo ~5–6% */

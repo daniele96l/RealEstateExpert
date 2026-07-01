@@ -33,10 +33,11 @@ function formatPrice(price: number, operation: "sale" | "rent") {
 interface Props {
   onSelectListing?: (listing: MapListing, detail?: ListingDetail) => void;
   onUseSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
+  onUseAverageRent?: (saleDetail: ListingDetail, avgPerRoom: number, wholeMonthly: number | null) => void;
   onCityChange?: (city: string) => void;
 }
 
-export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityChange }: Props) {
+export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAverageRent, onCityChange }: Props) {
   const [city, setCity] = useState("Reggio Calabria");
   const [listingUrl, setListingUrl] = useState("");
   const [operation, setOperation] = useState<"sale" | "rent">("sale");
@@ -418,6 +419,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
         onClose={handleCloseDetail}
         onAnalyze={(detail) => onSelectListing?.(detail, detail)}
         onOpenSimilarRent={handleOpenSimilarRent}
+        onUseAverageRent={onUseAverageRent}
       />
 
       <BatchFetchPanel

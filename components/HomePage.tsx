@@ -59,6 +59,24 @@ export default function HomePage() {
     });
   }, []);
 
+  const handleUseAverageRent = useCallback(
+    (saleDetail: ListingDetail, avgPerRoom: number, wholeMonthly: number | null) => {
+      setFormPrefill({
+        purchase_price: saleDetail.price,
+        rental_mode: "medium_term_semester" as const,
+        ...(wholeMonthly != null
+          ? { monthly_rent: wholeMonthly, rent_price_basis: "whole" as const }
+          : { monthly_rent: avgPerRoom, rent_price_basis: "per_room" as const }),
+        ...(saleDetail.rooms != null && saleDetail.rooms > 0 ? { rent_rooms: saleDetail.rooms } : {}),
+        ...(saleDetail.sqm != null && saleDetail.sqm > 0 ? { sqm: saleDetail.sqm } : {}),
+        ...(saleDetail.energy_class ? { energy_class: saleDetail.energy_class } : {}),
+        ...(saleDetail.condominio_monthly ? { condominio_monthly: saleDetail.condominio_monthly } : {}),
+        ...(saleDetail.needs_renovation === true ? { renovation_cost: 15_000 } : {}),
+      });
+    },
+    [],
+  );
+
   return (
     <div className="min-h-screen">
       <header className="border-b border-surface-border/60 bg-surface-raised/30 backdrop-blur-xl">
@@ -92,6 +110,7 @@ export default function HomePage() {
             <ListingsMap
               onSelectListing={handleSelectListing}
               onUseSimilarRent={handleUseSimilarRent}
+              onUseAverageRent={handleUseAverageRent}
               onCityChange={setMarketCity}
             />
             {result ? (
