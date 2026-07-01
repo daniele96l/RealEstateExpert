@@ -8,6 +8,8 @@ import {
 } from "./constants";
 import { getRentalModePreset } from "./rental-presets";
 
+export type RentPriceInputBasis = "per_room" | "whole";
+
 export function computeProjectionYears(loanYears: number): number {
   return loanYears + ITALY_DEFAULTS.projection_years_after_mortgage;
 }
@@ -26,11 +28,24 @@ export interface SimpleScenario {
   furnishing_cost: number;
   rental_mode: RentalMode;
   monthly_rent: number;
+  rent_rooms: number;
+  rent_price_basis: RentPriceInputBasis;
   nightly_rate: number;
   occupancy_pct: number;
   condominio_monthly: number;
   utilities_annual: number;
   utilities_auto: boolean;
+}
+
+export function resolveScenarioMonthlyRent(
+  s: Pick<SimpleScenario, "monthly_rent" | "rent_rooms" | "rent_price_basis" | "rental_mode">,
+): number {
+  if (s.rental_mode === "short_term_airbnb") return s.monthly_rent;
+  if (s.rent_price_basis === "per_room") {
+    const rooms = s.rent_rooms > 0 ? s.rent_rooms : ITALY_DEFAULTS.default_rent_rooms;
+    return s.monthly_rent * rooms;
+  }
+  return s.monthly_rent;
 }
 
 export function resolveUtilitiesAnnual(s: SimpleScenario): number {
@@ -58,6 +73,8 @@ export function getDefaultSimpleScenario(): SimpleScenario {
     furnishing_cost: preset.furnishing_cost,
     rental_mode: "medium_term_semester",
     monthly_rent: preset.monthly_rent,
+    rent_rooms: ITALY_DEFAULTS.default_rent_rooms,
+    rent_price_basis: "whole",
     nightly_rate: preset.nightly_rate,
     occupancy_pct: preset.occupancy_pct,
     condominio_monthly: preset.condominio_monthly,
@@ -95,7 +112,7 @@ export function toInvestmentScenario(s: SimpleScenario): InvestmentScenario {
       rental_mode: s.rental_mode,
       tenant_profile:
         s.rental_mode === "medium_term_semester" ? "students_annual" : "workers_annual",
-      monthly_rent: usesMonthlyRent ? s.monthly_rent : null,
+      monthly_rent: usesMonthlyRent ? resolveScenarioMonthlyRent(s) : null,
       nightly_rate: usesMonthlyRent ? null : s.nightly_rate,
       occupancy_rate: s.occupancy_pct / 100,
       avg_stay_nights: preset.rental.avg_stay_nights,
@@ -170,6 +187,11 @@ export function sanitizeSimple(s: SimpleScenario): SimpleScenario {
         : ITALY_DEFAULTS.default_renovation_cost,
     occupancy_pct: Math.min(100, Math.max(0, s.occupancy_pct || preset.occupancy_pct)),
     monthly_rent: s.monthly_rent > 0 ? s.monthly_rent : preset.monthly_rent,
+    rent_rooms:
+      s.rent_rooms > 0 && Number.isFinite(s.rent_rooms)
+        ? Math.round(s.rent_rooms)
+        : ITALY_DEFAULTS.default_rent_rooms,
+    rent_price_basis: (s.rent_price_basis === "per_room" ? "per_room" : "whole") as RentPriceInputBasis,
     nightly_rate: s.nightly_rate > 0 ? s.nightly_rate : preset.nightly_rate,
     condominio_monthly:
       s.condominio_monthly > 0 ? s.condominio_monthly : preset.condominio_monthly,

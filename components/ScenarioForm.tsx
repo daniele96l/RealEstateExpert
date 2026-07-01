@@ -10,6 +10,7 @@ import {
 } from "@/lib/defaults";
 import { ENERGY_CLASS_OPTIONS, estimateSqmFromPrice, estimateUtilitiesAnnual, ITALY_DEFAULTS } from "@/lib/constants";
 import { getRentalModeRules } from "@/lib/rental-presets";
+import { cn, fmtEuro } from "@/lib/utils";
 import { Home, Key, Sparkles, Info } from "lucide-react";
 import type { RentalMode } from "@/lib/types";
 
@@ -80,6 +81,9 @@ export default function ScenarioForm({ onChange, prefill }: Props) {
   const energyClass = watch("energy_class");
   const occupancyPct = watch("occupancy_pct");
   const utilitiesAuto = watch("utilities_auto");
+  const rentPriceBasis = watch("rent_price_basis");
+  const rentRooms = watch("rent_rooms");
+  const monthlyRent = watch("monthly_rent");
   const prevMode = useRef<RentalMode | null>(null);
   const prevPrice = useRef<number | null>(null);
 
@@ -257,9 +261,63 @@ export default function ScenarioForm({ onChange, prefill }: Props) {
                 <input type="number" className="input-field" {...register("nightly_rate", { valueAsNumber: true })} />
               </Field>
             ) : (
-              <Field label="Affitto mensile (€)">
-                <input type="number" className="input-field" {...register("monthly_rent", { valueAsNumber: true })} />
-              </Field>
+              <>
+                <Field label="Stanze">
+                  <input
+                    type="number"
+                    min={1}
+                    className="input-field"
+                    {...register("rent_rooms", {
+                      valueAsNumber: true,
+                      setValueAs: (v) => {
+                        const n = typeof v === "string" ? Number(v) : v;
+                        return Number.isFinite(n) && n > 0
+                          ? Math.round(n)
+                          : ITALY_DEFAULTS.default_rent_rooms;
+                      },
+                    })}
+                  />
+                </Field>
+                <div className="sm:col-span-2">
+                  <p className="label-field mb-2">Base affitto mensile</p>
+                  <div className="mb-3 flex rounded-lg border border-surface-border overflow-hidden">
+                    {(
+                      [
+                        { id: "per_room" as const, label: "Per stanza" },
+                        { id: "whole" as const, label: "Tutto appartamento" },
+                      ] as const
+                    ).map(({ id, label }) => (
+                      <button
+                        key={id}
+                        type="button"
+                        onClick={() => setValue("rent_price_basis", id)}
+                        className={cn(
+                          "flex-1 px-3 py-2 text-sm transition-colors",
+                          rentPriceBasis === id
+                            ? "bg-accent/20 text-accent"
+                            : "text-slate-400 hover:text-slate-200",
+                        )}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                  <Field
+                    label={
+                      rentPriceBasis === "per_room"
+                        ? "Affitto mensile per stanza (€)"
+                        : "Affitto mensile tutto appartamento (€)"
+                    }
+                    hint={
+                      rentPriceBasis === "per_room" && rentRooms > 0
+                        ? `Totale stimato: ${fmtEuro(monthlyRent * rentRooms)}/mese (${rentRooms} stanze)`
+                        : undefined
+                    }
+                  >
+                    <input type="number" className="input-field" {...register("monthly_rent", { valueAsNumber: true })} />
+                  </Field>
+                </div>
+              </>
             )}
             <Field
               label="Occupazione (%)"

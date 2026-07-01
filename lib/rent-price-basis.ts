@@ -71,3 +71,20 @@ export function listingWithEffectiveRent(listing: MapListing): MapListing {
   if (total === listing.price) return listing;
   return { ...listing, price: total };
 }
+
+/** Monthly rent attributed to a single room (stanza price, or whole-flat price ÷ locali). */
+export function monthlyRentPerRoom(listing: MapListing): number | null {
+  const basis = inferRentPriceBasis(listing);
+  const wholeFlat = estimateWholeFlatRent(listing, basis);
+  if (wholeFlat) return wholeFlat.pricePerRoom;
+  if (listing.rooms != null && listing.rooms > 0) {
+    return Math.round(listing.price / listing.rooms);
+  }
+  return null;
+}
+
+export function averageMonthlyRentPerRoom(listings: MapListing[]): number | null {
+  const values = listings.map(monthlyRentPerRoom).filter((v): v is number => v != null);
+  if (!values.length) return null;
+  return Math.round(values.reduce((sum, v) => sum + v, 0) / values.length);
+}

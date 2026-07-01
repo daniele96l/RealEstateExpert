@@ -337,7 +337,6 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
         mapCity={city}
         onClose={handleCloseDetail}
         onAnalyze={(detail) => onSelectListing?.(detail, detail)}
-        onUseSimilarRent={onUseSimilarRent}
         onOpenSimilarRent={handleOpenSimilarRent}
       />
     </div>
