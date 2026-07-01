@@ -131,7 +131,7 @@ export default function MonthlyBreakdownChart({ result }: Props) {
           <p className="text-sm text-slate-500">Affitto vs mutuo, cedolare secca e ogni voce di spesa</p>
         </div>
         <div className="flex gap-1 rounded-lg bg-surface-border/40 p-1">
-          {years.slice(0, 10).map((y) => (
+          {years.map((y) => (
             <button
               key={y}
               type="button"

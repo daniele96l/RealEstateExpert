@@ -9,6 +9,10 @@ import {
 } from "./constants";
 import { getRentalModePreset } from "./rental-presets";
 
+export function computeProjectionYears(loanYears: number): number {
+  return loanYears + ITALY_DEFAULTS.projection_years_after_mortgage;
+}
+
 /** Campi essenziali mostrati nel form */
 export interface SimpleScenario {
   purchase_price: number;
@@ -116,7 +120,7 @@ export function toInvestmentScenario(s: SimpleScenario): InvestmentScenario {
       cedolare_rate: preset.cedolare_rate,
       use_irpef: false,
     },
-    projection_years: ITALY_DEFAULTS.projection_years,
+    projection_years: computeProjectionYears(s.loan_years),
     price_appreciation_annual: 0,
   };
 }

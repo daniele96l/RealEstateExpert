@@ -13,6 +13,8 @@ export const ITALY_DEFAULTS = {
   cleaning_fee_per_turnover: 55,
   avg_stay_nights: 3.5,
   projection_years: 20,
+  /** Anni simulati dopo estinzione mutuo */
+  projection_years_after_mortgage: 10,
   cedolare_long: 0.21,
   cedolare_short: 0.26,
   cedolare_short_first_property: 0.21,

@@ -51,12 +51,29 @@ export function citySlugVariants(city: string): string[] {
   return [...set];
 }
 
-export async function geocodeCity(city: string): Promise<{ lat: number; lng: number; display_name?: string }> {
+type NominatimResult = {
+  lat: string;
+  lon: string;
+  display_name?: string;
+  address?: {
+    city?: string;
+    town?: string;
+    village?: string;
+    municipality?: string;
+    state?: string;
+    region?: string;
+  };
+};
+
+export async function geocodeCity(
+  city: string,
+): Promise<{ lat: number; lng: number; display_name?: string; region?: string }> {
   const params = new URLSearchParams({
     q: `${city}, Italy`,
     format: "json",
     limit: "1",
     countrycodes: "it",
+    addressdetails: "1",
   });
 
   const response = await fetch(`${NOMINATIM_URL}?${params}`, {
@@ -66,12 +83,16 @@ export async function geocodeCity(city: string): Promise<{ lat: number; lng: num
 
   if (!response.ok) throw new GeocodeError(`Geocoding failed: ${response.status}`);
 
-  const results = (await response.json()) as { lat: string; lon: string; display_name?: string }[];
+  const results = (await response.json()) as NominatimResult[];
   if (!results.length) throw new GeocodeError(`Città non trovata: ${city}`);
+
+  const addr = results[0].address;
+  const region = addr?.state ?? addr?.region;
 
   return {
     lat: parseFloat(results[0].lat),
     lng: parseFloat(results[0].lon),
     display_name: results[0].display_name,
+    region,
   };
 }

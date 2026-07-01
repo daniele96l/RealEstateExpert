@@ -1,4 +1,4 @@
-import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "./types";
+import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing, MarketPriceHistory } from "./types";
 
 async function parseError(res: Response, fallback: string): Promise<string> {
   const text = await res.text();
@@ -72,5 +72,26 @@ export async function getCachedListings(
   const res = await fetch(`/api/listings/fetch?${params}`);
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(await parseError(res, "Errore lettura cache"));
+  return res.json();
+}
+
+export async function fetchMarketHistory(
+  city: string,
+  refresh = false,
+): Promise<MarketPriceHistory> {
+  const res = await fetch("/api/market/history", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ city, refresh }),
+  });
+  if (!res.ok) throw new Error(await parseError(res, "Caricamento dati mercato non riuscito"));
+  return res.json();
+}
+
+export async function getCachedMarketHistory(city: string): Promise<MarketPriceHistory | null> {
+  const params = new URLSearchParams({ city });
+  const res = await fetch(`/api/market/history?${params}`);
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(await parseError(res, "Errore lettura cache mercato"));
   return res.json();
 }

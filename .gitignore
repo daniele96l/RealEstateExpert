@@ -14,6 +14,8 @@ out/
 data/listings/*.json
 !data/listings/.gitkeep
 data/listings/details/
+data/market/*.json
+!data/market/.gitkeep
 
 # IDE
 .idea/

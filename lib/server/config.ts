@@ -1,4 +1,6 @@
 export type ListingsProvider = "scrapingbee" | "rapidapi";
+export type MarketProvider = "scrapingbee" | "insights";
+export type MarketProviderMode = MarketProvider | "auto";
 
 export function getRapidApiKey(): string {
   const key = process.env.RAPIDAPI_KEY;
@@ -25,4 +27,23 @@ export function getDefaultListingsProvider(): ListingsProvider {
   if (env === "rapidapi" || env === "scrapingbee") return env;
   if (hasRapidApiKey()) return "rapidapi";
   return "scrapingbee";
+}
+
+export function hasImmobiliareInsightsCredentials(): boolean {
+  return Boolean(
+    process.env.IMMOBILIARE_INSIGHTS_CLIENT_ID?.trim() &&
+      process.env.IMMOBILIARE_INSIGHTS_CLIENT_SECRET?.trim() &&
+      process.env.IMMOBILIARE_INSIGHTS_USERNAME?.trim() &&
+      process.env.IMMOBILIARE_INSIGHTS_PASSWORD?.trim(),
+  );
+}
+
+export function getImmobiliareInsightsBaseUrl(): string {
+  return process.env.IMMOBILIARE_INSIGHTS_BASE_URL?.trim() || "https://ws-osservatorio.realitycs.it";
+}
+
+export function getDefaultMarketProvider(): MarketProviderMode {
+  const env = process.env.MARKET_PROVIDER?.toLowerCase();
+  if (env === "scrapingbee" || env === "insights" || env === "auto") return env;
+  return "auto";
 }

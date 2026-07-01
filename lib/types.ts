@@ -186,6 +186,27 @@ export interface MapCenter {
 
 export type ListingsProvider = "scrapingbee" | "rapidapi";
 
+export type MarketProvider = "scrapingbee" | "insights";
+
+export interface PriceHistoryPoint {
+  year: number;
+  month: number;
+  label: string;
+  price_sqm_avg: number;
+}
+
+export interface MarketPriceHistory {
+  city: string;
+  region: string;
+  region_slug: string;
+  city_slug: string;
+  mercato_url: string;
+  sale: PriceHistoryPoint[];
+  rent: PriceHistoryPoint[];
+  provider: MarketProvider;
+  fetched_at: string;
+}
+
 export interface CityListingsCache {
   city: string;
   operation: "sale" | "rent";

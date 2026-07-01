@@ -31,9 +31,11 @@ function formatPrice(price: number, operation: "sale" | "rent") {
 
 interface Props {
   onSelectListing?: (listing: MapListing, detail?: ListingDetail) => void;
+  onUseSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
+  onCityChange?: (city: string) => void;
 }
 
-export default function ListingsMap({ onSelectListing }: Props) {
+export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityChange }: Props) {
   const [city, setCity] = useState("Reggio Calabria");
   const [listingUrl, setListingUrl] = useState("");
   const [operation, setOperation] = useState<"sale" | "rent">("sale");
@@ -46,6 +48,7 @@ export default function ListingsMap({ onSelectListing }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [fromCache, setFromCache] = useState(false);
   const [cacheSource, setCacheSource] = useState<"server" | "local" | null>(null);
+  const [detailOpen, setDetailOpen] = useState(false);
   const [selectedDetail, setSelectedDetail] = useState<ListingDetail | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
   const [detailError, setDetailError] = useState<string | null>(null);
@@ -56,8 +59,11 @@ export default function ListingsMap({ onSelectListing }: Props) {
     setFromCache(cached);
     setCacheSource(source);
     setSelectedId(null);
+    setDetailOpen(false);
+    setSelectedDetail(null);
     writeLocalListingsCache(payload);
-  }, []);
+    onCityChange?.(payload.city);
+  }, [onCityChange]);
 
   useEffect(() => {
     getListingsProviders()
@@ -100,6 +106,31 @@ export default function ListingsMap({ onSelectListing }: Props) {
     load(false);
   }, [load]);
 
+  useEffect(() => {
+    if (city.trim()) onCityChange?.(city.trim());
+  }, [city, onCityChange]);
+
+  const handleSelect = useCallback(
+    async (listing: MapListing) => {
+      setSelectedId(listing.id);
+      setDetailOpen(true);
+      setSelectedDetail(null);
+      setDetailError(null);
+      setDetailLoading(true);
+      onSelectListing?.(listing);
+      try {
+        const detail = await fetchPropertyDetail(listing, false, provider);
+        setSelectedDetail(detail);
+        onSelectListing?.(listing, detail);
+      } catch (e) {
+        setDetailError(e instanceof Error ? e.message : "Dettaglio non disponibile");
+      } finally {
+        setDetailLoading(false);
+      }
+    },
+    [provider, onSelectListing],
+  );
+
   const importUrl = useCallback(async () => {
     if (!listingUrl.trim()) return;
     setImporting(true);
@@ -110,8 +141,7 @@ export default function ListingsMap({ onSelectListing }: Props) {
       applyListings(result, false, null);
       setOperation(result.operation);
       if (listing) {
-        setSelectedId(listing.id);
-        onSelectListing?.(listing);
+        await handleSelect(listing);
         const cityLabel = result.center.display_name?.split(",")[0]?.trim();
         if (cityLabel) setCity(cityLabel);
       }
@@ -120,26 +150,10 @@ export default function ListingsMap({ onSelectListing }: Props) {
     } finally {
       setImporting(false);
     }
-  }, [listingUrl, provider, onSelectListing, applyListings]);
-
-  const handleSelect = async (listing: MapListing) => {
-    setSelectedId(listing.id);
-    setSelectedDetail(null);
-    setDetailError(null);
-    setDetailLoading(true);
-    onSelectListing?.(listing);
-    try {
-      const detail = await fetchPropertyDetail(listing, false, provider);
-      setSelectedDetail(detail);
-      onSelectListing?.(listing, detail);
-    } catch (e) {
-      setDetailError(e instanceof Error ? e.message : "Dettaglio non disponibile");
-    } finally {
-      setDetailLoading(false);
-    }
-  };
+  }, [listingUrl, provider, applyListings, handleSelect]);
 
   const handleCloseDetail = () => {
+    setDetailOpen(false);
     setSelectedId(null);
     setSelectedDetail(null);
     setDetailError(null);
@@ -254,50 +268,61 @@ export default function ListingsMap({ onSelectListing }: Props) {
         )}
       </div>
 
-      <div className="grid gap-0 lg:grid-cols-[1fr_280px]">
-        <div className="h-[400px] border-b border-surface-border/80 lg:border-b-0 lg:border-r">
-          {data ? (
-            <ListingsMapView data={data} selectedId={selectedId} onSelect={handleSelect} />
-          ) : (
-            <div className="flex h-full items-center justify-center px-6 text-center text-sm text-slate-500">
-              Inserisci una città e clicca Carica per vedere gli annunci sulla mappa
-            </div>
-          )}
+      {!detailOpen && (
+        <div className="grid gap-0 lg:grid-cols-[1fr_280px]">
+          <div className="h-[400px] border-b border-surface-border/80 lg:border-b-0 lg:border-r">
+            {data ? (
+              <ListingsMapView data={data} selectedId={selectedId} onSelect={handleSelect} />
+            ) : (
+              <div className="flex h-full items-center justify-center px-6 text-center text-sm text-slate-500">
+                Inserisci una città e clicca Carica per vedere gli annunci sulla mappa
+              </div>
+            )}
+          </div>
+          <div className="max-h-[400px] overflow-y-auto p-3">
+            {data?.listings.map((listing) => (
+              <button
+                key={listing.id}
+                type="button"
+                onClick={() => handleSelect(listing)}
+                className={cn(
+                  "mb-2 w-full rounded-lg border p-3 text-left text-sm transition-colors",
+                  selectedId === listing.id
+                    ? "border-accent/50 bg-accent/10"
+                    : "border-surface-border/60 hover:bg-surface-raised/50",
+                )}
+              >
+                <p className="font-medium text-slate-200 line-clamp-2">{listing.title}</p>
+                <p className="mt-1 text-accent">{formatPrice(listing.price, listing.operation)}</p>
+                <p className="mt-0.5 text-xs text-slate-500">
+                  {[listing.sqm != null && `${listing.sqm} m²`, listing.rooms != null && `${listing.rooms} locali`]
+                    .filter(Boolean)
+                    .join(" · ")}
+                </p>
+              </button>
+            ))}
+            {data && data.listings.length === 0 && (
+              <p className="text-sm text-slate-500">Nessun annuncio trovato</p>
+            )}
+          </div>
         </div>
-        <div className="max-h-[400px] overflow-y-auto p-3">
-          {data?.listings.map((listing) => (
-            <button
-              key={listing.id}
-              type="button"
-              onClick={() => handleSelect(listing)}
-              className={cn(
-                "mb-2 w-full rounded-lg border p-3 text-left text-sm transition-colors",
-                selectedId === listing.id
-                  ? "border-accent/50 bg-accent/10"
-                  : "border-surface-border/60 hover:bg-surface-raised/50",
-              )}
-            >
-              <p className="font-medium text-slate-200 line-clamp-2">{listing.title}</p>
-              <p className="mt-1 text-accent">{formatPrice(listing.price, listing.operation)}</p>
-              <p className="mt-0.5 text-xs text-slate-500">
-                {[listing.sqm != null && `${listing.sqm} m²`, listing.rooms != null && `${listing.rooms} locali`]
-                  .filter(Boolean)
-                  .join(" · ")}
-              </p>
-            </button>
-          ))}
-          {data && data.listings.length === 0 && (
-            <p className="text-sm text-slate-500">Nessun annuncio trovato</p>
-          )}
+      )}
+
+      {detailOpen && !data && (
+        <div className="flex h-40 items-center justify-center text-sm text-slate-500">
+          Caricamento…
         </div>
-      </div>
+      )}
 
       <PropertyDetailPanel
+        open={detailOpen}
         detail={selectedDetail}
         loading={detailLoading}
         error={detailError}
+        provider={provider}
         onClose={handleCloseDetail}
         onAnalyze={(detail) => onSelectListing?.(detail, detail)}
+        onUseSimilarRent={onUseSimilarRent}
       />
     </div>
   );
