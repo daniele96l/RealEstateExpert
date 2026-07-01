@@ -47,7 +47,21 @@ async function fetchOnce(url: string, extra: FetchParams, timeoutMs: number): Pr
 
   const text = await response.text();
 
-  if (response.status === 401) throw new ScrapingBeeError("Chiave ScrapingBee non valida", 401);
+  if (response.status === 401) {
+    let message = "Chiave ScrapingBee non valida";
+    try {
+      const body = JSON.parse(text) as { message?: string };
+      const apiMessage = body.message?.toLowerCase() ?? "";
+      if (apiMessage.includes("limit reached") || apiMessage.includes("quota")) {
+        message = "Limite mensile ScrapingBee esaurito. Riprova il mese prossimo o aggiorna il piano.";
+      } else if (body.message) {
+        message = `ScrapingBee: ${body.message}`;
+      }
+    } catch {
+      /* use default message */
+    }
+    throw new ScrapingBeeError(message, 401);
+  }
   if (response.status === 403) throw new ScrapingBeeError("Accesso bloccato da Idealista o ScrapingBee", 403);
   if (!response.ok) {
     throw new ScrapingBeeError(

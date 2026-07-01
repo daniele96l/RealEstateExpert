@@ -124,43 +124,93 @@ function PriceChart({
   );
 }
 
+function loadLocalCache(
+  city: string,
+): { data: MarketPriceHistory; source: "local" } | null {
+  const local = readLocalMarketCache(city.trim());
+  return local ? { data: local, source: "local" } : null;
+}
+
+async function loadServerCache(
+  city: string,
+): Promise<{ data: MarketPriceHistory; source: "server" } | null> {
+  try {
+    const server = await getCachedMarketHistory(city.trim());
+    if (server) return { data: server, source: "server" };
+  } catch {
+    /* server cache unavailable — fall through */
+  }
+  return null;
+}
+
+async function loadAnyCache(
+  city: string,
+): Promise<{ data: MarketPriceHistory; source: "server" | "local" } | null> {
+  const local = loadLocalCache(city);
+  if (local) return local;
+  return loadServerCache(city);
+}
+
 export default function MarketPriceCharts({ city }: Props) {
   const [data, setData] = useState<MarketPriceHistory | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
   const [fromCache, setFromCache] = useState(false);
   const [cacheSource, setCacheSource] = useState<"server" | "local" | null>(null);
 
   const load = useCallback(
     async (refresh: boolean) => {
       if (!city.trim()) return;
+
+      if (!refresh) {
+        const local = loadLocalCache(city);
+        if (local) {
+          setError(null);
+          setWarning(null);
+          setData(local.data);
+          setFromCache(true);
+          setCacheSource("local");
+          return;
+        }
+      }
+
       setLoading(true);
       setError(null);
+      setWarning(null);
       try {
         if (!refresh) {
-          const cached = await getCachedMarketHistory(city.trim());
-          if (cached) {
-            setData(cached);
+          const server = await loadServerCache(city);
+          if (server) {
+            setData(server.data);
             setFromCache(true);
             setCacheSource("server");
-            writeLocalMarketCache(cached);
+            writeLocalMarketCache(server.data);
             return;
           }
-          const local = readLocalMarketCache(city.trim());
-          if (local) {
-            setData(local);
-            setFromCache(true);
-            setCacheSource("local");
-            return;
-          }
+          return;
         }
-        const result = await fetchMarketHistory(city.trim(), refresh);
+        const result = await fetchMarketHistory(city.trim(), true);
         setData(result);
         setFromCache(false);
         setCacheSource(null);
         writeLocalMarketCache(result);
       } catch (e) {
-        setError(e instanceof Error ? e.message : "Errore caricamento dati mercato");
+        const message = e instanceof Error ? e.message : "Errore caricamento dati mercato";
+        const cached = await loadAnyCache(city);
+        if (cached) {
+          setData(cached.data);
+          setFromCache(true);
+          setCacheSource(cached.source);
+          if (cached.source === "server") writeLocalMarketCache(cached.data);
+          setWarning(
+            refresh
+              ? `Aggiornamento non riuscito (${message}). Mostro dati in cache.`
+              : `Download non riuscito (${message}). Mostro dati in cache.`,
+          );
+          return;
+        }
+        setError(message);
         setData(null);
       } finally {
         setLoading(false);
@@ -170,10 +220,25 @@ export default function MarketPriceCharts({ city }: Props) {
   );
 
   useEffect(() => {
-    setData(null);
     setError(null);
-    setFromCache(false);
-    setCacheSource(null);
+    setWarning(null);
+    const trimmed = city.trim();
+    if (!trimmed) {
+      setData(null);
+      setFromCache(false);
+      setCacheSource(null);
+      return;
+    }
+    const local = loadLocalCache(trimmed);
+    if (local) {
+      setData(local.data);
+      setFromCache(true);
+      setCacheSource("local");
+    } else {
+      setData(null);
+      setFromCache(false);
+      setCacheSource(null);
+    }
     void load(false);
   }, [city, load]);
 
@@ -218,11 +283,17 @@ export default function MarketPriceCharts({ city }: Props) {
         </div>
       </div>
 
-      {error && <p className="mb-4 text-sm text-red-400">{error}</p>}
+      {warning && (
+        <p className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-200">
+          {warning}
+        </p>
+      )}
+
+      {error && !data && <p className="mb-4 text-sm text-red-400">{error}</p>}
 
       {!data && !loading && !error && (
         <p className="py-8 text-center text-sm text-slate-500">
-          Caricamento dati mercato da cache o immobiliare.it…
+          Nessun dato in cache — clicca Aggiorna per scaricare da immobiliare.it
         </p>
       )}
 
