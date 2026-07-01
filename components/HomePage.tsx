@@ -5,8 +5,6 @@ import ScenarioForm from "@/components/ScenarioForm";
 import ListingsMap from "@/components/ListingsMap";
 import MarketPriceCharts from "@/components/MarketPriceCharts";
 import SummaryCards from "@/components/SummaryCards";
-import CashFlowChart from "@/components/CashFlowChart";
-import AnnualSummaryChart from "@/components/AnnualSummaryChart";
 import PurchaseBreakdown from "@/components/PurchaseBreakdown";
 import MonthlyBreakdownChart from "@/components/MonthlyBreakdownChart";
 import {
@@ -97,9 +95,7 @@ export default function HomePage() {
               <>
                 <SummaryCards result={result} />
                 <PurchaseBreakdown costs={result.summary.purchase_costs} />
-                <CashFlowChart result={result} />
                 <MonthlyBreakdownChart result={result} />
-                <AnnualSummaryChart result={result} />
                 <MarketPriceCharts city={marketCity} />
               </>
             ) : (

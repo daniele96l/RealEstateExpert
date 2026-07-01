@@ -19,10 +19,18 @@ export const ITALY_DEFAULTS = {
   cedolare_short: 0.26,
   cedolare_short_first_property: 0.21,
   cadastral_ratio: 0.55,
+  /** Prezzo di acquisto predefinito nel form */
+  default_purchase_price: 100_000,
+  /** Superficie predefinita nel form (m²) */
+  default_sqm: 80,
+  /** Durata mutuo predefinita (anni) */
+  default_loan_years: 30,
+  /** Ristrutturazione predefinita nel form (€) */
+  default_renovation_cost: 5_000,
   /** Rendimento lordo annuo tipico (provincia / piccolo capoluogo) */
   gross_yield_pct: 5.5,
   /** Tasso mutuo indicativo 2025–2026 */
-  mortgage_rate_pct: 4.0,
+  mortgage_rate_pct: 3.0,
   /** Anticipo minimo tipico per investimento */
   investment_down_payment_pct: 25,
 } as const;

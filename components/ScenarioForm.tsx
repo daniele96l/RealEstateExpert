@@ -8,7 +8,7 @@ import {
   getDefaultSimpleScenario,
   resolveUtilitiesAnnual,
 } from "@/lib/defaults";
-import { ENERGY_CLASS_OPTIONS, estimateSqmFromPrice, estimateUtilitiesAnnual } from "@/lib/constants";
+import { ENERGY_CLASS_OPTIONS, estimateSqmFromPrice, estimateUtilitiesAnnual, ITALY_DEFAULTS } from "@/lib/constants";
 import { getRentalModeRules } from "@/lib/rental-presets";
 import { Home, Key, Sparkles, Info } from "lucide-react";
 import type { RentalMode } from "@/lib/types";
@@ -167,7 +167,21 @@ export default function ScenarioForm({ onChange, prefill }: Props) {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Prezzo di acquisto (€)">
-              <input type="number" step={5000} className="input-field" {...register("purchase_price", { valueAsNumber: true })} />
+              <input
+                type="number"
+                step={5000}
+                min={5000}
+                className="input-field"
+                {...register("purchase_price", {
+                  valueAsNumber: true,
+                  setValueAs: (v) => {
+                    const n = typeof v === "string" ? Number(v) : v;
+                    return Number.isFinite(n) && n > 0
+                      ? n
+                      : ITALY_DEFAULTS.default_purchase_price;
+                  },
+                })}
+              />
             </Field>
             <Field label="Tipologia">
               <select className="select-field" {...register("property_type")}>
@@ -179,7 +193,18 @@ export default function ScenarioForm({ onChange, prefill }: Props) {
               <input type="number" className="input-field" placeholder="Auto" {...register("cadastral_value", { valueAsNumber: true })} />
             </Field>
             <Field label="Superficie (m²)" hint="Stimata dal prezzo se cambi l'importo">
-              <input type="number" min="1" className="input-field" {...register("sqm", { valueAsNumber: true })} />
+              <input
+                type="number"
+                min={1}
+                className="input-field"
+                {...register("sqm", {
+                  valueAsNumber: true,
+                  setValueAs: (v) => {
+                    const n = typeof v === "string" ? Number(v) : v;
+                    return Number.isFinite(n) && n > 0 ? n : ITALY_DEFAULTS.default_sqm;
+                  },
+                })}
+              />
             </Field>
             <Field label="Classe energetica (APE)">
               <select className="select-field" {...register("energy_class")}>

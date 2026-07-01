@@ -4,7 +4,6 @@ import {
   estimateFurnishing,
   estimateMonthlyRent,
   estimateNightlyRate,
-  estimateSqmFromPrice,
   estimateUtilitiesAnnual,
 } from "./constants";
 import { getRentalModePreset } from "./rental-presets";
@@ -42,8 +41,8 @@ export function resolveUtilitiesAnnual(s: SimpleScenario): number {
 }
 
 export function getDefaultSimpleScenario(): SimpleScenario {
-  const price = 100_000;
-  const sqm = estimateSqmFromPrice(price);
+  const price = ITALY_DEFAULTS.default_purchase_price;
+  const sqm = ITALY_DEFAULTS.default_sqm;
   const energy_class: EnergyClass = "D";
   const preset = getRentalModePreset("medium_term_semester", price);
   return {
@@ -54,8 +53,8 @@ export function getDefaultSimpleScenario(): SimpleScenario {
     energy_class,
     down_payment_pct: ITALY_DEFAULTS.investment_down_payment_pct,
     interest_rate_annual: ITALY_DEFAULTS.mortgage_rate_pct,
-    loan_years: 25,
-    renovation_cost: 5_000,
+    loan_years: ITALY_DEFAULTS.default_loan_years,
+    renovation_cost: ITALY_DEFAULTS.default_renovation_cost,
     furnishing_cost: preset.furnishing_cost,
     rental_mode: "medium_term_semester",
     monthly_rent: preset.monthly_rent,
@@ -130,7 +129,7 @@ export function applyRentalModeToSimple(
   s: SimpleScenario,
   mode: RentalMode,
 ): SimpleScenario {
-  const price = s.purchase_price > 0 ? s.purchase_price : 100_000;
+  const price = s.purchase_price > 0 ? s.purchase_price : ITALY_DEFAULTS.default_purchase_price;
   const preset = getRentalModePreset(mode, price);
   const next = {
     ...s,
@@ -153,9 +152,9 @@ export function applyRentalModeToSimple(
 }
 
 export function sanitizeSimple(s: SimpleScenario): SimpleScenario {
-  const price = s.purchase_price > 0 ? s.purchase_price : 100_000;
+  const price = s.purchase_price > 0 ? s.purchase_price : ITALY_DEFAULTS.default_purchase_price;
   const preset = getRentalModePreset(s.rental_mode, price);
-  const sqm = s.sqm > 0 ? s.sqm : estimateSqmFromPrice(price);
+  const sqm = s.sqm > 0 ? s.sqm : ITALY_DEFAULTS.default_sqm;
 
   const base = {
     ...s,
@@ -165,6 +164,10 @@ export function sanitizeSimple(s: SimpleScenario): SimpleScenario {
       s.cadastral_value != null && !Number.isNaN(s.cadastral_value) && s.cadastral_value > 0
         ? s.cadastral_value
         : null,
+    renovation_cost:
+      s.renovation_cost >= 0 && Number.isFinite(s.renovation_cost)
+        ? s.renovation_cost
+        : ITALY_DEFAULTS.default_renovation_cost,
     occupancy_pct: Math.min(100, Math.max(0, s.occupancy_pct || preset.occupancy_pct)),
     monthly_rent: s.monthly_rent > 0 ? s.monthly_rent : preset.monthly_rent,
     nightly_rate: s.nightly_rate > 0 ? s.nightly_rate : preset.nightly_rate,
