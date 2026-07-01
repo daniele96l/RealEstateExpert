@@ -3,6 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { fetchListings, getCachedListings, getListingsProviders, importFromIdealista } from "@/lib/api";
+import {
+  cacheFileLabel,
+  readLocalListingsCache,
+  writeLocalListingsCache,
+} from "@/lib/listings-cache-client";
 import type { CityListingsCache, ListingsProvider, MapListing } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Loader2, Link2, MapPin, RefreshCw } from "lucide-react";
@@ -39,7 +44,16 @@ export default function ListingsMap({ onSelectListing }: Props) {
   const [importing, setImporting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fromCache, setFromCache] = useState(false);
+  const [cacheSource, setCacheSource] = useState<"server" | "local" | null>(null);
   const autoLoaded = useRef(false);
+
+  const applyListings = useCallback((payload: CityListingsCache, cached: boolean, source: "server" | "local" | null) => {
+    setData(payload);
+    setFromCache(cached);
+    setCacheSource(source);
+    setSelectedId(null);
+    writeLocalListingsCache(payload);
+  }, []);
 
   useEffect(() => {
     getListingsProviders()
@@ -58,29 +72,29 @@ export default function ListingsMap({ onSelectListing }: Props) {
       if (!refresh) {
         const cached = await getCachedListings(city.trim(), operation);
         if (cached) {
-          setData(cached);
-          setFromCache(true);
-          setSelectedId(null);
+          applyListings(cached, true, "server");
+          return;
+        }
+        const local = readLocalListingsCache(city.trim(), operation);
+        if (local) {
+          applyListings(local, true, "local");
           return;
         }
       }
       const result = await fetchListings(city.trim(), operation, refresh, provider);
-      setData(result);
-      setFromCache(false);
-      setSelectedId(null);
+      applyListings(result, false, null);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Errore caricamento");
     } finally {
       setLoading(false);
     }
-  }, [city, operation, provider]);
+  }, [city, operation, provider, applyListings]);
 
   useEffect(() => {
     if (autoLoaded.current) return;
-    if (!providersAvailable.rapidapi && !providersAvailable.scrapingbee) return;
     autoLoaded.current = true;
     load(false);
-  }, [providersAvailable, load]);
+  }, [load]);
 
   const importUrl = useCallback(async () => {
     if (!listingUrl.trim()) return;
@@ -89,8 +103,7 @@ export default function ListingsMap({ onSelectListing }: Props) {
     try {
       const result = await importFromIdealista(listingUrl.trim(), provider);
       const listing = result.listings[0];
-      setData(result);
-      setFromCache(false);
+      applyListings(result, false, null);
       setOperation(result.operation);
       if (listing) {
         setSelectedId(listing.id);
@@ -103,7 +116,7 @@ export default function ListingsMap({ onSelectListing }: Props) {
     } finally {
       setImporting(false);
     }
-  }, [listingUrl, provider, onSelectListing]);
+  }, [listingUrl, provider, onSelectListing, applyListings]);
 
   const handleSelect = (listing: MapListing) => {
     setSelectedId(listing.id);
@@ -206,7 +219,15 @@ export default function ListingsMap({ onSelectListing }: Props) {
           <p className="mt-2 text-xs text-slate-500">
             {data.listings.length} annunci · {data.center.display_name ?? data.city}
             {data.provider ? ` · ${data.provider === "rapidapi" ? "RapidAPI" : "ScrapingBee"}` : ""}
-            {fromCache ? " · da cache" : " · appena scaricato"}
+            {fromCache
+              ? ` · da JSON (${cacheSource === "local" ? "browser" : cacheFileLabel(city, operation)})`
+              : ` · salvato in ${cacheFileLabel(city, operation)}`}
+            {data.fetched_at && (
+              <span className="text-slate-600">
+                {" "}
+                · {new Date(data.fetched_at).toLocaleString("it-IT")}
+              </span>
+            )}
           </p>
         )}
       </div>
