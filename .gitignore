@@ -1,18 +1,9 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-.venv/
-venv/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
 # Node
 node_modules/
 .next/
 out/
 *.tsbuildinfo
+.vercel
 
 # Env
 .env
@@ -20,8 +11,8 @@ out/
 .env*.local
 
 # Listings cache
-backend/data/listings/*.json
-frontend/data/listings/*.json
+data/listings/*.json
+!data/listings/.gitkeep
 
 # IDE
 .idea/

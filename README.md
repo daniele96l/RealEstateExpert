@@ -9,7 +9,6 @@ Modella costi di acquisto, mutuo, ristrutturazione, affitto lungo/breve termine,
 ## Avvio
 
 ```bash
-cd frontend
 cp .env.example .env.local   # inserisci RAPIDAPI_KEY e/o SCRAPINGBEE_API_KEY
 npm install
 npm run dev
@@ -17,7 +16,7 @@ npm run dev
 
 Apri http://localhost:3000
 
-Un solo processo — UI, API routes e cache JSON sono tutti in Next.js. Non serve un backend Python separato.
+Un solo processo — UI, API routes e simulatore sono tutti in Next.js (deployabile su Vercel).
 
 ## Mappa annunci per città
 
@@ -26,11 +25,11 @@ Un solo processo — UI, API routes e cache JSON sono tutti in Next.js. Non serv
 3. La mappa mostra i marker; clicca un annuncio per precompilare il form di analisi
 4. **Aggiorna** forza un nuovo download da Idealista; altrimenti i dati vengono letti da cache JSON locale
 
-I dati vengono salvati in `frontend/data/listings/{citta}_{operation}.json`.
+I dati vengono salvati in `data/listings/{citta}_{operation}.json`.
 
 ## Configurazione API annunci
 
-In `frontend/.env.local`:
+In `.env.local`:
 
 ```env
 # RapidAPI Idealista17 (consigliato)
@@ -56,17 +55,25 @@ Le chiavi restano server-side (mai esposte al browser).
 ## Struttura
 
 ```
-frontend/
-  app/
-    page.tsx                    # Pagina principale
-    api/listings/               # API routes (fetch + cache)
-  components/                   # Form, mappa, grafici
-  lib/
-    engine/                     # Simulatore (client-side)
-    server/                     # RapidAPI, ScrapingBee, geocoding
-    api.ts                      # Client fetch verso /api/*
-  data/listings/                # Cache JSON (gitignored)
+app/
+  page.tsx                    # Pagina principale
+  api/listings/               # API routes (fetch + cache)
+components/                   # Form, mappa, grafici
+lib/
+  engine/                     # Simulatore (client-side)
+  server/                     # RapidAPI, ScrapingBee, geocoding
+  api.ts                      # Client fetch verso /api/*
+data/listings/                # Cache JSON (gitignored)
 ```
+
+## Deploy (Vercel)
+
+```bash
+npm run build
+vercel --prod
+```
+
+Imposta le variabili d'ambiente `RAPIDAPI_KEY`, `SCRAPINGBEE_API_KEY` e `LISTINGS_PROVIDER` nel dashboard Vercel.
 
 ## Assunzioni (v1)
 

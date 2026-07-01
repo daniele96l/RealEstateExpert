@@ -1,9 +1,7 @@
 import type { RentalMode } from "./types";
 import {
   ITALY_DEFAULTS,
-  estimateCondominio,
   estimateFurnishing,
-  estimateInsurance,
   estimateMonthlyRent,
   estimateNightlyRate,
   estimateSemesterMonthlyRent,
@@ -119,7 +117,7 @@ export function getRentalModePreset(
         : estimateMonthlyRent(purchasePrice),
     nightly_rate: estimateNightlyRate(purchasePrice),
     furnishing_cost: estimateFurnishing(purchasePrice, mode),
-    condominio_monthly: estimateCondominio(purchasePrice),
+    condominio_monthly: 0,
     cedolare_rate: rules.cedolare_pct / 100,
     operating: {
       agency_fee_months: rules.agency_fee_months,
@@ -128,7 +126,7 @@ export function getRentalModePreset(
       utilities_landlord_annual: rules.utilities_landlord_annual,
       maintenance_pct: rules.maintenance_pct,
       tari_annual: Math.round(estimateTari(purchasePrice) * rules.tari_multiplier),
-      insurance_annual: Math.round(estimateInsurance(purchasePrice) * rules.insurance_multiplier),
+      insurance_annual: 0,
       affitti_brevi_imu_surcharge: rules.imu_surcharge,
       affitti_brevi_imu_surcharge_rate: rules.imu_surcharge_rate,
     },

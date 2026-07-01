@@ -66,8 +66,8 @@ export default function HomePage() {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-        <div className="grid gap-8 lg:grid-cols-[380px_1fr]">
-          <div className="lg:sticky lg:top-6 lg:self-start">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,420px)_1fr]">
+          <div className="lg:sticky lg:top-6 lg:max-h-[calc(100vh-3rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain lg:pr-1">
             <ScenarioForm onSubmit={handleAnalyze} loading={loading} prefill={formPrefill} />
           </div>
 

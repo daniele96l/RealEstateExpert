@@ -95,7 +95,7 @@ export default function ScenarioForm({ onSubmit, loading, prefill }: Props) {
   useEffect(() => {
     if (prefill) {
       reset({ ...getDefaultSimpleScenario(), ...prefill });
-      prevMode.current = prefill.rental_mode ?? "long_term";
+      prevMode.current = prefill.rental_mode ?? "medium_term_semester";
     }
   }, [prefill, reset]);
 

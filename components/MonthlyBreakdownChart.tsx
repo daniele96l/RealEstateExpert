@@ -102,15 +102,34 @@ export default function MonthlyBreakdownChart({ result }: Props) {
     const opex = Object.fromEntries(
       OPEX_BARS.map((b) => [b.key, data.reduce((s, d) => s + d[b.key], 0)]),
     ) as Record<OpexKey, number>;
-    return { ...base, opex };
+    return { ...base, opex, months: data.length };
   }, [data]);
+
+  const summaryRows = useMemo(() => {
+    if (!totals) return [];
+    return [
+      { label: "Affitto", yearly: totals.affitto, color: COLORS.affitto },
+      { label: "Mutuo", yearly: totals.mutuo, color: COLORS.mutuo },
+      { label: "Cedolare secca", yearly: totals.imposte, color: COLORS.imposte },
+      ...activeOpex.map((b) => ({
+        label: b.name,
+        yearly: totals.opex[b.key],
+        color: b.color,
+      })),
+      {
+        label: "Netto",
+        yearly: totals.netto,
+        color: totals.netto >= 0 ? COLORS.affitto : "#f87171",
+      },
+    ];
+  }, [totals, activeOpex]);
 
   return (
     <div className="card-glass p-5">
       <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
         <div>
           <h2 className="text-base font-semibold text-slate-100">Dettaglio mensile entrate/uscite</h2>
-          <p className="text-sm text-slate-500">Affitto vs mutuo, imposte e ogni voce di spesa</p>
+          <p className="text-sm text-slate-500">Affitto vs mutuo, cedolare secca e ogni voce di spesa</p>
         </div>
         <div className="flex gap-1 rounded-lg bg-surface-border/40 p-1">
           {years.slice(0, 10).map((y) => (
@@ -159,7 +178,7 @@ export default function MonthlyBreakdownChart({ result }: Props) {
           <Legend wrapperStyle={{ paddingTop: 12, fontSize: 11 }} />
           <Bar dataKey="affitto" name="Affitto" fill={COLORS.affitto} radius={[3, 3, 0, 0]} barSize={14} />
           <Bar dataKey="mutuo" name="Mutuo" stackId="uscite" fill={COLORS.mutuo} barSize={14} />
-          <Bar dataKey="imposte" name="Imposte" stackId="uscite" fill={COLORS.imposte} barSize={14} />
+          <Bar dataKey="imposte" name="Cedolare secca" stackId="uscite" fill={COLORS.imposte} barSize={14} />
           {activeOpex.map((b, i) => (
             <Bar
               key={b.key}
@@ -175,30 +194,28 @@ export default function MonthlyBreakdownChart({ result }: Props) {
       </ResponsiveContainer>
 
       {totals && (
-        <div className="mt-4 grid grid-cols-2 gap-2 border-t border-surface-border/60 pt-4 text-xs sm:grid-cols-4 lg:grid-cols-6">
-          {[
-            { label: "Affitto", value: totals.affitto, color: COLORS.affitto },
-            { label: "Mutuo", value: totals.mutuo, color: COLORS.mutuo },
-            { label: "Imposte", value: totals.imposte, color: COLORS.imposte },
-            ...activeOpex.map((b) => ({
-              label: b.name,
-              value: totals.opex[b.key],
-              color: b.color,
-            })),
-            {
-              label: "Netto",
-              value: totals.netto,
-              color: totals.netto >= 0 ? COLORS.affitto : "#f87171",
-            },
-          ].map((row) => (
-            <div key={row.label} className="rounded-lg bg-surface-border/30 px-3 py-2">
-              <div className="flex items-center gap-1.5">
-                <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: row.color }} />
-                <span className="text-slate-500">{row.label}</span>
+        <div className="mt-4 border-t border-surface-border/60 pt-4">
+          <p className="mb-3 text-xs font-medium text-slate-400">
+            Totale anno {year} — valori mensili = media su {totals.months} mesi
+          </p>
+          <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-4 lg:grid-cols-6">
+            {summaryRows.map((row) => (
+              <div key={row.label} className="rounded-lg bg-surface-border/30 px-3 py-2">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: row.color }} />
+                  <span className="text-slate-500">{row.label}</span>
+                </div>
+                <p className="mt-1.5 font-semibold text-slate-200">
+                  {fmtEuro(row.yearly / totals.months)}
+                  <span className="ml-1 text-[10px] font-normal text-slate-500">/mese</span>
+                </p>
+                <p className="mt-0.5 text-slate-400">
+                  {fmtEuro(row.yearly)}
+                  <span className="ml-1 text-[10px] text-slate-500">/anno</span>
+                </p>
               </div>
-              <p className="mt-0.5 font-semibold text-slate-200">{fmtEuro(row.value)}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
     </div>

@@ -1,7 +1,6 @@
 import type { EnergyClass, InvestmentScenario, RentalMode } from "./types";
 import {
   ITALY_DEFAULTS,
-  estimateCondominio,
   estimateFurnishing,
   estimateMonthlyRent,
   estimateNightlyRate,
@@ -42,7 +41,7 @@ export function getDefaultSimpleScenario(): SimpleScenario {
   const price = 100_000;
   const sqm = estimateSqmFromPrice(price);
   const energy_class: EnergyClass = "D";
-  const preset = getRentalModePreset("long_term", price);
+  const preset = getRentalModePreset("medium_term_semester", price);
   return {
     purchase_price: price,
     property_type: "investment",
@@ -54,7 +53,7 @@ export function getDefaultSimpleScenario(): SimpleScenario {
     loan_years: 25,
     renovation_cost: 5_000,
     furnishing_cost: preset.furnishing_cost,
-    rental_mode: "long_term",
+    rental_mode: "medium_term_semester",
     monthly_rent: preset.monthly_rent,
     nightly_rate: preset.nightly_rate,
     occupancy_pct: preset.occupancy_pct,
