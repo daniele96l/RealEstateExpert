@@ -153,6 +153,8 @@ export interface MapListing {
   sqm: number | null;
   rooms: number | null;
   address: string | null;
+  property_type: string | null;
+  property_type_label: string | null;
 }
 
 export interface ListingDetail extends MapListing {
@@ -162,7 +164,6 @@ export interface ListingDetail extends MapListing {
   energy_kwh_sqm: number | null;
   condition: string | null;
   needs_renovation: boolean | null;
-  property_type_label: string | null;
   zone: string | null;
   city_label: string | null;
   price_per_sqm: number | null;

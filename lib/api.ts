@@ -15,11 +15,12 @@ async function parseError(res: Response, fallback: string): Promise<string> {
 export async function importFromIdealista(
   url: string,
   provider?: ListingsProvider,
+  refresh = false,
 ): Promise<CityListingsCache> {
   const res = await fetch("/api/import/idealista", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url, provider }),
+    body: JSON.stringify({ url, provider, refresh }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Importazione non riuscita"));
   return res.json();

@@ -2,17 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { fetchListings, fetchPropertyDetail, getCachedListings, getCachedPropertyDetail, getListingsProviders, importFromIdealista } from "@/lib/api";
-import {
-  cacheFileLabel,
-  readLocalListingsCache,
-  writeLocalListingsCache,
-} from "@/lib/listings-cache-client";
-import {
-  propertyDetailCacheFileLabel,
-  readLocalPropertyDetailCache,
-  writeLocalPropertyDetailCache,
-} from "@/lib/property-detail-cache-client";
+import { importFromIdealista, getListingsProviders } from "@/lib/api";
+import { loadCityListingsCacheFirst, loadPropertyDetailCacheFirst } from "@/lib/cache-first";
+import { cacheFileLabel } from "@/lib/listings-cache-client";
+import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client";
+import { writeLocalListingsCache } from "@/lib/listings-cache-client";
 import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import PropertyDetailPanel from "@/components/PropertyDetailPanel";
 import { cn } from "@/lib/utils";
@@ -87,20 +81,13 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
     setLoading(true);
     setError(null);
     try {
-      if (!refresh) {
-        const cached = await getCachedListings(city.trim(), operation);
-        if (cached) {
-          applyListings(cached, true, "server");
-          return;
-        }
-        const local = readLocalListingsCache(city.trim(), operation);
-        if (local) {
-          applyListings(local, true, "local");
-          return;
-        }
-      }
-      const result = await fetchListings(city.trim(), operation, refresh, provider);
-      applyListings(result, false, null);
+      const { data: result, source } = await loadCityListingsCacheFirst(
+        city.trim(),
+        operation,
+        refresh,
+        provider,
+      );
+      applyListings(result, source !== "network", source === "network" ? null : source);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Errore caricamento");
     } finally {
@@ -119,7 +106,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
   }, [city, onCityChange]);
 
   const handleSelect = useCallback(
-    async (listing: MapListing) => {
+    async (listing: MapListing, preloadedDetail?: ListingDetail) => {
       setSelectedId(listing.id);
       setDetailOpen(true);
       setSelectedDetail(null);
@@ -128,24 +115,15 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
       setDetailLoading(true);
       onSelectListing?.(listing);
       try {
-        const cached = await getCachedPropertyDetail(listing.id);
-        if (cached) {
-          setSelectedDetail(cached);
+        if (preloadedDetail) {
+          setSelectedDetail(preloadedDetail);
           setDetailCacheSource("server");
-          writeLocalPropertyDetailCache(cached);
-          onSelectListing?.(listing, cached);
+          onSelectListing?.(listing, preloadedDetail);
           return;
         }
-        const local = readLocalPropertyDetailCache(listing.id);
-        if (local) {
-          setSelectedDetail(local);
-          setDetailCacheSource("local");
-          onSelectListing?.(listing, local);
-          return;
-        }
-        const detail = await fetchPropertyDetail(listing, false, provider);
+        const { detail, source } = await loadPropertyDetailCacheFirst(listing, provider, false);
         setSelectedDetail(detail);
-        writeLocalPropertyDetailCache(detail);
+        setDetailCacheSource(source === "network" ? null : source);
         onSelectListing?.(listing, detail);
       } catch (e) {
         setDetailError(e instanceof Error ? e.message : "Dettaglio non disponibile");
@@ -156,17 +134,26 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
     [provider, onSelectListing],
   );
 
+  const handleOpenSimilarRent = useCallback(
+    (saleDetail: ListingDetail, rent: MapListing) => {
+      onUseSimilarRent?.(saleDetail, rent);
+      void handleSelect(rent);
+    },
+    [onUseSimilarRent, handleSelect],
+  );
+
   const importUrl = useCallback(async () => {
     if (!listingUrl.trim()) return;
     setImporting(true);
     setError(null);
     try {
-      const result = await importFromIdealista(listingUrl.trim(), provider);
+      const result = await importFromIdealista(listingUrl.trim(), provider, false);
       const listing = result.listings[0];
-      applyListings(result, false, null);
+      applyListings(result, true, "server");
       setOperation(result.operation);
       if (listing) {
-        await handleSelect(listing);
+        const { detail } = await loadPropertyDetailCacheFirst(listing, provider, false);
+        await handleSelect(listing, detail);
         const cityLabel = result.center.display_name?.split(",")[0]?.trim();
         if (cityLabel) setCity(cityLabel);
       }
@@ -347,9 +334,11 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
         error={detailError}
         provider={provider}
         cacheSource={detailCacheSource}
+        mapCity={city}
         onClose={handleCloseDetail}
         onAnalyze={(detail) => onSelectListing?.(detail, detail)}
         onUseSimilarRent={onUseSimilarRent}
+        onOpenSimilarRent={handleOpenSimilarRent}
       />
     </div>
   );

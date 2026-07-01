@@ -49,14 +49,17 @@ export function filterSimilarRentals(
     .map(({ listing }) => listing);
 }
 
-export function criteriaFromDetail(detail: {
-  city_label: string | null;
-  zone: string | null;
-  sqm: number | null;
-  rooms: number | null;
-}): SimilarListingCriteria {
+export function criteriaFromDetail(
+  detail: {
+    city_label: string | null;
+    zone: string | null;
+    sqm: number | null;
+    rooms: number | null;
+  },
+  mapCity?: string | null,
+): SimilarListingCriteria {
   return {
-    city: detail.city_label ?? "Reggio Calabria",
+    city: mapCity?.trim() || detail.city_label?.trim() || "Reggio Calabria",
     sqm: detail.sqm,
     rooms: detail.rooms,
     zone: detail.zone,

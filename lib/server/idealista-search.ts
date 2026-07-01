@@ -69,6 +69,8 @@ function listingFromDict(item: Record<string, unknown>, operation: "sale" | "ren
     sqm: sqm != null && !Number.isNaN(sqm) ? sqm : null,
     rooms: rooms != null && !Number.isNaN(rooms) ? rooms : null,
     address: item.address ? String(item.address) : item.street ? String(item.street) : null,
+    property_type: null,
+    property_type_label: null,
   };
 }
 
@@ -148,7 +150,7 @@ function parseListingCards(html: string, operation: "sale" | "rent"): MapListing
 
     const url = href.startsWith("http") ? href : `${IDEALISTA_BASE}${href}`;
     seen.add(id);
-    listings.push({ id, title: title.slice(0, 200), price, operation, url, lat: 0, lng: 0, sqm, rooms, address: null });
+    listings.push({ id, title: title.slice(0, 200), price, operation, url, lat: 0, lng: 0, sqm, rooms, address: null, property_type: null, property_type_label: null });
   });
 
   return listings;

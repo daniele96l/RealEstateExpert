@@ -1,4 +1,5 @@
 import type { CityListingsCache, ListingDetail, MapListing } from "@/lib/types";
+import { propertyTypeLabel } from "@/lib/listing-types";
 import { parseRapidPropertyPayload } from "./property-detail";
 import { getRapidApiKey } from "./config";
 import { geocodeCity, locationMatchesCity, normalizeCitySlug } from "./geocode";
@@ -93,6 +94,14 @@ function normalizeOperation(raw?: string, url?: string): "sale" | "rent" {
   return "sale";
 }
 
+function propertyFields(item: RapidListing): Pick<MapListing, "property_type" | "property_type_label"> {
+  const raw = item.propertyType?.trim() || null;
+  return {
+    property_type: raw,
+    property_type_label: raw ? propertyTypeLabel(raw) : null,
+  };
+}
+
 function listingFromRapid(item: RapidListing, operation: "sale" | "rent"): MapListing | null {
   const id = String(item.propertyCode ?? "");
   if (!id) return null;
@@ -121,6 +130,7 @@ function listingFromRapid(item: RapidListing, operation: "sale" | "rent"): MapLi
     sqm: item.size ?? null,
     rooms: item.rooms ?? null,
     address,
+    ...propertyFields(item),
   };
 }
 
@@ -173,6 +183,7 @@ function listingFromRapidDetail(item: RapidListing, sourceUrl: string): MapListi
     sqm: item.size ?? null,
     rooms: item.rooms ?? null,
     address,
+    ...propertyFields(item),
   };
 }
 

@@ -1,6 +1,9 @@
 import * as cheerio from "cheerio";
 import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { geocodeCity, normalizeCitySlug } from "./geocode";
+import { saveCache } from "./listings-cache";
+import { listingToDetail } from "./property-detail";
+import { savePropertyDetailCache } from "./property-detail-cache";
 import {
   RapidApiIdealistaError,
   fetchPropertyDetailsByUrl,
@@ -131,6 +134,8 @@ function parsePropertyDetailHtml(html: string, sourceUrl: string): MapListing {
     sqm,
     rooms,
     address: address.slice(0, 200),
+    property_type: null,
+    property_type_label: null,
   };
 }
 
@@ -205,23 +210,35 @@ export async function importListingFromUrl(
   let lastError: unknown;
   for (const provider of available) {
     try {
-      const listing =
+      const fetched =
         provider === "rapidapi"
           ? await fetchPropertyDetailsByUrl(url)
           : await fetchPropertyDetailsViaScrapingBee(url);
+
+      const detail: ListingDetail =
+        provider === "rapidapi"
+          ? (fetched as ListingDetail)
+          : listingToDetail(fetched as MapListing);
+
       const mapListing: MapListing = {
-        id: listing.id,
-        title: listing.title,
-        price: listing.price,
-        operation: listing.operation,
-        url: listing.url,
-        lat: listing.lat,
-        lng: listing.lng,
-        sqm: listing.sqm,
-        rooms: listing.rooms,
-        address: listing.address,
+        id: detail.id,
+        title: detail.title,
+        price: detail.price,
+        operation: detail.operation,
+        url: detail.url,
+        lat: detail.lat,
+        lng: detail.lng,
+        sqm: detail.sqm,
+        rooms: detail.rooms,
+        address: detail.address,
+        property_type: detail.property_type ?? null,
+        property_type_label: detail.property_type_label ?? null,
       };
-      return toCityListingsCache(mapListing, provider);
+
+      await savePropertyDetailCache(detail);
+      const cache = await toCityListingsCache(mapListing, provider);
+      await saveCache(cache);
+      return cache;
     } catch (err) {
       lastError = err;
     }

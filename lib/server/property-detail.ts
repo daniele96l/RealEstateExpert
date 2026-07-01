@@ -1,4 +1,5 @@
 import type { EnergyClass, ListingDetail, MapListing } from "@/lib/types";
+import { propertyTypeLabel } from "@/lib/listing-types";
 
 const IDEALISTA_BASE = "https://www.idealista.it";
 
@@ -8,16 +9,6 @@ const STATUS_LABELS: Record<string, string> = {
   renew: "Da ristrutturare",
   newdevelopment: "Nuova costruzione",
   ruin: "Da demolire/ricostruire",
-};
-
-const TYPE_LABELS: Record<string, string> = {
-  flat: "Appartamento",
-  chalet: "Villa/Casa",
-  countryHouse: "Casa di campagna",
-  studio: "Monolocale",
-  duplex: "Duplex",
-  penthouse: "Attico",
-  homes: "Abitazione",
 };
 
 export function normalizeEnergyClass(raw?: string | null): EnergyClass | null {
@@ -53,7 +44,8 @@ function mergeListing(base: MapListing, detail: Partial<ListingDetail>): Listing
     energy_kwh_sqm: detail.energy_kwh_sqm ?? null,
     condition: detail.condition ?? null,
     needs_renovation: detail.needs_renovation ?? null,
-    property_type_label: detail.property_type_label ?? null,
+    property_type: detail.property_type ?? base.property_type ?? null,
+    property_type_label: detail.property_type_label ?? base.property_type_label ?? null,
     zone: detail.zone ?? null,
     city_label: detail.city_label ?? null,
     price_per_sqm: detail.price_per_sqm ?? (base.sqm ? Math.round(base.price / base.sqm) : null),
@@ -85,6 +77,7 @@ export function listingToDetail(listing: MapListing): ListingDetail {
     energy_kwh_sqm: null,
     condition: null,
     needs_renovation: null,
+    property_type: null,
     property_type_label: null,
     zone: null,
     city_label: null,
@@ -146,9 +139,15 @@ export function parseRapidPropertyPayload(raw: any, sourceUrl: string, base?: Ma
     sqm,
     rooms: mc.roomNumber ?? property?.rooms ?? base?.rooms ?? null,
     address: ub.locationName ?? ub.title ?? base?.address ?? null,
+    property_type: base?.property_type ?? null,
+    property_type_label: base?.property_type_label ?? null,
   };
 
   const typeKey = property?.detailedType?.typology ?? property?.homeType ?? property?.extendedPropertyType;
+  if (typeKey) {
+    listing.property_type = typeKey;
+    listing.property_type_label = propertyTypeLabel(typeKey);
+  }
 
   return mergeListing(listing, {
     bathrooms: mc.bathNumber ?? null,
@@ -157,7 +156,8 @@ export function parseRapidPropertyPayload(raw: any, sourceUrl: string, base?: Ma
     energy_kwh_sqm: mc.energyPerformance ?? energy?.value ?? null,
     condition: status ? STATUS_LABELS[status] ?? status : null,
     needs_renovation: needsRenovation(status),
-    property_type_label: typeKey ? TYPE_LABELS[typeKey] ?? typeKey : null,
+    property_type: typeKey ?? null,
+    property_type_label: typeKey ? propertyTypeLabel(typeKey) : null,
     zone: ub.administrativeAreaLevel4 ?? ub.locationName ?? null,
     city_label: ub.administrativeAreaLevel2 ?? ub.administrativeAreaLevel1 ?? null,
     price_per_sqm: sqm ? Math.round(price / sqm) : null,

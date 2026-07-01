@@ -2,9 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { fetchListings } from "@/lib/api";
+import { loadCityListingsCacheFirst } from "@/lib/cache-first";
 import { criteriaFromDetail, filterSimilarRentals } from "@/lib/similar-listings";
 import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client";
+import {
+  estimateWholeFlatRent,
+  inferRentPriceBasis,
+  listingWithEffectiveRent,
+  rentPriceBasisBadgeClass,
+  rentPriceBasisLabel,
+} from "@/lib/rent-price-basis";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { cn, fmtEuro } from "@/lib/utils";
 import {
@@ -12,6 +19,7 @@ import {
   Building2,
   ExternalLink,
   Layers,
+  LayoutDashboard,
   Loader2,
   MapPin,
   Ruler,
@@ -29,9 +37,11 @@ interface Props {
   error: string | null;
   provider: ListingsProvider;
   cacheSource?: "server" | "local" | null;
+  mapCity?: string;
   onClose: () => void;
   onAnalyze: (detail: ListingDetail) => void;
   onUseSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
+  onOpenSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
 }
 
 function Spec({
@@ -67,9 +77,11 @@ export default function PropertyDetailPanel({
   error,
   provider,
   cacheSource,
+  mapCity,
   onClose,
   onAnalyze,
   onUseSimilarRent,
+  onOpenSimilarRent,
 }: Props) {
   const [mounted, setMounted] = useState(false);
   const [similarLoading, setSimilarLoading] = useState(false);
@@ -107,8 +119,8 @@ export default function PropertyDetailPanel({
     setSimilarError(null);
     setSimilarRentals(null);
     try {
-      const criteria = criteriaFromDetail(detail);
-      const cache = await fetchListings(criteria.city, "rent", false, provider);
+      const criteria = criteriaFromDetail(detail, mapCity);
+      const { data: cache } = await loadCityListingsCacheFirst(criteria.city, "rent", false, provider);
       const matches = filterSimilarRentals(cache.listings, criteria);
       if (!matches.length) {
         setSimilarError("Nessun affitto simile trovato. Prova ad aggiornare gli annunci affitto in mappa.");
@@ -294,41 +306,92 @@ export default function PropertyDetailPanel({
 
             {similarRentals && similarRentals.length > 0 && (
               <div className="rounded-xl border border-accent/20 bg-accent/5 p-4">
-                <p className="mb-3 text-xs font-medium uppercase tracking-wide text-accent">
+                <p className="mb-1 text-xs font-medium uppercase tracking-wide text-accent">
                   Affitti simili ({detail.sqm ?? "?"} m² · {detail.rooms ?? "?"} locali
                   {detail.zone ? ` · ${detail.zone}` : ""})
                 </p>
+                <p className="mb-3 text-xs text-slate-500">
+                  Per le stanze: stima intero = prezzo stanza × locali. Verifica su Idealista.
+                </p>
                 <div className="space-y-2">
-                  {similarRentals.map((rent) => (
+                  {similarRentals.map((rent) => {
+                    const basis = inferRentPriceBasis(rent);
+                    const wholeFlat = estimateWholeFlatRent(rent, basis);
+                    const rentForAnalysis = listingWithEffectiveRent(rent);
+                    return (
                     <div
                       key={rent.id}
-                      className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-surface-border/60 bg-surface-raised/40 p-3"
+                      className="rounded-lg border border-surface-border/60 bg-surface-raised/40 p-3"
                     >
-                      <div className="min-w-0 flex-1">
+                      <div className="min-w-0">
                         <p className="text-sm font-medium text-slate-200 line-clamp-1">{rent.title}</p>
-                        <p className="mt-0.5 text-xs text-slate-500">
-                          {[
-                            `${fmtEuro(rent.price)}/mese`,
-                            rent.sqm != null && `${rent.sqm} m²`,
-                            rent.rooms != null && `${rent.rooms} locali`,
-                            rent.sqm != null && rent.sqm > 0 && `${fmtEuro(Math.round(rent.price / rent.sqm))}/m²`,
-                          ]
-                            .filter(Boolean)
-                            .join(" · ")}
-                        </p>
+                        <div className="mt-1 flex flex-wrap items-center gap-2">
+                          <p className="text-xs text-slate-500">
+                            {wholeFlat
+                              ? [
+                                  `${fmtEuro(wholeFlat.pricePerRoom)}/mese/stanza`,
+                                  `${wholeFlat.roomCount} locali`,
+                                  `→ ${fmtEuro(wholeFlat.totalMonthly)}/mese intero stimato`,
+                                ].join(" · ")
+                              : [
+                                  `${fmtEuro(rent.price)}/mese`,
+                                  rent.sqm != null && `${rent.sqm} m²`,
+                                  rent.rooms != null && `${rent.rooms} locali`,
+                                  rent.sqm != null &&
+                                    rent.sqm > 0 &&
+                                    `${fmtEuro(Math.round(rent.price / rent.sqm))}/m²`,
+                                ]
+                                  .filter(Boolean)
+                                  .join(" · ")}
+                          </p>
+                          <span
+                            className={cn(
+                              "rounded-md border px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide",
+                              rentPriceBasisBadgeClass(basis),
+                            )}
+                          >
+                            {rentPriceBasisLabel(basis)}
+                          </span>
+                        </div>
                       </div>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          onUseSimilarRent?.(detail, rent);
-                          onClose();
-                        }}
-                        className="shrink-0 rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-500"
-                      >
-                        Usa questo affitto
-                      </button>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <a
+                          href={rent.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={cn(
+                            "inline-flex shrink-0 items-center gap-1 rounded-lg border border-surface-border px-2.5 py-1.5",
+                            "text-xs text-slate-300 hover:bg-surface-raised",
+                          )}
+                        >
+                          <ExternalLink size={12} />
+                          Idealista
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() => onOpenSimilarRent?.(detail, rentForAnalysis)}
+                          className={cn(
+                            "inline-flex shrink-0 items-center gap-1 rounded-lg border border-accent/40 bg-accent/10 px-2.5 py-1.5",
+                            "text-xs font-medium text-accent hover:bg-accent/20",
+                          )}
+                        >
+                          <LayoutDashboard size={12} />
+                          Apri in dashboard
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            onUseSimilarRent?.(detail, rentForAnalysis);
+                            onClose();
+                          }}
+                          className="shrink-0 rounded-lg bg-accent px-2.5 py-1.5 text-xs font-medium text-white hover:bg-emerald-500"
+                        >
+                          Usa questo affitto
+                        </button>
+                      </div>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             )}
