@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { GeocodeError } from "@/lib/server/geocode";
-import { fetchCityListings, IdealistaSearchError } from "@/lib/server/idealista-search";
+import { IdealistaSearchError } from "@/lib/server/idealista-search";
 import { getCache, saveCache } from "@/lib/server/listings-cache";
+import { fetchWithFallback, resolvePreferredProvider } from "@/lib/server/listings-fetch";
 import { RapidApiIdealistaError } from "@/lib/server/rapidapi-idealista";
-import { getDefaultListingsProvider, hasRapidApiKey, hasScrapingBeeKey } from "@/lib/server/config";
+import { hasRapidApiKey, hasScrapingBeeKey, getDefaultListingsProvider } from "@/lib/server/config";
 import { ScrapingBeeError } from "@/lib/server/scrapingbee";
 import type { ListingsProvider } from "@/lib/types";
 
@@ -33,32 +34,6 @@ export async function GET(request: Request) {
   });
 }
 
-async function fetchWithFallback(
-  city: string,
-  operation: "sale" | "rent",
-  preferred: ListingsProvider,
-): Promise<{ data: Awaited<ReturnType<typeof fetchCityListings>>; provider: ListingsProvider }> {
-  const order: ListingsProvider[] =
-    preferred === "rapidapi" ? ["rapidapi", "scrapingbee"] : ["scrapingbee", "rapidapi"];
-
-  const available = order.filter((p) => (p === "rapidapi" ? hasRapidApiKey() : hasScrapingBeeKey()));
-  if (!available.length) {
-    throw new Error("Nessuna API configurata. Aggiungi RAPIDAPI_KEY o SCRAPINGBEE_API_KEY in .env.local");
-  }
-
-  let lastError: unknown;
-  for (const provider of available) {
-    try {
-      const data = await fetchCityListings(city, operation, provider);
-      return { data, provider };
-    } catch (err) {
-      lastError = err;
-    }
-  }
-
-  throw lastError ?? new IdealistaSearchError(`Impossibile recuperare annunci per ${city}`);
-}
-
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as {
@@ -80,7 +55,7 @@ export async function POST(request: Request) {
       if (cached) return NextResponse.json(cached);
     }
 
-    const preferred = body.provider ?? getDefaultListingsProvider();
+    const preferred = resolvePreferredProvider(body.provider);
     const { data, provider } = await fetchWithFallback(body.city, body.operation, preferred);
     const payload = { ...data, provider };
     await saveCache(payload);

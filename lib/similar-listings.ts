@@ -1,3 +1,4 @@
+import { distanceMeters } from "./geo-filter";
 import type { MapListing } from "./types";
 
 export interface SimilarListingCriteria {
@@ -62,17 +63,6 @@ export function zoneMatchScore(
   return Math.round((matched / segments.length) * 80);
 }
 
-function haversineMeters(lat1: number, lon1: number, lat2: number, lon2: number): number {
-  const R = 6_371_000;
-  const toRad = (d: number) => (d * Math.PI) / 180;
-  const dLat = toRad(lat2 - lat1);
-  const dLon = toRad(lon2 - lon1);
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
-  return 2 * R * Math.asin(Math.sqrt(a));
-}
-
 export function geoMatchScore(
   listing: MapListing,
   criteria: Pick<SimilarListingCriteria, "lat" | "lng">,
@@ -89,7 +79,10 @@ export function geoMatchScore(
     return 0;
   }
 
-  const distance = haversineMeters(criteria.lat, criteria.lng, listing.lat, listing.lng);
+  const distance = distanceMeters(
+    { lat: criteria.lat, lng: criteria.lng },
+    { lat: listing.lat, lng: listing.lng },
+  );
   if (distance > SIMILAR_RADIUS_M) return 0;
   return Math.round(100 * (1 - distance / SIMILAR_RADIUS_M));
 }
@@ -114,7 +107,10 @@ export function filterSimilarRentals(
       score: similarMatchScore(listing, criteria),
       distance:
         criteria.lat != null && criteria.lng != null && listing.lat && listing.lng
-          ? haversineMeters(criteria.lat, criteria.lng, listing.lat, listing.lng)
+          ? distanceMeters(
+              { lat: criteria.lat, lng: criteria.lng },
+              { lat: listing.lat, lng: listing.lng },
+            )
           : Number.POSITIVE_INFINITY,
     }))
     .filter(({ score }) => score > 0)

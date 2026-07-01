@@ -1,0 +1,575 @@
+"use client";
+
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
+import { batchPreviewListings, batchSaveListings } from "@/lib/api";
+import {
+  AREA_PRESETS,
+  filterListingsByBounds,
+  filterListingsByRadius,
+  formatDistance,
+  listingDistanceMeters,
+  type AreaPresetId,
+  type GeoBounds,
+} from "@/lib/geo-filter";
+import type { BatchPreviewResult, CombinedListingsData, ListingsProvider, MapListing } from "@/lib/types";
+import { cn } from "@/lib/utils";
+import { CheckSquare, Loader2, MapPin, Square, X } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const AreaSelectMap = dynamic(() => import("./AreaSelectMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[200px] items-center justify-center rounded-lg border border-surface-border bg-surface-raised/40 text-sm text-slate-500">
+      Caricamento mappa…
+    </div>
+  ),
+});
+
+interface PreviewRow {
+  listing: MapListing;
+  distanceM: number | null;
+  selected: boolean;
+}
+
+interface Props {
+  open: boolean;
+  city: string;
+  provider: ListingsProvider;
+  providersAvailable: { scrapingbee: boolean; rapidapi: boolean };
+  onClose: () => void;
+  onSaved: (data: CombinedListingsData) => void;
+}
+
+function formatPrice(price: number, operation: "sale" | "rent") {
+  const formatted = new Intl.NumberFormat("it-IT", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+  }).format(price);
+  return operation === "rent" ? `${formatted}/mese` : formatted;
+}
+
+export default function BatchFetchPanel({
+  open,
+  city: initialCity,
+  provider: initialProvider,
+  providersAvailable,
+  onClose,
+  onSaved,
+}: Props) {
+  const [mounted, setMounted] = useState(false);
+  const [city, setCity] = useState(initialCity);
+  const [zone, setZone] = useState("");
+  const [fetchSale, setFetchSale] = useState(true);
+  const [fetchRent, setFetchRent] = useState(true);
+  const [provider, setProvider] = useState(initialProvider);
+  const [areaPreset, setAreaPreset] = useState<AreaPresetId>("city");
+  const [customRadiusM, setCustomRadiusM] = useState(1500);
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [minSqm, setMinSqm] = useState("");
+  const [preview, setPreview] = useState<BatchPreviewResult | null>(null);
+  const [rows, setRows] = useState<PreviewRow[]>([]);
+  const [bounds, setBounds] = useState<GeoBounds | null>(null);
+  const [areaMode, setAreaMode] = useState<"radius" | "rectangle">("radius");
+  const [fetching, setFetching] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fetchStatus, setFetchStatus] = useState<string | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (open) {
+      setCity(initialCity);
+      setProvider(initialProvider);
+    }
+  }, [open, initialCity, initialProvider]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open, onClose]);
+
+  const radiusM = useMemo(() => {
+    if (areaMode === "rectangle") return null;
+    if (areaPreset === "custom") return customRadiusM;
+    return AREA_PRESETS[areaPreset as keyof typeof AREA_PRESETS]?.radiusM ?? null;
+  }, [areaMode, areaPreset, customRadiusM]);
+
+  const center = preview?.center ?? null;
+
+  const allPreviewListings = useMemo(() => {
+    if (!preview) return [];
+    return [...(preview.sale?.listings ?? []), ...(preview.rent?.listings ?? [])];
+  }, [preview]);
+
+  const buildRows = useCallback(
+    (listings: MapListing[], selectedIds?: Set<string>): PreviewRow[] => {
+      if (!center) return [];
+      const minP = minPrice ? Number(minPrice) : null;
+      const maxP = maxPrice ? Number(maxPrice) : null;
+      const minS = minSqm ? Number(minSqm) : null;
+
+      let filtered = listings.filter((l) => {
+        if (minP != null && l.price < minP) return false;
+        if (maxP != null && l.price > maxP) return false;
+        if (minS != null && (l.sqm == null || l.sqm < minS)) return false;
+        return true;
+      });
+
+      if (areaMode === "rectangle" && bounds) {
+        filtered = filterListingsByBounds(filtered, bounds);
+      } else {
+        filtered = filterListingsByRadius(filtered, center, radiusM);
+      }
+
+      const defaultSelected = selectedIds ?? new Set(filtered.map((l) => l.id));
+      return filtered.map((listing) => ({
+        listing,
+        distanceM: listingDistanceMeters(listing, center),
+        selected: defaultSelected.has(listing.id),
+      }));
+    },
+    [center, minPrice, maxPrice, minSqm, areaMode, bounds, radiusM],
+  );
+
+  useEffect(() => {
+    if (!preview || !center) return;
+    setRows((prev) => {
+      const selectedIds = new Set(prev.filter((r) => r.selected).map((r) => r.listing.id));
+      const next = buildRows(allPreviewListings, prev.length ? selectedIds : undefined);
+      return next.length ? next : buildRows(allPreviewListings);
+    });
+  }, [preview, center, allPreviewListings, buildRows, minPrice, maxPrice, minSqm, areaMode, bounds, radiusM]);
+
+  const handleFetch = async () => {
+    if (!city.trim()) return;
+    const operations: ("sale" | "rent")[] = [];
+    if (fetchSale) operations.push("sale");
+    if (fetchRent) operations.push("rent");
+    if (!operations.length) {
+      setError("Seleziona almeno Vendita o Affitto");
+      return;
+    }
+
+    setFetching(true);
+    setError(null);
+    setFetchStatus("Recupero annunci in corso…");
+    setPreview(null);
+    setRows([]);
+    setBounds(null);
+
+    try {
+      const result = await batchPreviewListings(city.trim(), operations, {
+        zone: zone.trim() || undefined,
+        refresh: true,
+        provider,
+      });
+      setPreview(result);
+      const total =
+        (result.sale?.listings.length ?? 0) + (result.rent?.listings.length ?? 0);
+      setFetchStatus(`Recuperati ${total} annunci`);
+      const listings = [
+        ...(result.sale?.listings ?? []),
+        ...(result.rent?.listings ?? []),
+      ];
+      if (result.center) {
+        setRows(
+          listings.map((listing) => ({
+            listing,
+            distanceM: listingDistanceMeters(listing, result.center),
+            selected: true,
+          })),
+        );
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Recupero non riuscito");
+      setFetchStatus(null);
+    } finally {
+      setFetching(false);
+    }
+  };
+
+  const toggleRow = (id: string) => {
+    setRows((prev) =>
+      prev.map((r) => (r.listing.id === id ? { ...r, selected: !r.selected } : r)),
+    );
+  };
+
+  const selectAll = () => setRows((prev) => prev.map((r) => ({ ...r, selected: true })));
+  const deselectAll = () => setRows((prev) => prev.map((r) => ({ ...r, selected: false })));
+
+  const selectedCount = rows.filter((r) => r.selected).length;
+
+  const handleSave = async () => {
+    if (!preview || !center || selectedCount === 0) return;
+    setSaving(true);
+    setError(null);
+    try {
+      const selected = rows.filter((r) => r.selected).map((r) => r.listing);
+      const sale = selected.filter((l) => l.operation === "sale");
+      const rent = selected.filter((l) => l.operation === "rent");
+      const result = await batchSaveListings({
+        city: preview.city,
+        center,
+        provider: preview.provider,
+        sale,
+        rent,
+      });
+      onSaved({
+        center: result.center,
+        listings: result.listings,
+        provider: result.provider,
+        fetched_at: result.fetched_at,
+        areaRadiusM: areaMode === "radius" ? radiusM : null,
+        sale: result.sale,
+        rent: result.rent,
+      });
+      onClose();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Salvataggio non riuscito");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (!open || !mounted) return null;
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Importazione batch annunci"
+    >
+      <div
+        className="flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface-base shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between border-b border-surface-border/80 px-5 py-4">
+          <div className="flex items-center gap-2">
+            <MapPin size={18} className="text-accent" />
+            <h2 className="font-semibold text-slate-100">Importazione batch</h2>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-lg p-1.5 text-slate-400 hover:bg-surface-raised hover:text-slate-200"
+            aria-label="Chiudi"
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div>
+              <label className="mb-1 block text-xs text-slate-500">Città</label>
+              <input
+                type="text"
+                className="input-field w-full"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="Es. Milano"
+              />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs text-slate-500">Zona (opzionale)</label>
+              <input
+                type="text"
+                className="input-field w-full"
+                value={zone}
+                onChange={(e) => setZone(e.target.value)}
+                placeholder="Es. Centro"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            <label className="flex items-center gap-2 text-sm text-slate-300">
+              <input type="checkbox" checked={fetchSale} onChange={(e) => setFetchSale(e.target.checked)} />
+              Vendita
+            </label>
+            <label className="flex items-center gap-2 text-sm text-slate-300">
+              <input type="checkbox" checked={fetchRent} onChange={(e) => setFetchRent(e.target.checked)} />
+              Affitto
+            </label>
+            <div className="flex rounded-lg border border-surface-border overflow-hidden">
+              {(
+                [
+                  { id: "rapidapi" as const, label: "RapidAPI", enabled: providersAvailable.rapidapi },
+                  { id: "scrapingbee" as const, label: "ScrapingBee", enabled: providersAvailable.scrapingbee },
+                ] as const
+              ).map(({ id, label, enabled }) => (
+                <button
+                  key={id}
+                  type="button"
+                  disabled={!enabled}
+                  onClick={() => setProvider(id)}
+                  className={cn(
+                    "px-3 py-1.5 text-sm",
+                    !enabled && "cursor-not-allowed opacity-40",
+                    provider === id ? "bg-accent/20 text-accent" : "text-slate-400 hover:text-slate-200",
+                  )}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Area</p>
+            <div className="mb-2 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setAreaMode("radius");
+                  setBounds(null);
+                }}
+                className={cn(
+                  "rounded-lg border px-3 py-1.5 text-sm",
+                  areaMode === "radius"
+                    ? "border-accent/50 bg-accent/10 text-accent"
+                    : "border-surface-border text-slate-400",
+                )}
+              >
+                Raggio
+              </button>
+              <button
+                type="button"
+                onClick={() => setAreaMode("rectangle")}
+                className={cn(
+                  "rounded-lg border px-3 py-1.5 text-sm",
+                  areaMode === "rectangle"
+                    ? "border-accent/50 bg-accent/10 text-accent"
+                    : "border-surface-border text-slate-400",
+                )}
+              >
+                Rettangolo
+              </button>
+            </div>
+
+       
+
+            {areaMode === "radius" ? (
+              <div className="flex flex-wrap gap-2">
+                {(Object.keys(AREA_PRESETS) as (keyof typeof AREA_PRESETS)[]).map((key) => (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setAreaPreset(key)}
+                    className={cn(
+                      "rounded-lg border px-3 py-1.5 text-sm",
+                      areaPreset === key
+                        ? "border-accent/50 bg-accent/10 text-accent"
+                        : "border-surface-border text-slate-400 hover:text-slate-200",
+                    )}
+                  >
+                    {AREA_PRESETS[key].label}
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  onClick={() => setAreaPreset("custom")}
+                  className={cn(
+                    "rounded-lg border px-3 py-1.5 text-sm",
+                    areaPreset === "custom"
+                      ? "border-accent/50 bg-accent/10 text-accent"
+                      : "border-surface-border text-slate-400 hover:text-slate-200",
+                  )}
+                >
+                  Personalizzato
+                </button>
+                {areaPreset === "custom" && (
+                  <div className="flex w-full items-center gap-3 sm:w-auto">
+                    <input
+                      type="range"
+                      min={500}
+                      max={10000}
+                      step={250}
+                      value={customRadiusM}
+                      onChange={(e) => setCustomRadiusM(Number(e.target.value))}
+                      className="flex-1"
+                    />
+                    <span className="text-xs text-slate-400">{formatDistance(customRadiusM)}</span>
+                  </div>
+                )}
+              </div>
+            ) : (
+              center && (
+                <AreaSelectMap
+                  center={center}
+                  bounds={bounds}
+                  onBoundsChange={setBounds}
+                />
+              )
+            )}
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div>
+              <label className="mb-1 block text-xs text-slate-500">Prezzo min</label>
+              <input
+                type="number"
+                className="input-field w-full"
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+                placeholder="€"
+              />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs text-slate-500">Prezzo max</label>
+              <input
+                type="number"
+                className="input-field w-full"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+                placeholder="€"
+              />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs text-slate-500">Min m²</label>
+              <input
+                type="number"
+                className="input-field w-full"
+                value={minSqm}
+                onChange={(e) => setMinSqm(e.target.value)}
+                placeholder="m²"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              disabled={fetching || !city.trim()}
+              onClick={handleFetch}
+              className="btn-primary flex items-center gap-2 px-4"
+            >
+              {fetching ? <Loader2 size={16} className="animate-spin" /> : null}
+              Recupera anteprima
+            </button>
+            {fetchStatus && <span className="self-center text-xs text-slate-500">{fetchStatus}</span>}
+          </div>
+
+          {error && <p className="text-sm text-red-400">{error}</p>}
+
+          {rows.length > 0 && (
+            <div>
+              <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <p className="text-xs text-slate-500">
+                  {allPreviewListings.length} recuperati · {rows.length} in area · {selectedCount} selezionati
+                </p>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={selectAll}
+                    className="flex items-center gap-1 text-xs text-accent hover:underline"
+                  >
+                    <CheckSquare size={12} />
+                    Seleziona tutti
+                  </button>
+                  <button
+                    type="button"
+                    onClick={deselectAll}
+                    className="flex items-center gap-1 text-xs text-slate-400 hover:underline"
+                  >
+                    <Square size={12} />
+                    Deseleziona
+                  </button>
+                </div>
+              </div>
+              <div className="max-h-[280px] overflow-y-auto rounded-lg border border-surface-border">
+                <table className="w-full text-left text-sm">
+                  <thead className="sticky top-0 bg-surface-raised/90 text-xs text-slate-500">
+                    <tr>
+                      <th className="p-2 w-8" />
+                      <th className="p-2">Tipo</th>
+                      <th className="p-2">Titolo</th>
+                      <th className="p-2">Prezzo</th>
+                      <th className="p-2">m²</th>
+                      <th className="p-2">Distanza</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.map(({ listing, distanceM, selected }) => (
+                      <tr
+                        key={listing.id}
+                        className={cn(
+                          "border-t border-surface-border/40",
+                          selected ? "bg-accent/5" : "opacity-60",
+                        )}
+                      >
+                        <td className="p-2">
+                          <input
+                            type="checkbox"
+                            checked={selected}
+                            onChange={() => toggleRow(listing.id)}
+                          />
+                        </td>
+                        <td className="p-2">
+                          <span
+                            className={cn(
+                              "rounded px-1.5 py-0.5 text-xs",
+                              listing.operation === "sale"
+                                ? "bg-emerald-500/20 text-emerald-400"
+                                : "bg-blue-500/20 text-blue-400",
+                            )}
+                          >
+                            {listing.operation === "sale" ? "Vendita" : "Affitto"}
+                          </span>
+                        </td>
+                        <td className="p-2 max-w-[180px] truncate text-slate-200" title={listing.title}>
+                          {listing.title}
+                        </td>
+                        <td className="p-2 text-accent whitespace-nowrap">
+                          {formatPrice(listing.price, listing.operation)}
+                        </td>
+                        <td className="p-2 text-slate-400">{listing.sqm ?? "—"}</td>
+                        <td className="p-2 text-slate-400 whitespace-nowrap">{formatDistance(distanceM)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="flex justify-end gap-2 border-t border-surface-border/80 px-5 py-4">
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-lg border border-surface-border px-4 py-2 text-sm text-slate-300 hover:bg-surface-raised"
+          >
+            Annulla
+          </button>
+          <button
+            type="button"
+            disabled={saving || selectedCount === 0 || !preview}
+            onClick={handleSave}
+            className="btn-primary flex items-center gap-2 px-4 disabled:opacity-50"
+          >
+            {saving ? <Loader2 size={16} className="animate-spin" /> : null}
+            Salva selezionati e aggiorna mappa
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  );
+}

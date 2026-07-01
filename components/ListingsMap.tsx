@@ -9,8 +9,10 @@ import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client
 import { writeLocalListingsCache } from "@/lib/listings-cache-client";
 import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import PropertyDetailPanel from "@/components/PropertyDetailPanel";
+import BatchFetchPanel from "@/components/BatchFetchPanel";
 import { cn } from "@/lib/utils";
-import { Loader2, Link2, MapPin, RefreshCw } from "lucide-react";
+import { Layers, Loader2, Link2, MapPin, RefreshCw } from "lucide-react";
+import type { CombinedListingsData } from "@/lib/types";
 
 const ListingsMapView = dynamic(() => import("./ListingsMapView"), {
   ssr: false,
@@ -52,10 +54,13 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
   const [detailLoading, setDetailLoading] = useState(false);
   const [detailError, setDetailError] = useState<string | null>(null);
   const [detailCacheSource, setDetailCacheSource] = useState<"server" | "local" | null>(null);
+  const [batchOpen, setBatchOpen] = useState(false);
+  const [combinedData, setCombinedData] = useState<CombinedListingsData | null>(null);
   const autoLoaded = useRef(false);
 
   const applyListings = useCallback((payload: CityListingsCache, cached: boolean, source: "server" | "local" | null) => {
     setData(payload);
+    setCombinedData(null);
     setFromCache(cached);
     setCacheSource(source);
     setSelectedId(null);
@@ -172,6 +177,45 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
     setDetailCacheSource(null);
   };
 
+  const handleBatchSaved = useCallback(
+    (saved: CombinedListingsData) => {
+      setCombinedData(saved);
+      if (saved.sale) writeLocalListingsCache(saved.sale);
+      if (saved.rent) writeLocalListingsCache(saved.rent);
+
+      if (saved.sale || saved.rent) {
+        const cachePayload =
+          operation === "rent" && saved.rent
+            ? saved.rent
+            : saved.sale ?? saved.rent!;
+        setData(cachePayload);
+        setFromCache(false);
+        setCacheSource("server");
+      }
+
+      const displayCity = saved.center.display_name?.split(",")[0]?.trim();
+      if (displayCity) {
+        setCity(displayCity);
+        onCityChange?.(displayCity);
+      }
+    },
+    [operation, onCityChange],
+  );
+
+  const displayListings = combinedData?.listings ?? data?.listings ?? [];
+  const mapData: CityListingsCache | null =
+    data ??
+    (combinedData
+      ? {
+          city: combinedData.sale?.city ?? combinedData.rent?.city ?? city.replace(/\s+/g, "_").toLowerCase(),
+          operation,
+          fetched_at: combinedData.fetched_at ?? "",
+          center: combinedData.center,
+          listings: combinedData.listings,
+          provider: combinedData.provider,
+        }
+      : null);
+
   return (
     <div className="card-glass overflow-hidden">
       <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
@@ -262,19 +306,35 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
             <RefreshCw size={14} />
             Aggiorna
           </button>
+          <button
+            type="button"
+            disabled={loading || importing}
+            onClick={() => setBatchOpen(true)}
+            className="flex items-center gap-1 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2 text-sm text-accent hover:bg-accent/20"
+          >
+            <Layers size={14} />
+            Importazione batch
+          </button>
         </div>
         {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
-        {data && (
+        {(data || combinedData) && (
           <p className="mt-2 text-xs text-slate-500">
-            {data.listings.length} annunci · {data.center.display_name ?? data.city}
-            {data.provider ? ` · ${data.provider === "rapidapi" ? "RapidAPI" : "ScrapingBee"}` : ""}
-            {fromCache
-              ? ` · da JSON (${cacheSource === "local" ? "browser" : cacheFileLabel(city, operation)})`
-              : ` · salvato in ${cacheFileLabel(city, operation)}`}
-            {data.fetched_at && (
+            {displayListings.length} annunci
+            {combinedData && " (vendita + affitto)"}
+            {" · "}
+            {(combinedData ?? data)?.center.display_name ?? city}
+            {(combinedData ?? data)?.provider
+              ? ` · ${(combinedData ?? data)!.provider === "rapidapi" ? "RapidAPI" : "ScrapingBee"}`
+              : ""}
+            {combinedData
+              ? " · importazione batch"
+              : fromCache
+                ? ` · da JSON (${cacheSource === "local" ? "browser" : cacheFileLabel(city, operation)})`
+                : ` · salvato in ${cacheFileLabel(city, operation)}`}
+            {(combinedData?.fetched_at ?? data?.fetched_at) && (
               <span className="text-slate-600">
                 {" "}
-                · {new Date(data.fetched_at).toLocaleString("it-IT")}
+                · {new Date((combinedData?.fetched_at ?? data!.fetched_at)!).toLocaleString("it-IT")}
               </span>
             )}
           </p>
@@ -284,8 +344,14 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
       {!detailOpen && (
         <div className="grid gap-0 lg:grid-cols-[1fr_280px]">
           <div className="h-[400px] border-b border-surface-border/80 lg:border-b-0 lg:border-r">
-            {data ? (
-              <ListingsMapView data={data} selectedId={selectedId} onSelect={handleSelect} />
+            {mapData ? (
+              <ListingsMapView
+                data={mapData}
+                selectedId={selectedId}
+                onSelect={handleSelect}
+                combinedListings={combinedData?.listings}
+                areaRadiusM={combinedData?.areaRadiusM}
+              />
             ) : (
               <div className="flex h-full items-center justify-center px-6 text-center text-sm text-slate-500">
                 Inserisci una città e clicca Carica per vedere gli annunci sulla mappa
@@ -293,9 +359,9 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
             )}
           </div>
           <div className="max-h-[400px] overflow-y-auto p-3">
-            {data?.listings.map((listing) => (
+            {displayListings.map((listing) => (
               <button
-                key={listing.id}
+                key={`${listing.operation}-${listing.id}`}
                 type="button"
                 onClick={() => handleSelect(listing)}
                 className={cn(
@@ -305,6 +371,20 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
                     : "border-surface-border/60 hover:bg-surface-raised/50",
                 )}
               >
+                <div className="mb-1 flex items-center gap-2">
+                  {combinedData && (
+                    <span
+                      className={cn(
+                        "rounded px-1.5 py-0.5 text-[10px] font-medium uppercase",
+                        listing.operation === "sale"
+                          ? "bg-emerald-500/20 text-emerald-400"
+                          : "bg-blue-500/20 text-blue-400",
+                      )}
+                    >
+                      {listing.operation === "sale" ? "Vendita" : "Affitto"}
+                    </span>
+                  )}
+                </div>
                 <p className="font-medium text-slate-200 line-clamp-2">{listing.title}</p>
                 <p className="mt-1 text-accent">{formatPrice(listing.price, listing.operation)}</p>
                 <p className="mt-0.5 text-xs text-slate-500">
@@ -314,7 +394,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
                 </p>
               </button>
             ))}
-            {data && data.listings.length === 0 && (
+            {mapData && displayListings.length === 0 && (
               <p className="text-sm text-slate-500">Nessun annuncio trovato</p>
             )}
           </div>
@@ -338,6 +418,15 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
         onClose={handleCloseDetail}
         onAnalyze={(detail) => onSelectListing?.(detail, detail)}
         onOpenSimilarRent={handleOpenSimilarRent}
+      />
+
+      <BatchFetchPanel
+        open={batchOpen}
+        city={city}
+        provider={provider}
+        providersAvailable={providersAvailable}
+        onClose={() => setBatchOpen(false)}
+        onSaved={handleBatchSaved}
       />
     </div>
   );

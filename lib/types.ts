@@ -216,3 +216,32 @@ export interface CityListingsCache {
   listings: MapListing[];
   provider?: ListingsProvider;
 }
+
+export interface BatchPreviewResult {
+  city: string;
+  center: MapCenter;
+  provider: ListingsProvider;
+  fetched_at: string;
+  sale?: CityListingsCache;
+  rent?: CityListingsCache;
+}
+
+export interface BatchSaveResult {
+  city: string;
+  center: MapCenter;
+  provider: ListingsProvider;
+  fetched_at: string;
+  sale?: CityListingsCache;
+  rent?: CityListingsCache;
+  listings: MapListing[];
+}
+
+export interface CombinedListingsData {
+  center: MapCenter;
+  listings: MapListing[];
+  provider?: ListingsProvider;
+  fetched_at?: string;
+  areaRadiusM?: number | null;
+  sale?: CityListingsCache;
+  rent?: CityListingsCache;
+}
