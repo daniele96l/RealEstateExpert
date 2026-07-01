@@ -17,6 +17,8 @@ import {
   rentPriceBasisLabel,
 } from "@/lib/rent-price-basis";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
+import { ITALY_DEFAULTS } from "@/lib/constants";
+import { monthlyMortgagePayment } from "@/lib/engine/mortgage";
 import { cn, fmtEuro } from "@/lib/utils";
 import {
   Bath,
@@ -51,9 +53,13 @@ interface Props {
   cacheSource?: "server" | "local" | null;
   mapCity?: string;
   onClose: () => void;
-  onAnalyze: (detail: ListingDetail) => void;
   onOpenSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
-  onUseAverageRent?: (saleDetail: ListingDetail, avgPerRoom: number, wholeMonthly: number | null) => void;
+  onUseAverageRent?: (
+    saleDetail: ListingDetail,
+    avgPerRoom: number,
+    wholeMonthly: number | null,
+    similarRentals: MapListing[],
+  ) => void;
 }
 
 function Spec({
@@ -91,7 +97,6 @@ export default function PropertyDetailPanel({
   cacheSource,
   mapCity,
   onClose,
-  onAnalyze,
   onOpenSimilarRent,
   onUseAverageRent,
 }: Props) {
@@ -180,6 +185,15 @@ export default function PropertyDetailPanel({
       ? avgRentPerRoom * rentableRooms
       : null;
 
+  const quickMortgageMonthly =
+    detail?.operation === "sale" && detail.price > 0
+      ? monthlyMortgagePayment(
+          detail.price * (1 - ITALY_DEFAULTS.investment_down_payment_pct / 100),
+          ITALY_DEFAULTS.mortgage_rate_pct,
+          ITALY_DEFAULTS.default_loan_years,
+        )
+      : null;
+
   const closeSimilarColumn = () => {
     setSimilarRentals(null);
     setSimilarError(null);
@@ -216,6 +230,14 @@ export default function PropertyDetailPanel({
                   <p className="text-xs font-medium uppercase tracking-wide text-accent">Scheda immobile</p>
                   <h3 className="mt-1 text-base font-semibold text-slate-100">{detail.title}</h3>
                   <p className="mt-1 text-lg font-bold text-accent">{priceLabel}</p>
+                  {quickMortgageMonthly != null && quickMortgageMonthly > 0 && (
+                    <p className="mt-0.5 text-xs text-slate-400">
+                      Stima mutuo mensile su 30 anni con tassi al 3%:{" "}
+                      <span className="font-medium text-slate-300">
+                        {fmtEuro(quickMortgageMonthly)}/mese
+                      </span>
+                    </p>
+                  )}
                   {(detail.zone || detail.city_label) && (
                     <p className="mt-1 flex items-center gap-1 text-xs text-slate-500">
                       <MapPin size={12} />
@@ -359,16 +381,6 @@ export default function PropertyDetailPanel({
             )}
 
             <div className="flex flex-wrap gap-2 pb-1">
-              <button
-                type="button"
-                onClick={() => {
-                  onAnalyze(detail);
-                  onClose();
-                }}
-                className="btn-primary !w-auto shrink-0 px-5"
-              >
-                Usa per analisi
-              </button>
               <a
                 href={detail.url}
                 target="_blank"
@@ -467,7 +479,8 @@ export default function PropertyDetailPanel({
                           <button
                             type="button"
                             onClick={() => {
-                              onUseAverageRent(detail, avgRentPerRoom, avgWholeMonthly);
+                              if (!similarRentals) return;
+                              onUseAverageRent(detail, avgRentPerRoom, avgWholeMonthly, similarRentals);
                               onClose();
                             }}
                             className={cn(

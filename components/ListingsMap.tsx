@@ -51,7 +51,12 @@ type ViewMode = "sale" | "rent" | "both";
 interface Props {
   onSelectListing?: (listing: MapListing, detail?: ListingDetail) => void;
   onUseSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
-  onUseAverageRent?: (saleDetail: ListingDetail, avgPerRoom: number, wholeMonthly: number | null) => void;
+  onUseAverageRent?: (
+    saleDetail: ListingDetail,
+    avgPerRoom: number,
+    wholeMonthly: number | null,
+    similarRentals: MapListing[],
+  ) => void;
   onCityChange?: (city: string) => void;
 }
 
@@ -416,7 +421,6 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
         cacheSource={detailCacheSource}
         mapCity={city}
         onClose={handleCloseDetail}
-        onAnalyze={(detail) => onSelectListing?.(detail, detail)}
         onOpenSimilarRent={handleOpenSimilarRent}
         onUseAverageRent={onUseAverageRent}
       />

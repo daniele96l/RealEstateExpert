@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import ScenarioForm from "@/components/ScenarioForm";
 import ListingsMap from "@/components/ListingsMap";
+import AnalysisSourcesPanel from "@/components/AnalysisSourcesPanel";
 import MarketPriceCharts from "@/components/MarketPriceCharts";
 import SummaryCards from "@/components/SummaryCards";
 import PurchaseBreakdown from "@/components/PurchaseBreakdown";
@@ -15,6 +16,10 @@ import {
 } from "@/lib/defaults";
 import { runSimulation } from "@/lib/engine/simulator";
 import { estimateRentableRooms } from "@/lib/rent-price-basis";
+import {
+  scenarioFromListingAnalysis,
+  type ListingAnalysisSource,
+} from "@/lib/listing-analysis";
 import type { AnalysisResult, ListingDetail, MapListing } from "@/lib/types";
 import { Building2, BarChart3 } from "lucide-react";
 
@@ -26,6 +31,7 @@ export default function HomePage() {
   const [formPrefill, setFormPrefill] = useState<Partial<SimpleScenario> | undefined>();
   const [formSyncToken, setFormSyncToken] = useState(0);
   const [marketCity, setMarketCity] = useState("Reggio Calabria");
+  const [analysisSource, setAnalysisSource] = useState<ListingAnalysisSource | null>(null);
 
   const updateScenario = useCallback((simple: SimpleScenario) => {
     const cleaned = sanitizeSimple(simple);
@@ -77,23 +83,25 @@ export default function HomePage() {
   }, []);
 
   const handleUseAverageRent = useCallback(
-    (saleDetail: ListingDetail, avgPerRoom: number, wholeMonthly: number | null) => {
-      setFormPrefill({
-        purchase_price: saleDetail.price,
-        rental_mode: "medium_term_semester" as const,
-        ...(wholeMonthly != null
-          ? { monthly_rent: wholeMonthly, rent_price_basis: "whole" as const }
-          : { monthly_rent: avgPerRoom, rent_price_basis: "per_room" as const }),
-        ...(saleDetail.rooms != null && saleDetail.rooms > 0
-          ? { rent_rooms: estimateRentableRooms(saleDetail.rooms) ?? saleDetail.rooms }
-          : {}),
-        ...(saleDetail.sqm != null && saleDetail.sqm > 0 ? { sqm: saleDetail.sqm } : {}),
-        ...(saleDetail.energy_class ? { energy_class: saleDetail.energy_class } : {}),
-        ...(saleDetail.condominio_monthly ? { condominio_monthly: saleDetail.condominio_monthly } : {}),
-        ...(saleDetail.needs_renovation === true ? { renovation_cost: 15_000 } : {}),
+    (
+      saleDetail: ListingDetail,
+      avgPerRoom: number,
+      wholeMonthly: number | null,
+      similarRentals: MapListing[],
+    ) => {
+      const next = scenarioFromListingAnalysis(saleDetail, avgPerRoom, wholeMonthly);
+      setAnalysisSource({
+        sale: saleDetail,
+        similarRentals,
+        avgRentPerRoom: avgPerRoom,
+        avgWholeMonthly: wholeMonthly,
       });
+      setFormPrefill(next);
+      updateScenario(next);
+      setFormSyncToken((n) => n + 1);
+      document.getElementById("parametri")?.scrollIntoView({ behavior: "smooth", block: "start" });
     },
-    [],
+    [updateScenario],
   );
 
   return (
@@ -139,6 +147,9 @@ export default function HomePage() {
             />
             {result ? (
               <>
+                {analysisSource && (
+                  <AnalysisSourcesPanel source={analysisSource} scenario={scenario} />
+                )}
                 <SummaryCards result={result} />
                 <PurchaseBreakdown
                   costs={result.summary.purchase_costs}
