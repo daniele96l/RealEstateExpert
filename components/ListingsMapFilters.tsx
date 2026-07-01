@@ -49,11 +49,11 @@ function NumberInput({
 }) {
   return (
     <input
-      type="number"
-      min={0}
+      type="text"
+      inputMode="decimal"
       className="input-field !py-2 text-sm"
       placeholder={placeholder}
-      value={value ?? ""}
+      value={value != null ? String(value) : ""}
       onChange={(e) => onChange(parseFilterNumber(e.target.value))}
     />
   );
@@ -111,7 +111,7 @@ export default function ListingsMapFilters({ viewMode, filters, onChange, onRese
             label="Prezzo €"
             min={filters.salePriceMin}
             max={filters.salePriceMax}
-            placeholders={["Min", "Max"]}
+            placeholders={["Min", "100k"]}
             onMinChange={(salePriceMin) => onChange({ ...filters, salePriceMin })}
             onMaxChange={(salePriceMax) => onChange({ ...filters, salePriceMax })}
           />

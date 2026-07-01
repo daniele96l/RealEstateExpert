@@ -20,7 +20,7 @@ export interface ListingsFilters {
 
 export const EMPTY_LISTINGS_FILTERS: ListingsFilters = {
   salePriceMin: null,
-  salePriceMax: null,
+  salePriceMax: 100_000,
   rentPriceMin: null,
   rentPriceMax: null,
   sqmMin: null,
@@ -122,8 +122,19 @@ export function filterListings(
 }
 
 export function parseFilterNumber(raw: string): number | null {
-  const trimmed = raw.trim();
+  const trimmed = raw.trim().replace(/\s/g, "").replace(",", ".");
   if (!trimmed) return null;
-  const n = Number(trimmed.replace(/\s/g, ""));
+
+  const suffixMatch = trimmed.match(/^(\d+(?:\.\d+)?)([kKmM])?$/);
+  if (suffixMatch) {
+    const base = Number(suffixMatch[1]);
+    if (!Number.isFinite(base) || base < 0) return null;
+    const suffix = suffixMatch[2]?.toLowerCase();
+    if (suffix === "k") return Math.round(base * 1_000);
+    if (suffix === "m") return Math.round(base * 1_000_000);
+    return base;
+  }
+
+  const n = Number(trimmed);
   return Number.isFinite(n) && n >= 0 ? n : null;
 }
