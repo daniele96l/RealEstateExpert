@@ -17,6 +17,8 @@ import type { RentalMode } from "@/lib/types";
 interface Props {
   onChange: (data: SimpleScenario) => void;
   prefill?: Partial<SimpleScenario>;
+  syncScenario?: SimpleScenario;
+  syncToken?: number;
 }
 
 function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
@@ -70,7 +72,7 @@ function RentalModeInfo({ mode }: { mode: RentalMode }) {
   );
 }
 
-export default function ScenarioForm({ onChange, prefill }: Props) {
+export default function ScenarioForm({ onChange, prefill, syncScenario, syncToken }: Props) {
   const { register, watch, reset, setValue, getValues } = useForm<SimpleScenario>({
     defaultValues: getDefaultSimpleScenario(),
   });
@@ -95,6 +97,13 @@ export default function ScenarioForm({ onChange, prefill }: Props) {
       onChange(merged);
     }
   }, [prefill, reset, onChange]);
+
+  useEffect(() => {
+    if (syncScenario == null || !syncToken) return;
+    reset(syncScenario);
+    prevMode.current = syncScenario.rental_mode;
+    prevPrice.current = syncScenario.purchase_price;
+  }, [syncScenario, syncToken, reset]);
 
   useEffect(() => {
     if (prevMode.current === null) {

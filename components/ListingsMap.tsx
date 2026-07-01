@@ -1,17 +1,19 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { importFromIdealista, getListingsProviders } from "@/lib/api";
-import { loadCityListingsCacheFirst, loadPropertyDetailCacheFirst } from "@/lib/cache-first";
+import { getListingsProviders } from "@/lib/api";
+import {
+  loadCityListingsCacheOnly,
+  loadPropertyDetailCacheFirst,
+} from "@/lib/cache-first";
 import { cacheFileLabel } from "@/lib/listings-cache-client";
-import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client";
 import { writeLocalListingsCache } from "@/lib/listings-cache-client";
 import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import PropertyDetailPanel from "@/components/PropertyDetailPanel";
 import BatchFetchPanel from "@/components/BatchFetchPanel";
 import { cn } from "@/lib/utils";
-import { Layers, Loader2, Link2, MapPin, RefreshCw } from "lucide-react";
+import { Layers, MapPin } from "lucide-react";
 import type { CombinedListingsData } from "@/lib/types";
 
 const ListingsMapView = dynamic(() => import("./ListingsMapView"), {
@@ -30,6 +32,8 @@ function formatPrice(price: number, operation: "sale" | "rent") {
   return operation === "rent" ? `${formatted}/mese` : formatted;
 }
 
+type ViewMode = "sale" | "rent" | "both";
+
 interface Props {
   onSelectListing?: (listing: MapListing, detail?: ListingDetail) => void;
   onUseSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
@@ -39,17 +43,15 @@ interface Props {
 
 export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAverageRent, onCityChange }: Props) {
   const [city, setCity] = useState("Reggio Calabria");
-  const [listingUrl, setListingUrl] = useState("");
-  const [operation, setOperation] = useState<"sale" | "rent">("sale");
+  const [viewMode, setViewMode] = useState<ViewMode>("both");
   const [provider, setProvider] = useState<ListingsProvider>("rapidapi");
   const [providersAvailable, setProvidersAvailable] = useState({ scrapingbee: false, rapidapi: false });
-  const [data, setData] = useState<CityListingsCache | null>(null);
+  const [saleCache, setSaleCache] = useState<CityListingsCache | null>(null);
+  const [rentCache, setRentCache] = useState<CityListingsCache | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [importing, setImporting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fromCache, setFromCache] = useState(false);
-  const [cacheSource, setCacheSource] = useState<"server" | "local" | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
   const [selectedDetail, setSelectedDetail] = useState<ListingDetail | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
@@ -57,21 +59,6 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   const [detailCacheSource, setDetailCacheSource] = useState<"server" | "local" | null>(null);
   const [batchOpen, setBatchOpen] = useState(false);
   const [combinedData, setCombinedData] = useState<CombinedListingsData | null>(null);
-  const autoLoaded = useRef(false);
-
-  const applyListings = useCallback((payload: CityListingsCache, cached: boolean, source: "server" | "local" | null) => {
-    setData(payload);
-    setCombinedData(null);
-    setFromCache(cached);
-    setCacheSource(source);
-    setSelectedId(null);
-    setDetailOpen(false);
-    setSelectedDetail(null);
-    writeLocalListingsCache(payload);
-    const displayCity =
-      payload.center.display_name?.split(",")[0]?.trim() || payload.city.replace(/_/g, " ");
-    onCityChange?.(displayCity);
-  }, [onCityChange]);
 
   useEffect(() => {
     getListingsProviders()
@@ -82,30 +69,37 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
       .catch(() => {});
   }, []);
 
-  const load = useCallback(async (refresh: boolean) => {
+  const loadCachesOnly = useCallback(async () => {
     if (!city.trim()) return;
     setLoading(true);
     setError(null);
     try {
-      const { data: result, source } = await loadCityListingsCacheFirst(
-        city.trim(),
-        operation,
-        refresh,
-        provider,
-      );
-      applyListings(result, source !== "network", source === "network" ? null : source);
+      const [saleResult, rentResult] = await Promise.all([
+        loadCityListingsCacheOnly(city.trim(), "sale"),
+        loadCityListingsCacheOnly(city.trim(), "rent"),
+      ]);
+      setSaleCache(saleResult.data);
+      setRentCache(rentResult.data);
+      setCombinedData(null);
+      setFromCache(true);
+      setSelectedId(null);
+      setDetailOpen(false);
+      setSelectedDetail(null);
+
+      const displayCity =
+        saleResult.data?.center.display_name?.split(",")[0]?.trim() ??
+        rentResult.data?.center.display_name?.split(",")[0]?.trim();
+      if (displayCity) onCityChange?.(displayCity);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Errore caricamento");
     } finally {
       setLoading(false);
     }
-  }, [city, operation, provider, applyListings]);
+  }, [city, onCityChange]);
 
   useEffect(() => {
-    if (autoLoaded.current) return;
-    autoLoaded.current = true;
-    load(false);
-  }, [load]);
+    void loadCachesOnly();
+  }, [loadCachesOnly]);
 
   useEffect(() => {
     if (city.trim()) onCityChange?.(city.trim());
@@ -148,28 +142,6 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
     [onUseSimilarRent, handleSelect],
   );
 
-  const importUrl = useCallback(async () => {
-    if (!listingUrl.trim()) return;
-    setImporting(true);
-    setError(null);
-    try {
-      const result = await importFromIdealista(listingUrl.trim(), provider, false);
-      const listing = result.listings[0];
-      applyListings(result, true, "server");
-      setOperation(result.operation);
-      if (listing) {
-        const { detail } = await loadPropertyDetailCacheFirst(listing, provider, false);
-        await handleSelect(listing, detail);
-        const cityLabel = result.center.display_name?.split(",")[0]?.trim();
-        if (cityLabel) setCity(cityLabel);
-      }
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Importazione non riuscita");
-    } finally {
-      setImporting(false);
-    }
-  }, [listingUrl, provider, applyListings, handleSelect]);
-
   const handleCloseDetail = () => {
     setDetailOpen(false);
     setSelectedId(null);
@@ -181,18 +153,16 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   const handleBatchSaved = useCallback(
     (saved: CombinedListingsData) => {
       setCombinedData(saved);
-      if (saved.sale) writeLocalListingsCache(saved.sale);
-      if (saved.rent) writeLocalListingsCache(saved.rent);
-
-      if (saved.sale || saved.rent) {
-        const cachePayload =
-          operation === "rent" && saved.rent
-            ? saved.rent
-            : saved.sale ?? saved.rent!;
-        setData(cachePayload);
-        setFromCache(false);
-        setCacheSource("server");
+      if (saved.sale) {
+        writeLocalListingsCache(saved.sale);
+        setSaleCache(saved.sale);
       }
+      if (saved.rent) {
+        writeLocalListingsCache(saved.rent);
+        setRentCache(saved.rent);
+      }
+      setViewMode("both");
+      setFromCache(false);
 
       const displayCity = saved.center.display_name?.split(",")[0]?.trim();
       if (displayCity) {
@@ -200,22 +170,37 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
         onCityChange?.(displayCity);
       }
     },
-    [operation, onCityChange],
+    [onCityChange],
   );
 
-  const displayListings = combinedData?.listings ?? data?.listings ?? [];
-  const mapData: CityListingsCache | null =
-    data ??
-    (combinedData
-      ? {
-          city: combinedData.sale?.city ?? combinedData.rent?.city ?? city.replace(/\s+/g, "_").toLowerCase(),
-          operation,
-          fetched_at: combinedData.fetched_at ?? "",
-          center: combinedData.center,
-          listings: combinedData.listings,
-          provider: combinedData.provider,
-        }
-      : null);
+  const isCombinedView = viewMode === "both" || combinedData != null;
+  const displayListings =
+    combinedData?.listings ??
+    (viewMode === "both"
+      ? [...(saleCache?.listings ?? []), ...(rentCache?.listings ?? [])]
+      : viewMode === "sale"
+        ? (saleCache?.listings ?? [])
+        : (rentCache?.listings ?? []));
+
+  const activeCache = viewMode === "rent" ? rentCache : saleCache ?? rentCache;
+  const center = combinedData?.center ?? saleCache?.center ?? rentCache?.center;
+  const mapData: CityListingsCache | null = center
+    ? {
+        city:
+          combinedData?.sale?.city ??
+          combinedData?.rent?.city ??
+          saleCache?.city ??
+          rentCache?.city ??
+          city.replace(/\s+/g, "_").toLowerCase(),
+        operation: viewMode === "rent" ? "rent" : "sale",
+        fetched_at:
+          combinedData?.fetched_at ?? saleCache?.fetched_at ?? rentCache?.fetched_at ?? "",
+        center,
+        listings: displayListings,
+        provider:
+          combinedData?.provider ?? saleCache?.provider ?? rentCache?.provider ?? provider,
+      }
+    : null;
 
   return (
     <div className="card-glass overflow-hidden">
@@ -223,30 +208,6 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
         <div className="mb-3 flex items-center gap-2">
           <MapPin size={18} className="text-accent" />
           <h2 className="font-semibold text-slate-100">Mappa annunci Idealista</h2>
-        </div>
-        <div className="mb-4 rounded-xl border border-accent/20 bg-accent/5 p-3">
-          <p className="mb-2 text-xs font-medium uppercase tracking-wide text-accent">Importa singolo annuncio</p>
-          <div className="flex flex-wrap gap-2">
-            <input
-              type="url"
-              className="input-field min-w-[200px] flex-1"
-              placeholder="https://www.idealista.it/immobile/12345678/"
-              value={listingUrl}
-              onChange={(e) => setListingUrl(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") importUrl();
-              }}
-            />
-            <button
-              type="button"
-              disabled={importing || !listingUrl.trim()}
-              onClick={importUrl}
-              className="flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-emerald-500 disabled:opacity-50"
-            >
-              {importing ? <Loader2 size={14} className="animate-spin" /> : <Link2 size={14} />}
-              Importa
-            </button>
-          </div>
         </div>
         <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">Cerca per città</p>
         <div className="flex flex-wrap gap-2">
@@ -258,58 +219,29 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             onChange={(e) => setCity(e.target.value)}
           />
           <div className="flex rounded-lg border border-surface-border overflow-hidden">
-            {(["sale", "rent"] as const).map((op) => (
-              <button
-                key={op}
-                type="button"
-                onClick={() => setOperation(op)}
-                className={cn(
-                  "px-3 py-2 text-sm",
-                  operation === op ? "bg-accent/20 text-accent" : "text-slate-400 hover:text-slate-200",
-                )}
-              >
-                {op === "sale" ? "Vendita" : "Affitto"}
-              </button>
-            ))}
-          </div>
-          <div className="flex rounded-lg border border-surface-border overflow-hidden">
             {(
               [
-                { id: "rapidapi" as const, label: "RapidAPI", enabled: providersAvailable.rapidapi },
-                { id: "scrapingbee" as const, label: "ScrapingBee", enabled: providersAvailable.scrapingbee },
+                { id: "sale" as const, label: "Vendita" },
+                { id: "rent" as const, label: "Affitto" },
+                { id: "both" as const, label: "Entrambi" },
               ] as const
-            ).map(({ id, label, enabled }) => (
+            ).map(({ id, label }) => (
               <button
                 key={id}
                 type="button"
-                disabled={!enabled}
-                onClick={() => setProvider(id)}
-                title={enabled ? undefined : "Chiave API non configurata in .env.local"}
+                onClick={() => setViewMode(id)}
                 className={cn(
                   "px-3 py-2 text-sm",
-                  !enabled && "cursor-not-allowed opacity-40",
-                  provider === id ? "bg-accent/20 text-accent" : "text-slate-400 hover:text-slate-200",
+                  viewMode === id ? "bg-accent/20 text-accent" : "text-slate-400 hover:text-slate-200",
                 )}
               >
                 {label}
               </button>
             ))}
           </div>
-          <button type="button" disabled={loading || importing} onClick={() => load(false)} className="btn-primary px-4">
-            {loading ? <Loader2 size={16} className="animate-spin" /> : "Carica"}
-          </button>
           <button
             type="button"
-            disabled={loading || importing}
-            onClick={() => load(true)}
-            className="flex items-center gap-1 rounded-lg border border-surface-border px-3 py-2 text-sm text-slate-300 hover:bg-surface-raised"
-          >
-            <RefreshCw size={14} />
-            Aggiorna
-          </button>
-          <button
-            type="button"
-            disabled={loading || importing}
+            disabled={loading}
             onClick={() => setBatchOpen(true)}
             className="flex items-center gap-1 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2 text-sm text-accent hover:bg-accent/20"
           >
@@ -318,24 +250,26 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
           </button>
         </div>
         {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
-        {(data || combinedData) && (
+        {mapData && (
           <p className="mt-2 text-xs text-slate-500">
             {displayListings.length} annunci
-            {combinedData && " (vendita + affitto)"}
+            {isCombinedView && " (vendita + affitto)"}
             {" · "}
-            {(combinedData ?? data)?.center.display_name ?? city}
-            {(combinedData ?? data)?.provider
-              ? ` · ${(combinedData ?? data)!.provider === "rapidapi" ? "RapidAPI" : "ScrapingBee"}`
+            {center.display_name ?? city}
+            {mapData.provider
+              ? ` · ${mapData.provider === "rapidapi" ? "RapidAPI" : "ScrapingBee"}`
               : ""}
             {combinedData
               ? " · importazione batch"
               : fromCache
-                ? ` · da JSON (${cacheSource === "local" ? "browser" : cacheFileLabel(city, operation)})`
-                : ` · salvato in ${cacheFileLabel(city, operation)}`}
-            {(combinedData?.fetched_at ?? data?.fetched_at) && (
+                ? " · da cache"
+                : viewMode === "both"
+                  ? ` · ${cacheFileLabel(city, "sale")}, ${cacheFileLabel(city, "rent")}`
+                  : ` · ${cacheFileLabel(city, viewMode)}`}
+            {mapData.fetched_at && (
               <span className="text-slate-600">
                 {" "}
-                · {new Date((combinedData?.fetched_at ?? data!.fetched_at)!).toLocaleString("it-IT")}
+                · {new Date(mapData.fetched_at).toLocaleString("it-IT")}
               </span>
             )}
           </p>
@@ -350,12 +284,12 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                 data={mapData}
                 selectedId={selectedId}
                 onSelect={handleSelect}
-                combinedListings={combinedData?.listings}
+                combinedListings={isCombinedView ? displayListings : undefined}
                 areaRadiusM={combinedData?.areaRadiusM}
               />
             ) : (
               <div className="flex h-full items-center justify-center px-6 text-center text-sm text-slate-500">
-                Inserisci una città e clicca Carica per vedere gli annunci sulla mappa
+                Inserisci una città — gli annunci in cache si caricano automaticamente
               </div>
             )}
           </div>
@@ -373,7 +307,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                 )}
               >
                 <div className="mb-1 flex items-center gap-2">
-                  {combinedData && (
+                  {isCombinedView && (
                     <span
                       className={cn(
                         "rounded px-1.5 py-0.5 text-[10px] font-medium uppercase",
@@ -402,7 +336,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
         </div>
       )}
 
-      {detailOpen && !data && (
+      {detailOpen && !mapData && !activeCache && (
         <div className="flex h-40 items-center justify-center text-sm text-slate-500">
           Caricamento…
         </div>

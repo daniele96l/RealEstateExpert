@@ -18,17 +18,29 @@ import type { AnalysisResult, ListingDetail, MapListing } from "@/lib/types";
 import { Building2, BarChart3 } from "lucide-react";
 
 export default function HomePage() {
-  const [result, setResult] = useState<AnalysisResult | null>(() => {
-    const s = sanitizeSimple(getDefaultSimpleScenario());
-    return runSimulation(toInvestmentScenario(s));
-  });
+  const [scenario, setScenario] = useState(() => sanitizeSimple(getDefaultSimpleScenario()));
+  const [result, setResult] = useState<AnalysisResult | null>(() =>
+    runSimulation(toInvestmentScenario(sanitizeSimple(getDefaultSimpleScenario()))),
+  );
   const [formPrefill, setFormPrefill] = useState<Partial<SimpleScenario> | undefined>();
+  const [formSyncToken, setFormSyncToken] = useState(0);
   const [marketCity, setMarketCity] = useState("Reggio Calabria");
 
-  const handleFormChange = useCallback((simple: SimpleScenario) => {
+  const updateScenario = useCallback((simple: SimpleScenario) => {
     const cleaned = sanitizeSimple(simple);
+    setScenario(cleaned);
     setResult(runSimulation(toInvestmentScenario(cleaned)));
   }, []);
+
+  const handleFormChange = updateScenario;
+
+  const handlePurchaseScenarioChange = useCallback(
+    (simple: SimpleScenario) => {
+      updateScenario(simple);
+      setFormSyncToken((n) => n + 1);
+    },
+    [updateScenario],
+  );
 
   const handleSelectListing = useCallback((listing: MapListing, detail?: ListingDetail) => {
     const d = detail ?? listing;
@@ -103,7 +115,12 @@ export default function HomePage() {
             id="parametri"
             className="lg:sticky lg:top-6 lg:z-10 lg:max-h-[calc(100vh-3rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain lg:pr-1"
           >
-            <ScenarioForm onChange={handleFormChange} prefill={formPrefill} />
+            <ScenarioForm
+              onChange={handleFormChange}
+              prefill={formPrefill}
+              syncScenario={scenario}
+              syncToken={formSyncToken}
+            />
           </div>
 
           <div className="min-w-0 space-y-6">
@@ -116,7 +133,11 @@ export default function HomePage() {
             {result ? (
               <>
                 <SummaryCards result={result} />
-                <PurchaseBreakdown costs={result.summary.purchase_costs} />
+                <PurchaseBreakdown
+                  costs={result.summary.purchase_costs}
+                  scenario={scenario}
+                  onScenarioChange={handlePurchaseScenarioChange}
+                />
                 <MonthlyBreakdownChart result={result} />
                 <MarketPriceCharts city={marketCity} />
               </>

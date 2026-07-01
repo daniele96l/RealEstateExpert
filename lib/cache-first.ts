@@ -16,6 +16,22 @@ import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing, Ma
 
 export type CacheSource = "local" | "server" | "network";
 
+export async function loadCityListingsCacheOnly(
+  city: string,
+  operation: "sale" | "rent",
+): Promise<{ data: CityListingsCache | null; source: CacheSource | null }> {
+  const trimmed = city.trim();
+  const local = readLocalListingsCache(trimmed, operation);
+  if (local) return { data: local, source: "local" };
+
+  const server = await getCachedListings(trimmed, operation);
+  if (server) {
+    writeLocalListingsCache(server);
+    return { data: server, source: "server" };
+  }
+  return { data: null, source: null };
+}
+
 export async function loadCityListingsCacheFirst(
   city: string,
   operation: "sale" | "rent",

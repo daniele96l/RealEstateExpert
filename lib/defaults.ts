@@ -24,6 +24,10 @@ export interface SimpleScenario {
   down_payment_pct: number;
   interest_rate_annual: number;
   loan_years: number;
+  loan_amount: number | null;
+  notary_pct: number;
+  agency_pct: number;
+  registration_tax_pct: number | null;
   renovation_cost: number;
   furnishing_cost: number;
   rental_mode: RentalMode;
@@ -69,6 +73,10 @@ export function getDefaultSimpleScenario(): SimpleScenario {
     down_payment_pct: ITALY_DEFAULTS.investment_down_payment_pct,
     interest_rate_annual: ITALY_DEFAULTS.mortgage_rate_pct,
     loan_years: ITALY_DEFAULTS.default_loan_years,
+    loan_amount: null,
+    notary_pct: ITALY_DEFAULTS.notary_pct,
+    agency_pct: ITALY_DEFAULTS.agency_pct,
+    registration_tax_pct: null,
     renovation_cost: ITALY_DEFAULTS.default_renovation_cost,
     furnishing_cost: preset.furnishing_cost,
     rental_mode: "medium_term_semester",
@@ -92,14 +100,14 @@ export function toInvestmentScenario(s: SimpleScenario): InvestmentScenario {
       purchase_price: s.purchase_price,
       property_type: s.property_type,
       cadastral_value: s.cadastral_value,
-      notary_pct: ITALY_DEFAULTS.notary_pct,
-      agency_pct: ITALY_DEFAULTS.agency_pct,
-      registration_tax_pct: null,
+      notary_pct: s.notary_pct,
+      agency_pct: s.agency_pct,
+      registration_tax_pct: s.registration_tax_pct,
       vat_pct: 0,
     },
     financing: {
       down_payment_pct: s.down_payment_pct,
-      loan_amount: null,
+      loan_amount: s.loan_amount,
       interest_rate_annual: s.interest_rate_annual,
       loan_years: s.loan_years,
     },
@@ -181,6 +189,24 @@ export function sanitizeSimple(s: SimpleScenario): SimpleScenario {
       s.cadastral_value != null && !Number.isNaN(s.cadastral_value) && s.cadastral_value > 0
         ? s.cadastral_value
         : null,
+    down_payment_pct:
+      Number.isFinite(s.down_payment_pct) && s.down_payment_pct >= 0 && s.down_payment_pct <= 100
+        ? s.down_payment_pct
+        : ITALY_DEFAULTS.investment_down_payment_pct,
+    loan_amount:
+      s.loan_amount != null && Number.isFinite(s.loan_amount) && s.loan_amount >= 0
+        ? s.loan_amount
+        : null,
+    notary_pct:
+      Number.isFinite(s.notary_pct) && s.notary_pct >= 0 ? s.notary_pct : ITALY_DEFAULTS.notary_pct,
+    agency_pct:
+      Number.isFinite(s.agency_pct) && s.agency_pct >= 0 ? s.agency_pct : ITALY_DEFAULTS.agency_pct,
+    registration_tax_pct:
+      s.registration_tax_pct != null &&
+      Number.isFinite(s.registration_tax_pct) &&
+      s.registration_tax_pct >= 0
+        ? s.registration_tax_pct
+        : null,
     renovation_cost:
       s.renovation_cost >= 0 && Number.isFinite(s.renovation_cost)
         ? s.renovation_cost
@@ -207,4 +233,59 @@ export function sanitizeSimple(s: SimpleScenario): SimpleScenario {
   }
 
   return base;
+}
+
+export type PurchaseCostField =
+  | "down_payment"
+  | "registration_tax"
+  | "notary"
+  | "agency"
+  | "renovation"
+  | "furnishing"
+  | "loan_amount";
+
+function effectiveCadastralFromSimple(s: SimpleScenario): number {
+  const price = s.purchase_price > 0 ? s.purchase_price : ITALY_DEFAULTS.default_purchase_price;
+  return s.cadastral_value != null && s.cadastral_value > 0
+    ? s.cadastral_value
+    : price * ITALY_DEFAULTS.cadastral_ratio;
+}
+
+export function applyPurchaseCostEdit(
+  s: SimpleScenario,
+  field: PurchaseCostField,
+  valueEuro: number,
+): SimpleScenario {
+  const price = s.purchase_price > 0 ? s.purchase_price : ITALY_DEFAULTS.default_purchase_price;
+  const v = Math.max(0, valueEuro);
+
+  switch (field) {
+    case "down_payment":
+      return {
+        ...s,
+        down_payment_pct: price > 0 ? (v / price) * 100 : s.down_payment_pct,
+        loan_amount: null,
+      };
+    case "registration_tax": {
+      const cadastral = effectiveCadastralFromSimple(s);
+      return {
+        ...s,
+        registration_tax_pct: cadastral > 0 ? (v / cadastral) * 100 : s.registration_tax_pct,
+      };
+    }
+    case "notary":
+      return { ...s, notary_pct: price > 0 ? (v / price) * 100 : s.notary_pct };
+    case "agency":
+      return { ...s, agency_pct: price > 0 ? (v / price) * 100 : s.agency_pct };
+    case "renovation":
+      return { ...s, renovation_cost: v };
+    case "furnishing":
+      return { ...s, furnishing_cost: v };
+    case "loan_amount":
+      return {
+        ...s,
+        loan_amount: v,
+        down_payment_pct: price > 0 ? Math.max(0, Math.min(100, ((price - v) / price) * 100)) : s.down_payment_pct,
+      };
+  }
 }
