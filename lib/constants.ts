@@ -35,6 +35,12 @@ export const ITALY_DEFAULTS = {
   investment_down_payment_pct: 25,
   /** Locali predefiniti per calcolo affitto per stanza */
   default_rent_rooms: 2,
+  /** Pagine Idealista per richiesta singola (Carica) */
+  listings_fetch_max_pages: 1,
+  /** Pagine Idealista per importazione batch (default) */
+  batch_fetch_max_pages: 5,
+  /** Massimo pagine consentite in batch */
+  batch_fetch_max_pages_cap: 10,
 } as const;
 
 /** Canone mensile da rendimento lordo ~5–6% */

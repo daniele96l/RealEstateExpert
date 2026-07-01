@@ -11,6 +11,7 @@ import { RapidApiIdealistaError } from "@/lib/server/rapidapi-idealista";
 import { hasRapidApiKey, hasScrapingBeeKey, getDefaultListingsProvider } from "@/lib/server/config";
 import { ScrapingBeeError } from "@/lib/server/scrapingbee";
 import type { BatchPreviewResult, ListingsProvider } from "@/lib/types";
+import { ITALY_DEFAULTS } from "@/lib/constants";
 
 export const maxDuration = 120;
 
@@ -22,6 +23,7 @@ export async function POST(request: Request) {
       operations?: ("sale" | "rent")[];
       refresh?: boolean;
       provider?: ListingsProvider;
+      maxPages?: number;
     };
 
     if (!body.city?.trim()) {
@@ -38,6 +40,10 @@ export async function POST(request: Request) {
 
     const searchQuery = buildSearchQuery(body.city, body.zone);
     const preferred = resolvePreferredProvider(body.provider);
+    const maxPages = Math.min(
+      Math.max(body.maxPages ?? ITALY_DEFAULTS.batch_fetch_max_pages, 1),
+      ITALY_DEFAULTS.batch_fetch_max_pages_cap,
+    );
 
     if (!body.refresh) {
       const cachedParts = await Promise.all(
@@ -66,7 +72,7 @@ export async function POST(request: Request) {
 
     const results = await Promise.all(
       operations.map(async (operation) => {
-        const { data, provider } = await fetchWithFallback(searchQuery, operation, preferred);
+        const { data, provider } = await fetchWithFallback(searchQuery, operation, preferred, maxPages);
         return { operation, data: { ...data, provider }, provider };
       }),
     );

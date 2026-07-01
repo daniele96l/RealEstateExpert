@@ -117,7 +117,7 @@ export async function getCachedMarketHistory(city: string): Promise<MarketPriceH
 export async function batchPreviewListings(
   city: string,
   operations: ("sale" | "rent")[],
-  opts?: { zone?: string; refresh?: boolean; provider?: ListingsProvider },
+  opts?: { zone?: string; refresh?: boolean; provider?: ListingsProvider; maxPages?: number },
 ): Promise<BatchPreviewResult> {
   const res = await fetch("/api/listings/batch-preview", {
     method: "POST",
@@ -128,6 +128,7 @@ export async function batchPreviewListings(
       operations,
       refresh: opts?.refresh ?? true,
       provider: opts?.provider,
+      maxPages: opts?.maxPages,
     }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Anteprima batch non riuscita"));

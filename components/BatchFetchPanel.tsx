@@ -14,6 +14,7 @@ import {
 } from "@/lib/geo-filter";
 import type { BatchPreviewResult, CombinedListingsData, ListingsProvider, MapListing, MapCenter } from "@/lib/types";
 import { writeLocalListingsCache } from "@/lib/listings-cache-client";
+import { ITALY_DEFAULTS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { CheckSquare, Loader2, MapPin, Square, X } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -40,6 +41,20 @@ interface Props {
   providersAvailable: { scrapingbee: boolean; rapidapi: boolean };
   onClose: () => void;
   onSaved: (data: CombinedListingsData) => void;
+}
+
+function countByOperation(listings: MapListing[]) {
+  return {
+    sale: listings.filter((l) => l.operation === "sale").length,
+    rent: listings.filter((l) => l.operation === "rent").length,
+  };
+}
+
+function formatOpCounts(sale: number, rent: number) {
+  const parts: string[] = [];
+  if (sale > 0) parts.push(`${sale} vendita`);
+  if (rent > 0) parts.push(`${rent} affitto`);
+  return parts.join(" · ") || "0 annunci";
 }
 
 function formatPrice(price: number, operation: "sale" | "rent") {
@@ -80,6 +95,7 @@ export default function BatchFetchPanel({
   const [fetchStatus, setFetchStatus] = useState<string | null>(null);
   const [areaCenter, setAreaCenter] = useState<MapCenter | null>(null);
   const [geocoding, setGeocoding] = useState(false);
+  const [maxPages, setMaxPages] = useState<number>(ITALY_DEFAULTS.batch_fetch_max_pages);
 
   useEffect(() => {
     setMounted(true);
@@ -204,16 +220,17 @@ export default function BatchFetchPanel({
         zone: zone.trim() || undefined,
         refresh: true,
         provider,
+        maxPages,
       });
       setPreview(result);
       if (result.center) setAreaCenter(result.center);
       if (result.sale) writeLocalListingsCache(result.sale);
       if (result.rent) writeLocalListingsCache(result.rent);
 
-      const total =
-        (result.sale?.listings.length ?? 0) + (result.rent?.listings.length ?? 0);
+      const saleCount = result.sale?.listings.length ?? 0;
+      const rentCount = result.rent?.listings.length ?? 0;
       setFetchStatus(
-        `Recuperati ${total} annunci · salvati permanentemente in data/listings/ e browser`,
+        `Recuperati ${formatOpCounts(saleCount, rentCount)} (${maxPages} pag.) · salvati in data/listings/ e browser`,
       );
 
       onSaved({
@@ -294,6 +311,10 @@ export default function BatchFetchPanel({
       setSaving(false);
     }
   };
+
+  const recoveredCounts = countByOperation(allPreviewListings);
+  const inAreaCounts = countByOperation(rows.map((r) => r.listing));
+  const selectedCounts = countByOperation(rows.filter((r) => r.selected).map((r) => r.listing));
 
   if (!open || !mounted) return null;
 
@@ -487,6 +508,25 @@ export default function BatchFetchPanel({
             )}
           </div>
 
+          <div>
+            <label className="mb-1 block text-xs text-slate-500">Pagine Idealista per operazione</label>
+            <div className="flex flex-wrap items-center gap-3">
+              <input
+                type="range"
+                min={1}
+                max={ITALY_DEFAULTS.batch_fetch_max_pages_cap}
+                step={1}
+                value={maxPages}
+                onChange={(e) => setMaxPages(Number(e.target.value))}
+                className="min-w-[120px] flex-1"
+              />
+              <span className="text-sm text-slate-300">{maxPages} pag.</span>
+              <span className="text-xs text-slate-500">
+                Più pagine = più annunci (vendita e affitto separati)
+              </span>
+            </div>
+          </div>
+
           <div className="grid gap-3 sm:grid-cols-3">
             <div>
               <label className="mb-1 block text-xs text-slate-500">Prezzo min</label>
@@ -539,7 +579,11 @@ export default function BatchFetchPanel({
             <div>
               <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                 <p className="text-xs text-slate-500">
-                  {allPreviewListings.length} recuperati · {rows.length} in area · {selectedCount} selezionati
+                  Recuperati: {formatOpCounts(recoveredCounts.sale, recoveredCounts.rent)}
+                  {" · "}
+                  In area: {formatOpCounts(inAreaCounts.sale, inAreaCounts.rent)}
+                  {" · "}
+                  Selezionati: {formatOpCounts(selectedCounts.sale, selectedCounts.rent)}
                 </p>
                 <div className="flex gap-2">
                   <button

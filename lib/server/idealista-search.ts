@@ -8,10 +8,24 @@ const IDEALISTA_BASE = "https://www.idealista.it";
 
 export class IdealistaSearchError extends Error {}
 
-function buildSearchUrl(slug: string, operation: "sale" | "rent", mapView: boolean): string {
+function buildSearchUrl(
+  slug: string,
+  operation: "sale" | "rent",
+  mapView: boolean,
+  page = 1,
+): string {
   const segment = operation === "sale" ? "vendita-case" : "affitto-case";
-  const suffix = mapView ? "/lista-mappa" : "/";
-  return `${IDEALISTA_BASE}/cerca/${segment}/${slug}${suffix}`;
+  let path = `${IDEALISTA_BASE}/cerca/${segment}/${slug}`;
+  if (mapView) path += "/lista-mappa";
+  path += "/";
+  if (page > 1) path += `pagina-${page}.htm`;
+  return path;
+}
+
+function mergeListingMaps(existing: MapListing[], incoming: MapListing[]): MapListing[] {
+  const byId = new Map(existing.map((l) => [l.id, l]));
+  for (const listing of incoming) byId.set(listing.id, listing);
+  return [...byId.values()];
 }
 
 function parsePrice(raw: unknown): number | null {
@@ -166,35 +180,44 @@ export async function fetchCityListings(
   city: string,
   operation: "sale" | "rent",
   provider: ListingsProvider = "scrapingbee",
+  maxPages = 1,
 ): Promise<CityListingsCache> {
   if (provider === "rapidapi") {
-    return fetchCityListingsViaRapidApi(city, operation);
+    return fetchCityListingsViaRapidApi(city, operation, maxPages);
   }
-  return fetchCityListingsViaScrapingBee(city, operation);
+  return fetchCityListingsViaScrapingBee(city, operation, maxPages);
 }
 
 async function fetchCityListingsViaScrapingBee(
   city: string,
   operation: "sale" | "rent",
+  maxPages = 1,
 ): Promise<CityListingsCache> {
   const centerData = await geocodeCity(city);
   let listings: MapListing[] = [];
   let lastError: unknown;
 
   for (const slug of citySlugVariants(city)) {
-    for (const mapView of [true, false]) {
-      try {
-        const html = await fetchUrl(buildSearchUrl(slug, operation, mapView));
-        listings = parseMapSearchHtml(html, operation);
-        if (listings.length) break;
-        const cards = parseListingCards(html, operation);
-        if (cards.length) {
-          listings = cards.slice(0, 30);
-          break;
+    for (let page = 1; page <= maxPages; page++) {
+      const beforeCount = listings.length;
+      for (const mapView of [true, false]) {
+        try {
+          const html = await fetchUrl(buildSearchUrl(slug, operation, mapView, page));
+          const pageListings = parseMapSearchHtml(html, operation);
+          if (pageListings.length) {
+            listings = mergeListingMaps(listings, pageListings);
+            break;
+          }
+          const cards = parseListingCards(html, operation);
+          if (cards.length) {
+            listings = mergeListingMaps(listings, cards);
+            break;
+          }
+        } catch (err) {
+          lastError = err;
         }
-      } catch (err) {
-        lastError = err;
       }
+      if (listings.length === beforeCount) break;
     }
     if (listings.length) break;
   }
@@ -213,6 +236,6 @@ async function fetchCityListingsViaScrapingBee(
       lng: centerData.lng,
       display_name: centerData.display_name ?? null,
     },
-    listings: listings.slice(0, 30),
+    listings,
   };
 }

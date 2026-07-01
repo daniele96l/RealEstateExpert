@@ -13,6 +13,7 @@ export async function fetchWithFallback(
   city: string,
   operation: "sale" | "rent",
   preferred: ListingsProvider,
+  maxPages = 1,
 ): Promise<{ data: CityListingsCache; provider: ListingsProvider }> {
   const order: ListingsProvider[] =
     preferred === "rapidapi" ? ["rapidapi", "scrapingbee"] : ["scrapingbee", "rapidapi"];
@@ -25,7 +26,7 @@ export async function fetchWithFallback(
   let lastError: unknown;
   for (const provider of available) {
     try {
-      const data = await fetchCityListings(city, operation, provider);
+      const data = await fetchCityListings(city, operation, provider, maxPages);
       return { data, provider };
     } catch (err) {
       lastError = err;

@@ -208,20 +208,37 @@ export async function fetchPropertyDetailsByUrl(
 export async function fetchCityListingsViaRapidApi(
   city: string,
   operation: "sale" | "rent",
+  maxPages = 1,
 ): Promise<CityListingsCache> {
   const [centerData, searchUrl] = await Promise.all([
     geocodeCity(city),
     resolveLocationUrl(city, operation),
   ]);
 
-  const data = await rapidApiGet<{ listings?: RapidListing[] }>("/property-search-by-url", {
-    url: searchUrl,
-  });
+  const byId = new Map<string, MapListing>();
 
-  const listings = (data.listings ?? [])
-    .map((item) => listingFromRapid(item, operation))
-    .filter((l): l is MapListing => l != null)
-    .slice(0, 30);
+  for (let page = 1; page <= maxPages; page++) {
+    const data = await rapidApiGet<{
+      listings?: RapidListing[];
+      totalPages?: number;
+      actualPage?: number;
+    }>("/property-search-by-url", {
+      url: searchUrl,
+      page: String(page),
+    });
+
+    const batch = (data.listings ?? [])
+      .map((item) => listingFromRapid(item, operation))
+      .filter((l): l is MapListing => l != null);
+
+    if (!batch.length) break;
+
+    for (const listing of batch) byId.set(listing.id, listing);
+
+    if (data.totalPages != null && page >= data.totalPages) break;
+  }
+
+  const listings = [...byId.values()];
 
   if (!listings.length) {
     throw new RapidApiIdealistaError(`Nessun annuncio trovato per ${city}`);
