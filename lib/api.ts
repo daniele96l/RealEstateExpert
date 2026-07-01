@@ -149,3 +149,11 @@ export async function batchSaveListings(payload: {
   if (!res.ok) throw new Error(await parseError(res, "Salvataggio batch non riuscito"));
   return res.json();
 }
+
+export async function geocodeCityQuery(city: string, zone?: string): Promise<MapCenter> {
+  const params = new URLSearchParams({ city });
+  if (zone?.trim()) params.set("zone", zone.trim());
+  const res = await fetch(`/api/geocode?${params}`);
+  if (!res.ok) throw new Error(await parseError(res, "Geocoding non riuscito"));
+  return res.json();
+}

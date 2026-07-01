@@ -107,7 +107,7 @@ export default function ListingsMapView({
         ))}
       </MapContainer>
       {showLegend && (
-        <div className="absolute bottom-3 left-3 z-[1000] rounded-lg border border-surface-border/80 bg-surface-base/90 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
+        <div className="absolute bottom-3 left-3 z-[1000] rounded-lg border border-surface-border/80 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
           <span className="inline-flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500" />
             Vendita ({counts.sale})

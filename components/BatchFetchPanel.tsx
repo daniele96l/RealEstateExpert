@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
-import { batchPreviewListings, batchSaveListings } from "@/lib/api";
+import { batchPreviewListings, batchSaveListings, geocodeCityQuery } from "@/lib/api";
 import {
   AREA_PRESETS,
   filterListingsByBounds,
@@ -12,7 +12,7 @@ import {
   type AreaPresetId,
   type GeoBounds,
 } from "@/lib/geo-filter";
-import type { BatchPreviewResult, CombinedListingsData, ListingsProvider, MapListing } from "@/lib/types";
+import type { BatchPreviewResult, CombinedListingsData, ListingsProvider, MapListing, MapCenter } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { CheckSquare, Loader2, MapPin, Square, X } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -77,6 +77,8 @@ export default function BatchFetchPanel({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fetchStatus, setFetchStatus] = useState<string | null>(null);
+  const [areaCenter, setAreaCenter] = useState<MapCenter | null>(null);
+  const [geocoding, setGeocoding] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -102,13 +104,38 @@ export default function BatchFetchPanel({
     };
   }, [open, onClose]);
 
+  useEffect(() => {
+    if (!open || !city.trim()) {
+      setAreaCenter(null);
+      return;
+    }
+
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      setGeocoding(true);
+      try {
+        const geo = await geocodeCityQuery(city.trim(), zone.trim() || undefined);
+        if (!cancelled) setAreaCenter(geo);
+      } catch {
+        if (!cancelled) setAreaCenter(null);
+      } finally {
+        if (!cancelled) setGeocoding(false);
+      }
+    }, 400);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [open, city, zone]);
+
   const radiusM = useMemo(() => {
     if (areaMode === "rectangle") return null;
     if (areaPreset === "custom") return customRadiusM;
     return AREA_PRESETS[areaPreset as keyof typeof AREA_PRESETS]?.radiusM ?? null;
   }, [areaMode, areaPreset, customRadiusM]);
 
-  const center = preview?.center ?? null;
+  const center = preview?.center ?? areaCenter;
 
   const allPreviewListings = useMemo(() => {
     if (!preview) return [];
@@ -178,6 +205,7 @@ export default function BatchFetchPanel({
         provider,
       });
       setPreview(result);
+      if (result.center) setAreaCenter(result.center);
       const total =
         (result.sale?.listings.length ?? 0) + (result.rent?.listings.length ?? 0);
       setFetchStatus(`Recuperati ${total} annunci`);
@@ -256,10 +284,10 @@ export default function BatchFetchPanel({
       aria-label="Importazione batch annunci"
     >
       <div
-        className="flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface-base shadow-2xl"
+        className="card-glass flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden bg-surface-raised shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-surface-border/80 px-5 py-4">
+        <div className="flex shrink-0 items-center justify-between border-b border-surface-border/80 bg-surface-raised px-5 py-4">
           <div className="flex items-center gap-2">
             <MapPin size={18} className="text-accent" />
             <h2 className="font-semibold text-slate-100">Importazione batch</h2>
@@ -274,7 +302,7 @@ export default function BatchFetchPanel({
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+        <div className="flex-1 overflow-y-auto bg-surface px-5 py-4 space-y-4">
           <div className="grid gap-3 sm:grid-cols-2">
             <div>
               <label className="mb-1 block text-xs text-slate-500">Città</label>
@@ -365,8 +393,8 @@ export default function BatchFetchPanel({
 
        
 
-            {areaMode === "radius" ? (
-              <div className="flex flex-wrap gap-2">
+            {areaMode === "radius" && (
+              <div className="mb-3 flex flex-wrap gap-2">
                 {(Object.keys(AREA_PRESETS) as (keyof typeof AREA_PRESETS)[]).map((key) => (
                   <button
                     key={key}
@@ -409,14 +437,31 @@ export default function BatchFetchPanel({
                   </div>
                 )}
               </div>
-            ) : (
-              center && (
+            )}
+
+            {geocoding && !areaCenter && (
+              <div className="mt-3 flex h-[260px] items-center justify-center rounded-lg border border-surface-border bg-surface-raised/50 text-sm text-slate-500">
+                <Loader2 size={16} className="mr-2 animate-spin text-accent" />
+                Caricamento mappa…
+              </div>
+            )}
+
+            {center && (
+              <div className="mt-3">
                 <AreaSelectMap
-                  center={center}
-                  bounds={bounds}
-                  onBoundsChange={setBounds}
-                />
-              )
+                center={center}
+                mode={areaMode}
+                radiusM={areaMode === "radius" ? radiusM : null}
+                bounds={bounds}
+                onBoundsChange={setBounds}
+                onCenterChange={setAreaCenter}
+                previewListings={allPreviewListings}
+              />
+              </div>
+            )}
+
+            {!geocoding && !center && city.trim() && (
+              <p className="text-xs text-amber-400">Impossibile geolocalizzare la città. Verifica il nome.</p>
             )}
           </div>
 
@@ -493,9 +538,9 @@ export default function BatchFetchPanel({
                   </button>
                 </div>
               </div>
-              <div className="max-h-[280px] overflow-y-auto rounded-lg border border-surface-border">
+              <div className="max-h-[280px] overflow-y-auto rounded-lg border border-surface-border bg-surface-raised/50">
                 <table className="w-full text-left text-sm">
-                  <thead className="sticky top-0 bg-surface-raised/90 text-xs text-slate-500">
+                  <thead className="sticky top-0 bg-surface-raised text-xs text-slate-500">
                     <tr>
                       <th className="p-2 w-8" />
                       <th className="p-2">Tipo</th>
@@ -550,7 +595,7 @@ export default function BatchFetchPanel({
           )}
         </div>
 
-        <div className="flex justify-end gap-2 border-t border-surface-border/80 px-5 py-4">
+        <div className="flex shrink-0 justify-end gap-2 border-t border-surface-border/80 bg-surface-raised px-5 py-4">
           <button
             type="button"
             onClick={onClose}
