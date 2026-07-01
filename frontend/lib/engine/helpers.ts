@@ -1,0 +1,44 @@
+import type { InvestmentScenario } from "../types";
+import { ITALY_DEFAULTS } from "../constants";
+
+export function effectiveCadastralValue(s: InvestmentScenario): number {
+  return s.property.cadastral_value ?? s.property.purchase_price * ITALY_DEFAULTS.cadastral_ratio;
+}
+
+/** Imposta di registro: calcolata sul valore catastale (non sul prezzo) */
+export function effectiveRegistrationTaxPct(s: InvestmentScenario): number {
+  if (s.property.registration_tax_pct != null) return s.property.registration_tax_pct;
+  return s.property.property_type === "prima_casa" ? 2 : 9;
+}
+
+export function effectiveOccupancyRate(s: InvestmentScenario): number {
+  if (s.rental.occupancy_rate != null) return s.rental.occupancy_rate;
+  if (s.rental.rental_mode === "long_term") return 0.92;
+  if (s.rental.rental_mode === "medium_term_semester") return 0.82;
+  return 0.65;
+}
+
+export function effectiveCedolareRate(s: InvestmentScenario): number {
+  if (s.tax.cedolare_rate != null) return s.tax.cedolare_rate;
+  if (s.rental.rental_mode === "long_term" || s.rental.rental_mode === "medium_term_semester") {
+    return ITALY_DEFAULTS.cedolare_long;
+  }
+  return ITALY_DEFAULTS.cedolare_short_first_property;
+}
+
+export function effectiveMaintenancePct(s: InvestmentScenario): number {
+  if (s.operating.maintenance_pct != null) return s.operating.maintenance_pct;
+  if (s.rental.rental_mode === "long_term") return ITALY_DEFAULTS.maintenance_pct_long;
+  if (s.rental.rental_mode === "medium_term_semester") return ITALY_DEFAULTS.maintenance_pct_medium;
+  return ITALY_DEFAULTS.maintenance_pct_short;
+}
+
+export function effectiveLoanAmount(s: InvestmentScenario): number {
+  if (s.financing.loan_amount != null) return s.financing.loan_amount;
+  const down = s.property.purchase_price * (s.financing.down_payment_pct / 100);
+  return Math.max(0, s.property.purchase_price - down);
+}
+
+export function round2(n: number): number {
+  return Math.round(n * 100) / 100;
+}

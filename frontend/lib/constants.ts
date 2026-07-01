@@ -1,0 +1,127 @@
+import type { EnergyClass, RentalMode } from "./types";
+
+/** Parametri fissi — stime tipiche Italia */
+export const ITALY_DEFAULTS = {
+  notary_pct: 1.5,
+  agency_pct: 3,
+  imu_rate: 0.0086,
+  maintenance_pct_long: 0.008,
+  maintenance_pct_medium: 0.01,
+  maintenance_pct_short: 0.012,
+  agency_fee_months: 1,
+  platform_fee_pct: 0.15,
+  cleaning_fee_per_turnover: 55,
+  avg_stay_nights: 3.5,
+  projection_years: 20,
+  cedolare_long: 0.21,
+  cedolare_short: 0.26,
+  cedolare_short_first_property: 0.21,
+  cadastral_ratio: 0.55,
+  /** Rendimento lordo annuo tipico (provincia / piccolo capoluogo) */
+  gross_yield_pct: 5.5,
+  /** Tasso mutuo indicativo 2025–2026 */
+  mortgage_rate_pct: 4.0,
+  /** Anticipo minimo tipico per investimento */
+  investment_down_payment_pct: 25,
+} as const;
+
+/** Canone mensile da rendimento lordo ~5–6% */
+export function estimateMonthlyRent(purchasePrice: number): number {
+  const raw = (purchasePrice * (ITALY_DEFAULTS.gross_yield_pct / 100)) / 12;
+  return Math.round(raw / 25) * 25;
+}
+
+/** Canone transitorio/semestrale: ~15% sopra il lungo termine (arredato, studenti/lavoratori) */
+export function estimateSemesterMonthlyRent(purchasePrice: number): number {
+  return Math.round(estimateMonthlyRent(purchasePrice) * 1.15 / 25) * 25;
+}
+
+/** Tariffa notturna: ~1.8× ricavo annuo lungo termine, occupazione ~65% */
+export function estimateNightlyRate(purchasePrice: number): number {
+  const annualLong = estimateMonthlyRent(purchasePrice) * 12;
+  const targetAnnual = annualLong * 1.8;
+  return Math.round(targetAnnual / (365 * 0.65));
+}
+
+export function estimateCondominio(purchasePrice: number): number {
+  return Math.round(Math.min(130, Math.max(45, purchasePrice * 0.00075)));
+}
+
+export function estimateTari(purchasePrice: number): number {
+  return Math.round(150 + purchasePrice * 0.0012);
+}
+
+export function estimateInsurance(purchasePrice: number): number {
+  return Math.round(180 + purchasePrice * 0.001);
+}
+
+export function estimateFurnishing(purchasePrice: number, mode: RentalMode): number {
+  if (mode === "long_term") {
+    return Math.round(Math.min(4000, Math.max(1000, purchasePrice * 0.02)));
+  }
+  if (mode === "medium_term_semester") {
+    return Math.round(Math.min(6000, Math.max(2500, purchasePrice * 0.035)));
+  }
+  return Math.round(Math.min(8000, Math.max(3000, purchasePrice * 0.05)));
+}
+
+export function estimateRenovationMinor(purchasePrice: number): number {
+  return Math.round(Math.min(15000, Math.max(3000, purchasePrice * 0.05)));
+}
+
+export const RENOVATION_PRESETS = {
+  none: 0,
+  minor: 5_000,
+  full: 35_000,
+  reconstruction: 80_000,
+} as const;
+
+export const ENERGY_CLASS_OPTIONS: { value: EnergyClass; label: string }[] = [
+  { value: "A4", label: "A4 — nuova costruzione" },
+  { value: "A3", label: "A3" },
+  { value: "A2", label: "A2" },
+  { value: "A1", label: "A1" },
+  { value: "B", label: "B" },
+  { value: "C", label: "C" },
+  { value: "D", label: "D" },
+  { value: "E", label: "E" },
+  { value: "F", label: "F" },
+  { value: "G", label: "G — alto consumo" },
+];
+
+/** Moltiplicatore spesa energetica vs classe C (APE) */
+export const ENERGY_CLASS_MULTIPLIER: Record<EnergyClass, number> = {
+  A4: 0.35,
+  A3: 0.42,
+  A2: 0.48,
+  A1: 0.55,
+  B: 0.72,
+  C: 1.0,
+  D: 1.28,
+  E: 1.62,
+  F: 2.05,
+  G: 2.55,
+};
+
+/** €/m² anno (classe C) — gas, luce, acqua, wi‑fi per affitto breve */
+const UTILITIES_BASE_PER_SQM_SHORT = 13;
+
+/** Stima mq da prezzo (~€2.200/m² media provinciale) */
+export function estimateSqmFromPrice(purchasePrice: number): number {
+  return Math.max(25, Math.round(purchasePrice / 2200));
+}
+
+/** Bollette annue a carico proprietario (0 in lungo termine: paga l'inquilino) */
+export function estimateUtilitiesAnnual(
+  sqm: number,
+  energyClass: EnergyClass,
+  rentalMode: RentalMode,
+  occupancyPct = 65,
+): number {
+  if (rentalMode === "long_term" || rentalMode === "medium_term_semester") return 0;
+  const mult = ENERGY_CLASS_MULTIPLIER[energyClass];
+  const occFactor = 0.45 + 0.55 * (occupancyPct / 100);
+  const variable = sqm * UTILITIES_BASE_PER_SQM_SHORT * mult * occFactor;
+  const fixed = 200;
+  return Math.round(variable + fixed);
+}

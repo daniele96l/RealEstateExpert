@@ -1,0 +1,152 @@
+import type { CityListingsCache, MapListing } from "@/lib/types";
+import { getRapidApiKey } from "./config";
+import { geocodeCity, normalizeCitySlug } from "./geocode";
+
+const RAPIDAPI_HOST = "idealista17.p.rapidapi.com";
+const IDEALISTA_BASE = "https://www.idealista.it";
+
+export class RapidApiIdealistaError extends Error {}
+
+interface SmartSearchLocation {
+  name?: string;
+  type?: string;
+  url?: string;
+  locationId?: string;
+  total?: number;
+}
+
+interface RapidListing {
+  propertyCode?: string | number;
+  price?: number;
+  priceInfo?: { price?: { amount?: number } };
+  size?: number;
+  rooms?: number;
+  address?: string;
+  latitude?: number;
+  longitude?: number;
+  url?: string;
+  operation?: string;
+  propertyType?: string;
+}
+
+async function rapidApiGet<T>(path: string, params: Record<string, string>): Promise<T> {
+  const url = new URL(`https://${RAPIDAPI_HOST}${path}`);
+  for (const [k, v] of Object.entries(params)) {
+    if (v) url.searchParams.set(k, v);
+  }
+
+  const response = await fetch(url.toString(), {
+    headers: {
+      "x-rapidapi-host": RAPIDAPI_HOST,
+      "x-rapidapi-key": getRapidApiKey(),
+    },
+    next: { revalidate: 0 },
+  });
+
+  if (response.status === 401 || response.status === 403) {
+    throw new RapidApiIdealistaError("Chiave RapidAPI non valida o piano insufficiente");
+  }
+  if (!response.ok) {
+    const text = await response.text();
+    throw new RapidApiIdealistaError(`Errore RapidAPI ${response.status}: ${text.slice(0, 200)}`);
+  }
+
+  const body = (await response.json()) as { success?: boolean; message?: string; data?: T };
+  if (body.success === false) {
+    throw new RapidApiIdealistaError(body.message ?? "Richiesta RapidAPI non riuscita");
+  }
+  return body.data as T;
+}
+
+async function resolveLocationUrl(city: string, operation: "sale" | "rent"): Promise<string> {
+  const searchType = operation === "sale" ? "for_sale" : "for_rent";
+  const data = await rapidApiGet<{ searchText?: string; results?: SmartSearchLocation[] }>(
+    "/smart-search",
+    {
+      language: "it",
+      search_text: city.trim(),
+      search_type: searchType,
+      country: "it",
+      property_type: "homes",
+    },
+  );
+
+  const match =
+    data.results?.find((r) => r.type === "location" && r.url) ??
+    data.results?.[0];
+
+  if (!match?.url) {
+    throw new RapidApiIdealistaError(`Nessuna località trovata per "${city}"`);
+  }
+
+  return match.url.startsWith("http") ? match.url : `${IDEALISTA_BASE}${match.url}`;
+}
+
+function listingFromRapid(item: RapidListing, operation: "sale" | "rent"): MapListing | null {
+  const id = String(item.propertyCode ?? "");
+  if (!id) return null;
+
+  const price = item.price ?? item.priceInfo?.price?.amount;
+  if (price == null || price <= 0) return null;
+
+  const lat = item.latitude;
+  const lng = item.longitude;
+  if (lat == null || lng == null) return null;
+
+  let url = item.url ?? `${IDEALISTA_BASE}/immobile/${id}/`;
+  if (url.startsWith("/")) url = `${IDEALISTA_BASE}${url}`;
+
+  const address = item.address ?? null;
+  const title = address ?? `Immobile ${id}`;
+
+  return {
+    id,
+    title: title.slice(0, 200),
+    price,
+    operation,
+    url,
+    lat,
+    lng,
+    sqm: item.size ?? null,
+    rooms: item.rooms ?? null,
+    address,
+  };
+}
+
+export async function fetchCityListingsViaRapidApi(
+  city: string,
+  operation: "sale" | "rent",
+): Promise<CityListingsCache> {
+  const [centerData, searchUrl] = await Promise.all([
+    geocodeCity(city),
+    resolveLocationUrl(city, operation),
+  ]);
+
+  const data = await rapidApiGet<{ listings?: RapidListing[] }>("/property-search-by-url", {
+    url: searchUrl,
+  });
+
+  const listings = (data.listings ?? [])
+    .map((item) => listingFromRapid(item, operation))
+    .filter((l): l is MapListing => l != null)
+    .slice(0, 30);
+
+  if (!listings.length) {
+    throw new RapidApiIdealistaError(`Nessun annuncio trovato per ${city}`);
+  }
+
+  const avgLat = listings.reduce((s, l) => s + l.lat, 0) / listings.length;
+  const avgLng = listings.reduce((s, l) => s + l.lng, 0) / listings.length;
+
+  return {
+    city: normalizeCitySlug(city),
+    operation,
+    fetched_at: new Date().toISOString(),
+    center: {
+      lat: centerData.lat || avgLat,
+      lng: centerData.lng || avgLng,
+      display_name: centerData.display_name ?? listings[0]?.address ?? city,
+    },
+    listings,
+  };
+}

@@ -1,0 +1,182 @@
+import type { EnergyClass, InvestmentScenario, RentalMode } from "./types";
+import {
+  ITALY_DEFAULTS,
+  estimateCondominio,
+  estimateFurnishing,
+  estimateMonthlyRent,
+  estimateNightlyRate,
+  estimateSqmFromPrice,
+  estimateUtilitiesAnnual,
+} from "./constants";
+import { getRentalModePreset } from "./rental-presets";
+
+/** Campi essenziali mostrati nel form */
+export interface SimpleScenario {
+  purchase_price: number;
+  property_type: "prima_casa" | "investment";
+  cadastral_value: number | null;
+  sqm: number;
+  energy_class: EnergyClass;
+  down_payment_pct: number;
+  interest_rate_annual: number;
+  loan_years: number;
+  renovation_cost: number;
+  furnishing_cost: number;
+  rental_mode: RentalMode;
+  monthly_rent: number;
+  nightly_rate: number;
+  occupancy_pct: number;
+  condominio_monthly: number;
+  utilities_annual: number;
+  utilities_auto: boolean;
+}
+
+export function resolveUtilitiesAnnual(s: SimpleScenario): number {
+  if (s.utilities_auto) {
+    return estimateUtilitiesAnnual(s.sqm, s.energy_class, s.rental_mode, s.occupancy_pct);
+  }
+  return Math.max(0, s.utilities_annual);
+}
+
+export function getDefaultSimpleScenario(): SimpleScenario {
+  const price = 100_000;
+  const sqm = estimateSqmFromPrice(price);
+  const energy_class: EnergyClass = "D";
+  const preset = getRentalModePreset("long_term", price);
+  return {
+    purchase_price: price,
+    property_type: "investment",
+    cadastral_value: null,
+    sqm,
+    energy_class,
+    down_payment_pct: ITALY_DEFAULTS.investment_down_payment_pct,
+    interest_rate_annual: ITALY_DEFAULTS.mortgage_rate_pct,
+    loan_years: 25,
+    renovation_cost: 5_000,
+    furnishing_cost: preset.furnishing_cost,
+    rental_mode: "long_term",
+    monthly_rent: preset.monthly_rent,
+    nightly_rate: preset.nightly_rate,
+    occupancy_pct: preset.occupancy_pct,
+    condominio_monthly: preset.condominio_monthly,
+    utilities_annual: 0,
+    utilities_auto: true,
+  };
+}
+
+export function toInvestmentScenario(s: SimpleScenario): InvestmentScenario {
+  const preset = getRentalModePreset(s.rental_mode, s.purchase_price);
+  const usesMonthlyRent = s.rental_mode !== "short_term_airbnb";
+
+  return {
+    property: {
+      purchase_price: s.purchase_price,
+      property_type: s.property_type,
+      cadastral_value: s.cadastral_value,
+      notary_pct: ITALY_DEFAULTS.notary_pct,
+      agency_pct: ITALY_DEFAULTS.agency_pct,
+      registration_tax_pct: null,
+      vat_pct: 0,
+    },
+    financing: {
+      down_payment_pct: s.down_payment_pct,
+      loan_amount: null,
+      interest_rate_annual: s.interest_rate_annual,
+      loan_years: s.loan_years,
+    },
+    renovation: {
+      renovation_level: s.renovation_cost > 0 ? "minor" : "none",
+      renovation_cost: s.renovation_cost,
+      furnishing_cost: s.furnishing_cost,
+    },
+    rental: {
+      rental_mode: s.rental_mode,
+      tenant_profile:
+        s.rental_mode === "medium_term_semester" ? "students_annual" : "workers_annual",
+      monthly_rent: usesMonthlyRent ? s.monthly_rent : null,
+      nightly_rate: usesMonthlyRent ? null : s.nightly_rate,
+      occupancy_rate: s.occupancy_pct / 100,
+      avg_stay_nights: preset.rental.avg_stay_nights,
+      turnovers_per_year: preset.rental.turnovers_per_year,
+    },
+    operating: {
+      imu_rate: ITALY_DEFAULTS.imu_rate,
+      affitti_brevi_imu_surcharge: preset.operating.affitti_brevi_imu_surcharge,
+      affitti_brevi_imu_surcharge_rate: preset.operating.affitti_brevi_imu_surcharge_rate,
+      tari_annual: preset.operating.tari_annual,
+      condominio_monthly: s.condominio_monthly,
+      insurance_annual: preset.operating.insurance_annual,
+      maintenance_pct: preset.operating.maintenance_pct,
+      agency_fee_months: preset.operating.agency_fee_months,
+      platform_fee_pct: preset.operating.platform_fee_pct,
+      cleaning_fee_per_turnover: preset.operating.cleaning_fee_per_turnover,
+      utilities_landlord_annual: resolveUtilitiesAnnual(s),
+    },
+    tax: {
+      tax_regime: "cedolare_secca",
+      cedolare_rate: preset.cedolare_rate,
+      use_irpef: false,
+    },
+    projection_years: ITALY_DEFAULTS.projection_years,
+    price_appreciation_annual: 0,
+  };
+}
+
+/** Applica i default del regime selezionato (chiamato al cambio modalità affitto) */
+export function applyRentalModeToSimple(
+  s: SimpleScenario,
+  mode: RentalMode,
+): SimpleScenario {
+  const price = s.purchase_price > 0 ? s.purchase_price : 100_000;
+  const preset = getRentalModePreset(mode, price);
+  const next = {
+    ...s,
+    rental_mode: mode,
+    occupancy_pct: preset.occupancy_pct,
+    monthly_rent: preset.monthly_rent,
+    nightly_rate: preset.nightly_rate,
+    furnishing_cost: preset.furnishing_cost,
+    condominio_monthly: preset.condominio_monthly,
+  };
+  if (next.utilities_auto) {
+    next.utilities_annual = estimateUtilitiesAnnual(
+      next.sqm,
+      next.energy_class,
+      mode,
+      next.occupancy_pct,
+    );
+  }
+  return next;
+}
+
+export function sanitizeSimple(s: SimpleScenario): SimpleScenario {
+  const price = s.purchase_price > 0 ? s.purchase_price : 100_000;
+  const preset = getRentalModePreset(s.rental_mode, price);
+  const sqm = s.sqm > 0 ? s.sqm : estimateSqmFromPrice(price);
+
+  const base = {
+    ...s,
+    purchase_price: price,
+    sqm,
+    cadastral_value:
+      s.cadastral_value != null && !Number.isNaN(s.cadastral_value) && s.cadastral_value > 0
+        ? s.cadastral_value
+        : null,
+    occupancy_pct: Math.min(100, Math.max(0, s.occupancy_pct || preset.occupancy_pct)),
+    monthly_rent: s.monthly_rent > 0 ? s.monthly_rent : preset.monthly_rent,
+    nightly_rate: s.nightly_rate > 0 ? s.nightly_rate : preset.nightly_rate,
+    condominio_monthly:
+      s.condominio_monthly > 0 ? s.condominio_monthly : preset.condominio_monthly,
+  };
+
+  if (base.utilities_auto) {
+    base.utilities_annual = estimateUtilitiesAnnual(
+      base.sqm,
+      base.energy_class,
+      base.rental_mode,
+      base.occupancy_pct,
+    );
+  }
+
+  return base;
+}

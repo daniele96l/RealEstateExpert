@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Env
+.env
+.env.local
+.env*.local
+
+# Listings cache
+backend/data/listings/*.json
+frontend/data/listings/*.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.DS_Store
