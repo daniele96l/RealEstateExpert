@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { normalizeCitySlug } from "@/lib/server/geocode";
-import { saveCache } from "@/lib/server/listings-cache";
+import { getCache, mergeListingCache, mergeListings, saveCache } from "@/lib/server/listings-cache";
 import type { BatchSaveResult, CityListingsCache, ListingsProvider, MapCenter, MapListing } from "@/lib/types";
 
 export const maxDuration = 60;
@@ -37,26 +37,28 @@ export async function POST(request: Request) {
     let rentCache: CityListingsCache | undefined;
 
     if (saleListings.length) {
-      saleCache = {
+      const existing = await getCache(citySlug, "sale");
+      saleCache = mergeListingCache(existing, {
         city: citySlug,
         operation: "sale",
         fetched_at: fetchedAt,
         center: body.center,
-        listings: saleListings,
+        listings: mergeListings(existing?.listings ?? [], saleListings),
         provider,
-      };
+      });
       await saveCache(saleCache);
     }
 
     if (rentListings.length) {
-      rentCache = {
+      const existing = await getCache(citySlug, "rent");
+      rentCache = mergeListingCache(existing, {
         city: citySlug,
         operation: "rent",
         fetched_at: fetchedAt,
         center: body.center,
-        listings: rentListings,
+        listings: mergeListings(existing?.listings ?? [], rentListings),
         provider,
-      };
+      });
       await saveCache(rentCache);
     }
 

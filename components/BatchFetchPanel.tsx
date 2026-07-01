@@ -13,6 +13,7 @@ import {
   type GeoBounds,
 } from "@/lib/geo-filter";
 import type { BatchPreviewResult, CombinedListingsData, ListingsProvider, MapListing, MapCenter } from "@/lib/types";
+import { writeLocalListingsCache } from "@/lib/listings-cache-client";
 import { cn } from "@/lib/utils";
 import { CheckSquare, Loader2, MapPin, Square, X } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -206,14 +207,33 @@ export default function BatchFetchPanel({
       });
       setPreview(result);
       if (result.center) setAreaCenter(result.center);
+      if (result.sale) writeLocalListingsCache(result.sale);
+      if (result.rent) writeLocalListingsCache(result.rent);
+
       const total =
         (result.sale?.listings.length ?? 0) + (result.rent?.listings.length ?? 0);
-      setFetchStatus(`Recuperati ${total} annunci`);
-      const listings = [
-        ...(result.sale?.listings ?? []),
-        ...(result.rent?.listings ?? []),
-      ];
+      setFetchStatus(
+        `Recuperati ${total} annunci · salvati permanentemente in data/listings/ e browser`,
+      );
+
+      onSaved({
+        center: result.center,
+        listings: [
+          ...(result.sale?.listings ?? []),
+          ...(result.rent?.listings ?? []),
+        ],
+        provider: result.provider,
+        fetched_at: result.fetched_at,
+        areaRadiusM: areaMode === "radius" ? radiusM : null,
+        sale: result.sale,
+        rent: result.rent,
+      });
+
       if (result.center) {
+        const listings = [
+          ...(result.sale?.listings ?? []),
+          ...(result.rent?.listings ?? []),
+        ];
         setRows(
           listings.map((listing) => ({
             listing,
@@ -256,9 +276,11 @@ export default function BatchFetchPanel({
         sale,
         rent,
       });
+      if (result.sale) writeLocalListingsCache(result.sale);
+      if (result.rent) writeLocalListingsCache(result.rent);
       onSaved({
         center: result.center,
-        listings: result.listings,
+        listings: [...sale, ...rent],
         provider: result.provider,
         fetched_at: result.fetched_at,
         areaRadiusM: areaMode === "radius" ? radiusM : null,
@@ -610,7 +632,7 @@ export default function BatchFetchPanel({
             className="btn-primary flex items-center gap-2 px-4 disabled:opacity-50"
           >
             {saving ? <Loader2 size={16} className="animate-spin" /> : null}
-            Salva selezionati e aggiorna mappa
+            Salva selezionati sulla mappa
           </button>
         </div>
       </div>

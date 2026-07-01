@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { GeocodeError, geocodeCity } from "@/lib/server/geocode";
 import { IdealistaSearchError } from "@/lib/server/idealista-search";
-import { getCache, saveCache } from "@/lib/server/listings-cache";
+import { getCache, mergeListingCache, saveCache } from "@/lib/server/listings-cache";
 import {
   buildSearchQuery,
   fetchWithFallback,
@@ -94,8 +94,11 @@ export async function POST(request: Request) {
     };
 
     for (const { operation, data } of results) {
-      if (operation === "sale") result.sale = data;
-      else result.rent = data;
+      const existing = await getCache(data.city, operation);
+      const merged = mergeListingCache(existing, data);
+      await saveCache(merged);
+      if (operation === "sale") result.sale = merged;
+      else result.rent = merged;
     }
 
     return NextResponse.json(result);
