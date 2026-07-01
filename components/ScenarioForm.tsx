@@ -167,7 +167,7 @@ export default function ScenarioForm({ onChange, prefill }: Props) {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Prezzo di acquisto (€)">
-              <input type="number" className="input-field" {...register("purchase_price", { valueAsNumber: true })} />
+              <input type="number" step={5000} className="input-field" {...register("purchase_price", { valueAsNumber: true })} />
             </Field>
             <Field label="Tipologia">
               <select className="select-field" {...register("property_type")}>
