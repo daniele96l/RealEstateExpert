@@ -14,6 +14,7 @@ import {
   type SimpleScenario,
 } from "@/lib/defaults";
 import { runSimulation } from "@/lib/engine/simulator";
+import { estimateRentableRooms } from "@/lib/rent-price-basis";
 import type { AnalysisResult, ListingDetail, MapListing } from "@/lib/types";
 import { Building2, BarChart3 } from "lucide-react";
 
@@ -50,7 +51,9 @@ export default function HomePage() {
         ? { purchase_price: d.price, rental_mode: "medium_term_semester" as const }
         : { monthly_rent: d.price, rental_mode: "medium_term_semester" as const, rent_price_basis: "whole" as const }),
       ...(sqm != null && sqm > 0 ? { sqm } : {}),
-      ...(d.rooms != null && d.rooms > 0 ? { rent_rooms: d.rooms } : {}),
+      ...(d.rooms != null && d.rooms > 0
+        ? { rent_rooms: estimateRentableRooms(d.rooms) ?? d.rooms }
+        : {}),
       ...(detail?.energy_class ? { energy_class: detail.energy_class } : {}),
       ...(detail?.condominio_monthly ? { condominio_monthly: detail.condominio_monthly } : {}),
       ...(detail?.needs_renovation === true ? { renovation_cost: 15_000 } : {}),
@@ -63,7 +66,9 @@ export default function HomePage() {
       rental_mode: "medium_term_semester" as const,
       monthly_rent: rentListing.price,
       rent_price_basis: "whole" as const,
-      ...(saleDetail.rooms != null && saleDetail.rooms > 0 ? { rent_rooms: saleDetail.rooms } : {}),
+      ...(saleDetail.rooms != null && saleDetail.rooms > 0
+        ? { rent_rooms: estimateRentableRooms(saleDetail.rooms) ?? saleDetail.rooms }
+        : {}),
       ...(saleDetail.sqm != null && saleDetail.sqm > 0 ? { sqm: saleDetail.sqm } : {}),
       ...(saleDetail.energy_class ? { energy_class: saleDetail.energy_class } : {}),
       ...(saleDetail.condominio_monthly ? { condominio_monthly: saleDetail.condominio_monthly } : {}),
@@ -79,7 +84,9 @@ export default function HomePage() {
         ...(wholeMonthly != null
           ? { monthly_rent: wholeMonthly, rent_price_basis: "whole" as const }
           : { monthly_rent: avgPerRoom, rent_price_basis: "per_room" as const }),
-        ...(saleDetail.rooms != null && saleDetail.rooms > 0 ? { rent_rooms: saleDetail.rooms } : {}),
+        ...(saleDetail.rooms != null && saleDetail.rooms > 0
+          ? { rent_rooms: estimateRentableRooms(saleDetail.rooms) ?? saleDetail.rooms }
+          : {}),
         ...(saleDetail.sqm != null && saleDetail.sqm > 0 ? { sqm: saleDetail.sqm } : {}),
         ...(saleDetail.energy_class ? { energy_class: saleDetail.energy_class } : {}),
         ...(saleDetail.condominio_monthly ? { condominio_monthly: saleDetail.condominio_monthly } : {}),

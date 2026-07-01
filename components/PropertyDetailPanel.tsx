@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { loadCityListingsCacheFirst } from "@/lib/cache-first";
 import { criteriaFromDetail, filterSimilarRentals } from "@/lib/similar-listings";
 import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client";
 import {
   averageMonthlyRentPerRoom,
+  estimateRentableRooms,
   estimateWholeFlatRent,
   inferRentPriceBasis,
   listingWithEffectiveRent,
+  rentableRoomsAssumption,
   rentPriceBasisBadgeClass,
   rentPriceBasisLabel,
 } from "@/lib/rent-price-basis";
@@ -24,7 +26,6 @@ import {
   Loader2,
   MapPin,
   Ruler,
-  Search,
   Sparkles,
   Thermometer,
   X,
@@ -103,20 +104,7 @@ export default function PropertyDetailPanel({
     }
   }, [open, detail?.id]);
 
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open, onClose]);
-
-  const findSimilarRentals = async () => {
+  const findSimilarRentals = useCallback(async () => {
     if (!detail) return;
     setSimilarLoading(true);
     setSimilarError(null);
@@ -139,7 +127,25 @@ export default function PropertyDetailPanel({
     } finally {
       setSimilarLoading(false);
     }
-  };
+  }, [detail, mapCity, provider]);
+
+  useEffect(() => {
+    if (!open || loading || !detail || detail.operation !== "sale") return;
+    void findSimilarRentals();
+  }, [open, loading, detail?.id, detail?.operation, findSimilarRentals]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open, onClose]);
 
   if (!open || !mounted) return null;
 
@@ -150,15 +156,18 @@ export default function PropertyDetailPanel({
         ? fmtEuro(detail.price)
         : "";
 
-  const showSimilarColumn = similarLoading || similarRentals !== null || Boolean(similarError);
+  const showSimilarColumn = detail?.operation === "sale" && !loading;
   const avgRentPerRoom =
     similarRentals && similarRentals.length > 0
       ? averageMonthlyRentPerRoom(similarRentals)
       : null;
 
+  const rentableRooms = estimateRentableRooms(detail?.rooms);
+  const rentableRoomsNote = rentableRoomsAssumption(detail?.rooms);
+
   const avgWholeMonthly =
-    avgRentPerRoom != null && detail?.rooms != null && detail.rooms > 0
-      ? avgRentPerRoom * detail.rooms
+    avgRentPerRoom != null && rentableRooms != null
+      ? avgRentPerRoom * rentableRooms
       : null;
 
   const closeSimilarColumn = () => {
@@ -234,6 +243,13 @@ export default function PropertyDetailPanel({
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
               <Spec icon={Ruler} label="Superficie" value={detail.sqm != null ? `${detail.sqm} m²` : "—"} />
               <Spec icon={Building2} label="Locali" value={detail.rooms != null ? String(detail.rooms) : "—"} />
+              {rentableRooms != null && detail.rooms != null && detail.rooms > 1 && (
+                <Spec
+                  icon={Building2}
+                  label="Stanze affittabili (stima)"
+                  value={String(rentableRooms)}
+                />
+              )}
               <Spec icon={Bath} label="Bagni" value={detail.bathrooms != null ? String(detail.bathrooms) : "—"} />
               <Spec icon={Layers} label="Piano" value={detail.floor ?? "—"} />
               <Spec
@@ -335,20 +351,6 @@ export default function PropertyDetailPanel({
               >
                 Usa per analisi
               </button>
-              {detail.operation === "sale" && (
-                <button
-                  type="button"
-                  disabled={similarLoading}
-                  onClick={findSimilarRentals}
-                  className={cn(
-                    "inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-accent/40 bg-accent/10 px-4 py-2.5",
-                    "text-sm font-medium text-accent hover:bg-accent/20 disabled:opacity-50",
-                  )}
-                >
-                  {similarLoading ? <Loader2 size={14} className="animate-spin" /> : <Search size={14} />}
-                  Cerca affitti simili
-                </button>
-              )}
               <a
                 href={detail.url}
                 target="_blank"
@@ -428,16 +430,21 @@ export default function PropertyDetailPanel({
                         </p>
                         <p className="mt-0.5 text-xs text-slate-500">
                           Su {similarRentals.length} annunci in zona
-                          {avgWholeMonthly != null && (
+                          {avgWholeMonthly != null && rentableRooms != null && (
                             <>
                               {" "}
                               · intero stimato{" "}
                               <span className="font-medium text-slate-300">
                                 {fmtEuro(avgWholeMonthly)}/mese
                               </span>
+                              {" "}
+                              ({fmtEuro(avgRentPerRoom!)} × {rentableRooms} stanze)
                             </>
                           )}
                         </p>
+                        {rentableRoomsNote && (
+                          <p className="mt-2 text-[11px] leading-relaxed text-slate-500">{rentableRoomsNote}</p>
+                        )}
                         {onUseAverageRent && avgRentPerRoom != null && (
                           <button
                             type="button"
@@ -457,7 +464,8 @@ export default function PropertyDetailPanel({
                       </div>
                     )}
                     <p className="mb-3 text-xs text-slate-500">
-                      Per le stanze: stima intero = prezzo stanza × locali. Verifica su Idealista.
+                      Per annunci «stanza»: stima intero = prezzo stanza × locali dell&apos;annuncio. Per
+                      l&apos;immobile in vendita si usano le stanze affittabili stimate (locali − 1 soggiorno).
                     </p>
                     <div className="space-y-2">
                       {similarRentals.map((rent) => {

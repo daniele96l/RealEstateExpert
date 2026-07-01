@@ -40,6 +40,22 @@ export function rentPriceBasisBadgeClass(basis: RentPriceBasis): string {
   return "border-slate-500/40 bg-slate-500/10 text-slate-400";
 }
 
+/** Stanze affittabili stimate da «locali» Idealista (soggiorno + camere; cucina/bagno esclusi). */
+export function estimateRentableRooms(rooms: number | null | undefined): number | null {
+  if (rooms == null || rooms < 1) return null;
+  if (rooms === 1) return 1;
+  return Math.max(1, rooms - 1);
+}
+
+export function rentableRoomsAssumption(rooms: number | null | undefined): string | null {
+  const rentable = estimateRentableRooms(rooms);
+  if (rentable == null || rooms == null) return null;
+  if (rooms === 1) {
+    return "Monolocale: si considera 1 unità affittabile (intero appartamento).";
+  }
+  return `Su Idealista «${rooms} locali» di solito include soggiorno + camere (cucina e bagno esclusi). Si presume 1 locale = soggiorno → ${rentable} stanze affittabili.`;
+}
+
 export interface WholeFlatRentEstimate {
   pricePerRoom: number;
   roomCount: number;
