@@ -1,7 +1,7 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
 import path from "path";
 import type { MarketPriceHistory } from "@/lib/types";
 import { normalizeCitySlug } from "./geocode";
+import { readJsonFile, writeJsonFile } from "./fs-cache-io";
 
 const DATA_DIR = path.join(process.cwd(), "data", "market");
 
@@ -10,16 +10,10 @@ function cacheFilePath(city: string): string {
 }
 
 export async function getMarketCache(city: string): Promise<MarketPriceHistory | null> {
-  try {
-    const raw = await readFile(cacheFilePath(city), "utf-8");
-    return JSON.parse(raw) as MarketPriceHistory;
-  } catch {
-    return null;
-  }
+  return readJsonFile<MarketPriceHistory>(cacheFilePath(city));
 }
 
 export async function saveMarketCache(data: MarketPriceHistory): Promise<void> {
-  await mkdir(DATA_DIR, { recursive: true });
   const slug = normalizeCitySlug(data.city_slug || data.city);
-  await writeFile(path.join(DATA_DIR, `${slug}.json`), JSON.stringify(data, null, 2), "utf-8");
+  await writeJsonFile(path.join(DATA_DIR, `${slug}.json`), data);
 }

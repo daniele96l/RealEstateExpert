@@ -1,7 +1,7 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
 import path from "path";
 import type { CityListingsCache, MapListing } from "@/lib/types";
 import { normalizeCitySlug } from "./geocode";
+import { readJsonFile, writeJsonFile } from "./fs-cache-io";
 
 const DATA_DIR = path.join(process.cwd(), "data", "listings");
 
@@ -28,15 +28,9 @@ export function mergeListingCache(
 }
 
 export async function getCache(city: string, operation: string): Promise<CityListingsCache | null> {
-  try {
-    const raw = await readFile(cacheFilePath(city, operation), "utf-8");
-    return JSON.parse(raw) as CityListingsCache;
-  } catch {
-    return null;
-  }
+  return readJsonFile<CityListingsCache>(cacheFilePath(city, operation));
 }
 
 export async function saveCache(data: CityListingsCache): Promise<void> {
-  await mkdir(DATA_DIR, { recursive: true });
-  await writeFile(cacheFilePath(data.city, data.operation), JSON.stringify(data, null, 2), "utf-8");
+  await writeJsonFile(cacheFilePath(data.city, data.operation), data);
 }
