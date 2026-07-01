@@ -50,6 +50,14 @@ export async function getListingsProviders(): Promise<{
   return res.json();
 }
 
+export async function getCachedPropertyDetail(id: string): Promise<ListingDetail | null> {
+  const params = new URLSearchParams({ id });
+  const res = await fetch(`/api/listings/property?${params}`);
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(await parseError(res, "Errore lettura cache dettaglio"));
+  return res.json();
+}
+
 export async function fetchPropertyDetail(
   listing: MapListing,
   refresh = false,

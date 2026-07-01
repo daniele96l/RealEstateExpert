@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { fetchListings } from "@/lib/api";
 import { criteriaFromDetail, filterSimilarRentals } from "@/lib/similar-listings";
+import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { cn, fmtEuro } from "@/lib/utils";
 import {
@@ -27,6 +28,7 @@ interface Props {
   loading: boolean;
   error: string | null;
   provider: ListingsProvider;
+  cacheSource?: "server" | "local" | null;
   onClose: () => void;
   onAnalyze: (detail: ListingDetail) => void;
   onUseSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
@@ -64,6 +66,7 @@ export default function PropertyDetailPanel({
   loading,
   error,
   provider,
+  cacheSource,
   onClose,
   onAnalyze,
   onUseSimilarRent,
@@ -328,6 +331,16 @@ export default function PropertyDetailPanel({
                   ))}
                 </div>
               </div>
+            )}
+
+            {cacheSource && detail.fetched_at && (
+              <p className="text-xs text-slate-600">
+                {cacheSource === "server"
+                  ? `Da cache ${propertyDetailCacheFileLabel(detail.id)}`
+                  : "Da cache browser"}
+                {" · "}
+                {new Date(detail.fetched_at).toLocaleString("it-IT")}
+              </p>
             )}
           </div>
         )}

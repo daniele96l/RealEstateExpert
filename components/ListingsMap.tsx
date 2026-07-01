@@ -2,12 +2,17 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { fetchListings, fetchPropertyDetail, getCachedListings, getListingsProviders, importFromIdealista } from "@/lib/api";
+import { fetchListings, fetchPropertyDetail, getCachedListings, getCachedPropertyDetail, getListingsProviders, importFromIdealista } from "@/lib/api";
 import {
   cacheFileLabel,
   readLocalListingsCache,
   writeLocalListingsCache,
 } from "@/lib/listings-cache-client";
+import {
+  propertyDetailCacheFileLabel,
+  readLocalPropertyDetailCache,
+  writeLocalPropertyDetailCache,
+} from "@/lib/property-detail-cache-client";
 import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import PropertyDetailPanel from "@/components/PropertyDetailPanel";
 import { cn } from "@/lib/utils";
@@ -52,6 +57,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
   const [selectedDetail, setSelectedDetail] = useState<ListingDetail | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
   const [detailError, setDetailError] = useState<string | null>(null);
+  const [detailCacheSource, setDetailCacheSource] = useState<"server" | "local" | null>(null);
   const autoLoaded = useRef(false);
 
   const applyListings = useCallback((payload: CityListingsCache, cached: boolean, source: "server" | "local" | null) => {
@@ -118,11 +124,28 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
       setDetailOpen(true);
       setSelectedDetail(null);
       setDetailError(null);
+      setDetailCacheSource(null);
       setDetailLoading(true);
       onSelectListing?.(listing);
       try {
+        const cached = await getCachedPropertyDetail(listing.id);
+        if (cached) {
+          setSelectedDetail(cached);
+          setDetailCacheSource("server");
+          writeLocalPropertyDetailCache(cached);
+          onSelectListing?.(listing, cached);
+          return;
+        }
+        const local = readLocalPropertyDetailCache(listing.id);
+        if (local) {
+          setSelectedDetail(local);
+          setDetailCacheSource("local");
+          onSelectListing?.(listing, local);
+          return;
+        }
         const detail = await fetchPropertyDetail(listing, false, provider);
         setSelectedDetail(detail);
+        writeLocalPropertyDetailCache(detail);
         onSelectListing?.(listing, detail);
       } catch (e) {
         setDetailError(e instanceof Error ? e.message : "Dettaglio non disponibile");
@@ -159,6 +182,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
     setSelectedId(null);
     setSelectedDetail(null);
     setDetailError(null);
+    setDetailCacheSource(null);
   };
 
   return (
@@ -322,6 +346,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onCityC
         loading={detailLoading}
         error={detailError}
         provider={provider}
+        cacheSource={detailCacheSource}
         onClose={handleCloseDetail}
         onAnalyze={(detail) => onSelectListing?.(detail, detail)}
         onUseSimilarRent={onUseSimilarRent}

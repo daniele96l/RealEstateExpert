@@ -10,6 +10,25 @@ import type { ListingsProvider, MapListing } from "@/lib/types";
 
 export const maxDuration = 120;
 
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id")?.trim();
+
+  if (id) {
+    const cached = await getPropertyDetailCache(id);
+    if (!cached) {
+      return NextResponse.json({ detail: "Nessun dettaglio in cache per questo annuncio" }, { status: 404 });
+    }
+    return NextResponse.json(cached);
+  }
+
+  return NextResponse.json({
+    default_provider: getDefaultListingsProvider(),
+    scrapingbee: hasScrapingBeeKey(),
+    rapidapi: hasRapidApiKey(),
+  });
+}
+
 async function fetchDetail(
   url: string,
   provider: ListingsProvider,
