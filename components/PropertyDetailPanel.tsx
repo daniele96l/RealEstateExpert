@@ -121,8 +121,8 @@ export default function PropertyDetailPanel({
     setSimilarRentals(null);
     try {
       const criteria = criteriaFromDetail(detail, mapCity);
-      if (!criteria.zone) {
-        setSimilarError("Zona non disponibile per questo annuncio — impossibile cercare affitti nella stessa area.");
+      if (!criteria.zone && (criteria.lat == null || criteria.lng == null)) {
+        setSimilarError("Zona o posizione non disponibili — impossibile cercare affitti nella stessa area.");
         return;
       }
       const { data: cache } = await loadCityListingsCacheFirst(criteria.city, "rent", false, provider);

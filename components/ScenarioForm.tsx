@@ -229,7 +229,21 @@ export default function ScenarioForm({ onChange, prefill }: Props) {
               <input type="number" className="input-field" {...register("loan_years", { valueAsNumber: true })} />
             </Field>
             <Field label="Ristrutturazione (€)">
-              <input type="number" className="input-field" {...register("renovation_cost", { valueAsNumber: true })} />
+              <input
+                type="number"
+                min={0}
+                step={500}
+                className="input-field"
+                {...register("renovation_cost", {
+                  valueAsNumber: true,
+                  setValueAs: (v) => {
+                    const n = typeof v === "string" ? Number(v) : v;
+                    return Number.isFinite(n) && n >= 0
+                      ? n
+                      : ITALY_DEFAULTS.default_renovation_cost;
+                  },
+                })}
+              />
             </Field>
             <Field label="Arredamento (€)" hint={
               rentalMode === "short_term_airbnb"
