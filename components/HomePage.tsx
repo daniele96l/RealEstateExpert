@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import ScenarioForm from "@/components/ScenarioForm";
 import ListingsMap from "@/components/ListingsMap";
 import AnalysisSourcesPanel from "@/components/AnalysisSourcesPanel";
+import AnalysisHistoryPanel from "@/components/AnalysisHistoryPanel";
 import MarketPriceCharts from "@/components/MarketPriceCharts";
 import PurchaseBreakdown from "@/components/PurchaseBreakdown";
 import MonthlyBreakdownChart from "@/components/MonthlyBreakdownChart";
@@ -19,6 +20,7 @@ import {
   scenarioFromListingAnalysis,
   type ListingAnalysisSource,
 } from "@/lib/listing-analysis";
+import { saveAnalysisComparison } from "@/lib/analysis-history-client";
 import type { AnalysisResult, ListingDetail, MapListing } from "@/lib/types";
 import { Building2, BarChart3 } from "lucide-react";
 
@@ -31,6 +33,7 @@ export default function HomePage() {
   const [formSyncToken, setFormSyncToken] = useState(0);
   const [marketCity, setMarketCity] = useState("Reggio Calabria");
   const [analysisSource, setAnalysisSource] = useState<ListingAnalysisSource | null>(null);
+  const [historyRefreshToken, setHistoryRefreshToken] = useState(0);
 
   const updateScenario = useCallback((simple: SimpleScenario) => {
     const cleaned = sanitizeSimple(simple);
@@ -89,16 +92,29 @@ export default function HomePage() {
       similarRentals: MapListing[],
     ) => {
       const next = scenarioFromListingAnalysis(saleDetail, avgPerRoom, wholeMonthly);
-      setAnalysisSource({
+      const source: ListingAnalysisSource = {
         sale: saleDetail,
         similarRentals,
         avgRentPerRoom: avgPerRoom,
         avgWholeMonthly: wholeMonthly,
-      });
+      };
+      setAnalysisSource(source);
       setFormPrefill(next);
+      saveAnalysisComparison(source, next, marketCity);
+      setHistoryRefreshToken((n) => n + 1);
       document.getElementById("parametri")?.scrollIntoView({ behavior: "smooth", block: "start" });
     },
-    [],
+    [marketCity],
+  );
+
+  const handleRestoreAnalysis = useCallback(
+    (source: ListingAnalysisSource, restoredScenario: SimpleScenario) => {
+      setAnalysisSource(source);
+      setFormPrefill(restoredScenario);
+      updateScenario(restoredScenario);
+      setFormSyncToken((n) => n + 1);
+    },
+    [updateScenario],
   );
 
   return (
@@ -141,6 +157,10 @@ export default function HomePage() {
               onUseSimilarRent={handleUseSimilarRent}
               onUseAverageRent={handleUseAverageRent}
               onCityChange={setMarketCity}
+            />
+            <AnalysisHistoryPanel
+              onRestore={handleRestoreAnalysis}
+              refreshToken={historyRefreshToken}
             />
             {result ? (
               <>

@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import {
   estimateWholeFlatRent,
   inferRentPriceBasis,
@@ -9,7 +10,18 @@ import {
 import type { ListingAnalysisSource } from "@/lib/listing-analysis";
 import { resolveScenarioMonthlyRent, type SimpleScenario } from "@/lib/defaults";
 import { cn, fmtEuro } from "@/lib/utils";
-import { Building2, ExternalLink, Home, Key } from "lucide-react";
+import { Building2, Download, ExternalLink, Home, Key } from "lucide-react";
+import { downloadAnalysisJson } from "@/lib/analysis-history-client";
+import { createSavedComparison } from "@/lib/analysis-history";
+
+const PropertySimilarRentMap = dynamic(() => import("./PropertySimilarRentMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[240px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-slate-500">
+      Caricamento mappa…
+    </div>
+  ),
+});
 
 interface Props {
   source: ListingAnalysisSource;
@@ -68,13 +80,31 @@ export default function AnalysisSourcesPanel({ source, scenario }: Props) {
   return (
     <section className="card-glass overflow-hidden">
       <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
-        <div className="flex items-center gap-2">
-          <Building2 size={18} className="text-accent" />
-          <h2 className="font-semibold text-slate-100">Annunci usati nell&apos;analisi</h2>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="flex items-center gap-2">
+              <Building2 size={18} className="text-accent" />
+              <h2 className="font-semibold text-slate-100">Annunci usati nell&apos;analisi</h2>
+            </div>
+            <p className="mt-1 text-xs text-slate-500">
+              Immobile in vendita e {similarRentals.length} affitti simili usati per stimare il canone
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() =>
+              downloadAnalysisJson(createSavedComparison(source, scenario))
+            }
+            className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-slate-300 hover:bg-surface-raised"
+          >
+            <Download size={14} />
+            Esporta JSON
+          </button>
         </div>
-        <p className="mt-1 text-xs text-slate-500">
-          Immobile in vendita e {similarRentals.length} affitti simili usati per stimare il canone
-        </p>
+      </div>
+
+      <div className="border-b border-surface-border/60 px-5 py-4">
+        <PropertySimilarRentMap saleProperty={sale} similarRentals={similarRentals} />
       </div>
 
       <div className="grid gap-4 p-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
