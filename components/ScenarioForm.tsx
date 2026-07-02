@@ -320,7 +320,13 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
                         : undefined
                     }
                   >
-                    <input type="number" className="input-field" {...register("monthly_rent", { valueAsNumber: true })} />
+                    <input
+                      type="number"
+                      step={50}
+                      min={0}
+                      className="input-field"
+                      {...register("monthly_rent", { valueAsNumber: true })}
+                    />
                   </Field>
                 </div>
               </>
