@@ -31,8 +31,13 @@ const COLORS = {
   axis: "#64748b",
 };
 
+function annualizedReturn(totalReturnPct: number, years: number): number {
+  if (years <= 0 || totalReturnPct <= -100) return 0;
+  const growthFactor = 1 + totalReturnPct / 100;
+  return growthFactor > 0 ? (Math.pow(growthFactor, 1 / years) - 1) * 100 : 0;
+}
+
 export default function RoiChart({ result }: Props) {
-  const initialCash = result.summary.initial_cash_required;
   const downPayment = result.summary.purchase_costs.down_payment;
   const purchasePrice = result.monthly_series[0]?.property_value ?? 0;
   const loanAmount = result.summary.loan_amount;
@@ -41,6 +46,8 @@ export default function RoiChart({ result }: Props) {
   const data = useMemo(() => {
     let cumPrincipal = 0;
     let cumulativeCash = 0;
+    let yearCash = 0;
+    let currentYear: number | null = null;
 
     const points = [
       {
@@ -51,12 +58,18 @@ export default function RoiChart({ result }: Props) {
         appreciation: 0,
         totalEquity: initialEquity,
         cumulativeCash: 0,
+        yearlyCash: 0,
         equityPlusCash: initialEquity,
         roiPct: 0,
       },
     ];
 
     for (const p of result.monthly_series) {
+      if (currentYear !== p.year) {
+        currentYear = p.year;
+        yearCash = 0;
+      }
+      yearCash += p.net_cash_flow;
       cumulativeCash += p.net_cash_flow;
       cumPrincipal += p.mortgage_principal;
       const appreciation = p.property_value - purchasePrice;
@@ -70,26 +83,33 @@ export default function RoiChart({ result }: Props) {
         appreciation,
         totalEquity,
         cumulativeCash,
+        yearlyCash: yearCash,
         equityPlusCash: totalEquity + cumulativeCash,
-        roiPct: initialCash > 0 ? ((totalEquity - initialEquity) / initialCash) * 100 : 0,
+        roiPct: downPayment > 0 ? ((totalEquity - initialEquity) / downPayment) * 100 : 0,
       });
     }
 
     return points;
-  }, [result.monthly_series, initialCash, initialEquity, purchasePrice]);
+  }, [result.monthly_series, downPayment, initialEquity, purchasePrice]);
 
   const lastPoint = data[data.length - 1];
-  const finalRoi = lastPoint?.roiPct ?? 0;
   const finalEquity = lastPoint?.totalEquity ?? initialEquity;
   const finalCumulativeCash = lastPoint?.cumulativeCash ?? 0;
   const finalEquityPlusCash = lastPoint?.equityPlusCash ?? initialEquity;
   const projectionYears = (lastPoint?.month ?? 0) / 12;
-  const growthFactor = 1 + finalRoi / 100;
-  const cagr =
-    projectionYears > 0 && initialCash > 0 && growthFactor > 0
-      ? (Math.pow(growthFactor, 1 / projectionYears) - 1) * 100
-      : 0;
+  const equityRoi =
+    downPayment > 0 ? ((finalEquity - initialEquity) / downPayment) * 100 : 0;
+  const totalRoi = result.summary.total_roi_pct;
+  const equityCagr = annualizedReturn(equityRoi, projectionYears);
+  const totalCagr = annualizedReturn(totalRoi, projectionYears);
   const cashLineColor = finalCumulativeCash >= 0 ? COLORS.cashPositive : COLORS.cashNegative;
+  const maxMonth = lastPoint?.month ?? 0;
+  const yearTickStep = maxMonth > 240 ? 60 : maxMonth > 120 ? 24 : 12;
+  const yearTicks = useMemo(() => {
+    const ticks = [0];
+    for (let month = yearTickStep; month <= maxMonth; month += yearTickStep) ticks.push(month);
+    return ticks;
+  }, [maxMonth, yearTickStep]);
 
   return (
     <div className="card-glass p-5">
@@ -98,16 +118,20 @@ export default function RoiChart({ result }: Props) {
           <h2 className="text-base font-semibold text-slate-100">ROI — equity immobile</h2>
           <p className="text-sm text-slate-500">
             Quota di proprietà: anticipo ({fmtEuro(downPayment)}), capitale mutuo ripagato, rivalutazione
-            e cashflow netto cumulato negli anni (asse destro)
+            e cashflow annuo cumulato (asse destro)
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
+            <p className="text-[10px] uppercase tracking-wide text-slate-500">Anticipo</p>
+            <p className="text-lg font-bold text-slate-100">{fmtEuro(downPayment)}</p>
+          </div>
+          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">Equity finale</p>
             <p className="text-lg font-bold text-slate-100">{fmtEuro(finalEquity)}</p>
-            <p className={`text-xs font-medium ${cagr >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-              {cagr >= 0 ? "+" : ""}
-              {cagr.toFixed(1)}% CAGR annuale
+            <p className={`text-xs font-medium ${equityCagr >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+              {equityCagr >= 0 ? "+" : ""}
+              {equityCagr.toFixed(1)}% CAGR su anticipo
             </p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
@@ -118,6 +142,14 @@ export default function RoiChart({ result }: Props) {
               {fmtEuro(finalCumulativeCash)}
             </p>
           </div>
+          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
+            <p className="text-[10px] uppercase tracking-wide text-slate-500">Totale</p>
+            <p className="text-lg font-bold text-cyan-400">{fmtEuro(finalEquityPlusCash)}</p>
+            <p className={`text-xs font-medium ${totalCagr >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+              {totalCagr >= 0 ? "+" : ""}
+              {totalCagr.toFixed(1)}% CAGR su capitale versato
+            </p>
+          </div>
         </div>
       </div>
 
@@ -126,9 +158,9 @@ export default function RoiChart({ result }: Props) {
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
           <XAxis
             dataKey="month"
+            ticks={yearTicks}
             tick={{ fill: COLORS.axis, fontSize: 11 }}
-            tickFormatter={(m) => (m === 0 ? "Inizio" : m % 12 === 1 || m === 1 ? `A${Math.ceil(m / 12)}` : "")}
-            interval={11}
+            tickFormatter={(m) => (m === 0 ? "Inizio" : `${m / 12}`)}
             axisLine={{ stroke: COLORS.grid }}
             tickLine={false}
           />
@@ -156,7 +188,7 @@ export default function RoiChart({ result }: Props) {
               return (
                 <div className="rounded-xl border border-surface-border bg-[#1a2332] px-3 py-2 text-xs shadow-lg">
                   <p className="mb-2 font-medium text-slate-200">
-                    {label === 0 ? "Acquisto" : `Mese ${label}`}
+                    {label === 0 ? "Acquisto" : `Anno ${Math.ceil(label / 12)}`}
                   </p>
                   <p className="text-slate-400">
                     Anticipo (quota iniziale):{" "}
@@ -169,8 +201,16 @@ export default function RoiChart({ result }: Props) {
                   <p className="text-slate-400">
                     Rivalutazione: <span className="text-amber-400">{fmtEuro(row.appreciation)}</span>
                   </p>
+                  {row.year > 0 && (
+                    <p className="text-slate-400">
+                      Cashflow anno {row.year}:{" "}
+                      <span className={row.yearlyCash >= 0 ? "text-emerald-400" : "text-red-400"}>
+                        {fmtEuro(row.yearlyCash)}
+                      </span>
+                    </p>
+                  )}
                   <p className="text-slate-400">
-                    Cashflow netto cumulato:{" "}
+                    Cashflow cumulato:{" "}
                     <span className={row.cumulativeCash >= 0 ? "text-emerald-400" : "text-red-400"}>
                       {fmtEuro(row.cumulativeCash)}
                     </span>
@@ -242,7 +282,7 @@ export default function RoiChart({ result }: Props) {
             yAxisId="cash"
             type="monotone"
             dataKey="cumulativeCash"
-            name="Cashflow netto cumulato"
+            name="Cashflow cumulato"
             stroke={cashLineColor}
             strokeWidth={2}
             strokeDasharray="6 4"
