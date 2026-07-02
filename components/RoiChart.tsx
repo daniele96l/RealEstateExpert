@@ -26,6 +26,7 @@ const COLORS = {
   appreciation: "#fbbf24",
   cashPositive: "#34d399",
   cashNegative: "#f87171",
+  equityPlusCash: "#22d3ee",
   grid: "#2a3544",
   axis: "#64748b",
 };
@@ -39,8 +40,7 @@ export default function RoiChart({ result }: Props) {
 
   const data = useMemo(() => {
     let cumPrincipal = 0;
-    let yearCash = 0;
-    let currentYear: number | null = null;
+    let cumulativeCash = 0;
 
     const points = [
       {
@@ -51,16 +51,13 @@ export default function RoiChart({ result }: Props) {
         appreciation: 0,
         totalEquity: initialEquity,
         cumulativeCash: 0,
+        equityPlusCash: initialEquity,
         roiPct: 0,
       },
     ];
 
     for (const p of result.monthly_series) {
-      if (currentYear !== p.year) {
-        currentYear = p.year;
-        yearCash = 0;
-      }
-      yearCash += p.net_cash_flow;
+      cumulativeCash += p.net_cash_flow;
       cumPrincipal += p.mortgage_principal;
       const appreciation = p.property_value - purchasePrice;
       const totalEquity = p.property_value - p.mortgage_balance;
@@ -72,7 +69,8 @@ export default function RoiChart({ result }: Props) {
         principalEquity: cumPrincipal,
         appreciation,
         totalEquity,
-        cumulativeCash: yearCash,
+        cumulativeCash,
+        equityPlusCash: totalEquity + cumulativeCash,
         roiPct: initialCash > 0 ? ((totalEquity - initialEquity) / initialCash) * 100 : 0,
       });
     }
@@ -84,7 +82,7 @@ export default function RoiChart({ result }: Props) {
   const finalRoi = lastPoint?.roiPct ?? 0;
   const finalEquity = lastPoint?.totalEquity ?? initialEquity;
   const finalCumulativeCash = lastPoint?.cumulativeCash ?? 0;
-  const finalCashYear = lastPoint?.year ?? 0;
+  const finalEquityPlusCash = lastPoint?.equityPlusCash ?? initialEquity;
   const projectionYears = (lastPoint?.month ?? 0) / 12;
   const growthFactor = 1 + finalRoi / 100;
   const cagr =
@@ -100,25 +98,26 @@ export default function RoiChart({ result }: Props) {
           <h2 className="text-base font-semibold text-slate-100">ROI — equity immobile</h2>
           <p className="text-sm text-slate-500">
             Quota di proprietà: anticipo ({fmtEuro(downPayment)}), capitale mutuo ripagato, rivalutazione
-            e cashflow cumulato dell&apos;anno (asse destro, si azzera ogni anno)
+            e cashflow netto cumulato negli anni (asse destro)
           </p>
         </div>
-        <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-          <p className="text-[10px] uppercase tracking-wide text-slate-500">Equity finale</p>
-          <p className="text-lg font-bold text-slate-100">{fmtEuro(finalEquity)}</p>
-          <p
-            className={`text-xs font-medium ${finalCumulativeCash >= 0 ? "text-emerald-400" : "text-red-400"}`}
-          >
-            Cash anno {finalCashYear}: {fmtEuro(finalCumulativeCash)}
-          </p>
-          <p className={`text-xs font-medium ${finalRoi >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-            {finalRoi >= 0 ? "+" : ""}
-            {finalRoi.toFixed(1)}% sul capitale investito
-          </p>
-          <p className={`text-xs font-medium ${cagr >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-            {cagr >= 0 ? "+" : ""}
-            {cagr.toFixed(1)}% CAGR annuale
-          </p>
+        <div className="flex flex-wrap gap-2">
+          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
+            <p className="text-[10px] uppercase tracking-wide text-slate-500">Equity finale</p>
+            <p className="text-lg font-bold text-slate-100">{fmtEuro(finalEquity)}</p>
+            <p className={`text-xs font-medium ${cagr >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+              {cagr >= 0 ? "+" : ""}
+              {cagr.toFixed(1)}% CAGR annuale
+            </p>
+          </div>
+          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
+            <p className="text-[10px] uppercase tracking-wide text-slate-500">Cashflow cumulato</p>
+            <p
+              className={`text-lg font-bold ${finalCumulativeCash >= 0 ? "text-emerald-400" : "text-red-400"}`}
+            >
+              {fmtEuro(finalCumulativeCash)}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -139,7 +138,7 @@ export default function RoiChart({ result }: Props) {
             tickFormatter={(v) => `€${(v / 1000).toFixed(0)}k`}
             axisLine={false}
             tickLine={false}
-            domain={[0, "auto"]}
+            domain={["auto", "auto"]}
           />
           <YAxis
             yAxisId="cash"
@@ -170,20 +169,21 @@ export default function RoiChart({ result }: Props) {
                   <p className="text-slate-400">
                     Rivalutazione: <span className="text-amber-400">{fmtEuro(row.appreciation)}</span>
                   </p>
-                  {row.year > 0 && (
-                    <p className="text-slate-400">
-                      Cash cumulato anno {row.year}:{" "}
-                      <span className={row.cumulativeCash >= 0 ? "text-emerald-400" : "text-red-400"}>
-                        {fmtEuro(row.cumulativeCash)}
-                      </span>
-                    </p>
-                  )}
+                  <p className="text-slate-400">
+                    Cashflow netto cumulato:{" "}
+                    <span className={row.cumulativeCash >= 0 ? "text-emerald-400" : "text-red-400"}>
+                      {fmtEuro(row.cumulativeCash)}
+                    </span>
+                  </p>
                   <p className="mt-2 border-t border-surface-border pt-2 font-semibold text-slate-200">
                     Equity totale: {fmtEuro(row.totalEquity)}
                     <span className="ml-2 text-slate-500">
                       ({row.roiPct >= 0 ? "+" : ""}
                       {row.roiPct.toFixed(1)}%)
                     </span>
+                  </p>
+                  <p className="font-semibold text-cyan-400">
+                    Equity + cashflow: {fmtEuro(row.equityPlusCash)}
                   </p>
                 </div>
               );
@@ -230,10 +230,19 @@ export default function RoiChart({ result }: Props) {
             dot={false}
           />
           <Line
+            yAxisId="equity"
+            type="monotone"
+            dataKey="equityPlusCash"
+            name="Equity + cashflow"
+            stroke={COLORS.equityPlusCash}
+            strokeWidth={2.5}
+            dot={false}
+          />
+          <Line
             yAxisId="cash"
             type="monotone"
             dataKey="cumulativeCash"
-            name="Cashflow anno (cumul.)"
+            name="Cashflow netto cumulato"
             stroke={cashLineColor}
             strokeWidth={2}
             strokeDasharray="6 4"

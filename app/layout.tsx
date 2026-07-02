@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
+import ServiceWorkerCleanup from "@/components/ServiceWorkerCleanup";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -15,7 +16,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="it" className={dmSans.variable}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <ServiceWorkerCleanup />
+        {children}
+      </body>
     </html>
   );
 }
