@@ -4,7 +4,7 @@ import {
   sanitizeSimple,
   type SimpleScenario,
 } from "./defaults";
-import { estimateSqmFromPrice } from "./constants";
+import { estimateSqmFromPrice, listingRenovationCost } from "./constants";
 import { estimateRentableRooms, type SimilarRentEstimateMethod } from "./rent-price-basis";
 import type { ListingDetail, MapListing } from "./types";
 
@@ -48,6 +48,7 @@ export function scenarioFromListingAnalysis(
       sale.condominio_monthly != null && sale.condominio_monthly > 0
         ? sale.condominio_monthly
         : scenario.condominio_monthly,
-    renovation_cost: sale.needs_renovation === true ? 15_000 : scenario.renovation_cost,
+    renovation_cost:
+      listingRenovationCost(sale.needs_renovation, sale.sqm, sale.price) ?? scenario.renovation_cost,
   });
 }

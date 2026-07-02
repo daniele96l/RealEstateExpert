@@ -83,6 +83,72 @@ export function estimateFurnishing(purchasePrice: number, mode: RentalMode): num
   return Math.round(Math.min(8000, Math.max(3000, purchasePrice * 0.05)));
 }
 
+/** €/m² — ristrutturazione completa tipica (media Italia) */
+export const RENOVATION_EUR_PER_SQM = {
+  min: 500,
+  mid: 700,
+  max: 900,
+} as const;
+
+export interface RenovationCostEstimate {
+  sqm: number;
+  min: number;
+  max: number;
+  mid: number;
+}
+
+function renovationSqm(sqm: number | null | undefined, purchasePrice?: number | null): number {
+  if (sqm != null && sqm > 0) return sqm;
+  if (purchasePrice != null && purchasePrice > 0) return estimateSqmFromPrice(purchasePrice);
+  return ITALY_DEFAULTS.default_sqm;
+}
+
+function roundRenovationCost(n: number): number {
+  return Math.round(n / 500) * 500;
+}
+
+/** Stima costo ristrutturazione da superficie (range + punto medio). */
+export function estimateRenovationCostRange(
+  sqm: number | null | undefined,
+  purchasePrice?: number | null,
+): RenovationCostEstimate {
+  const area = renovationSqm(sqm, purchasePrice);
+  return {
+    sqm: area,
+    min: roundRenovationCost(area * RENOVATION_EUR_PER_SQM.min),
+    max: roundRenovationCost(area * RENOVATION_EUR_PER_SQM.max),
+    mid: roundRenovationCost(area * RENOVATION_EUR_PER_SQM.mid),
+  };
+}
+
+/** Stima costo ristrutturazione da superficie (punto medio, arrotondato a €500). */
+export function estimateRenovationCost(
+  sqm: number | null | undefined,
+  purchasePrice?: number | null,
+): number {
+  return estimateRenovationCostRange(sqm, purchasePrice).mid;
+}
+
+/** Costo ristrutturazione per import da annuncio; null se non da ristrutturare. */
+export function listingRenovationCost(
+  needsRenovation: boolean | null | undefined,
+  sqm: number | null | undefined,
+  purchasePrice?: number | null,
+): number | null {
+  if (needsRenovation !== true) return null;
+  return estimateRenovationCost(sqm, purchasePrice);
+}
+
+/** Range ristrutturazione per annuncio; null se non da ristrutturare. */
+export function listingRenovationCostRange(
+  needsRenovation: boolean | null | undefined,
+  sqm: number | null | undefined,
+  purchasePrice?: number | null,
+): RenovationCostEstimate | null {
+  if (needsRenovation !== true) return null;
+  return estimateRenovationCostRange(sqm, purchasePrice);
+}
+
 export function estimateRenovationMinor(purchasePrice: number): number {
   return Math.round(Math.min(15000, Math.max(3000, purchasePrice * 0.05)));
 }

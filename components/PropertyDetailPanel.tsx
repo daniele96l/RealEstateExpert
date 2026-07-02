@@ -31,13 +31,14 @@ import {
   type SimilarRentEstimateMethod,
 } from "@/lib/rent-price-basis";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
-import { ITALY_DEFAULTS } from "@/lib/constants";
+import { ITALY_DEFAULTS, RENOVATION_EUR_PER_SQM, listingRenovationCostRange } from "@/lib/constants";
 import { monthlyMortgagePayment } from "@/lib/engine/mortgage";
 import { cn, fmtEuro } from "@/lib/utils";
 import {
   Bath,
   Building2,
   ExternalLink,
+  Hammer,
   Layers,
   LayoutDashboard,
   Loader2,
@@ -220,6 +221,10 @@ export default function PropertyDetailPanel({
     detail?.sqm != null && detail.sqm > 0 && avgRentPerSqm != null && avgWholeMonthly != null;
 
   const rentableRooms = estimateRentableRooms(detail?.rooms);
+  const estimatedRenovation =
+    detail != null
+      ? listingRenovationCostRange(detail.needs_renovation, detail.sqm, detail.price)
+      : null;
   const rentableRoomsNote =
     underTwoLocali ? underTwoLocaliRentNote() : rentableRoomsAssumption(detail?.rooms);
 
@@ -356,6 +361,13 @@ export default function PropertyDetailPanel({
                     : detail.condition ?? (detail.needs_renovation === false ? "Non da ristrutturare" : "—")
                 }
               />
+              {estimatedRenovation != null && (
+                <Spec
+                  icon={Hammer}
+                  label="Stima ristrutturazione"
+                  value={`${fmtEuro(estimatedRenovation.min)} – ${fmtEuro(estimatedRenovation.max)} (${RENOVATION_EUR_PER_SQM.min}–${RENOVATION_EUR_PER_SQM.max} €/m²)`}
+                />
+              )}
               <Spec
                 icon={Thermometer}
                 label="€/m²"

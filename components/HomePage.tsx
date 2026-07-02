@@ -17,6 +17,7 @@ import {
 } from "@/lib/defaults";
 import { runSimulation } from "@/lib/engine/simulator";
 import { estimateRentableRooms, similarRentEstimateSummary, type SimilarRentEstimateMethod } from "@/lib/rent-price-basis";
+import { listingRenovationCost } from "@/lib/constants";
 import {
   scenarioFromListingAnalysis,
   type ListingAnalysisSource,
@@ -55,6 +56,7 @@ export default function HomePage() {
   const handleSelectListing = useCallback((listing: MapListing, detail?: ListingDetail) => {
     const d = detail ?? listing;
     const sqm = d.sqm ?? listing.sqm;
+    const renovation = listingRenovationCost(detail?.needs_renovation, sqm, d.price);
     setFormPrefill({
       ...(d.operation === "sale"
         ? { purchase_price: d.price, rental_mode: "medium_term_semester" as const }
@@ -65,11 +67,16 @@ export default function HomePage() {
         : {}),
       ...(detail?.energy_class ? { energy_class: detail.energy_class } : {}),
       ...(detail?.condominio_monthly ? { condominio_monthly: detail.condominio_monthly } : {}),
-      ...(detail?.needs_renovation === true ? { renovation_cost: 15_000 } : {}),
+      ...(renovation != null ? { renovation_cost: renovation } : {}),
     });
   }, []);
 
   const handleUseSimilarRent = useCallback((saleDetail: ListingDetail, rentListing: MapListing) => {
+    const renovation = listingRenovationCost(
+      saleDetail.needs_renovation,
+      saleDetail.sqm,
+      saleDetail.price,
+    );
     setFormPrefill({
       purchase_price: saleDetail.price,
       rental_mode: "medium_term_semester" as const,
@@ -81,7 +88,7 @@ export default function HomePage() {
       ...(saleDetail.sqm != null && saleDetail.sqm > 0 ? { sqm: saleDetail.sqm } : {}),
       ...(saleDetail.energy_class ? { energy_class: saleDetail.energy_class } : {}),
       ...(saleDetail.condominio_monthly ? { condominio_monthly: saleDetail.condominio_monthly } : {}),
-      ...(saleDetail.needs_renovation === true ? { renovation_cost: 15_000 } : {}),
+      ...(renovation != null ? { renovation_cost: renovation } : {}),
     });
   }, []);
 
