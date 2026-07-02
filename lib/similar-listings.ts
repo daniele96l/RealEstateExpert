@@ -13,7 +13,7 @@ export interface SimilarListingCriteria {
 }
 
 /** Max distance for “stessa zona” when coordinates are available. */
-const SIMILAR_RADIUS_M = 2_500;
+const SIMILAR_RADIUS_M = 1_000;
 
 function listingHaystack(listing: MapListing): string {
   return `${listing.title} ${listing.address ?? ""}`.toLowerCase();
@@ -112,7 +112,7 @@ export function filterSimilarRentals(
   if (!criteria.zone && (criteria.lat == null || criteria.lng == null)) return [];
 
   const radiusM = searchOptions?.radiusM ?? SIMILAR_RADIUS_M;
-  const limit = searchOptions?.limit ?? 12;
+  const limit = searchOptions?.limit !== undefined ? searchOptions.limit : 12;
   const charOptions: SimilarRentSearchOptions = {
     radiusM,
     limit,
@@ -126,7 +126,7 @@ export function filterSimilarRentals(
     propertyTypeFilter: searchOptions?.propertyTypeFilter ?? "any",
   };
 
-  return rent
+  const scored = rent
     .map((listing) => ({
       listing,
       score: similarMatchScore(listing, criteria, radiusM),
@@ -142,9 +142,10 @@ export function filterSimilarRentals(
       ({ score, listing }) =>
         score > 0 && passesSimilarRentCharacteristicFilters(listing, charOptions),
     )
-    .sort((a, b) => b.score - a.score || a.distance - b.distance || a.listing.price - b.listing.price)
-    .slice(0, limit)
-    .map(({ listing }) => listing);
+    .sort((a, b) => b.score - a.score || a.distance - b.distance || a.listing.price - b.listing.price);
+
+  const capped = limit == null ? scored : scored.slice(0, limit);
+  return capped.map(({ listing }) => listing);
 }
 
 export function criteriaFromDetail(

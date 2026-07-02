@@ -1,11 +1,12 @@
 import type { MapListing } from "./types";
 
 export const SIMILAR_RENT_RADIUS_PRESETS = [
-  { id: "tight", label: "1,5 km", radiusM: 1_500 },
-  { id: "default", label: "2,5 km", radiusM: 2_500 },
-  { id: "wide", label: "5 km", radiusM: 5_000 },
-  { id: "wider", label: "10 km", radiusM: 10_000 },
-  { id: "zone", label: "Solo zona (testo)", radiusM: null },
+  { id: "500m", label: "0,5 km", radiusM: 500 },
+  { id: "1km", label: "1 km", radiusM: 1_000 },
+  { id: "2km", label: "2 km", radiusM: 2_000 },
+  { id: "3km", label: "3 km", radiusM: 3_000 },
+  { id: "5km", label: "5 km", radiusM: 5_000 },
+  { id: "10km", label: "10 km", radiusM: 10_000 },
 ] as const;
 
 export type SimilarRentRadiusPresetId = (typeof SIMILAR_RENT_RADIUS_PRESETS)[number]["id"];
@@ -19,22 +20,37 @@ export interface SimilarRentFilterState {
   roomsFilter: SimilarRoomsFilter;
   sqmFilter: SimilarSqmFilter;
   propertyTypeFilter: SimilarPropertyTypeFilter;
-  limit: number;
+  /** Max comparables shown; null = no cap */
+  limit: number | null;
 }
 
 export const DEFAULT_SIMILAR_RENT_FILTERS: SimilarRentFilterState = {
-  radiusPresetId: "default",
+  radiusPresetId: "1km",
   roomsFilter: "similar",
   sqmFilter: "any",
   propertyTypeFilter: "any",
-  limit: 12,
+  limit: null,
 };
 
-export const SIMILAR_RENT_LIMIT_OPTIONS = [12, 24, 36] as const;
+export const SIMILAR_RENT_LIMIT_OPTIONS = [
+  { value: 12, label: "12" },
+  { value: 24, label: "24" },
+  { value: 36, label: "36" },
+  { value: 48, label: "48" },
+  { value: null, label: "Tutti" },
+] as const;
+
+export function similarRentLimitSelectValue(limit: number | null): string {
+  return limit == null ? "all" : String(limit);
+}
+
+export function similarRentLimitFromSelect(value: string): number | null {
+  return value === "all" ? null : Number(value);
+}
 
 export interface SimilarRentSearchOptions {
   radiusM: number | null;
-  limit: number;
+  limit: number | null;
   saleRooms: number | null;
   saleSqm: number | null;
   salePropertyType: string | null;
@@ -47,7 +63,7 @@ export interface SimilarRentSearchOptions {
 
 export function radiusMFromPreset(presetId: SimilarRentRadiusPresetId): number | null {
   const preset = SIMILAR_RENT_RADIUS_PRESETS.find((p) => p.id === presetId);
-  return preset?.radiusM ?? 2_500;
+  return preset?.radiusM ?? 1_000;
 }
 
 export function similarRentSearchOptionsFromState(

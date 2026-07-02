@@ -7,8 +7,11 @@ import { loadCityListingsCacheFirst } from "@/lib/cache-first";
 import { criteriaFromDetail, filterSimilarRentals } from "@/lib/similar-listings";
 import {
   DEFAULT_SIMILAR_RENT_FILTERS,
+  SIMILAR_RENT_LIMIT_OPTIONS,
   SIMILAR_RENT_RADIUS_PRESETS,
   radiusMFromPreset,
+  similarRentLimitFromSelect,
+  similarRentLimitSelectValue,
   similarRentSearchOptionsFromState,
   type SimilarRentFilterState,
 } from "@/lib/similar-rent-filters";
@@ -573,6 +576,28 @@ export default function PropertyDetailPanel({
                         </select>
                       </label>
                     )}
+                    <label className="block text-xs text-slate-400">
+                      Max comparabili
+                      <select
+                        value={similarRentLimitSelectValue(similarFilters.limit)}
+                        onChange={(e) =>
+                          setSimilarFilters((f) => ({
+                            ...f,
+                            limit: similarRentLimitFromSelect(e.target.value),
+                          }))
+                        }
+                        className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                      >
+                        {SIMILAR_RENT_LIMIT_OPTIONS.map((opt) => (
+                          <option
+                            key={opt.value == null ? "all" : opt.value}
+                            value={opt.value == null ? "all" : String(opt.value)}
+                          >
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
                   </div>
                 )}
 
