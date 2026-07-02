@@ -39,13 +39,19 @@ function annualizedReturn(totalReturnPct: number, years: number): number {
 
 export default function RoiChart({ result }: Props) {
   const downPayment = result.summary.purchase_costs.down_payment;
+  const purchaseCosts = result.summary.purchase_costs;
+  const taxesAndAccessories =
+    purchaseCosts.registration_tax +
+    purchaseCosts.vat +
+    purchaseCosts.notary +
+    purchaseCosts.agency;
   const purchasePrice = result.monthly_series[0]?.property_value ?? 0;
-  const loanAmount = result.summary.loan_amount;
-  const initialEquity = purchasePrice - loanAmount;
+  const initialEquity = downPayment;
 
   const data = useMemo(() => {
     let cumPrincipal = 0;
-    let cumulativeCash = 0;
+    const cashStart = -taxesAndAccessories;
+    let cumulativeCash = cashStart;
     let yearCash = 0;
     let currentYear: number | null = null;
 
@@ -57,9 +63,9 @@ export default function RoiChart({ result }: Props) {
         principalEquity: 0,
         appreciation: 0,
         totalEquity: initialEquity,
-        cumulativeCash: 0,
-        yearlyCash: 0,
-        equityPlusCash: initialEquity,
+        cumulativeCash: cashStart,
+        yearlyCash: cashStart,
+        equityPlusCash: initialEquity + cashStart,
         roiPct: 0,
       },
     ];
@@ -73,7 +79,7 @@ export default function RoiChart({ result }: Props) {
       cumulativeCash += p.net_cash_flow;
       cumPrincipal += p.mortgage_principal;
       const appreciation = p.property_value - purchasePrice;
-      const totalEquity = p.property_value - p.mortgage_balance;
+      const totalEquity = initialEquity + cumPrincipal + appreciation;
 
       points.push({
         month: p.month,
@@ -90,17 +96,20 @@ export default function RoiChart({ result }: Props) {
     }
 
     return points;
-  }, [result.monthly_series, downPayment, initialEquity, purchasePrice]);
+  }, [result.monthly_series, downPayment, initialEquity, purchasePrice, taxesAndAccessories]);
 
   const lastPoint = data[data.length - 1];
   const finalEquity = lastPoint?.totalEquity ?? initialEquity;
-  const finalCumulativeCash = lastPoint?.cumulativeCash ?? 0;
+  const finalCumulativeCash = lastPoint?.cumulativeCash ?? -taxesAndAccessories;
   const finalEquityPlusCash = lastPoint?.equityPlusCash ?? initialEquity;
   const projectionYears = (lastPoint?.month ?? 0) / 12;
   const equityRoi =
     downPayment > 0 ? ((finalEquity - initialEquity) / downPayment) * 100 : 0;
   const totalRoiOnAnticipo =
     downPayment > 0 ? ((finalEquityPlusCash - downPayment) / downPayment) * 100 : 0;
+  const improvementCosts = purchaseCosts.renovation + purchaseCosts.furnishing;
+  const finalEquityExImprovements = finalEquity - improvementCosts;
+  const finalTotalExImprovements = finalEquityPlusCash - improvementCosts;
   const equityCagr = annualizedReturn(equityRoi, projectionYears);
   const totalCagrOnAnticipo = annualizedReturn(totalRoiOnAnticipo, projectionYears);
   const cashLineColor = finalCumulativeCash >= 0 ? COLORS.cashPositive : COLORS.cashNegative;
@@ -119,7 +128,7 @@ export default function RoiChart({ result }: Props) {
           <h2 className="text-base font-semibold text-slate-100">ROI — equity immobile</h2>
           <p className="text-sm text-slate-500">
             Quota di proprietà: anticipo ({fmtEuro(downPayment)}), capitale mutuo ripagato, rivalutazione
-            e cashflow annuo cumulato (asse destro)
+            e cashflow cumulato da tasse e accessori (asse destro)
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -128,24 +137,30 @@ export default function RoiChart({ result }: Props) {
             <p className="text-lg font-bold text-slate-100">{fmtEuro(downPayment)}</p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
+            <p className="text-[10px] uppercase tracking-wide text-slate-500">Tasse e accessori</p>
+            <p className="text-lg font-bold text-slate-100">{fmtEuro(taxesAndAccessories)}</p>
+          </div>
+          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">Equity finale</p>
             <p className="text-lg font-bold text-slate-100">{fmtEuro(finalEquity)}</p>
+            {improvementCosts > 0 && (
+              <p className="text-[11px] text-slate-500">
+                Senza ristrutt. e arred.: {fmtEuro(finalEquityExImprovements)}
+              </p>
+            )}
             <p className={`text-xs font-medium ${equityCagr >= 0 ? "text-emerald-400" : "text-red-400"}`}>
               {equityCagr >= 0 ? "+" : ""}
               {equityCagr.toFixed(1)}% CAGR su anticipo
             </p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">Cashflow cumulato</p>
-            <p
-              className={`text-lg font-bold ${finalCumulativeCash >= 0 ? "text-emerald-400" : "text-red-400"}`}
-            >
-              {fmtEuro(finalCumulativeCash)}
-            </p>
-          </div>
-          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">Totale</p>
             <p className="text-lg font-bold text-cyan-400">{fmtEuro(finalEquityPlusCash)}</p>
+            {improvementCosts > 0 && (
+              <p className="text-[11px] text-slate-500">
+                Senza ristrutt. e arred.: {fmtEuro(finalTotalExImprovements)}
+              </p>
+            )}
             <p className={`text-xs font-medium ${totalCagrOnAnticipo >= 0 ? "text-emerald-400" : "text-red-400"}`}>
               {totalCagrOnAnticipo >= 0 ? "+" : ""}
               {totalCagrOnAnticipo.toFixed(1)}% CAGR su anticipo
