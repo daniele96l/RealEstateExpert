@@ -26,9 +26,7 @@ export function computePurchaseCosts(scenario: InvestmentScenario): PurchaseCost
     agency: round2(agency),
     renovation: round2(renovation),
     furnishing: round2(furnishing),
-    total_initial_cash: round2(
-      downPayment + registrationTax + vat + notary + agency + renovation + furnishing,
-    ),
+    total_initial_cash: round2(downPayment + registrationTax + vat + notary + agency),
     loan_amount: round2(loanAmount),
   };
 }

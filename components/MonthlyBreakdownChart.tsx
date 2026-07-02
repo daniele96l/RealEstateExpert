@@ -129,6 +129,9 @@ export default function MonthlyBreakdownChart({ result }: Props) {
         <div>
           <h2 className="text-base font-semibold text-slate-100">Dettaglio mensile entrate/uscite</h2>
           <p className="text-sm text-slate-500">Affitto vs mutuo, cedolare secca e ogni voce di spesa</p>
+          <p className="mt-1 text-xs text-slate-500">
+            Mutuo calcolato su un totale di {fmtEuro(result.summary.loan_amount)}
+          </p>
         </div>
         <div className="min-w-0 max-w-full overflow-x-auto rounded-lg bg-surface-border/40 p-1">
           <div className="flex w-max gap-1">

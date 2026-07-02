@@ -278,9 +278,9 @@ export function applyPurchaseCostEdit(
     case "agency":
       return { ...s, agency_pct: price > 0 ? (v / price) * 100 : s.agency_pct };
     case "renovation":
-      return { ...s, renovation_cost: v };
+      return { ...s, renovation_cost: v, loan_amount: null };
     case "furnishing":
-      return { ...s, furnishing_cost: v };
+      return { ...s, furnishing_cost: v, loan_amount: null };
     case "loan_amount":
       return {
         ...s,

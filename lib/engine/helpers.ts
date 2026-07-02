@@ -36,7 +36,8 @@ export function effectiveMaintenancePct(s: InvestmentScenario): number {
 export function effectiveLoanAmount(s: InvestmentScenario): number {
   if (s.financing.loan_amount != null) return s.financing.loan_amount;
   const down = s.property.purchase_price * (s.financing.down_payment_pct / 100);
-  return Math.max(0, s.property.purchase_price - down);
+  const priceFinanced = Math.max(0, s.property.purchase_price - down);
+  return priceFinanced + s.renovation.renovation_cost + s.renovation.furnishing_cost;
 }
 
 export function round2(n: number): number {

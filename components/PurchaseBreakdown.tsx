@@ -46,11 +46,19 @@ function EditableEuro({
 }
 
 export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }: Props) {
-  const rows: { label: string; field: PurchaseCostField; value: number }[] = [
-    { label: "Anticipo", field: "down_payment", value: costs.down_payment },
+  const purchasePrice = scenario.purchase_price;
+  const loanOnPrice = Math.max(0, costs.loan_amount - costs.renovation - costs.furnishing);
+  const accessoryCosts = costs.registration_tax + costs.vat + costs.notary + costs.agency;
+
+  const cashRows: { label: string; field?: PurchaseCostField; value: number }[] = [
     { label: "Imposta di registro", field: "registration_tax", value: costs.registration_tax },
+    ...(costs.vat > 0 ? [{ label: "IVA", value: costs.vat }] : []),
     { label: "Notaio", field: "notary", value: costs.notary },
     { label: "Agenzia", field: "agency", value: costs.agency },
+  ];
+
+  const loanRows: { label: string; field?: PurchaseCostField; value: number }[] = [
+    { label: "Quota prezzo immobile", value: loanOnPrice },
     { label: "Ristrutturazione", field: "renovation", value: costs.renovation },
     { label: "Arredamento", field: "furnishing", value: costs.furnishing },
   ];
@@ -60,23 +68,92 @@ export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }:
     onScenarioChange(sanitizeSimple(next));
   };
 
+  const renderRow = (
+    label: string,
+    value: number,
+    field?: PurchaseCostField,
+    hint?: string,
+  ) => (
+    <div key={label} className="flex items-start justify-between gap-3 text-sm">
+      <div className="min-w-0">
+        <span className="text-slate-500">{label}</span>
+        {hint && <p className="text-[11px] text-slate-600">{hint}</p>}
+      </div>
+      {field ? (
+        <EditableEuro value={value} onCommit={(n) => handleEdit(field, n)} />
+      ) : (
+        <span className="shrink-0 text-sm font-medium text-slate-200">{fmtEuro(value)}</span>
+      )}
+    </div>
+  );
+
   return (
     <div className="card-glass p-5">
-      <h2 className="mb-3 text-sm font-semibold text-slate-300">Costi iniziali</h2>
-      <div className="space-y-2">
-        {rows.map((r) => (
-          <div key={r.field} className="flex items-center justify-between gap-3 text-sm">
-            <span className="text-slate-500">{r.label}</span>
-            <EditableEuro value={r.value} onCommit={(n) => handleEdit(r.field, n)} />
-          </div>
-        ))}
-        <div className="mt-2 flex justify-between border-t border-surface-border pt-2 text-sm font-semibold">
-          <span className="text-slate-300">Totale capitale necessario</span>
-          <span className="text-accent">{fmtEuro(costs.total_initial_cash)}</span>
+      <h2 className="mb-1 text-sm font-semibold text-slate-300">Costi iniziali</h2>
+      <p className="mb-4 text-xs text-slate-500">
+        Il mutuo copre prezzo (meno anticipo), ristrutturazione e arredamento. Tasse e notaio si pagano in
+        contanti all&apos;acquisto.
+      </p>
+
+      <div className="mb-4 grid gap-2 sm:grid-cols-3">
+        <div className="rounded-lg bg-surface-border/30 px-3 py-2">
+          <p className="text-[10px] uppercase tracking-wide text-slate-500">Equity iniziale</p>
+          <p className="text-lg font-bold text-slate-100">{fmtEuro(costs.down_payment)}</p>
+          <p className="text-[11px] text-slate-600">Quota casa di tua proprietà</p>
         </div>
-        <div className="flex items-center justify-between gap-3 text-sm">
-          <span className="text-slate-500">Mutuo</span>
-          <EditableEuro value={costs.loan_amount} onCommit={(n) => handleEdit("loan_amount", n)} />
+        <div className="rounded-lg bg-surface-border/30 px-3 py-2">
+          <p className="text-[10px] uppercase tracking-wide text-slate-500">Contanti subito</p>
+          <p className="text-lg font-bold text-accent">{fmtEuro(costs.total_initial_cash)}</p>
+          <p className="text-[11px] text-slate-600">Anticipo + tasse e notaio</p>
+        </div>
+        <div className="rounded-lg bg-surface-border/30 px-3 py-2">
+          <p className="text-[10px] uppercase tracking-wide text-slate-500">Coperto da mutuo</p>
+          <p className="text-lg font-bold text-slate-100">{fmtEuro(costs.loan_amount)}</p>
+          <p className="text-[11px] text-slate-600">Prezzo + ristrutturazione + arredamento</p>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">Prezzo immobile</p>
+          {renderRow("Prezzo di acquisto", purchasePrice)}
+        </div>
+
+        <div className="space-y-2 border-t border-surface-border pt-3">
+          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">
+            Finanziato con mutuo
+          </p>
+          {loanRows.map((r) =>
+            renderRow(r.label, r.value, r.field, r.field ? "Incluso nel mutuo" : "Parte del prezzo finanziata"),
+          )}
+          {renderRow("Totale mutuo", costs.loan_amount, "loan_amount")}
+          {renderRow(
+            "Anticipo (equity)",
+            costs.down_payment,
+            "down_payment",
+            "Tua quota sul prezzo, pagata in contanti",
+          )}
+        </div>
+
+        <div className="space-y-2 border-t border-surface-border pt-3">
+          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">
+            Pagamento immediato in contanti
+          </p>
+          {renderRow(
+            "Anticipo casa",
+            costs.down_payment,
+            undefined,
+            "Non coperto dal mutuo — modifica sopra",
+          )}
+          {cashRows.map((r) => renderRow(r.label, r.value, r.field, "Non coperto dal mutuo"))}
+          <div className="flex justify-between border-t border-surface-border pt-2 text-sm font-semibold">
+            <span className="text-slate-300">Totale contanti all&apos;acquisto</span>
+            <span className="text-accent">{fmtEuro(costs.total_initial_cash)}</span>
+          </div>
+          <div className="flex justify-between text-sm text-slate-500">
+            <span>di cui tasse e accessori</span>
+            <span>{fmtEuro(accessoryCosts)}</span>
+          </div>
         </div>
       </div>
     </div>
