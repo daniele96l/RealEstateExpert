@@ -19,6 +19,7 @@ export interface SimilarRentFilterState {
   roomsFilter: SimilarRoomsFilter;
   sqmFilter: SimilarSqmFilter;
   propertyTypeFilter: SimilarPropertyTypeFilter;
+  limit: number;
 }
 
 export const DEFAULT_SIMILAR_RENT_FILTERS: SimilarRentFilterState = {
@@ -26,10 +27,14 @@ export const DEFAULT_SIMILAR_RENT_FILTERS: SimilarRentFilterState = {
   roomsFilter: "similar",
   sqmFilter: "any",
   propertyTypeFilter: "any",
+  limit: 12,
 };
+
+export const SIMILAR_RENT_LIMIT_OPTIONS = [12, 24, 36] as const;
 
 export interface SimilarRentSearchOptions {
   radiusM: number | null;
+  limit: number;
   saleRooms: number | null;
   saleSqm: number | null;
   salePropertyType: string | null;
@@ -51,6 +56,7 @@ export function similarRentSearchOptionsFromState(
 ): SimilarRentSearchOptions {
   return {
     radiusM: radiusMFromPreset(filters.radiusPresetId),
+    limit: filters.limit,
     saleRooms: sale.rooms ?? null,
     saleSqm: sale.sqm ?? null,
     salePropertyType: sale.property_type ?? null,
