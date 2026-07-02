@@ -23,6 +23,7 @@ import {
   type ListingsFilters,
 } from "@/lib/listings-filters";
 import { filterListingsByBounds, type GeoBounds } from "@/lib/geo-filter";
+import type { SimilarRentEstimateMethod } from "@/lib/rent-price-basis";
 import { Layers, MapPin } from "lucide-react";
 import type { CombinedListingsData } from "@/lib/types";
 
@@ -53,9 +54,8 @@ interface Props {
   onUseSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
   onUseAverageRent?: (
     saleDetail: ListingDetail,
-    avgPerRoom: number,
-    wholeMonthly: number | null,
     similarRentals: MapListing[],
+    estimateMethod: SimilarRentEstimateMethod,
   ) => void;
   onCityChange?: (city: string) => void;
 }

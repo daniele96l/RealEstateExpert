@@ -78,8 +78,10 @@ function RentComparableRow({ rent }: { rent: ListingAnalysisSource["similarRenta
 
 export default function AnalysisSourcesPanel({ source, scenario }: Props) {
   const { sale, similarRentals } = source;
-  const rentSummary = similarRentEstimateSummary(sale, similarRentals);
+  const method = source.rentEstimateMethod ?? "per_room";
+  const rentSummary = similarRentEstimateSummary(sale, similarRentals, method);
   const avgRentPerRoom = rentSummary.avgRentPerRoom;
+  const avgRentPerSqm = rentSummary.avgRentPerSqm;
   const avgWholeMonthly = rentSummary.avgWholeMonthly;
   const underTwoLocali = rentSummary.underTwoLocali;
   const rentableRooms = estimateRentableRooms(sale.rooms);
@@ -174,8 +176,24 @@ export default function AnalysisSourcesPanel({ source, scenario }: Props) {
           <div className="rounded-xl border border-accent/30 bg-accent/10 px-3 py-2.5">
             <p className="text-[10px] font-medium uppercase tracking-wide text-accent">
               Media usata nell&apos;analisi
+              {method === "per_sqm" ? " (€/m²)" : ""}
             </p>
-            {underTwoLocali && avgWholeMonthly != null && avgRentPerRoom != null ? (
+            {method === "per_sqm" && avgWholeMonthly != null && avgRentPerSqm != null && sale.sqm ? (
+              <>
+                <p className="mt-0.5 text-base font-bold text-slate-100">
+                  {fmtEuro(avgWholeMonthly)}
+                  <span className="text-sm font-normal text-slate-400">/mese intero</span>
+                </p>
+                <p className="mt-0.5 text-xs text-slate-500">
+                  {avgRentPerSqm.toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "EUR",
+                    maximumFractionDigits: 1,
+                  })}
+                  /m² × {sale.sqm} m² = {fmtEuro(avgWholeMonthly)}/mese
+                </p>
+              </>
+            ) : underTwoLocali && avgWholeMonthly != null && avgRentPerRoom != null ? (
               <>
                 <p className="mt-0.5 text-base font-bold text-slate-100">
                   {fmtEuro(avgWholeMonthly)}

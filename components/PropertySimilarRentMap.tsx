@@ -9,8 +9,6 @@ import "leaflet/dist/leaflet.css";
 
 delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
 
-const SIMILAR_RADIUS_M = 2_500;
-
 function hasCoords(listing: { lat: number; lng: number }): boolean {
   return Number.isFinite(listing.lat) && Number.isFinite(listing.lng) && !(listing.lat === 0 && listing.lng === 0);
 }
@@ -63,12 +61,14 @@ interface Props {
   saleProperty: ListingDetail;
   similarRentals: MapListing[] | null;
   loading?: boolean;
+  radiusM?: number | null;
 }
 
 export default function PropertySimilarRentMap({
   saleProperty,
   similarRentals,
   loading = false,
+  radiusM = 2_500,
 }: Props) {
   const saleCoords = hasCoords(saleProperty) ? ([saleProperty.lat, saleProperty.lng] as [number, number]) : null;
   const rentMarkers = useMemo(
@@ -116,11 +116,11 @@ export default function PropertySimilarRentMap({
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {fitPoints.length > 0 && <FitMarkers points={fitPoints} />}
-          {saleCoords && (
+          {saleCoords && radiusM != null && radiusM > 0 && (
             <>
               <Circle
                 center={saleCoords}
-                radius={SIMILAR_RADIUS_M}
+                radius={radiusM}
                 pathOptions={{ color: "#10b981", weight: 1, fillOpacity: 0.04, dashArray: "5 5" }}
               />
               <Marker position={saleCoords} icon={saleIcon()} zIndexOffset={2000}>
@@ -160,7 +160,9 @@ export default function PropertySimilarRentMap({
         )}
       </div>
       <p className="text-[11px] leading-relaxed text-slate-500">
-        Cerchio tratteggiato: raggio ~2,5 km usato per gli affitti simili in zona.
+        {radiusM != null && radiusM > 0
+          ? `Cerchio tratteggiato: raggio ~${(radiusM / 1000).toLocaleString("it-IT", { maximumFractionDigits: 1 })} km per gli affitti simili.`
+          : "Ricerca per corrispondenza testuale di zona (senza limite geografico)."}
       </p>
     </div>
   );

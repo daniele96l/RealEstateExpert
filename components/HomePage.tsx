@@ -8,6 +8,7 @@ import AnalysisHistoryPanel from "@/components/AnalysisHistoryPanel";
 import MarketPriceCharts from "@/components/MarketPriceCharts";
 import PurchaseBreakdown from "@/components/PurchaseBreakdown";
 import MonthlyBreakdownChart from "@/components/MonthlyBreakdownChart";
+import RoiChart from "@/components/RoiChart";
 import {
   getDefaultSimpleScenario,
   sanitizeSimple,
@@ -15,7 +16,7 @@ import {
   type SimpleScenario,
 } from "@/lib/defaults";
 import { runSimulation } from "@/lib/engine/simulator";
-import { estimateRentableRooms, similarRentEstimateSummary } from "@/lib/rent-price-basis";
+import { estimateRentableRooms, similarRentEstimateSummary, type SimilarRentEstimateMethod } from "@/lib/rent-price-basis";
 import {
   scenarioFromListingAnalysis,
   type ListingAnalysisSource,
@@ -87,23 +88,23 @@ export default function HomePage() {
   const handleUseAverageRent = useCallback(
     (
       saleDetail: ListingDetail,
-      _avgPerRoom: number,
-      _wholeMonthly: number | null,
       similarRentals: MapListing[],
+      estimateMethod: SimilarRentEstimateMethod,
     ) => {
-      const summary = similarRentEstimateSummary(saleDetail, similarRentals);
-      if (summary.avgRentPerRoom == null) return;
+      const summary = similarRentEstimateSummary(saleDetail, similarRentals, estimateMethod);
+      if (summary.avgWholeMonthly == null && summary.avgRentPerRoom == null) return;
 
       const next = scenarioFromListingAnalysis(
         saleDetail,
-        summary.avgRentPerRoom,
+        summary.avgRentPerRoom ?? 0,
         summary.avgWholeMonthly,
       );
       const source: ListingAnalysisSource = {
         sale: saleDetail,
         similarRentals,
-        avgRentPerRoom: summary.avgRentPerRoom,
+        avgRentPerRoom: summary.avgRentPerRoom ?? 0,
         avgWholeMonthly: summary.avgWholeMonthly,
+        rentEstimateMethod: estimateMethod,
       };
       setAnalysisSource(source);
       setFormPrefill(next);
@@ -116,7 +117,8 @@ export default function HomePage() {
 
   const handleRestoreAnalysis = useCallback(
     (source: ListingAnalysisSource, restoredScenario: SimpleScenario) => {
-      const summary = similarRentEstimateSummary(source.sale, source.similarRentals);
+      const method = source.rentEstimateMethod ?? "per_room";
+      const summary = similarRentEstimateSummary(source.sale, source.similarRentals, method);
       const scenario =
         summary.avgRentPerRoom != null
           ? scenarioFromListingAnalysis(
@@ -129,6 +131,7 @@ export default function HomePage() {
         ...source,
         avgRentPerRoom: summary.avgRentPerRoom ?? source.avgRentPerRoom,
         avgWholeMonthly: summary.avgWholeMonthly,
+        rentEstimateMethod: method,
       });
       setFormPrefill(scenario);
       updateScenario(scenario);
@@ -193,6 +196,7 @@ export default function HomePage() {
                   onScenarioChange={handlePurchaseScenarioChange}
                 />
                 <MonthlyBreakdownChart result={result} />
+                <RoiChart result={result} />
                 <MarketPriceCharts city={marketCity} />
               </>
             ) : (

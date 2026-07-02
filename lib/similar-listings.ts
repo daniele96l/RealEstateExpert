@@ -1,4 +1,8 @@
 import { distanceMeters } from "./geo-filter";
+import {
+  passesSimilarRentCharacteristicFilters,
+  type SimilarRentSearchOptions,
+} from "./similar-rent-filters";
 import type { MapListing } from "./types";
 
 export interface SimilarListingCriteria {
@@ -66,7 +70,9 @@ export function zoneMatchScore(
 export function geoMatchScore(
   listing: MapListing,
   criteria: Pick<SimilarListingCriteria, "lat" | "lng">,
+  radiusM: number | null = SIMILAR_RADIUS_M,
 ): number {
+  if (radiusM == null || radiusM <= 0) return 0;
   if (
     criteria.lat == null ||
     criteria.lng == null ||
@@ -83,28 +89,47 @@ export function geoMatchScore(
     { lat: criteria.lat, lng: criteria.lng },
     { lat: listing.lat, lng: listing.lng },
   );
-  if (distance > SIMILAR_RADIUS_M) return 0;
-  return Math.round(100 * (1 - distance / SIMILAR_RADIUS_M));
+  if (distance > radiusM) return 0;
+  return Math.round(100 * (1 - distance / radiusM));
 }
 
-export function similarMatchScore(listing: MapListing, criteria: SimilarListingCriteria): number {
+export function similarMatchScore(
+  listing: MapListing,
+  criteria: SimilarListingCriteria,
+  radiusM: number | null = SIMILAR_RADIUS_M,
+): number {
   const zoneScore = criteria.zone ? zoneMatchScore(listing, criteria.zone, criteria.city) : 0;
-  const geoScore = geoMatchScore(listing, criteria);
+  const geoScore = geoMatchScore(listing, criteria, radiusM);
   return Math.max(zoneScore, geoScore);
 }
 
 export function filterSimilarRentals(
   listings: MapListing[],
   criteria: SimilarListingCriteria,
-  limit = 12,
+  searchOptions?: Partial<SimilarRentSearchOptions>,
 ): MapListing[] {
   const rent = listings.filter((l) => l.operation === "rent");
   if (!criteria.zone && (criteria.lat == null || criteria.lng == null)) return [];
 
+  const radiusM = searchOptions?.radiusM ?? SIMILAR_RADIUS_M;
+  const limit = searchOptions?.limit ?? 12;
+  const charOptions: SimilarRentSearchOptions = {
+    radiusM,
+    limit,
+    saleRooms: searchOptions?.saleRooms ?? null,
+    saleSqm: searchOptions?.saleSqm ?? null,
+    salePropertyType: searchOptions?.salePropertyType ?? null,
+    roomsFilter: searchOptions?.roomsFilter ?? "any",
+    roomsTolerance: searchOptions?.roomsTolerance ?? 1,
+    sqmFilter: searchOptions?.sqmFilter ?? "any",
+    sqmTolerancePct: searchOptions?.sqmTolerancePct ?? 25,
+    propertyTypeFilter: searchOptions?.propertyTypeFilter ?? "any",
+  };
+
   return rent
     .map((listing) => ({
       listing,
-      score: similarMatchScore(listing, criteria),
+      score: similarMatchScore(listing, criteria, radiusM),
       distance:
         criteria.lat != null && criteria.lng != null && listing.lat && listing.lng
           ? distanceMeters(
@@ -113,7 +138,10 @@ export function filterSimilarRentals(
             )
           : Number.POSITIVE_INFINITY,
     }))
-    .filter(({ score }) => score > 0)
+    .filter(
+      ({ score, listing }) =>
+        score > 0 && passesSimilarRentCharacteristicFilters(listing, charOptions),
+    )
     .sort((a, b) => b.score - a.score || a.distance - b.distance || a.listing.price - b.listing.price)
     .slice(0, limit)
     .map(({ listing }) => listing);

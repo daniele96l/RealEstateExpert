@@ -5,7 +5,7 @@ import {
   type SimpleScenario,
 } from "./defaults";
 import { estimateSqmFromPrice } from "./constants";
-import { estimateRentableRooms } from "./rent-price-basis";
+import { estimateRentableRooms, type SimilarRentEstimateMethod } from "./rent-price-basis";
 import type { ListingDetail, MapListing } from "./types";
 
 export interface ListingAnalysisSource {
@@ -13,6 +13,7 @@ export interface ListingAnalysisSource {
   similarRentals: MapListing[];
   avgRentPerRoom: number;
   avgWholeMonthly: number | null;
+  rentEstimateMethod?: SimilarRentEstimateMethod;
 }
 
 export function scenarioFromListingAnalysis(

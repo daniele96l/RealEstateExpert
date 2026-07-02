@@ -113,6 +113,27 @@ export function averageMonthlyRentPerRoom(listings: MapListing[]): number | null
 }
 
 export type SimilarWholeRentMode = "under_two_locali" | "multi_room";
+export type SimilarRentEstimateMethod = "per_room" | "per_sqm";
+
+export function monthlyRentPerSqm(listing: MapListing): number | null {
+  const rent = effectiveMonthlyRent(listing);
+  if (listing.sqm == null || listing.sqm <= 0) return null;
+  return rent / listing.sqm;
+}
+
+export function averageMonthlyRentPerSqm(listings: MapListing[]): number | null {
+  const values = listings.map(monthlyRentPerSqm).filter((v): v is number => v != null);
+  if (!values.length) return null;
+  return values.reduce((sum, v) => sum + v, 0) / values.length;
+}
+
+export function estimateWholeMonthlyFromSqmBenchmark(
+  sale: Pick<MapListing, "sqm">,
+  avgRentPerSqm: number,
+): number | null {
+  if (sale.sqm == null || sale.sqm <= 0) return null;
+  return Math.round(avgRentPerSqm * sale.sqm);
+}
 
 export function estimateWholeMonthlyFromSimilarBenchmark(
   sale: Pick<MapListing, "rooms">,
@@ -138,22 +159,48 @@ export function estimateWholeMonthlyFromSimilarBenchmark(
 }
 
 export function similarRentEstimateSummary(
-  sale: Pick<MapListing, "rooms">,
+  sale: Pick<MapListing, "rooms" | "sqm">,
   similarRentals: MapListing[],
+  method: SimilarRentEstimateMethod = "per_room",
 ): {
+  method: SimilarRentEstimateMethod;
   avgRentPerRoom: number | null;
+  avgRentPerSqm: number | null;
   avgWholeMonthly: number | null;
   wholeEstimateMode: SimilarWholeRentMode | null;
   underTwoLocali: boolean;
 } {
   const avgRentPerRoom = averageMonthlyRentPerRoom(similarRentals);
+  const avgRentPerSqm = averageMonthlyRentPerSqm(similarRentals);
   const underTwoLocali = hasUnderTwoLocali(sale.rooms);
+
+  if (method === "per_sqm") {
+    return {
+      method,
+      avgRentPerRoom,
+      avgRentPerSqm,
+      avgWholeMonthly:
+        avgRentPerSqm != null ? estimateWholeMonthlyFromSqmBenchmark(sale, avgRentPerSqm) : null,
+      wholeEstimateMode: null,
+      underTwoLocali,
+    };
+  }
+
   if (avgRentPerRoom == null) {
-    return { avgRentPerRoom: null, avgWholeMonthly: null, wholeEstimateMode: null, underTwoLocali };
+    return {
+      method,
+      avgRentPerRoom: null,
+      avgRentPerSqm,
+      avgWholeMonthly: null,
+      wholeEstimateMode: null,
+      underTwoLocali,
+    };
   }
   const { wholeMonthly, mode } = estimateWholeMonthlyFromSimilarBenchmark(sale, avgRentPerRoom);
   return {
+    method,
     avgRentPerRoom,
+    avgRentPerSqm,
     avgWholeMonthly: wholeMonthly,
     wholeEstimateMode: mode,
     underTwoLocali,

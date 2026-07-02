@@ -1,10 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { createPortal } from "react-dom";
 import { loadCityListingsCacheFirst } from "@/lib/cache-first";
 import { criteriaFromDetail, filterSimilarRentals } from "@/lib/similar-listings";
+import {
+  DEFAULT_SIMILAR_RENT_FILTERS,
+  SIMILAR_RENT_RADIUS_PRESETS,
+  radiusMFromPreset,
+  similarRentSearchOptionsFromState,
+  type SimilarRentFilterState,
+} from "@/lib/similar-rent-filters";
 import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client";
 import {
   estimateRentableRooms,
@@ -18,6 +25,7 @@ import {
   rentPriceBasisBadgeClass,
   rentPriceBasisLabel,
   similarRentEstimateSummary,
+  type SimilarRentEstimateMethod,
 } from "@/lib/rent-price-basis";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { ITALY_DEFAULTS } from "@/lib/constants";
@@ -59,9 +67,8 @@ interface Props {
   onOpenSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
   onUseAverageRent?: (
     saleDetail: ListingDetail,
-    avgPerRoom: number,
-    wholeMonthly: number | null,
     similarRentals: MapListing[],
+    estimateMethod: SimilarRentEstimateMethod,
   ) => void;
 }
 
@@ -107,7 +114,10 @@ export default function PropertyDetailPanel({
   const [descriptionExpanded, setDescriptionExpanded] = useState(false);
   const [similarLoading, setSimilarLoading] = useState(false);
   const [similarError, setSimilarError] = useState<string | null>(null);
-  const [similarRentals, setSimilarRentals] = useState<MapListing[] | null>(null);
+  const [rentPool, setRentPool] = useState<MapListing[]>([]);
+  const [similarFilters, setSimilarFilters] = useState<SimilarRentFilterState>(DEFAULT_SIMILAR_RENT_FILTERS);
+  const [rentEstimateMethod, setRentEstimateMethod] = useState<SimilarRentEstimateMethod>("per_room");
+  const [similarColumnOpen, setSimilarColumnOpen] = useState(true);
 
   useEffect(() => {
     setMounted(true);
@@ -115,18 +125,28 @@ export default function PropertyDetailPanel({
 
   useEffect(() => {
     if (!open) {
-      setSimilarRentals(null);
+      setRentPool([]);
       setSimilarError(null);
       setSimilarLoading(false);
       setDescriptionExpanded(false);
+      setSimilarFilters(DEFAULT_SIMILAR_RENT_FILTERS);
+      setRentEstimateMethod("per_room");
+      setSimilarColumnOpen(true);
     }
+  }, [open, detail?.id]);
+
+  useEffect(() => {
+    if (!open || !detail) return;
+    setSimilarFilters(DEFAULT_SIMILAR_RENT_FILTERS);
+    setRentEstimateMethod("per_room");
+    setSimilarColumnOpen(true);
   }, [open, detail?.id]);
 
   const findSimilarRentals = useCallback(async () => {
     if (!detail) return;
     setSimilarLoading(true);
     setSimilarError(null);
-    setSimilarRentals(null);
+    setRentPool([]);
     try {
       const criteria = criteriaFromDetail(detail, mapCity);
       if (!criteria.zone && (criteria.lat == null || criteria.lng == null)) {
@@ -134,18 +154,27 @@ export default function PropertyDetailPanel({
         return;
       }
       const { data: cache } = await loadCityListingsCacheFirst(criteria.city, "rent", false, provider);
-      const matches = filterSimilarRentals(cache.listings, criteria);
-      if (!matches.length) {
-        setSimilarError(`Nessun affitto trovato in ${criteria.zone}. Prova ad aggiornare gli annunci affitto in mappa.`);
-      } else {
-        setSimilarRentals(matches);
+      if (!cache.listings.length) {
+        setSimilarError(`Nessun affitto in cache per ${criteria.city}. Aggiorna gli annunci affitto in mappa.`);
+        return;
       }
+      setRentPool(cache.listings);
     } catch (e) {
       setSimilarError(e instanceof Error ? e.message : "Ricerca affitti non riuscita");
     } finally {
       setSimilarLoading(false);
     }
   }, [detail, mapCity, provider]);
+
+  const similarRentals = useMemo(() => {
+    if (!detail || !rentPool.length) return null;
+    const criteria = criteriaFromDetail(detail, mapCity);
+    const searchOptions = similarRentSearchOptionsFromState(similarFilters, detail);
+    return filterSimilarRentals(rentPool, criteria, searchOptions);
+  }, [detail, mapCity, rentPool, similarFilters]);
+
+  const similarRadiusM = radiusMFromPreset(similarFilters.radiusPresetId);
+  const similarFilteredEmpty = rentPool.length > 0 && similarRentals != null && similarRentals.length === 0;
 
   useEffect(() => {
     if (!open || loading || !detail || detail.operation !== "sale") return;
@@ -174,15 +203,18 @@ export default function PropertyDetailPanel({
         ? fmtEuro(detail.price)
         : "";
 
-  const showSimilarColumn = detail?.operation === "sale" && !loading;
+  const showSimilarColumn = detail?.operation === "sale" && !loading && similarColumnOpen;
   const similarRentSummary =
     detail && similarRentals && similarRentals.length > 0
-      ? similarRentEstimateSummary(detail, similarRentals)
+      ? similarRentEstimateSummary(detail, similarRentals, rentEstimateMethod)
       : null;
   const avgRentPerRoom = similarRentSummary?.avgRentPerRoom ?? null;
+  const avgRentPerSqm = similarRentSummary?.avgRentPerSqm ?? null;
   const avgWholeMonthly = similarRentSummary?.avgWholeMonthly ?? null;
   const underTwoLocali =
     similarRentSummary?.underTwoLocali ?? hasUnderTwoLocali(detail?.rooms);
+  const canUseSqmEstimate =
+    detail?.sqm != null && detail.sqm > 0 && avgRentPerSqm != null && avgWholeMonthly != null;
 
   const rentableRooms = estimateRentableRooms(detail?.rooms);
   const rentableRoomsNote =
@@ -198,7 +230,7 @@ export default function PropertyDetailPanel({
       : null;
 
   const closeSimilarColumn = () => {
-    setSimilarRentals(null);
+    setSimilarColumnOpen(false);
     setSimilarError(null);
     setSimilarLoading(false);
   };
@@ -356,6 +388,7 @@ export default function PropertyDetailPanel({
                 saleProperty={detail}
                 similarRentals={similarRentals}
                 loading={similarLoading}
+                radiusM={similarRadiusM}
               />
             )}
 
@@ -451,14 +484,155 @@ export default function PropertyDetailPanel({
                   <p className="text-sm text-amber-400">{similarError}</p>
                 )}
 
+                {similarFilteredEmpty && !similarLoading && !similarError && (
+                  <p className="text-sm text-amber-400">
+                    Nessun affitto con i filtri attuali. Prova ad allargare il raggio o a ridurre i vincoli su
+                    locali e metratura.
+                  </p>
+                )}
+
+                {!similarLoading && rentPool.length > 0 && (
+                  <div className="mb-3 space-y-2 rounded-lg border border-surface-border/60 bg-surface-raised/30 p-3">
+                    <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">
+                      Filtri comparabili
+                    </p>
+                    <label className="block text-xs text-slate-400">
+                      Raggio
+                      <select
+                        value={similarFilters.radiusPresetId}
+                        onChange={(e) =>
+                          setSimilarFilters((f) => ({
+                            ...f,
+                            radiusPresetId: e.target.value as SimilarRentFilterState["radiusPresetId"],
+                          }))
+                        }
+                        className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                      >
+                        {SIMILAR_RENT_RADIUS_PRESETS.map((preset) => (
+                          <option key={preset.id} value={preset.id}>
+                            {preset.label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="block text-xs text-slate-400">
+                      Locali
+                      <select
+                        value={similarFilters.roomsFilter}
+                        onChange={(e) =>
+                          setSimilarFilters((f) => ({
+                            ...f,
+                            roomsFilter: e.target.value as SimilarRentFilterState["roomsFilter"],
+                          }))
+                        }
+                        className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                      >
+                        <option value="any">Qualsiasi</option>
+                        <option value="similar">
+                          Simili{detail.rooms != null ? ` (±1 da ${detail.rooms})` : " (±1)"}
+                        </option>
+                        <option value="match">
+                          Uguali{detail.rooms != null ? ` (${detail.rooms})` : ""}
+                        </option>
+                      </select>
+                    </label>
+                    <label className="block text-xs text-slate-400">
+                      Metratura
+                      <select
+                        value={similarFilters.sqmFilter}
+                        onChange={(e) =>
+                          setSimilarFilters((f) => ({
+                            ...f,
+                            sqmFilter: e.target.value as SimilarRentFilterState["sqmFilter"],
+                          }))
+                        }
+                        className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                      >
+                        <option value="any">Qualsiasi</option>
+                        <option value="similar">
+                          Simile ±25%
+                          {detail.sqm != null && detail.sqm > 0 ? ` (da ${detail.sqm} m²)` : ""}
+                        </option>
+                      </select>
+                    </label>
+                    {detail.property_type && (
+                      <label className="block text-xs text-slate-400">
+                        Tipo
+                        <select
+                          value={similarFilters.propertyTypeFilter}
+                          onChange={(e) =>
+                            setSimilarFilters((f) => ({
+                              ...f,
+                              propertyTypeFilter: e.target.value as SimilarRentFilterState["propertyTypeFilter"],
+                            }))
+                          }
+                          className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                        >
+                          <option value="any">Qualsiasi</option>
+                          <option value="match">Stesso tipo ({detail.property_type})</option>
+                        </select>
+                      </label>
+                    )}
+                  </div>
+                )}
+
                 {similarRentals && similarRentals.length > 0 && !similarLoading && (
                   <>
-                    {avgRentPerRoom != null && (
+                    <div className="mb-3 flex rounded-lg border border-surface-border/60 bg-surface-raised/30 p-0.5">
+                      <button
+                        type="button"
+                        onClick={() => setRentEstimateMethod("per_room")}
+                        className={cn(
+                          "flex-1 rounded-md px-2 py-1.5 text-xs font-medium transition-colors",
+                          rentEstimateMethod === "per_room"
+                            ? "bg-accent/20 text-accent"
+                            : "text-slate-400 hover:text-slate-200",
+                        )}
+                      >
+                        €/stanza
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setRentEstimateMethod("per_sqm")}
+                        disabled={detail.sqm == null || detail.sqm <= 0}
+                        className={cn(
+                          "flex-1 rounded-md px-2 py-1.5 text-xs font-medium transition-colors",
+                          rentEstimateMethod === "per_sqm"
+                            ? "bg-accent/20 text-accent"
+                            : "text-slate-400 hover:text-slate-200",
+                          (detail.sqm == null || detail.sqm <= 0) && "cursor-not-allowed opacity-40",
+                        )}
+                      >
+                        €/m²
+                      </button>
+                    </div>
+
+                    {(rentEstimateMethod === "per_room" ? avgRentPerRoom != null : canUseSqmEstimate) && (
                       <div className="mb-3 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2.5">
                         <p className="text-[10px] font-medium uppercase tracking-wide text-accent">
-                          {underTwoLocali ? "Stima affitto intero" : "Media affitto per stanza"}
+                          {rentEstimateMethod === "per_sqm"
+                            ? "Stima affitto (€/m²)"
+                            : underTwoLocali
+                              ? "Stima affitto intero"
+                              : "Media affitto per stanza"}
                         </p>
-                        {underTwoLocali && avgWholeMonthly != null ? (
+                        {rentEstimateMethod === "per_sqm" && canUseSqmEstimate ? (
+                          <>
+                            <p className="mt-0.5 text-lg font-bold text-slate-100">
+                              {fmtEuro(avgWholeMonthly!)}
+                              <span className="text-sm font-normal text-slate-400">/mese</span>
+                            </p>
+                            <p className="mt-0.5 text-xs text-slate-500">
+                              Su {similarRentals.length} affitti in zona ·{" "}
+                              {avgRentPerSqm!.toLocaleString("it-IT", {
+                                style: "currency",
+                                currency: "EUR",
+                                maximumFractionDigits: 1,
+                              })}
+                              /m² × {detail.sqm} m² = {fmtEuro(avgWholeMonthly!)}/mese
+                            </p>
+                          </>
+                        ) : underTwoLocali && avgWholeMonthly != null ? (
                           <>
                             <p className="mt-0.5 text-lg font-bold text-slate-100">
                               {fmtEuro(avgWholeMonthly)}
@@ -466,14 +640,14 @@ export default function PropertyDetailPanel({
                             </p>
                             <p className="mt-0.5 text-xs text-slate-500">
                               Su {similarRentals.length} affitti in zona ·{" "}
-                              {fmtEuro(avgRentPerRoom)}/stanza × {SINGLE_RENTABLE_ROOM_PREMIUM.toLocaleString("it-IT")} ={" "}
+                              {fmtEuro(avgRentPerRoom!)}/stanza × {SINGLE_RENTABLE_ROOM_PREMIUM.toLocaleString("it-IT")} ={" "}
                               {fmtEuro(avgWholeMonthly)}/mese
                             </p>
                           </>
                         ) : (
                           <>
                             <p className="mt-0.5 text-lg font-bold text-slate-100">
-                              {fmtEuro(avgRentPerRoom)}
+                              {fmtEuro(avgRentPerRoom!)}
                               <span className="text-sm font-normal text-slate-400">/mese/stanza</span>
                             </p>
                             <p className="mt-0.5 text-xs text-slate-500">
@@ -486,21 +660,28 @@ export default function PropertyDetailPanel({
                                     {fmtEuro(avgWholeMonthly)}/mese
                                   </span>
                                   {" "}
-                                  ({fmtEuro(avgRentPerRoom)} × {rentableRooms} stanze)
+                                  ({fmtEuro(avgRentPerRoom!)} × {rentableRooms} stanze)
                                 </>
                               )}
                             </p>
                           </>
                         )}
-                        {rentableRoomsNote && (
+                        {rentEstimateMethod === "per_room" && rentableRoomsNote && (
                           <p className="mt-2 text-[11px] leading-relaxed text-slate-500">{rentableRoomsNote}</p>
                         )}
-                        {onUseAverageRent && avgRentPerRoom != null && (
+                        {rentEstimateMethod === "per_sqm" && (
+                          <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
+                            Media mensile €/m² sugli affitti comparabili con metratura nota, applicata ai m²
+                            dell&apos;immobile in vendita.
+                          </p>
+                        )}
+                        {onUseAverageRent &&
+                          (rentEstimateMethod === "per_sqm" ? canUseSqmEstimate : avgRentPerRoom != null) && (
                           <button
                             type="button"
                             onClick={() => {
                               if (!similarRentals) return;
-                              onUseAverageRent(detail, avgRentPerRoom, avgWholeMonthly, similarRentals);
+                              onUseAverageRent(detail, similarRentals, rentEstimateMethod);
                               onClose();
                             }}
                             className={cn(
@@ -515,9 +696,11 @@ export default function PropertyDetailPanel({
                       </div>
                     )}
                     <p className="mb-3 text-xs text-slate-500">
-                      {underTwoLocali
-                        ? "Con fino a 2 locali si stima l'affitto intero dal benchmark €/stanza in zona, maggiorato del 50% per uso esclusivo."
-                        : "Per annunci «stanza»: stima intero = prezzo stanza × locali dell'annuncio. Per l'immobile in vendita si usano le stanze affittabili stimate (locali − 1 soggiorno)."}
+                      {rentEstimateMethod === "per_sqm"
+                        ? "Metodo €/m²: utile quando gli annunci comparabili hanno metratura affidabile."
+                        : underTwoLocali
+                          ? "Con fino a 2 locali si stima l'affitto intero dal benchmark €/stanza in zona, maggiorato del 50% per uso esclusivo."
+                          : "Per annunci «stanza»: stima intero = prezzo stanza × locali dell'annuncio. Per l'immobile in vendita si usano le stanze affittabili stimate (locali − 1 soggiorno)."}
                     </p>
                     <div className="space-y-2">
                       {similarRentals.map((rent) => {
