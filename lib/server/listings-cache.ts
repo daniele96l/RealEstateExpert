@@ -1,5 +1,6 @@
 import path from "path";
 import type { CityListingsCache, MapListing } from "@/lib/types";
+import { mergeListingCondition } from "@/lib/listing-condition-enrich";
 import { normalizeCitySlug } from "./geocode";
 import { readJsonFile, writeJsonFile } from "./fs-cache-io";
 
@@ -12,7 +13,10 @@ function cacheFilePath(city: string, operation: string): string {
 export function mergeListings(existing: MapListing[], incoming: MapListing[]): MapListing[] {
   const byId = new Map<string, MapListing>();
   for (const listing of existing) byId.set(listing.id, listing);
-  for (const listing of incoming) byId.set(listing.id, listing);
+  for (const listing of incoming) {
+    const prev = byId.get(listing.id);
+    byId.set(listing.id, prev ? mergeListingCondition(listing, prev) : listing);
+  }
   return [...byId.values()];
 }
 

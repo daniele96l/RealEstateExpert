@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import { GeocodeError } from "@/lib/server/geocode";
 import { IdealistaSearchError } from "@/lib/server/idealista-search";
 import { getCache, saveCache } from "@/lib/server/listings-cache";
+import {
+  enrichCityListingsCache,
+  getEnrichedCache,
+} from "@/lib/server/listing-condition-enrich";
 import { fetchWithFallback, resolvePreferredProvider } from "@/lib/server/listings-fetch";
 import { RapidApiIdealistaError } from "@/lib/server/rapidapi-idealista";
 import { hasRapidApiKey, hasScrapingBeeKey, getDefaultListingsProvider } from "@/lib/server/config";
@@ -20,7 +24,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ detail: "operation non valida" }, { status: 400 });
     }
 
-    const cached = await getCache(city, operation);
+    const cached = await getEnrichedCache(city, operation);
     if (!cached) {
       return NextResponse.json({ detail: "Nessun dato in cache per questa città" }, { status: 404 });
     }
@@ -51,15 +55,15 @@ export async function POST(request: Request) {
     }
 
     if (!body.refresh) {
-      const cached = await getCache(body.city, body.operation);
+      const cached = await getEnrichedCache(body.city, body.operation);
       if (cached) return NextResponse.json(cached);
     }
 
     const preferred = resolvePreferredProvider(body.provider);
     const { data, provider } = await fetchWithFallback(body.city, body.operation, preferred);
-    const payload = { ...data, provider };
-    await saveCache(payload);
-    return NextResponse.json(payload);
+    const enriched = await enrichCityListingsCache({ ...data, provider });
+    await saveCache(enriched);
+    return NextResponse.json(enriched);
   } catch (err) {
     if (err instanceof GeocodeError) {
       return NextResponse.json({ detail: err.message }, { status: 400 });

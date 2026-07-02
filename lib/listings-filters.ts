@@ -1,5 +1,14 @@
 import type { MapListing } from "./types";
+import { normalizeListingCondition } from "./listing-condition-enrich";
 import { filterListingsByRadius, type GeoPoint } from "./geo-filter";
+import {
+  CONDITION_FILTER_OPTIONS,
+  matchesConditionFilter,
+  type ConditionFilter,
+} from "./property-condition";
+
+export type { ConditionFilter };
+export { CONDITION_FILTER_OPTIONS };
 
 export type AreaFilterPreset = "off" | "centro" | "quartiere" | "custom";
 
@@ -12,6 +21,7 @@ export interface ListingsFilters {
   sqmMax: number | null;
   rooms: number | null;
   propertyType: string | null;
+  condition: ConditionFilter;
   areaPreset: AreaFilterPreset;
   areaRadiusM: number | null;
   areaLat: number | null;
@@ -27,6 +37,7 @@ export const EMPTY_LISTINGS_FILTERS: ListingsFilters = {
   sqmMax: 100,
   rooms: null,
   propertyType: null,
+  condition: "any",
   areaPreset: "off",
   areaRadiusM: 2_500,
   areaLat: null,
@@ -53,8 +64,15 @@ export const ROOMS_OPTIONS: { value: number; label: string }[] = [
 export function hasActiveFilters(filters: ListingsFilters): boolean {
   return (
     filters.areaPreset !== "off" ||
+    filters.condition !== "any" ||
     Object.entries(filters).some(([key, v]) => {
-      if (key === "areaPreset" || key === "areaRadiusM" || key === "areaLat" || key === "areaLng") {
+      if (
+        key === "areaPreset" ||
+        key === "areaRadiusM" ||
+        key === "areaLat" ||
+        key === "areaLng" ||
+        key === "condition"
+      ) {
         return false;
       }
       return v != null;
@@ -103,12 +121,13 @@ export function filterListings(
   filters: ListingsFilters,
   mapCenter?: GeoPoint | null,
 ): MapListing[] {
-  let result = listings.filter((listing) => {
+  let result = listings.map(normalizeListingCondition).filter((listing) => {
     if (!matchesPrice(listing, filters)) return false;
     if (filters.sqmMin != null && (listing.sqm == null || listing.sqm < filters.sqmMin)) return false;
     if (filters.sqmMax != null && (listing.sqm == null || listing.sqm > filters.sqmMax)) return false;
     if (!matchesRooms(listing.rooms, filters.rooms)) return false;
     if (filters.propertyType && listing.property_type !== filters.propertyType) return false;
+    if (!matchesConditionFilter(listing, filters.condition)) return false;
     return true;
   });
 

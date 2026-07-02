@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { getDefaultListingsProvider, hasRapidApiKey, hasScrapingBeeKey } from "@/lib/server/config";
-import { fetchPropertyDetailsByUrl as fetchRapidDetail } from "@/lib/server/rapidapi-idealista";
 import { RapidApiIdealistaError } from "@/lib/server/rapidapi-idealista";
-import { fetchPropertyDetailsViaScrapingBee } from "@/lib/server/idealista-import";
+import { fetchPropertyDetailForListing } from "@/lib/server/fetch-property-detail";
 import { getPropertyDetailCache, savePropertyDetailCache } from "@/lib/server/property-detail-cache";
+import { syncListingConditionToCityCaches } from "@/lib/server/listing-condition-enrich";
 import { listingToDetail } from "@/lib/server/property-detail";
 import { ScrapingBeeError } from "@/lib/server/scrapingbee";
 import type { ListingsProvider, MapListing } from "@/lib/types";
@@ -29,18 +29,6 @@ export async function GET(request: Request) {
   });
 }
 
-async function fetchDetail(
-  url: string,
-  provider: ListingsProvider,
-  base?: MapListing,
-) {
-  if (provider === "rapidapi") {
-    return fetchRapidDetail(url, base);
-  }
-  const listing = await fetchPropertyDetailsViaScrapingBee(url);
-  return listingToDetail({ ...listing, ...base, id: listing.id || base?.id || "" });
-}
-
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as {
@@ -60,7 +48,10 @@ export async function POST(request: Request) {
 
     if (id && !body.refresh) {
       const cached = await getPropertyDetailCache(id);
-      if (cached) return NextResponse.json(cached);
+      if (cached) {
+        await syncListingConditionToCityCaches(cached);
+        return NextResponse.json(cached);
+      }
     }
 
     const preferred = body.provider ?? getDefaultListingsProvider();
@@ -78,8 +69,30 @@ export async function POST(request: Request) {
     let lastError: unknown;
     for (const provider of available) {
       try {
-        const detail = await fetchDetail(url, provider, body.listing);
+        const detail = body.listing
+          ? await fetchPropertyDetailForListing(body.listing, provider)
+          : await fetchPropertyDetailForListing(
+              {
+                id: id ?? "",
+                url,
+                operation: "sale",
+                title: "",
+                price: 0,
+                lat: 0,
+                lng: 0,
+                sqm: null,
+                rooms: null,
+                address: null,
+                property_type: null,
+                property_type_label: null,
+                condition_status: null,
+                condition: null,
+                needs_renovation: null,
+              },
+              provider,
+            );
         await savePropertyDetailCache(detail);
+        await syncListingConditionToCityCaches(detail);
         return NextResponse.json(detail);
       } catch (err) {
         lastError = err;

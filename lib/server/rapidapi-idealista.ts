@@ -1,5 +1,6 @@
 import type { CityListingsCache, ListingDetail, MapListing } from "@/lib/types";
 import { propertyTypeLabel } from "@/lib/listing-types";
+import { resolveListingCondition } from "@/lib/renovation-status";
 import { parseRapidPropertyPayload } from "./property-detail";
 import { getRapidApiKey } from "./config";
 import { geocodeCity, locationMatchesCity, normalizeCitySlug } from "./geocode";
@@ -29,6 +30,8 @@ interface RapidListing {
   url?: string;
   operation?: string;
   propertyType?: string;
+  status?: string;
+  propertyStatus?: string;
 }
 
 async function rapidApiGet<T>(path: string, params: Record<string, string>): Promise<T> {
@@ -102,6 +105,24 @@ function propertyFields(item: RapidListing): Pick<MapListing, "property_type" | 
   };
 }
 
+function extractRapidListingStatus(item: RapidListing): string | null {
+  const raw = item as RapidListing & Record<string, unknown>;
+  const nested = raw.moreCharacteristics as Record<string, unknown> | undefined;
+  const candidates = [
+    item.status,
+    item.propertyStatus,
+    raw.preservation,
+    raw.preservations,
+    raw.condition,
+    raw.conservation,
+    nested?.status,
+  ];
+  for (const value of candidates) {
+    if (typeof value === "string" && value.trim()) return value.trim();
+  }
+  return null;
+}
+
 function listingFromRapid(item: RapidListing, operation: "sale" | "rent"): MapListing | null {
   const id = String(item.propertyCode ?? "");
   if (!id) return null;
@@ -118,6 +139,7 @@ function listingFromRapid(item: RapidListing, operation: "sale" | "rent"): MapLi
 
   const address = item.address ?? null;
   const title = address ?? `Immobile ${id}`;
+  const conditionInfo = resolveListingCondition(extractRapidListingStatus(item), title);
 
   return {
     id,
@@ -131,6 +153,7 @@ function listingFromRapid(item: RapidListing, operation: "sale" | "rent"): MapLi
     rooms: item.rooms ?? null,
     address,
     ...propertyFields(item),
+    ...conditionInfo,
   };
 }
 
@@ -171,6 +194,7 @@ function listingFromRapidDetail(item: RapidListing, sourceUrl: string): MapListi
 
   const address = item.address ?? null;
   const title = (address ?? item.propertyType ?? `Immobile ${id}`).slice(0, 200);
+  const conditionInfo = resolveListingCondition(extractRapidListingStatus(item), title);
 
   return {
     id,
@@ -184,6 +208,7 @@ function listingFromRapidDetail(item: RapidListing, sourceUrl: string): MapListi
     rooms: item.rooms ?? null,
     address,
     ...propertyFields(item),
+    ...conditionInfo,
   };
 }
 

@@ -136,6 +136,9 @@ function parsePropertyDetailHtml(html: string, sourceUrl: string): MapListing {
     address: address.slice(0, 200),
     property_type: null,
     property_type_label: null,
+    condition_status: null,
+    condition: null,
+    needs_renovation: null,
   };
 }
 
@@ -233,6 +236,9 @@ export async function importListingFromUrl(
         address: detail.address,
         property_type: detail.property_type ?? null,
         property_type_label: detail.property_type_label ?? null,
+        condition_status: detail.condition_status,
+        condition: detail.condition,
+        needs_renovation: detail.needs_renovation,
       };
 
       await savePropertyDetailCache(detail);

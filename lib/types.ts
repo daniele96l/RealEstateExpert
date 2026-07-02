@@ -155,6 +155,9 @@ export interface MapListing {
   address: string | null;
   property_type: string | null;
   property_type_label: string | null;
+  condition_status: string | null;
+  condition: string | null;
+  needs_renovation: boolean | null;
 }
 
 export interface ListingDetail extends MapListing {

@@ -3,10 +3,12 @@
 import {
   EMPTY_LISTINGS_FILTERS,
   PROPERTY_TYPE_OPTIONS,
+  CONDITION_FILTER_OPTIONS,
   ROOMS_OPTIONS,
   hasActiveFilters,
   parseFilterNumber,
   type AreaFilterPreset,
+  type ConditionFilter,
   type ListingsFilters,
 } from "@/lib/listings-filters";
 import { formatDistance } from "@/lib/geo-filter";
@@ -89,6 +91,7 @@ function PriceRange({
 export default function ListingsMapFilters({ viewMode, filters, onChange, onReset }: Props) {
   const showSalePrice = viewMode === "sale" || viewMode === "both";
   const showRentPrice = viewMode === "rent" || viewMode === "both";
+  const showRenovationFilter = viewMode === "sale" || viewMode === "both";
   const active = hasActiveFilters(filters);
 
   return (
@@ -180,6 +183,26 @@ export default function ListingsMapFilters({ viewMode, filters, onChange, onRese
             ))}
           </select>
         </FilterField>
+        {showRenovationFilter && (
+          <FilterField label="Stato" className="min-w-[140px] flex-[1.5]">
+            <select
+              className="select-field !py-2 text-sm"
+              value={filters.condition}
+              onChange={(e) =>
+                onChange({
+                  ...filters,
+                  condition: e.target.value as ConditionFilter,
+                })
+              }
+            >
+              {CONDITION_FILTER_OPTIONS.map(({ value, label }) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </FilterField>
+        )}
       </div>
       <div className="mt-3 flex flex-wrap items-end gap-2 border-t border-surface-border/60 pt-3">
         <FilterField label="Zona" className="min-w-[140px] max-w-[180px]">

@@ -20,7 +20,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Pasquale Andiloro Nn, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36152771",
@@ -34,7 +37,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Carlo Rosselli Nn, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "15669132",
@@ -48,7 +54,10 @@
       "rooms": 3,
       "address": "Villa in Via Marina Nn, Reggio Nord, Reggio Calabria",
       "property_type": "chalet",
-      "property_type_label": "Villa/Casa"
+      "property_type_label": "Villa/Casa",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36152119",
@@ -62,7 +71,10 @@
       "rooms": 3,
       "address": "3 room flat in Traversa Basile, 4, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "25770905",
@@ -76,7 +88,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Emilio Cuzzocrea Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34178402",
@@ -90,7 +105,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Sbarre Centrali, 285, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36147101",
@@ -104,7 +122,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Reggio Campi II Tronco, 31, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "29295190",
@@ -118,7 +139,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Tommaso Minniti, 7 c, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36128151",
@@ -132,7 +156,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Cortese, 20, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36131935",
@@ -146,7 +173,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Sant'Agata al Fiume, 44, Ravagnese - Arangea, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35089622",
@@ -160,7 +190,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Bosco, 20, Pellaro - San Leo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35666227",
@@ -174,7 +207,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Girolamo Arcovito, 52, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35545964",
@@ -188,7 +224,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via fra Gesualdo Melacrino, 53, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34729591",
@@ -202,7 +241,10 @@
       "rooms": 4,
       "address": "4 room flat in Via del Salvatore, 46, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35552963",
@@ -216,7 +258,10 @@
       "rooms": 6,
       "address": "Flat / apartment in Via Risorgimento Traversa D, 18, Reggio Nord, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35705590",
@@ -230,7 +275,10 @@
       "rooms": 6,
       "address": "Flat / apartment in Via Modena Traversa a, San Giorgio - Modena - San Sperato, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35441107",
@@ -244,7 +292,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Gebbione a Mare, 1, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "33042951",
@@ -258,7 +309,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Crocevia, 30, Pellaro - San Leo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35450818",
@@ -272,7 +326,10 @@
       "rooms": 2,
       "address": "2 room flat in Viale Galileo Galilei, 20, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35372371",
@@ -286,7 +343,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Giudecca, 47, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "renew",
+      "condition": "Da ristrutturare",
+      "needs_renovation": true
     },
     {
       "id": "35372370",
@@ -300,7 +360,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Giudecca, 47, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "renew",
+      "condition": "Da ristrutturare",
+      "needs_renovation": true
     },
     {
       "id": "35628285",
@@ -314,7 +377,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Casalotto, 39, Reggio Est, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35631689",
@@ -328,7 +394,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Abate Sant'Elia Dir. Privata, 9, Ravagnese - Arangea, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36030997",
@@ -342,7 +411,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Demetrio Tripepi, 63, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36077654",
@@ -356,7 +428,10 @@
       "rooms": 3,
       "address": "3 room flat in Viale Vittoria, 15, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35599582",
@@ -370,7 +445,10 @@
       "rooms": 4,
       "address": "4 room flat in Via San Francesco di Sales, 4, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36031236",
@@ -384,7 +462,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Demetrio Tripepi, 66, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36101346",
@@ -398,7 +479,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Argine Destro Calopinace, 13, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "30028569",
@@ -412,7 +496,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Diramazione Rausei Via Cardinale Portanova, 14, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35914456",
@@ -426,7 +513,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Abate Sant'Elia Dir. Privata, 12, Ravagnese - Arangea, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36023838",
@@ -440,7 +530,10 @@
       "rooms": 3,
       "address": "3 room flat in Diramazione Violo Via Saracinello, 4, Saracinello, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35478240",
@@ -454,7 +547,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Aschenez Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "27889598",
@@ -468,7 +564,10 @@
       "rooms": 2,
       "address": "Terraced house in Ortì contrada Sant'Anna Nn, Reggio Est, Reggio Calabria",
       "property_type": "chalet",
-      "property_type_label": "Villa/Casa"
+      "property_type_label": "Villa/Casa",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "30264513",
@@ -482,7 +581,10 @@
       "rooms": 2,
       "address": "Terraced house in Via Provinciale Ortì Nn, Reggio Est, Reggio Calabria",
       "property_type": "chalet",
-      "property_type_label": "Villa/Casa"
+      "property_type_label": "Villa/Casa",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "32178174",
@@ -496,7 +598,10 @@
       "rooms": 2,
       "address": "Penthouse in Via Cappuccinelli diramazione Zagarella, 40, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "penthouse",
-      "property_type_label": "Attico"
+      "property_type_label": "Attico",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "27689037",
@@ -510,7 +615,10 @@
       "rooms": 4,
       "address": "4 room flat in Via demetrio tripepi, 65, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34404339",
@@ -524,7 +632,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Michele Barbaro, 15, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34690677",
@@ -538,7 +649,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Vespucci Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35141043",
@@ -552,7 +666,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Torrente Malavenda Nn, Reggio Nord, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "33938134",
@@ -566,7 +683,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Demetrio Tripepi, 110, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35882541",
@@ -580,7 +700,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Luigi Galvani, 15, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "33293141",
@@ -594,7 +717,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via San Sperato, 4, San Giorgio - Modena - San Sperato, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35714904",
@@ -608,7 +734,10 @@
       "rooms": 6,
       "address": "Flat / apartment in Via Pisa, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "30863436",
@@ -622,7 +751,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Giudecca, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34120622",
@@ -636,7 +768,10 @@
       "rooms": 4,
       "address": "4 room flat in Viale Calabria, 189, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35599603",
@@ -650,7 +785,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Reggio Campi, 59, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "31409230",
@@ -664,7 +802,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Eremo al Santuario, 4, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35938176",
@@ -678,7 +819,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Delle Camelie Nn, San Giorgio - Modena - San Sperato, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35080303",
@@ -692,7 +836,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Giuseppe de Nava Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36003276",
@@ -706,7 +853,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Vittorio Veneto Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "23028082",
@@ -720,7 +870,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Spirito Santo Nn, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "29195033",
@@ -734,7 +887,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Loreto Nn, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35027341",
@@ -748,7 +904,10 @@
       "rooms": 9,
       "address": "Flat / apartment in Via Campoli, Pellaro - San Leo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34477220",
@@ -762,7 +921,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Argine Destro Annunziata, Santa Caterina - San Brunello - Vito, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35484812",
@@ -776,7 +938,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Bosco, Pellaro - San Leo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "29907337",
@@ -790,7 +955,10 @@
       "rooms": 4,
       "address": "4 room flat in Salita Zerbi Nn, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35326276",
@@ -804,7 +972,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Giuseppe Mazzini, 20, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "30484619",
@@ -818,7 +989,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Guido Miggiano Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35611675",
@@ -832,7 +1006,10 @@
       "rooms": 6,
       "address": "Flat / apartment in Via Cardinale Gennaro Portanova, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "25379520",
@@ -846,7 +1023,10 @@
       "rooms": 2,
       "address": "Duplex in Via Guido miggiano Nn, Tremulini - Eremo, Reggio Calabria",
       "property_type": "duplex",
-      "property_type_label": "Duplex"
+      "property_type_label": "Duplex",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "27677175",
@@ -860,7 +1040,10 @@
       "rooms": 2,
       "address": "Detached house in Ortì agriturismo Sant'Anna Nn, Reggio Est, Reggio Calabria",
       "property_type": "chalet",
-      "property_type_label": "Villa/Casa"
+      "property_type_label": "Villa/Casa",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35218818",
@@ -874,7 +1057,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Giuseppe Melacrino Nn, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35797791",
@@ -888,7 +1074,10 @@
       "rooms": 2,
       "address": "2 room flat in Viale Amendola, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36114008",
@@ -902,7 +1091,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Santa Caterina d'Alessandria, 222, Santa Caterina - San Brunello - Vito, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "30503007",
@@ -916,7 +1108,10 @@
       "rooms": 3,
       "address": "3 room flat in Via modena Nn, San Giorgio - Modena - San Sperato, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "30734622",
@@ -930,7 +1125,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Giuseppe Melacrino Nn, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34632423",
@@ -944,7 +1142,10 @@
       "rooms": 2,
       "address": "2 room flat in Via dei Filippini, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "30979401",
@@ -958,7 +1159,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Reggio Campi II Tronco, 135, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "32682798",
@@ -972,7 +1176,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Giusti, 5, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "32802855",
@@ -986,7 +1193,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Crocevia, 8, Pellaro - San Leo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36130317",
@@ -1000,7 +1210,10 @@
       "rooms": 3,
       "address": "3 room flat in Vicolo la Russa, 3, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35678286",
@@ -1014,7 +1227,10 @@
       "rooms": 2,
       "address": "Penthouse in Via delle Rimembranze Nn, Pellaro - San Leo, Reggio Calabria",
       "property_type": "penthouse",
-      "property_type_label": "Attico"
+      "property_type_label": "Attico",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "32487038",
@@ -1028,7 +1244,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Diramazione Rausei Via Cardinale Portanova Nn, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35294604",
@@ -1042,7 +1261,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Felice Valentino, 7, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "21378551",
@@ -1056,7 +1278,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Carlo Rosselli Nn, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "34259297",
@@ -1070,7 +1295,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Fiume, 32 c, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35869246",
@@ -1084,7 +1312,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Placido Geraci, 14 /a, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "6779196",
@@ -1098,7 +1329,10 @@
       "rooms": 1,
       "address": "Studio in Via nazionale Pentimele, 87, Reggio Nord, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35950747",
@@ -1112,7 +1346,10 @@
       "rooms": 4,
       "address": "Villa in Via Arangea, 19, Ravagnese - Arangea, Reggio Calabria",
       "property_type": "chalet",
-      "property_type_label": "Villa/Casa"
+      "property_type_label": "Villa/Casa",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "33979318",
@@ -1126,7 +1363,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Trabocchetto II, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "36081032",
@@ -1140,7 +1380,10 @@
       "rooms": 6,
       "address": "Flat / apartment in Viale Pio XI traversa privata, 1, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "33885040",
@@ -1154,7 +1397,10 @@
       "rooms": 10,
       "address": "Flat / apartment in Via Sbarre Centrali Nn, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "26408606",
@@ -1168,7 +1414,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Fabrizio De Andrè Nn, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "25230162",
@@ -1182,7 +1431,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Loreto Nn, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34982071",
@@ -1196,7 +1448,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Ibico, 2 /c, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35150339",
@@ -1210,7 +1465,10 @@
       "rooms": 2,
       "address": "2 room flat in Viale Calabria, 78, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36041394",
@@ -1224,7 +1482,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Gebbione, 5, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35559181",
@@ -1238,7 +1499,10 @@
       "rooms": 1,
       "address": "Studio in Via Nazionale San Gregorio Nn, San Gregorio, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35436817",
@@ -1252,7 +1516,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Santa Lucia, 37, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "32674813",
@@ -1266,7 +1533,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Nicolò da Reggio, 14, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "renew",
+      "condition": "Da ristrutturare",
+      "needs_renovation": true
     },
     {
       "id": "34099342",
@@ -1280,7 +1550,10 @@
       "rooms": 1,
       "address": "Studio in Via Dalmazia, 16, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35706303",
@@ -1294,7 +1567,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Ibico, 1, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "34481946",
@@ -1308,7 +1584,10 @@
       "rooms": 3,
       "address": "3 room flat in Viale Calabria Nn, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "31421651",
@@ -1322,7 +1601,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Guglielmo Marconi, 32, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "34506198",
@@ -1336,7 +1618,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Magna Grecia, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "33340163",
@@ -1350,7 +1635,10 @@
       "rooms": 3,
       "address": "3 room flat in Via XXV Luglio, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "34632637",
@@ -1364,7 +1652,10 @@
       "rooms": 2,
       "address": "2 room flat in Via dei Filippini, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35630135",
@@ -1378,7 +1669,10 @@
       "rooms": 3,
       "address": "3 room flat in gallina Nn, Reggio Est, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35181231",
@@ -1392,7 +1686,10 @@
       "rooms": 6,
       "address": "Flat / apartment in Via Carrubara, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "20288929",
@@ -1406,7 +1703,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Borrace Crocevia Nn, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "34676574",
@@ -1420,7 +1720,10 @@
       "rooms": 1,
       "address": "Studio in Via San Giorgio Extra, 8, San Giorgio - Modena - San Sperato, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35536383",
@@ -1434,7 +1737,10 @@
       "rooms": 1,
       "address": "Studio in Corso Giacomo Matteotti, 129, Centro, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "28033595",
@@ -1448,7 +1754,10 @@
       "rooms": 3,
       "address": "3 room flat in Via cardinale Gennaro Portanova, 1, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "28577560",
@@ -1462,7 +1771,10 @@
       "rooms": 1,
       "address": "Studio in Via Stradella Giuffrè 2ª, 20, Santa Caterina - San Brunello - Vito, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34578498",
@@ -1476,7 +1788,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Abate Sant'Elia, 11, Ravagnese - Arangea, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35271353",
@@ -1490,7 +1805,10 @@
       "rooms": 4,
       "address": "4 room flat in Viale Roma Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "6731326",
@@ -1504,7 +1822,10 @@
       "rooms": 2,
       "address": "Penthouse in dei Monti Traversa Calogero, 15, Reggio Nord, Reggio Calabria",
       "property_type": "penthouse",
-      "property_type_label": "Attico"
+      "property_type_label": "Attico",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36091681",
@@ -1518,7 +1839,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Emilio Cuzzocrea, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "22802271",
@@ -1532,7 +1856,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Paolo Pellicano Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35217347",
@@ -1546,7 +1873,10 @@
       "rooms": 2,
       "address": "2 room flat in Fraz Ortì. via Municipio, 22, Reggio Est, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35875858",
@@ -1560,7 +1890,10 @@
       "rooms": 0,
       "address": "Studio in Contrada Cafari, 10, Reggio Est, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35868049",
@@ -1574,7 +1907,10 @@
       "rooms": 0,
       "address": "Studio in Via Galileo Ferraris, 2, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "25367557",
@@ -1588,7 +1924,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Giuseppe Melacrino, 27, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35708537",
@@ -1602,7 +1941,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Calveri Nn, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "20360341",
@@ -1616,7 +1958,10 @@
       "rooms": 1,
       "address": "Studio in Corso Giuseppe Garibaldi, 404, Centro, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "18243212",
@@ -1630,7 +1975,10 @@
       "rooms": 5,
       "address": "Detached house in Via Sbarre Centrali, 128, Sbarre, Reggio Calabria",
       "property_type": "chalet",
-      "property_type_label": "Villa/Casa"
+      "property_type_label": "Villa/Casa",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "33960065",
@@ -1644,7 +1992,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Zara, 3, Santa Caterina - San Brunello - Vito, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "18326180",
@@ -1658,7 +2009,10 @@
       "rooms": 2,
       "address": "2 room flat in Via nazionale pentimele Nn, Reggio Nord, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "28659111",
@@ -1672,7 +2026,10 @@
       "rooms": 3,
       "address": "3 room flat in Vico Ciccarello, 22, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "31473949",
@@ -1686,7 +2043,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Cardinale Luigi Tripepi, 22, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "28586487",
@@ -1700,7 +2060,10 @@
       "rooms": 1,
       "address": "Studio in Via Stradella Giuffrè 3a, 23, Santa Caterina - San Brunello - Vito, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35735725",
@@ -1714,7 +2077,10 @@
       "rooms": 0,
       "address": "Studio in Via Stradella Sant'Anna, 6, Pellaro - San Leo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "25084524",
@@ -1728,7 +2094,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Nervesa Privata, 31, Santa Caterina - San Brunello - Vito, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "27869486",
@@ -1742,7 +2111,10 @@
       "rooms": 4,
       "address": "4 room flat in Contrada Maldariti, 15, Reggio Est, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34122459",
@@ -1756,7 +2128,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Garibaldini, 105, Reggio Nord, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36104347",
@@ -1770,7 +2145,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Paolo Rausei, 29, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35051311",
@@ -1784,7 +2162,10 @@
       "rooms": 3,
       "address": "3 room flat in san francesco da paola Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "18564227",
@@ -1798,7 +2179,10 @@
       "rooms": 0,
       "address": "Studio in Località Pellaro Nn, Pellaro - San Leo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "36114183",
@@ -1812,7 +2196,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Cavour, 19, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34504935",
@@ -1826,7 +2213,10 @@
       "rooms": 1,
       "address": "Penthouse in Diramazione Terza Via ciccarello, 1, San Giorgio - Modena - San Sperato, Reggio Calabria",
       "property_type": "penthouse",
-      "property_type_label": "Attico"
+      "property_type_label": "Attico",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "11217107",
@@ -1840,7 +2230,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Dalmazia, 1, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "25254364",
@@ -1854,7 +2247,10 @@
       "rooms": 2,
       "address": "Detached house in Agriturismo Sant'Anna 89126, Reggio Calabria Reggio Calabria, Italia Nn, Reggio Est, Reggio Calabria",
       "property_type": "chalet",
-      "property_type_label": "Villa/Casa"
+      "property_type_label": "Villa/Casa",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "34527108",
@@ -1868,7 +2264,10 @@
       "rooms": 3,
       "address": "Penthouse in Via Sbarre Inferiori, 13, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "penthouse",
-      "property_type_label": "Attico"
+      "property_type_label": "Attico",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35789630",
@@ -1882,7 +2281,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Luigi Galvani Nn, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35789551",
@@ -1896,7 +2298,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Luigi Galvani Nn, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "34615386",
@@ -1910,7 +2315,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Ottimati Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35742326",
@@ -1924,7 +2332,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Gebbione, 116, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35349269",
@@ -1938,7 +2349,10 @@
       "rooms": 1,
       "address": "Studio in Viale Pio XI, 224, San Giorgio - Modena - San Sperato, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "35152804",
@@ -1952,7 +2366,10 @@
       "rooms": 3,
       "address": "3 room flat in Viale Pio XI, 255, San Giorgio - Modena - San Sperato, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "34422484",
@@ -1966,7 +2383,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Paolo Pellicano Nn, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "34972005",
@@ -1980,7 +2400,10 @@
       "rooms": 2,
       "address": "2 room flat in Via del Torrione, 9, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "30198653",
@@ -1994,7 +2417,10 @@
       "rooms": 3,
       "address": "Penthouse in Reggio Nord, Reggio Calabria",
       "property_type": "penthouse",
-      "property_type_label": "Attico"
+      "property_type_label": "Attico",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35443689",
@@ -2008,7 +2434,10 @@
       "rooms": 2,
       "address": "2 room flat in Reggio Nord, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "6340105",
@@ -2022,7 +2451,10 @@
       "rooms": 4,
       "address": "4 room flat in Contrada Maldariti Traversa 4, 29, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "6498068",
@@ -2036,7 +2468,10 @@
       "rooms": 3,
       "address": "3 room flat in Via XX Settembre, 14, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35076934",
@@ -2050,7 +2485,10 @@
       "rooms": 0,
       "address": "Studio in Via Tommaso Minniti, 3, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34481867",
@@ -2064,7 +2502,10 @@
       "rooms": 1,
       "address": "Studio in Via Francesco Petrarca, 19, Reggio Nord, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35529827",
@@ -2078,7 +2519,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Pio XI diramazione Tortorella, 8, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "30104765",
@@ -2092,7 +2536,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Reggio Modena, 37, San Giorgio - Modena - San Sperato, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "8407687",
@@ -2106,7 +2553,10 @@
       "rooms": 1,
       "address": "Penthouse in Via cardinale gennaro portanova diramazione rausei, 68, Tremulini - Eremo, Reggio Calabria",
       "property_type": "penthouse",
-      "property_type_label": "Attico"
+      "property_type_label": "Attico",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "32688575",
@@ -2120,7 +2570,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Pacinotti, 44, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "6513480",
@@ -2134,7 +2587,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Dalmazia, 16, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "6513471",
@@ -2148,7 +2604,10 @@
       "rooms": 0,
       "address": "Studio in Via Dalmazia, 16, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "30133382",
@@ -2162,7 +2621,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Nazionale Pentimele, 173, Santa Caterina - San Brunello - Vito, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "30725293",
@@ -2176,7 +2638,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Antonio Brancati, 42, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "27601209",
@@ -2190,7 +2655,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Reggio Campi, 1, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "30203991",
@@ -2204,7 +2672,10 @@
       "rooms": 4,
       "address": "4 room flat in Reggio Nord, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "17308403",
@@ -2218,7 +2689,10 @@
       "rooms": 1,
       "address": "Studio in Via Nazionale Pentimele, 104, Reggio Nord, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "34292945",
@@ -2232,7 +2706,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Lupardini, 84, Reggio Nord, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "20266864",
@@ -2246,7 +2723,10 @@
       "rooms": 1,
       "address": "Duplex in Via Pasquale Andiloro, 4, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "duplex",
-      "property_type_label": "Duplex"
+      "property_type_label": "Duplex",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "27174853",
@@ -2260,7 +2740,10 @@
       "rooms": 3,
       "address": "3 room flat in Via del Mare Nn, Pellaro - San Leo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "6793705",
@@ -2274,7 +2757,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Sbarre Inferiori, 5, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35537688",
@@ -2288,7 +2774,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Mercalli, 22, Rione Ferrovieri - Stadio - Gebbione, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "21034575",
@@ -2302,7 +2791,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Cantaffio, 4, Sbarre, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "26716555",
@@ -2316,7 +2808,10 @@
       "rooms": 1,
       "address": "Studio in Via Italia, 73, Santa Caterina - San Brunello - Vito, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34192255",
@@ -2330,7 +2825,10 @@
       "rooms": 1,
       "address": "Studio in Corso Giuseppe Garibaldi, 468, Centro, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "33037227",
@@ -2344,7 +2842,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Montevergine, 2, Santa Caterina - San Brunello - Vito, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "34378160",
@@ -2358,7 +2859,10 @@
       "rooms": 1,
       "address": "Studio in Via f, 3, Sbarre, Reggio Calabria",
       "property_type": "studio",
-      "property_type_label": "Monolocale"
+      "property_type_label": "Monolocale",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35047642",
@@ -2372,7 +2876,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Giudecca, 45, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "renew",
+      "condition": "Da ristrutturare",
+      "needs_renovation": true
     },
     {
       "id": "36110313",
@@ -2386,7 +2893,10 @@
       "rooms": 3,
       "address": "Duplex in Via Ranieri, 25, Reggio Nord, Reggio Calabria",
       "property_type": "duplex",
-      "property_type_label": "Duplex"
+      "property_type_label": "Duplex",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35144380",
@@ -2400,7 +2910,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Vallone Petrara, 15, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
     },
     {
       "id": "20407907",
@@ -2540,7 +3053,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Aschenez, 1, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "29778330",
@@ -2554,7 +3070,10 @@
       "rooms": 2,
       "address": "2 room flat in Via Paolo Pellicano, 21, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "32088157",
@@ -2568,7 +3087,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Casalotto, 95, Santa Caterina - San Brunello - Vito, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35047023",
@@ -2582,7 +3104,10 @@
       "rooms": 5,
       "address": "Flat / apartment in Via Cardinale Gennaro Portanova, 49, Tremulini - Eremo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35261323",
@@ -2596,7 +3121,10 @@
       "rooms": 3,
       "address": "3 room flat in Via Possidonea, 54, Centro, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     },
     {
       "id": "35405690",
@@ -2610,7 +3138,10 @@
       "rooms": 4,
       "address": "4 room flat in Via Villini Svizzeri, 9, Trabocchetto - Condera - Spirito Santo, Reggio Calabria",
       "property_type": "flat",
-      "property_type_label": "Appartamento"
+      "property_type_label": "Appartamento",
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false
     }
   ],
   "provider": "rapidapi"

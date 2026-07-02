@@ -15,6 +15,9 @@ export function mapListingFromDetail(detail: ListingDetail): MapListing {
     address: detail.address,
     property_type: detail.property_type,
     property_type_label: detail.property_type_label,
+    condition_status: detail.condition_status,
+    condition: detail.condition,
+    needs_renovation: detail.needs_renovation,
   };
 }
 

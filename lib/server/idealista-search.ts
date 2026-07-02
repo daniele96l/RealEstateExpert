@@ -1,5 +1,6 @@
 import * as cheerio from "cheerio";
 import type { CityListingsCache, ListingsProvider, MapListing } from "@/lib/types";
+import { resolveListingCondition } from "@/lib/renovation-status";
 import { citySlugVariants, geocodeCity, normalizeCitySlug } from "./geocode";
 import { fetchCityListingsViaRapidApi } from "./rapidapi-idealista";
 import { fetchUrl } from "./scrapingbee";
@@ -66,6 +67,12 @@ function listingFromDict(item: Record<string, unknown>, operation: "sale" | "ren
     item.title ?? item.propertyTitle ?? item.address ?? `Immobile ${id}`,
   );
 
+  const status = item.status ?? item.propertyStatus ?? item.conservation;
+  const conditionInfo = resolveListingCondition(
+    status != null ? String(status) : null,
+    title,
+  );
+
   const sqmRaw = item.size ?? item.sqm ?? item.surface;
   const sqm = sqmRaw != null ? Number(sqmRaw) : null;
 
@@ -85,6 +92,7 @@ function listingFromDict(item: Record<string, unknown>, operation: "sale" | "ren
     address: item.address ? String(item.address) : item.street ? String(item.street) : null,
     property_type: null,
     property_type_label: null,
+    ...conditionInfo,
   };
 }
 
@@ -164,7 +172,22 @@ function parseListingCards(html: string, operation: "sale" | "rent"): MapListing
 
     const url = href.startsWith("http") ? href : `${IDEALISTA_BASE}${href}`;
     seen.add(id);
-    listings.push({ id, title: title.slice(0, 200), price, operation, url, lat: 0, lng: 0, sqm, rooms, address: null, property_type: null, property_type_label: null });
+    const conditionInfo = resolveListingCondition(null, cardText);
+    listings.push({
+      id,
+      title: title.slice(0, 200),
+      price,
+      operation,
+      url,
+      lat: 0,
+      lng: 0,
+      sqm,
+      rooms,
+      address: null,
+      property_type: null,
+      property_type_label: null,
+      ...conditionInfo,
+    });
   });
 
   return listings;

@@ -356,9 +356,12 @@ export default function PropertyDetailPanel({
                 icon={Sparkles}
                 label="Stato / ristrutturazione"
                 value={
-                  detail.needs_renovation === true
+                  detail.condition ??
+                  (detail.needs_renovation === true
                     ? "Da ristrutturare"
-                    : detail.condition ?? (detail.needs_renovation === false ? "Non da ristrutturare" : "—")
+                    : detail.needs_renovation === false
+                      ? "Buono stato"
+                      : "—")
                 }
               />
               {estimatedRenovation != null && (

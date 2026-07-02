@@ -1,15 +1,8 @@
 import type { EnergyClass, ListingDetail, MapListing } from "@/lib/types";
 import { propertyTypeLabel } from "@/lib/listing-types";
+import { resolvePropertyCondition } from "@/lib/property-condition";
 
 const IDEALISTA_BASE = "https://www.idealista.it";
-
-const STATUS_LABELS: Record<string, string> = {
-  good: "Buono stato",
-  toRestore: "Da ristrutturare",
-  renew: "Da ristrutturare",
-  newdevelopment: "Nuova costruzione",
-  ruin: "Da demolire/ricostruire",
-};
 
 export function normalizeEnergyClass(raw?: string | null): EnergyClass | null {
   if (!raw) return null;
@@ -21,8 +14,7 @@ export function normalizeEnergyClass(raw?: string | null): EnergyClass | null {
 }
 
 function needsRenovation(status?: string | null): boolean | null {
-  if (!status) return null;
-  return status === "toRestore" || status === "renew" || status === "ruin";
+  return resolvePropertyCondition(status).needs_renovation;
 }
 
 function extractBuiltYear(text?: string | null): number | null {
@@ -42,8 +34,9 @@ function mergeListing(base: MapListing, detail: Partial<ListingDetail>): Listing
     floor: detail.floor ?? null,
     energy_class: detail.energy_class ?? null,
     energy_kwh_sqm: detail.energy_kwh_sqm ?? null,
-    condition: detail.condition ?? null,
-    needs_renovation: detail.needs_renovation ?? null,
+    condition: detail.condition ?? base.condition ?? null,
+    condition_status: detail.condition_status ?? base.condition_status ?? null,
+    needs_renovation: detail.needs_renovation ?? base.needs_renovation ?? null,
     property_type: detail.property_type ?? base.property_type ?? null,
     property_type_label: detail.property_type_label ?? base.property_type_label ?? null,
     zone: detail.zone ?? null,
@@ -76,7 +69,8 @@ export function listingToDetail(listing: MapListing): ListingDetail {
     energy_class: null,
     energy_kwh_sqm: null,
     condition: null,
-    needs_renovation: null,
+    condition_status: null,
+    needs_renovation: listing.needs_renovation,
     property_type: null,
     property_type_label: null,
     zone: null,
@@ -123,6 +117,8 @@ export function parseRapidPropertyPayload(raw: any, sourceUrl: string, base?: Ma
   let url = property?.detailWebLink ?? base?.url ?? `${IDEALISTA_BASE}/immobile/${id}/`;
   if (url.startsWith("/")) url = `${IDEALISTA_BASE}${url}`;
 
+  const conditionInfo = resolvePropertyCondition(status, description);
+
   const listing: MapListing = {
     id,
     title:
@@ -141,6 +137,9 @@ export function parseRapidPropertyPayload(raw: any, sourceUrl: string, base?: Ma
     address: ub.locationName ?? ub.title ?? base?.address ?? null,
     property_type: base?.property_type ?? null,
     property_type_label: base?.property_type_label ?? null,
+    condition_status: conditionInfo.condition_status ?? base?.condition_status ?? null,
+    condition: conditionInfo.condition ?? base?.condition ?? null,
+    needs_renovation: conditionInfo.needs_renovation ?? base?.needs_renovation ?? null,
   };
 
   const typeKey = property?.detailedType?.typology ?? property?.homeType ?? property?.extendedPropertyType;
@@ -154,8 +153,9 @@ export function parseRapidPropertyPayload(raw: any, sourceUrl: string, base?: Ma
     floor: mc.floor != null ? String(mc.floor) : null,
     energy_class: normalizeEnergyClass(mc.energyCertificationType ?? energy?.type),
     energy_kwh_sqm: mc.energyPerformance ?? energy?.value ?? null,
-    condition: status ? STATUS_LABELS[status] ?? status : null,
-    needs_renovation: needsRenovation(status),
+    condition: conditionInfo.condition,
+    condition_status: conditionInfo.condition_status,
+    needs_renovation: conditionInfo.needs_renovation,
     property_type: typeKey ?? null,
     property_type_label: typeKey ? propertyTypeLabel(typeKey) : null,
     zone: ub.administrativeAreaLevel4 ?? ub.locationName ?? null,

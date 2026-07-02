@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-import { getListingsProviders } from "@/lib/api";
+import { getListingsProviders, getCachedListings } from "@/lib/api";
 import {
   loadCityListingsCacheOnly,
   loadPropertyDetailCacheFirst,
@@ -22,6 +22,11 @@ import {
   resolveAreaFilterRadius,
   type ListingsFilters,
 } from "@/lib/listings-filters";
+import { listingConditionLabel } from "@/lib/property-condition";
+import { enrichListingsConditionClient } from "@/lib/listing-condition-enrich-client";
+import {
+  mergeCityCacheConditionFromServer,
+} from "@/lib/listing-condition-enrich";
 import { filterListingsByBounds, type GeoBounds } from "@/lib/geo-filter";
 import type { SimilarRentEstimateMethod } from "@/lib/rent-price-basis";
 import { Layers, MapPin } from "lucide-react";
@@ -60,6 +65,38 @@ interface Props {
   onCityChange?: (city: string) => void;
 }
 
+function persistPatchedCache(cache: CityListingsCache | null): CityListingsCache | null {
+  if (cache) writeLocalListingsCache(cache);
+  return cache;
+}
+
+function patchListingInCache(
+  cache: CityListingsCache | null,
+  listing: MapListing,
+  detail: Pick<ListingDetail, "condition" | "condition_status" | "needs_renovation">,
+): CityListingsCache | null {
+  if (!cache) return cache;
+  if (
+    detail.condition == null &&
+    detail.condition_status == null &&
+    detail.needs_renovation == null
+  ) {
+    return cache;
+  }
+  const idx = cache.listings.findIndex(
+    (item) => item.id === listing.id && item.operation === listing.operation,
+  );
+  if (idx === -1) return cache;
+  const listings = [...cache.listings];
+  listings[idx] = {
+    ...listings[idx],
+    condition: detail.condition ?? listings[idx].condition,
+    condition_status: detail.condition_status ?? listings[idx].condition_status,
+    needs_renovation: detail.needs_renovation ?? listings[idx].needs_renovation,
+  };
+  return { ...cache, listings };
+}
+
 export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAverageRent, onCityChange }: Props) {
   const [city, setCity] = useState("Reggio Calabria");
   const [viewMode, setViewMode] = useState<ViewMode>("sale");
@@ -96,12 +133,18 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
     setLoading(true);
     setError(null);
     try {
-      const [saleResult, rentResult] = await Promise.all([
+      const [saleResult, rentResult, serverSale, serverRent] = await Promise.all([
         loadCityListingsCacheOnly(city.trim(), "sale"),
         loadCityListingsCacheOnly(city.trim(), "rent"),
+        getCachedListings(city.trim(), "sale").catch(() => null),
+        getCachedListings(city.trim(), "rent").catch(() => null),
       ]);
-      setSaleCache(saleResult.data);
-      setRentCache(rentResult.data);
+      const mergedSale = mergeCityCacheConditionFromServer(saleResult.data, serverSale);
+      const mergedRent = mergeCityCacheConditionFromServer(rentResult.data, serverRent);
+      if (mergedSale) writeLocalListingsCache(mergedSale);
+      if (mergedRent) writeLocalListingsCache(mergedRent);
+      setSaleCache(mergedSale);
+      setRentCache(mergedRent);
       setCombinedData(null);
       setFromCache(true);
       setFilters(EMPTY_LISTINGS_FILTERS);
@@ -143,12 +186,32 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
         if (preloadedDetail) {
           setSelectedDetail(preloadedDetail);
           setDetailCacheSource("server");
+          if (
+            preloadedDetail.condition != null ||
+            preloadedDetail.condition_status != null ||
+            preloadedDetail.needs_renovation != null
+          ) {
+            setSaleCache((cache) =>
+              persistPatchedCache(patchListingInCache(cache, listing, preloadedDetail)),
+            );
+            setRentCache((cache) =>
+              persistPatchedCache(patchListingInCache(cache, listing, preloadedDetail)),
+            );
+          }
           onSelectListing?.(listing, preloadedDetail);
           return;
         }
         const { detail, source } = await loadPropertyDetailCacheFirst(listing, provider, false);
         setSelectedDetail(detail);
         setDetailCacheSource(source === "network" ? null : source);
+        if (
+          detail.condition != null ||
+          detail.condition_status != null ||
+          detail.needs_renovation != null
+        ) {
+          setSaleCache((cache) => persistPatchedCache(patchListingInCache(cache, listing, detail)));
+          setRentCache((cache) => persistPatchedCache(patchListingInCache(cache, listing, detail)));
+        }
         onSelectListing?.(listing, detail);
       } catch (e) {
         setDetailError(e instanceof Error ? e.message : "Dettaglio non disponibile");
@@ -211,9 +274,14 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   const center = combinedData?.center ?? saleCache?.center ?? rentCache?.center;
   const mapCenterPoint = center ? { lat: center.lat, lng: center.lng } : null;
 
+  const enrichedListings = useMemo(
+    () => enrichListingsConditionClient(baseListings),
+    [baseListings],
+  );
+
   const displayListings = useMemo(
-    () => filterListings(baseListings, filters, mapCenterPoint),
-    [baseListings, filters, mapCenterPoint],
+    () => filterListings(enrichedListings, filters, mapCenterPoint),
+    [enrichedListings, filters, mapCenterPoint],
   );
 
   const visibleListings = useMemo(() => {
@@ -355,6 +423,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             )}
             {visibleListings.map((listing) => {
               const key = listingKey(listing);
+              const statoLabel = listingConditionLabel(listing);
               return (
               <button
                 key={key}
@@ -371,7 +440,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                       : "border-surface-border/60 hover:bg-surface-raised/50",
                 )}
               >
-                <div className="mb-1 flex items-center gap-2">
+                <div className="mb-1 flex flex-wrap items-center gap-2">
                   {isCombinedView && (
                     <span
                       className={cn(
@@ -388,10 +457,27 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                 <p className="font-medium text-slate-200 line-clamp-2">{listing.title}</p>
                 <p className="mt-1 text-accent">{formatPrice(listing.price, listing.operation)}</p>
                 <p className="mt-0.5 text-xs text-slate-500">
-                  {[listing.sqm != null && `${listing.sqm} m²`, listing.rooms != null && `${listing.rooms} locali`]
+                  {[
+                    listing.sqm != null && `${listing.sqm} m²`,
+                    listing.rooms != null && `${listing.rooms} locali`,
+                  ]
                     .filter(Boolean)
                     .join(" · ")}
                 </p>
+                {statoLabel && (
+                  <p
+                    className={cn(
+                      "mt-1 text-xs font-medium",
+                      listing.needs_renovation === true
+                        ? "text-amber-400"
+                        : listing.needs_renovation === false
+                          ? "text-emerald-400"
+                          : "text-slate-400",
+                    )}
+                  >
+                    Stato: {statoLabel}
+                  </p>
+                )}
               </button>
               );
             })}
