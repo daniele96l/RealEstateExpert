@@ -99,9 +99,10 @@ export default function RoiChart({ result }: Props) {
   const projectionYears = (lastPoint?.month ?? 0) / 12;
   const equityRoi =
     downPayment > 0 ? ((finalEquity - initialEquity) / downPayment) * 100 : 0;
-  const totalRoi = result.summary.total_roi_pct;
+  const totalRoiOnAnticipo =
+    downPayment > 0 ? ((finalEquityPlusCash - downPayment) / downPayment) * 100 : 0;
   const equityCagr = annualizedReturn(equityRoi, projectionYears);
-  const totalCagr = annualizedReturn(totalRoi, projectionYears);
+  const totalCagrOnAnticipo = annualizedReturn(totalRoiOnAnticipo, projectionYears);
   const cashLineColor = finalCumulativeCash >= 0 ? COLORS.cashPositive : COLORS.cashNegative;
   const maxMonth = lastPoint?.month ?? 0;
   const yearTickStep = maxMonth > 240 ? 60 : maxMonth > 120 ? 24 : 12;
@@ -145,9 +146,9 @@ export default function RoiChart({ result }: Props) {
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">Totale</p>
             <p className="text-lg font-bold text-cyan-400">{fmtEuro(finalEquityPlusCash)}</p>
-            <p className={`text-xs font-medium ${totalCagr >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-              {totalCagr >= 0 ? "+" : ""}
-              {totalCagr.toFixed(1)}% CAGR su capitale versato
+            <p className={`text-xs font-medium ${totalCagrOnAnticipo >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+              {totalCagrOnAnticipo >= 0 ? "+" : ""}
+              {totalCagrOnAnticipo.toFixed(1)}% CAGR su anticipo
             </p>
           </div>
         </div>
