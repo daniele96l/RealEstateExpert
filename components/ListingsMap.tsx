@@ -22,6 +22,10 @@ import {
   resolveAreaFilterRadius,
   type ListingsFilters,
 } from "@/lib/listings-filters";
+import {
+  formatListingsWebsiteSource,
+  inferListingsWebsiteSource,
+} from "@/lib/listing-url";
 import { listingConditionLabel } from "@/lib/property-condition";
 import { enrichListingsConditionClient } from "@/lib/listing-condition-enrich-client";
 import {
@@ -361,6 +365,11 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
     return filterListingsByBounds(displayListings, mapBounds);
   }, [displayListings, mapBounds]);
 
+  const websiteSourceLabel = useMemo(
+    () => formatListingsWebsiteSource(inferListingsWebsiteSource(baseListings)),
+    [baseListings],
+  );
+
   const filtersActive = hasActiveFilters(filters);
   const areaFilterCenter = resolveAreaFilterCenter(filters, mapCenterPoint);
   const areaFilterRadius = resolveAreaFilterRadius(filters);
@@ -469,6 +478,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             {isCombinedView && " (vendita + affitto)"}
             {" · "}
             {mapData.center.display_name ?? city}
+            {websiteSourceLabel ? ` · ${websiteSourceLabel}` : ""}
             {mapData.provider
               ? ` · ${mapData.provider === "rapidapi" ? "RapidAPI" : "ScrapingBee"}`
               : ""}

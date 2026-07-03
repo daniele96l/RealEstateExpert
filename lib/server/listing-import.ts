@@ -9,14 +9,14 @@ export async function importListingFromAnyUrl(
   url: string,
   preferred: ListingsProvider,
   hasRapidApi: boolean,
-  hasScrapingBee: boolean,
+  _hasScrapingBee: boolean,
 ): Promise<CityListingsCache> {
   const source = detectListingSource(url);
   if (source === "immobiliare") {
-    return importImmobiliareListingFromUrl(url, hasScrapingBee);
+    return importImmobiliareListingFromUrl(url);
   }
   if (source === "idealista") {
-    return importIdealistaListingFromUrl(url, preferred, hasRapidApi, hasScrapingBee);
+    return importIdealistaListingFromUrl(url, preferred, hasRapidApi, false);
   }
   throw new IdealistaImportError(
     "URL non supportato. Incolla un link Idealista (idealista.it/immobile/…) o Immobiliare (immobiliare.it/annunci/…).",

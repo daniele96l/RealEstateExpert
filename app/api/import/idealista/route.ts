@@ -7,7 +7,6 @@ import {
 import { IdealistaImportError, ImmobiliareImportError, importListingFromAnyUrl } from "@/lib/server/listing-import";
 import { getPropertyDetailCache } from "@/lib/server/property-detail-cache";
 import { RapidApiIdealistaError } from "@/lib/server/rapidapi-idealista";
-import { ScrapingBeeError } from "@/lib/server/scrapingbee";
 import type { ListingsProvider } from "@/lib/types";
 
 export const maxDuration = 120;
@@ -47,9 +46,6 @@ export async function POST(request: Request) {
       err instanceof RapidApiIdealistaError
     ) {
       return NextResponse.json({ detail: err.message }, { status: 400 });
-    }
-    if (err instanceof ScrapingBeeError) {
-      return NextResponse.json({ detail: err.message }, { status: 502 });
     }
     if (err instanceof Error && err.name === "TimeoutError") {
       return NextResponse.json({ detail: "Timeout durante l'importazione. Riprova." }, { status: 504 });

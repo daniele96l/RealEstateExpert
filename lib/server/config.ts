@@ -1,4 +1,4 @@
-export type ListingsProvider = "scrapingbee" | "rapidapi";
+export type ListingsProvider = "scrapingbee" | "rapidapi" | "direct";
 export type MarketProvider = "scrapingbee" | "insights";
 export type MarketProviderMode = MarketProvider | "auto";
 

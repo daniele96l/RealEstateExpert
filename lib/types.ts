@@ -188,7 +188,7 @@ export interface MapCenter {
   display_name: string | null;
 }
 
-export type ListingsProvider = "scrapingbee" | "rapidapi";
+export type ListingsProvider = "scrapingbee" | "rapidapi" | "direct";
 
 export type MarketProvider = "scrapingbee" | "insights";
 
