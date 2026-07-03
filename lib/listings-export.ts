@@ -1,6 +1,7 @@
 import { loadPropertyDetailCacheFirst } from "./cache-first";
 import { czechRoomLayoutFromListing } from "./czech-room-layout";
 import { enrichListingsConditionClient } from "./listing-condition-enrich-client";
+import { mergeListingCondition } from "./listing-condition-enrich";
 import { computeListingProfitPreview, type ListingProfitPreview } from "./listing-profit-preview";
 import {
   applyListingProfitFilters,
@@ -9,10 +10,20 @@ import {
 import type { ListingProfitSettings } from "./listing-profit-settings";
 import { filterListings, type ListingsFilters } from "./listings-filters";
 import { filterListingsByBounds, type GeoBounds, type GeoPoint } from "./geo-filter";
+import {
+  readLatestLocalListingsExport,
+  writeLocalListingsExportCache,
+} from "./listings-export-cache-client";
+import { readLocalListingsCache, writeLocalListingsCache } from "./listings-cache-client";
 import { readLocalPropertyDetailCache } from "./property-detail-cache-client";
-import { getCachedPropertyDetail, saveListingsExportToServer, savePropertyDetailToServerCache } from "./api";
+import {
+  batchSaveListings,
+  getCachedPropertyDetail,
+  saveListingsExportToServer,
+  savePropertyDetailToServerCache,
+} from "./api";
 import type { MarketId } from "./markets";
-import type { ListingDetail, ListingsProvider, MapListing } from "./types";
+import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "./types";
 import { writeLocalPropertyDetailCache } from "./property-detail-cache-client";
 
 export interface ListingsExportContext {
@@ -149,6 +160,83 @@ async function readCachedDetail(id: string): Promise<ListingDetail | null> {
 
 function detailHasDescription(detail: ListingDetail): boolean {
   return Boolean(detail.description?.trim());
+}
+
+function exportRecordToDetail(record: ListingExportRecord): ListingDetail {
+  const {
+    detail_level: _detailLevel,
+    price_per_sqm_computed: _pricePerSqmComputed,
+    czech_room_layout: _czechRoomLayout,
+    detail_fetched_at,
+    profit_preview: _profitPreview,
+    ...fields
+  } = record;
+
+  return {
+    ...fields,
+    fetched_at: detail_fetched_at ?? new Date().toISOString(),
+    images: record.images ?? [],
+  };
+}
+
+function exportRecordToMapListing(record: ListingExportRecord): MapListing {
+  return {
+    id: record.id,
+    title: record.title,
+    price: record.price,
+    operation: record.operation,
+    url: record.url,
+    lat: record.lat,
+    lng: record.lng,
+    sqm: record.sqm,
+    rooms: record.rooms,
+    address: record.address,
+    property_type: record.property_type,
+    property_type_label: record.property_type_label,
+    condition_status: record.condition_status,
+    condition: record.condition,
+    needs_renovation: record.needs_renovation,
+  };
+}
+
+export function hydratePropertyDetailsFromLatestExport(
+  market: MarketId,
+  city: string,
+): number {
+  const bundle = readLatestLocalListingsExport(market, city);
+  if (!bundle) return 0;
+
+  let hydrated = 0;
+  for (const record of bundle.listings) {
+    if (!detailHasDescription(exportRecordToDetail(record))) continue;
+    const existing = readLocalPropertyDetailCache(record.id);
+    if (existing && detailHasDescription(existing)) continue;
+    writeLocalPropertyDetailCache(exportRecordToDetail(record));
+    hydrated++;
+  }
+  return hydrated;
+}
+
+function mergeExportIntoCityCache(
+  market: MarketId,
+  city: string,
+  bundle: ListingsExportBundle,
+): CityListingsCache | null {
+  const saleCache = readLocalListingsCache(market, city, "sale");
+  if (!saleCache) return null;
+
+  const byId = new Map(saleCache.listings.map((listing) => [listing.id, listing]));
+  for (const record of bundle.listings) {
+    const existing = byId.get(record.id);
+    if (!existing) continue;
+    byId.set(record.id, mergeListingCondition(exportRecordToMapListing(record), existing));
+  }
+
+  return {
+    ...saleCache,
+    listings: [...byId.values()],
+    fetched_at: bundle.exported_at,
+  };
 }
 
 function mapOnlyRecord(listing: MapListing, market: MarketId, profit: ListingProfitPreview | null): ListingExportRecord {
@@ -319,16 +407,66 @@ export async function buildListingsExport(
   };
 }
 
-export async function persistListingsExport(bundle: ListingsExportBundle): Promise<{
+export async function persistListingsExport(
+  bundle: ListingsExportBundle,
+  ctx: ListingsExportContext,
+): Promise<{
   download: true;
   savedPath: string | null;
+  browserCacheKey: string | null;
+  detailsCached: number;
+  cityListingsUpdated: boolean;
 }> {
+  let detailsCached = 0;
+  for (const record of bundle.listings) {
+    const detail = exportRecordToDetail(record);
+    if (!detailHasDescription(detail)) continue;
+    writeLocalPropertyDetailCache(detail);
+    detailsCached++;
+    try {
+      await savePropertyDetailToServerCache(detail);
+    } catch {
+      /* read-only deployment host */
+    }
+  }
+
+  const updatedSaleCache = mergeExportIntoCityCache(ctx.market, ctx.city, bundle);
+  if (updatedSaleCache) {
+    writeLocalListingsCache(ctx.market, updatedSaleCache);
+    try {
+      await batchSaveListings({
+        city: ctx.city,
+        center: updatedSaleCache.center,
+        provider: ctx.provider,
+        sale: updatedSaleCache.listings,
+        market: ctx.market,
+      });
+    } catch {
+      /* server disk unavailable */
+    }
+  }
+
+  const browserCacheKey = writeLocalListingsExportCache(bundle);
+
   downloadListingsExport(bundle);
+
   try {
     const { path } = await saveListingsExportToServer(bundle);
-    return { download: true, savedPath: path };
+    return {
+      download: true,
+      savedPath: path,
+      browserCacheKey,
+      detailsCached,
+      cityListingsUpdated: Boolean(updatedSaleCache),
+    };
   } catch {
-    return { download: true, savedPath: null };
+    return {
+      download: true,
+      savedPath: null,
+      browserCacheKey,
+      detailsCached,
+      cityListingsUpdated: Boolean(updatedSaleCache),
+    };
   }
 }
 

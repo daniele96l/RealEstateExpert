@@ -16,6 +16,7 @@ data/listings/*.json
 !data/listings/cz_brno_sale.json
 !data/listings/cz_brno_rent.json
 data/listings/details/
+data/listings/exports/
 data/market/*.json
 !data/market/.gitkeep
 data/analyses/*.json

@@ -24,9 +24,10 @@ import { Download, Loader2 } from "lucide-react";
 interface Props {
   market: MarketId;
   context: ListingsExportContext | null;
+  onExportComplete?: () => void;
 }
 
-export default function ListingsExportPanel({ market, context }: Props) {
+export default function ListingsExportPanel({ market, context, onExportComplete }: Props) {
   const { t } = useI18n();
   const currency = market === "cz" ? "Kč" : "€";
 
@@ -42,6 +43,8 @@ export default function ListingsExportPanel({ market, context }: Props) {
     count: number;
     errors: number;
     savedPath: string | null;
+    detailsCached: number;
+    cityListingsUpdated: boolean;
   } | null>(null);
 
   useEffect(() => {
@@ -71,15 +74,22 @@ export default function ListingsExportPanel({ market, context }: Props) {
     setProgress(null);
     try {
       const bundle = await buildListingsExport(context, exportOptions, setProgress);
-      const { savedPath } = await persistListingsExport(bundle);
-      setLastResult({ count: bundle.count, errors: bundle.fetch_stats.fetch_errors, savedPath });
+      const result = await persistListingsExport(bundle, context);
+      setLastResult({
+        count: bundle.count,
+        errors: bundle.fetch_stats.fetch_errors,
+        savedPath: result.savedPath,
+        detailsCached: result.detailsCached,
+        cityListingsUpdated: result.cityListingsUpdated,
+      });
+      onExportComplete?.();
     } catch {
-      setLastResult({ count: 0, errors: -1, savedPath: null });
+      setLastResult({ count: 0, errors: -1, savedPath: null, detailsCached: 0, cityListingsUpdated: false });
     } finally {
       setExporting(false);
       setProgress(null);
     }
-  }, [context, exportOptions, previewCount, exporting]);
+  }, [context, exportOptions, previewCount, exporting, onExportComplete]);
 
   const salePresets = salePricePresetsForMarket(market);
 
@@ -264,7 +274,7 @@ export default function ListingsExportPanel({ market, context }: Props) {
           <p className={cn("text-sm", lastResult.errors > 0 ? "text-amber-400" : "text-emerald-400")}>
             {lastResult.errors === -1
               ? t("export.failed")
-              : `${t("export.done", { count: lastResult.count })}${lastResult.errors > 0 ? ` · ${t("export.errors", { count: lastResult.errors })}` : ""}${lastResult.savedPath ? ` · ${t("export.savedLocal", { path: lastResult.savedPath })}` : ""}`}
+              : `${t("export.done", { count: lastResult.count })}${lastResult.errors > 0 ? ` · ${t("export.errors", { count: lastResult.errors })}` : ""}${lastResult.detailsCached > 0 ? ` · ${t("export.cachedDetails", { count: lastResult.detailsCached })}` : ""}${lastResult.cityListingsUpdated ? ` · ${t("export.cityCacheUpdated")}` : ""}${lastResult.savedPath ? ` · ${t("export.savedLocal", { path: lastResult.savedPath })}` : ` · ${t("export.savedBrowser")}`}`}
           </p>
         )}
 

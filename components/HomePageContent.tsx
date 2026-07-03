@@ -61,6 +61,7 @@ export default function HomePageContent() {
   const [analysisSource, setAnalysisSource] = useState<ListingAnalysisSource | null>(null);
   const [historyRefreshToken, setHistoryRefreshToken] = useState(0);
   const [listingsResetToken, setListingsResetToken] = useState(0);
+  const [exportCacheRefreshToken, setExportCacheRefreshToken] = useState(0);
   const [exportContext, setExportContext] = useState<ListingsExportContext | null>(null);
 
   useEffect(() => {
@@ -265,6 +266,7 @@ export default function HomePageContent() {
               onUseAverageRent={handleUseAverageRent}
               onCityChange={setMarketCity}
               onExportContextChange={setExportContext}
+              cacheRefreshToken={exportCacheRefreshToken}
             />
             <AnalysisHistoryPanel
               market={market}
@@ -297,7 +299,11 @@ export default function HomePageContent() {
           </div>
         </div>
 
-        <ListingsExportPanel market={market} context={exportContext} />
+        <ListingsExportPanel
+          market={market}
+          context={exportContext}
+          onExportComplete={() => setExportCacheRefreshToken((n) => n + 1)}
+        />
 
         <footer className="mt-12 border-t border-surface-border/40 pt-6 text-center text-xs text-slate-600">
           {market === "cz" ? t("home.footerCz") : t("home.footerIt")}

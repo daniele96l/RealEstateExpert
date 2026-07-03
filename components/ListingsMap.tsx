@@ -17,7 +17,7 @@ import ListingProfitPanel from "@/components/ListingProfitPanel";
 import { cn, fmtMoney } from "@/lib/utils";
 import type { MarketId } from "@/lib/markets";
 import type { ListingsExportContext } from "@/lib/listings-export";
-import { enrichSaleListingsForExport } from "@/lib/listings-export";
+import { enrichSaleListingsForExport, hydratePropertyDetailsFromLatestExport } from "@/lib/listings-export";
 import type { SimilarRentEstimateMethod } from "@/lib/rent-price-basis";
 import {
   emptyListingsFilters,
@@ -136,6 +136,7 @@ interface Props {
   ) => void;
   onCityChange?: (city: string) => void;
   onExportContextChange?: (ctx: ListingsExportContext) => void;
+  cacheRefreshToken?: number;
 }
 
 function persistPatchedCache(market: MarketId, cache: CityListingsCache | null): CityListingsCache | null {
@@ -203,6 +204,7 @@ export default function ListingsMap({
   onUseAverageRent,
   onCityChange,
   onExportContextChange,
+  cacheRefreshToken = 0,
 }: Props) {
   const { t } = useI18n();
   const [city, setCity] = useState(defaultCity);
@@ -338,6 +340,7 @@ export default function ListingsMap({
       const mergedRent = mergeCityCacheConditionFromServer(rentResult.data, serverRent);
       if (mergedSale) writeLocalListingsCache(market, mergedSale);
       if (mergedRent) writeLocalListingsCache(market, mergedRent);
+      hydratePropertyDetailsFromLatestExport(market, city.trim());
       setSaleCache(mergedSale);
       setRentCache(mergedRent);
       setCombinedData(null);
@@ -362,7 +365,7 @@ export default function ListingsMap({
 
   useEffect(() => {
     void loadCachesOnly();
-  }, [loadCachesOnly]);
+  }, [loadCachesOnly, cacheRefreshToken]);
 
   useEffect(() => {
     if (city.trim()) onCityChange?.(city.trim());
