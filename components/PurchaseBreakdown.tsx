@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { applyPurchaseCostEdit, sanitizeSimple, type PurchaseCostField, type SimpleScenario } from "@/lib/defaults";
 import { fmtMoney } from "@/lib/utils";
 import type { MarketId } from "@/lib/markets";
+import { useI18n } from "@/lib/i18n/context";
 import type { PurchaseCostBreakdown } from "@/lib/types";
 
 interface Props {
@@ -48,6 +49,7 @@ function EditableEuro({
 }
 
 export default function PurchaseBreakdown({ market, costs, scenario, onScenarioChange }: Props) {
+  const { t } = useI18n();
   const purchasePrice = scenario.purchase_price;
   const loanShare = Math.max(0, Math.min(1, 1 - scenario.down_payment_pct / 100));
   const loanOnPrice = purchasePrice * loanShare;
@@ -57,17 +59,17 @@ export default function PurchaseBreakdown({ market, costs, scenario, onScenarioC
 
   const cashRows: { label: string; field?: PurchaseCostField; value: number }[] = [
     ...(market === "it"
-      ? [{ label: "Imposta di registro", field: "registration_tax" as const, value: costs.registration_tax }]
+      ? [{ label: t("purchase.registrationTax"), field: "registration_tax" as const, value: costs.registration_tax }]
       : []),
-    ...(costs.vat > 0 ? [{ label: "IVA", value: costs.vat }] : []),
-    { label: "Notaio", field: "notary", value: costs.notary },
-    { label: "Agenzia", field: "agency", value: costs.agency },
+    ...(costs.vat > 0 ? [{ label: t("purchase.vat"), value: costs.vat }] : []),
+    { label: t("purchase.notary"), field: "notary", value: costs.notary },
+    { label: t("purchase.agency"), field: "agency", value: costs.agency },
   ];
 
   const loanRows: { label: string; field?: PurchaseCostField; value: number }[] = [
-    { label: "Quota prezzo immobile", value: loanOnPrice },
-    { label: "Ristrutturazione", field: "renovation", value: loanRenovation },
-    { label: "Arredamento", field: "furnishing", value: loanFurnishing },
+    { label: t("purchase.priceShare"), value: loanOnPrice },
+    { label: t("purchase.renovation"), field: "renovation", value: loanRenovation },
+    { label: t("purchase.furnishing"), field: "furnishing", value: loanFurnishing },
   ];
 
   const handleEdit = (field: PurchaseCostField, valueEuro: number) => {
@@ -96,69 +98,66 @@ export default function PurchaseBreakdown({ market, costs, scenario, onScenarioC
 
   return (
     <div className="card-glass p-5">
-      <h2 className="mb-1 text-sm font-semibold text-slate-300">Costi iniziali</h2>
-      <p className="mb-4 text-xs text-slate-500">
-        L&apos;anticipo % si applica a prezzo + ristrutturazione + arredamento. Il mutuo copre il resto;
-        tasse e notaio si pagano in contanti all&apos;acquisto.
-      </p>
+      <h2 className="mb-1 text-sm font-semibold text-slate-300">{t("purchase.title")}</h2>
+      <p className="mb-4 text-xs text-slate-500">{t("purchase.subtitle")}</p>
 
       <div className="mb-4 grid gap-2 sm:grid-cols-3">
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
-          <p className="text-[10px] uppercase tracking-wide text-slate-500">Equity iniziale</p>
+          <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("purchase.initialEquity")}</p>
           <p className="text-lg font-bold text-slate-100">{fmtMoney(costs.down_payment, market)}</p>
-          <p className="text-[11px] text-slate-600">Quota casa di tua proprietà (prezzo + lavori)</p>
+          <p className="text-[11px] text-slate-600">{t("purchase.initialEquityHint")}</p>
         </div>
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
-          <p className="text-[10px] uppercase tracking-wide text-slate-500">Contanti subito</p>
+          <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("purchase.cashUpfront")}</p>
           <p className="text-lg font-bold text-accent">{fmtMoney(costs.total_initial_cash, market)}</p>
-          <p className="text-[11px] text-slate-600">Anticipo + tasse e notaio</p>
+          <p className="text-[11px] text-slate-600">{t("purchase.cashUpfrontHint")}</p>
         </div>
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
-          <p className="text-[10px] uppercase tracking-wide text-slate-500">Coperto da mutuo</p>
+          <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("purchase.coveredByMortgage")}</p>
           <p className="text-lg font-bold text-slate-100">{fmtMoney(costs.loan_amount, market)}</p>
-          <p className="text-[11px] text-slate-600">Prezzo + ristrutturazione + arredamento</p>
+          <p className="text-[11px] text-slate-600">{t("purchase.coveredByMortgageHint")}</p>
         </div>
       </div>
 
       <div className="space-y-4">
         <div className="space-y-2">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">Prezzo immobile</p>
-          {renderRow("Prezzo di acquisto", purchasePrice)}
+          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">{t("purchase.propertyPrice")}</p>
+          {renderRow(t("purchase.purchasePrice"), purchasePrice)}
         </div>
 
         <div className="space-y-2 border-t border-surface-border pt-3">
           <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">
-            Finanziato con mutuo
+            {t("purchase.financedSection")}
           </p>
           {loanRows.map((r) =>
-            renderRow(r.label, r.value, r.field, r.field ? "Incluso nel mutuo" : "Parte del prezzo finanziata"),
+            renderRow(r.label, r.value, r.field, r.field ? t("purchase.includedInMortgage") : t("purchase.financedShare")),
           )}
-          {renderRow("Totale mutuo", costs.loan_amount, "loan_amount")}
+          {renderRow(t("purchase.totalMortgage"), costs.loan_amount, "loan_amount")}
           {renderRow(
-            "Anticipo (equity)",
+            t("purchase.downPaymentEquity"),
             costs.down_payment,
             "down_payment",
-            "Tua quota su prezzo + ristrutturazione + arredamento",
+            t("purchase.downPaymentHint"),
           )}
         </div>
 
         <div className="space-y-2 border-t border-surface-border pt-3">
           <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">
-            Pagamento immediato in contanti
+            {t("purchase.immediateCash")}
           </p>
           {renderRow(
-            "Anticipo casa",
+            t("purchase.downPaymentHouse"),
             costs.down_payment,
             undefined,
-            "Non coperto dal mutuo — modifica sopra",
+            t("purchase.editAbove"),
           )}
-          {cashRows.map((r) => renderRow(r.label, r.value, r.field, "Non coperto dal mutuo"))}
+          {cashRows.map((r) => renderRow(r.label, r.value, r.field, t("purchase.notCoveredByMortgage")))}
           <div className="flex justify-between border-t border-surface-border pt-2 text-sm font-semibold">
-            <span className="text-slate-300">Totale contanti all&apos;acquisto</span>
+            <span className="text-slate-300">{t("purchase.totalCashAtPurchase")}</span>
             <span className="text-accent">{fmtMoney(costs.total_initial_cash, market)}</span>
           </div>
           <div className="flex justify-between text-sm text-slate-500">
-            <span>di cui tasse e accessori</span>
+            <span>{t("purchase.taxesAndAccessories")}</span>
             <span>{fmtMoney(accessoryCosts, market)}</span>
           </div>
         </div>

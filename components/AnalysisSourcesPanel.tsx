@@ -16,6 +16,7 @@ import { cn, fmtMoney } from "@/lib/utils";
 import { Building2, Download, ExternalLink, Home, Key } from "lucide-react";
 import { downloadAnalysisJson } from "@/lib/analysis-history-client";
 import { createSavedComparison } from "@/lib/analysis-history";
+import { useI18n } from "@/lib/i18n/context";
 
 const PropertySimilarRentMap = dynamic(() => import("./PropertySimilarRentMap"), {
   ssr: false,
@@ -84,6 +85,7 @@ function RentComparableRow({
 }
 
 export default function AnalysisSourcesPanel({ source, scenario, market = "it" }: Props) {
+  const { t } = useI18n();
   const { sale, similarRentals } = source;
   const method = source.rentEstimateMethod ?? "per_room";
   const rentSummary = similarRentEstimateSummary(sale, similarRentals, method);
@@ -101,10 +103,10 @@ export default function AnalysisSourcesPanel({ source, scenario, market = "it" }
           <div>
             <div className="flex items-center gap-2">
               <Building2 size={18} className="text-accent" />
-              <h2 className="font-semibold text-slate-100">Annunci usati nell&apos;analisi</h2>
+              <h2 className="font-semibold text-slate-100">{t("analysisSources.title")}</h2>
             </div>
             <p className="mt-1 text-xs text-slate-500">
-              Immobile in vendita e {similarRentals.length} affitti simili usati per stimare il canone
+              {t("analysisSources.subtitle", { count: similarRentals.length })}
             </p>
           </div>
           <button
@@ -115,7 +117,7 @@ export default function AnalysisSourcesPanel({ source, scenario, market = "it" }
             className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-slate-300 hover:bg-surface-raised"
           >
             <Download size={14} />
-            Esporta JSON
+            {t("common.exportJson")}
           </button>
         </div>
       </div>

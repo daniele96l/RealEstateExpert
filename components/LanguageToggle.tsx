@@ -1,19 +1,17 @@
 "use client";
 
-import { getMarket, type MarketId } from "@/lib/markets";
-import { useI18n } from "@/lib/i18n/context";
+import { useI18n, type LocaleId } from "@/lib/i18n/context";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  market: MarketId;
-  onChange: (market: MarketId) => void;
   className?: string;
 }
 
-const OPTIONS: MarketId[] = ["it", "cz"];
+const OPTIONS: LocaleId[] = ["it", "en"];
 
-export default function MarketToggle({ market, onChange, className }: Props) {
-  const { t } = useI18n();
+export default function LanguageToggle({ className }: Props) {
+  const { locale, setLocale, t } = useI18n();
+
   return (
     <div
       className={cn(
@@ -21,24 +19,23 @@ export default function MarketToggle({ market, onChange, className }: Props) {
         className,
       )}
       role="group"
-      aria-label={t("market.aria")}
+      aria-label={t("lang.aria")}
     >
       {OPTIONS.map((id) => {
-        const cfg = getMarket(id);
-        const active = market === id;
+        const active = locale === id;
         return (
           <button
             key={id}
             type="button"
-            onClick={() => onChange(id)}
+            onClick={() => setLocale(id)}
             className={cn(
-              "min-w-[7rem] rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors",
+              "min-w-[4.5rem] rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
               active
                 ? "bg-accent text-white shadow-md"
                 : "text-slate-400 hover:bg-surface-border/40 hover:text-slate-200",
             )}
           >
-            {cfg.label}
+            {id.toUpperCase()}
           </button>
         );
       })}

@@ -15,6 +15,7 @@ import {
 import type { AnalysisResult } from "@/lib/types";
 import { fmtMoney } from "@/lib/utils";
 import type { MarketId } from "@/lib/markets";
+import { useI18n } from "@/lib/i18n/context";
 
 interface Props {
   result: AnalysisResult;
@@ -40,6 +41,7 @@ function annualizedReturn(totalReturnPct: number, years: number): number {
 }
 
 export default function RoiChart({ result, market = "it" }: Props) {
+  const { t } = useI18n();
   const downPayment = result.summary.purchase_costs.down_payment;
   const purchaseCosts = result.summary.purchase_costs;
   const taxesAndAccessories =
@@ -127,45 +129,44 @@ export default function RoiChart({ result, market = "it" }: Props) {
     <div className="card-glass p-5">
       <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-base font-semibold text-slate-100">ROI — equity immobile</h2>
+          <h2 className="text-base font-semibold text-slate-100">{t("roi.title")}</h2>
           <p className="text-sm text-slate-500">
-            Quota di proprietà: anticipo ({fmtMoney(downPayment, market)}), capitale mutuo ripagato, rivalutazione
-            e cashflow cumulato da tasse e accessori (asse destro)
+            {t("roi.subtitle", { downPayment: fmtMoney(downPayment, market) })}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">Anticipo</p>
+            <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("roi.downPayment")}</p>
             <p className="text-lg font-bold text-slate-100">{fmtMoney(downPayment, market)}</p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">Tasse e accessori</p>
+            <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("roi.taxesAccessories")}</p>
             <p className="text-lg font-bold text-slate-100">{fmtMoney(taxesAndAccessories, market)}</p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">Equity finale</p>
+            <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("roi.finalEquity")}</p>
             <p className="text-lg font-bold text-slate-100">{fmtMoney(finalEquity, market)}</p>
             {improvementCosts > 0 && (
               <p className="text-[11px] text-slate-500">
-                Senza ristrutt. e arred.: {fmtMoney(finalEquityExImprovements, market)}
+                {t("roi.withoutImprovements", { amount: fmtMoney(finalEquityExImprovements, market) })}
               </p>
             )}
             <p className={`text-xs font-medium ${equityCagr >= 0 ? "text-emerald-400" : "text-red-400"}`}>
               {equityCagr >= 0 ? "+" : ""}
-              {equityCagr.toFixed(1)}% CAGR su anticipo
+              {t("roi.cagrOnDownPayment", { pct: equityCagr.toFixed(1) })}
             </p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">Totale</p>
+            <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("common.total")}</p>
             <p className="text-lg font-bold text-cyan-400">{fmtMoney(finalEquityPlusCash, market)}</p>
             {improvementCosts > 0 && (
               <p className="text-[11px] text-slate-500">
-                Senza ristrutt. e arred.: {fmtMoney(finalTotalExImprovements, market)}
+                {t("roi.withoutImprovements", { amount: fmtMoney(finalTotalExImprovements, market) })}
               </p>
             )}
             <p className={`text-xs font-medium ${totalCagrOnAnticipo >= 0 ? "text-emerald-400" : "text-red-400"}`}>
               {totalCagrOnAnticipo >= 0 ? "+" : ""}
-              {totalCagrOnAnticipo.toFixed(1)}% CAGR su anticipo
+              {t("roi.cagrOnDownPayment", { pct: totalCagrOnAnticipo.toFixed(1) })}
             </p>
           </div>
         </div>
@@ -178,7 +179,7 @@ export default function RoiChart({ result, market = "it" }: Props) {
             dataKey="month"
             ticks={yearTicks}
             tick={{ fill: COLORS.axis, fontSize: 11 }}
-            tickFormatter={(m) => (m === 0 ? "Inizio" : `${m / 12}`)}
+            tickFormatter={(m) => (m === 0 ? t("common.start") : `${m / 12}`)}
             axisLine={{ stroke: COLORS.grid }}
             tickLine={false}
           />

@@ -14,6 +14,7 @@ import {
 import type { AnalysisResult, MonthlyCashFlowPoint } from "@/lib/types";
 import { cn, fmtMoney } from "@/lib/utils";
 import { getMarket, type MarketId } from "@/lib/markets";
+import { useI18n, type TFunction } from "@/lib/i18n/context";
 
 interface Props {
   result: AnalysisResult;
@@ -41,41 +42,31 @@ const OPEX_BAR_DEFS = [
 
 type OpexKey = (typeof OPEX_BAR_DEFS)[number]["key"];
 
-function opexBarsForMarket(market: MarketId) {
+function opexBarsForMarket(market: MarketId, t: TFunction) {
   const names: Record<OpexKey, string> =
     market === "cz"
       ? {
-          imu: "IMU",
-          tari: "Daň z nemovitosti",
-          condominio: "Společenství vlastníků",
-          insurance: "Pojištění",
-          maintenance: "Údržba",
-          utilities: "Energie",
-          platform_fee: "Platforma",
-          cleaning_fee: "Úklid",
+          imu: t("monthly.opex.imu"),
+          tari: t("monthly.opex.tariCz"),
+          condominio: t("monthly.opex.condominioCz"),
+          insurance: t("monthly.opex.insuranceCz"),
+          maintenance: t("monthly.opex.maintenanceCz"),
+          utilities: t("monthly.opex.utilitiesCz"),
+          platform_fee: t("monthly.opex.platformCz"),
+          cleaning_fee: t("monthly.opex.cleaningCz"),
         }
       : {
-          imu: "IMU",
-          tari: "TARI",
-          condominio: "Condominio",
-          insurance: "Assicurazione",
-          maintenance: "Manutenzione",
-          utilities: "Bollette",
-          platform_fee: "Piattaforma",
-          cleaning_fee: "Pulizie",
+          imu: t("monthly.opex.imu"),
+          tari: t("monthly.opex.tari"),
+          condominio: t("monthly.opex.condominio"),
+          insurance: t("monthly.opex.insurance"),
+          maintenance: t("monthly.opex.maintenance"),
+          utilities: t("monthly.opex.utilities"),
+          platform_fee: t("monthly.opex.platform"),
+          cleaning_fee: t("monthly.opex.cleaning"),
         };
   const bars = OPEX_BAR_DEFS.map((b) => ({ ...b, name: names[b.key] }));
   return market === "cz" ? bars.filter((b) => b.key !== "imu") : bars;
-}
-
-function rentalTaxLabel(market: MarketId) {
-  return market === "cz" ? "Daň z příjmu" : "Cedolare secca";
-}
-
-function chartSubtitle(market: MarketId) {
-  return market === "cz"
-    ? "Nájemné vs hypotéka, daň z příjmu a každá položka nákladů"
-    : "Affitto vs mutuo, cedolare secca e ogni voce di spesa";
 }
 
 function pointToRow(p: MonthlyCashFlowPoint, label: string) {
@@ -103,10 +94,12 @@ function yearTotal(points: MonthlyCashFlowPoint[], key: OpexKey): number {
 }
 
 export default function MonthlyBreakdownChart({ result, market = "it" }: Props) {
+  const { t } = useI18n();
   const [year, setYear] = useState(1);
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
-  const opexBars = useMemo(() => opexBarsForMarket(market), [market]);
-  const taxLabel = rentalTaxLabel(market);
+  const opexBars = useMemo(() => opexBarsForMarket(market, t), [market, t]);
+  const taxLabel = market === "cz" ? t("monthly.incomeTaxCz") : t("monthly.flatTax");
+  const subtitle = market === "cz" ? t("monthly.subtitleCz") : t("monthly.subtitleIt");
 
   const years = useMemo(
     () => [...new Set(result.monthly_series.map((p) => p.year))].sort((a, b) => a - b),
@@ -149,8 +142,8 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
   const summaryRows = useMemo(() => {
     if (!totals) return [];
     return [
-      { label: "Affitto", yearly: totals.affitto, color: COLORS.affitto },
-      { label: "Mutuo", yearly: totals.mutuo, color: COLORS.mutuo },
+      { label: t("common.rent"), yearly: totals.affitto, color: COLORS.affitto },
+      { label: t("common.mortgage"), yearly: totals.mutuo, color: COLORS.mutuo },
       { label: taxLabel, yearly: totals.imposte, color: COLORS.imposte },
       ...activeOpex.map((b) => ({
         label: b.name,
@@ -158,21 +151,21 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
         color: b.color,
       })),
       {
-        label: "Netto",
+        label: t("common.net"),
         yearly: totals.netto,
         color: totals.netto >= 0 ? COLORS.affitto : "#f87171",
       },
     ];
-  }, [totals, activeOpex, taxLabel]);
+  }, [totals, activeOpex, taxLabel, t]);
 
   return (
     <div className="card-glass p-5">
       <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-base font-semibold text-slate-100">Dettaglio mensile entrate/uscite</h2>
-          <p className="text-sm text-slate-500">{chartSubtitle(market)}</p>
+          <h2 className="text-base font-semibold text-slate-100">{t("monthly.title")}</h2>
+          <p className="text-sm text-slate-500">{subtitle}</p>
           <p className="mt-1 text-xs text-slate-500">
-            Mutuo calcolato su un totale di {fmtMoney(result.summary.loan_amount, market)}
+            {t("monthly.mortgageOn", { amount: fmtMoney(result.summary.loan_amount, market) })}
           </p>
         </div>
         <div className="min-w-0 max-w-full overflow-x-auto rounded-lg bg-surface-border/40 p-1">
@@ -218,12 +211,12 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
             formatter={(v: number, name: string) => [fmtMoney(v, market), name]}
             labelFormatter={(_, payload) => {
               const m = payload?.[0]?.payload?.month;
-              return m ? `Mese ${m} (anno ${year})` : "";
+              return m ? t("monthly.tooltipMonth", { month: m, year }) : "";
             }}
           />
           <Legend wrapperStyle={{ paddingTop: 12, fontSize: 11 }} />
-          <Bar dataKey="affitto" name="Affitto" fill={COLORS.affitto} radius={[3, 3, 0, 0]} barSize={14} />
-          <Bar dataKey="mutuo" name="Mutuo" stackId="uscite" fill={COLORS.mutuo} barSize={14} />
+          <Bar dataKey="affitto" name={t("common.rent")} fill={COLORS.affitto} radius={[3, 3, 0, 0]} barSize={14} />
+          <Bar dataKey="mutuo" name={t("common.mortgage")} stackId="uscite" fill={COLORS.mutuo} barSize={14} />
           <Bar dataKey="imposte" name={taxLabel} stackId="uscite" fill={COLORS.imposte} barSize={14} />
           {activeOpex.map((b, i) => (
             <Bar
@@ -242,7 +235,7 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
       {totals && (
         <div className="mt-4 border-t border-surface-border/60 pt-4">
           <p className="mb-3 text-xs font-medium text-slate-400">
-            Totale anno {year} — valori mensili = media su {totals.months} mesi
+            {t("monthly.yearTotal", { year, months: totals.months })}
           </p>
           <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-4 lg:grid-cols-6">
             {summaryRows.map((row) => (
@@ -253,11 +246,11 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
                 </div>
                 <p className="mt-1.5 font-semibold text-slate-200">
                   {fmtMoney(row.yearly / totals.months, market)}
-                  <span className="ml-1 text-[10px] font-normal text-slate-500">/mese</span>
+                  <span className="ml-1 text-[10px] font-normal text-slate-500">{t("common.perMonth")}</span>
                 </p>
                 <p className="mt-0.5 text-slate-400">
                   {fmtMoney(row.yearly, market)}
-                  <span className="ml-1 text-[10px] text-slate-500">/anno</span>
+                  <span className="ml-1 text-[10px] text-slate-500">{t("common.perYear")}</span>
                 </p>
               </div>
             ))}

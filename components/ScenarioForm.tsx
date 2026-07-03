@@ -11,6 +11,7 @@ import {
 import { estimateSqmFromPrice, estimateUtilitiesAnnual, ITALY_DEFAULTS } from "@/lib/constants";
 import { estimateCzechUtilitiesAnnual } from "@/lib/constants-cz";
 import type { MarketId } from "@/lib/markets";
+import { useI18n } from "@/lib/i18n/context";
 import { getRentalModeRules } from "@/lib/rental-presets";
 import { cn, fmtMoney } from "@/lib/utils";
 import { Home, Key, Sparkles, Info } from "lucide-react";
@@ -35,50 +36,58 @@ function Field({ label, hint, children }: { label: string; hint?: string; childr
 }
 
 function RentalModeInfo({ mode, propertyType }: { mode: RentalMode; propertyType: "prima_casa" | "investment" }) {
+  const { t } = useI18n();
   const rules = getRentalModeRules(mode);
+  const modeKey = mode as "long_term" | "medium_term_semester" | "short_term_airbnb";
   return (
     <div className="sm:col-span-2 rounded-xl border border-accent/20 bg-accent/5 p-3 text-xs text-slate-400">
       <div className="mb-2 flex items-center gap-1.5 font-medium text-accent">
         <Info size={14} />
-        Regime: {rules.label}
+        {t("scenario.regime")}: {t(`rentalModes.${modeKey}.label`)}
       </div>
       <ul className="space-y-1.5 leading-relaxed">
         <li>
-          <span className="text-slate-300">Cedolare secca:</span> {rules.cedolare_pct}% — {rules.cedolare_note}
+          <span className="text-slate-300">{t("scenario.flatTax")}:</span> {rules.cedolare_pct}% — {t(`rentalModes.${modeKey}.cedolareNote`)}
         </li>
         <li>
-          <span className="text-slate-300">IMU:</span>{" "}
+          <span className="text-slate-300">{t("scenario.imu")}:</span>{" "}
           {propertyType === "prima_casa"
-            ? "Esonero — abitazione principale (prima casa)."
-            : rules.imu_note}
+            ? t("scenario.primaryHomeExempt")
+            : t(`rentalModes.${modeKey}.imuNote`)}
         </li>
         <li>
-          <span className="text-slate-300">Occupazione tipica:</span> {rules.occupancy_pct}% — {rules.occupancy_note}
+          <span className="text-slate-300">{t("scenario.typicalOccupancy")}:</span> {rules.occupancy_pct}% — {t(`rentalModes.${modeKey}.occupancyNote`)}
         </li>
         {mode === "medium_term_semester" ? (
           <>
             <li>
-              <span className="text-slate-300">Pulizie:</span> ~€{rules.cleaning_fee_per_turnover} × {rules.turnovers_per_year} cambi/anno tra semestri.
+              <span className="text-slate-300">{t("scenario.cleaning")}:</span>{" "}
+              {t("scenario.cleaningSemester", { fee: rules.cleaning_fee_per_turnover, turns: rules.turnovers_per_year })}
             </li>
-            <li>{rules.utilities_note}</li>
+            <li>{t(`rentalModes.${modeKey}.utilitiesNote`)}</li>
           </>
         ) : mode === "short_term_airbnb" ? (
           <>
             <li>
-              <span className="text-slate-300">Piattaforma:</span> ~{rules.platform_fee_pct * 100}% sul lordo (Airbnb/Booking).
+              <span className="text-slate-300">{t("scenario.platform")}:</span>{" "}
+              {t("scenario.platformFee", { pct: rules.platform_fee_pct * 100 })}
             </li>
             <li>
-              <span className="text-slate-300">Pulizie:</span> ~€{rules.cleaning_fee_per_turnover} per cambio ospite.
+              <span className="text-slate-300">{t("scenario.cleaning")}:</span>{" "}
+              {t("scenario.cleaningShort", { fee: rules.cleaning_fee_per_turnover })}
             </li>
-            <li>{rules.utilities_note}</li>
+            <li>{t(`rentalModes.${modeKey}.utilitiesNote`)}</li>
           </>
-        ) : null}
+        ) : (
+          <li>{t(`rentalModes.${modeKey}.utilitiesNote`)}</li>
+        )}
       </ul>
     </div>
   );
 }
 
 export default function ScenarioForm({ market, onChange, prefill, syncScenario, syncToken }: Props) {
+  const { t } = useI18n();
   const currency = market === "cz" ? "Kč" : "€";
   const { register, watch, reset, setValue, getValues } = useForm<SimpleScenario>({
     defaultValues: getDefaultSimpleScenario(market),
@@ -183,23 +192,23 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <Sparkles size={18} className="text-accent" />
-            <h2 className="font-semibold text-slate-100">Parametri</h2>
+            <h2 className="font-semibold text-slate-100">{t("scenario.title")}</h2>
           </div>
           <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-accent">
-            Live
+            {t("common.live")}
           </span>
         </div>
-        <p className="mt-1.5 text-xs text-slate-500">I grafici si aggiornano mentre modifichi i valori.</p>
+        <p className="mt-1.5 text-xs text-slate-500">{t("scenario.subtitle")}</p>
       </div>
 
       <div className="space-y-6 p-5">
         <section>
           <div className="mb-3 flex items-center gap-2 text-sm font-medium text-accent">
             <Home size={16} />
-            Acquisto e mutuo
+            {t("scenario.purchaseSection")}
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label={`Prezzo di acquisto (${currency})`}>
+            <Field label={t("scenario.purchasePrice", { currency })}>
               <input
                 type="number"
                 step={5000}
@@ -217,32 +226,32 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
               />
             </Field>
             {market === "it" ? (
-            <Field label="Tipologia">
+            <Field label={t("scenario.propertyType")}>
               <select className="select-field" {...register("property_type")}>
-                <option value="investment">Investimento</option>
-                <option value="prima_casa">Prima casa</option>
+                <option value="investment">{t("scenario.investment")}</option>
+                <option value="prima_casa">{t("scenario.primaryHome")}</option>
               </select>
             </Field>
             ) : (
               <>
-                <Field label="Daň z nemovitosti (Kč/anno)" hint="Stima municipale semplificata">
+                <Field label={t("scenario.propertyTaxCz")} hint={t("scenario.propertyTaxHint")}>
                   <input type="number" step={500} className="input-field" {...register("property_tax_annual", { valueAsNumber: true })} />
                 </Field>
-                <Field label="Daň z příjmu (%)" hint="15% paušál — modello semplificato">
+                <Field label={t("scenario.incomeTaxCz")} hint={t("scenario.incomeTaxHint")}>
                   <input type="number" step={1} className="input-field" {...register("rental_income_tax_pct", { valueAsNumber: true })} />
                 </Field>
               </>
             )}
-            <Field label="Anticipo (%)" hint="Su prezzo + ristrutturazione + arredamento">
+            <Field label={t("scenario.downPayment")} hint={t("scenario.downPaymentHint")}>
               <input type="number" step="1" className="input-field" {...register("down_payment_pct", { valueAsNumber: true })} />
             </Field>
-            <Field label="Tasso mutuo TAN (%)">
+            <Field label={t("scenario.mortgageRate")}>
               <input type="number" step="0.1" className="input-field" {...register("interest_rate_annual", { valueAsNumber: true })} />
             </Field>
-            <Field label="Durata mutuo (anni)">
+            <Field label={t("scenario.mortgageYears")}>
               <input type="number" className="input-field" {...register("loan_years", { valueAsNumber: true })} />
             </Field>
-            <Field label={`Ristrutturazione (${currency})`}>
+            <Field label={t("scenario.renovation", { currency })}>
               <input
                 type="number"
                 min={0}
@@ -259,12 +268,12 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
                 })}
               />
             </Field>
-            <Field label={`Arredamento (${currency})`} hint={
+            <Field label={t("scenario.furnishing", { currency })} hint={
               rentalMode === "short_term_airbnb"
-                ? "Obbligatorio per affitto breve"
+                ? t("scenario.furnishingShort")
                 : rentalMode === "medium_term_semester"
-                  ? "Di solito arredato (studenti/lavoratori)"
-                  : "Spesso a carico inquilino se non arredato"
+                  ? t("scenario.furnishingMedium")
+                  : t("scenario.furnishingLong")
             }>
               <input type="number" className="input-field" {...register("furnishing_cost", { valueAsNumber: true })} />
             </Field>
@@ -274,23 +283,23 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
         <section>
           <div className="mb-3 flex items-center gap-2 text-sm font-medium text-accent">
             <Key size={16} />
-            Affitto
+            {t("scenario.rentSection")}
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Modalità">
+            <Field label={t("scenario.rentalMode")}>
               <select className="select-field" {...register("rental_mode")}>
-                <option value="long_term">Lungo termine (4+4)</option>
-                <option value="medium_term_semester">Medio termine / semestri</option>
-                <option value="short_term_airbnb">Breve termine / Airbnb (≤30 gg)</option>
+                <option value="long_term">{t("scenario.longTerm")}</option>
+                <option value="medium_term_semester">{t("scenario.mediumTerm")}</option>
+                <option value="short_term_airbnb">{t("scenario.shortTerm")}</option>
               </select>
             </Field>
             {rentalMode === "short_term_airbnb" ? (
-              <Field label={`Tariffa notturna (${currency})`}>
+              <Field label={t("scenario.nightlyRate", { currency })}>
                 <input type="number" className="input-field" {...register("nightly_rate", { valueAsNumber: true })} />
               </Field>
             ) : (
               <>
-                <Field label="Stanze">
+                <Field label={t("scenario.rooms")}>
                   <input
                     type="number"
                     min={1}
@@ -307,12 +316,12 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
                   />
                 </Field>
                 <div className="sm:col-span-2">
-                  <p className="label-field mb-2">Base affitto mensile</p>
+                  <p className="label-field mb-2">{t("scenario.rentBasis")}</p>
                   <div className="mb-3 flex rounded-lg border border-surface-border overflow-hidden">
                     {(
                       [
-                        { id: "per_room" as const, label: "Per stanza" },
-                        { id: "whole" as const, label: "Tutto appartamento" },
+                        { id: "per_room" as const, label: t("scenario.perRoom") },
+                        { id: "whole" as const, label: t("scenario.wholeFlat") },
                       ] as const
                     ).map(({ id, label }) => (
                       <button
@@ -333,12 +342,15 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
                   <Field
                     label={
                       rentPriceBasis === "per_room"
-                        ? `Affitto mensile per stanza (${currency})`
-                        : `Affitto mensile tutto appartamento (${currency})`
+                        ? t("scenario.monthlyRentPerRoom", { currency })
+                        : t("scenario.monthlyRentWhole", { currency })
                     }
                     hint={
                       rentPriceBasis === "per_room" && rentRooms > 0
-                        ? `Totale stimato: ${fmtMoney(monthlyRent * rentRooms, market)}/mese (${rentRooms} stanze)`
+                        ? t("scenario.estimatedTotal", {
+                            amount: fmtMoney(monthlyRent * rentRooms, market),
+                            rooms: rentRooms,
+                          })
                         : undefined
                     }
                   >
@@ -354,25 +366,25 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
               </>
             )}
             <Field
-              label="Occupazione (%)"
-              hint={getRentalModeRules(rentalMode).occupancy_note}
+              label={t("scenario.occupancy")}
+              hint={t(`rentalModes.${rentalMode as "long_term" | "medium_term_semester" | "short_term_airbnb"}.occupancyNote`)}
             >
               <input type="number" min="0" max="100" className="input-field" {...register("occupancy_pct", { valueAsNumber: true })} />
             </Field>
-            <Field label={`Condominio (${currency}/mese)`}>
+            <Field label={t("scenario.condominio", { currency })}>
               <input type="number" className="input-field" {...register("condominio_monthly", { valueAsNumber: true })} />
             </Field>
             <div className="sm:col-span-2">
               <Field
-                label={`Bollette annue (${currency})`}
+                label={t("scenario.utilities", { currency })}
                 hint={
                   rentalMode === "short_term_airbnb"
                     ? utilitiesAuto
-                      ? `Auto: ~${fmtMoney(resolveUtilitiesAnnual(getValues(), market), market)}/anno`
-                      : "Importo manuale"
+                      ? t("scenario.utilitiesAutoShort", { amount: fmtMoney(resolveUtilitiesAnnual(getValues(), market), market) })
+                      : t("scenario.utilitiesManual")
                     : market === "cz"
-                      ? "A carico nájemníka (0 Kč). Upravte pokud platíte část."
-                      : "A carico inquilino (0 €). Modifica se paghi parte delle utenze."
+                      ? t("scenario.utilitiesTenantCz")
+                      : t("scenario.utilitiesTenantIt")
                 }
               >
                 <div className="flex gap-2">
@@ -389,7 +401,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
                       className="rounded border-surface-border"
                       {...register("utilities_auto")}
                     />
-                    Auto
+                    {t("common.auto")}
                   </label>
                 </div>
               </Field>
@@ -397,7 +409,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
             {market === "it" && <RentalModeInfo mode={rentalMode} propertyType={propertyType} />}
             {market === "cz" && (
               <div className="sm:col-span-2 rounded-xl border border-accent/20 bg-accent/5 p-3 text-xs text-slate-400">
-                Modello fiscale semplificato: 15% sul canone lordo, daň z nemovitosti annuale. Non è consulenza fiscale.
+                {t("scenario.czTaxNote")}
               </div>
             )}
           </div>
@@ -405,7 +417,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
 
         {market === "it" && (
         <p className="text-xs text-slate-500">
-          Fonti:{" "}
+          {t("scenario.sourcesPrefix")}{" "}
           <a
             href="https://www.agenziaentrate.gov.it/portale/le-locazioni-brevi-e-la-cedolare-secca"
             target="_blank"
@@ -414,7 +426,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
           >
             Agenzia delle Entrate
           </a>
-          . Stime IMU, TARI e notaio calcolate automaticamente per regime.
+          . {t("scenario.sourcesSuffix")}
         </p>
         )}
       </div>
