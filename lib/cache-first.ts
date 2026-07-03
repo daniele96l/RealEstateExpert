@@ -5,6 +5,7 @@ import {
   getCachedListings,
   getCachedMarketHistory,
   getCachedPropertyDetail,
+  savePropertyDetailToServerCache,
 } from "./api";
 import { readLocalListingsCache, writeLocalListingsCache } from "./listings-cache-client";
 import { readLocalMarketCache, writeLocalMarketCache } from "./market-cache-client";
@@ -65,7 +66,10 @@ export async function loadPropertyDetailCacheFirst(
 ): Promise<{ detail: ListingDetail; source: CacheSource }> {
   if (!refresh) {
     const local = readLocalPropertyDetailCache(listing.id);
-    if (local) return { detail: local, source: "local" };
+    if (local) {
+      void savePropertyDetailToServerCache(local).catch(() => {});
+      return { detail: local, source: "local" };
+    }
 
     const server = await getCachedPropertyDetail(listing.id);
     if (server) {
@@ -76,6 +80,11 @@ export async function loadPropertyDetailCacheFirst(
 
   const detail = await fetchPropertyDetail(listing, refresh, provider);
   writeLocalPropertyDetailCache(detail);
+  try {
+    await savePropertyDetailToServerCache(detail);
+  } catch {
+    /* read-only deployment host */
+  }
   return { detail, source: "network" };
 }
 

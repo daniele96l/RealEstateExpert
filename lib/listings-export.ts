@@ -10,7 +10,7 @@ import type { ListingProfitSettings } from "./listing-profit-settings";
 import { filterListings, type ListingsFilters } from "./listings-filters";
 import { filterListingsByBounds, type GeoBounds, type GeoPoint } from "./geo-filter";
 import { readLocalPropertyDetailCache } from "./property-detail-cache-client";
-import { getCachedPropertyDetail } from "./api";
+import { getCachedPropertyDetail, saveListingsExportToServer, savePropertyDetailToServerCache } from "./api";
 import type { MarketId } from "./markets";
 import type { ListingDetail, ListingsProvider, MapListing } from "./types";
 import { writeLocalPropertyDetailCache } from "./property-detail-cache-client";
@@ -121,6 +121,15 @@ export function resolveExportSaleListings(
   }
 
   return result.filter((l) => l.operation === "sale");
+}
+
+async function persistDetailLocally(detail: ListingDetail): Promise<void> {
+  writeLocalPropertyDetailCache(detail);
+  try {
+    await savePropertyDetailToServerCache(detail);
+  } catch {
+    /* read-only host or offline — browser cache still updated */
+  }
 }
 
 async function readCachedDetail(id: string): Promise<ListingDetail | null> {
@@ -239,6 +248,7 @@ export async function buildListingsExport(
     const cached = await readCachedDetail(listing.id);
     if (cached) {
       stats.cached++;
+      await persistDetailLocally(cached);
       records.push(detailRecord(listing, cached, "cached", ctx.market, profit));
     } else if (options.fetchMissingDetails) {
       pendingFetch.push(listing);
@@ -261,8 +271,9 @@ export async function buildListingsExport(
           const { detail, source } = await loadPropertyDetailCacheFirst(
             listing,
             ctx.provider,
-            true,
+            false,
           );
+          await persistDetailLocally(detail);
           if (source === "network") stats.fetched++;
           else stats.cached++;
           records.push(
@@ -305,6 +316,19 @@ export async function buildListingsExport(
     listings: records,
     fetch_stats: stats,
   };
+}
+
+export async function persistListingsExport(bundle: ListingsExportBundle): Promise<{
+  download: true;
+  savedPath: string | null;
+}> {
+  downloadListingsExport(bundle);
+  try {
+    const { path } = await saveListingsExportToServer(bundle);
+    return { download: true, savedPath: path };
+  } catch {
+    return { download: true, savedPath: null };
+  }
 }
 
 export function downloadListingsExport(bundle: ListingsExportBundle): void {

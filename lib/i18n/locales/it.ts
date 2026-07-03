@@ -282,6 +282,7 @@ const it = {
     progress: "{current} / {total}",
     done: "Esportati {count} annunci",
     errors: "{count} annunci non recuperati",
+    savedLocal: "Salvato in locale: {path}",
   },
   meta: {
     title: "RealEstateExpert — Analizzatore investimenti immobiliari",

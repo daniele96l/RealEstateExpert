@@ -6,7 +6,8 @@ import { getPropertyDetailCache, savePropertyDetailCache } from "@/lib/server/pr
 import { syncListingConditionToCityCaches } from "@/lib/server/listing-condition-enrich";
 import { listingToDetail } from "@/lib/server/property-detail";
 import { ScrapingBeeError } from "@/lib/server/scrapingbee";
-import type { ListingsProvider, MapListing } from "@/lib/types";
+import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client";
+import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 
 export const maxDuration = 120;
 
@@ -117,5 +118,29 @@ export async function POST(request: Request) {
       return NextResponse.json({ detail: err.message }, { status: 500 });
     }
     return NextResponse.json({ detail: "Errore interno" }, { status: 500 });
+  }
+}
+
+/** Persist a detail object to data/listings/details/{id}.json (local dev cache). */
+export async function PUT(request: Request) {
+  try {
+    const body = (await request.json()) as { detail?: ListingDetail };
+    const detail = body.detail;
+    if (!detail?.id?.trim()) {
+      return NextResponse.json({ detail: "detail.id obbligatorio" }, { status: 400 });
+    }
+
+    await savePropertyDetailCache(detail);
+    await syncListingConditionToCityCaches(detail);
+
+    return NextResponse.json({
+      ok: true,
+      path: propertyDetailCacheFileLabel(detail.id),
+    });
+  } catch (err) {
+    return NextResponse.json(
+      { detail: err instanceof Error ? err.message : "Errore salvataggio cache" },
+      { status: 500 },
+    );
   }
 }

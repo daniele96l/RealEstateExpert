@@ -8,6 +8,7 @@ import type {
   MapCenter,
   MarketPriceHistory,
 } from "./types";
+import type { ListingsExportBundle } from "./listings-export";
 
 import type { MarketId } from "./markets";
 
@@ -180,5 +181,30 @@ export async function geocodeCityQuery(
   if (zone?.trim()) params.set("zone", zone.trim());
   const res = await fetch(`/api/geocode?${params}`);
   if (!res.ok) throw new Error(await parseError(res, "Geocoding non riuscito"));
+  return res.json();
+}
+
+export async function savePropertyDetailToServerCache(
+  detail: ListingDetail,
+): Promise<{ path: string }> {
+  const res = await fetch("/api/listings/property", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ detail }),
+  });
+  if (!res.ok) throw new Error(await parseError(res, "Salvataggio dettaglio non riuscito"));
+  const body = (await res.json()) as { path: string };
+  return { path: body.path };
+}
+
+export async function saveListingsExportToServer(
+  bundle: ListingsExportBundle,
+): Promise<{ path: string; read_only_host?: boolean }> {
+  const res = await fetch("/api/listings/export-save", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(bundle),
+  });
+  if (!res.ok) throw new Error(await parseError(res, "Salvataggio export non riuscito"));
   return res.json();
 }

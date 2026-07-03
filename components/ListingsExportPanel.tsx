@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   buildListingsExport,
-  downloadListingsExport,
+  persistListingsExport,
   resolveExportSaleListings,
   type ListingsExportContext,
   type ExportProgress,
@@ -39,7 +39,11 @@ export default function ListingsExportPanel({ market, context }: Props) {
   );
   const [exporting, setExporting] = useState(false);
   const [progress, setProgress] = useState<ExportProgress | null>(null);
-  const [lastResult, setLastResult] = useState<{ count: number; errors: number } | null>(null);
+  const [lastResult, setLastResult] = useState<{
+    count: number;
+    errors: number;
+    savedPath: string | null;
+  } | null>(null);
 
   useEffect(() => {
     setCustomFilters(emptyListingsFilters(market));
@@ -68,10 +72,10 @@ export default function ListingsExportPanel({ market, context }: Props) {
     setProgress(null);
     try {
       const bundle = await buildListingsExport(context, exportOptions, setProgress);
-      downloadListingsExport(bundle);
-      setLastResult({ count: bundle.count, errors: bundle.fetch_stats.fetch_errors });
+      const { savedPath } = await persistListingsExport(bundle);
+      setLastResult({ count: bundle.count, errors: bundle.fetch_stats.fetch_errors, savedPath });
     } catch {
-      setLastResult({ count: 0, errors: -1 });
+      setLastResult({ count: 0, errors: -1, savedPath: null });
     } finally {
       setExporting(false);
       setProgress(null);
@@ -289,8 +293,8 @@ export default function ListingsExportPanel({ market, context }: Props) {
                 ? "Export se nezdařil."
                 : "Export failed."
               : market === "cz"
-                ? `Exportováno ${lastResult.count} inzerátů${lastResult.errors > 0 ? ` · ${lastResult.errors} se nepodařilo načíst` : ""}`
-                : `${t("export.done", { count: lastResult.count })}${lastResult.errors > 0 ? ` · ${t("export.errors", { count: lastResult.errors })}` : ""}`}
+                ? `Exportováno ${lastResult.count} inzerátů${lastResult.errors > 0 ? ` · ${lastResult.errors} se nepodařilo načíst` : ""}${lastResult.savedPath ? ` · uloženo ${lastResult.savedPath}` : ""}`
+                : `${t("export.done", { count: lastResult.count })}${lastResult.errors > 0 ? ` · ${t("export.errors", { count: lastResult.errors })}` : ""}${lastResult.savedPath ? ` · ${t("export.savedLocal", { path: lastResult.savedPath })}` : ""}`}
           </p>
         )}
 

@@ -280,6 +280,7 @@ const en: Translations = {
     progress: "{current} / {total}",
     done: "Exported {count} listings",
     errors: "{count} listings could not be fetched",
+    savedLocal: "Saved locally to {path}",
   },
   meta: {
     title: "RealEstateExpert — Real estate investment analyzer",
