@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { normalizeCitySlug } from "@/lib/server/geocode";
+import { isMarketId, listingsCacheSlug, type MarketId } from "@/lib/markets";
 import { getCache, mergeListingCache, mergeListings, saveCache } from "@/lib/server/listings-cache";
 import type { BatchSaveResult, CityListingsCache, ListingsProvider, MapCenter, MapListing } from "@/lib/types";
 
@@ -13,6 +13,7 @@ export async function POST(request: Request) {
       provider?: ListingsProvider;
       sale?: MapListing[];
       rent?: MapListing[];
+      market?: MarketId;
     };
 
     if (!body.city?.trim()) {
@@ -22,6 +23,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ detail: "Centro mappa obbligatorio" }, { status: 400 });
     }
 
+    const market = isMarketId(body.market) ? body.market : "it";
     const saleListings = body.sale ?? [];
     const rentListings = body.rent ?? [];
 
@@ -29,7 +31,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ detail: "Seleziona almeno un annuncio" }, { status: 400 });
     }
 
-    const citySlug = normalizeCitySlug(body.city);
+    const citySlug = listingsCacheSlug(market, body.city);
     const fetchedAt = new Date().toISOString();
     const provider = body.provider;
 
@@ -37,7 +39,7 @@ export async function POST(request: Request) {
     let rentCache: CityListingsCache | undefined;
 
     if (saleListings.length) {
-      const existing = await getCache(citySlug, "sale");
+      const existing = await getCache(market, citySlug, "sale");
       saleCache = mergeListingCache(existing, {
         city: citySlug,
         operation: "sale",
@@ -46,11 +48,11 @@ export async function POST(request: Request) {
         listings: mergeListings(existing?.listings ?? [], saleListings),
         provider,
       });
-      await saveCache(saleCache);
+      await saveCache(saleCache, market);
     }
 
     if (rentListings.length) {
-      const existing = await getCache(citySlug, "rent");
+      const existing = await getCache(market, citySlug, "rent");
       rentCache = mergeListingCache(existing, {
         city: citySlug,
         operation: "rent",
@@ -59,7 +61,7 @@ export async function POST(request: Request) {
         listings: mergeListings(existing?.listings ?? [], rentListings),
         provider,
       });
-      await saveCache(rentCache);
+      await saveCache(rentCache, market);
     }
 
     const result: BatchSaveResult = {

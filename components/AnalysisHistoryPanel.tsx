@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   analysisHistoryFileLabel,
   downloadAnalysisJson,
@@ -10,20 +10,22 @@ import {
   readLocalAnalysisHistory,
   writeLocalAnalysisHistory,
 } from "@/lib/analysis-history-client";
-import type { SavedAnalysisComparison } from "@/lib/analysis-history";
+import { inferAnalysisMarket, type SavedAnalysisComparison } from "@/lib/analysis-history";
 import type { ListingAnalysisSource } from "@/lib/listing-analysis";
 import type { SimpleScenario } from "@/lib/defaults";
-import { fmtEuro } from "@/lib/utils";
+import { getMarket, type MarketId } from "@/lib/markets";
+import { fmtMoney } from "@/lib/utils";
 import { Clock, Download, FileUp, History, Trash2 } from "lucide-react";
 
 interface Props {
+  market: MarketId;
   onRestore: (source: ListingAnalysisSource, scenario: SimpleScenario) => void;
   refreshToken?: number;
 }
 
-function formatWhen(iso: string): string {
+function formatWhen(iso: string, locale: string): string {
   try {
-    return new Date(iso).toLocaleString("it-IT", {
+    return new Date(iso).toLocaleString(locale, {
       day: "2-digit",
       month: "short",
       year: "numeric",
@@ -35,10 +37,16 @@ function formatWhen(iso: string): string {
   }
 }
 
-export default function AnalysisHistoryPanel({ onRestore, refreshToken = 0 }: Props) {
+export default function AnalysisHistoryPanel({ market, onRestore, refreshToken = 0 }: Props) {
   const [items, setItems] = useState<SavedAnalysisComparison[]>([]);
   const [loading, setLoading] = useState(true);
   const fileRef = useRef<HTMLInputElement>(null);
+  const marketCfg = getMarket(market);
+
+  const visibleItems = useMemo(
+    () => items.filter((item) => inferAnalysisMarket(item) === market),
+    [items, market],
+  );
 
   const reload = useCallback(async () => {
     setLoading(true);
@@ -69,7 +77,7 @@ export default function AnalysisHistoryPanel({ onRestore, refreshToken = 0 }: Pr
     setItems(store.items);
   };
 
-  if (!loading && items.length === 0) {
+  if (!loading && visibleItems.length === 0) {
     return (
       <section className="card-glass overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
@@ -100,8 +108,16 @@ export default function AnalysisHistoryPanel({ onRestore, refreshToken = 0 }: Pr
           </div>
         </div>
         <p className="px-5 py-6 text-sm text-slate-500">
-          I confronti vendita/affitti simili vengono salvati automaticamente qui e in{" "}
-          <code className="text-slate-400">{analysisHistoryFileLabel()}</code>.
+          {items.length > 0
+            ? market === "cz"
+              ? "Nessuna analisi salvata per Česko. Usa la mappa Sreality e salva un confronto affitti."
+              : "Nessuna analisi salvata per Italia. Usa la mappa Idealista e salva un confronto affitti."
+            : (
+              <>
+                I confronti vendita/affitti simili vengono salvati automaticamente qui e in{" "}
+                <code className="text-slate-400">{analysisHistoryFileLabel()}</code>.
+              </>
+            )}
         </p>
       </section>
     );
@@ -116,7 +132,7 @@ export default function AnalysisHistoryPanel({ onRestore, refreshToken = 0 }: Pr
             <h2 className="font-semibold text-slate-100">Cronologia analisi</h2>
           </div>
           <p className="mt-1 text-xs text-slate-500">
-            Salvataggio automatico in browser e {analysisHistoryFileLabel()}
+            {marketCfg.label} — salvataggio automatico in browser e {analysisHistoryFileLabel()}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -133,11 +149,16 @@ export default function AnalysisHistoryPanel({ onRestore, refreshToken = 0 }: Pr
           />
           <button
             type="button"
-            onClick={() => downloadAnalysisJson(readLocalAnalysisHistory())}
+            onClick={() =>
+              downloadAnalysisJson(
+                { version: 1, items: visibleItems },
+                market === "cz" ? "analisi_cronologia_cz.json" : "analisi_cronologia_it.json",
+              )
+            }
             className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-slate-300 hover:bg-surface-raised"
           >
             <Download size={14} />
-            Esporta tutto
+            Esporta
           </button>
           <button
             type="button"
@@ -154,17 +175,17 @@ export default function AnalysisHistoryPanel({ onRestore, refreshToken = 0 }: Pr
         <p className="px-5 py-6 text-sm text-slate-500">Caricamento cronologia…</p>
       ) : (
         <ul className="divide-y divide-surface-border/60">
-          {items.map((item) => (
+          {visibleItems.map((item) => (
             <li key={item.id} className="flex flex-wrap items-start gap-3 px-5 py-4">
               <div className="min-w-0 flex-1">
                 <p className="font-medium text-slate-200 line-clamp-2">{item.label}</p>
                 <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
                   <span className="inline-flex items-center gap-1">
                     <Clock size={12} />
-                    {formatWhen(item.savedAt)}
+                    {formatWhen(item.savedAt, marketCfg.locale)}
                   </span>
                   {item.city && <span>{item.city}</span>}
-                  <span>{fmtEuro(item.source.sale.price)}</span>
+                  <span>{fmtMoney(item.source.sale.price, market)}</span>
                   <span>{item.source.similarRentals.length} affitti simili</span>
                 </p>
               </div>

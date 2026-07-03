@@ -64,6 +64,7 @@ interface Props {
   provider: ListingsProvider;
   cacheSource?: "server" | "local" | null;
   mapCity?: string;
+  market?: import("@/lib/markets").MarketId;
   onClose: () => void;
   onOpenSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
   onUseAverageRent?: (
@@ -107,6 +108,7 @@ export default function PropertyDetailPanel({
   provider,
   cacheSource,
   mapCity,
+  market = "it",
   onClose,
   onOpenSimilarRent,
   onUseAverageRent,
@@ -152,7 +154,7 @@ export default function PropertyDetailPanel({
         setSimilarError("Zona o posizione non disponibili — impossibile cercare affitti nella stessa area.");
         return;
       }
-      const { data: cache } = await loadCityListingsCacheFirst(criteria.city, "rent", false, provider);
+      const { data: cache } = await loadCityListingsCacheFirst(market, criteria.city, "rent", false, provider);
       if (!cache.listings.length) {
         setSimilarError(`Nessun affitto in cache per ${criteria.city}. Aggiorna gli annunci affitto in mappa.`);
         return;
@@ -163,7 +165,7 @@ export default function PropertyDetailPanel({
     } finally {
       setSimilarLoading(false);
     }
-  }, [detail, mapCity, provider]);
+  }, [detail, mapCity, market, provider]);
 
   const similarRentals = useMemo(() => {
     if (!detail || !rentPool.length) return null;

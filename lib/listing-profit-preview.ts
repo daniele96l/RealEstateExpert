@@ -14,6 +14,7 @@ import {
 } from "./listing-profit-settings";
 import { similarRentEstimateSummary } from "./rent-price-basis";
 import type { MapListing } from "./types";
+import type { MarketId } from "./markets";
 
 export interface ListingProfitPreview {
   neighborCount: number;
@@ -42,6 +43,7 @@ export function computeListingProfitPreview(
   sale: MapListing,
   rentPool: MapListing[],
   settings: ListingProfitSettings = DEFAULT_LISTING_PROFIT_SETTINGS,
+  market: MarketId = "it",
 ): ListingProfitPreview | null {
   if (sale.operation !== "sale" || sale.price <= 0) return null;
 
@@ -52,7 +54,7 @@ export function computeListingProfitPreview(
   if (estimatedMonthlyRent == null || estimatedMonthlyRent <= 0) return null;
 
   const sqm = sale.sqm != null && sale.sqm > 0 ? sale.sqm : estimateSqmFromPrice(sale.price);
-  const base = getDefaultSimpleScenario();
+  const base = getDefaultSimpleScenario(market);
   let scenario = applyRentalModeToSimple(
     {
       ...base,
@@ -69,10 +71,11 @@ export function computeListingProfitPreview(
         listingRenovationCost(sale.needs_renovation, sale.sqm, sale.price) ?? base.renovation_cost,
     },
     opts.rentalMode,
+    market,
   );
 
-  scenario = sanitizeSimple(scenario);
-  const result = runSimulation(toInvestmentScenario(scenario));
+  scenario = sanitizeSimple(scenario, market);
+  const result = runSimulation(toInvestmentScenario(scenario, market), market);
   const year1NetProfit = result.summary.year_1_net_cash_flow;
 
   return {
@@ -89,10 +92,11 @@ export function computeListingProfitPreviews(
   sales: MapListing[],
   rentPool: MapListing[],
   settings: ListingProfitSettings = DEFAULT_LISTING_PROFIT_SETTINGS,
+  market: MarketId = "it",
 ): Map<string, ListingProfitPreview> {
   const map = new Map<string, ListingProfitPreview>();
   for (const sale of sales) {
-    const preview = computeListingProfitPreview(sale, rentPool, settings);
+    const preview = computeListingProfitPreview(sale, rentPool, settings, market);
     if (preview) map.set(sale.id, preview);
   }
   return map;

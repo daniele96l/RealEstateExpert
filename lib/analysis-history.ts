@@ -1,11 +1,14 @@
 import type { SimpleScenario } from "./defaults";
 import type { ListingAnalysisSource } from "./listing-analysis";
+import type { MarketId } from "./markets";
+import { isMarketId } from "./markets";
 
 export interface SavedAnalysisComparison {
   id: string;
   savedAt: string;
   label: string;
   city?: string;
+  market?: MarketId;
   source: ListingAnalysisSource;
   scenario: SimpleScenario;
 }
@@ -34,15 +37,27 @@ export function createSavedComparison(
   source: ListingAnalysisSource,
   scenario: SimpleScenario,
   city?: string,
+  market: MarketId = "it",
 ): SavedAnalysisComparison {
   return {
     id: crypto.randomUUID(),
     savedAt: new Date().toISOString(),
     label: buildComparisonLabel(source),
     city,
+    market,
     source,
     scenario,
   };
+}
+
+/** Infer market for legacy items saved before market tagging. */
+export function inferAnalysisMarket(item: SavedAnalysisComparison): MarketId {
+  if (isMarketId(item.market)) return item.market;
+  const url = item.source.sale.url?.toLowerCase() ?? "";
+  if (url.includes("sreality.cz")) return "cz";
+  if (url.includes("idealista.") || url.includes("immobiliare.")) return "it";
+  if (item.scenario.property_tax_annual > 0) return "cz";
+  return "it";
 }
 
 function isListingAnalysisSource(value: unknown): value is ListingAnalysisSource {

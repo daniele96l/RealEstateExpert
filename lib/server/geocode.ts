@@ -1,3 +1,5 @@
+import { getMarket, type MarketId } from "@/lib/markets";
+
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
 
 export class GeocodeError extends Error {}
@@ -67,12 +69,14 @@ type NominatimResult = {
 
 export async function geocodeCity(
   city: string,
+  market: MarketId = "it",
 ): Promise<{ lat: number; lng: number; display_name?: string; region?: string }> {
+  const cfg = getMarket(market);
   const params = new URLSearchParams({
-    q: `${city}, Italy`,
+    q: `${city}, ${cfg.geocodeCountry}`,
     format: "json",
     limit: "1",
-    countrycodes: "it",
+    countrycodes: cfg.geocodeCountryCodes,
     addressdetails: "1",
   });
 

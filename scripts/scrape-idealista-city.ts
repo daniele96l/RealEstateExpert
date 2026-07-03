@@ -18,7 +18,7 @@ async function main() {
   >) {
     console.error(`→ ${op === "sale" ? "vendita" : "affitto"}...`);
     const { data, provider } = await fetchWithFallback(city, op, "rapidapi", maxPages);
-    const existing = await getCache(data.city, op);
+    const existing = await getCache("it", data.city, op);
     const merged = mergeListingCache(existing, { ...data, provider });
     await saveCache(merged);
     results.push({

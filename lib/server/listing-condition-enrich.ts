@@ -4,11 +4,19 @@ import type { CityListingsCache, ListingDetail, MapListing } from "@/lib/types";
 import { enrichListingFromDetail, normalizeListingCondition } from "@/lib/listing-condition-enrich";
 import { getPropertyDetailCache } from "./property-detail-cache";
 import { readJsonFile, writeJsonFile } from "./fs-cache-io";
+import { listingsCacheSlug, type MarketId } from "@/lib/markets";
 import { normalizeCitySlug } from "./geocode";
 
 const DATA_DIR = path.join(process.cwd(), "data", "listings");
 
-function cacheFilePath(city: string, operation: string): string {
+function cacheFilePath(market: MarketId, city: string, operation: string): string {
+  return path.join(
+    DATA_DIR,
+    `${listingsCacheSlug(market, city)}_${operation}.json`,
+  );
+}
+
+function legacyCacheFilePath(city: string, operation: string): string {
   return path.join(DATA_DIR, `${normalizeCitySlug(city)}_${operation}.json`);
 }
 
@@ -55,8 +63,15 @@ export async function syncListingConditionToCityCaches(detail: ListingDetail): P
   );
 }
 
-export async function getEnrichedCache(city: string, operation: string): Promise<CityListingsCache | null> {
-  const cache = await readJsonFile<CityListingsCache>(cacheFilePath(city, operation));
+export async function getEnrichedCache(
+  market: MarketId,
+  city: string,
+  operation: string,
+): Promise<CityListingsCache | null> {
+  let cache = await readJsonFile<CityListingsCache>(cacheFilePath(market, city, operation));
+  if (!cache && market === "it") {
+    cache = await readJsonFile<CityListingsCache>(legacyCacheFilePath(city, operation));
+  }
   if (!cache) return null;
   return enrichCityListingsCache(cache);
 }

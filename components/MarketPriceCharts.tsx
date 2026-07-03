@@ -10,7 +10,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { loadMarketHistoryCacheFirst } from "@/lib/cache-first";
+import { loadMarketHistoryCacheFirst, loadCityListingsCacheOnly } from "@/lib/cache-first";
+import { getMarket, type MarketId } from "@/lib/markets";
+import { fmtMoney } from "@/lib/utils";
 import { marketCacheFileLabel } from "@/lib/market-cache-client";
 import type { MarketPriceHistory, PriceHistoryPoint } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -18,6 +20,9 @@ import { ExternalLink, Loader2, RefreshCw, TrendingUp } from "lucide-react";
 
 interface Props {
   city: string;
+  market?: import("@/lib/markets").MarketId;
+  saleCache?: import("@/lib/types").CityListingsCache | null;
+  rentCache?: import("@/lib/types").CityListingsCache | null;
 }
 
 const CHART_COLORS = {
@@ -120,8 +125,10 @@ function PriceChart({
   );
 }
 
-export default function MarketPriceCharts({ city }: Props) {
+export default function MarketPriceCharts({ city, market = "it" }: Props) {
   const [data, setData] = useState<MarketPriceHistory | null>(null);
+  const [czSaleMedian, setCzSaleMedian] = useState<number | null>(null);
+  const [czRentMedian, setCzRentMedian] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [warning, setWarning] = useState<string | null>(null);
@@ -131,6 +138,44 @@ export default function MarketPriceCharts({ city }: Props) {
   const load = useCallback(
     async (refresh: boolean) => {
       if (!city.trim()) return;
+
+      if (market === "cz") {
+        setLoading(true);
+        setError(null);
+        setWarning(null);
+        try {
+          const [sale, rent] = await Promise.all([
+            loadCityListingsCacheOnly(market, city.trim(), "sale"),
+            loadCityListingsCacheOnly(market, city.trim(), "rent"),
+          ]);
+          const saleMedians = (sale.data?.listings ?? [])
+            .filter((l) => l.sqm != null && l.sqm > 0)
+            .map((l) => l.price / (l.sqm as number))
+            .sort((a, b) => a - b);
+          const rentMedians = (rent.data?.listings ?? [])
+            .filter((l) => l.sqm != null && l.sqm > 0)
+            .map((l) => l.price / (l.sqm as number))
+            .sort((a, b) => a - b);
+          const mid = (arr: number[]) =>
+            arr.length ? arr[Math.floor(arr.length / 2)] : null;
+          setCzSaleMedian(mid(saleMedians));
+          setCzRentMedian(mid(rentMedians));
+          setFromCache(true);
+          setCacheSource(
+            sale.source === "network" || sale.source == null
+              ? rent.source === "network"
+                ? null
+                : rent.source ?? null
+              : sale.source,
+          );
+          setData(null);
+        } catch (e) {
+          setError(e instanceof Error ? e.message : "Errore caricamento dati mercato");
+        } finally {
+          setLoading(false);
+        }
+        return;
+      }
 
       setLoading(true);
       setError(null);
@@ -160,7 +205,7 @@ export default function MarketPriceCharts({ city }: Props) {
         setLoading(false);
       }
     },
-    [city],
+    [city, market],
   );
 
   useEffect(() => {
@@ -168,12 +213,14 @@ export default function MarketPriceCharts({ city }: Props) {
     setWarning(null);
     if (!city.trim()) {
       setData(null);
+      setCzSaleMedian(null);
+      setCzRentMedian(null);
       setFromCache(false);
       setCacheSource(null);
       return;
     }
     void load(false);
-  }, [city, load]);
+  }, [city, market, load]);
 
   return (
     <div className="card-glass p-5">
@@ -185,7 +232,9 @@ export default function MarketPriceCharts({ city }: Props) {
           <div>
             <h2 className="text-base font-semibold text-slate-100">Andamento prezzi di mercato</h2>
             <p className="text-sm text-slate-500">
-              Storico prezzo medio €/m² — {(data?.city ?? city) || "seleziona una città"}
+              {market === "cz"
+                ? `Mediana prezzo Kč/m² da cache Sreality — ${city || "Brno"}`
+                : `Storico prezzo medio €/m² — ${(data?.city ?? city) || "seleziona una città"}`}
             </p>
           </div>
         </div>
@@ -202,7 +251,7 @@ export default function MarketPriceCharts({ city }: Props) {
             {loading ? <Loader2 size={14} className="animate-spin" /> : <RefreshCw size={14} />}
             Aggiorna
           </button>
-          {data?.mercato_url && (
+          {market === "it" && data?.mercato_url && (
             <a
               href={data.mercato_url}
               target="_blank"
@@ -222,27 +271,50 @@ export default function MarketPriceCharts({ city }: Props) {
         </p>
       )}
 
-      {error && !data && <p className="mb-4 text-sm text-red-400">{error}</p>}
+      {error && !data && market === "it" && <p className="mb-4 text-sm text-red-400">{error}</p>}
+      {error && market === "cz" && <p className="mb-4 text-sm text-red-400">{error}</p>}
 
-      {!data && !loading && !error && (
+      {market === "cz" && !loading && (
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-xl border border-surface-border/60 bg-surface-raised/20 p-4">
+            <p className="text-xs uppercase tracking-wide text-slate-500">Vendita — mediana</p>
+            <p className="mt-2 text-2xl font-semibold text-slate-100">
+              {czSaleMedian != null ? fmtMoney(Math.round(czSaleMedian), market) + "/m²" : "—"}
+            </p>
+          </div>
+          <div className="rounded-xl border border-surface-border/60 bg-surface-raised/20 p-4">
+            <p className="text-xs uppercase tracking-wide text-slate-500">Affitto — mediana</p>
+            <p className="mt-2 text-2xl font-semibold text-slate-100">
+              {czRentMedian != null ? fmtMoney(Math.round(czRentMedian), market) + "/m²" : "—"}
+            </p>
+          </div>
+          {czSaleMedian == null && czRentMedian == null && !error && (
+            <p className="sm:col-span-2 py-4 text-center text-sm text-slate-500">
+              Storico mercato Brno — importa annunci Sreality per vedere la mediana prezzo/m²
+            </p>
+          )}
+        </div>
+      )}
+
+      {market === "it" && !data && !loading && !error && (
         <p className="py-8 text-center text-sm text-slate-500">
           Caricamento dati mercato da cache o immobiliare.it…
         </p>
       )}
 
-      {loading && !data ? (
+      {market === "it" && loading && !data ? (
         <div className="flex h-48 items-center justify-center text-sm text-slate-500">
           <Loader2 size={20} className="mr-2 animate-spin" />
           Caricamento dati mercato…
         </div>
-      ) : (
+      ) : market === "it" && data ? (
         <div className="grid gap-4 lg:grid-cols-2">
-          <PriceChart title="Vendita" contract="sale" points={data?.sale ?? []} />
-          <PriceChart title="Affitto" contract="rent" points={data?.rent ?? []} />
+          <PriceChart title="Vendita" contract="sale" points={data.sale ?? []} />
+          <PriceChart title="Affitto" contract="rent" points={data.rent ?? []} />
         </div>
-      )}
+      ) : null}
 
-      {data && (
+      {market === "it" && data && (
         <p className="mt-4 text-xs text-slate-600">
           Dati mercato — immobiliare.it
           {data.provider === "insights" ? " (Insights API)" : " (ScrapingBee)"}

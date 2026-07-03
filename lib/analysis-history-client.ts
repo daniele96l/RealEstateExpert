@@ -38,8 +38,9 @@ export function saveAnalysisComparison(
   source: ListingAnalysisSource,
   scenario: SimpleScenario,
   city?: string,
+  market: import("./markets").MarketId = "it",
 ): SavedAnalysisComparison {
-  const item = createSavedComparison(source, scenario, city);
+  const item = createSavedComparison(source, scenario, city, market);
   const next = prependComparison(readLocalAnalysisHistory(), item);
   writeLocalAnalysisHistory(next);
   void syncAnalysisHistoryToServer(next);

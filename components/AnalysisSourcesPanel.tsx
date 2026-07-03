@@ -12,7 +12,7 @@ import {
 } from "@/lib/rent-price-basis";
 import type { ListingAnalysisSource } from "@/lib/listing-analysis";
 import { resolveScenarioMonthlyRent, type SimpleScenario } from "@/lib/defaults";
-import { cn, fmtEuro } from "@/lib/utils";
+import { cn, fmtMoney } from "@/lib/utils";
 import { Building2, Download, ExternalLink, Home, Key } from "lucide-react";
 import { downloadAnalysisJson } from "@/lib/analysis-history-client";
 import { createSavedComparison } from "@/lib/analysis-history";
@@ -29,9 +29,16 @@ const PropertySimilarRentMap = dynamic(() => import("./PropertySimilarRentMap"),
 interface Props {
   source: ListingAnalysisSource;
   scenario: SimpleScenario;
+  market?: import("@/lib/markets").MarketId;
 }
 
-function RentComparableRow({ rent }: { rent: ListingAnalysisSource["similarRentals"][number] }) {
+function RentComparableRow({
+  rent,
+  market = "it",
+}: {
+  rent: ListingAnalysisSource["similarRentals"][number];
+  market?: import("@/lib/markets").MarketId;
+}) {
   const basis = inferRentPriceBasis(rent);
   const wholeFlat = estimateWholeFlatRent(rent, basis);
 
@@ -42,12 +49,12 @@ function RentComparableRow({ rent }: { rent: ListingAnalysisSource["similarRenta
         <p className="text-xs text-slate-500">
           {wholeFlat
             ? [
-                `${fmtEuro(wholeFlat.pricePerRoom)}/mese/stanza`,
+                `${fmtMoney(wholeFlat.pricePerRoom, market)}/mese/stanza`,
                 `${wholeFlat.roomCount} locali`,
-                `→ ${fmtEuro(wholeFlat.totalMonthly)}/mese intero stimato`,
+                `→ ${fmtMoney(wholeFlat.totalMonthly, market)}/mese intero stimato`,
               ].join(" · ")
             : [
-                `${fmtEuro(rent.price)}/mese`,
+                `${fmtMoney(rent.price, market)}/mese`,
                 rent.sqm != null && `${rent.sqm} m²`,
                 rent.rooms != null && `${rent.rooms} locali`,
               ]
@@ -76,7 +83,7 @@ function RentComparableRow({ rent }: { rent: ListingAnalysisSource["similarRenta
   );
 }
 
-export default function AnalysisSourcesPanel({ source, scenario }: Props) {
+export default function AnalysisSourcesPanel({ source, scenario, market = "it" }: Props) {
   const { sale, similarRentals } = source;
   const method = source.rentEstimateMethod ?? "per_room";
   const rentSummary = similarRentEstimateSummary(sale, similarRentals, method);
@@ -103,7 +110,7 @@ export default function AnalysisSourcesPanel({ source, scenario }: Props) {
           <button
             type="button"
             onClick={() =>
-              downloadAnalysisJson(createSavedComparison(source, scenario))
+              downloadAnalysisJson(createSavedComparison(source, scenario, undefined, market))
             }
             className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-slate-300 hover:bg-surface-raised"
           >
@@ -125,7 +132,7 @@ export default function AnalysisSourcesPanel({ source, scenario }: Props) {
           </div>
           <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
             <p className="font-medium text-slate-100 line-clamp-2">{sale.title}</p>
-            <p className="mt-1 text-lg font-bold text-accent">{fmtEuro(sale.price)}</p>
+            <p className="mt-1 text-lg font-bold text-accent">{fmtMoney(sale.price, market)}</p>
             <p className="mt-1 text-xs text-slate-500">
               {[
                 sale.sqm != null && `${sale.sqm} m²`,
@@ -149,19 +156,19 @@ export default function AnalysisSourcesPanel({ source, scenario }: Props) {
           <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 p-3 text-xs text-slate-400">
             <p className="font-medium text-slate-300">Valori applicati al form</p>
             <ul className="mt-2 space-y-1">
-              <li>Prezzo acquisto: {fmtEuro(scenario.purchase_price)}</li>
+              <li>Prezzo acquisto: {fmtMoney(scenario.purchase_price, market)}</li>
               <li>Superficie: {scenario.sqm} m²</li>
               <li>
                 Affitto:{" "}
                 {scenario.rent_price_basis === "per_room"
-                  ? `${fmtEuro(scenario.monthly_rent)}/stanza × ${scenario.rent_rooms} → ${fmtEuro(grossRent)}/mese`
-                  : `${fmtEuro(scenario.monthly_rent)}/mese (intero)`}
+                  ? `${fmtMoney(scenario.monthly_rent, market)}/stanza × ${scenario.rent_rooms} → ${fmtMoney(grossRent, market)}/mese`
+                  : `${fmtMoney(scenario.monthly_rent, market)}/mese (intero)`}
               </li>
               {scenario.condominio_monthly > 0 && (
-                <li>Condominio: {fmtEuro(scenario.condominio_monthly)}/mese</li>
+                <li>Condominio: {fmtMoney(scenario.condominio_monthly, market)}/mese</li>
               )}
               {scenario.renovation_cost > 0 && (
-                <li>Ristrutturazione: {fmtEuro(scenario.renovation_cost)}</li>
+                <li>Ristrutturazione: {fmtMoney(scenario.renovation_cost, market)}</li>
               )}
             </ul>
           </div>
@@ -181,7 +188,7 @@ export default function AnalysisSourcesPanel({ source, scenario }: Props) {
             {method === "per_sqm" && avgWholeMonthly != null && avgRentPerSqm != null && sale.sqm ? (
               <>
                 <p className="mt-0.5 text-base font-bold text-slate-100">
-                  {fmtEuro(avgWholeMonthly)}
+                  {fmtMoney(avgWholeMonthly, market)}
                   <span className="text-sm font-normal text-slate-400">/mese intero</span>
                 </p>
                 <p className="mt-0.5 text-xs text-slate-500">
@@ -190,29 +197,29 @@ export default function AnalysisSourcesPanel({ source, scenario }: Props) {
                     currency: "EUR",
                     maximumFractionDigits: 1,
                   })}
-                  /m² × {sale.sqm} m² = {fmtEuro(avgWholeMonthly)}/mese
+                  /m² × {sale.sqm} m² = {fmtMoney(avgWholeMonthly, market)}/mese
                 </p>
               </>
             ) : underTwoLocali && avgWholeMonthly != null && avgRentPerRoom != null ? (
               <>
                 <p className="mt-0.5 text-base font-bold text-slate-100">
-                  {fmtEuro(avgWholeMonthly)}
+                  {fmtMoney(avgWholeMonthly, market)}
                   <span className="text-sm font-normal text-slate-400">/mese intero</span>
                 </p>
                 <p className="mt-0.5 text-xs text-slate-500">
-                  {fmtEuro(avgRentPerRoom)}/stanza × {SINGLE_RENTABLE_ROOM_PREMIUM.toLocaleString("it-IT")} ={" "}
-                  {fmtEuro(avgWholeMonthly)}/mese
+                  {fmtMoney(avgRentPerRoom, market)}/stanza × {SINGLE_RENTABLE_ROOM_PREMIUM.toLocaleString("it-IT")} ={" "}
+                  {fmtMoney(avgWholeMonthly, market)}/mese
                 </p>
               </>
             ) : avgRentPerRoom != null ? (
               <>
                 <p className="mt-0.5 text-base font-bold text-slate-100">
-                  {fmtEuro(avgRentPerRoom)}
+                  {fmtMoney(avgRentPerRoom, market)}
                   <span className="text-sm font-normal text-slate-400">/mese/stanza</span>
                 </p>
                 {avgWholeMonthly != null && rentableRooms != null && (
                   <p className="mt-0.5 text-xs text-slate-500">
-                    {fmtEuro(avgRentPerRoom)}/stanza × {rentableRooms} stanze = {fmtEuro(avgWholeMonthly)}/mese
+                    {fmtMoney(avgRentPerRoom, market)}/stanza × {rentableRooms} stanze = {fmtMoney(avgWholeMonthly, market)}/mese
                   </p>
                 )}
               </>
@@ -221,7 +228,7 @@ export default function AnalysisSourcesPanel({ source, scenario }: Props) {
 
           <div className="max-h-[320px] space-y-2 overflow-y-auto pr-1">
             {similarRentals.map((rent) => (
-              <RentComparableRow key={rent.id} rent={rent} />
+              <RentComparableRow key={rent.id} rent={rent} market={market} />
             ))}
           </div>
         </div>

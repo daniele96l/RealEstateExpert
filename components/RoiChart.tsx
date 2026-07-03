@@ -13,10 +13,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import type { AnalysisResult } from "@/lib/types";
-import { fmtEuro } from "@/lib/utils";
+import { fmtMoney } from "@/lib/utils";
+import type { MarketId } from "@/lib/markets";
 
 interface Props {
   result: AnalysisResult;
+  market?: MarketId;
 }
 
 const COLORS = {
@@ -37,7 +39,7 @@ function annualizedReturn(totalReturnPct: number, years: number): number {
   return growthFactor > 0 ? (Math.pow(growthFactor, 1 / years) - 1) * 100 : 0;
 }
 
-export default function RoiChart({ result }: Props) {
+export default function RoiChart({ result, market = "it" }: Props) {
   const downPayment = result.summary.purchase_costs.down_payment;
   const purchaseCosts = result.summary.purchase_costs;
   const taxesAndAccessories =
@@ -127,25 +129,25 @@ export default function RoiChart({ result }: Props) {
         <div>
           <h2 className="text-base font-semibold text-slate-100">ROI — equity immobile</h2>
           <p className="text-sm text-slate-500">
-            Quota di proprietà: anticipo ({fmtEuro(downPayment)}), capitale mutuo ripagato, rivalutazione
+            Quota di proprietà: anticipo ({fmtMoney(downPayment, market)}), capitale mutuo ripagato, rivalutazione
             e cashflow cumulato da tasse e accessori (asse destro)
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">Anticipo</p>
-            <p className="text-lg font-bold text-slate-100">{fmtEuro(downPayment)}</p>
+            <p className="text-lg font-bold text-slate-100">{fmtMoney(downPayment, market)}</p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">Tasse e accessori</p>
-            <p className="text-lg font-bold text-slate-100">{fmtEuro(taxesAndAccessories)}</p>
+            <p className="text-lg font-bold text-slate-100">{fmtMoney(taxesAndAccessories, market)}</p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">Equity finale</p>
-            <p className="text-lg font-bold text-slate-100">{fmtEuro(finalEquity)}</p>
+            <p className="text-lg font-bold text-slate-100">{fmtMoney(finalEquity, market)}</p>
             {improvementCosts > 0 && (
               <p className="text-[11px] text-slate-500">
-                Senza ristrutt. e arred.: {fmtEuro(finalEquityExImprovements)}
+                Senza ristrutt. e arred.: {fmtMoney(finalEquityExImprovements, market)}
               </p>
             )}
             <p className={`text-xs font-medium ${equityCagr >= 0 ? "text-emerald-400" : "text-red-400"}`}>
@@ -155,10 +157,10 @@ export default function RoiChart({ result }: Props) {
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">Totale</p>
-            <p className="text-lg font-bold text-cyan-400">{fmtEuro(finalEquityPlusCash)}</p>
+            <p className="text-lg font-bold text-cyan-400">{fmtMoney(finalEquityPlusCash, market)}</p>
             {improvementCosts > 0 && (
               <p className="text-[11px] text-slate-500">
-                Senza ristrutt. e arred.: {fmtEuro(finalTotalExImprovements)}
+                Senza ristrutt. e arred.: {fmtMoney(finalTotalExImprovements, market)}
               </p>
             )}
             <p className={`text-xs font-medium ${totalCagrOnAnticipo >= 0 ? "text-emerald-400" : "text-red-400"}`}>
@@ -208,38 +210,38 @@ export default function RoiChart({ result }: Props) {
                   </p>
                   <p className="text-slate-400">
                     Anticipo (quota iniziale):{" "}
-                    <span className="text-slate-200">{fmtEuro(row.initialEquity)}</span>
+                    <span className="text-slate-200">{fmtMoney(row.initialEquity, market)}</span>
                   </p>
                   <p className="text-slate-400">
                     Capitale mutuo ripagato:{" "}
-                    <span className="text-violet-400">{fmtEuro(row.principalEquity)}</span>
+                    <span className="text-violet-400">{fmtMoney(row.principalEquity, market)}</span>
                   </p>
                   <p className="text-slate-400">
-                    Rivalutazione: <span className="text-amber-400">{fmtEuro(row.appreciation)}</span>
+                    Rivalutazione: <span className="text-amber-400">{fmtMoney(row.appreciation, market)}</span>
                   </p>
                   {row.year > 0 && (
                     <p className="text-slate-400">
                       Cashflow anno {row.year}:{" "}
                       <span className={row.yearlyCash >= 0 ? "text-emerald-400" : "text-red-400"}>
-                        {fmtEuro(row.yearlyCash)}
+                        {fmtMoney(row.yearlyCash, market)}
                       </span>
                     </p>
                   )}
                   <p className="text-slate-400">
                     Cashflow cumulato:{" "}
                     <span className={row.cumulativeCash >= 0 ? "text-emerald-400" : "text-red-400"}>
-                      {fmtEuro(row.cumulativeCash)}
+                      {fmtMoney(row.cumulativeCash, market)}
                     </span>
                   </p>
                   <p className="mt-2 border-t border-surface-border pt-2 font-semibold text-slate-200">
-                    Equity totale: {fmtEuro(row.totalEquity)}
+                    Equity totale: {fmtMoney(row.totalEquity, market)}
                     <span className="ml-2 text-slate-500">
                       ({row.roiPct >= 0 ? "+" : ""}
                       {row.roiPct.toFixed(1)}%)
                     </span>
                   </p>
                   <p className="font-semibold text-cyan-400">
-                    Equity + cashflow: {fmtEuro(row.equityPlusCash)}
+                    Equity + cashflow: {fmtMoney(row.equityPlusCash, market)}
                   </p>
                 </div>
               );

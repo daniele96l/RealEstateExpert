@@ -16,6 +16,8 @@ import type { BatchPreviewResult, CombinedListingsData, ListingsProvider, MapLis
 import type { ListingSource } from "@/lib/listing-url";
 import { writeLocalListingsCache } from "@/lib/listings-cache-client";
 import { ITALY_DEFAULTS } from "@/lib/constants";
+import { CZECH_DEFAULTS } from "@/lib/constants-cz";
+import type { MarketId } from "@/lib/markets";
 import { cn } from "@/lib/utils";
 import { CheckSquare, Loader2, MapPin, Square, X } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -37,6 +39,7 @@ interface PreviewRow {
 
 interface Props {
   open: boolean;
+  market: MarketId;
   city: string;
   provider: ListingsProvider;
   providersAvailable: { scrapingbee: boolean; rapidapi: boolean; realtyapi: boolean };
@@ -69,6 +72,7 @@ function formatPrice(price: number, operation: "sale" | "rent") {
 
 export default function BatchFetchPanel({
   open,
+  market,
   city: initialCity,
   provider: initialProvider,
   providersAvailable,
@@ -97,7 +101,11 @@ export default function BatchFetchPanel({
   const [fetchStatus, setFetchStatus] = useState<string | null>(null);
   const [areaCenter, setAreaCenter] = useState<MapCenter | null>(null);
   const [geocoding, setGeocoding] = useState(false);
-  const [maxPages, setMaxPages] = useState<number>(ITALY_DEFAULTS.batch_fetch_max_pages);
+  const [maxPages, setMaxPages] = useState<number>(
+    market === "cz" ? CZECH_DEFAULTS.batch_fetch_max_pages : ITALY_DEFAULTS.batch_fetch_max_pages,
+  );
+  const maxPagesCap =
+    market === "cz" ? CZECH_DEFAULTS.batch_fetch_max_pages_cap : ITALY_DEFAULTS.batch_fetch_max_pages_cap;
 
   useEffect(() => {
     setMounted(true);
@@ -135,7 +143,7 @@ export default function BatchFetchPanel({
     const timer = setTimeout(async () => {
       setGeocoding(true);
       try {
-        const geo = await geocodeCityQuery(city.trim(), zone.trim() || undefined);
+        const geo = await geocodeCityQuery(city.trim(), zone.trim() || undefined, market);
         if (!cancelled) setAreaCenter(geo);
       } catch {
         if (!cancelled) setAreaCenter(null);
@@ -148,7 +156,7 @@ export default function BatchFetchPanel({
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [open, city, zone]);
+  }, [open, city, zone, market]);
 
   const radiusM = useMemo(() => {
     if (areaMode === "rectangle") return null;
@@ -223,14 +231,15 @@ export default function BatchFetchPanel({
       const result = await batchPreviewListings(city.trim(), operations, {
         zone: zone.trim() || undefined,
         refresh: true,
-        provider,
-        portal,
+        provider: market === "cz" ? "sreality" : provider,
+        portal: market === "cz" ? undefined : portal,
         maxPages,
+        market,
       });
       setPreview(result);
       if (result.center) setAreaCenter(result.center);
-      if (result.sale) writeLocalListingsCache(result.sale);
-      if (result.rent) writeLocalListingsCache(result.rent);
+      if (result.sale) writeLocalListingsCache(market, result.sale);
+      if (result.rent) writeLocalListingsCache(market, result.rent);
 
       const saleCount = result.sale?.listings.length ?? 0;
       const rentCount = result.rent?.listings.length ?? 0;
@@ -297,9 +306,10 @@ export default function BatchFetchPanel({
         provider: preview.provider,
         sale,
         rent,
+        market,
       });
-      if (result.sale) writeLocalListingsCache(result.sale);
-      if (result.rent) writeLocalListingsCache(result.rent);
+      if (result.sale) writeLocalListingsCache(market, result.sale);
+      if (result.rent) writeLocalListingsCache(market, result.rent);
       onSaved({
         center: result.center,
         listings: [...sale, ...rent],
@@ -385,6 +395,12 @@ export default function BatchFetchPanel({
             </label>
           </div>
 
+          {market === "cz" ? (
+            <p className="text-sm text-slate-400">
+              Fonte: <span className="text-slate-200">Sreality.cz</span> — Brno-město (API pubblica)
+            </p>
+          ) : (
+            <>
           <div>
             <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Portale</p>
             <div className="flex flex-wrap gap-2">
@@ -457,6 +473,8 @@ export default function BatchFetchPanel({
               </p>
             )}
           </div>
+            </>
+          )}
 
           <div>
             <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Area</p>
@@ -566,13 +584,13 @@ export default function BatchFetchPanel({
 
           <div>
             <label className="mb-1 block text-xs text-slate-500">
-              Pagine {portal === "immobiliare" ? "Immobiliare" : "Idealista"} per operazione
+              Pagine {market === "cz" ? "Sreality" : portal === "immobiliare" ? "Immobiliare" : "Idealista"} per operazione
             </label>
             <div className="flex flex-wrap items-center gap-3">
               <input
                 type="range"
                 min={1}
-                max={ITALY_DEFAULTS.batch_fetch_max_pages_cap}
+                max={maxPagesCap}
                 step={1}
                 value={maxPages}
                 onChange={(e) => setMaxPages(Number(e.target.value))}

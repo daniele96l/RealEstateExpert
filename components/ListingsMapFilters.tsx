@@ -4,19 +4,21 @@ import {
   PROPERTY_TYPE_OPTIONS,
   CONDITION_FILTER_OPTIONS,
   ROOMS_OPTIONS,
-  LISTING_SOURCE_OPTIONS,
+  listingSourceOptionsForMarket,
   hasActiveFilters,
   parseFilterNumber,
   type AreaFilterPreset,
   type ConditionFilter,
   type ListingsFilters,
 } from "@/lib/listings-filters";
+import type { MarketId } from "@/lib/markets";
 import { formatDistance } from "@/lib/geo-filter";
 import { cn } from "@/lib/utils";
 
 type ViewMode = "sale" | "rent" | "both";
 
 interface Props {
+  market: MarketId;
   viewMode: ViewMode;
   filters: ListingsFilters;
   onChange: (filters: ListingsFilters) => void;
@@ -110,7 +112,8 @@ function MinMaxRow({
   );
 }
 
-export default function ListingsMapFilters({ viewMode, filters, onChange, onReset }: Props) {
+export default function ListingsMapFilters({ market, viewMode, filters, onChange, onReset }: Props) {
+  const sourceOptions = listingSourceOptionsForMarket(market);
   const showSalePrice = viewMode === "sale" || viewMode === "both";
   const showRentPrice = viewMode === "rent" || viewMode === "both";
   const showRenovationFilter = viewMode === "sale" || viewMode === "both";
@@ -144,7 +147,7 @@ export default function ListingsMapFilters({ viewMode, filters, onChange, onRese
                 })
               }
             >
-              {LISTING_SOURCE_OPTIONS.map(({ value, label }) => (
+              {sourceOptions.map(({ value, label }) => (
                 <option key={value} value={value}>
                   {label}
                 </option>
@@ -158,18 +161,18 @@ export default function ListingsMapFilters({ viewMode, filters, onChange, onRese
             <div className="grid gap-3 lg:grid-cols-2">
               {showSalePrice && (
                 <MinMaxRow
-                  label="Vendita €"
+                  label={market === "cz" ? "Vendita Kč" : "Vendita €"}
                   min={filters.salePriceMin}
                   max={filters.salePriceMax}
                   minPlaceholder="Min"
-                  maxPlaceholder="100k"
+                  maxPlaceholder={market === "cz" ? "Max" : "100k"}
                   onMinChange={(salePriceMin) => onChange({ ...filters, salePriceMin })}
                   onMaxChange={(salePriceMax) => onChange({ ...filters, salePriceMax })}
                 />
               )}
               {showRentPrice && (
                 <MinMaxRow
-                  label="Affitto €/mese"
+                  label={market === "cz" ? "Affitto Kč/mese" : "Affitto €/mese"}
                   min={filters.rentPriceMin}
                   max={filters.rentPriceMax}
                   onMinChange={(rentPriceMin) => onChange({ ...filters, rentPriceMin })}

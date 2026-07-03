@@ -13,26 +13,29 @@ import {
   writeLocalPropertyDetailCache,
 } from "./property-detail-cache-client";
 import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing, MarketPriceHistory } from "./types";
+import type { MarketId } from "./markets";
 
 export type CacheSource = "local" | "server" | "network";
 
 export async function loadCityListingsCacheOnly(
+  market: MarketId,
   city: string,
   operation: "sale" | "rent",
 ): Promise<{ data: CityListingsCache | null; source: CacheSource | null }> {
   const trimmed = city.trim();
-  const local = readLocalListingsCache(trimmed, operation);
+  const local = readLocalListingsCache(market, trimmed, operation);
   if (local) return { data: local, source: "local" };
 
-  const server = await getCachedListings(trimmed, operation);
+  const server = await getCachedListings(trimmed, operation, market);
   if (server) {
-    writeLocalListingsCache(server);
+    writeLocalListingsCache(market, server);
     return { data: server, source: "server" };
   }
   return { data: null, source: null };
 }
 
 export async function loadCityListingsCacheFirst(
+  market: MarketId,
   city: string,
   operation: "sale" | "rent",
   refresh: boolean,
@@ -40,18 +43,18 @@ export async function loadCityListingsCacheFirst(
 ): Promise<{ data: CityListingsCache; source: CacheSource }> {
   const trimmed = city.trim();
   if (!refresh) {
-    const local = readLocalListingsCache(trimmed, operation);
+    const local = readLocalListingsCache(market, trimmed, operation);
     if (local) return { data: local, source: "local" };
 
-    const server = await getCachedListings(trimmed, operation);
+    const server = await getCachedListings(trimmed, operation, market);
     if (server) {
-      writeLocalListingsCache(server);
+      writeLocalListingsCache(market, server);
       return { data: server, source: "server" };
     }
   }
 
-  const data = await fetchListings(trimmed, operation, refresh, provider);
-  writeLocalListingsCache(data);
+  const data = await fetchListings(trimmed, operation, refresh, provider, market);
+  writeLocalListingsCache(market, data);
   return { data, source: "network" };
 }
 

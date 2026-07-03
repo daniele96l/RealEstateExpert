@@ -1,7 +1,8 @@
-export type ListingSource = "idealista" | "immobiliare";
+export type ListingSource = "idealista" | "immobiliare" | "sreality";
 export type ListingsWebsiteSource = ListingSource | "mixed";
 
 export function inferListingWebsiteSource(listing: { id: string; url: string }): ListingSource | null {
+  if (listing.id.startsWith("sr_") || /sreality\.cz/i.test(listing.url)) return "sreality";
   if (listing.id.startsWith("im_") || isImmobiliareListingUrl(listing.url)) return "immobiliare";
   if (isIdealistaListingUrl(listing.url) || /idealista\.it/i.test(listing.url)) return "idealista";
   if (/^\d+$/.test(listing.id)) return "idealista";
@@ -14,12 +15,16 @@ export function inferListingsWebsiteSource(
   if (!listings.length) return null;
   let idealista = false;
   let immobiliare = false;
+  let sreality = false;
   for (const listing of listings) {
     const source = inferListingWebsiteSource(listing);
     if (source === "idealista") idealista = true;
     if (source === "immobiliare") immobiliare = true;
+    if (source === "sreality") sreality = true;
   }
-  if (idealista && immobiliare) return "mixed";
+  const count = [idealista, immobiliare, sreality].filter(Boolean).length;
+  if (count > 1) return "mixed";
+  if (sreality) return "sreality";
   if (immobiliare) return "immobiliare";
   if (idealista) return "idealista";
   return "idealista";
@@ -29,6 +34,7 @@ export function formatListingsWebsiteSource(source: ListingsWebsiteSource | null
   if (!source) return null;
   if (source === "idealista") return "Idealista";
   if (source === "immobiliare") return "Immobiliare.it";
+  if (source === "sreality") return "Sreality.cz";
   return "Idealista + Immobiliare.it";
 }
 

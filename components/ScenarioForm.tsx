@@ -9,12 +9,15 @@ import {
   resolveUtilitiesAnnual,
 } from "@/lib/defaults";
 import { estimateSqmFromPrice, estimateUtilitiesAnnual, ITALY_DEFAULTS } from "@/lib/constants";
+import { estimateCzechUtilitiesAnnual } from "@/lib/constants-cz";
+import type { MarketId } from "@/lib/markets";
 import { getRentalModeRules } from "@/lib/rental-presets";
-import { cn, fmtEuro } from "@/lib/utils";
+import { cn, fmtMoney } from "@/lib/utils";
 import { Home, Key, Sparkles, Info } from "lucide-react";
 import type { RentalMode } from "@/lib/types";
 
 interface Props {
+  market: MarketId;
   onChange: (data: SimpleScenario) => void;
   prefill?: Partial<SimpleScenario>;
   syncScenario?: SimpleScenario;
@@ -75,9 +78,10 @@ function RentalModeInfo({ mode, propertyType }: { mode: RentalMode; propertyType
   );
 }
 
-export default function ScenarioForm({ onChange, prefill, syncScenario, syncToken }: Props) {
+export default function ScenarioForm({ market, onChange, prefill, syncScenario, syncToken }: Props) {
+  const currency = market === "cz" ? "Kč" : "€";
   const { register, watch, reset, setValue, getValues } = useForm<SimpleScenario>({
-    defaultValues: getDefaultSimpleScenario(),
+    defaultValues: getDefaultSimpleScenario(market),
   });
 
   const rentalMode = watch("rental_mode");
@@ -97,13 +101,13 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
 
   useEffect(() => {
     if (prefill) {
-      const merged = { ...getDefaultSimpleScenario(), ...prefill };
+      const merged = { ...getDefaultSimpleScenario(market), ...prefill };
       reset(merged);
       prevMode.current = prefill.rental_mode ?? "medium_term_semester";
       prevPrice.current = prefill.purchase_price ?? merged.purchase_price;
       onChange(merged);
     }
-  }, [prefill, reset, onChange]);
+  }, [prefill, reset, onChange, market]);
 
   useEffect(() => {
     if (!syncToken) return;
@@ -122,7 +126,7 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
     if (prevMode.current === rentalMode) return;
     prevMode.current = rentalMode;
 
-    const updated = applyRentalModeToSimple(getValues(), rentalMode);
+    const updated = applyRentalModeToSimple(getValues(), rentalMode, market);
     setValue("occupancy_pct", updated.occupancy_pct);
     setValue("monthly_rent", updated.monthly_rent);
     setValue("nightly_rate", updated.nightly_rate);
@@ -131,7 +135,7 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
     if (getValues("utilities_auto")) {
       setValue("utilities_annual", updated.utilities_annual);
     }
-  }, [rentalMode, purchasePrice, setValue, getValues]);
+  }, [rentalMode, purchasePrice, setValue, getValues, market]);
 
   useEffect(() => {
     if (prevPrice.current === null) {
@@ -150,14 +154,21 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
     const values = getValues();
     setValue(
       "utilities_annual",
-      estimateUtilitiesAnnual(
-        values.sqm || estimateSqmFromPrice(values.purchase_price),
-        values.energy_class,
-        values.rental_mode,
-        values.occupancy_pct,
-      ),
+      market === "cz"
+        ? estimateCzechUtilitiesAnnual(
+            values.sqm || estimateSqmFromPrice(values.purchase_price),
+            values.energy_class,
+            values.rental_mode,
+            values.occupancy_pct,
+          )
+        : estimateUtilitiesAnnual(
+            values.sqm || estimateSqmFromPrice(values.purchase_price),
+            values.energy_class,
+            values.rental_mode,
+            values.occupancy_pct,
+          ),
     );
-  }, [sqm, energyClass, rentalMode, occupancyPct, utilitiesAuto, setValue, getValues]);
+  }, [sqm, energyClass, rentalMode, occupancyPct, utilitiesAuto, setValue, getValues, market]);
 
   useEffect(() => {
     const subscription = watch((values) => {
@@ -188,7 +199,7 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
             Acquisto e mutuo
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Prezzo di acquisto (€)">
+            <Field label={`Prezzo di acquisto (${currency})`}>
               <input
                 type="number"
                 step={5000}
@@ -200,17 +211,28 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
                     const n = typeof v === "string" ? Number(v) : v;
                     return Number.isFinite(n) && n > 0
                       ? n
-                      : ITALY_DEFAULTS.default_purchase_price;
+                      : (market === "cz" ? 4_000_000 : ITALY_DEFAULTS.default_purchase_price);
                   },
                 })}
               />
             </Field>
+            {market === "it" ? (
             <Field label="Tipologia">
               <select className="select-field" {...register("property_type")}>
                 <option value="investment">Investimento</option>
                 <option value="prima_casa">Prima casa</option>
               </select>
             </Field>
+            ) : (
+              <>
+                <Field label="Daň z nemovitosti (Kč/anno)" hint="Stima municipale semplificata">
+                  <input type="number" step={500} className="input-field" {...register("property_tax_annual", { valueAsNumber: true })} />
+                </Field>
+                <Field label="Daň z příjmu (%)" hint="15% paušál — modello semplificato">
+                  <input type="number" step={1} className="input-field" {...register("rental_income_tax_pct", { valueAsNumber: true })} />
+                </Field>
+              </>
+            )}
             <Field label="Anticipo (%)" hint="Su prezzo + ristrutturazione + arredamento">
               <input type="number" step="1" className="input-field" {...register("down_payment_pct", { valueAsNumber: true })} />
             </Field>
@@ -220,7 +242,7 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
             <Field label="Durata mutuo (anni)">
               <input type="number" className="input-field" {...register("loan_years", { valueAsNumber: true })} />
             </Field>
-            <Field label="Ristrutturazione (€)">
+            <Field label={`Ristrutturazione (${currency})`}>
               <input
                 type="number"
                 min={0}
@@ -237,7 +259,7 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
                 })}
               />
             </Field>
-            <Field label="Arredamento (€)" hint={
+            <Field label={`Arredamento (${currency})`} hint={
               rentalMode === "short_term_airbnb"
                 ? "Obbligatorio per affitto breve"
                 : rentalMode === "medium_term_semester"
@@ -263,7 +285,7 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
               </select>
             </Field>
             {rentalMode === "short_term_airbnb" ? (
-              <Field label="Tariffa notturna (€)">
+              <Field label={`Tariffa notturna (${currency})`}>
                 <input type="number" className="input-field" {...register("nightly_rate", { valueAsNumber: true })} />
               </Field>
             ) : (
@@ -311,12 +333,12 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
                   <Field
                     label={
                       rentPriceBasis === "per_room"
-                        ? "Affitto mensile per stanza (€)"
-                        : "Affitto mensile tutto appartamento (€)"
+                        ? `Affitto mensile per stanza (${currency})`
+                        : `Affitto mensile tutto appartamento (${currency})`
                     }
                     hint={
                       rentPriceBasis === "per_room" && rentRooms > 0
-                        ? `Totale stimato: ${fmtEuro(monthlyRent * rentRooms)}/mese (${rentRooms} stanze)`
+                        ? `Totale stimato: ${fmtMoney(monthlyRent * rentRooms, market)}/mese (${rentRooms} stanze)`
                         : undefined
                     }
                   >
@@ -337,18 +359,20 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
             >
               <input type="number" min="0" max="100" className="input-field" {...register("occupancy_pct", { valueAsNumber: true })} />
             </Field>
-            <Field label="Condominio (€/mese)">
+            <Field label={`Condominio (${currency}/mese)`}>
               <input type="number" className="input-field" {...register("condominio_monthly", { valueAsNumber: true })} />
             </Field>
             <div className="sm:col-span-2">
               <Field
-                label="Bollette annue (€)"
+                label={`Bollette annue (${currency})`}
                 hint={
                   rentalMode === "short_term_airbnb"
                     ? utilitiesAuto
-                      ? `Auto: ~€${resolveUtilitiesAnnual(getValues())}/anno da m², APE e occupazione`
+                      ? `Auto: ~${fmtMoney(resolveUtilitiesAnnual(getValues(), market), market)}/anno`
                       : "Importo manuale"
-                    : "A carico inquilino (0 €). Modifica se paghi parte delle utenze."
+                    : market === "cz"
+                      ? "A carico nájemníka (0 Kč). Upravte pokud platíte část."
+                      : "A carico inquilino (0 €). Modifica se paghi parte delle utenze."
                 }
               >
                 <div className="flex gap-2">
@@ -370,10 +394,16 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
                 </div>
               </Field>
             </div>
-            <RentalModeInfo mode={rentalMode} propertyType={propertyType} />
+            {market === "it" && <RentalModeInfo mode={rentalMode} propertyType={propertyType} />}
+            {market === "cz" && (
+              <div className="sm:col-span-2 rounded-xl border border-accent/20 bg-accent/5 p-3 text-xs text-slate-400">
+                Modello fiscale semplificato: 15% sul canone lordo, daň z nemovitosti annuale. Non è consulenza fiscale.
+              </div>
+            )}
           </div>
         </section>
 
+        {market === "it" && (
         <p className="text-xs text-slate-500">
           Fonti:{" "}
           <a
@@ -386,6 +416,7 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
           </a>
           . Stime IMU, TARI e notaio calcolate automaticamente per regime.
         </p>
+        )}
       </div>
     </div>
   );

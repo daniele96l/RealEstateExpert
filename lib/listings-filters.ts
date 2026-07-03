@@ -37,7 +37,15 @@ export const LISTING_SOURCE_OPTIONS: { value: ListingSourceFilter; label: string
   { value: "all", label: "Tutte le fonti" },
   { value: "idealista", label: "Idealista" },
   { value: "immobiliare", label: "Immobiliare.it" },
+  { value: "sreality", label: "Sreality.cz" },
 ];
+
+export function listingSourceOptionsForMarket(market: "it" | "cz") {
+  if (market === "cz") {
+    return [{ value: "all" as const, label: "Tutte le fonti" }, { value: "sreality" as const, label: "Sreality.cz" }];
+  }
+  return LISTING_SOURCE_OPTIONS.filter((o) => o.value !== "sreality");
+}
 
 export const EMPTY_LISTINGS_FILTERS: ListingsFilters = {
   source: "all",
@@ -56,6 +64,18 @@ export const EMPTY_LISTINGS_FILTERS: ListingsFilters = {
   areaLng: null,
   areaPolygon: null,
 };
+
+export function emptyListingsFilters(market: "it" | "cz" = "it"): ListingsFilters {
+  if (market === "cz") {
+    return {
+      ...EMPTY_LISTINGS_FILTERS,
+      salePriceMax: null,
+      rentPriceMax: null,
+      sqmMax: null,
+    };
+  }
+  return { ...EMPTY_LISTINGS_FILTERS };
+}
 
 export const PROPERTY_TYPE_OPTIONS: { value: string; label: string }[] = [
   { value: "flat", label: "Appartamento" },

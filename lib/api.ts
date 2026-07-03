@@ -9,6 +9,8 @@ import type {
   MarketPriceHistory,
 } from "./types";
 
+import type { MarketId } from "./markets";
+
 async function parseError(res: Response, fallback: string): Promise<string> {
   const text = await res.text();
   try {
@@ -40,11 +42,13 @@ export async function fetchListings(
   operation: "sale" | "rent",
   refresh = false,
   provider?: ListingsProvider,
+  market: MarketId = "it",
+  maxPages?: number,
 ): Promise<CityListingsCache> {
   const res = await fetch("/api/listings/fetch", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ city, operation, refresh, provider }),
+    body: JSON.stringify({ city, operation, refresh, provider, market, maxPages }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Caricamento annunci non riuscito"));
   return res.json();
@@ -86,8 +90,9 @@ export async function fetchPropertyDetail(
 export async function getCachedListings(
   city: string,
   operation: "sale" | "rent",
+  market: MarketId = "it",
 ): Promise<CityListingsCache | null> {
-  const params = new URLSearchParams({ city, operation });
+  const params = new URLSearchParams({ city, operation, market });
   const res = await fetch(`/api/listings/fetch?${params}`);
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(await parseError(res, "Errore lettura cache"));
@@ -122,8 +127,9 @@ export async function batchPreviewListings(
     zone?: string;
     refresh?: boolean;
     provider?: ListingsProvider;
-    portal?: "idealista" | "immobiliare";
+    portal?: "idealista" | "immobiliare" | "sreality";
     maxPages?: number;
+    market?: MarketId;
   },
 ): Promise<BatchPreviewResult> {
   const res = await fetch("/api/listings/batch-preview", {
@@ -137,6 +143,7 @@ export async function batchPreviewListings(
       provider: opts?.provider,
       portal: opts?.portal,
       maxPages: opts?.maxPages,
+      market: opts?.market ?? "it",
     }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Anteprima batch non riuscita"));
@@ -149,6 +156,7 @@ export async function batchSaveListings(payload: {
   provider?: ListingsProvider;
   sale?: MapListing[];
   rent?: MapListing[];
+  market?: MarketId;
 }): Promise<BatchSaveResult> {
   const res = await fetch("/api/listings/batch-save", {
     method: "POST",
@@ -159,8 +167,12 @@ export async function batchSaveListings(payload: {
   return res.json();
 }
 
-export async function geocodeCityQuery(city: string, zone?: string): Promise<MapCenter> {
-  const params = new URLSearchParams({ city });
+export async function geocodeCityQuery(
+  city: string,
+  zone?: string,
+  market: MarketId = "it",
+): Promise<MapCenter> {
+  const params = new URLSearchParams({ city, market });
   if (zone?.trim()) params.set("zone", zone.trim());
   const res = await fetch(`/api/geocode?${params}`);
   if (!res.ok) throw new Error(await parseError(res, "Geocoding non riuscito"));

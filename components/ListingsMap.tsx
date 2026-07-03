@@ -14,9 +14,10 @@ import PropertyDetailPanel from "@/components/PropertyDetailPanel";
 import BatchFetchPanel from "@/components/BatchFetchPanel";
 import ListingsMapFilters from "@/components/ListingsMapFilters";
 import ListingProfitPanel from "@/components/ListingProfitPanel";
-import { cn } from "@/lib/utils";
+import { cn, fmtMoney } from "@/lib/utils";
+import type { MarketId } from "@/lib/markets";
 import {
-  EMPTY_LISTINGS_FILTERS,
+  emptyListingsFilters,
   filterListings,
   hasActiveFilters,
   resolveAreaFilterCenter,
@@ -82,19 +83,15 @@ const ListingPriceRentScatter = dynamic(() => import("./ListingPriceRentScatter"
   ),
 });
 
-function formatPrice(price: number, operation: "sale" | "rent") {
-  const formatted = new Intl.NumberFormat("it-IT", {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 0,
-  }).format(price);
+function formatPrice(price: number, operation: "sale" | "rent", market: MarketId) {
+  const formatted = fmtMoney(price, market);
   return operation === "rent" ? `${formatted}/mese` : formatted;
 }
 
-function formatProfitEuro(value: number): string {
-  return new Intl.NumberFormat("it-IT", {
+function formatProfitAmount(value: number, market: MarketId): string {
+  return new Intl.NumberFormat(market === "cz" ? "cs-CZ" : "it-IT", {
     style: "currency",
-    currency: "EUR",
+    currency: market === "cz" ? "CZK" : "EUR",
     maximumFractionDigits: 0,
     signDisplay: "exceptZero",
   }).format(value);
@@ -107,6 +104,8 @@ function listingKey(listing: MapListing): string {
 type ViewMode = "sale" | "rent" | "both";
 
 interface Props {
+  market: MarketId;
+  defaultCity: string;
   onSelectListing?: (listing: MapListing, detail?: ListingDetail) => void;
   onUseSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
   onUseAverageRent?: (
@@ -117,8 +116,8 @@ interface Props {
   onCityChange?: (city: string) => void;
 }
 
-function persistPatchedCache(cache: CityListingsCache | null): CityListingsCache | null {
-  if (cache) writeLocalListingsCache(cache);
+function persistPatchedCache(market: MarketId, cache: CityListingsCache | null): CityListingsCache | null {
+  if (cache) writeLocalListingsCache(market, cache);
   return cache;
 }
 
@@ -174,8 +173,15 @@ function mergeImportedIntoCache(
   };
 }
 
-export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAverageRent, onCityChange }: Props) {
-  const [city, setCity] = useState("Reggio Calabria");
+export default function ListingsMap({
+  market,
+  defaultCity,
+  onSelectListing,
+  onUseSimilarRent,
+  onUseAverageRent,
+  onCityChange,
+}: Props) {
+  const [city, setCity] = useState(defaultCity);
   const [viewMode, setViewMode] = useState<ViewMode>("sale");
   const [provider, setProvider] = useState<ListingsProvider>("rapidapi");
   const [providersAvailable, setProvidersAvailable] = useState({
@@ -197,7 +203,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   const [detailCacheSource, setDetailCacheSource] = useState<"server" | "local" | null>(null);
   const [batchOpen, setBatchOpen] = useState(false);
   const [combinedData, setCombinedData] = useState<CombinedListingsData | null>(null);
-  const [filters, setFilters] = useState<ListingsFilters>(EMPTY_LISTINGS_FILTERS);
+  const [filters, setFilters] = useState<ListingsFilters>(() => emptyListingsFilters(market));
   const [mapBounds, setMapBounds] = useState<GeoBounds | null>(null);
   const [importUrl, setImportUrl] = useState("");
   const [importLoading, setImportLoading] = useState(false);
@@ -299,20 +305,20 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
     setError(null);
     try {
       const [saleResult, rentResult, serverSale, serverRent] = await Promise.all([
-        loadCityListingsCacheOnly(city.trim(), "sale"),
-        loadCityListingsCacheOnly(city.trim(), "rent"),
-        getCachedListings(city.trim(), "sale").catch(() => null),
-        getCachedListings(city.trim(), "rent").catch(() => null),
+        loadCityListingsCacheOnly(market, city.trim(), "sale"),
+        loadCityListingsCacheOnly(market, city.trim(), "rent"),
+        getCachedListings(city.trim(), "sale", market).catch(() => null),
+        getCachedListings(city.trim(), "rent", market).catch(() => null),
       ]);
       const mergedSale = mergeCityCacheConditionFromServer(saleResult.data, serverSale);
       const mergedRent = mergeCityCacheConditionFromServer(rentResult.data, serverRent);
-      if (mergedSale) writeLocalListingsCache(mergedSale);
-      if (mergedRent) writeLocalListingsCache(mergedRent);
+      if (mergedSale) writeLocalListingsCache(market, mergedSale);
+      if (mergedRent) writeLocalListingsCache(market, mergedRent);
       setSaleCache(mergedSale);
       setRentCache(mergedRent);
       setCombinedData(null);
       setFromCache(true);
-      setFilters(EMPTY_LISTINGS_FILTERS);
+      setFilters(emptyListingsFilters(market));
       setMapBounds(null);
       setSelectedId(null);
       setHoveredListingKey(null);
@@ -328,7 +334,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
     } finally {
       setLoading(false);
     }
-  }, [city, onCityChange]);
+  }, [city, market, onCityChange]);
 
   useEffect(() => {
     void loadCachesOnly();
@@ -357,10 +363,10 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             preloadedDetail.needs_renovation != null
           ) {
             setSaleCache((cache) =>
-              persistPatchedCache(patchListingInCache(cache, listing, preloadedDetail)),
+              persistPatchedCache(market, patchListingInCache(cache, listing, preloadedDetail)),
             );
             setRentCache((cache) =>
-              persistPatchedCache(patchListingInCache(cache, listing, preloadedDetail)),
+              persistPatchedCache(market, patchListingInCache(cache, listing, preloadedDetail)),
             );
           }
           onSelectListing?.(listing, preloadedDetail);
@@ -374,8 +380,8 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
           detail.condition_status != null ||
           detail.needs_renovation != null
         ) {
-          setSaleCache((cache) => persistPatchedCache(patchListingInCache(cache, listing, detail)));
-          setRentCache((cache) => persistPatchedCache(patchListingInCache(cache, listing, detail)));
+          setSaleCache((cache) => persistPatchedCache(market, patchListingInCache(cache, listing, detail)));
+          setRentCache((cache) => persistPatchedCache(market, patchListingInCache(cache, listing, detail)));
         }
         onSelectListing?.(listing, detail);
       } catch (e) {
@@ -384,7 +390,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
         setDetailLoading(false);
       }
     },
-    [provider, onSelectListing],
+    [provider, market, onSelectListing],
   );
 
   const handleOpenSimilarRent = useCallback(
@@ -419,13 +425,13 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
       if (listing.operation === "sale") {
         setSaleCache((cache) => {
           const merged = mergeImportedIntoCache(cache, imported);
-          writeLocalListingsCache(merged);
+          writeLocalListingsCache(market, merged);
           return merged;
         });
       } else {
         setRentCache((cache) => {
           const merged = mergeImportedIntoCache(cache, imported);
-          writeLocalListingsCache(merged);
+          writeLocalListingsCache(market, merged);
           return merged;
         });
       }
@@ -444,17 +450,17 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
     } finally {
       setImportLoading(false);
     }
-  }, [importUrl, provider, onCityChange]);
+  }, [importUrl, provider, market, onCityChange]);
 
   const handleBatchSaved = useCallback(
     (saved: CombinedListingsData) => {
       setCombinedData(saved);
       if (saved.sale) {
-        writeLocalListingsCache(saved.sale);
+        writeLocalListingsCache(market, saved.sale);
         setSaleCache(saved.sale);
       }
       if (saved.rent) {
-        writeLocalListingsCache(saved.rent);
+        writeLocalListingsCache(market, saved.rent);
         setRentCache(saved.rent);
       }
       setViewMode("both");
@@ -466,7 +472,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
         onCityChange?.(displayCity);
       }
     },
-    [onCityChange],
+    [market, onCityChange],
   );
 
   const isCombinedView = viewMode === "both" || combinedData != null;
@@ -505,8 +511,8 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   const profitPreviews = useMemo(() => {
     if (!showProfitPreview) return new Map();
     const sales = displayListings.filter((l) => l.operation === "sale");
-    return computeListingProfitPreviews(sales, rentPool, profitSettings);
-  }, [displayListings, rentPool, profitSettings, showProfitPreview]);
+    return computeListingProfitPreviews(sales, rentPool, profitSettings, market);
+  }, [displayListings, rentPool, profitSettings, showProfitPreview, market]);
 
   const profitFilteredListings = useMemo(() => {
     if (!showProfitPreview) return displayListings;
@@ -558,16 +564,19 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
       <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
         <div className="mb-3 flex items-center gap-2">
           <MapPin size={18} className="text-accent" />
-          <h2 className="font-semibold text-slate-100">Mappa annunci Idealista</h2>
+          <h2 className="font-semibold text-slate-100">
+            {market === "cz" ? "Mappa annunci Sreality" : "Mappa annunci Idealista"}
+          </h2>
         </div>
         <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">Cerca per città</p>
         <div className="flex flex-wrap gap-2">
           <input
             type="text"
             className="input-field min-w-[140px] flex-1"
-            placeholder="Città (es. Reggio Calabria)"
+            placeholder={market === "cz" ? "Brno" : "Città (es. Reggio Calabria)"}
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            readOnly={market === "cz"}
           />
           <div className="flex rounded-lg border border-surface-border overflow-hidden">
             {(
@@ -600,6 +609,8 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             Importazione batch
           </button>
         </div>
+        {market === "it" && (
+          <>
         <p className="mb-3 mt-4 text-xs font-medium uppercase tracking-wide text-slate-500">
           Importa annuncio
         </p>
@@ -626,11 +637,14 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             {importLoading ? "Importazione…" : "Importa annuncio"}
           </button>
         </div>
+          </>
+        )}
         <ListingsMapFilters
+          market={market}
           viewMode={viewMode}
           filters={filters}
           onChange={setFilters}
-          onReset={() => setFilters(EMPTY_LISTINGS_FILTERS)}
+          onReset={() => setFilters(emptyListingsFilters(market))}
         />
         {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
         {importError && <p className="mt-2 text-sm text-red-400">{importError}</p>}
@@ -645,7 +659,9 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             {websiteSourceLabel ? ` · ${websiteSourceLabel}` : ""}
             {mapData.provider
               ? ` · ${
-                  mapData.provider === "rapidapi"
+                  mapData.provider === "sreality"
+                    ? "Sreality"
+                    : mapData.provider === "rapidapi"
                     ? "RapidAPI"
                     : mapData.provider === "realtyapi"
                       ? "RealtyAPI"
@@ -659,8 +675,8 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
               : fromCache
                 ? " · da cache"
                 : viewMode === "both"
-                  ? ` · ${cacheFileLabel(city, "sale")}, ${cacheFileLabel(city, "rent")}`
-                  : ` · ${cacheFileLabel(city, viewMode)}`}
+                  ? ` · ${cacheFileLabel(market, city, "sale")}, ${cacheFileLabel(market, city, "rent")}`
+                  : ` · ${cacheFileLabel(market, city, viewMode)}`}
             {mapData.fetched_at && (
               <span className="text-slate-600">
                 {" "}
@@ -775,7 +791,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                   )}
                 </div>
                 <p className="font-medium text-slate-200 line-clamp-2">{listing.title}</p>
-                <p className="mt-1 text-accent">{formatPrice(listing.price, listing.operation)}</p>
+                <p className="mt-1 text-accent">{formatPrice(listing.price, listing.operation, market)}</p>
                 <p className="mt-0.5 text-xs text-slate-500">
                   {[
                     listing.sqm != null && `${listing.sqm} m²`,
@@ -803,13 +819,13 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                     className="mt-1.5 text-xs font-semibold"
                     style={profitGradientTextStyle(profit.monthlyNetProfit, profitRange)}
                   >
-                    Utile netto: {formatProfitEuro(profit.monthlyNetProfit)}/mese
+                    Utile netto: {formatProfitAmount(profit.monthlyNetProfit, market)}/mese
                   </p>
                 )}
                 {profit && (
                   <p className="mt-0.5 text-[10px] leading-snug text-slate-500">
-                    {formatProfitEuro(profit.year1NetProfit)}/anno · affitto stim.{" "}
-                    {formatPrice(profit.estimatedMonthlyRent, "rent")}
+                    {formatProfitAmount(profit.year1NetProfit, market)}/anno · affitto stim.{" "}
+                    {formatPrice(profit.estimatedMonthlyRent, "rent", market)}
                     {profitSettings.rentMethod === "per_sqm" &&
                       profit.avgRentPerSqm != null &&
                       ` · ${profit.avgRentPerSqm.toFixed(1)} €/m²`}
@@ -868,6 +884,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
         provider={provider}
         cacheSource={detailCacheSource}
         mapCity={city}
+        market={market}
         onClose={handleCloseDetail}
         onOpenSimilarRent={handleOpenSimilarRent}
         onUseAverageRent={onUseAverageRent}
@@ -875,6 +892,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
 
       <BatchFetchPanel
         open={batchOpen}
+        market={market}
         city={city}
         provider={provider}
         providersAvailable={providersAvailable}

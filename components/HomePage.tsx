@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ScenarioForm from "@/components/ScenarioForm";
 import ListingsMap from "@/components/ListingsMap";
+import MarketToggle from "@/components/MarketToggle";
 import AnalysisSourcesPanel from "@/components/AnalysisSourcesPanel";
 import AnalysisHistoryPanel from "@/components/AnalysisHistoryPanel";
 import MarketPriceCharts from "@/components/MarketPriceCharts";
@@ -23,10 +24,19 @@ import {
   type ListingAnalysisSource,
 } from "@/lib/listing-analysis";
 import { saveAnalysisComparison } from "@/lib/analysis-history-client";
+import {
+  getMarket,
+  readStoredMarket,
+  writeStoredMarket,
+  type MarketId,
+} from "@/lib/markets";
+import { clearLocalListingsCacheForMarket } from "@/lib/listings-cache-client";
 import type { AnalysisResult, ListingDetail, MapListing } from "@/lib/types";
 import { Building2, BarChart3 } from "lucide-react";
 
 export default function HomePage() {
+  const [market, setMarket] = useState<MarketId>("it");
+  const [marketReady, setMarketReady] = useState(false);
   const [scenario, setScenario] = useState(() => sanitizeSimple(getDefaultSimpleScenario()));
   const [result, setResult] = useState<AnalysisResult | null>(() =>
     runSimulation(toInvestmentScenario(sanitizeSimple(getDefaultSimpleScenario()))),
@@ -36,12 +46,27 @@ export default function HomePage() {
   const [marketCity, setMarketCity] = useState("Reggio Calabria");
   const [analysisSource, setAnalysisSource] = useState<ListingAnalysisSource | null>(null);
   const [historyRefreshToken, setHistoryRefreshToken] = useState(0);
+  const [listingsResetToken, setListingsResetToken] = useState(0);
 
-  const updateScenario = useCallback((simple: SimpleScenario) => {
-    const cleaned = sanitizeSimple(simple);
-    setScenario(cleaned);
-    setResult(runSimulation(toInvestmentScenario(cleaned)));
+  useEffect(() => {
+    const stored = readStoredMarket();
+    setMarket(stored);
+    const cfg = getMarket(stored);
+    const initial = sanitizeSimple(getDefaultSimpleScenario(stored), stored);
+    setScenario(initial);
+    setResult(runSimulation(toInvestmentScenario(initial, stored), stored));
+    setMarketCity(cfg.defaultCity);
+    setMarketReady(true);
   }, []);
+
+  const updateScenario = useCallback(
+    (simple: SimpleScenario) => {
+      const cleaned = sanitizeSimple(simple, market);
+      setScenario(cleaned);
+      setResult(runSimulation(toInvestmentScenario(cleaned, market), market));
+    },
+    [market],
+  );
 
   const handleFormChange = updateScenario;
 
@@ -52,6 +77,23 @@ export default function HomePage() {
     },
     [updateScenario],
   );
+
+  const handleMarketChange = useCallback((next: MarketId) => {
+    if (next === market) return;
+    writeStoredMarket(next);
+    clearLocalListingsCacheForMarket(market);
+    clearLocalListingsCacheForMarket(next);
+    const cfg = getMarket(next);
+    const initial = sanitizeSimple(getDefaultSimpleScenario(next), next);
+    setMarket(next);
+    setMarketCity(cfg.defaultCity);
+    setScenario(initial);
+    setResult(runSimulation(toInvestmentScenario(initial, next), next));
+    setFormPrefill(undefined);
+    setFormSyncToken((n) => n + 1);
+    setAnalysisSource(null);
+    setListingsResetToken((n) => n + 1);
+  }, [market]);
 
   const handleSelectListing = useCallback((listing: MapListing, detail?: ListingDetail) => {
     const d = detail ?? listing;
@@ -115,11 +157,11 @@ export default function HomePage() {
       };
       setAnalysisSource(source);
       setFormPrefill(next);
-      saveAnalysisComparison(source, next, marketCity);
+      saveAnalysisComparison(source, next, marketCity, market);
       setHistoryRefreshToken((n) => n + 1);
       document.getElementById("parametri")?.scrollIntoView({ behavior: "smooth", block: "start" });
     },
-    [marketCity],
+    [marketCity, market],
   );
 
   const handleRestoreAnalysis = useCallback(
@@ -147,20 +189,31 @@ export default function HomePage() {
     [updateScenario],
   );
 
+  const marketCfg = getMarket(market);
+
+  if (!marketReady) {
+    return (
+      <div className="flex min-h-screen items-center justify-center text-slate-400">
+        Caricamento…
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <header className="border-b border-surface-border/60 bg-surface-raised/30 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-5 sm:px-6">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-5 sm:px-6">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20 text-accent">
             <Building2 size={22} />
           </div>
-          <div>
+          <div className="min-w-0 flex-1">
             <h1 className="text-xl font-bold tracking-tight text-white sm:text-2xl">RealEstateExpert</h1>
-            <p className="text-sm text-slate-400">Simulatore investimento immobiliare — Italia</p>
+            <p className="text-sm text-slate-400">{marketCfg.subtitle}</p>
           </div>
+          <MarketToggle market={market} onChange={handleMarketChange} className="order-last w-full sm:order-none sm:w-auto" />
           <a
             href="#parametri"
-            className="ml-auto rounded-lg border border-surface-border px-3 py-1.5 text-sm text-slate-300 hover:bg-surface-raised lg:hidden"
+            className="rounded-lg border border-surface-border px-3 py-1.5 text-sm text-slate-300 hover:bg-surface-raised lg:hidden"
           >
             Parametri
           </a>
@@ -174,6 +227,7 @@ export default function HomePage() {
             className="lg:sticky lg:top-6 lg:z-10 lg:max-h-[calc(100vh-3rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain lg:pr-1"
           >
             <ScenarioForm
+              market={market}
               onChange={handleFormChange}
               prefill={formPrefill}
               syncScenario={scenario}
@@ -183,28 +237,33 @@ export default function HomePage() {
 
           <div className="min-w-0 space-y-6">
             <ListingsMap
+              key={`${market}-${listingsResetToken}`}
+              market={market}
+              defaultCity={marketCfg.defaultCity}
               onSelectListing={handleSelectListing}
               onUseSimilarRent={handleUseSimilarRent}
               onUseAverageRent={handleUseAverageRent}
               onCityChange={setMarketCity}
             />
             <AnalysisHistoryPanel
+              market={market}
               onRestore={handleRestoreAnalysis}
               refreshToken={historyRefreshToken}
             />
             {result ? (
               <>
                 {analysisSource && (
-                  <AnalysisSourcesPanel source={analysisSource} scenario={scenario} />
+                  <AnalysisSourcesPanel source={analysisSource} scenario={scenario} market={market} />
                 )}
                 <PurchaseBreakdown
+                  market={market}
                   costs={result.summary.purchase_costs}
                   scenario={scenario}
                   onScenarioChange={handlePurchaseScenarioChange}
                 />
-                <MonthlyBreakdownChart result={result} />
-                <RoiChart result={result} />
-                <MarketPriceCharts city={marketCity} />
+                <MonthlyBreakdownChart result={result} market={market} />
+                <RoiChart result={result} market={market} />
+                <MarketPriceCharts city={marketCity} market={market} />
               </>
             ) : (
               <div className="card-glass flex flex-col items-center justify-center px-8 py-24 text-center">
@@ -218,7 +277,9 @@ export default function HomePage() {
         </div>
 
         <footer className="mt-12 border-t border-surface-border/40 pt-6 text-center text-xs text-slate-600">
-          Stime indicative — imposta di registro sul valore catastale, cedolare secca 21%/26%. Non è consulenza fiscale.
+          {market === "cz"
+            ? "Odhady orientační — zjednodušená daň z příjmu 15 %, daň z nemovitosti odhad. Není daňové poradenství."
+            : "Stime indicative — imposta di registro sul valore catastale, cedolare secca 21%/26%. Non è consulenza fiscale."}
         </footer>
       </main>
     </div>

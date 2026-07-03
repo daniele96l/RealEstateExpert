@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { applyPurchaseCostEdit, sanitizeSimple, type PurchaseCostField, type SimpleScenario } from "@/lib/defaults";
-import { fmtEuro } from "@/lib/utils";
+import { fmtMoney } from "@/lib/utils";
+import type { MarketId } from "@/lib/markets";
 import type { PurchaseCostBreakdown } from "@/lib/types";
 
 interface Props {
+  market: MarketId;
   costs: PurchaseCostBreakdown;
   scenario: SimpleScenario;
   onScenarioChange: (next: SimpleScenario) => void;
@@ -45,7 +47,7 @@ function EditableEuro({
   );
 }
 
-export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }: Props) {
+export default function PurchaseBreakdown({ market, costs, scenario, onScenarioChange }: Props) {
   const purchasePrice = scenario.purchase_price;
   const loanShare = Math.max(0, Math.min(1, 1 - scenario.down_payment_pct / 100));
   const loanOnPrice = purchasePrice * loanShare;
@@ -54,7 +56,9 @@ export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }:
   const accessoryCosts = costs.registration_tax + costs.vat + costs.notary + costs.agency;
 
   const cashRows: { label: string; field?: PurchaseCostField; value: number }[] = [
-    { label: "Imposta di registro", field: "registration_tax", value: costs.registration_tax },
+    ...(market === "it"
+      ? [{ label: "Imposta di registro", field: "registration_tax" as const, value: costs.registration_tax }]
+      : []),
     ...(costs.vat > 0 ? [{ label: "IVA", value: costs.vat }] : []),
     { label: "Notaio", field: "notary", value: costs.notary },
     { label: "Agenzia", field: "agency", value: costs.agency },
@@ -68,7 +72,7 @@ export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }:
 
   const handleEdit = (field: PurchaseCostField, valueEuro: number) => {
     const next = applyPurchaseCostEdit(scenario, field, valueEuro);
-    onScenarioChange(sanitizeSimple(next));
+    onScenarioChange(sanitizeSimple(next, market));
   };
 
   const renderRow = (
@@ -85,7 +89,7 @@ export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }:
       {field ? (
         <EditableEuro value={value} onCommit={(n) => handleEdit(field, n)} />
       ) : (
-        <span className="shrink-0 text-sm font-medium text-slate-200">{fmtEuro(value)}</span>
+        <span className="shrink-0 text-sm font-medium text-slate-200">{fmtMoney(value, market)}</span>
       )}
     </div>
   );
@@ -101,17 +105,17 @@ export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }:
       <div className="mb-4 grid gap-2 sm:grid-cols-3">
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
           <p className="text-[10px] uppercase tracking-wide text-slate-500">Equity iniziale</p>
-          <p className="text-lg font-bold text-slate-100">{fmtEuro(costs.down_payment)}</p>
+          <p className="text-lg font-bold text-slate-100">{fmtMoney(costs.down_payment, market)}</p>
           <p className="text-[11px] text-slate-600">Quota casa di tua proprietà (prezzo + lavori)</p>
         </div>
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
           <p className="text-[10px] uppercase tracking-wide text-slate-500">Contanti subito</p>
-          <p className="text-lg font-bold text-accent">{fmtEuro(costs.total_initial_cash)}</p>
+          <p className="text-lg font-bold text-accent">{fmtMoney(costs.total_initial_cash, market)}</p>
           <p className="text-[11px] text-slate-600">Anticipo + tasse e notaio</p>
         </div>
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
           <p className="text-[10px] uppercase tracking-wide text-slate-500">Coperto da mutuo</p>
-          <p className="text-lg font-bold text-slate-100">{fmtEuro(costs.loan_amount)}</p>
+          <p className="text-lg font-bold text-slate-100">{fmtMoney(costs.loan_amount, market)}</p>
           <p className="text-[11px] text-slate-600">Prezzo + ristrutturazione + arredamento</p>
         </div>
       </div>
@@ -151,11 +155,11 @@ export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }:
           {cashRows.map((r) => renderRow(r.label, r.value, r.field, "Non coperto dal mutuo"))}
           <div className="flex justify-between border-t border-surface-border pt-2 text-sm font-semibold">
             <span className="text-slate-300">Totale contanti all&apos;acquisto</span>
-            <span className="text-accent">{fmtEuro(costs.total_initial_cash)}</span>
+            <span className="text-accent">{fmtMoney(costs.total_initial_cash, market)}</span>
           </div>
           <div className="flex justify-between text-sm text-slate-500">
             <span>di cui tasse e accessori</span>
-            <span>{fmtEuro(accessoryCosts)}</span>
+            <span>{fmtMoney(accessoryCosts, market)}</span>
           </div>
         </div>
       </div>

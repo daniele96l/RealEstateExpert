@@ -22,7 +22,7 @@ async function main() {
     console.error("→ vendita...");
     const data = await fetchImmobiliareCityListings(city, "sale", { maxPages });
     console.error(`  ${data.listings.length} annunci vendita`);
-    const existing = await getCache(data.city, "sale");
+    const existing = await getCache("it", data.city, "sale");
     await saveCache(mergeListingCache(existing, data));
     caches.push(data);
   }
@@ -30,7 +30,7 @@ async function main() {
     console.error("→ affitto...");
     const data = await fetchImmobiliareCityListings(city, "rent", { maxPages });
     console.error(`  ${data.listings.length} annunci affitto`);
-    const existing = await getCache(data.city, "rent");
+    const existing = await getCache("it", data.city, "rent");
     await saveCache(mergeListingCache(existing, data));
     caches.push(data);
   }

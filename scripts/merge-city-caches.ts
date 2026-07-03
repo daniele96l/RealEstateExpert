@@ -15,9 +15,9 @@ async function main() {
   }
 
   for (const operation of ["sale", "rent"] as const) {
-    let merged = await getCache(target, operation);
+    let merged = await getCache("it", target, operation);
     for (const alias of aliases) {
-      const aliasCache = await getCache(alias, operation);
+      const aliasCache = await getCache("it", alias, operation);
       if (!aliasCache) continue;
       merged = mergeListingCache(merged, { ...aliasCache, city: target });
     }
