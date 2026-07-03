@@ -22,6 +22,7 @@ import {
   batchFetchPagePresets,
   formatBatchFetchPagesLabel,
   isBatchFetchAllPages,
+  resolveBatchFetchPageLimit,
 } from "@/lib/batch-fetch-pages";
 import { batchFetchProgressPercent, type BatchFetchProgressState } from "@/lib/batch-fetch-progress";
 import type { MarketId } from "@/lib/markets";
@@ -149,6 +150,8 @@ export default function BatchFetchPanel({
       return;
     }
 
+    setAreaCenter(null);
+
     let cancelled = false;
     const timer = setTimeout(async () => {
       setGeocoding(true);
@@ -233,7 +236,16 @@ export default function BatchFetchPanel({
     setFetching(true);
     setError(null);
     setFetchStatus("Recupero annunci in corso…");
-    setFetchProgress(null);
+    const pageLimit = resolveBatchFetchPageLimit(maxPages, market);
+    setFetchProgress({
+      current: 0,
+      total: Math.max(1, operations.length * pageLimit),
+      operation: null,
+      page: 0,
+      maxPages: pageLimit,
+      listingsTotal: 0,
+      label: "",
+    });
     setPreview(null);
     setRows([]);
     setBounds(null);
@@ -264,6 +276,11 @@ export default function BatchFetchPanel({
       const rentCount = result.rent?.listings.length ?? 0;
       setFetchStatus(
         `Recuperati ${formatOpCounts(saleCount, rentCount)} (${formatBatchFetchPagesLabel(maxPages, market)}) · salvati in data/listings/ e browser`,
+      );
+      setFetchProgress((prev) =>
+        prev
+          ? { ...prev, current: prev.total, label: "" }
+          : null,
       );
 
       onSaved({
@@ -298,7 +315,6 @@ export default function BatchFetchPanel({
       setFetchProgress(null);
     } finally {
       setFetching(false);
-      setFetchProgress(null);
     }
   };
 
@@ -418,7 +434,7 @@ export default function BatchFetchPanel({
 
           {market === "cz" ? (
             <p className="text-sm text-slate-400">
-              Fonte: <span className="text-slate-200">Sreality.cz</span> — Brno-město (API pubblica)
+              Fonte: <span className="text-slate-200">Sreality.cz</span> — Brno (API pubblica)
             </p>
           ) : (
             <>
@@ -587,6 +603,7 @@ export default function BatchFetchPanel({
             {center && (
               <div className="mt-3">
                 <AreaSelectMap
+                key={`${city}-${center.lat}-${center.lng}`}
                 center={center}
                 mode={areaMode}
                 radiusM={areaMode === "radius" ? radiusM : null}
@@ -686,48 +703,50 @@ export default function BatchFetchPanel({
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="space-y-3">
             <button
               type="button"
               disabled={fetching || !city.trim()}
               onClick={handleFetch}
-              className="btn-primary flex items-center gap-2 px-4"
+              className="btn-primary flex w-full items-center justify-center gap-2 px-4 py-3 sm:w-auto"
             >
               {fetching ? <Loader2 size={16} className="animate-spin" /> : null}
               Recupera anteprima
             </button>
+
+            {fetching && (
+              <div className="space-y-2">
+                <div className="h-2.5 w-full overflow-hidden rounded-full bg-surface-border">
+                  <div
+                    className={cn(
+                      "h-full rounded-full bg-accent transition-[width] duration-300",
+                      !fetchProgress?.current && "w-1/4 animate-pulse",
+                    )}
+                    style={
+                      fetchProgress && fetchProgress.total > 0 && fetchProgress.current > 0
+                        ? {
+                            width: `${batchFetchProgressPercent(fetchProgress.current, fetchProgress.total)}%`,
+                          }
+                        : undefined
+                    }
+                  />
+                </div>
+                <p className="text-xs text-slate-500">
+                  {fetchProgress?.label || fetchStatus || "Recupero annunci in corso…"}
+                  {fetchProgress && fetchProgress.listingsTotal > 0
+                    ? ` · ${fetchProgress.listingsTotal} annunci`
+                    : ""}
+                  {fetchProgress && fetchProgress.total > 0
+                    ? ` · ${fetchProgress.current}/${fetchProgress.total}`
+                    : ""}
+                </p>
+              </div>
+            )}
+
             {fetchStatus && !fetching && (
-              <span className="self-center text-xs text-slate-500">{fetchStatus}</span>
+              <p className="text-xs text-slate-500">{fetchStatus}</p>
             )}
           </div>
-
-          {fetching && fetchProgress && fetchProgress.total > 0 && (
-            <div className="space-y-2">
-              <div className="h-2 w-full overflow-hidden rounded-full bg-surface-border">
-                <div
-                  className="h-full rounded-full bg-accent transition-[width] duration-300"
-                  style={{
-                    width: `${batchFetchProgressPercent(fetchProgress.current, fetchProgress.total)}%`,
-                  }}
-                />
-              </div>
-              <p className="text-xs text-slate-500">
-                {fetchProgress.label}
-                {fetchProgress.listingsTotal > 0 ? ` · ${fetchProgress.listingsTotal} annunci` : ""}
-                {" · "}
-                {fetchProgress.current}/{fetchProgress.total}
-              </p>
-            </div>
-          )}
-
-          {fetching && !fetchProgress && (
-            <div className="space-y-2">
-              <div className="h-2 w-full overflow-hidden rounded-full bg-surface-border">
-                <div className="h-full w-1/3 animate-pulse rounded-full bg-accent/70" />
-              </div>
-              <p className="text-xs text-slate-500">{fetchStatus}</p>
-            </div>
-          )}
 
           {error && <p className="text-sm text-red-400">{error}</p>}
 

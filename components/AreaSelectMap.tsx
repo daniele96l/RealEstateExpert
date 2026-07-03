@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Circle, MapContainer, Marker, Rectangle, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -153,6 +153,13 @@ export default function AreaSelectMap({
   onCenterChange,
   previewListings = [],
 }: Props) {
+  const [mapReady, setMapReady] = useState(false);
+
+  useEffect(() => {
+    setMapReady(true);
+    return () => setMapReady(false);
+  }, []);
+
   const mapCenter: [number, number] = [center.lat, center.lng];
   const mappable = previewListings.filter((l) => l.lat !== 0 || l.lng !== 0);
 
@@ -166,7 +173,18 @@ export default function AreaSelectMap({
             : "Intera città — clicca sulla mappa per impostare un centro personalizzato."}
       </p>
       <div className="h-[260px] overflow-hidden rounded-lg border border-surface-border">
-        <MapContainer center={mapCenter} zoom={13} className="h-full w-full" scrollWheelZoom>
+        {!mapReady ? (
+          <div className="flex h-full items-center justify-center text-sm text-slate-500">
+            Caricamento mappa…
+          </div>
+        ) : (
+        <MapContainer
+          key={mode}
+          center={mapCenter}
+          zoom={13}
+          className="h-full w-full"
+          scrollWheelZoom
+        >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -203,6 +221,7 @@ export default function AreaSelectMap({
             />
           ))}
         </MapContainer>
+        )}
       </div>
     </div>
   );

@@ -68,6 +68,40 @@ function searchPageUrl(citySeo: string, operation: "sale" | "rent", page: number
   return page > 1 ? `${base}?strana=${page}` : base;
 }
 
+/** Known Sreality slugs that differ from our normalized city input. */
+const CITY_SEO_ALIASES: Record<string, string> = {
+  "brno-mesto": "brno",
+};
+
+function citySeoName(city: string): string {
+  return (
+    city
+      .trim()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "") || "brno"
+  );
+}
+
+function srealityCitySlugCandidates(city: string): string[] {
+  const primary = citySeoName(city);
+  const seen = new Set<string>();
+  const out: string[] = [];
+  const add = (slug: string) => {
+    if (!slug || seen.has(slug)) return;
+    seen.add(slug);
+    out.push(slug);
+  };
+
+  add(primary);
+  add(CITY_SEO_ALIASES[primary] ?? "");
+  if (primary.includes("-")) add(primary.split("-")[0] ?? "");
+
+  return out.length ? out : ["brno"];
+}
+
 function extractSearchPayload(html: string): SrealitySearchPayload {
   const match = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
   if (!match) {
@@ -146,7 +180,7 @@ async function fetchSrealityPage(
   citySeo: string,
   operation: "sale" | "rent",
   page: number,
-): Promise<SrealitySearchPayload> {
+): Promise<SrealitySearchPayload | null> {
   const response = await fetch(searchPageUrl(citySeo, operation, page), {
     headers: {
       Accept: "text/html,application/xhtml+xml",
@@ -156,6 +190,12 @@ async function fetchSrealityPage(
     },
     signal: AbortSignal.timeout(30_000),
   });
+
+  if (response.status === 404) {
+    // Sreality returns 404 beyond the last page — stop pagination quietly.
+    if (page > 1) return null;
+    return null;
+  }
 
   if (!response.ok) {
     throw new SrealitySearchError(
@@ -167,14 +207,26 @@ async function fetchSrealityPage(
   return extractSearchPayload(html);
 }
 
-function citySeoName(city: string): string {
-  return city
-    .trim()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "") || "brno";
+async function openSrealityCitySearch(
+  city: string,
+  operation: "sale" | "rent",
+): Promise<{ seo: string; firstPage: SrealitySearchPayload }> {
+  let last404 = false;
+  for (const slug of srealityCitySlugCandidates(city)) {
+    const firstPage = await fetchSrealityPage(slug, operation, 1);
+    if (firstPage) return { seo: slug, firstPage };
+    last404 = true;
+  }
+
+  if (last404) {
+    throw new SrealitySearchError(
+      `Località non trovata su Sreality per «${city.trim()}». Prova «Brno» o un slug valido sreality.cz.`,
+    );
+  }
+
+  throw new SrealitySearchError(
+    `Sreality non ha risposto per ${city}. Verifica connessione o riprova più tardi.`,
+  );
 }
 
 export async function fetchSrealityCityListings(
@@ -190,11 +242,12 @@ export async function fetchSrealityCityListings(
 
   const maxPages = Math.max(1, opts?.maxPages ?? 3);
   const byId = new Map<string, MapListing>();
-  const seo = citySeoName(city);
+  const { seo, firstPage } = await openSrealityCitySearch(city, operation);
   let prevPageIds: string[] = [];
 
   for (let page = 1; page <= maxPages; page++) {
-    const data = await fetchSrealityPage(seo, operation, page);
+    const data = page === 1 ? firstPage : await fetchSrealityPage(seo, operation, page);
+    if (!data) break;
     const estates = data.results ?? [];
     if (!estates.length) break;
 
