@@ -19,8 +19,10 @@ import {
   type ProfitGradientRange,
 } from "@/lib/profit-gradient";
 import type { MapListing } from "@/lib/types";
-import { fmtEuro } from "@/lib/utils";
-import { cn } from "@/lib/utils";
+import { listingsUiLabels, conditionLabelForMarket } from "@/lib/listings-ui-labels";
+import type { MarketId } from "@/lib/markets";
+import { getMarket } from "@/lib/markets";
+import { cn, fmtMoney } from "@/lib/utils";
 
 export interface PriceRentScatterPoint {
   id: string;
@@ -34,6 +36,7 @@ export interface PriceRentScatterPoint {
 interface Props {
   listings: MapListing[];
   profitPreviews: Map<string, ListingProfitPreview>;
+  market?: MarketId;
   mapInView?: boolean;
   selectedId?: string | null;
   hoveredId?: string | null;
@@ -45,11 +48,11 @@ interface Props {
 const GRID = "#2a3544";
 const AXIS = "#64748b";
 
-function axisEuro(value: number): string {
+function axisCompact(value: number, symbol: string): string {
   if (!Number.isFinite(value) || value <= 0) return "0";
-  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
-  if (value >= 1_000) return `${Math.round(value / 1_000)}k`;
-  return String(Math.round(value));
+  if (value >= 1_000_000) return `${symbol}${(value / 1_000_000).toFixed(1)}M`;
+  if (value >= 1_000) return `${symbol}${Math.round(value / 1_000)}k`;
+  return `${symbol}${Math.round(value)}`;
 }
 
 function logAxisDomain(values: number[]): [number, number] | ["auto", "auto"] {
@@ -115,22 +118,30 @@ function ScatterDot({
 function ScatterTooltip({
   active,
   payload,
+  market = "it",
 }: {
   active?: boolean;
   payload?: Array<{ payload: PriceRentScatterPoint }>;
+  market?: MarketId;
 }) {
   if (!active || !payload?.length) return null;
   const point = payload[0].payload;
-  const conditionLabel = listingConditionLabel(point.listing);
+  const ui = listingsUiLabels(market);
+  const fmt = (n: number) => fmtMoney(n, market);
+  const conditionLabel = conditionLabelForMarket(listingConditionLabel(point.listing), market);
   const needsRenovation = point.listing.needs_renovation === true;
   return (
     <div className="rounded-lg border border-surface-border bg-surface-raised px-3 py-2 text-xs shadow-lg">
       <p className="mb-1 max-w-[220px] font-medium text-slate-200 line-clamp-2">{point.title}</p>
-      <p className="text-slate-400">Prezzo: {fmtEuro(point.price)}</p>
-      <p className="text-slate-400">Affitto stim.: {fmtEuro(point.expectedRent)}/mese</p>
+      <p className="text-slate-400">
+        {market === "cz" ? "Cena" : "Prezzo"}: {fmt(point.price)}
+      </p>
+      <p className="text-slate-400">
+        {ui.estRent}: {fmt(point.expectedRent)}{ui.perMonth}
+      </p>
       {conditionLabel && (
         <p className={cn("text-slate-400", needsRenovation && "font-medium text-amber-400")}>
-          Stato: {conditionLabel}
+          {ui.condition}: {conditionLabel}
         </p>
       )}
       <p
@@ -139,7 +150,7 @@ function ScatterTooltip({
           point.monthlyNetProfit >= 0 ? "text-emerald-400" : "text-red-400",
         )}
       >
-        Utile netto: {fmtEuro(point.monthlyNetProfit)}/mese
+        {ui.netProfit}: {fmt(point.monthlyNetProfit)}{ui.perMonth}
       </p>
     </div>
   );
@@ -148,6 +159,7 @@ function ScatterTooltip({
 export default function ListingPriceRentScatter({
   listings,
   profitPreviews,
+  market = "it",
   mapInView = false,
   selectedId,
   hoveredId,
@@ -156,6 +168,11 @@ export default function ListingPriceRentScatter({
   className,
 }: Props) {
   const [logScale, setLogScale] = useState(false);
+  const ui = listingsUiLabels(market);
+  const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
+  const rentAxisLabel = market === "cz" ? "Odhad nájmu" : "Affitto stimato";
+  const priceAxisLabel = market === "cz" ? "Cena" : "Prezzo";
+  const formatAxis = (v: number) => axisCompact(v, currencySymbol);
   const points = useMemo(
     () => buildPoints(listings, profitPreviews),
     [listings, profitPreviews],
@@ -241,9 +258,11 @@ export default function ListingPriceRentScatter({
               domain={xDomain}
               allowDataOverflow={logScale}
               tick={{ fill: AXIS, fontSize: 11 }}
-              tickFormatter={axisEuro}
+              tickFormatter={formatAxis}
               label={{
-                value: logScale ? "Affitto stimato (€/mese, log)" : "Affitto stimato (€/mese)",
+                value: logScale
+                  ? `${rentAxisLabel} (${currencySymbol}${ui.perMonth}, log)`
+                  : `${rentAxisLabel} (${currencySymbol}${ui.perMonth})`,
                 position: "insideBottom",
                 offset: -18,
                 fill: AXIS,
@@ -258,10 +277,10 @@ export default function ListingPriceRentScatter({
               domain={yDomain}
               allowDataOverflow={logScale}
               tick={{ fill: AXIS, fontSize: 11 }}
-              tickFormatter={axisEuro}
-              width={48}
+              tickFormatter={formatAxis}
+              width={56}
               label={{
-                value: logScale ? "Prezzo (€, log)" : "Prezzo (€)",
+                value: logScale ? `${priceAxisLabel} (${currencySymbol}, log)` : `${priceAxisLabel} (${currencySymbol})`,
                 angle: -90,
                 position: "insideLeft",
                 fill: AXIS,
@@ -269,7 +288,10 @@ export default function ListingPriceRentScatter({
               }}
             />
             <ZAxis range={[64, 64]} />
-            <Tooltip content={<ScatterTooltip />} cursor={{ strokeDasharray: "3 3", stroke: AXIS }} />
+            <Tooltip
+              content={<ScatterTooltip market={market} />}
+              cursor={{ strokeDasharray: "3 3", stroke: AXIS }}
+            />
             <Scatter
               data={points}
               onClick={(data) => {

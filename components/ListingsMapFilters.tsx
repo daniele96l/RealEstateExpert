@@ -6,14 +6,17 @@ import {
   ROOMS_OPTIONS,
   listingSourceOptionsForMarket,
   hasActiveFilters,
-  parseFilterNumber,
+  filterSelectOptions,
+  rentPricePresetsForMarket,
+  salePricePresetsForMarket,
+  SQM_PRESETS,
   type AreaFilterPreset,
   type ConditionFilter,
   type ListingsFilters,
 } from "@/lib/listings-filters";
 import type { MarketId } from "@/lib/markets";
 import { formatDistance } from "@/lib/geo-filter";
-import { cn } from "@/lib/utils";
+import { cn, fmtMoney } from "@/lib/utils";
 
 type ViewMode = "sale" | "rent" | "both";
 
@@ -59,24 +62,33 @@ function FilterField({
   );
 }
 
-function NumberInput({
+function RangeSelect({
   value,
-  placeholder,
+  options,
+  emptyLabel,
   onChange,
+  formatOption,
 }: {
   value: number | null;
-  placeholder?: string;
+  options: number[];
+  emptyLabel: string;
   onChange: (value: number | null) => void;
+  formatOption: (n: number) => string;
 }) {
+  const merged = filterSelectOptions(options, value);
   return (
-    <input
-      type="text"
-      inputMode="decimal"
-      className="input-field w-full !py-2 text-sm"
-      placeholder={placeholder}
-      value={value != null ? String(value) : ""}
-      onChange={(e) => onChange(parseFilterNumber(e.target.value))}
-    />
+    <select
+      className="select-field w-full !py-2 text-sm"
+      value={value ?? ""}
+      onChange={(e) => onChange(e.target.value === "" ? null : Number(e.target.value))}
+    >
+      <option value="">{emptyLabel}</option>
+      {merged.map((n) => (
+        <option key={n} value={n}>
+          {formatOption(n)}
+        </option>
+      ))}
+    </select>
   );
 }
 
@@ -84,29 +96,44 @@ function MinMaxRow({
   label,
   min,
   max,
-  minPlaceholder,
-  maxPlaceholder,
+  options,
+  market,
+  formatOption,
   onMinChange,
   onMaxChange,
 }: {
   label: string;
   min: number | null;
   max: number | null;
-  minPlaceholder?: string;
-  maxPlaceholder?: string;
+  options: number[];
+  market: MarketId;
+  formatOption?: (n: number) => string;
   onMinChange: (value: number | null) => void;
   onMaxChange: (value: number | null) => void;
 }) {
+  const fmt = formatOption ?? ((n: number) => fmtMoney(n, market));
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-end gap-2">
       <FilterField label={`${label} · min`}>
-        <NumberInput value={min} placeholder={minPlaceholder ?? "Min"} onChange={onMinChange} />
+        <RangeSelect
+          value={min}
+          options={options}
+          emptyLabel="Min"
+          onChange={onMinChange}
+          formatOption={fmt}
+        />
       </FilterField>
       <span className="pb-2.5 text-slate-600" aria-hidden>
         —
       </span>
       <FilterField label={`${label} · max`}>
-        <NumberInput value={max} placeholder={maxPlaceholder ?? "Max"} onChange={onMaxChange} />
+        <RangeSelect
+          value={max}
+          options={options}
+          emptyLabel="Max"
+          onChange={onMaxChange}
+          formatOption={fmt}
+        />
       </FilterField>
     </div>
   );
@@ -164,8 +191,8 @@ export default function ListingsMapFilters({ market, viewMode, filters, onChange
                   label={market === "cz" ? "Vendita Kč" : "Vendita €"}
                   min={filters.salePriceMin}
                   max={filters.salePriceMax}
-                  minPlaceholder="Min"
-                  maxPlaceholder={market === "cz" ? "Max" : "100k"}
+                  options={salePricePresetsForMarket(market)}
+                  market={market}
                   onMinChange={(salePriceMin) => onChange({ ...filters, salePriceMin })}
                   onMaxChange={(salePriceMax) => onChange({ ...filters, salePriceMax })}
                 />
@@ -175,6 +202,8 @@ export default function ListingsMapFilters({ market, viewMode, filters, onChange
                   label={market === "cz" ? "Affitto Kč/mese" : "Affitto €/mese"}
                   min={filters.rentPriceMin}
                   max={filters.rentPriceMax}
+                  options={rentPricePresetsForMarket(market)}
+                  market={market}
                   onMinChange={(rentPriceMin) => onChange({ ...filters, rentPriceMin })}
                   onMaxChange={(rentPriceMax) => onChange({ ...filters, rentPriceMax })}
                 />
@@ -190,7 +219,9 @@ export default function ListingsMapFilters({ market, viewMode, filters, onChange
                 label="Superficie m²"
                 min={filters.sqmMin}
                 max={filters.sqmMax}
-                maxPlaceholder="100"
+                options={SQM_PRESETS}
+                market={market}
+                formatOption={(n) => `${n} m²`}
                 onMinChange={(sqmMin) => onChange({ ...filters, sqmMin })}
                 onMaxChange={(sqmMax) => onChange({ ...filters, sqmMax })}
               />

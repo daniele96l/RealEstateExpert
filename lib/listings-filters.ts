@@ -94,6 +94,39 @@ export const ROOMS_OPTIONS: { value: number; label: string }[] = [
   { value: 5, label: "5+" },
 ];
 
+export const SALE_PRICE_PRESETS_IT = [
+  50_000, 100_000, 150_000, 200_000, 300_000, 500_000, 750_000, 1_000_000, 1_500_000, 2_000_000,
+  3_000_000,
+];
+
+export const SALE_PRICE_PRESETS_CZ = [
+  2_000_000, 3_000_000, 4_000_000, 5_000_000, 6_000_000, 8_000_000, 10_000_000, 12_000_000,
+  15_000_000, 20_000_000,
+];
+
+export const RENT_PRICE_PRESETS_IT = [
+  300, 400, 500, 600, 700, 800, 1_000, 1_200, 1_500, 2_000, 2_500, 3_000,
+];
+
+export const RENT_PRICE_PRESETS_CZ = [
+  8_000, 10_000, 12_000, 14_000, 16_000, 18_000, 20_000, 25_000, 30_000, 35_000, 40_000,
+];
+
+export const SQM_PRESETS = [25, 30, 40, 50, 60, 70, 80, 90, 100, 120, 150, 200];
+
+export function filterSelectOptions(options: number[], current: number | null): number[] {
+  if (current == null || options.includes(current)) return options;
+  return [...options, current].sort((a, b) => a - b);
+}
+
+export function salePricePresetsForMarket(market: "it" | "cz"): number[] {
+  return market === "cz" ? SALE_PRICE_PRESETS_CZ : SALE_PRICE_PRESETS_IT;
+}
+
+export function rentPricePresetsForMarket(market: "it" | "cz"): number[] {
+  return market === "cz" ? RENT_PRICE_PRESETS_CZ : RENT_PRICE_PRESETS_IT;
+}
+
 export function hasActiveFilters(filters: ListingsFilters): boolean {
   return (
     filters.source !== "all" ||

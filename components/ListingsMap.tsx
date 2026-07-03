@@ -872,6 +872,7 @@ export default function ListingsMap({
 
       {showProfitPreview && (
         <ListingPriceRentScatter
+          market={market}
           listings={visibleListings}
           profitPreviews={profitPreviews}
           mapInView={mapBounds != null}
