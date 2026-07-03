@@ -92,3 +92,13 @@
 .leaflet-popup.listing-map-popup .leaflet-popup-tip-container {
   display: none;
 }
+
+/* leaflet-draw toolbar icons (spritesheet paths break under Next.js bundling) */
+.leaflet-draw-toolbar a {
+  background-image: url("/leaflet-draw/images/spritesheet.svg") !important;
+  background-size: 300px 30px !important;
+}
+
+.leaflet-retina .leaflet-draw-toolbar a {
+  background-image: url("/leaflet-draw/images/spritesheet.svg") !important;
+}

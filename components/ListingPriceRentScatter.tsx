@@ -234,7 +234,7 @@ export default function ListingPriceRentScatter({
                 if (point?.listing) onHover?.(point.listing);
               }}
               onMouseLeave={() => onHover?.(null)}
-              shape={(props) => (
+              shape={(props: { cx?: number; cy?: number; payload?: PriceRentScatterPoint }) => (
                 <ScatterDot
                   {...props}
                   profitRange={profitRange}

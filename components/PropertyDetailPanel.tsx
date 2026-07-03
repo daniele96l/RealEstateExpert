@@ -21,10 +21,6 @@ import {
   estimateWholeFlatRent,
   inferRentPriceBasis,
   listingWithEffectiveRent,
-  underTwoLocaliRentNote,
-  hasUnderTwoLocali,
-  SINGLE_RENTABLE_ROOM_PREMIUM,
-  rentableRoomsAssumption,
   rentPriceBasisBadgeClass,
   rentPriceBasisLabel,
   similarRentEstimateSummary,
@@ -120,7 +116,7 @@ export default function PropertyDetailPanel({
   const [similarError, setSimilarError] = useState<string | null>(null);
   const [rentPool, setRentPool] = useState<MapListing[]>([]);
   const [similarFilters, setSimilarFilters] = useState<SimilarRentFilterState>(DEFAULT_SIMILAR_RENT_FILTERS);
-  const [rentEstimateMethod, setRentEstimateMethod] = useState<SimilarRentEstimateMethod>("per_room");
+  const rentEstimateMethod: SimilarRentEstimateMethod = "per_sqm";
   const [similarColumnOpen, setSimilarColumnOpen] = useState(true);
 
   useEffect(() => {
@@ -134,7 +130,6 @@ export default function PropertyDetailPanel({
       setSimilarLoading(false);
       setDescriptionExpanded(false);
       setSimilarFilters(DEFAULT_SIMILAR_RENT_FILTERS);
-      setRentEstimateMethod("per_room");
       setSimilarColumnOpen(true);
     }
   }, [open, detail?.id]);
@@ -142,7 +137,6 @@ export default function PropertyDetailPanel({
   useEffect(() => {
     if (!open || !detail) return;
     setSimilarFilters(DEFAULT_SIMILAR_RENT_FILTERS);
-    setRentEstimateMethod("per_room");
     setSimilarColumnOpen(true);
   }, [open, detail?.id]);
 
@@ -212,11 +206,8 @@ export default function PropertyDetailPanel({
     detail && similarRentals && similarRentals.length > 0
       ? similarRentEstimateSummary(detail, similarRentals, rentEstimateMethod)
       : null;
-  const avgRentPerRoom = similarRentSummary?.avgRentPerRoom ?? null;
   const avgRentPerSqm = similarRentSummary?.avgRentPerSqm ?? null;
   const avgWholeMonthly = similarRentSummary?.avgWholeMonthly ?? null;
-  const underTwoLocali =
-    similarRentSummary?.underTwoLocali ?? hasUnderTwoLocali(detail?.rooms);
   const canUseSqmEstimate =
     detail?.sqm != null && detail.sqm > 0 && avgRentPerSqm != null && avgWholeMonthly != null;
 
@@ -225,8 +216,6 @@ export default function PropertyDetailPanel({
     detail != null
       ? listingRenovationCostRange(detail.needs_renovation, detail.sqm, detail.price)
       : null;
-  const rentableRoomsNote =
-    underTwoLocali ? underTwoLocaliRentNote() : rentableRoomsAssumption(detail?.rooms);
 
   const quickMortgageMonthly =
     detail?.operation === "sale" && detail.price > 0
@@ -618,105 +607,29 @@ export default function PropertyDetailPanel({
 
                 {similarRentals && similarRentals.length > 0 && !similarLoading && (
                   <>
-                    <div className="mb-3 flex rounded-lg border border-surface-border/60 bg-surface-raised/30 p-0.5">
-                      <button
-                        type="button"
-                        onClick={() => setRentEstimateMethod("per_room")}
-                        className={cn(
-                          "flex-1 rounded-md px-2 py-1.5 text-xs font-medium transition-colors",
-                          rentEstimateMethod === "per_room"
-                            ? "bg-accent/20 text-accent"
-                            : "text-slate-400 hover:text-slate-200",
-                        )}
-                      >
-                        €/stanza
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setRentEstimateMethod("per_sqm")}
-                        disabled={detail.sqm == null || detail.sqm <= 0}
-                        className={cn(
-                          "flex-1 rounded-md px-2 py-1.5 text-xs font-medium transition-colors",
-                          rentEstimateMethod === "per_sqm"
-                            ? "bg-accent/20 text-accent"
-                            : "text-slate-400 hover:text-slate-200",
-                          (detail.sqm == null || detail.sqm <= 0) && "cursor-not-allowed opacity-40",
-                        )}
-                      >
-                        €/m²
-                      </button>
-                    </div>
-
-                    {(rentEstimateMethod === "per_room" ? avgRentPerRoom != null : canUseSqmEstimate) && (
+                    {canUseSqmEstimate && (
                       <div className="mb-3 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2.5">
                         <p className="text-[10px] font-medium uppercase tracking-wide text-accent">
-                          {rentEstimateMethod === "per_sqm"
-                            ? "Stima affitto (€/m²)"
-                            : underTwoLocali
-                              ? "Stima affitto intero"
-                              : "Media affitto per stanza"}
+                          Stima affitto (€/m²)
                         </p>
-                        {rentEstimateMethod === "per_sqm" && canUseSqmEstimate ? (
-                          <>
-                            <p className="mt-0.5 text-lg font-bold text-slate-100">
-                              {fmtEuro(avgWholeMonthly!)}
-                              <span className="text-sm font-normal text-slate-400">/mese</span>
-                            </p>
-                            <p className="mt-0.5 text-xs text-slate-500">
-                              Su {similarRentals.length} affitti in zona ·{" "}
-                              {avgRentPerSqm!.toLocaleString("it-IT", {
-                                style: "currency",
-                                currency: "EUR",
-                                maximumFractionDigits: 1,
-                              })}
-                              /m² × {detail.sqm} m² = {fmtEuro(avgWholeMonthly!)}/mese
-                            </p>
-                          </>
-                        ) : underTwoLocali && avgWholeMonthly != null ? (
-                          <>
-                            <p className="mt-0.5 text-lg font-bold text-slate-100">
-                              {fmtEuro(avgWholeMonthly)}
-                              <span className="text-sm font-normal text-slate-400">/mese</span>
-                            </p>
-                            <p className="mt-0.5 text-xs text-slate-500">
-                              Su {similarRentals.length} affitti in zona ·{" "}
-                              {fmtEuro(avgRentPerRoom!)}/stanza × {SINGLE_RENTABLE_ROOM_PREMIUM.toLocaleString("it-IT")} ={" "}
-                              {fmtEuro(avgWholeMonthly)}/mese
-                            </p>
-                          </>
-                        ) : (
-                          <>
-                            <p className="mt-0.5 text-lg font-bold text-slate-100">
-                              {fmtEuro(avgRentPerRoom!)}
-                              <span className="text-sm font-normal text-slate-400">/mese/stanza</span>
-                            </p>
-                            <p className="mt-0.5 text-xs text-slate-500">
-                              Su {similarRentals.length} annunci in zona
-                              {avgWholeMonthly != null && rentableRooms != null && (
-                                <>
-                                  {" "}
-                                  · intero stimato{" "}
-                                  <span className="font-medium text-slate-300">
-                                    {fmtEuro(avgWholeMonthly)}/mese
-                                  </span>
-                                  {" "}
-                                  ({fmtEuro(avgRentPerRoom!)} × {rentableRooms} stanze)
-                                </>
-                              )}
-                            </p>
-                          </>
-                        )}
-                        {rentEstimateMethod === "per_room" && rentableRoomsNote && (
-                          <p className="mt-2 text-[11px] leading-relaxed text-slate-500">{rentableRoomsNote}</p>
-                        )}
-                        {rentEstimateMethod === "per_sqm" && (
-                          <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
-                            Media mensile €/m² sugli affitti comparabili con metratura nota, applicata ai m²
-                            dell&apos;immobile in vendita.
-                          </p>
-                        )}
-                        {onUseAverageRent &&
-                          (rentEstimateMethod === "per_sqm" ? canUseSqmEstimate : avgRentPerRoom != null) && (
+                        <p className="mt-0.5 text-lg font-bold text-slate-100">
+                          {fmtEuro(avgWholeMonthly!)}
+                          <span className="text-sm font-normal text-slate-400">/mese</span>
+                        </p>
+                        <p className="mt-0.5 text-xs text-slate-500">
+                          Su {similarRentals.length} affitti in zona ·{" "}
+                          {avgRentPerSqm!.toLocaleString("it-IT", {
+                            style: "currency",
+                            currency: "EUR",
+                            maximumFractionDigits: 1,
+                          })}
+                          /m² × {detail.sqm} m² = {fmtEuro(avgWholeMonthly!)}/mese
+                        </p>
+                        <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
+                          Media mensile €/m² sugli affitti comparabili con metratura nota, applicata ai m²
+                          dell&apos;immobile in vendita.
+                        </p>
+                        {onUseAverageRent && (
                           <button
                             type="button"
                             onClick={() => {
@@ -736,11 +649,7 @@ export default function PropertyDetailPanel({
                       </div>
                     )}
                     <p className="mb-3 text-xs text-slate-500">
-                      {rentEstimateMethod === "per_sqm"
-                        ? "Metodo €/m²: utile quando gli annunci comparabili hanno metratura affidabile."
-                        : underTwoLocali
-                          ? "Con fino a 2 locali si stima l'affitto intero dal benchmark €/stanza in zona, maggiorato del 50% per uso esclusivo."
-                          : "Per annunci «stanza»: stima intero = prezzo stanza × locali dell'annuncio. Per l'immobile in vendita si usano le stanze affittabili stimate (locali − 1 soggiorno)."}
+                      Stima basata sulla media €/m² degli affitti comparabili con metratura nota.
                     </p>
                     <div className="space-y-2">
                       {similarRentals.map((rent) => {

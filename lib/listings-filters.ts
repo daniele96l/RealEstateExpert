@@ -1,6 +1,6 @@
 import type { MapListing } from "./types";
 import { normalizeListingCondition } from "./listing-condition-enrich";
-import { filterListingsByRadius, type GeoPoint } from "./geo-filter";
+import { filterListingsByRadius, filterListingsByPolygon, isValidPolygon, type GeoPoint, type GeoPolygon } from "./geo-filter";
 import {
   CONDITION_FILTER_OPTIONS,
   matchesConditionFilter,
@@ -10,7 +10,7 @@ import {
 export type { ConditionFilter };
 export { CONDITION_FILTER_OPTIONS };
 
-export type AreaFilterPreset = "off" | "centro" | "quartiere" | "custom";
+export type AreaFilterPreset = "off" | "centro" | "quartiere" | "custom" | "polygon";
 
 export interface ListingsFilters {
   salePriceMin: number | null;
@@ -26,6 +26,7 @@ export interface ListingsFilters {
   areaRadiusM: number | null;
   areaLat: number | null;
   areaLng: number | null;
+  areaPolygon: GeoPolygon | null;
 }
 
 export const EMPTY_LISTINGS_FILTERS: ListingsFilters = {
@@ -42,6 +43,7 @@ export const EMPTY_LISTINGS_FILTERS: ListingsFilters = {
   areaRadiusM: 2_500,
   areaLat: null,
   areaLng: null,
+  areaPolygon: null,
 };
 
 export const PROPERTY_TYPE_OPTIONS: { value: string; label: string }[] = [
@@ -71,6 +73,7 @@ export function hasActiveFilters(filters: ListingsFilters): boolean {
         key === "areaRadiusM" ||
         key === "areaLat" ||
         key === "areaLng" ||
+        key === "areaPolygon" ||
         key === "condition"
       ) {
         return false;
@@ -81,7 +84,7 @@ export function hasActiveFilters(filters: ListingsFilters): boolean {
 }
 
 export function resolveAreaFilterRadius(filters: ListingsFilters): number | null {
-  if (filters.areaPreset === "off") return null;
+  if (filters.areaPreset === "off" || filters.areaPreset === "polygon") return null;
   if (filters.areaPreset === "centro") return 1_000;
   if (filters.areaPreset === "quartiere") return 2_500;
   return filters.areaRadiusM != null && filters.areaRadiusM > 0 ? filters.areaRadiusM : 2_500;
@@ -133,7 +136,9 @@ export function filterListings(
 
   const areaCenter = resolveAreaFilterCenter(filters, mapCenter ?? null);
   const areaRadius = resolveAreaFilterRadius(filters);
-  if (areaCenter && areaRadius != null) {
+  if (filters.areaPreset === "polygon" && isValidPolygon(filters.areaPolygon)) {
+    result = filterListingsByPolygon(result, filters.areaPolygon);
+  } else if (areaCenter && areaRadius != null) {
     result = filterListingsByRadius(result, areaCenter, areaRadius);
   }
 

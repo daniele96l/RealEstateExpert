@@ -13,8 +13,7 @@ import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } f
 import PropertyDetailPanel from "@/components/PropertyDetailPanel";
 import BatchFetchPanel from "@/components/BatchFetchPanel";
 import ListingsMapFilters from "@/components/ListingsMapFilters";
-import ListingProfitSettingsPanel from "@/components/ListingProfitSettingsPanel";
-import ListingProfitFiltersPanel from "@/components/ListingProfitFiltersPanel";
+import ListingProfitPanel from "@/components/ListingProfitPanel";
 import { cn } from "@/lib/utils";
 import {
   EMPTY_LISTINGS_FILTERS,
@@ -34,7 +33,13 @@ import {
   mergeCityCacheConditionFromServer,
   mergeListingCondition,
 } from "@/lib/listing-condition-enrich";
-import { filterListingsByBounds, type GeoBounds } from "@/lib/geo-filter";
+import { filterListingsByBounds, type GeoBounds, type GeoPolygon } from "@/lib/geo-filter";
+import {
+  deleteSavedMapPolygon,
+  loadSavedMapPolygons,
+  saveMapPolygon,
+  type SavedMapPolygon,
+} from "@/lib/map-polygon-filters";
 import { computeListingProfitPreviews, profitSettingsSummary } from "@/lib/listing-profit-preview";
 import {
   profitGradientBorderStyle,
@@ -197,6 +202,54 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   const [profitSettingsReady, setProfitSettingsReady] = useState(false);
   const [profitFilters, setProfitFilters] = useState<ListingProfitFilters>(EMPTY_LISTING_PROFIT_FILTERS);
   const [profitFiltersReady, setProfitFiltersReady] = useState(false);
+  const [savedPolygons, setSavedPolygons] = useState<SavedMapPolygon[]>([]);
+
+  useEffect(() => {
+    if (!city.trim()) {
+      setSavedPolygons([]);
+      return;
+    }
+    setSavedPolygons(loadSavedMapPolygons(city));
+  }, [city]);
+
+  const polygonDrawActive = filters.areaPreset === "polygon";
+
+  const handlePolygonChange = useCallback((points: GeoPolygon | null) => {
+    setFilters((prev) => ({ ...prev, areaPolygon: points }));
+  }, []);
+
+  const handleSavePolygon = useCallback(
+    (name: string) => {
+      if (!city.trim() || !filters.areaPolygon || filters.areaPolygon.length < 3) return;
+      const saved = saveMapPolygon(city, name, filters.areaPolygon);
+      setSavedPolygons((prev) => [saved, ...prev]);
+    },
+    [city, filters.areaPolygon],
+  );
+
+  const handleLoadSavedPolygon = useCallback(
+    (id: string) => {
+      const saved = savedPolygons.find((p) => p.id === id);
+      if (!saved) return;
+      setFilters((prev) => ({
+        ...prev,
+        areaPreset: "polygon",
+        areaPolygon: saved.points,
+        areaLat: null,
+        areaLng: null,
+      }));
+    },
+    [savedPolygons],
+  );
+
+  const handleDeleteSavedPolygon = useCallback(
+    (id: string) => {
+      if (!city.trim()) return;
+      const next = deleteSavedMapPolygon(city, id);
+      setSavedPolygons(next);
+    },
+    [city],
+  );
 
   useEffect(() => {
     setProfitSettings(loadListingProfitSettings());
@@ -623,6 +676,13 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                 }
                 profitPreviews={showProfitPreview ? profitPreviews : undefined}
                 profitRange={showProfitPreview ? profitRange : undefined}
+                polygonFilter={filters.areaPolygon}
+                polygonDrawActive={polygonDrawActive}
+                onPolygonChange={polygonDrawActive ? handlePolygonChange : undefined}
+                savedPolygons={savedPolygons}
+                onSavePolygon={handleSavePolygon}
+                onLoadSavedPolygon={handleLoadSavedPolygon}
+                onDeleteSavedPolygon={handleDeleteSavedPolygon}
               />
             ) : (
               <div className="flex h-full items-center justify-center px-6 text-center text-sm text-slate-500">
@@ -640,13 +700,11 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                   </p>
                 </div>
                 <div className="flex shrink-0 items-center gap-0.5">
-                  <ListingProfitFiltersPanel
+                  <ListingProfitPanel
                     filters={profitFilters}
-                    onChange={handleProfitFiltersChange}
-                  />
-                  <ListingProfitSettingsPanel
                     settings={profitSettings}
-                    onChange={handleProfitSettingsChange}
+                    onFiltersChange={handleProfitFiltersChange}
+                    onSettingsChange={handleProfitSettingsChange}
                   />
                 </div>
               </div>

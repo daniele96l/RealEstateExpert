@@ -20,6 +20,48 @@ export interface GeoBounds {
   east: number;
 }
 
+/** Closed polygon ring (first point need not repeat last). */
+export type GeoPolygon = GeoPoint[];
+
+export function pointInPolygon(point: GeoPoint, polygon: GeoPolygon): boolean {
+  if (polygon.length < 3) return false;
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i].lng;
+    const yi = polygon[i].lat;
+    const xj = polygon[j].lng;
+    const yj = polygon[j].lat;
+    const intersects =
+      yi > point.lat !== yj > point.lat &&
+      point.lng < ((xj - xi) * (point.lat - yi)) / (yj - yi) + xi;
+    if (intersects) inside = !inside;
+  }
+  return inside;
+}
+
+export function filterListingsByPolygon(
+  listings: MapListing[],
+  polygon: GeoPolygon,
+): MapListing[] {
+  if (polygon.length < 3) return listings;
+  return listings.filter((listing) => {
+    if (listing.lat === 0 && listing.lng === 0) return false;
+    if (!Number.isFinite(listing.lat) || !Number.isFinite(listing.lng)) return false;
+    return pointInPolygon({ lat: listing.lat, lng: listing.lng }, polygon);
+  });
+}
+
+export function polygonCentroid(polygon: GeoPolygon): GeoPoint | null {
+  if (polygon.length < 3) return null;
+  const lat = polygon.reduce((s, p) => s + p.lat, 0) / polygon.length;
+  const lng = polygon.reduce((s, p) => s + p.lng, 0) / polygon.length;
+  return { lat, lng };
+}
+
+export function isValidPolygon(polygon: GeoPolygon | null | undefined): polygon is GeoPolygon {
+  return Array.isArray(polygon) && polygon.length >= 3;
+}
+
 export function distanceMeters(a: GeoPoint, b: GeoPoint): number {
   const R = 6_371_000;
   const toRad = (d: number) => (d * Math.PI) / 180;

@@ -1,10 +1,12 @@
 "use client";
 
-import { memo, useCallback, useEffect, useMemo } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef } from "react";
 import { Circle, MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import L from "leaflet";
-import type { GeoBounds, GeoPoint } from "@/lib/geo-filter";
-import { formatDistance } from "@/lib/geo-filter";
+import type { GeoBounds, GeoPoint, GeoPolygon } from "@/lib/geo-filter";
+import { formatDistance, isValidPolygon } from "@/lib/geo-filter";
+import { MapPolygonLayer } from "@/components/MapPolygonDrawControl";
+import type { SavedMapPolygon } from "@/lib/map-polygon-filters";
 import { ListingMapPreview } from "@/components/ListingMapPreview";
 import type { ListingProfitPreview } from "@/lib/listing-profit-preview";
 import type { ProfitGradientRange } from "@/lib/profit-gradient";
@@ -203,6 +205,13 @@ interface Props {
   onViewportBoundsChange?: (bounds: GeoBounds) => void;
   profitPreviews?: Map<string, ListingProfitPreview>;
   profitRange?: ProfitGradientRange;
+  polygonFilter?: GeoPolygon | null;
+  polygonDrawActive?: boolean;
+  onPolygonChange?: (points: GeoPolygon | null) => void;
+  savedPolygons?: SavedMapPolygon[];
+  onSavePolygon?: (name: string) => void;
+  onLoadSavedPolygon?: (id: string) => void;
+  onDeleteSavedPolygon?: (id: string) => void;
 }
 
 export default function ListingsMapView({
@@ -219,6 +228,13 @@ export default function ListingsMapView({
   onViewportBoundsChange,
   profitPreviews,
   profitRange,
+  polygonFilter,
+  polygonDrawActive = false,
+  onPolygonChange,
+  savedPolygons = [],
+  onSavePolygon,
+  onLoadSavedPolygon,
+  onDeleteSavedPolygon,
 }: Props) {
   const center: [number, number] = [data.center.lat, data.center.lng];
   const mappable = useMemo(() => {
@@ -234,6 +250,11 @@ export default function ListingsMapView({
 
   const showLegend = combinedListings != null && (counts.sale > 0 || counts.rent > 0);
   const dimOthers = Boolean(hoveredListingKey || selectedId);
+  const startPolygonDrawRef = useRef<(() => void) | null>(null);
+
+  const handleStartDrawReady = useCallback((startDraw: () => void) => {
+    startPolygonDrawRef.current = startDraw;
+  }, []);
 
   return (
     <div className="relative h-full w-full">
@@ -256,6 +277,14 @@ export default function ListingsMapView({
             center={filterAreaCenter}
             radiusM={filterAreaRadiusM}
             onCenterChange={onFilterAreaCenterChange}
+          />
+        )}
+        {onPolygonChange && (
+          <MapPolygonLayer
+            active={polygonDrawActive}
+            polygon={polygonFilter ?? null}
+            onPolygonChange={onPolygonChange}
+            onStartDrawReady={polygonDrawActive ? handleStartDrawReady : undefined}
           />
         )}
         {mappable.map((listing) => {
@@ -290,6 +319,107 @@ export default function ListingsMapView({
       {filterAreaCenter && filterAreaRadiusM != null && filterAreaRadiusM > 0 && (
         <div className="absolute bottom-3 right-3 z-[1000] rounded-lg border border-accent/30 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
           Filtro zona · {formatDistance(filterAreaRadiusM)}
+        </div>
+      )}
+      {polygonDrawActive && isValidPolygon(polygonFilter) && (
+        <div className="absolute bottom-3 right-3 z-[1000] rounded-lg border border-accent/30 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
+          Filtro poligono attivo
+        </div>
+      )}
+      {polygonDrawActive && onPolygonChange && (
+        <MapPolygonToolbar
+          polygon={polygonFilter ?? null}
+          savedPolygons={savedPolygons}
+          onStartDraw={() => startPolygonDrawRef.current?.()}
+          onSavePolygon={onSavePolygon}
+          onLoadSavedPolygon={onLoadSavedPolygon}
+          onDeleteSavedPolygon={onDeleteSavedPolygon}
+          onClearPolygon={() => onPolygonChange(null)}
+        />
+      )}
+    </div>
+  );
+}
+
+function MapPolygonToolbar({
+  polygon,
+  savedPolygons,
+  onStartDraw,
+  onSavePolygon,
+  onLoadSavedPolygon,
+  onDeleteSavedPolygon,
+  onClearPolygon,
+}: {
+  polygon: GeoPolygon | null;
+  savedPolygons: SavedMapPolygon[];
+  onStartDraw: () => void;
+  onSavePolygon?: (name: string) => void;
+  onLoadSavedPolygon?: (id: string) => void;
+  onDeleteSavedPolygon?: (id: string) => void;
+  onClearPolygon: () => void;
+}) {
+  const canSave = isValidPolygon(polygon) && onSavePolygon;
+
+  return (
+    <div className="absolute left-3 top-3 z-[1000] w-56 space-y-2 rounded-lg border border-accent/30 bg-surface-raised/95 p-3 text-xs text-slate-300 shadow-lg backdrop-blur-sm">
+      <p className="font-medium text-slate-200">Area disegnata</p>
+      <button
+        type="button"
+        onClick={onStartDraw}
+        className="w-full rounded-md border border-accent/40 bg-accent/15 px-2 py-2 text-xs font-medium text-accent hover:bg-accent/25"
+      >
+        Disegna poligono
+      </button>
+      <p className="text-[11px] leading-relaxed text-slate-500">
+        Clicca sulla mappa per ogni vertice, poi chiudi il poligono. Usa anche lo
+        strumento in alto a destra sulla mappa.
+      </p>
+      {canSave && (
+        <button
+          type="button"
+          onClick={() => {
+            const name = window.prompt("Nome area salvata", "La mia zona");
+            if (name != null && name.trim()) onSavePolygon(name.trim());
+          }}
+          className="w-full rounded-md border border-accent/40 bg-accent/15 px-2 py-1.5 text-xs font-medium text-accent hover:bg-accent/25"
+        >
+          Salva poligono
+        </button>
+      )}
+      {isValidPolygon(polygon) && (
+        <button
+          type="button"
+          onClick={onClearPolygon}
+          className="w-full rounded-md border border-surface-border px-2 py-1.5 text-xs text-slate-400 hover:bg-surface-raised"
+        >
+          Cancella area
+        </button>
+      )}
+      {savedPolygons.length > 0 && onLoadSavedPolygon && (
+        <div className="space-y-1 border-t border-surface-border/60 pt-2">
+          <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Salvate</p>
+          {savedPolygons.map((saved) => (
+            <div key={saved.id} className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => onLoadSavedPolygon(saved.id)}
+                className="min-w-0 flex-1 truncate rounded-md border border-surface-border px-2 py-1 text-left text-xs text-slate-300 hover:bg-surface-raised"
+                title={saved.name}
+              >
+                {saved.name}
+              </button>
+              {onDeleteSavedPolygon && (
+                <button
+                  type="button"
+                  onClick={() => onDeleteSavedPolygon(saved.id)}
+                  className="shrink-0 rounded-md border border-surface-border px-1.5 py-1 text-slate-500 hover:text-red-400"
+                  aria-label={`Elimina ${saved.name}`}
+                >
+                  ×
+                </button>
+              )}
+            </div>
+          ))}
         </div>
       )}
     </div>

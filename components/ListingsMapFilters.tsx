@@ -237,19 +237,22 @@ export default function ListingsMapFilters({ viewMode, filters, onChange, onRese
               <select
                 className="select-field w-full !py-2 text-sm"
                 value={filters.areaPreset}
-                onChange={(e) =>
+                onChange={(e) => {
+                  const areaPreset = e.target.value as AreaFilterPreset;
                   onChange({
                     ...filters,
-                    areaPreset: e.target.value as AreaFilterPreset,
+                    areaPreset,
                     areaLat: null,
                     areaLng: null,
-                  })
-                }
+                    areaPolygon: areaPreset === "polygon" ? filters.areaPolygon : null,
+                  });
+                }}
               >
                 <option value="off">Tutta la città</option>
                 <option value="centro">Centro (1 km)</option>
                 <option value="quartiere">Quartiere (2,5 km)</option>
                 <option value="custom">Personalizzata</option>
+                <option value="polygon">Area disegnata</option>
               </select>
             </FilterField>
             {filters.areaPreset === "custom" ? (
@@ -266,6 +269,11 @@ export default function ListingsMapFilters({ viewMode, filters, onChange, onRese
                   className="w-full accent-accent"
                 />
               </FilterField>
+            ) : filters.areaPreset === "polygon" ? (
+              <p className="pb-2 text-[11px] leading-relaxed text-slate-500">
+                Disegna un poligono sulla mappa (strumento in alto a destra). Solo gli annunci
+                all&apos;interno vengono mostrati. Puoi salvare l&apos;area per riutilizzarla.
+              </p>
             ) : filters.areaPreset !== "off" ? (
               <p className="pb-2 text-[11px] leading-relaxed text-slate-500">
                 Cerchio sulla mappa — clicca per spostare il centro
