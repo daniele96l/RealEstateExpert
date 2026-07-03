@@ -9,6 +9,7 @@ import { runSimulation } from "./engine/simulator";
 import { listingDistanceMeters } from "./geo-filter";
 import {
   DEFAULT_LISTING_PROFIT_SETTINGS,
+  defaultListingProfitSettings,
   type ListingProfitSettings,
   sanitizeListingProfitSettings,
 } from "./listing-profit-settings";
@@ -47,7 +48,7 @@ export function computeListingProfitPreview(
 ): ListingProfitPreview | null {
   if (sale.operation !== "sale" || sale.price <= 0) return null;
 
-  const opts = sanitizeListingProfitSettings(settings);
+  const opts = sanitizeListingProfitSettings(settings, defaultListingProfitSettings(market));
   const neighbors = nearbyRentListings(sale, rentPool, opts.radiusM);
   const rentSummary = similarRentEstimateSummary(sale, neighbors, opts.rentMethod);
   const estimatedMonthlyRent = rentSummary.avgWholeMonthly;
@@ -106,7 +107,7 @@ export function profitSettingsSummary(
   settings: ListingProfitSettings,
   market: MarketId = "it",
 ): string {
-  const s = sanitizeListingProfitSettings(settings);
+  const s = sanitizeListingProfitSettings(settings, defaultListingProfitSettings(market));
   const rentLabel =
     s.rentMethod === "per_sqm"
       ? market === "cz"

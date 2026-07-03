@@ -1,6 +1,10 @@
 import type { RentalMode } from "./types";
 import type { SimilarRentEstimateMethod } from "./rent-price-basis";
 
+import type { MarketId } from "./markets";
+import { CZECH_DEFAULTS } from "./constants-cz";
+import { ITALY_DEFAULTS } from "./constants";
+
 export interface ListingProfitSettings {
   mortgageRatePct: number;
   loanYears: number;
@@ -11,25 +15,38 @@ export interface ListingProfitSettings {
 }
 
 export const DEFAULT_LISTING_PROFIT_SETTINGS: ListingProfitSettings = {
-  mortgageRatePct: 4,
-  loanYears: 30,
-  downPaymentPct: 25,
+  mortgageRatePct: ITALY_DEFAULTS.mortgage_rate_pct,
+  loanYears: ITALY_DEFAULTS.default_loan_years,
+  downPaymentPct: ITALY_DEFAULTS.investment_down_payment_pct,
   rentMethod: "per_sqm",
   radiusM: 1_000,
   rentalMode: "long_term",
 };
 
+export function defaultListingProfitSettings(market: MarketId = "it"): ListingProfitSettings {
+  if (market === "cz") {
+    return {
+      ...DEFAULT_LISTING_PROFIT_SETTINGS,
+      mortgageRatePct: CZECH_DEFAULTS.mortgage_rate_pct,
+      loanYears: CZECH_DEFAULTS.default_loan_years,
+      downPaymentPct: CZECH_DEFAULTS.investment_down_payment_pct,
+    };
+  }
+  return DEFAULT_LISTING_PROFIT_SETTINGS;
+}
+
 const STORAGE_KEY = "listing-profit-settings";
 
-export function loadListingProfitSettings(): ListingProfitSettings {
-  if (typeof window === "undefined") return DEFAULT_LISTING_PROFIT_SETTINGS;
+export function loadListingProfitSettings(market: MarketId = "it"): ListingProfitSettings {
+  const defaults = defaultListingProfitSettings(market);
+  if (typeof window === "undefined") return defaults;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return DEFAULT_LISTING_PROFIT_SETTINGS;
+    if (!raw) return defaults;
     const parsed = JSON.parse(raw) as Partial<ListingProfitSettings>;
-    return sanitizeListingProfitSettings({ ...DEFAULT_LISTING_PROFIT_SETTINGS, ...parsed });
+    return sanitizeListingProfitSettings({ ...defaults, ...parsed }, defaults);
   } catch {
-    return DEFAULT_LISTING_PROFIT_SETTINGS;
+    return defaults;
   }
 }
 
@@ -42,20 +59,23 @@ export function saveListingProfitSettings(settings: ListingProfitSettings): void
   }
 }
 
-export function sanitizeListingProfitSettings(s: ListingProfitSettings): ListingProfitSettings {
+export function sanitizeListingProfitSettings(
+  s: ListingProfitSettings,
+  defaults: ListingProfitSettings = DEFAULT_LISTING_PROFIT_SETTINGS,
+): ListingProfitSettings {
   return {
     mortgageRatePct:
       Number.isFinite(s.mortgageRatePct) && s.mortgageRatePct >= 0 && s.mortgageRatePct <= 20
         ? s.mortgageRatePct
-        : DEFAULT_LISTING_PROFIT_SETTINGS.mortgageRatePct,
+        : defaults.mortgageRatePct,
     loanYears:
       Number.isFinite(s.loanYears) && s.loanYears >= 1 && s.loanYears <= 40
         ? Math.round(s.loanYears)
-        : DEFAULT_LISTING_PROFIT_SETTINGS.loanYears,
+        : defaults.loanYears,
     downPaymentPct:
       Number.isFinite(s.downPaymentPct) && s.downPaymentPct >= 0 && s.downPaymentPct <= 100
         ? s.downPaymentPct
-        : DEFAULT_LISTING_PROFIT_SETTINGS.downPaymentPct,
+        : defaults.downPaymentPct,
     rentMethod: s.rentMethod === "per_room" ? "per_room" : "per_sqm",
     radiusM:
       Number.isFinite(s.radiusM) && s.radiusM >= 200 && s.radiusM <= 20_000

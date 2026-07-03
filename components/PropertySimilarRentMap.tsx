@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, type ReactNode } from "react";
 import { Circle, MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
+import { ExternalLink } from "lucide-react";
 import type { ListingDetail, MapListing } from "@/lib/types";
 import type { MarketId } from "@/lib/markets";
+import { formatListingsWebsiteSource, inferListingWebsiteSource } from "@/lib/listing-url";
 import { listingsUiLabels } from "@/lib/listings-ui-labels";
+import { czechRoomLayoutFromListing } from "@/lib/czech-room-layout";
 import { fmtMoney } from "@/lib/utils";
 import "leaflet/dist/leaflet.css";
 
@@ -38,6 +41,37 @@ function rentIcon(highlighted = false) {
 function formatRent(price: number, market: MarketId) {
   const ui = listingsUiLabels(market);
   return `${fmtMoney(price, market)}${ui.perMonth}`;
+}
+
+function PopupListingLink({
+  listing,
+  market,
+  children,
+}: {
+  listing: MapListing | ListingDetail;
+  market: MarketId;
+  children: ReactNode;
+}) {
+  if (!listing.url) return <>{children}</>;
+
+  const source =
+    formatListingsWebsiteSource(inferListingWebsiteSource(listing)) ??
+    (market === "cz" ? "Otevřít inzerát" : "Apri annuncio");
+
+  return (
+    <a
+      href={listing.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block cursor-pointer text-inherit no-underline hover:opacity-95"
+    >
+      {children}
+      <span className="mt-2 inline-flex items-center gap-1 text-xs text-accent group-hover:underline">
+        <ExternalLink size={12} />
+        {source}
+      </span>
+    </a>
+  );
 }
 
 function FitMarkers({ points }: { points: [number, number][] }) {
@@ -117,7 +151,7 @@ export default function PropertySimilarRentMap({
           </span>
         </div>
       </div>
-      <div className="relative h-[240px] overflow-hidden rounded-xl border border-surface-border/60">
+      <div className="relative h-[360px] overflow-hidden rounded-xl border border-surface-border/60">
         <MapContainer center={defaultCenter} zoom={14} className="h-full w-full" scrollWheelZoom={false}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -132,12 +166,23 @@ export default function PropertySimilarRentMap({
                 pathOptions={{ color: "#10b981", weight: 1, fillOpacity: 0.04, dashArray: "5 5" }}
               />
               <Marker position={saleCoords} icon={saleIcon()} zIndexOffset={2000}>
-                <Popup>
-                  <div className="text-sm">
-                    <p className="font-medium text-emerald-700">{ui.sale}</p>
-                    <p className="line-clamp-2">{saleProperty.title}</p>
-                    <p>{fmtMoney(saleProperty.price, market)}</p>
-                  </div>
+                <Popup closeOnClick={false}>
+                  <PopupListingLink listing={saleProperty} market={market}>
+                    <div className="text-sm">
+                      <p className="font-medium text-emerald-700">{ui.sale}</p>
+                      <p className="line-clamp-2">{saleProperty.title}</p>
+                      {saleProperty.sqm != null && (
+                        <p className="text-xs text-slate-500">{saleProperty.sqm} m²</p>
+                      )}
+                      <p>{fmtMoney(saleProperty.price, market)}</p>
+                      {saleProperty.sqm != null && saleProperty.sqm > 0 && (
+                        <p className="text-xs text-slate-500">
+                          {fmtMoney(Math.round(saleProperty.price / saleProperty.sqm), market)}
+                          {ui.perSqm}
+                        </p>
+                      )}
+                    </div>
+                  </PopupListingLink>
                 </Popup>
               </Marker>
             </>
@@ -149,14 +194,37 @@ export default function PropertySimilarRentMap({
               icon={rentIcon()}
               zIndexOffset={1000}
             >
-              <Popup>
-                <div className="text-sm">
-                  <p className="font-medium text-blue-700">
-                    {market === "cz" ? "Podobný pronájem" : "Affitto simile"}
-                  </p>
-                  <p className="line-clamp-2">{rent.title}</p>
-                  <p>{formatRent(rent.price, market)}</p>
-                </div>
+              <Popup closeOnClick={false}>
+                <PopupListingLink listing={rent} market={market}>
+                  <div className="text-sm">
+                    <p className="font-medium text-blue-700">
+                      {market === "cz" ? "Podobný pronájem" : "Affitto simile"}
+                    </p>
+                    <p className="line-clamp-2">{rent.title}</p>
+                    {(rent.sqm != null ||
+                      (market === "cz" ? czechRoomLayoutFromListing(rent) : rent.rooms != null)) && (
+                      <p className="text-xs text-slate-500">
+                        {[
+                          market === "cz"
+                            ? czechRoomLayoutFromListing(rent)
+                            : rent.rooms != null
+                              ? ui.rooms(rent.rooms)
+                              : null,
+                          rent.sqm != null && `${rent.sqm} m²`,
+                        ]
+                          .filter(Boolean)
+                          .join(" · ")}
+                      </p>
+                    )}
+                    <p>{formatRent(rent.price, market)}</p>
+                    {rent.sqm != null && rent.sqm > 0 && (
+                      <p className="text-xs text-slate-500">
+                        {fmtMoney(Math.round(rent.price / rent.sqm), market)}
+                        {ui.perSqm}
+                      </p>
+                    )}
+                  </div>
+                </PopupListingLink>
               </Popup>
             </Marker>
           ))}

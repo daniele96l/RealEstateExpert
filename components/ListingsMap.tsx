@@ -58,6 +58,7 @@ import {
 } from "@/lib/listing-profit-filters";
 import {
   DEFAULT_LISTING_PROFIT_SETTINGS,
+  defaultListingProfitSettings,
   loadListingProfitSettings,
   saveListingProfitSettings,
   sanitizeListingProfitSettings,
@@ -280,11 +281,11 @@ export default function ListingsMap({
   );
 
   useEffect(() => {
-    setProfitSettings(loadListingProfitSettings());
+    setProfitSettings(loadListingProfitSettings(market));
     setProfitFilters(loadListingProfitFilters());
     setProfitSettingsReady(true);
     setProfitFiltersReady(true);
-  }, []);
+  }, [market]);
 
   useEffect(() => {
     if (!profitSettingsReady) return;
@@ -297,8 +298,8 @@ export default function ListingsMap({
   }, [profitFilters, profitFiltersReady]);
 
   const handleProfitSettingsChange = useCallback((next: ListingProfitSettings) => {
-    setProfitSettings(sanitizeListingProfitSettings(next));
-  }, []);
+    setProfitSettings(sanitizeListingProfitSettings(next, defaultListingProfitSettings(market)));
+  }, [market]);
 
   const handleProfitFiltersChange = useCallback((next: ListingProfitFilters) => {
     setProfitFilters(sanitizeListingProfitFilters(next));

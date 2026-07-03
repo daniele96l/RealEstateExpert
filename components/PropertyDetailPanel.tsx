@@ -52,7 +52,7 @@ import {
 const PropertySimilarRentMap = dynamic(() => import("./PropertySimilarRentMap"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-[240px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-slate-500">
+    <div className="flex h-[360px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-slate-500">
       Caricamento mappa…
     </div>
   ),

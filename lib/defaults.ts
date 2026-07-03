@@ -17,6 +17,10 @@ import {
   estimateCzechUtilitiesAnnual,
 } from "./constants-cz";
 import { getRentalModePreset } from "./rental-presets";
+import {
+  maintenancePctForRentalMode,
+  sanitizeMaintenancePct,
+} from "./maintenance-options";
 
 export type RentPriceInputBasis = "per_room" | "whole";
 
@@ -51,6 +55,7 @@ export interface SimpleScenario {
   nightly_rate: number;
   occupancy_pct: number;
   condominio_monthly: number;
+  maintenance_pct: number;
   utilities_annual: number;
   utilities_auto: boolean;
   /** Czech: annual property tax (Kč) */
@@ -127,6 +132,7 @@ export function getDefaultSimpleScenario(market: MarketId = "it"): SimpleScenari
       nightly_rate: preset.nightly_rate,
       occupancy_pct: preset.occupancy_pct,
       condominio_monthly: preset.condominio_monthly,
+      maintenance_pct: maintenancePctForRentalMode("medium_term_semester", "cz"),
       utilities_annual: 0,
       utilities_auto: true,
       property_tax_annual: estimateCzechPropertyTax(price, sqm),
@@ -160,6 +166,7 @@ export function getDefaultSimpleScenario(market: MarketId = "it"): SimpleScenari
     nightly_rate: preset.nightly_rate,
     occupancy_pct: preset.occupancy_pct,
     condominio_monthly: preset.condominio_monthly,
+    maintenance_pct: maintenancePctForRentalMode("medium_term_semester", "it"),
     utilities_annual: 0,
     utilities_auto: true,
     property_tax_annual: 0,
@@ -208,12 +215,7 @@ export function toInvestmentScenario(s: SimpleScenario, market: MarketId = "it")
         tari_annual: s.property_tax_annual,
         condominio_monthly: s.condominio_monthly,
         insurance_annual: Math.round(2500 + s.purchase_price * 0.001),
-        maintenance_pct:
-          s.rental_mode === "short_term_airbnb"
-            ? CZECH_DEFAULTS.maintenance_pct_short
-            : s.rental_mode === "medium_term_semester"
-              ? CZECH_DEFAULTS.maintenance_pct_medium
-              : CZECH_DEFAULTS.maintenance_pct_long,
+        maintenance_pct: s.maintenance_pct,
         agency_fee_months: 0,
         platform_fee_pct: s.rental_mode === "short_term_airbnb" ? CZECH_DEFAULTS.platform_fee_pct : 0,
         cleaning_fee_per_turnover: 0,
@@ -270,7 +272,7 @@ export function toInvestmentScenario(s: SimpleScenario, market: MarketId = "it")
       tari_annual: preset.operating.tari_annual,
       condominio_monthly: s.condominio_monthly,
       insurance_annual: preset.operating.insurance_annual,
-      maintenance_pct: preset.operating.maintenance_pct,
+      maintenance_pct: s.maintenance_pct,
       agency_fee_months: preset.operating.agency_fee_months,
       platform_fee_pct: preset.operating.platform_fee_pct,
       cleaning_fee_per_turnover: preset.operating.cleaning_fee_per_turnover,
@@ -309,6 +311,7 @@ export function applyRentalModeToSimple(
       nightly_rate: preset.nightly_rate,
       furnishing_cost: preset.furnishing_cost,
       condominio_monthly: preset.condominio_monthly,
+      maintenance_pct: maintenancePctForRentalMode(mode, market),
     };
     if (next.utilities_auto) {
       next.utilities_annual = estimateCzechUtilitiesAnnual(
@@ -330,6 +333,7 @@ export function applyRentalModeToSimple(
     nightly_rate: preset.nightly_rate,
     furnishing_cost: preset.furnishing_cost,
     condominio_monthly: preset.condominio_monthly,
+    maintenance_pct: maintenancePctForRentalMode(mode, market),
   };
   if (next.utilities_auto) {
     next.utilities_annual = estimateUtilitiesAnnual(
@@ -363,6 +367,14 @@ export function sanitizeSimple(s: SimpleScenario, market: MarketId = "it"): Simp
       Number.isFinite(s.down_payment_pct) && s.down_payment_pct >= 0 && s.down_payment_pct <= 100
         ? s.down_payment_pct
         : defaults.investment_down_payment_pct,
+    interest_rate_annual:
+      Number.isFinite(s.interest_rate_annual) && s.interest_rate_annual >= 0
+        ? s.interest_rate_annual
+        : defaults.mortgage_rate_pct,
+    loan_years:
+      Number.isFinite(s.loan_years) && s.loan_years >= 1 && s.loan_years <= 40
+        ? Math.round(s.loan_years)
+        : defaults.default_loan_years,
     loan_amount:
       s.loan_amount != null && Number.isFinite(s.loan_amount) && s.loan_amount >= 0
         ? s.loan_amount
@@ -401,6 +413,7 @@ export function sanitizeSimple(s: SimpleScenario, market: MarketId = "it"): Simp
     nightly_rate: s.nightly_rate > 0 ? s.nightly_rate : preset.nightly_rate,
     condominio_monthly:
       s.condominio_monthly > 0 ? s.condominio_monthly : preset.condominio_monthly,
+    maintenance_pct: sanitizeMaintenancePct(s.maintenance_pct, s.rental_mode, market),
     property_tax_annual:
       market === "cz"
         ? s.property_tax_annual > 0

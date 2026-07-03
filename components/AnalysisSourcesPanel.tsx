@@ -21,7 +21,7 @@ import { useI18n } from "@/lib/i18n/context";
 const PropertySimilarRentMap = dynamic(() => import("./PropertySimilarRentMap"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-[240px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-slate-500">
+    <div className="flex h-[360px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-slate-500">
       Caricamento mappa…
     </div>
   ),
@@ -123,7 +123,7 @@ export default function AnalysisSourcesPanel({ source, scenario, market = "it" }
       </div>
 
       <div className="border-b border-surface-border/60 px-5 py-4">
-        <PropertySimilarRentMap saleProperty={sale} similarRentals={similarRentals} />
+        <PropertySimilarRentMap saleProperty={sale} similarRentals={similarRentals} market={market} />
       </div>
 
       <div className="grid gap-4 p-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">

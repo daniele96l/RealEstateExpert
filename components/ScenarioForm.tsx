@@ -11,6 +11,7 @@ import {
 import { estimateSqmFromPrice, estimateUtilitiesAnnual, ITALY_DEFAULTS } from "@/lib/constants";
 import { estimateCzechUtilitiesAnnual } from "@/lib/constants-cz";
 import type { MarketId } from "@/lib/markets";
+import { MAINTENANCE_PCT_OPTIONS, monthlyMaintenanceCost } from "@/lib/maintenance-options";
 import { useI18n } from "@/lib/i18n/context";
 import { getRentalModeRules } from "@/lib/rental-presets";
 import { cn, fmtMoney } from "@/lib/utils";
@@ -80,7 +81,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
   const { t } = useI18n();
   const currency = market === "cz" ? "Kč" : "€";
   const { register, watch, reset, setValue, getValues } = useForm<SimpleScenario>({
-    defaultValues: getDefaultSimpleScenario(market),
+    defaultValues: syncScenario ?? getDefaultSimpleScenario(market),
   });
 
   const rentalMode = watch("rental_mode");
@@ -93,6 +94,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
   const rentPriceBasis = watch("rent_price_basis");
   const rentRooms = watch("rent_rooms");
   const monthlyRent = watch("monthly_rent");
+  const maintenancePct = watch("maintenance_pct");
   const prevMode = useRef<RentalMode | null>(null);
   const prevPrice = useRef<number | null>(null);
   const syncScenarioRef = useRef(syncScenario);
@@ -363,6 +365,27 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
             </Field>
             <Field label={t("scenario.condominio", { currency })}>
               <input type="number" className="input-field" {...register("condominio_monthly", { valueAsNumber: true })} />
+            </Field>
+            <Field
+              label={t("scenario.maintenance")}
+              hint={t("scenario.maintenanceHint", {
+                monthly: fmtMoney(
+                  monthlyMaintenanceCost(purchasePrice > 0 ? purchasePrice : 0, maintenancePct ?? 0),
+                  market,
+                ),
+                annual: fmtMoney(
+                  monthlyMaintenanceCost(purchasePrice > 0 ? purchasePrice : 0, maintenancePct ?? 0) * 12,
+                  market,
+                ),
+              })}
+            >
+              <select className="select-field" {...register("maintenance_pct", { valueAsNumber: true })}>
+                {MAINTENANCE_PCT_OPTIONS.map(({ id, pct }) => (
+                  <option key={id} value={pct}>
+                    {t(`scenario.maintenanceOptions.${id}`)}
+                  </option>
+                ))}
+              </select>
             </Field>
             <div className="sm:col-span-2">
               <Field

@@ -36,14 +36,23 @@ import { clearLocalListingsCacheForMarket } from "@/lib/listings-cache-client";
 import type { AnalysisResult, ListingDetail, MapListing } from "@/lib/types";
 import { Building2, BarChart3 } from "lucide-react";
 
+function initialMarketScenario(): SimpleScenario {
+  const stored = typeof window !== "undefined" ? readStoredMarket() : "it";
+  return sanitizeSimple(getDefaultSimpleScenario(stored), stored);
+}
+
 export default function HomePageContent() {
   const { t, ready: i18nReady } = useI18n();
-  const [market, setMarket] = useState<MarketId>("it");
-  const [marketReady, setMarketReady] = useState(false);
-  const [scenario, setScenario] = useState(() => sanitizeSimple(getDefaultSimpleScenario()));
-  const [result, setResult] = useState<AnalysisResult | null>(() =>
-    runSimulation(toInvestmentScenario(sanitizeSimple(getDefaultSimpleScenario()))),
+  const [market, setMarket] = useState<MarketId>(() =>
+    typeof window !== "undefined" ? readStoredMarket() : "it",
   );
+  const [marketReady, setMarketReady] = useState(false);
+  const [scenario, setScenario] = useState(initialMarketScenario);
+  const [result, setResult] = useState<AnalysisResult | null>(() => {
+    const initial = initialMarketScenario();
+    const stored = typeof window !== "undefined" ? readStoredMarket() : "it";
+    return runSimulation(toInvestmentScenario(initial, stored), stored);
+  });
   const [formPrefill, setFormPrefill] = useState<Partial<SimpleScenario> | undefined>();
   const [formSyncToken, setFormSyncToken] = useState(0);
   const [marketCity, setMarketCity] = useState("Reggio Calabria");
@@ -150,6 +159,7 @@ export default function HomePageContent() {
         saleDetail,
         summary.avgRentPerRoom ?? 0,
         summary.avgWholeMonthly,
+        market,
       );
       const source: ListingAnalysisSource = {
         sale: saleDetail,
@@ -177,6 +187,7 @@ export default function HomePageContent() {
               source.sale,
               summary.avgRentPerRoom,
               summary.avgWholeMonthly,
+              market,
             )
           : restoredScenario;
       setAnalysisSource({
@@ -232,6 +243,7 @@ export default function HomePageContent() {
             className="lg:sticky lg:top-6 lg:z-10 lg:max-h-[calc(100vh-3rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain lg:pr-1"
           >
             <ScenarioForm
+              key={market}
               market={market}
               onChange={handleFormChange}
               prefill={formPrefill}

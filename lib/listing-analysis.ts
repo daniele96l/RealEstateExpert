@@ -6,6 +6,7 @@ import {
 } from "./defaults";
 import { estimateSqmFromPrice, listingRenovationCost } from "./constants";
 import { estimateRentableRooms, type SimilarRentEstimateMethod } from "./rent-price-basis";
+import type { MarketId } from "./markets";
 import type { ListingDetail, MapListing } from "./types";
 
 export interface ListingAnalysisSource {
@@ -20,12 +21,13 @@ export function scenarioFromListingAnalysis(
   sale: ListingDetail,
   avgPerRoom: number,
   wholeMonthly: number | null,
+  market: MarketId = "it",
 ): SimpleScenario {
-  const base = getDefaultSimpleScenario();
+  const base = getDefaultSimpleScenario(market);
   const price = sale.price > 0 ? sale.price : base.purchase_price;
   const mode = "medium_term_semester" as const;
 
-  let scenario = applyRentalModeToSimple({ ...base, purchase_price: price }, mode);
+  let scenario = applyRentalModeToSimple({ ...base, purchase_price: price }, mode, market);
 
   const sqm =
     sale.sqm != null && sale.sqm > 0 ? sale.sqm : estimateSqmFromPrice(price);
@@ -50,5 +52,5 @@ export function scenarioFromListingAnalysis(
         : scenario.condominio_monthly,
     renovation_cost:
       listingRenovationCost(sale.needs_renovation, sale.sqm, sale.price) ?? scenario.renovation_cost,
-  });
+  }, market);
 }
