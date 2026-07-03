@@ -59,22 +59,12 @@ function RentalModeInfo({ mode, propertyType }: { mode: RentalMode; propertyType
           <span className="text-slate-300">{t("scenario.typicalOccupancy")}:</span> {rules.occupancy_pct}% — {t(`rentalModes.${modeKey}.occupancyNote`)}
         </li>
         {mode === "medium_term_semester" ? (
-          <>
-            <li>
-              <span className="text-slate-300">{t("scenario.cleaning")}:</span>{" "}
-              {t("scenario.cleaningSemester", { fee: rules.cleaning_fee_per_turnover, turns: rules.turnovers_per_year })}
-            </li>
-            <li>{t(`rentalModes.${modeKey}.utilitiesNote`)}</li>
-          </>
+          <li>{t(`rentalModes.${modeKey}.utilitiesNote`)}</li>
         ) : mode === "short_term_airbnb" ? (
           <>
             <li>
               <span className="text-slate-300">{t("scenario.platform")}:</span>{" "}
               {t("scenario.platformFee", { pct: rules.platform_fee_pct * 100 })}
-            </li>
-            <li>
-              <span className="text-slate-300">{t("scenario.cleaning")}:</span>{" "}
-              {t("scenario.cleaningShort", { fee: rules.cleaning_fee_per_turnover })}
             </li>
             <li>{t(`rentalModes.${modeKey}.utilitiesNote`)}</li>
           </>

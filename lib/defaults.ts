@@ -199,7 +199,7 @@ export function toInvestmentScenario(s: SimpleScenario, market: MarketId = "it")
         nightly_rate: usesMonthlyRent ? null : s.nightly_rate,
         occupancy_rate: s.occupancy_pct / 100,
         avg_stay_nights: CZECH_DEFAULTS.avg_stay_nights,
-        turnovers_per_year: s.rental_mode === "medium_term_semester" ? 2 : 0,
+        turnovers_per_year: 0,
       },
       operating: {
         imu_rate: 0,
@@ -216,10 +216,7 @@ export function toInvestmentScenario(s: SimpleScenario, market: MarketId = "it")
               : CZECH_DEFAULTS.maintenance_pct_long,
         agency_fee_months: 0,
         platform_fee_pct: s.rental_mode === "short_term_airbnb" ? CZECH_DEFAULTS.platform_fee_pct : 0,
-        cleaning_fee_per_turnover:
-          s.rental_mode === "medium_term_semester"
-            ? CZECH_DEFAULTS.cleaning_fee_per_turnover
-            : CZECH_DEFAULTS.cleaning_fee_per_turnover,
+        cleaning_fee_per_turnover: 0,
         utilities_landlord_annual: resolveUtilitiesAnnual(s, market),
       },
       tax: {
