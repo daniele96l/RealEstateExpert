@@ -939,9 +939,6 @@ export default function ListingsMap({
               : null
           }
           onSelect={(listing) => void handleSelect(listing)}
-          onHover={(listing) =>
-            setHoveredListingKey(listing ? listingKey(listing) : null)
-          }
         />
       )}
 
