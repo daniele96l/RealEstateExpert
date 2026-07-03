@@ -11,6 +11,7 @@ import MarketPriceCharts from "@/components/MarketPriceCharts";
 import PurchaseBreakdown from "@/components/PurchaseBreakdown";
 import MonthlyBreakdownChart from "@/components/MonthlyBreakdownChart";
 import RoiChart from "@/components/RoiChart";
+import ListingsExportPanel from "@/components/ListingsExportPanel";
 import {
   getDefaultSimpleScenario,
   sanitizeSimple,
@@ -34,6 +35,7 @@ import {
 } from "@/lib/markets";
 import { clearLocalListingsCacheForMarket } from "@/lib/listings-cache-client";
 import type { AnalysisResult, ListingDetail, MapListing } from "@/lib/types";
+import type { ListingsExportContext } from "@/lib/listings-export";
 import { Building2, BarChart3 } from "lucide-react";
 
 function initialMarketScenario(): SimpleScenario {
@@ -59,6 +61,7 @@ export default function HomePageContent() {
   const [analysisSource, setAnalysisSource] = useState<ListingAnalysisSource | null>(null);
   const [historyRefreshToken, setHistoryRefreshToken] = useState(0);
   const [listingsResetToken, setListingsResetToken] = useState(0);
+  const [exportContext, setExportContext] = useState<ListingsExportContext | null>(null);
 
   useEffect(() => {
     const stored = readStoredMarket();
@@ -261,6 +264,7 @@ export default function HomePageContent() {
               onUseSimilarRent={handleUseSimilarRent}
               onUseAverageRent={handleUseAverageRent}
               onCityChange={setMarketCity}
+              onExportContextChange={setExportContext}
             />
             <AnalysisHistoryPanel
               market={market}
@@ -292,6 +296,8 @@ export default function HomePageContent() {
             )}
           </div>
         </div>
+
+        <ListingsExportPanel market={market} context={exportContext} />
 
         <footer className="mt-12 border-t border-surface-border/40 pt-6 text-center text-xs text-slate-600">
           {market === "cz" ? t("home.footerCz") : t("home.footerIt")}

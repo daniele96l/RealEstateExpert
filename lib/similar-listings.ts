@@ -138,10 +138,18 @@ export function filterSimilarRentals(
             )
           : Number.POSITIVE_INFINITY,
     }))
-    .filter(
-      ({ score, listing }) =>
-        score > 0 && passesSimilarRentCharacteristicFilters(listing, charOptions),
-    )
+    .filter(({ listing }) => {
+      if (!passesSimilarRentCharacteristicFilters(listing, charOptions)) return false;
+      const hasSaleCoords =
+        criteria.lat != null &&
+        criteria.lng != null &&
+        Number.isFinite(criteria.lat) &&
+        Number.isFinite(criteria.lng);
+      if (hasSaleCoords && radiusM != null && radiusM > 0) {
+        return geoMatchScore(listing, criteria, radiusM) > 0;
+      }
+      return similarMatchScore(listing, criteria, radiusM) > 0;
+    })
     .sort((a, b) => b.score - a.score || a.distance - b.distance || a.listing.price - b.listing.price);
 
   const capped = limit == null ? scored : scored.slice(0, limit);

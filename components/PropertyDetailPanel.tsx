@@ -10,6 +10,8 @@ import {
   SIMILAR_RENT_LIMIT_OPTIONS,
   SIMILAR_RENT_RADIUS_PRESETS,
   radiusMFromPreset,
+  radiusPresetFromMeters,
+  radiusPresetLabel,
   similarRentLimitFromSelect,
   similarRentLimitSelectValue,
   similarRentSearchOptionsFromState,
@@ -24,8 +26,10 @@ import {
   rentPriceBasisBadgeClass,
   rentPriceBasisLabel,
   similarRentEstimateSummary,
+  SINGLE_RENTABLE_ROOM_PREMIUM,
   type SimilarRentEstimateMethod,
 } from "@/lib/rent-price-basis";
+import type { ListingProfitSettings } from "@/lib/listing-profit-settings";
 import { formatListingsWebsiteSource, inferListingWebsiteSource } from "@/lib/listing-url";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { ITALY_DEFAULTS, RENOVATION_EUR_PER_SQM, listingRenovationCostRange } from "@/lib/constants";
@@ -67,6 +71,7 @@ interface Props {
   cacheSource?: "server" | "local" | null;
   mapCity?: string;
   market?: import("@/lib/markets").MarketId;
+  profitSettings?: ListingProfitSettings;
   onClose: () => void;
   onOpenSimilarRent?: (saleDetail: ListingDetail, rentListing: MapListing) => void;
   onUseAverageRent?: (
@@ -111,6 +116,7 @@ export default function PropertyDetailPanel({
   cacheSource,
   mapCity,
   market = "it",
+  profitSettings,
   onClose,
   onOpenSimilarRent,
   onUseAverageRent,
@@ -121,8 +127,15 @@ export default function PropertyDetailPanel({
   const [similarError, setSimilarError] = useState<string | null>(null);
   const [rentPool, setRentPool] = useState<MapListing[]>([]);
   const [similarFilters, setSimilarFilters] = useState<SimilarRentFilterState>(DEFAULT_SIMILAR_RENT_FILTERS);
-  const rentEstimateMethod: SimilarRentEstimateMethod = "per_sqm";
   const [similarColumnOpen, setSimilarColumnOpen] = useState(true);
+
+  function filtersFromProfitSettings(settings: ListingProfitSettings): SimilarRentFilterState {
+    return {
+      ...DEFAULT_SIMILAR_RENT_FILTERS,
+      radiusPresetId: radiusPresetFromMeters(settings.radiusM),
+      rentEstimateMethod: settings.rentMethod,
+    };
+  }
 
   useEffect(() => {
     setMounted(true);
@@ -141,7 +154,9 @@ export default function PropertyDetailPanel({
 
   useEffect(() => {
     if (!open || !detail) return;
-    setSimilarFilters(DEFAULT_SIMILAR_RENT_FILTERS);
+    setSimilarFilters(
+      profitSettings ? filtersFromProfitSettings(profitSettings) : DEFAULT_SIMILAR_RENT_FILTERS,
+    );
     setSimilarColumnOpen(true);
   }, [open, detail?.id]);
 
@@ -177,6 +192,8 @@ export default function PropertyDetailPanel({
   }, [detail, mapCity, rentPool, similarFilters]);
 
   const similarRadiusM = radiusMFromPreset(similarFilters.radiusPresetId);
+  const similarRadiusLabel = radiusPresetLabel(similarFilters.radiusPresetId);
+  const rentEstimateMethod = similarFilters.rentEstimateMethod;
   const similarFilteredEmpty = rentPool.length > 0 && similarRentals != null && similarRentals.length === 0;
 
   useEffect(() => {
@@ -218,8 +235,19 @@ export default function PropertyDetailPanel({
       : null;
   const avgRentPerSqm = similarRentSummary?.avgRentPerSqm ?? null;
   const avgWholeMonthly = similarRentSummary?.avgWholeMonthly ?? null;
+  const avgRentPerRoom = similarRentSummary?.avgRentPerRoom ?? null;
+  const wholeEstimateMode = similarRentSummary?.wholeEstimateMode ?? null;
+  const estimateSampleCount = similarRentSummary?.estimateSampleCount ?? 0;
+  const comparableCount = similarRentSummary?.comparableCount ?? 0;
   const canUseSqmEstimate =
-    detail?.sqm != null && detail.sqm > 0 && avgRentPerSqm != null && avgWholeMonthly != null;
+    rentEstimateMethod === "per_sqm" &&
+    detail?.sqm != null &&
+    detail.sqm > 0 &&
+    avgRentPerSqm != null &&
+    avgWholeMonthly != null;
+  const canUseRoomEstimate =
+    rentEstimateMethod === "per_room" && avgRentPerRoom != null && avgWholeMonthly != null;
+  const canUseRentEstimate = canUseSqmEstimate || canUseRoomEstimate;
 
   const rentableRooms = estimateRentableRooms(detail?.rooms);
   const estimatedRenovation =
@@ -517,7 +545,27 @@ export default function PropertyDetailPanel({
                       Filtri comparabili
                     </p>
                     <label className="block text-xs text-slate-400">
-                      Raggio
+                      {market === "cz" ? "Metoda odhadu nájmu" : "Metodo stima affitto"}
+                      <select
+                        value={similarFilters.rentEstimateMethod}
+                        onChange={(e) =>
+                          setSimilarFilters((f) => ({
+                            ...f,
+                            rentEstimateMethod: e.target.value as SimilarRentEstimateMethod,
+                          }))
+                        }
+                        className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                      >
+                        <option value="per_sqm">
+                          {market === "cz" ? `Průměr ${pricePerSqmLabel} v okolí` : `Media ${pricePerSqmLabel} in zona`}
+                        </option>
+                        <option value="per_room">
+                          {market === "cz" ? `Průměr ${ui.perRoom} v okolí` : `Media ${ui.perRoom} in zona`}
+                        </option>
+                      </select>
+                    </label>
+                    <label className="block text-xs text-slate-400">
+                      {market === "cz" ? "Poloměr" : "Raggio"}
                       <select
                         value={similarFilters.radiusPresetId}
                         onChange={(e) =>
@@ -620,23 +668,65 @@ export default function PropertyDetailPanel({
 
                 {similarRentals && similarRentals.length > 0 && !similarLoading && (
                   <>
-                    {canUseSqmEstimate && (
+                    {canUseRentEstimate && (
                       <div className="mb-3 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2.5">
                         <p className="text-[10px] font-medium uppercase tracking-wide text-accent">
-                          {market === "cz" ? `Odhad nájmu (${pricePerSqmLabel})` : `Stima affitto (${pricePerSqmLabel})`}
+                          {rentEstimateMethod === "per_sqm"
+                            ? market === "cz"
+                              ? `Odhad nájmu (${pricePerSqmLabel})`
+                              : `Stima affitto (${pricePerSqmLabel})`
+                            : market === "cz"
+                              ? `Odhad nájmu (${ui.perRoom})`
+                              : `Stima affitto (${ui.perRoom})`}
                         </p>
                         <p className="mt-0.5 text-lg font-bold text-slate-100">
                           {fmt(avgWholeMonthly!)}
                           <span className="text-sm font-normal text-slate-400">{ui.perMonth}</span>
                         </p>
                         <p className="mt-0.5 text-xs text-slate-500">
-                          Su {similarRentals.length} affitti in zona ·{" "}
-                          {fmt(Math.round(avgRentPerSqm!))}
-                          {ui.perSqm} × {detail.sqm} m² = {fmt(avgWholeMonthly!)}{ui.perMonth}
+                          {market === "cz"
+                            ? estimateSampleCount === comparableCount
+                              ? `Průměr z ${estimateSampleCount} pronájmů · ${similarRadiusLabel}`
+                              : `Průměr z ${estimateSampleCount} pronájmů (${comparableCount} ve filtru) · ${similarRadiusLabel}`
+                            : estimateSampleCount === comparableCount
+                              ? `Media su ${estimateSampleCount} comparabili · ${similarRadiusLabel}`
+                              : `Media su ${estimateSampleCount} comparabili (${comparableCount} nel filtro) · ${similarRadiusLabel}`}
+                          {rentEstimateMethod === "per_sqm" ? (
+                            <>
+                              {" · "}
+                              {fmt(Math.round(avgRentPerSqm!))}
+                              {ui.perSqm} × {detail.sqm} m² = {fmt(avgWholeMonthly!)}
+                              {ui.perMonth}
+                            </>
+                          ) : wholeEstimateMode === "under_two_locali" ? (
+                            <>
+                              {" · "}
+                              {fmt(avgRentPerRoom!)}
+                              {ui.perRoom} × {SINGLE_RENTABLE_ROOM_PREMIUM} = {fmt(avgWholeMonthly!)}
+                              {ui.perMonth}
+                            </>
+                          ) : (
+                            <>
+                              {" · "}
+                              {fmt(avgRentPerRoom!)}
+                              {ui.perRoom} × {rentableRooms ?? "?"}{" "}
+                              {market === "cz" ? "pok." : "stanze"} = {fmt(avgWholeMonthly!)}
+                              {ui.perMonth}
+                            </>
+                          )}
                         </p>
                         <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
-                          Media mensile €/m² sugli affitti comparabili con metratura nota, applicata ai m²
-                          dell&apos;immobile in vendita.
+                          {rentEstimateMethod === "per_sqm"
+                            ? market === "cz"
+                              ? `Průměrný měsíční nájem ${pricePerSqmLabel} z porovnatelných inzerátů s uvedenou plochou, aplikovaný na ${detail.sqm} m² prodávané nemovitosti.`
+                              : `Media mensile ${pricePerSqmLabel} sugli affitti comparabili con metratura nota, applicata ai m² dell'immobile in vendita.`
+                            : wholeEstimateMode === "under_two_locali"
+                              ? market === "cz"
+                                ? `Do 2 pokojů: průměr ${ui.perRoom} v okolí +${Math.round((SINGLE_RENTABLE_ROOM_PREMIUM - 1) * 100)} % za exkluzivní užívání celého bytu.`
+                                : `Fino a 2 locali: media ${ui.perRoom} in zona +${Math.round((SINGLE_RENTABLE_ROOM_PREMIUM - 1) * 100)}% per uso esclusivo dell'intero immobile.`
+                              : market === "cz"
+                                ? `Průměrný měsíční nájem ${ui.perRoom} z porovnatelných inzerátů, vynásobený odhadovaným počtem pronajímatelných pokojů.`
+                                : `Media mensile ${ui.perRoom} sugli affitti comparabili, moltiplicata per le stanze affittabili stimate.`}
                         </p>
                         {onUseAverageRent && (
                           <button
@@ -652,14 +742,22 @@ export default function PropertyDetailPanel({
                             )}
                           >
                             <LayoutDashboard size={12} />
-                            Usa medie nell&apos;analisi
+                            {market === "cz" ? "Použít průměr v analýze" : "Usa medie nell'analisi"}
                           </button>
                         )}
                       </div>
                     )}
-                    <p className="mb-3 text-xs text-slate-500">
-                      Stima basata sulla media €/m² degli affitti comparabili con metratura nota.
-                    </p>
+                    {!canUseRentEstimate && (
+                      <p className="mb-3 text-xs text-amber-400">
+                        {rentEstimateMethod === "per_sqm"
+                          ? market === "cz"
+                            ? "Odhad Kč/m² vyžaduje známou plochu prodávané nemovitosti a alespoň jeden srovnatelný pronájem s m²."
+                            : "La stima €/m² richiede metratura dell'immobile in vendita e almeno un comparabile con m² nota."
+                          : market === "cz"
+                            ? "Odhad Kč/pokoj vyžaduje alespoň jeden srovnatelný pronájem s odhadnutelnou cenou za pokoj."
+                            : "La stima €/stanza richiede almeno un comparabile con prezzo per stanza stimabile."}
+                      </p>
+                    )}
                     <div className="space-y-2">
                       {similarRentals.map((rent) => {
                         const basis = inferRentPriceBasis(rent);

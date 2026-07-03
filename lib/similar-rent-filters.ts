@@ -1,4 +1,5 @@
 import type { MapListing } from "./types";
+import type { SimilarRentEstimateMethod } from "./rent-price-basis";
 
 export const SIMILAR_RENT_RADIUS_PRESETS = [
   { id: "500m", label: "0,5 km", radiusM: 500 },
@@ -22,6 +23,7 @@ export interface SimilarRentFilterState {
   propertyTypeFilter: SimilarPropertyTypeFilter;
   /** Max comparables shown; null = no cap */
   limit: number | null;
+  rentEstimateMethod: SimilarRentEstimateMethod;
 }
 
 export const DEFAULT_SIMILAR_RENT_FILTERS: SimilarRentFilterState = {
@@ -30,6 +32,7 @@ export const DEFAULT_SIMILAR_RENT_FILTERS: SimilarRentFilterState = {
   sqmFilter: "any",
   propertyTypeFilter: "any",
   limit: null,
+  rentEstimateMethod: "per_sqm",
 };
 
 export const SIMILAR_RENT_LIMIT_OPTIONS = [
@@ -64,6 +67,17 @@ export interface SimilarRentSearchOptions {
 export function radiusMFromPreset(presetId: SimilarRentRadiusPresetId): number | null {
   const preset = SIMILAR_RENT_RADIUS_PRESETS.find((p) => p.id === presetId);
   return preset?.radiusM ?? 1_000;
+}
+
+export function radiusPresetFromMeters(radiusM: number): SimilarRentRadiusPresetId {
+  const sorted = [...SIMILAR_RENT_RADIUS_PRESETS].sort((a, b) => a.radiusM - b.radiusM);
+  const match =
+    sorted.find((p) => p.radiusM >= radiusM) ?? sorted[sorted.length - 1];
+  return match.id;
+}
+
+export function radiusPresetLabel(presetId: SimilarRentRadiusPresetId): string {
+  return SIMILAR_RENT_RADIUS_PRESETS.find((p) => p.id === presetId)?.label ?? presetId;
 }
 
 export function similarRentSearchOptionsFromState(

@@ -127,6 +127,16 @@ export function averageMonthlyRentPerSqm(listings: MapListing[]): number | null 
   return values.reduce((sum, v) => sum + v, 0) / values.length;
 }
 
+export function countRentEstimateSamples(
+  listings: MapListing[],
+  method: SimilarRentEstimateMethod,
+): number {
+  if (method === "per_sqm") {
+    return listings.filter((l) => monthlyRentPerSqm(l) != null).length;
+  }
+  return listings.filter((l) => monthlyRentPerRoom(l) != null).length;
+}
+
 export function estimateWholeMonthlyFromSqmBenchmark(
   sale: Pick<MapListing, "sqm">,
   avgRentPerSqm: number,
@@ -169,7 +179,11 @@ export function similarRentEstimateSummary(
   avgWholeMonthly: number | null;
   wholeEstimateMode: SimilarWholeRentMode | null;
   underTwoLocali: boolean;
+  comparableCount: number;
+  estimateSampleCount: number;
 } {
+  const comparableCount = similarRentals.length;
+  const estimateSampleCount = countRentEstimateSamples(similarRentals, method);
   const avgRentPerRoom = averageMonthlyRentPerRoom(similarRentals);
   const avgRentPerSqm = averageMonthlyRentPerSqm(similarRentals);
   const underTwoLocali = hasUnderTwoLocali(sale.rooms);
@@ -183,6 +197,8 @@ export function similarRentEstimateSummary(
         avgRentPerSqm != null ? estimateWholeMonthlyFromSqmBenchmark(sale, avgRentPerSqm) : null,
       wholeEstimateMode: null,
       underTwoLocali,
+      comparableCount,
+      estimateSampleCount,
     };
   }
 
@@ -194,6 +210,8 @@ export function similarRentEstimateSummary(
       avgWholeMonthly: null,
       wholeEstimateMode: null,
       underTwoLocali,
+      comparableCount,
+      estimateSampleCount,
     };
   }
   const { wholeMonthly, mode } = estimateWholeMonthlyFromSimilarBenchmark(sale, avgRentPerRoom);
@@ -204,6 +222,8 @@ export function similarRentEstimateSummary(
     avgWholeMonthly: wholeMonthly,
     wholeEstimateMode: mode,
     underTwoLocali,
+    comparableCount,
+    estimateSampleCount,
   };
 }
 

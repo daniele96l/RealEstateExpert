@@ -16,6 +16,9 @@ import ListingsMapFilters from "@/components/ListingsMapFilters";
 import ListingProfitPanel from "@/components/ListingProfitPanel";
 import { cn, fmtMoney } from "@/lib/utils";
 import type { MarketId } from "@/lib/markets";
+import type { ListingsExportContext } from "@/lib/listings-export";
+import { enrichSaleListingsForExport } from "@/lib/listings-export";
+import type { SimilarRentEstimateMethod } from "@/lib/rent-price-basis";
 import {
   emptyListingsFilters,
   filterListings,
@@ -133,6 +136,7 @@ interface Props {
     estimateMethod: SimilarRentEstimateMethod,
   ) => void;
   onCityChange?: (city: string) => void;
+  onExportContextChange?: (ctx: ListingsExportContext) => void;
 }
 
 function persistPatchedCache(market: MarketId, cache: CityListingsCache | null): CityListingsCache | null {
@@ -199,6 +203,7 @@ export default function ListingsMap({
   onUseSimilarRent,
   onUseAverageRent,
   onCityChange,
+  onExportContextChange,
 }: Props) {
   const [city, setCity] = useState(defaultCity);
   const [viewMode, setViewMode] = useState<ViewMode>("sale");
@@ -495,17 +500,21 @@ export default function ListingsMap({
   );
 
   const isCombinedView = viewMode === "both" || combinedData != null;
-  const baseListings =
-    combinedData?.listings ??
-    (viewMode === "both"
-      ? [...(saleCache?.listings ?? []), ...(rentCache?.listings ?? [])]
-      : viewMode === "sale"
-        ? (saleCache?.listings ?? [])
-        : (rentCache?.listings ?? []));
+  const baseListings = useMemo(() => {
+    if (combinedData?.listings) return combinedData.listings;
+    if (viewMode === "both") {
+      return [...(saleCache?.listings ?? []), ...(rentCache?.listings ?? [])];
+    }
+    if (viewMode === "sale") return saleCache?.listings ?? [];
+    return rentCache?.listings ?? [];
+  }, [combinedData?.listings, viewMode, saleCache?.listings, rentCache?.listings]);
 
   const activeCache = viewMode === "rent" ? rentCache : saleCache ?? rentCache;
   const center = combinedData?.center ?? saleCache?.center ?? rentCache?.center;
-  const mapCenterPoint = center ? { lat: center.lat, lng: center.lng } : null;
+  const mapCenterPoint = useMemo(
+    () => (center ? { lat: center.lat, lng: center.lng } : null),
+    [center?.lat, center?.lng],
+  );
 
   const enrichedListings = useMemo(
     () => enrichListingsConditionClient(baseListings),
@@ -579,6 +588,48 @@ export default function ListingsMap({
     : null;
 
   const ui = listingsUiLabels(market);
+
+  useEffect(() => {
+    if (!onExportContextChange) return;
+    const saleSource =
+      combinedData?.listings?.filter((l) => l.operation === "sale") ??
+      saleCache?.listings ??
+      (viewMode === "both"
+        ? [...(saleCache?.listings ?? []), ...(rentCache?.listings ?? [])]
+        : viewMode === "sale"
+          ? (saleCache?.listings ?? [])
+          : []
+      ).filter((l) => l.operation === "sale");
+    const allSale = enrichSaleListingsForExport(saleSource);
+    onExportContextChange({
+      market,
+      city,
+      provider: combinedData?.provider ?? saleCache?.provider ?? rentCache?.provider ?? provider,
+      saleListings: allSale,
+      rentPool,
+      filters,
+      mapCenterPoint,
+      mapBounds,
+      profitSettings,
+      profitFilters,
+      hasData: allSale.length > 0,
+    });
+  }, [
+    onExportContextChange,
+    market,
+    city,
+    provider,
+    viewMode,
+    combinedData,
+    saleCache,
+    rentCache,
+    rentPool,
+    filters,
+    mapCenterPoint,
+    mapBounds,
+    profitSettings,
+    profitFilters,
+  ]);
 
   return (
     <div className="card-glass overflow-x-hidden">
@@ -909,6 +960,7 @@ export default function ListingsMap({
         cacheSource={detailCacheSource}
         mapCity={city}
         market={market}
+        profitSettings={profitSettings}
         onClose={handleCloseDetail}
         onOpenSimilarRent={handleOpenSimilarRent}
         onUseAverageRent={onUseAverageRent}
