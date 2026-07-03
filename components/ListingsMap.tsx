@@ -64,6 +64,7 @@ import {
   type ListingProfitSettings,
 } from "@/lib/listing-profit-settings";
 import { conditionLabelForMarket, listingsUiLabels } from "@/lib/listings-ui-labels";
+import { czechRoomLayoutFromListing } from "@/lib/czech-room-layout";
 import { Layers, Link2, MapPin } from "lucide-react";
 import type { CombinedListingsData } from "@/lib/types";
 
@@ -813,7 +814,10 @@ export default function ListingsMap({
                   {[
                     listing.sqm != null && `${listing.sqm} m²`,
                     formatPricePerSqm(listing, market),
-                    listing.rooms != null && ui.rooms(listing.rooms),
+                    listing.rooms != null &&
+                      (market === "cz"
+                        ? (czechRoomLayoutFromListing(listing) ?? ui.rooms(listing.rooms))
+                        : ui.rooms(listing.rooms)),
                   ]
                     .filter(Boolean)
                     .join(" · ")}

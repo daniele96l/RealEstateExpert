@@ -7,6 +7,7 @@ import {
   matchesConditionFilter,
   type ConditionFilter,
 } from "./property-condition";
+import { matchesCzechRoomLayout } from "./czech-room-layout";
 
 export type { ConditionFilter };
 export { CONDITION_FILTER_OPTIONS };
@@ -24,6 +25,7 @@ export interface ListingsFilters {
   sqmMin: number | null;
   sqmMax: number | null;
   rooms: number | null;
+  roomLayout: string | null;
   propertyType: string | null;
   condition: ConditionFilter;
   areaPreset: AreaFilterPreset;
@@ -56,6 +58,7 @@ export const EMPTY_LISTINGS_FILTERS: ListingsFilters = {
   sqmMin: null,
   sqmMax: 100,
   rooms: null,
+  roomLayout: null,
   propertyType: null,
   condition: "any",
   areaPreset: "off",
@@ -198,7 +201,11 @@ export function filterListings(
     if (!matchesPrice(listing, filters)) return false;
     if (filters.sqmMin != null && (listing.sqm == null || listing.sqm < filters.sqmMin)) return false;
     if (filters.sqmMax != null && (listing.sqm == null || listing.sqm > filters.sqmMax)) return false;
-    if (!matchesRooms(listing.rooms, filters.rooms)) return false;
+    if (filters.roomLayout != null) {
+      if (!matchesCzechRoomLayout(listing, filters.roomLayout)) return false;
+    } else if (!matchesRooms(listing.rooms, filters.rooms)) {
+      return false;
+    }
     if (filters.propertyType && listing.property_type !== filters.propertyType) return false;
     if (!matchesConditionFilter(listing, filters.condition)) return false;
     return true;

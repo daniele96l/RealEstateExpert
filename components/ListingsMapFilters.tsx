@@ -14,6 +14,7 @@ import {
   type ConditionFilter,
   type ListingsFilters,
 } from "@/lib/listings-filters";
+import { CZ_ROOM_LAYOUT_OPTIONS } from "@/lib/czech-room-layout";
 import type { MarketId } from "@/lib/markets";
 import { formatDistance } from "@/lib/geo-filter";
 import { cn, fmtMoney } from "@/lib/utils";
@@ -226,19 +227,28 @@ export default function ListingsMapFilters({ market, viewMode, filters, onChange
                 onMaxChange={(sqmMax) => onChange({ ...filters, sqmMax })}
               />
             </div>
-            <FilterField label="Locali">
+            <FilterField label={market === "cz" ? "Dispozice" : "Locali"}>
               <select
                 className="select-field w-full !py-2 text-sm"
-                value={filters.rooms ?? ""}
+                value={market === "cz" ? (filters.roomLayout ?? "") : (filters.rooms ?? "")}
                 onChange={(e) =>
-                  onChange({
-                    ...filters,
-                    rooms: e.target.value ? Number(e.target.value) : null,
-                  })
+                  onChange(
+                    market === "cz"
+                      ? {
+                          ...filters,
+                          roomLayout: e.target.value || null,
+                          rooms: null,
+                        }
+                      : {
+                          ...filters,
+                          rooms: e.target.value ? Number(e.target.value) : null,
+                          roomLayout: null,
+                        },
+                  )
                 }
               >
-                <option value="">Tutti</option>
-                {ROOMS_OPTIONS.map(({ value, label }) => (
+                <option value="">{market === "cz" ? "Vše" : "Tutti"}</option>
+                {(market === "cz" ? CZ_ROOM_LAYOUT_OPTIONS : ROOMS_OPTIONS).map(({ value, label }) => (
                   <option key={value} value={value}>
                     {label}
                   </option>
