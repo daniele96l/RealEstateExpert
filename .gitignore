@@ -10,9 +10,11 @@ out/
 .env.local
 .env*.local
 
-# Listings cache
+# Listings cache (local dev); Czech Brno seed data is committed for Vercel
 data/listings/*.json
 !data/listings/.gitkeep
+!data/listings/cz_brno_sale.json
+!data/listings/cz_brno_rent.json
 data/listings/details/
 data/market/*.json
 !data/market/.gitkeep
