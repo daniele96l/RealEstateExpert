@@ -167,7 +167,7 @@ export default function ListingPriceRentScatter({
   onHover,
   className,
 }: Props) {
-  const [logScale, setLogScale] = useState(false);
+  const [logScale, setLogScale] = useState(true);
   const ui = listingsUiLabels(market);
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
   const rentAxisLabel = market === "cz" ? "Odhad nájmu" : "Affitto stimato";
