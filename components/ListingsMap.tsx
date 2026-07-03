@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-import { getListingsProviders, getCachedListings } from "@/lib/api";
+import { getListingsProviders, getCachedListings, importFromIdealista } from "@/lib/api";
 import {
   loadCityListingsCacheOnly,
   loadPropertyDetailCacheFirst,
@@ -26,10 +26,11 @@ import { listingConditionLabel } from "@/lib/property-condition";
 import { enrichListingsConditionClient } from "@/lib/listing-condition-enrich-client";
 import {
   mergeCityCacheConditionFromServer,
+  mergeListingCondition,
 } from "@/lib/listing-condition-enrich";
 import { filterListingsByBounds, type GeoBounds } from "@/lib/geo-filter";
 import type { SimilarRentEstimateMethod } from "@/lib/rent-price-basis";
-import { Layers, MapPin } from "lucide-react";
+import { Layers, Link2, MapPin } from "lucide-react";
 import type { CombinedListingsData } from "@/lib/types";
 
 const ListingsMapView = dynamic(() => import("./ListingsMapView"), {
@@ -97,6 +98,31 @@ function patchListingInCache(
   return { ...cache, listings };
 }
 
+function mergeImportedIntoCache(
+  cache: CityListingsCache | null,
+  imported: CityListingsCache,
+): CityListingsCache {
+  const listing = imported.listings[0];
+  if (!listing) return imported;
+  if (!cache || cache.operation !== imported.operation) {
+    return { ...imported, city: cache?.city ?? imported.city };
+  }
+  const idx = cache.listings.findIndex((item) => item.id === listing.id);
+  const listings =
+    idx >= 0
+      ? cache.listings.map((item, i) =>
+          i === idx ? mergeListingCondition(listing, item) : item,
+        )
+      : [...cache.listings, listing];
+  return {
+    ...cache,
+    listings,
+    fetched_at: new Date().toISOString(),
+    center: cache.listings.length ? cache.center : imported.center,
+    provider: imported.provider ?? cache.provider,
+  };
+}
+
 export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAverageRent, onCityChange }: Props) {
   const [city, setCity] = useState("Reggio Calabria");
   const [viewMode, setViewMode] = useState<ViewMode>("sale");
@@ -118,6 +144,9 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   const [combinedData, setCombinedData] = useState<CombinedListingsData | null>(null);
   const [filters, setFilters] = useState<ListingsFilters>(EMPTY_LISTINGS_FILTERS);
   const [mapBounds, setMapBounds] = useState<GeoBounds | null>(null);
+  const [importUrl, setImportUrl] = useState("");
+  const [importLoading, setImportLoading] = useState(false);
+  const [importError, setImportError] = useState<string | null>(null);
 
   useEffect(() => {
     getListingsProviders()
@@ -238,6 +267,49 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
     setDetailCacheSource(null);
   };
 
+  const handleImportUrl = useCallback(async () => {
+    const url = importUrl.trim();
+    if (!url) return;
+    setImportLoading(true);
+    setImportError(null);
+    try {
+      const imported = await importFromIdealista(url, provider);
+      const listing = imported.listings[0];
+      if (!listing) throw new Error("Annuncio non trovato");
+
+      setCombinedData(null);
+      setFromCache(false);
+
+      if (listing.operation === "sale") {
+        setSaleCache((cache) => {
+          const merged = mergeImportedIntoCache(cache, imported);
+          writeLocalListingsCache(merged);
+          return merged;
+        });
+      } else {
+        setRentCache((cache) => {
+          const merged = mergeImportedIntoCache(cache, imported);
+          writeLocalListingsCache(merged);
+          return merged;
+        });
+      }
+
+      setViewMode(listing.operation);
+      setSelectedId(listing.id);
+      setImportUrl("");
+
+      const displayCity = imported.center.display_name?.split(",")[0]?.trim();
+      if (displayCity) {
+        setCity(displayCity);
+        onCityChange?.(displayCity);
+      }
+    } catch (e) {
+      setImportError(e instanceof Error ? e.message : "Importazione non riuscita");
+    } finally {
+      setImportLoading(false);
+    }
+  }, [importUrl, provider, onCityChange]);
+
   const handleBatchSaved = useCallback(
     (saved: CombinedListingsData) => {
       setCombinedData(saved);
@@ -357,6 +429,32 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             Importazione batch
           </button>
         </div>
+        <p className="mb-3 mt-4 text-xs font-medium uppercase tracking-wide text-slate-500">
+          Importa annuncio
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <input
+            type="text"
+            className="input-field min-w-[200px] flex-1"
+            placeholder="Link Idealista o Immobiliare (idealista.it/immobile/… o immobiliare.it/annunci/…)"
+            value={importUrl}
+            onChange={(e) => setImportUrl(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") void handleImportUrl();
+            }}
+            disabled={importLoading}
+            aria-label="Link annuncio Idealista o Immobiliare"
+          />
+          <button
+            type="button"
+            disabled={importLoading || !importUrl.trim()}
+            onClick={() => void handleImportUrl()}
+            className="flex items-center gap-1 rounded-lg border border-surface-border bg-surface-raised/60 px-3 py-2 text-sm text-slate-200 hover:bg-surface-raised disabled:opacity-50"
+          >
+            <Link2 size={14} />
+            {importLoading ? "Importazione…" : "Importa annuncio"}
+          </button>
+        </div>
         <ListingsMapFilters
           viewMode={viewMode}
           filters={filters}
@@ -364,6 +462,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
           onReset={() => setFilters(EMPTY_LISTINGS_FILTERS)}
         />
         {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
+        {importError && <p className="mt-2 text-sm text-red-400">{importError}</p>}
         {mapData && (
           <p className="mt-2 text-xs text-slate-500">
             {filtersActive ? `${displayListings.length} di ${baseListings.length} annunci` : `${displayListings.length} annunci`}

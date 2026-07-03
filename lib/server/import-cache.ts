@@ -1,6 +1,8 @@
 import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { normalizeCitySlug } from "./geocode";
 
+export { extractIdealistaListingId, extractListingCacheId } from "@/lib/listing-url";
+
 export function mapListingFromDetail(detail: ListingDetail): MapListing {
   return {
     id: detail.id,
@@ -38,8 +40,4 @@ export function cityListingsCacheFromDetail(
     listings: [mapListingFromDetail(detail)],
     provider,
   };
-}
-
-export function extractIdealistaListingId(url: string): string | null {
-  return url.match(/\/immobile\/(\d+)/)?.[1] ?? null;
 }

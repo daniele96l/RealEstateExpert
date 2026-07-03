@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import { getDefaultListingsProvider, hasRapidApiKey, hasScrapingBeeKey } from "@/lib/server/config";
 import {
   cityListingsCacheFromDetail,
-  extractIdealistaListingId,
+  extractListingCacheId,
 } from "@/lib/server/import-cache";
-import { IdealistaImportError, importListingFromUrl } from "@/lib/server/idealista-import";
+import { IdealistaImportError, ImmobiliareImportError, importListingFromAnyUrl } from "@/lib/server/listing-import";
 import { getPropertyDetailCache } from "@/lib/server/property-detail-cache";
 import { RapidApiIdealistaError } from "@/lib/server/rapidapi-idealista";
 import { ScrapingBeeError } from "@/lib/server/scrapingbee";
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     }
 
     const preferred = body.provider ?? getDefaultListingsProvider();
-    const listingId = extractIdealistaListingId(body.url.trim());
+    const listingId = extractListingCacheId(body.url.trim());
 
     if (!body.refresh && listingId) {
       const cachedDetail = await getPropertyDetailCache(listingId);
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
       }
     }
 
-    const data = await importListingFromUrl(
+    const data = await importListingFromAnyUrl(
       body.url.trim(),
       preferred,
       hasRapidApiKey(),
@@ -41,7 +41,11 @@ export async function POST(request: Request) {
     );
     return NextResponse.json(data);
   } catch (err) {
-    if (err instanceof IdealistaImportError || err instanceof RapidApiIdealistaError) {
+    if (
+      err instanceof IdealistaImportError ||
+      err instanceof ImmobiliareImportError ||
+      err instanceof RapidApiIdealistaError
+    ) {
       return NextResponse.json({ detail: err.message }, { status: 400 });
     }
     if (err instanceof ScrapingBeeError) {
