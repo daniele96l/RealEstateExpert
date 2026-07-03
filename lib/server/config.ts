@@ -1,4 +1,4 @@
-export type ListingsProvider = "scrapingbee" | "rapidapi" | "direct";
+export type ListingsProvider = "scrapingbee" | "rapidapi" | "realtyapi" | "direct";
 export type MarketProvider = "scrapingbee" | "insights";
 export type MarketProviderMode = MarketProvider | "auto";
 
@@ -22,9 +22,22 @@ export function hasScrapingBeeKey(): boolean {
   return Boolean(process.env.SCRAPINGBEE_API_KEY?.trim());
 }
 
+export function getRealtyApiKey(): string {
+  const key = process.env.REALTYAPI_KEY;
+  if (!key) throw new Error("REALTYAPI_KEY non configurata in .env.local");
+  return key;
+}
+
+export function hasRealtyApiKey(): boolean {
+  return Boolean(process.env.REALTYAPI_KEY?.trim());
+}
+
 export function getDefaultListingsProvider(): ListingsProvider {
   const env = process.env.LISTINGS_PROVIDER?.toLowerCase();
-  if (env === "rapidapi" || env === "scrapingbee") return env;
+  if (env === "rapidapi" || env === "scrapingbee" || env === "realtyapi" || env === "direct") {
+    return env;
+  }
+  if (hasRealtyApiKey()) return "realtyapi";
   if (hasRapidApiKey()) return "rapidapi";
   return "scrapingbee";
 }

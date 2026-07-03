@@ -4,6 +4,7 @@ import {
   PROPERTY_TYPE_OPTIONS,
   CONDITION_FILTER_OPTIONS,
   ROOMS_OPTIONS,
+  LISTING_SOURCE_OPTIONS,
   hasActiveFilters,
   parseFilterNumber,
   type AreaFilterPreset,
@@ -131,6 +132,27 @@ export default function ListingsMapFilters({ viewMode, filters, onChange, onRese
       </div>
 
       <div className="space-y-4">
+        <Section title="Fonte dati">
+          <FilterField label="Portale">
+            <select
+              className="select-field w-full !py-2 text-sm sm:max-w-xs"
+              value={filters.source}
+              onChange={(e) =>
+                onChange({
+                  ...filters,
+                  source: e.target.value as ListingsFilters["source"],
+                })
+              }
+            >
+              {LISTING_SOURCE_OPTIONS.map(({ value, label }) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </FilterField>
+        </Section>
+
         {(showSalePrice || showRentPrice) && (
           <Section title="Prezzo">
             <div className="grid gap-3 lg:grid-cols-2">

@@ -1,4 +1,5 @@
 import type { MapListing } from "./types";
+import { inferListingWebsiteSource, type ListingSource } from "./listing-url";
 import { normalizeListingCondition } from "./listing-condition-enrich";
 import { filterListingsByRadius, filterListingsByPolygon, isValidPolygon, type GeoPoint, type GeoPolygon } from "./geo-filter";
 import {
@@ -12,7 +13,10 @@ export { CONDITION_FILTER_OPTIONS };
 
 export type AreaFilterPreset = "off" | "centro" | "quartiere" | "custom" | "polygon";
 
+export type ListingSourceFilter = ListingSource | "all";
+
 export interface ListingsFilters {
+  source: ListingSourceFilter;
   salePriceMin: number | null;
   salePriceMax: number | null;
   rentPriceMin: number | null;
@@ -29,7 +33,14 @@ export interface ListingsFilters {
   areaPolygon: GeoPolygon | null;
 }
 
+export const LISTING_SOURCE_OPTIONS: { value: ListingSourceFilter; label: string }[] = [
+  { value: "all", label: "Tutte le fonti" },
+  { value: "idealista", label: "Idealista" },
+  { value: "immobiliare", label: "Immobiliare.it" },
+];
+
 export const EMPTY_LISTINGS_FILTERS: ListingsFilters = {
+  source: "all",
   salePriceMin: null,
   salePriceMax: 100_000,
   rentPriceMin: null,
@@ -65,10 +76,12 @@ export const ROOMS_OPTIONS: { value: number; label: string }[] = [
 
 export function hasActiveFilters(filters: ListingsFilters): boolean {
   return (
+    filters.source !== "all" ||
     filters.areaPreset !== "off" ||
     filters.condition !== "any" ||
     Object.entries(filters).some(([key, v]) => {
       if (
+        key === "source" ||
         key === "areaPreset" ||
         key === "areaRadiusM" ||
         key === "areaLat" ||
@@ -125,6 +138,10 @@ export function filterListings(
   mapCenter?: GeoPoint | null,
 ): MapListing[] {
   let result = listings.map(normalizeListingCondition).filter((listing) => {
+    if (filters.source !== "all") {
+      const listingSource = inferListingWebsiteSource(listing);
+      if (listingSource !== filters.source) return false;
+    }
     if (!matchesPrice(listing, filters)) return false;
     if (filters.sqmMin != null && (listing.sqm == null || listing.sqm < filters.sqmMin)) return false;
     if (filters.sqmMax != null && (listing.sqm == null || listing.sqm > filters.sqmMax)) return false;

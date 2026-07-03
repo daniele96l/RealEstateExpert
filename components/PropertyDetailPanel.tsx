@@ -26,6 +26,7 @@ import {
   similarRentEstimateSummary,
   type SimilarRentEstimateMethod,
 } from "@/lib/rent-price-basis";
+import { formatListingsWebsiteSource, inferListingWebsiteSource } from "@/lib/listing-url";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { ITALY_DEFAULTS, RENOVATION_EUR_PER_SQM, listingRenovationCostRange } from "@/lib/constants";
 import { monthlyMortgagePayment } from "@/lib/engine/mortgage";
@@ -291,7 +292,7 @@ export default function PropertyDetailPanel({
                   )}
                 >
                   <ExternalLink size={14} />
-                  Idealista
+                  {formatListingsWebsiteSource(inferListingWebsiteSource(detail)) ?? "Annuncio"}
                 </a>
               )}
               <button
@@ -703,7 +704,7 @@ export default function PropertyDetailPanel({
                                 )}
                               >
                                 <ExternalLink size={12} />
-                                Idealista
+                                {formatListingsWebsiteSource(inferListingWebsiteSource(rent)) ?? "Annuncio"}
                               </a>
                               <button
                                 type="button"

@@ -54,6 +54,7 @@ export async function getListingsProviders(): Promise<{
   default_provider: ListingsProvider;
   scrapingbee: boolean;
   rapidapi: boolean;
+  realtyapi: boolean;
 }> {
   const res = await fetch("/api/listings/fetch");
   if (!res.ok) throw new Error("Impossibile leggere configurazione provider");
@@ -117,7 +118,13 @@ export async function getCachedMarketHistory(city: string): Promise<MarketPriceH
 export async function batchPreviewListings(
   city: string,
   operations: ("sale" | "rent")[],
-  opts?: { zone?: string; refresh?: boolean; provider?: ListingsProvider; maxPages?: number },
+  opts?: {
+    zone?: string;
+    refresh?: boolean;
+    provider?: ListingsProvider;
+    portal?: "idealista" | "immobiliare";
+    maxPages?: number;
+  },
 ): Promise<BatchPreviewResult> {
   const res = await fetch("/api/listings/batch-preview", {
     method: "POST",
@@ -128,6 +135,7 @@ export async function batchPreviewListings(
       operations,
       refresh: opts?.refresh ?? true,
       provider: opts?.provider,
+      portal: opts?.portal,
       maxPages: opts?.maxPages,
     }),
   });

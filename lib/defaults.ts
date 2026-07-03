@@ -251,19 +251,25 @@ function effectiveCadastralFromSimple(s: SimpleScenario): number {
     : price * ITALY_DEFAULTS.cadastral_ratio;
 }
 
+function financedProjectTotalFromSimple(s: SimpleScenario): number {
+  const price = s.purchase_price > 0 ? s.purchase_price : ITALY_DEFAULTS.default_purchase_price;
+  return price + Math.max(0, s.renovation_cost) + Math.max(0, s.furnishing_cost);
+}
+
 export function applyPurchaseCostEdit(
   s: SimpleScenario,
   field: PurchaseCostField,
   valueEuro: number,
 ): SimpleScenario {
   const price = s.purchase_price > 0 ? s.purchase_price : ITALY_DEFAULTS.default_purchase_price;
+  const projectTotal = financedProjectTotalFromSimple(s);
   const v = Math.max(0, valueEuro);
 
   switch (field) {
     case "down_payment":
       return {
         ...s,
-        down_payment_pct: price > 0 ? (v / price) * 100 : s.down_payment_pct,
+        down_payment_pct: projectTotal > 0 ? (v / projectTotal) * 100 : s.down_payment_pct,
         loan_amount: null,
       };
     case "registration_tax": {
@@ -285,7 +291,10 @@ export function applyPurchaseCostEdit(
       return {
         ...s,
         loan_amount: v,
-        down_payment_pct: price > 0 ? Math.max(0, Math.min(100, ((price - v) / price) * 100)) : s.down_payment_pct,
+        down_payment_pct:
+          projectTotal > 0
+            ? Math.max(0, Math.min(100, ((projectTotal - v) / projectTotal) * 100))
+            : s.down_payment_pct,
       };
   }
 }

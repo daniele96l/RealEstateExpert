@@ -47,7 +47,10 @@ function EditableEuro({
 
 export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }: Props) {
   const purchasePrice = scenario.purchase_price;
-  const loanOnPrice = Math.max(0, costs.loan_amount - costs.renovation - costs.furnishing);
+  const loanShare = Math.max(0, Math.min(1, 1 - scenario.down_payment_pct / 100));
+  const loanOnPrice = purchasePrice * loanShare;
+  const loanRenovation = costs.renovation * loanShare;
+  const loanFurnishing = costs.furnishing * loanShare;
   const accessoryCosts = costs.registration_tax + costs.vat + costs.notary + costs.agency;
 
   const cashRows: { label: string; field?: PurchaseCostField; value: number }[] = [
@@ -59,8 +62,8 @@ export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }:
 
   const loanRows: { label: string; field?: PurchaseCostField; value: number }[] = [
     { label: "Quota prezzo immobile", value: loanOnPrice },
-    { label: "Ristrutturazione", field: "renovation", value: costs.renovation },
-    { label: "Arredamento", field: "furnishing", value: costs.furnishing },
+    { label: "Ristrutturazione", field: "renovation", value: loanRenovation },
+    { label: "Arredamento", field: "furnishing", value: loanFurnishing },
   ];
 
   const handleEdit = (field: PurchaseCostField, valueEuro: number) => {
@@ -91,15 +94,15 @@ export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }:
     <div className="card-glass p-5">
       <h2 className="mb-1 text-sm font-semibold text-slate-300">Costi iniziali</h2>
       <p className="mb-4 text-xs text-slate-500">
-        Il mutuo copre prezzo (meno anticipo), ristrutturazione e arredamento. Tasse e notaio si pagano in
-        contanti all&apos;acquisto.
+        L&apos;anticipo % si applica a prezzo + ristrutturazione + arredamento. Il mutuo copre il resto;
+        tasse e notaio si pagano in contanti all&apos;acquisto.
       </p>
 
       <div className="mb-4 grid gap-2 sm:grid-cols-3">
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
           <p className="text-[10px] uppercase tracking-wide text-slate-500">Equity iniziale</p>
           <p className="text-lg font-bold text-slate-100">{fmtEuro(costs.down_payment)}</p>
-          <p className="text-[11px] text-slate-600">Quota casa di tua proprietà</p>
+          <p className="text-[11px] text-slate-600">Quota casa di tua proprietà (prezzo + lavori)</p>
         </div>
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
           <p className="text-[10px] uppercase tracking-wide text-slate-500">Contanti subito</p>
@@ -131,7 +134,7 @@ export default function PurchaseBreakdown({ costs, scenario, onScenarioChange }:
             "Anticipo (equity)",
             costs.down_payment,
             "down_payment",
-            "Tua quota sul prezzo, pagata in contanti",
+            "Tua quota su prezzo + ristrutturazione + arredamento",
           )}
         </div>
 

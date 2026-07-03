@@ -13,6 +13,7 @@ import {
   type GeoBounds,
 } from "@/lib/geo-filter";
 import type { BatchPreviewResult, CombinedListingsData, ListingsProvider, MapListing, MapCenter } from "@/lib/types";
+import type { ListingSource } from "@/lib/listing-url";
 import { writeLocalListingsCache } from "@/lib/listings-cache-client";
 import { ITALY_DEFAULTS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -38,7 +39,7 @@ interface Props {
   open: boolean;
   city: string;
   provider: ListingsProvider;
-  providersAvailable: { scrapingbee: boolean; rapidapi: boolean };
+  providersAvailable: { scrapingbee: boolean; rapidapi: boolean; realtyapi: boolean };
   onClose: () => void;
   onSaved: (data: CombinedListingsData) => void;
 }
@@ -80,6 +81,7 @@ export default function BatchFetchPanel({
   const [fetchSale, setFetchSale] = useState(true);
   const [fetchRent, setFetchRent] = useState(true);
   const [provider, setProvider] = useState(initialProvider);
+  const [portal, setPortal] = useState<ListingSource>("idealista");
   const [areaPreset, setAreaPreset] = useState<AreaPresetId>("city");
   const [customRadiusM, setCustomRadiusM] = useState(1500);
   const [minPrice, setMinPrice] = useState("");
@@ -104,9 +106,11 @@ export default function BatchFetchPanel({
   useEffect(() => {
     if (open) {
       setCity(initialCity);
-      setProvider(initialProvider);
+      setProvider(
+        portal === "immobiliare" && initialProvider === "scrapingbee" ? "rapidapi" : initialProvider,
+      );
     }
-  }, [open, initialCity, initialProvider]);
+  }, [open, initialCity, initialProvider, portal]);
 
   useEffect(() => {
     if (!open) return;
@@ -220,6 +224,7 @@ export default function BatchFetchPanel({
         zone: zone.trim() || undefined,
         refresh: true,
         provider,
+        portal,
         maxPages,
       });
       setPreview(result);
@@ -378,12 +383,53 @@ export default function BatchFetchPanel({
               <input type="checkbox" checked={fetchRent} onChange={(e) => setFetchRent(e.target.checked)} />
               Affitto
             </label>
-            <div className="flex rounded-lg border border-surface-border overflow-hidden">
+          </div>
+
+          <div>
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Portale</p>
+            <div className="flex flex-wrap gap-2">
               {(
                 [
-                  { id: "rapidapi" as const, label: "RapidAPI", enabled: providersAvailable.rapidapi },
-                  { id: "scrapingbee" as const, label: "ScrapingBee", enabled: providersAvailable.scrapingbee },
+                  { id: "idealista" as const, label: "Idealista" },
+                  { id: "immobiliare" as const, label: "Immobiliare.it" },
                 ] as const
+              ).map(({ id, label }) => (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => {
+                    setPortal(id);
+                    if (id === "immobiliare" && provider === "scrapingbee") {
+                      setProvider("rapidapi");
+                    }
+                  }}
+                  className={cn(
+                    "rounded-lg border px-3 py-1.5 text-sm",
+                    portal === id
+                      ? "border-accent/50 bg-accent/10 text-accent"
+                      : "border-surface-border text-slate-400 hover:text-slate-200",
+                  )}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Provider</p>
+            <div className="flex rounded-lg border border-surface-border overflow-hidden">
+              {(
+                portal === "immobiliare"
+                  ? ([
+                      { id: "realtyapi" as const, label: "RealtyAPI", enabled: providersAvailable.realtyapi },
+                      { id: "rapidapi" as const, label: "RapidAPI", enabled: providersAvailable.rapidapi },
+                      { id: "direct" as const, label: "Diretto", enabled: true },
+                    ] as const)
+                  : ([
+                      { id: "rapidapi" as const, label: "RapidAPI", enabled: providersAvailable.rapidapi },
+                      { id: "scrapingbee" as const, label: "ScrapingBee", enabled: providersAvailable.scrapingbee },
+                    ] as const)
               ).map(({ id, label, enabled }) => (
                 <button
                   key={id}
@@ -400,6 +446,16 @@ export default function BatchFetchPanel({
                 </button>
               ))}
             </div>
+            {portal === "immobiliare" && provider === "rapidapi" && providersAvailable.rapidapi && (
+              <p className="mt-2 text-xs text-slate-500">
+                RapidAPI richiede abbonamento a &quot;Immobiliare.it Scraper&quot;. In alternativa usa RealtyAPI.
+              </p>
+            )}
+            {portal === "immobiliare" && !providersAvailable.realtyapi && !providersAvailable.rapidapi && (
+              <p className="mt-2 text-xs text-amber-400">
+                Configura REALTYAPI_KEY o RAPIDAPI_KEY in .env.local — oppure usa Diretto.
+              </p>
+            )}
           </div>
 
           <div>
@@ -509,7 +565,9 @@ export default function BatchFetchPanel({
           </div>
 
           <div>
-            <label className="mb-1 block text-xs text-slate-500">Pagine Idealista per operazione</label>
+            <label className="mb-1 block text-xs text-slate-500">
+              Pagine {portal === "immobiliare" ? "Immobiliare" : "Idealista"} per operazione
+            </label>
             <div className="flex flex-wrap items-center gap-3">
               <input
                 type="range"

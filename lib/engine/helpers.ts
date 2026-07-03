@@ -33,11 +33,21 @@ export function effectiveMaintenancePct(s: InvestmentScenario): number {
   return ITALY_DEFAULTS.maintenance_pct_short;
 }
 
+export function financedProjectTotal(s: InvestmentScenario): number {
+  return (
+    s.property.purchase_price +
+    s.renovation.renovation_cost +
+    s.renovation.furnishing_cost
+  );
+}
+
+export function equityDownPayment(s: InvestmentScenario): number {
+  return financedProjectTotal(s) * (s.financing.down_payment_pct / 100);
+}
+
 export function effectiveLoanAmount(s: InvestmentScenario): number {
   if (s.financing.loan_amount != null) return s.financing.loan_amount;
-  const down = s.property.purchase_price * (s.financing.down_payment_pct / 100);
-  const priceFinanced = Math.max(0, s.property.purchase_price - down);
-  return priceFinanced + s.renovation.renovation_cost + s.renovation.furnishing_cost;
+  return Math.max(0, financedProjectTotal(s) - equityDownPayment(s));
 }
 
 export function round2(n: number): number {

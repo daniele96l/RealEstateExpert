@@ -3,6 +3,7 @@ import {
   effectiveCadastralValue,
   effectiveLoanAmount,
   effectiveRegistrationTaxPct,
+  equityDownPayment,
   round2,
 } from "./helpers";
 
@@ -13,7 +14,7 @@ export function computePurchaseCosts(scenario: InvestmentScenario): PurchaseCost
   const vat = price * (scenario.property.vat_pct / 100);
   const notary = price * (scenario.property.notary_pct / 100);
   const agency = price * (scenario.property.agency_pct / 100);
-  const downPayment = price * (scenario.financing.down_payment_pct / 100);
+  const downPayment = equityDownPayment(scenario);
   const renovation = scenario.renovation.renovation_cost;
   const furnishing = scenario.renovation.furnishing_cost;
   const loanAmount = effectiveLoanAmount(scenario);

@@ -211,7 +211,7 @@ export default function ScenarioForm({ onChange, prefill, syncScenario, syncToke
                 <option value="prima_casa">Prima casa</option>
               </select>
             </Field>
-            <Field label="Anticipo (%)">
+            <Field label="Anticipo (%)" hint="Su prezzo + ristrutturazione + arredamento">
               <input type="number" step="1" className="input-field" {...register("down_payment_pct", { valueAsNumber: true })} />
             </Field>
             <Field label="Tasso mutuo TAN (%)">

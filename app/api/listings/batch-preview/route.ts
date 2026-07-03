@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
+import type { ListingSource } from "@/lib/listing-url";
 import { GeocodeError, geocodeCity } from "@/lib/server/geocode";
 import { IdealistaSearchError } from "@/lib/server/idealista-search";
+import {
+  buildImmobiliareSearchQuery,
+  fetchImmobiliareWithFallback,
+  ImmobiliareSearchError,
+} from "@/lib/server/immobiliare-listings-fetch";
 import { getCache, mergeListingCache, saveCache } from "@/lib/server/listings-cache";
 import {
   buildSearchQuery,
@@ -8,7 +14,9 @@ import {
   resolvePreferredProvider,
 } from "@/lib/server/listings-fetch";
 import { RapidApiIdealistaError } from "@/lib/server/rapidapi-idealista";
-import { hasRapidApiKey, hasScrapingBeeKey, getDefaultListingsProvider } from "@/lib/server/config";
+import { RapidApiImmobiliareError } from "@/lib/server/rapidapi-immobiliare";
+import { RealtyApiImmobiliareError } from "@/lib/server/realtyapi-immobiliare";
+import { hasRapidApiKey, hasScrapingBeeKey, hasRealtyApiKey, getDefaultListingsProvider } from "@/lib/server/config";
 import { ScrapingBeeError } from "@/lib/server/scrapingbee";
 import type { BatchPreviewResult, ListingsProvider } from "@/lib/types";
 import { ITALY_DEFAULTS } from "@/lib/constants";
@@ -23,6 +31,7 @@ export async function POST(request: Request) {
       operations?: ("sale" | "rent")[];
       refresh?: boolean;
       provider?: ListingsProvider;
+      portal?: ListingSource;
       maxPages?: number;
     };
 
@@ -38,7 +47,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ detail: "Seleziona almeno un'operazione" }, { status: 400 });
     }
 
-    const searchQuery = buildSearchQuery(body.city, body.zone);
+    const portal: ListingSource = body.portal === "immobiliare" ? "immobiliare" : "idealista";
+    const searchQuery =
+      portal === "immobiliare"
+        ? buildImmobiliareSearchQuery(body.city, body.zone)
+        : buildSearchQuery(body.city, body.zone);
     const preferred = resolvePreferredProvider(body.provider);
     const maxPages = Math.min(
       Math.max(body.maxPages ?? ITALY_DEFAULTS.batch_fetch_max_pages, 1),
@@ -72,7 +85,10 @@ export async function POST(request: Request) {
 
     const results = await Promise.all(
       operations.map(async (operation) => {
-        const { data, provider } = await fetchWithFallback(searchQuery, operation, preferred, maxPages);
+        const { data, provider } =
+          portal === "immobiliare"
+            ? await fetchImmobiliareWithFallback(searchQuery, operation, preferred, maxPages)
+            : await fetchWithFallback(searchQuery, operation, preferred, maxPages);
         return { operation, data: { ...data, provider }, provider };
       }),
     );
@@ -114,8 +130,11 @@ export async function POST(request: Request) {
     }
     if (
       err instanceof IdealistaSearchError ||
+      err instanceof ImmobiliareSearchError ||
       err instanceof ScrapingBeeError ||
-      err instanceof RapidApiIdealistaError
+      err instanceof RapidApiIdealistaError ||
+      err instanceof RapidApiImmobiliareError ||
+      err instanceof RealtyApiImmobiliareError
     ) {
       return NextResponse.json({ detail: err.message }, { status: 502 });
     }
@@ -133,7 +152,11 @@ export async function POST(request: Request) {
     ) {
       return NextResponse.json({ detail: err.message }, { status: 500 });
     }
-    return NextResponse.json({ detail: "Errore interno" }, { status: 500 });
+    console.error("[batch-preview]", err);
+    return NextResponse.json(
+      { detail: err instanceof Error ? err.message : "Errore interno" },
+      { status: 500 },
+    );
   }
 }
 
@@ -142,5 +165,6 @@ export async function GET() {
     default_provider: getDefaultListingsProvider(),
     scrapingbee: hasScrapingBeeKey(),
     rapidapi: hasRapidApiKey(),
+    realtyapi: hasRealtyApiKey(),
   });
 }

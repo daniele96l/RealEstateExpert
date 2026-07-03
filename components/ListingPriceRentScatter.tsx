@@ -12,6 +12,7 @@ import {
   ZAxis,
 } from "recharts";
 import type { ListingProfitPreview } from "@/lib/listing-profit-preview";
+import { listingConditionLabel } from "@/lib/property-condition";
 import {
   profitGradientColor,
   profitRangeFromValues,
@@ -111,11 +112,18 @@ function ScatterTooltip({
 }) {
   if (!active || !payload?.length) return null;
   const point = payload[0].payload;
+  const conditionLabel = listingConditionLabel(point.listing);
+  const needsRenovation = point.listing.needs_renovation === true;
   return (
     <div className="rounded-lg border border-surface-border bg-surface-raised px-3 py-2 text-xs shadow-lg">
       <p className="mb-1 max-w-[220px] font-medium text-slate-200 line-clamp-2">{point.title}</p>
       <p className="text-slate-400">Prezzo: {fmtEuro(point.price)}</p>
       <p className="text-slate-400">Affitto stim.: {fmtEuro(point.expectedRent)}/mese</p>
+      {conditionLabel && (
+        <p className={cn("text-slate-400", needsRenovation && "font-medium text-amber-400")}>
+          Stato: {conditionLabel}
+        </p>
+      )}
       <p
         className={cn(
           "mt-1 font-medium",

@@ -8,7 +8,7 @@ import {
 } from "@/lib/server/listing-condition-enrich";
 import { fetchWithFallback, resolvePreferredProvider } from "@/lib/server/listings-fetch";
 import { RapidApiIdealistaError } from "@/lib/server/rapidapi-idealista";
-import { hasRapidApiKey, hasScrapingBeeKey, getDefaultListingsProvider } from "@/lib/server/config";
+import { hasRapidApiKey, hasScrapingBeeKey, hasRealtyApiKey, getDefaultListingsProvider } from "@/lib/server/config";
 import { ScrapingBeeError } from "@/lib/server/scrapingbee";
 import type { ListingsProvider } from "@/lib/types";
 
@@ -35,6 +35,7 @@ export async function GET(request: Request) {
     default_provider: getDefaultListingsProvider(),
     scrapingbee: hasScrapingBeeKey(),
     rapidapi: hasRapidApiKey(),
+    realtyapi: hasRealtyApiKey(),
   });
 }
 

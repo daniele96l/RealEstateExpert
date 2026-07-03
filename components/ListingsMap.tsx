@@ -178,7 +178,11 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   const [city, setCity] = useState("Reggio Calabria");
   const [viewMode, setViewMode] = useState<ViewMode>("sale");
   const [provider, setProvider] = useState<ListingsProvider>("rapidapi");
-  const [providersAvailable, setProvidersAvailable] = useState({ scrapingbee: false, rapidapi: false });
+  const [providersAvailable, setProvidersAvailable] = useState({
+    scrapingbee: false,
+    rapidapi: false,
+    realtyapi: false,
+  });
   const [saleCache, setSaleCache] = useState<CityListingsCache | null>(null);
   const [rentCache, setRentCache] = useState<CityListingsCache | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -279,7 +283,11 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   useEffect(() => {
     getListingsProviders()
       .then((p) => {
-        setProvidersAvailable({ scrapingbee: p.scrapingbee, rapidapi: p.rapidapi });
+        setProvidersAvailable({
+          scrapingbee: p.scrapingbee,
+          rapidapi: p.rapidapi,
+          realtyapi: p.realtyapi,
+        });
         setProvider(p.default_provider);
       })
       .catch(() => {});
@@ -636,7 +644,15 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
             {mapData.center.display_name ?? city}
             {websiteSourceLabel ? ` · ${websiteSourceLabel}` : ""}
             {mapData.provider
-              ? ` · ${mapData.provider === "rapidapi" ? "RapidAPI" : "ScrapingBee"}`
+              ? ` · ${
+                  mapData.provider === "rapidapi"
+                    ? "RapidAPI"
+                    : mapData.provider === "realtyapi"
+                      ? "RealtyAPI"
+                      : mapData.provider === "direct"
+                        ? "Diretto"
+                        : "ScrapingBee"
+                }`
               : ""}
             {combinedData
               ? " · importazione batch"
