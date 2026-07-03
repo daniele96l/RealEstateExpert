@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   CartesianGrid,
   ResponsiveContainer,
@@ -46,9 +46,18 @@ const GRID = "#2a3544";
 const AXIS = "#64748b";
 
 function axisEuro(value: number): string {
+  if (!Number.isFinite(value) || value <= 0) return "0";
   if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
   if (value >= 1_000) return `${Math.round(value / 1_000)}k`;
   return String(Math.round(value));
+}
+
+function logAxisDomain(values: number[]): [number, number] | ["auto", "auto"] {
+  const positive = values.filter((v) => v > 0);
+  if (!positive.length) return ["auto", "auto"];
+  const min = Math.min(...positive);
+  const max = Math.max(...positive);
+  return [Math.max(min * 0.85, 1), max * 1.08];
 }
 
 function buildPoints(
@@ -146,6 +155,7 @@ export default function ListingPriceRentScatter({
   onHover,
   className,
 }: Props) {
+  const [logScale, setLogScale] = useState(false);
   const points = useMemo(
     () => buildPoints(listings, profitPreviews),
     [listings, profitPreviews],
@@ -154,6 +164,16 @@ export default function ListingPriceRentScatter({
   const profitRange = useMemo(
     () => profitRangeFromValues(points.map((p) => p.monthlyNetProfit)),
     [points],
+  );
+
+  const xDomain = useMemo(
+    () => (logScale ? logAxisDomain(points.map((p) => p.expectedRent)) : (["auto", "auto"] as const)),
+    [logScale, points],
+  );
+
+  const yDomain = useMemo(
+    () => (logScale ? logAxisDomain(points.map((p) => p.price)) : (["auto", "auto"] as const)),
+    [logScale, points],
   );
 
   if (!points.length) {
@@ -184,14 +204,29 @@ export default function ListingPriceRentScatter({
             mensile
           </p>
         </div>
-        <div className="flex items-center gap-1 text-[10px] text-slate-500">
-          <span
-            className="h-2 w-8 rounded-full"
-            style={{
-              background: "linear-gradient(90deg, rgb(248 113 113), rgb(251 191 36), rgb(52 211 153))",
-            }}
-          />
-          <span>peggiore → migliore</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setLogScale((v) => !v)}
+            className={cn(
+              "rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors",
+              logScale
+                ? "border-accent/50 bg-accent/15 text-accent"
+                : "border-surface-border text-slate-400 hover:bg-surface-raised hover:text-slate-200",
+            )}
+            aria-pressed={logScale}
+          >
+            Asse log
+          </button>
+          <div className="flex items-center gap-1 text-[10px] text-slate-500">
+            <span
+              className="h-2 w-8 rounded-full"
+              style={{
+                background: "linear-gradient(90deg, rgb(248 113 113), rgb(251 191 36), rgb(52 211 153))",
+              }}
+            />
+            <span>peggiore → migliore</span>
+          </div>
         </div>
       </div>
       <div className="h-[280px] min-h-[280px] w-full min-w-0">
@@ -202,11 +237,13 @@ export default function ListingPriceRentScatter({
               type="number"
               dataKey="expectedRent"
               name="Affitto stim."
-              domain={["auto", "auto"]}
+              scale={logScale ? "log" : "linear"}
+              domain={xDomain}
+              allowDataOverflow={logScale}
               tick={{ fill: AXIS, fontSize: 11 }}
               tickFormatter={axisEuro}
               label={{
-                value: "Affitto stimato (€/mese)",
+                value: logScale ? "Affitto stimato (€/mese, log)" : "Affitto stimato (€/mese)",
                 position: "insideBottom",
                 offset: -18,
                 fill: AXIS,
@@ -217,12 +254,14 @@ export default function ListingPriceRentScatter({
               type="number"
               dataKey="price"
               name="Prezzo"
-              domain={["auto", "auto"]}
+              scale={logScale ? "log" : "linear"}
+              domain={yDomain}
+              allowDataOverflow={logScale}
               tick={{ fill: AXIS, fontSize: 11 }}
               tickFormatter={axisEuro}
               width={48}
               label={{
-                value: "Prezzo (€)",
+                value: logScale ? "Prezzo (€, log)" : "Prezzo (€)",
                 angle: -90,
                 position: "insideLeft",
                 fill: AXIS,

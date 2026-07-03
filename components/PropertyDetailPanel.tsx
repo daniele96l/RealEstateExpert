@@ -29,8 +29,10 @@ import {
 import { formatListingsWebsiteSource, inferListingWebsiteSource } from "@/lib/listing-url";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { ITALY_DEFAULTS, RENOVATION_EUR_PER_SQM, listingRenovationCostRange } from "@/lib/constants";
+import { CZECH_DEFAULTS } from "@/lib/constants-cz";
+import { listingsUiLabels } from "@/lib/listings-ui-labels";
 import { monthlyMortgagePayment } from "@/lib/engine/mortgage";
-import { cn, fmtEuro } from "@/lib/utils";
+import { cn, fmtMoney } from "@/lib/utils";
 import {
   Bath,
   Building2,
@@ -197,11 +199,16 @@ export default function PropertyDetailPanel({
 
   if (!open || !mounted) return null;
 
+  const ui = listingsUiLabels(market);
+  const fmt = (n: number) => fmtMoney(n, market);
+  const marketDefaults = market === "cz" ? CZECH_DEFAULTS : ITALY_DEFAULTS;
+  const pricePerSqmLabel = market === "cz" ? "Kč/m²" : "€/m²";
+
   const priceLabel =
     detail?.operation === "rent"
-      ? `${fmtEuro(detail.price)}/mese`
+      ? `${fmt(detail.price)}${ui.perMonth}`
       : detail
-        ? fmtEuro(detail.price)
+        ? fmt(detail.price)
         : "";
 
   const showSimilarColumn = detail?.operation === "sale" && !loading && similarColumnOpen;
@@ -223,9 +230,9 @@ export default function PropertyDetailPanel({
   const quickMortgageMonthly =
     detail?.operation === "sale" && detail.price > 0
       ? monthlyMortgagePayment(
-          detail.price * (1 - ITALY_DEFAULTS.investment_down_payment_pct / 100),
-          ITALY_DEFAULTS.mortgage_rate_pct,
-          ITALY_DEFAULTS.default_loan_years,
+          detail.price * (1 - marketDefaults.investment_down_payment_pct / 100),
+          marketDefaults.mortgage_rate_pct,
+          marketDefaults.default_loan_years,
         )
       : null;
 
@@ -267,9 +274,11 @@ export default function PropertyDetailPanel({
                   <p className="mt-1 text-lg font-bold text-accent">{priceLabel}</p>
                   {quickMortgageMonthly != null && quickMortgageMonthly > 0 && (
                     <p className="mt-0.5 text-xs text-slate-400">
-                      Stima mutuo mensile su 30 anni con tassi al 3%:{" "}
+                      {market === "cz"
+                        ? `Odhad hypotéky na ${marketDefaults.default_loan_years} let při ${marketDefaults.mortgage_rate_pct}%: `
+                        : `Stima mutuo mensile su ${marketDefaults.default_loan_years} anni con tassi al ${marketDefaults.mortgage_rate_pct}%: `}
                       <span className="font-medium text-slate-300">
-                        {fmtEuro(quickMortgageMonthly)}/mese
+                        {fmt(quickMortgageMonthly)}{ui.perMonth}
                       </span>
                     </p>
                   )}
@@ -360,18 +369,18 @@ export default function PropertyDetailPanel({
                 <Spec
                   icon={Hammer}
                   label="Stima ristrutturazione"
-                  value={`${fmtEuro(estimatedRenovation.min)} – ${fmtEuro(estimatedRenovation.max)} (${RENOVATION_EUR_PER_SQM.min}–${RENOVATION_EUR_PER_SQM.max} €/m²)`}
+                  value={`${fmt(estimatedRenovation.min)} – ${fmt(estimatedRenovation.max)} (${RENOVATION_EUR_PER_SQM.min}–${RENOVATION_EUR_PER_SQM.max} ${pricePerSqmLabel})`}
                 />
               )}
               <Spec
                 icon={Thermometer}
-                label="€/m²"
-                value={detail.price_per_sqm != null ? fmtEuro(detail.price_per_sqm) : "—"}
+                label={pricePerSqmLabel}
+                value={detail.price_per_sqm != null ? fmt(detail.price_per_sqm) : "—"}
               />
               <Spec
                 icon={Building2}
                 label="Condominio"
-                value={detail.condominio_monthly != null ? `${fmtEuro(detail.condominio_monthly)}/mese` : "—"}
+                value={detail.condominio_monthly != null ? `${fmt(detail.condominio_monthly)}${ui.perMonth}` : "—"}
               />
             </div>
 
@@ -613,20 +622,16 @@ export default function PropertyDetailPanel({
                     {canUseSqmEstimate && (
                       <div className="mb-3 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2.5">
                         <p className="text-[10px] font-medium uppercase tracking-wide text-accent">
-                          Stima affitto (€/m²)
+                          {market === "cz" ? `Odhad nájmu (${pricePerSqmLabel})` : `Stima affitto (${pricePerSqmLabel})`}
                         </p>
                         <p className="mt-0.5 text-lg font-bold text-slate-100">
-                          {fmtEuro(avgWholeMonthly!)}
-                          <span className="text-sm font-normal text-slate-400">/mese</span>
+                          {fmt(avgWholeMonthly!)}
+                          <span className="text-sm font-normal text-slate-400">{ui.perMonth}</span>
                         </p>
                         <p className="mt-0.5 text-xs text-slate-500">
                           Su {similarRentals.length} affitti in zona ·{" "}
-                          {avgRentPerSqm!.toLocaleString("it-IT", {
-                            style: "currency",
-                            currency: "EUR",
-                            maximumFractionDigits: 1,
-                          })}
-                          /m² × {detail.sqm} m² = {fmtEuro(avgWholeMonthly!)}/mese
+                          {fmt(Math.round(avgRentPerSqm!))}
+                          {ui.perSqm} × {detail.sqm} m² = {fmt(avgWholeMonthly!)}{ui.perMonth}
                         </p>
                         <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
                           Media mensile €/m² sugli affitti comparabili con metratura nota, applicata ai m²
@@ -670,17 +675,17 @@ export default function PropertyDetailPanel({
                                 <p className="text-xs text-slate-500">
                                   {wholeFlat
                                     ? [
-                                        `${fmtEuro(wholeFlat.pricePerRoom)}/mese/stanza`,
+                                        `${fmt(wholeFlat.pricePerRoom)}${ui.perMonth}/stanza`,
                                         `${wholeFlat.roomCount} locali`,
-                                        `→ ${fmtEuro(wholeFlat.totalMonthly)}/mese intero stimato`,
+                                        `→ ${fmt(wholeFlat.totalMonthly)}${ui.perMonth} intero stimato`,
                                       ].join(" · ")
                                     : [
-                                        `${fmtEuro(rent.price)}/mese`,
+                                        `${fmt(rent.price)}${ui.perMonth}`,
                                         rent.sqm != null && `${rent.sqm} m²`,
                                         rent.rooms != null && `${rent.rooms} locali`,
                                         rent.sqm != null &&
                                           rent.sqm > 0 &&
-                                          `${fmtEuro(Math.round(rent.price / rent.sqm))}/m²`,
+                                          `${fmt(Math.round(rent.price / rent.sqm))}${ui.perSqm}`,
                                       ]
                                         .filter(Boolean)
                                         .join(" · ")}

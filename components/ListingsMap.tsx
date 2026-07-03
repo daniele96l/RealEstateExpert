@@ -63,7 +63,7 @@ import {
   sanitizeListingProfitSettings,
   type ListingProfitSettings,
 } from "@/lib/listing-profit-settings";
-import type { SimilarRentEstimateMethod } from "@/lib/rent-price-basis";
+import { conditionLabelForMarket, listingsUiLabels } from "@/lib/listings-ui-labels";
 import { Layers, Link2, MapPin } from "lucide-react";
 import type { CombinedListingsData } from "@/lib/types";
 
@@ -83,9 +83,26 @@ const ListingPriceRentScatter = dynamic(() => import("./ListingPriceRentScatter"
   ),
 });
 
-function formatPrice(price: number, operation: "sale" | "rent", market: MarketId) {
+function formatPrice(
+  price: number,
+  operation: "sale" | "rent",
+  market: MarketId,
+  perMonthSuffix?: string,
+) {
   const formatted = fmtMoney(price, market);
-  return operation === "rent" ? `${formatted}/mese` : formatted;
+  const suffix = perMonthSuffix ?? listingsUiLabels(market).perMonth;
+  return operation === "rent" ? `${formatted}${suffix}` : formatted;
+}
+
+function pricePerSqm(listing: MapListing): number | null {
+  if (listing.sqm == null || listing.sqm <= 0) return null;
+  return listing.price / listing.sqm;
+}
+
+function formatPricePerSqm(listing: MapListing, market: MarketId): string | null {
+  const pps = pricePerSqm(listing);
+  const suffix = listingsUiLabels(market).perSqm;
+  return pps != null ? `${fmtMoney(Math.round(pps), market)}${suffix}` : null;
 }
 
 function formatProfitAmount(value: number, market: MarketId): string {
@@ -559,16 +576,16 @@ export default function ListingsMap({
       }
     : null;
 
+  const ui = listingsUiLabels(market);
+
   return (
     <div className="card-glass overflow-x-hidden">
       <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
         <div className="mb-3 flex items-center gap-2">
           <MapPin size={18} className="text-accent" />
-          <h2 className="font-semibold text-slate-100">
-            {market === "cz" ? "Mappa annunci Sreality" : "Mappa annunci Idealista"}
-          </h2>
+          <h2 className="font-semibold text-slate-100">{ui.mapTitle}</h2>
         </div>
-        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">Cerca per città</p>
+        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">{ui.searchCity}</p>
         <div className="flex flex-wrap gap-2">
           <input
             type="text"
@@ -581,9 +598,9 @@ export default function ListingsMap({
           <div className="flex rounded-lg border border-surface-border overflow-hidden">
             {(
               [
-                { id: "sale" as const, label: "Vendita" },
-                { id: "rent" as const, label: "Affitto" },
-                { id: "both" as const, label: "Entrambi" },
+                { id: "sale" as const, label: ui.sale },
+                { id: "rent" as const, label: ui.rent },
+                { id: "both" as const, label: ui.both },
               ] as const
             ).map(({ id, label }) => (
               <button
@@ -718,7 +735,7 @@ export default function ListingsMap({
               />
             ) : (
               <div className="flex h-full items-center justify-center px-6 text-center text-sm text-slate-500">
-                Inserisci una città — gli annunci in cache si caricano automaticamente
+                {ui.loadCityHint}
               </div>
             )}
           </div>
@@ -726,9 +743,9 @@ export default function ListingsMap({
             {showProfitPreview && (
               <div className="flex shrink-0 items-center justify-between gap-2 border-b border-surface-border/60 bg-surface-raised/60 px-3 py-2">
                 <div className="min-w-0">
-                  <p className="text-[11px] font-medium text-slate-300">Utile netto stimato</p>
+                  <p className="text-[11px] font-medium text-slate-300">{ui.estNetProfit}</p>
                   <p className="truncate text-[10px] text-slate-500">
-                    {profitSettingsSummary(profitSettings)}
+                    {profitSettingsSummary(profitSettings, market)}
                   </p>
                 </div>
                 <div className="flex shrink-0 items-center gap-0.5">
@@ -744,18 +761,18 @@ export default function ListingsMap({
             <div className="min-h-0 flex-1 overflow-y-auto p-3">
             {mapBounds && visibleListings.length < profitFilteredListings.length && (
               <p className="mb-2 text-[11px] text-slate-500">
-                {visibleListings.length} in vista · {profitFilteredListings.length} totali
-                {profitFiltersActive ? " (filtri utile)" : ""}
+                {ui.inView(visibleListings.length, profitFilteredListings.length)}
+                {profitFiltersActive ? (market === "cz" ? " (filtry zisku)" : " (filtri utile)") : ""}
               </p>
             )}
             {!mapBounds && profitFiltersActive && profitFilteredListings.length < displayListings.length && (
               <p className="mb-2 text-[11px] text-accent/80">
-                Filtri utile: {profitFilteredListings.length} di {displayListings.length} annunci
+                {ui.profitFilters(profitFilteredListings.length, displayListings.length)}
               </p>
             )}
             {visibleListings.map((listing) => {
               const key = listingKey(listing);
-              const statoLabel = listingConditionLabel(listing);
+              const statoLabel = conditionLabelForMarket(listingConditionLabel(listing), market);
               const profit = listing.operation === "sale" ? profitPreviews.get(listing.id) : null;
               return (
               <button
@@ -786,7 +803,7 @@ export default function ListingsMap({
                           : "bg-blue-500/20 text-blue-400",
                       )}
                     >
-                      {listing.operation === "sale" ? "Vendita" : "Affitto"}
+                      {listing.operation === "sale" ? ui.sale : ui.rent}
                     </span>
                   )}
                 </div>
@@ -795,7 +812,8 @@ export default function ListingsMap({
                 <p className="mt-0.5 text-xs text-slate-500">
                   {[
                     listing.sqm != null && `${listing.sqm} m²`,
-                    listing.rooms != null && `${listing.rooms} locali`,
+                    formatPricePerSqm(listing, market),
+                    listing.rooms != null && ui.rooms(listing.rooms),
                   ]
                     .filter(Boolean)
                     .join(" · ")}
@@ -811,7 +829,7 @@ export default function ListingsMap({
                           : "text-slate-400",
                     )}
                   >
-                    Stato: {statoLabel}
+                    {ui.condition}: {statoLabel}
                   </p>
                 )}
                 {profit && (
@@ -819,21 +837,21 @@ export default function ListingsMap({
                     className="mt-1.5 text-xs font-semibold"
                     style={profitGradientTextStyle(profit.monthlyNetProfit, profitRange)}
                   >
-                    Utile netto: {formatProfitAmount(profit.monthlyNetProfit, market)}/mese
+                    {ui.netProfit}: {formatProfitAmount(profit.monthlyNetProfit, market)}{ui.perMonth}
                   </p>
                 )}
                 {profit && (
                   <p className="mt-0.5 text-[10px] leading-snug text-slate-500">
-                    {formatProfitAmount(profit.year1NetProfit, market)}/anno · affitto stim.{" "}
-                    {formatPrice(profit.estimatedMonthlyRent, "rent", market)}
+                    {formatProfitAmount(profit.year1NetProfit, market)}{ui.perYear} · {ui.estRent}{" "}
+                    {formatPrice(profit.estimatedMonthlyRent, "rent", market, ui.perMonth)}
                     {profitSettings.rentMethod === "per_sqm" &&
                       profit.avgRentPerSqm != null &&
-                      ` · ${profit.avgRentPerSqm.toFixed(1)} €/m²`}
+                      ` · ${fmtMoney(Math.round(profit.avgRentPerSqm), market)}${ui.perSqm}`}
                     {profitSettings.rentMethod === "per_room" &&
                       profit.avgRentPerRoom != null &&
-                      ` · ${Math.round(profit.avgRentPerRoom)} €/stanza`}
+                      ` · ${fmtMoney(Math.round(profit.avgRentPerRoom), market)}${ui.perRoom}`}
                     {" · "}
-                    {profit.neighborCount} affitti in zona
+                    {ui.rentsInArea(profit.neighborCount)}
                   </p>
                 )}
               </button>
@@ -842,8 +860,8 @@ export default function ListingsMap({
             {mapData && visibleListings.length === 0 && (
               <p className="text-sm text-slate-500">
                 {profitFilteredListings.length === 0
-                  ? "Nessun annuncio trovato"
-                  : "Nessun annuncio in questa area — sposta o zooma la mappa"}
+                  ? ui.noListings
+                  : ui.noListingsInArea}
               </p>
             )}
             </div>

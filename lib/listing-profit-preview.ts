@@ -102,9 +102,23 @@ export function computeListingProfitPreviews(
   return map;
 }
 
-export function profitSettingsSummary(settings: ListingProfitSettings): string {
+export function profitSettingsSummary(
+  settings: ListingProfitSettings,
+  market: MarketId = "it",
+): string {
   const s = sanitizeListingProfitSettings(settings);
-  const rentLabel = s.rentMethod === "per_sqm" ? "€/m²" : "€/stanza";
+  const rentLabel =
+    s.rentMethod === "per_sqm"
+      ? market === "cz"
+        ? "Kč/m²"
+        : "€/m²"
+      : market === "cz"
+        ? "Kč/pokoj"
+        : "€/stanza";
   const radiusKm = s.radiusM >= 1000 ? `${s.radiusM / 1000} km` : `${s.radiusM} m`;
-  return `${rentLabel} · ${radiusKm} · mutuo ${s.loanYears}y ${s.mortgageRatePct}%`;
+  const mortgage =
+    market === "cz"
+      ? `hypotéka ${s.loanYears} let ${s.mortgageRatePct}%`
+      : `mutuo ${s.loanYears}y ${s.mortgageRatePct}%`;
+  return `${rentLabel} · ${radiusKm} · ${mortgage}`;
 }
