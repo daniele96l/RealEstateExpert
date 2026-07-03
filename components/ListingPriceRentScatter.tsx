@@ -65,7 +65,7 @@ function axisCompact(value: number, symbol: string): string {
   return `${symbol}${Math.round(value)}`;
 }
 
-function logAxisDomain(values: number[]): [number, number] | ["auto", "auto"] {
+function logAxisDomain(values: number[]): [number, number] | string[] {
   const positive = values.filter((v) => v > 0);
   if (!positive.length) return ["auto", "auto"];
   const min = Math.min(...positive);
@@ -265,12 +265,12 @@ export default function ListingPriceRentScatter({
   const activeHoveredId = hoveredId ?? localHoveredId;
 
   const xDomain = useMemo(
-    () => (logScale ? logAxisDomain(points.map((p) => p.expectedRent)) : (["auto", "auto"] as const)),
+    () => (logScale ? logAxisDomain(points.map((p) => p.expectedRent)) : ["auto", "auto"]),
     [logScale, points],
   );
 
   const yDomain = useMemo(
-    () => (logScale ? logAxisDomain(points.map((p) => p.price)) : (["auto", "auto"] as const)),
+    () => (logScale ? logAxisDomain(points.map((p) => p.price)) : ["auto", "auto"]),
     [logScale, points],
   );
 

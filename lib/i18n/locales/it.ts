@@ -286,6 +286,7 @@ const it = {
     useMapFilters: "Usa filtri mappa attuali",
     applyMapBounds: "Solo annunci visibili in mappa",
     includeProfit: "Includi stima utile",
+    fetchAlways: "Le descrizioni vengono scaricate automaticamente per gli annunci non già in cache.",
     fetchMissing: "Scarica descrizioni mancanti (lento)",
     fetchWarning: "Può richiedere diversi minuti per molti annunci e usa crediti API.",
     customFilters: "Filtri personalizzati",

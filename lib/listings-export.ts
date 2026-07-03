@@ -147,6 +147,10 @@ async function readCachedDetail(id: string): Promise<ListingDetail | null> {
   return null;
 }
 
+function detailHasDescription(detail: ListingDetail): boolean {
+  return Boolean(detail.description?.trim());
+}
+
 function mapOnlyRecord(listing: MapListing, market: MarketId, profit: ListingProfitPreview | null): ListingExportRecord {
   return {
     ...listing,
@@ -246,15 +250,12 @@ export async function buildListingsExport(
   for (const listing of filtered) {
     const profit = profitById.get(listing.id) ?? null;
     const cached = await readCachedDetail(listing.id);
-    if (cached) {
+    if (cached && detailHasDescription(cached)) {
       stats.cached++;
       await persistDetailLocally(cached);
       records.push(detailRecord(listing, cached, "cached", ctx.market, profit));
-    } else if (options.fetchMissingDetails) {
-      pendingFetch.push(listing);
     } else {
-      stats.map_only++;
-      records.push(mapOnlyRecord(listing, ctx.market, profit));
+      pendingFetch.push(listing);
     }
   }
 
@@ -271,7 +272,7 @@ export async function buildListingsExport(
           const { detail, source } = await loadPropertyDetailCacheFirst(
             listing,
             ctx.provider,
-            false,
+            true,
           );
           await persistDetailLocally(detail);
           if (source === "network") stats.fetched++;

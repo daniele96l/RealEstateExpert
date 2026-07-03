@@ -7,6 +7,7 @@ import {
   hasScrapingBeeKey,
 } from "./config";
 import { fetchPropertyDetailsByUrl as fetchRapidDetail } from "./rapidapi-idealista";
+import { fetchPropertyDetailForSrealityListing, isSrealityListing } from "./sreality-detail";
 
 async function fetchDetail(
   url: string,
@@ -26,6 +27,10 @@ export async function fetchPropertyDetailForListing(
 ): Promise<ListingDetail> {
   const url = listing.url?.trim();
   if (!url) throw new Error("URL annuncio mancante");
+
+  if (isSrealityListing(listing)) {
+    return fetchPropertyDetailForSrealityListing(listing);
+  }
 
   const preferred = preferredProvider ?? getDefaultListingsProvider();
   const order: ListingsProvider[] =

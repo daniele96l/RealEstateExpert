@@ -33,7 +33,6 @@ export default function ListingsExportPanel({ market, context }: Props) {
   const [useMapFilters, setUseMapFilters] = useState(true);
   const [applyMapBounds, setApplyMapBounds] = useState(true);
   const [includeProfitPreview, setIncludeProfitPreview] = useState(true);
-  const [fetchMissingDetails, setFetchMissingDetails] = useState(false);
   const [customFilters, setCustomFilters] = useState<ListingsFilters>(() =>
     emptyListingsFilters(market),
   );
@@ -55,9 +54,9 @@ export default function ListingsExportPanel({ market, context }: Props) {
       filters: customFilters,
       applyMapBounds,
       includeProfitPreview,
-      fetchMissingDetails,
+      fetchMissingDetails: true,
     }),
-    [useMapFilters, customFilters, applyMapBounds, includeProfitPreview, fetchMissingDetails],
+    [useMapFilters, customFilters, applyMapBounds, includeProfitPreview],
   );
 
   const previewCount = useMemo(() => {
@@ -125,20 +124,9 @@ export default function ListingsExportPanel({ market, context }: Props) {
             />
             {t("export.includeProfit")}
           </label>
-          <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
-            <input
-              type="checkbox"
-              className="rounded border-surface-border"
-              checked={fetchMissingDetails}
-              onChange={(e) => setFetchMissingDetails(e.target.checked)}
-            />
-            {t("export.fetchMissing")}
-          </label>
         </div>
 
-        {fetchMissingDetails && (
-          <p className="text-xs text-amber-400/90">{t("export.fetchWarning")}</p>
-        )}
+        <p className="text-xs text-slate-500">{t("export.fetchAlways")}</p>
 
         {!useMapFilters && (
           <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 p-4">

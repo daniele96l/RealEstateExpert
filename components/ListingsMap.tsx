@@ -757,10 +757,10 @@ export default function ListingsMap({
         )}
       </div>
 
-      {!detailOpen && (
+      <div className={cn(detailOpen && "hidden")}>
         <>
         <div className="grid gap-0 lg:grid-cols-[1fr_280px]">
-          <div className="h-[400px] border-b border-surface-border/80 lg:border-b-0 lg:border-r">
+          <div className="h-[400px] overflow-hidden border-b border-surface-border/80 lg:border-b-0 lg:border-r">
             {mapData ? (
               <ListingsMapView
                 data={mapData}
@@ -924,7 +924,7 @@ export default function ListingsMap({
           </div>
         </div>
         </>
-      )}
+      </div>
 
       {showProfitPreview && (
         <ListingPriceRentScatter

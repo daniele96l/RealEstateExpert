@@ -21,7 +21,7 @@
       "address": "Krásného, Židenice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -38,7 +38,7 @@
       "address": "Hálkova, Husovice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -55,7 +55,7 @@
       "address": "Marie Majerové, Lesná, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },

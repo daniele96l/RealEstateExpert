@@ -284,6 +284,7 @@ const en: Translations = {
     useMapFilters: "Use current map filters",
     applyMapBounds: "Only listings visible on map",
     includeProfit: "Include profit estimate",
+    fetchAlways: "Descriptions are fetched automatically for listings not already in cache.",
     fetchMissing: "Fetch missing descriptions (slow)",
     fetchWarning: "May take several minutes for large batches and uses API credits.",
     customFilters: "Custom filters",

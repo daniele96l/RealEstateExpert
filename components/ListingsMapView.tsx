@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useCallback, useEffect, useMemo, useRef } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Circle, MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import L from "leaflet";
 import type { GeoBounds, GeoPoint, GeoPolygon } from "@/lib/geo-filter";
@@ -236,7 +236,15 @@ export default function ListingsMapView({
   onLoadSavedPolygon,
   onDeleteSavedPolygon,
 }: Props) {
+  const [mapReady, setMapReady] = useState(false);
+
+  useEffect(() => {
+    setMapReady(true);
+    return () => setMapReady(false);
+  }, []);
+
   const center: [number, number] = [data.center.lat, data.center.lng];
+  const mapKey = `${data.city}-${data.operation}-${data.center.lat}-${data.center.lng}`;
   const mappable = useMemo(() => {
     const listings = viewportListings ?? combinedListings ?? data.listings;
     return listings.filter((l) => l.lat !== 0 || l.lng !== 0);
@@ -257,8 +265,13 @@ export default function ListingsMapView({
   }, []);
 
   return (
-    <div className="relative h-full w-full">
-      <MapContainer center={center} zoom={12} className="h-full w-full rounded-lg" scrollWheelZoom>
+    <div className="relative h-full w-full overflow-hidden">
+      {!mapReady ? (
+        <div className="flex h-full items-center justify-center text-sm text-slate-500">
+          Caricamento mappa…
+        </div>
+      ) : (
+      <MapContainer key={mapKey} center={center} zoom={12} className="h-full w-full rounded-lg" scrollWheelZoom>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -303,7 +316,8 @@ export default function ListingsMapView({
           );
         })}
       </MapContainer>
-      {showLegend && (
+      )}
+      {mapReady && showLegend && (
         <div className="absolute bottom-3 left-3 z-[1000] rounded-lg border border-surface-border/80 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
           <span className="inline-flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500" />
@@ -316,17 +330,17 @@ export default function ListingsMapView({
           </span>
         </div>
       )}
-      {filterAreaCenter && filterAreaRadiusM != null && filterAreaRadiusM > 0 && (
+      {mapReady && filterAreaCenter && filterAreaRadiusM != null && filterAreaRadiusM > 0 && (
         <div className="absolute bottom-3 right-3 z-[1000] rounded-lg border border-accent/30 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
           Filtro zona · {formatDistance(filterAreaRadiusM)}
         </div>
       )}
-      {polygonDrawActive && isValidPolygon(polygonFilter) && (
+      {mapReady && polygonDrawActive && isValidPolygon(polygonFilter) && (
         <div className="absolute bottom-3 right-3 z-[1000] rounded-lg border border-accent/30 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
           Filtro poligono attivo
         </div>
       )}
-      {polygonDrawActive && onPolygonChange && (
+      {mapReady && polygonDrawActive && onPolygonChange && (
         <MapPolygonToolbar
           polygon={polygonFilter ?? null}
           savedPolygons={savedPolygons}

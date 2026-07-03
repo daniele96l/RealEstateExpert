@@ -7,7 +7,17 @@ import { syncListingConditionToCityCaches } from "@/lib/server/listing-condition
 import { listingToDetail } from "@/lib/server/property-detail";
 import { ScrapingBeeError } from "@/lib/server/scrapingbee";
 import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client";
+import { isSrealityListing, SrealityDetailError } from "@/lib/server/sreality-detail";
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
+
+function resolveListingCacheId(url: string, listing?: MapListing): string | undefined {
+  if (listing?.id?.trim()) return listing.id.trim();
+  const idealista = url.match(/\/immobile\/(\d+)/)?.[1];
+  if (idealista) return idealista;
+  const sreality = url.match(/sreality\.cz\/detail\/[\s\S]*?\/(\d+)\/?(?:\?|$)/i)?.[1];
+  if (sreality) return `sr_${sreality}`;
+  return undefined;
+}
 
 export const maxDuration = 120;
 
@@ -44,8 +54,27 @@ export async function POST(request: Request) {
       return NextResponse.json({ detail: "URL annuncio obbligatorio" }, { status: 400 });
     }
 
-    const idMatch = url.match(/\/immobile\/(\d+)/);
-    const id = body.listing?.id ?? idMatch?.[1];
+    const listingStub: MapListing =
+      body.listing ??
+      ({
+        id: resolveListingCacheId(url) ?? "",
+        url,
+        operation: "sale",
+        title: "",
+        price: 0,
+        lat: 0,
+        lng: 0,
+        sqm: null,
+        rooms: null,
+        address: null,
+        property_type: null,
+        property_type_label: null,
+        condition_status: null,
+        condition: null,
+        needs_renovation: null,
+      } satisfies MapListing);
+
+    const id = resolveListingCacheId(url, listingStub);
 
     if (id && !body.refresh) {
       const cached = await getPropertyDetailCache(id);
@@ -53,6 +82,13 @@ export async function POST(request: Request) {
         await syncListingConditionToCityCaches(cached);
         return NextResponse.json(cached);
       }
+    }
+
+    if (isSrealityListing(listingStub)) {
+      const detail = await fetchPropertyDetailForListing(listingStub, "sreality");
+      await savePropertyDetailCache(detail);
+      await syncListingConditionToCityCaches(detail);
+      return NextResponse.json(detail);
     }
 
     const preferred = body.provider ?? getDefaultListingsProvider();
@@ -70,28 +106,7 @@ export async function POST(request: Request) {
     let lastError: unknown;
     for (const provider of available) {
       try {
-        const detail = body.listing
-          ? await fetchPropertyDetailForListing(body.listing, provider)
-          : await fetchPropertyDetailForListing(
-              {
-                id: id ?? "",
-                url,
-                operation: "sale",
-                title: "",
-                price: 0,
-                lat: 0,
-                lng: 0,
-                sqm: null,
-                rooms: null,
-                address: null,
-                property_type: null,
-                property_type_label: null,
-                condition_status: null,
-                condition: null,
-                needs_renovation: null,
-              },
-              provider,
-            );
+        const detail = await fetchPropertyDetailForListing(listingStub, provider);
         await savePropertyDetailCache(detail);
         await syncListingConditionToCityCaches(detail);
         return NextResponse.json(detail);
@@ -101,13 +116,16 @@ export async function POST(request: Request) {
     }
 
     if (body.listing) {
-      const fallback = listingToDetail(body.listing);
+      const fallback = listingToDetail(listingStub);
       await savePropertyDetailCache(fallback);
       return NextResponse.json(fallback);
     }
 
     throw lastError;
   } catch (err) {
+    if (err instanceof SrealityDetailError) {
+      return NextResponse.json({ detail: err.message }, { status: 502 });
+    }
     if (err instanceof RapidApiIdealistaError) {
       return NextResponse.json({ detail: err.message }, { status: 502 });
     }
