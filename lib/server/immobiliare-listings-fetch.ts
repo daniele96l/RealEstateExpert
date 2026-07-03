@@ -1,4 +1,5 @@
 import type { CityListingsCache, ListingsProvider } from "@/lib/types";
+import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { hasRapidApiKey, hasRealtyApiKey } from "./config";
 import { ImmobiliareBrowserError } from "./immobiliare-browser";
 import { fetchImmobiliareCityListings, ImmobiliareSearchError } from "./immobiliare-search";
@@ -51,14 +52,15 @@ async function fetchViaProvider(
   city: string,
   operation: "sale" | "rent",
   maxPages: number,
+  onPage?: BatchFetchProgressCallback,
 ): Promise<CityListingsCache> {
   if (provider === "realtyapi") {
-    return fetchCityListingsViaRealtyApi(city, operation, maxPages);
+    return fetchCityListingsViaRealtyApi(city, operation, maxPages, onPage);
   }
   if (provider === "rapidapi") {
-    return fetchCityListingsViaRapidApi(city, operation, maxPages);
+    return fetchCityListingsViaRapidApi(city, operation, maxPages, onPage);
   }
-  return fetchImmobiliareCityListings(city, operation, { maxPages });
+  return fetchImmobiliareCityListings(city, operation, { maxPages, onPage });
 }
 
 export async function fetchImmobiliareWithFallback(
@@ -66,6 +68,7 @@ export async function fetchImmobiliareWithFallback(
   operation: "sale" | "rent",
   preferred: ListingsProvider,
   maxPages = 1,
+  onPage?: BatchFetchProgressCallback,
 ): Promise<{ data: CityListingsCache; provider: ListingsProvider }> {
   const order = immobiliareProviderOrder(preferred).filter(isImmobiliareProviderConfigured);
   if (!order.length) {
@@ -77,7 +80,7 @@ export async function fetchImmobiliareWithFallback(
   let lastError: unknown;
   for (const provider of order) {
     try {
-      const data = await fetchViaProvider(provider, city, operation, maxPages);
+      const data = await fetchViaProvider(provider, city, operation, maxPages, onPage);
       return { data: { ...data, provider }, provider };
     } catch (err) {
       lastError = normalizeImmobiliareFetchError(err);

@@ -8,6 +8,7 @@ import type { ListingDetail, MapListing } from "@/lib/types";
 import type { MarketId } from "@/lib/markets";
 import { formatListingsWebsiteSource, inferListingWebsiteSource } from "@/lib/listing-url";
 import { listingsUiLabels } from "@/lib/listings-ui-labels";
+import { useI18n } from "@/lib/i18n/context";
 import { czechRoomLayoutFromListing } from "@/lib/czech-room-layout";
 import { fmtMoney } from "@/lib/utils";
 import "leaflet/dist/leaflet.css";
@@ -38,9 +39,8 @@ function rentIcon(highlighted = false) {
   });
 }
 
-function formatRent(price: number, market: MarketId) {
-  const ui = listingsUiLabels(market);
-  return `${fmtMoney(price, market)}${ui.perMonth}`;
+function formatRent(price: number, market: MarketId, perMonthSuffix: string) {
+  return `${fmtMoney(price, market)}${perMonthSuffix}`;
 }
 
 function PopupListingLink({
@@ -109,7 +109,8 @@ export default function PropertySimilarRentMap({
   radiusM = 2_500,
   market = "it",
 }: Props) {
-  const ui = listingsUiLabels(market);
+  const { t } = useI18n();
+  const ui = listingsUiLabels(market, t);
   const saleCoords = hasCoords(saleProperty) ? ([saleProperty.lat, saleProperty.lng] as [number, number]) : null;
   const rentMarkers = useMemo(
     () => (similarRentals ?? []).filter(hasCoords),
@@ -216,7 +217,7 @@ export default function PropertySimilarRentMap({
                           .join(" · ")}
                       </p>
                     )}
-                    <p>{formatRent(rent.price, market)}</p>
+                    <p>{formatRent(rent.price, market, ui.perMonth)}</p>
                     {rent.sqm != null && rent.sqm > 0 && (
                       <p className="text-xs text-slate-500">
                         {fmtMoney(Math.round(rent.price / rent.sqm), market)}

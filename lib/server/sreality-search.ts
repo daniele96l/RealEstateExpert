@@ -1,5 +1,6 @@
 import type { CityListingsCache, MapListing } from "@/lib/types";
 import { getMarket, listingsCacheSlug, type MarketId } from "@/lib/markets";
+import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { geocodeCity } from "./geocode";
 
 export class SrealitySearchError extends Error {}
@@ -180,7 +181,7 @@ export async function fetchSrealityCityListings(
   city: string,
   operation: "sale" | "rent",
   market: MarketId = "cz",
-  opts?: { maxPages?: number },
+  opts?: { maxPages?: number; onPage?: BatchFetchProgressCallback },
 ): Promise<CityListingsCache> {
   const cfg = getMarket(market);
   if (cfg.srealityRegionId == null) {
@@ -205,6 +206,13 @@ export async function fetchSrealityCityListings(
       const listing = mapEstate(estate, operation);
       if (listing) byId.set(listing.id, listing);
     }
+
+    opts?.onPage?.({
+      operation,
+      page,
+      maxPages,
+      listingsTotal: byId.size,
+    });
 
     if (page >= maxPages) break;
   }

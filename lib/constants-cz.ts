@@ -30,6 +30,7 @@ export const CZECH_DEFAULTS = {
   listings_fetch_max_pages: 3,
   batch_fetch_max_pages: 5,
   batch_fetch_max_pages_cap: 15,
+  batch_fetch_all_pages_hard_cap: 100,
 } as const;
 
 export function estimateCzechMonthlyRent(purchasePrice: number): number {

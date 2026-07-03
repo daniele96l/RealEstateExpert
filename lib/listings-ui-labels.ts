@@ -1,3 +1,4 @@
+import type { TFunction } from "@/lib/i18n/context";
 import type { MarketId } from "./markets";
 
 export interface ListingsUiLabels {
@@ -23,54 +24,29 @@ export interface ListingsUiLabels {
   loadCityHint: string;
 }
 
-const IT: ListingsUiLabels = {
-  mapTitle: "Mappa annunci Idealista",
-  searchCity: "Cerca per città",
-  sale: "Vendita",
-  rent: "Affitto",
-  both: "Entrambi",
-  perMonth: "/mese",
-  perYear: "/anno",
-  perSqm: "/m²",
-  perRoom: "/stanza",
-  rooms: (n) => `${n} locali`,
-  netProfit: "Utile netto",
-  estNetProfit: "Utile netto stimato",
-  estRent: "affitto stim.",
-  rentsInArea: (n) => `${n} affitti in zona`,
-  condition: "Stato",
-  inView: (visible, total) => `${visible} in vista · ${total} totali`,
-  profitFilters: (filtered, total) => `Filtri utile: ${filtered} di ${total} annunci`,
-  noListings: "Nessun annuncio trovato",
-  noListingsInArea: "Nessun annuncio in questa area — sposta o zooma la mappa",
-  loadCityHint: "Inserisci una città — gli annunci in cache si caricano automaticamente",
-};
-
-const CZ: ListingsUiLabels = {
-  mapTitle: "Mapa inzerátů Sreality",
-  searchCity: "Hledat podle města",
-  sale: "Prodej",
-  rent: "Pronájem",
-  both: "Obojí",
-  perMonth: "/měs.",
-  perYear: "/rok",
-  perSqm: "/m²",
-  perRoom: "/pokoj",
-  rooms: (n) => `${n} pok.`,
-  netProfit: "Čistý zisk",
-  estNetProfit: "Odhad. čistý zisk",
-  estRent: "odh. nájem",
-  rentsInArea: (n) => `${n} pronájmů v okolí`,
-  condition: "Stav",
-  inView: (visible, total) => `${visible} v zobrazení · ${total} celkem`,
-  profitFilters: (filtered, total) => `Filtry zisku: ${filtered} z ${total} inzerátů`,
-  noListings: "Žádné inzeráty",
-  noListingsInArea: "V této oblasti žádné inzeráty — posuňte nebo přibližte mapu",
-  loadCityHint: "Zadejte město — inzeráty z cache se načtou automaticky",
-};
-
-export function listingsUiLabels(market: MarketId): ListingsUiLabels {
-  return market === "cz" ? CZ : IT;
+export function listingsUiLabels(market: MarketId, t: TFunction): ListingsUiLabels {
+  return {
+    mapTitle: market === "cz" ? t("listings.mapCz") : t("listings.mapIt"),
+    searchCity: t("listings.searchCity"),
+    sale: t("listings.sale"),
+    rent: t("listings.rent"),
+    both: t("listings.both"),
+    perMonth: t("listings.perMonth"),
+    perYear: t("listings.perYear"),
+    perSqm: t("listings.perSqm"),
+    perRoom: t("listings.perRoom"),
+    rooms: (n) => t("listings.rooms", { count: n }),
+    netProfit: t("listings.netProfit"),
+    estNetProfit: t("listings.estNetProfit"),
+    estRent: t("listings.estRent"),
+    rentsInArea: (n) => t("listings.rentsInArea", { count: n }),
+    condition: t("listings.condition"),
+    inView: (visible, total) => t("listings.inView", { visible, total }),
+    profitFilters: (filtered, total) => t("listings.profitFilters", { filtered, total }),
+    noListings: t("listings.noListings"),
+    noListingsInArea: t("listings.noListingsInArea"),
+    loadCityHint: t("listings.loadCityHint"),
+  };
 }
 
 const CONDITION_CZ: Record<string, string> = {

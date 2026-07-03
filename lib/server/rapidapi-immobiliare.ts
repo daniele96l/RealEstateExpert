@@ -4,6 +4,7 @@ import {
   normalizeImmobiliareListingUrl,
 } from "@/lib/listing-url";
 import type { CityListingsCache, MapListing } from "@/lib/types";
+import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { geocodeCity, normalizeCitySlug } from "./geocode";
 import {
   buildImmobiliareSearchUrl,
@@ -219,6 +220,7 @@ export async function fetchCityListingsViaRapidApi(
   city: string,
   operation: "sale" | "rent",
   maxPages = 1,
+  onPage?: BatchFetchProgressCallback,
 ): Promise<CityListingsCache> {
   if (!hasRapidApiKey()) {
     throw new RapidApiImmobiliareError("RAPIDAPI_KEY non configurata in .env.local");
@@ -262,6 +264,15 @@ export async function fetchCityListingsViaRapidApi(
     }
   }
 
+  if (byId.size && onPage) {
+    onPage({
+      operation,
+      page: Math.min(maxPages, 1),
+      maxPages,
+      listingsTotal: byId.size,
+    });
+  }
+
   if (!byId.size) {
     for (let page = 1; page <= maxPages; page++) {
       let batch: MapListing[];
@@ -273,6 +284,12 @@ export async function fetchCityListingsViaRapidApi(
       }
       if (!batch.length) break;
       for (const listing of batch) byId.set(listing.id, listing);
+      onPage?.({
+        operation,
+        page,
+        maxPages,
+        listingsTotal: byId.size,
+      });
       if (batch.length < 15) break;
     }
   }

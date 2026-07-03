@@ -9,6 +9,7 @@ import type {
   MarketPriceHistory,
 } from "./types";
 import type { ListingsExportBundle } from "./listings-export";
+import type { BatchFetchProgressState, BatchFetchStreamEvent } from "./batch-fetch-progress";
 
 import type { MarketId } from "./markets";
 
@@ -153,6 +154,89 @@ export async function batchPreviewListings(
   });
   if (!res.ok) throw new Error(await parseError(res, "Anteprima batch non riuscita"));
   return res.json();
+}
+
+export async function batchPreviewListingsStream(
+  city: string,
+  operations: ("sale" | "rent")[],
+  opts: {
+    zone?: string;
+    refresh?: boolean;
+    provider?: ListingsProvider;
+    portal?: "idealista" | "immobiliare" | "sreality";
+    maxPages?: number;
+    market?: MarketId;
+    onProgress?: (progress: BatchFetchProgressState) => void;
+  },
+): Promise<BatchPreviewResult> {
+  const res = await fetch("/api/listings/batch-preview", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      city,
+      zone: opts.zone,
+      operations,
+      refresh: opts.refresh ?? true,
+      provider: opts.provider,
+      portal: opts.portal,
+      maxPages: opts.maxPages,
+      market: opts.market ?? "it",
+      stream: true,
+    }),
+  });
+
+  if (!res.ok) throw new Error(await parseError(res, "Anteprima batch non riuscita"));
+  if (!res.body) throw new Error("Risposta streaming non disponibile");
+
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let result: BatchPreviewResult | null = null;
+  let lastTotal = 0;
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+    buffer = lines.pop() ?? "";
+
+    for (const line of lines) {
+      if (!line.trim()) continue;
+      const event = JSON.parse(line) as BatchFetchStreamEvent;
+      if (event.type === "progress") {
+        lastTotal = event.total;
+        opts.onProgress?.({
+          current: event.current,
+          total: event.total,
+          operation: event.operation,
+          page: event.page,
+          maxPages: event.maxPages,
+          listingsTotal: event.listingsTotal,
+          label: event.label,
+        });
+      } else if (event.type === "done") {
+        result = event.result;
+        if (lastTotal > 0) {
+          opts.onProgress?.({
+            current: lastTotal,
+            total: lastTotal,
+            operation: null,
+            page: 0,
+            maxPages: 0,
+            listingsTotal:
+              (event.result.sale?.listings.length ?? 0) + (event.result.rent?.listings.length ?? 0),
+            label: "",
+          });
+        }
+      } else if (event.type === "error") {
+        throw new Error(event.message);
+      }
+    }
+  }
+
+  if (!result) throw new Error("Anteprima batch incompleta");
+  return result;
 }
 
 export async function batchSaveListings(payload: {

@@ -83,19 +83,15 @@ export default function ListingsExportPanel({ market, context }: Props) {
   }, [context, exportOptions, previewCount, exporting]);
 
   const salePresets = salePricePresetsForMarket(market);
-  const title = market === "cz" ? "Export prodejních inzerátů" : t("export.title");
-  const subtitle = market === "cz"
-    ? "Stáhněte filtrované nabídky prodeje jako JSON s cenou, plochou, popisem a všemi dostupnými poli."
-    : t("export.subtitle");
 
   return (
     <section className="card-glass overflow-hidden">
       <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
         <div className="flex items-center gap-2">
           <Download size={18} className="text-accent" />
-          <h2 className="font-semibold text-slate-100">{title}</h2>
+          <h2 className="font-semibold text-slate-100">{t("export.title")}</h2>
         </div>
-        <p className="mt-1 text-xs text-slate-500">{subtitle}</p>
+        <p className="mt-1 text-xs text-slate-500">{t("export.subtitle")}</p>
       </div>
 
       <div className="space-y-4 p-5">
@@ -107,7 +103,7 @@ export default function ListingsExportPanel({ market, context }: Props) {
               checked={useMapFilters}
               onChange={(e) => setUseMapFilters(e.target.checked)}
             />
-            {market === "cz" ? "Použít filtry z mapy" : t("export.useMapFilters")}
+            {t("export.useMapFilters")}
           </label>
           {useMapFilters && (
             <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
@@ -117,7 +113,7 @@ export default function ListingsExportPanel({ market, context }: Props) {
                 checked={applyMapBounds}
                 onChange={(e) => setApplyMapBounds(e.target.checked)}
               />
-              {market === "cz" ? "Jen viditelné na mapě" : t("export.applyMapBounds")}
+              {t("export.applyMapBounds")}
             </label>
           )}
           <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
@@ -127,7 +123,7 @@ export default function ListingsExportPanel({ market, context }: Props) {
               checked={includeProfitPreview}
               onChange={(e) => setIncludeProfitPreview(e.target.checked)}
             />
-            {market === "cz" ? "Včetně odhadu zisku" : t("export.includeProfit")}
+            {t("export.includeProfit")}
           </label>
           <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
             <input
@@ -136,22 +132,18 @@ export default function ListingsExportPanel({ market, context }: Props) {
               checked={fetchMissingDetails}
               onChange={(e) => setFetchMissingDetails(e.target.checked)}
             />
-            {market === "cz" ? "Stáhnout chybějící popisy" : t("export.fetchMissing")}
+            {t("export.fetchMissing")}
           </label>
         </div>
 
         {fetchMissingDetails && (
-          <p className="text-xs text-amber-400/90">
-            {market === "cz"
-              ? "U větších dávek to může trvat několik minut a spotřebuje API kredity."
-              : t("export.fetchWarning")}
-          </p>
+          <p className="text-xs text-amber-400/90">{t("export.fetchWarning")}</p>
         )}
 
         {!useMapFilters && (
           <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 p-4">
             <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">
-              {market === "cz" ? "Vlastní filtry" : t("export.customFilters")}
+              {t("export.customFilters")}
             </p>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               <label className="block text-xs text-slate-400">
@@ -236,7 +228,7 @@ export default function ListingsExportPanel({ market, context }: Props) {
               </label>
               {market === "cz" && (
                 <label className="block text-xs text-slate-400 sm:col-span-2">
-                  Dispozice
+                  {t("export.roomLayout")}
                   <select
                     className="select-field mt-1 w-full"
                     value={customFilters.roomLayout ?? ""}
@@ -262,22 +254,16 @@ export default function ListingsExportPanel({ market, context }: Props) {
 
         <p className="text-sm text-slate-400">
           {!context?.hasData
-            ? market === "cz"
-              ? "Nejdřív načtěte prodejní inzeráty na mapě."
-              : t("export.noData")
+            ? t("export.noData")
             : previewCount === 0
-              ? market === "cz"
-                ? "Žádné inzeráty neodpovídají filtrům."
-                : t("export.noneMatch")
-              : market === "cz"
-                ? `Připraveno exportovat ${previewCount} prodejních inzerátů z ${context.city}`
-                : t("export.ready", { count: previewCount, city: context.city })}
+              ? t("export.noneMatch")
+              : t("export.ready", { count: previewCount, city: context.city })}
         </p>
 
         {exporting && progress && (
           <p className="flex items-center gap-2 text-sm text-accent">
             <Loader2 size={16} className="animate-spin" />
-            {market === "cz" ? "Exportuji…" : t("export.exporting")}{" "}
+            {t("export.exporting")}{" "}
             {progress.total > 0 && (
               <span className="text-slate-500">
                 ({t("export.progress", { current: progress.current, total: progress.total })})
@@ -289,12 +275,8 @@ export default function ListingsExportPanel({ market, context }: Props) {
         {lastResult && !exporting && (
           <p className={cn("text-sm", lastResult.errors > 0 ? "text-amber-400" : "text-emerald-400")}>
             {lastResult.errors === -1
-              ? market === "cz"
-                ? "Export se nezdařil."
-                : "Export failed."
-              : market === "cz"
-                ? `Exportováno ${lastResult.count} inzerátů${lastResult.errors > 0 ? ` · ${lastResult.errors} se nepodařilo načíst` : ""}${lastResult.savedPath ? ` · uloženo ${lastResult.savedPath}` : ""}`
-                : `${t("export.done", { count: lastResult.count })}${lastResult.errors > 0 ? ` · ${t("export.errors", { count: lastResult.errors })}` : ""}${lastResult.savedPath ? ` · ${t("export.savedLocal", { path: lastResult.savedPath })}` : ""}`}
+              ? t("export.failed")
+              : `${t("export.done", { count: lastResult.count })}${lastResult.errors > 0 ? ` · ${t("export.errors", { count: lastResult.errors })}` : ""}${lastResult.savedPath ? ` · ${t("export.savedLocal", { path: lastResult.savedPath })}` : ""}`}
           </p>
         )}
 
@@ -313,7 +295,7 @@ export default function ListingsExportPanel({ market, context }: Props) {
           ) : (
             <Download size={22} />
           )}
-          {market === "cz" ? "Exportovat JSON" : t("export.button")}
+          {t("export.button")}
         </button>
       </div>
     </section>

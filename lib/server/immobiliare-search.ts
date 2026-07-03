@@ -1,4 +1,5 @@
 import type { CityListingsCache, MapListing } from "@/lib/types";
+import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { geocodeCity, normalizeCitySlug, citySlugVariants } from "./geocode";
 import { withImmobiliareBrowser } from "./immobiliare-browser";
 import { extractNextData, mapRealEstateToDetail } from "./immobiliare-scraper";
@@ -217,7 +218,7 @@ async function fetchSearchPage(
 export async function fetchImmobiliareCityListings(
   city: string,
   operation: Operation,
-  opts?: { maxPages?: number },
+  opts?: { maxPages?: number; onPage?: BatchFetchProgressCallback },
 ): Promise<CityListingsCache> {
   const maxPages = opts?.maxPages ?? 50;
   const location = await resolveImmobiliareLocation(city);
@@ -232,6 +233,12 @@ export async function fetchImmobiliareCityListings(
       const result = await fetchSearchPage(fetchHtml, fetchJson, location, operation, page);
       all.push(...result.listings);
       totalPages = result.maxPages;
+      opts?.onPage?.({
+        operation,
+        page,
+        maxPages,
+        listingsTotal: all.length,
+      });
       if (result.listings.length === 0) break;
       page += 1;
       await new Promise((r) => setTimeout(r, 800));

@@ -1,5 +1,6 @@
 import { fetchCityListings, IdealistaSearchError } from "@/lib/server/idealista-search";
 import { hasRapidApiKey, hasScrapingBeeKey, getDefaultListingsProvider } from "@/lib/server/config";
+import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import type { CityListingsCache, ListingsProvider } from "@/lib/types";
 
 export function buildSearchQuery(city: string, zone?: string | null): string {
@@ -14,6 +15,7 @@ export async function fetchWithFallback(
   operation: "sale" | "rent",
   preferred: ListingsProvider,
   maxPages = 1,
+  onPage?: BatchFetchProgressCallback,
 ): Promise<{ data: CityListingsCache; provider: ListingsProvider }> {
   const order: ListingsProvider[] =
     preferred === "rapidapi" ? ["rapidapi", "scrapingbee"] : ["scrapingbee", "rapidapi"];
@@ -26,7 +28,7 @@ export async function fetchWithFallback(
   let lastError: unknown;
   for (const provider of available) {
     try {
-      const data = await fetchCityListings(city, operation, provider, maxPages);
+      const data = await fetchCityListings(city, operation, provider, maxPages, onPage);
       return { data, provider };
     } catch (err) {
       lastError = err;

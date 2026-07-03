@@ -19,7 +19,8 @@ import {
   type ProfitGradientRange,
 } from "@/lib/profit-gradient";
 import type { MapListing } from "@/lib/types";
-import { listingsUiLabels, conditionLabelForMarket } from "@/lib/listings-ui-labels";
+import { listingsUiLabels, conditionLabelForMarket, type ListingsUiLabels } from "@/lib/listings-ui-labels";
+import { useI18n } from "@/lib/i18n/context";
 import type { MarketId } from "@/lib/markets";
 import { getMarket } from "@/lib/markets";
 import { cn, fmtMoney } from "@/lib/utils";
@@ -119,14 +120,15 @@ function ScatterTooltip({
   active,
   payload,
   market = "it",
+  ui,
 }: {
   active?: boolean;
   payload?: Array<{ payload: PriceRentScatterPoint }>;
   market?: MarketId;
+  ui: ListingsUiLabels;
 }) {
   if (!active || !payload?.length) return null;
   const point = payload[0].payload;
-  const ui = listingsUiLabels(market);
   const fmt = (n: number) => fmtMoney(n, market);
   const conditionLabel = conditionLabelForMarket(listingConditionLabel(point.listing), market);
   const needsRenovation = point.listing.needs_renovation === true;
@@ -167,8 +169,9 @@ export default function ListingPriceRentScatter({
   onHover,
   className,
 }: Props) {
+  const { t } = useI18n();
   const [logScale, setLogScale] = useState(true);
-  const ui = listingsUiLabels(market);
+  const ui = listingsUiLabels(market, t);
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
   const rentAxisLabel = market === "cz" ? "Odhad nájmu" : "Affitto stimato";
   const priceAxisLabel = market === "cz" ? "Cena" : "Prezzo";
@@ -289,7 +292,7 @@ export default function ListingPriceRentScatter({
             />
             <ZAxis range={[64, 64]} />
             <Tooltip
-              content={<ScatterTooltip market={market} />}
+              content={<ScatterTooltip market={market} ui={ui} />}
               cursor={{ strokeDasharray: "3 3", stroke: AXIS }}
             />
             <Scatter

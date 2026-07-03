@@ -1,6 +1,7 @@
 import * as cheerio from "cheerio";
 import type { CityListingsCache, ListingsProvider, MapListing } from "@/lib/types";
 import { resolveListingCondition } from "@/lib/renovation-status";
+import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { citySlugVariants, geocodeCity, normalizeCitySlug } from "./geocode";
 import { fetchCityListingsViaRapidApi } from "./rapidapi-idealista";
 import { fetchUrl } from "./scrapingbee";
@@ -204,17 +205,19 @@ export async function fetchCityListings(
   operation: "sale" | "rent",
   provider: ListingsProvider = "scrapingbee",
   maxPages = 1,
+  onPage?: BatchFetchProgressCallback,
 ): Promise<CityListingsCache> {
   if (provider === "rapidapi") {
-    return fetchCityListingsViaRapidApi(city, operation, maxPages);
+    return fetchCityListingsViaRapidApi(city, operation, maxPages, onPage);
   }
-  return fetchCityListingsViaScrapingBee(city, operation, maxPages);
+  return fetchCityListingsViaScrapingBee(city, operation, maxPages, onPage);
 }
 
 async function fetchCityListingsViaScrapingBee(
   city: string,
   operation: "sale" | "rent",
   maxPages = 1,
+  onPage?: BatchFetchProgressCallback,
 ): Promise<CityListingsCache> {
   const centerData = await geocodeCity(city);
   let listings: MapListing[] = [];
@@ -241,6 +244,12 @@ async function fetchCityListingsViaScrapingBee(
         }
       }
       if (listings.length === beforeCount) break;
+      onPage?.({
+        operation,
+        page,
+        maxPages,
+        listingsTotal: listings.length,
+      });
     }
     if (listings.length) break;
   }

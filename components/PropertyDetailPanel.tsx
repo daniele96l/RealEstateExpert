@@ -34,7 +34,8 @@ import { formatListingsWebsiteSource, inferListingWebsiteSource } from "@/lib/li
 import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
 import { ITALY_DEFAULTS, RENOVATION_EUR_PER_SQM, listingRenovationCostRange } from "@/lib/constants";
 import { CZECH_DEFAULTS } from "@/lib/constants-cz";
-import { listingsUiLabels } from "@/lib/listings-ui-labels";
+import { listingsUiLabels, type ListingsUiLabels } from "@/lib/listings-ui-labels";
+import { useI18n } from "@/lib/i18n/context";
 import { monthlyMortgagePayment } from "@/lib/engine/mortgage";
 import { cn, fmtMoney } from "@/lib/utils";
 import {
@@ -121,6 +122,7 @@ export default function PropertyDetailPanel({
   onOpenSimilarRent,
   onUseAverageRent,
 }: Props) {
+  const { t } = useI18n();
   const [mounted, setMounted] = useState(false);
   const [descriptionExpanded, setDescriptionExpanded] = useState(false);
   const [similarLoading, setSimilarLoading] = useState(false);
@@ -216,7 +218,7 @@ export default function PropertyDetailPanel({
 
   if (!open || !mounted) return null;
 
-  const ui = listingsUiLabels(market);
+  const ui = listingsUiLabels(market, t);
   const fmt = (n: number) => fmtMoney(n, market);
   const marketDefaults = market === "cz" ? CZECH_DEFAULTS : ITALY_DEFAULTS;
   const pricePerSqmLabel = market === "cz" ? "Kč/m²" : "€/m²";

@@ -1,5 +1,6 @@
 import { immobiliareListingCacheId } from "@/lib/listing-url";
 import type { CityListingsCache, MapListing } from "@/lib/types";
+import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { getRealtyApiKey, hasRealtyApiKey } from "./config";
 import { geocodeCity, normalizeCitySlug } from "./geocode";
 
@@ -112,6 +113,7 @@ export async function fetchCityListingsViaRealtyApi(
   city: string,
   operation: "sale" | "rent",
   maxPages = 1,
+  onPage?: BatchFetchProgressCallback,
 ): Promise<CityListingsCache> {
   if (!hasRealtyApiKey()) {
     throw new RealtyApiImmobiliareError("REALTYAPI_KEY non configurata in .env.local");
@@ -134,6 +136,13 @@ export async function fetchCityListingsViaRealtyApi(
       .filter((listing): listing is MapListing => listing != null);
 
     for (const listing of batch) byId.set(listing.id, listing);
+
+    onPage?.({
+      operation,
+      page,
+      maxPages,
+      listingsTotal: byId.size,
+    });
 
     if (!batch.length || !data.nextPage) break;
   }

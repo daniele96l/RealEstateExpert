@@ -1,6 +1,7 @@
 import type { CityListingsCache, ListingDetail, MapListing } from "@/lib/types";
 import { propertyTypeLabel } from "@/lib/listing-types";
 import { resolveListingCondition } from "@/lib/renovation-status";
+import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { parseRapidPropertyPayload } from "./property-detail";
 import { getRapidApiKey } from "./config";
 import { geocodeCity, locationMatchesCity, normalizeCitySlug } from "./geocode";
@@ -234,6 +235,7 @@ export async function fetchCityListingsViaRapidApi(
   city: string,
   operation: "sale" | "rent",
   maxPages = 1,
+  onPage?: BatchFetchProgressCallback,
 ): Promise<CityListingsCache> {
   const [centerData, searchUrl] = await Promise.all([
     geocodeCity(city),
@@ -259,6 +261,13 @@ export async function fetchCityListingsViaRapidApi(
     if (!batch.length) break;
 
     for (const listing of batch) byId.set(listing.id, listing);
+
+    onPage?.({
+      operation,
+      page,
+      maxPages,
+      listingsTotal: byId.size,
+    });
 
     if (data.totalPages != null && page >= data.totalPages) break;
   }

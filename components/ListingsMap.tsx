@@ -68,6 +68,7 @@ import {
   type ListingProfitSettings,
 } from "@/lib/listing-profit-settings";
 import { conditionLabelForMarket, listingsUiLabels } from "@/lib/listings-ui-labels";
+import { useI18n } from "@/lib/i18n/context";
 import { czechRoomLayoutFromListing } from "@/lib/czech-room-layout";
 import { Layers, Link2, MapPin } from "lucide-react";
 import type { CombinedListingsData } from "@/lib/types";
@@ -92,11 +93,10 @@ function formatPrice(
   price: number,
   operation: "sale" | "rent",
   market: MarketId,
-  perMonthSuffix?: string,
+  perMonthSuffix: string,
 ) {
   const formatted = fmtMoney(price, market);
-  const suffix = perMonthSuffix ?? listingsUiLabels(market).perMonth;
-  return operation === "rent" ? `${formatted}${suffix}` : formatted;
+  return operation === "rent" ? `${formatted}${perMonthSuffix}` : formatted;
 }
 
 function pricePerSqm(listing: MapListing): number | null {
@@ -104,10 +104,9 @@ function pricePerSqm(listing: MapListing): number | null {
   return listing.price / listing.sqm;
 }
 
-function formatPricePerSqm(listing: MapListing, market: MarketId): string | null {
+function formatPricePerSqm(listing: MapListing, market: MarketId, perSqmSuffix: string): string | null {
   const pps = pricePerSqm(listing);
-  const suffix = listingsUiLabels(market).perSqm;
-  return pps != null ? `${fmtMoney(Math.round(pps), market)}${suffix}` : null;
+  return pps != null ? `${fmtMoney(Math.round(pps), market)}${perSqmSuffix}` : null;
 }
 
 function formatProfitAmount(value: number, market: MarketId): string {
@@ -205,6 +204,7 @@ export default function ListingsMap({
   onCityChange,
   onExportContextChange,
 }: Props) {
+  const { t } = useI18n();
   const [city, setCity] = useState(defaultCity);
   const [viewMode, setViewMode] = useState<ViewMode>("sale");
   const [provider, setProvider] = useState<ListingsProvider>("rapidapi");
@@ -587,7 +587,7 @@ export default function ListingsMap({
       }
     : null;
 
-  const ui = listingsUiLabels(market);
+  const ui = listingsUiLabels(market, t);
 
   useEffect(() => {
     if (!onExportContextChange) return;
@@ -643,7 +643,7 @@ export default function ListingsMap({
           <input
             type="text"
             className="input-field min-w-[140px] flex-1"
-            placeholder={market === "cz" ? "Brno" : "Città (es. Reggio Calabria)"}
+            placeholder={market === "cz" ? t("listings.cityPlaceholderCz") : t("listings.cityPlaceholderIt")}
             value={city}
             onChange={(e) => setCity(e.target.value)}
             readOnly={market === "cz"}
@@ -676,7 +676,7 @@ export default function ListingsMap({
             className="flex items-center gap-1 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2 text-sm text-accent hover:bg-accent/20"
           >
             <Layers size={14} />
-            Importazione batch
+            {t("listings.batchImport")}
           </button>
         </div>
         {market === "it" && (
@@ -861,11 +861,11 @@ export default function ListingsMap({
                   )}
                 </div>
                 <p className="font-medium text-slate-200 line-clamp-2">{listing.title}</p>
-                <p className="mt-1 text-accent">{formatPrice(listing.price, listing.operation, market)}</p>
+                <p className="mt-1 text-accent">{formatPrice(listing.price, listing.operation, market, ui.perMonth)}</p>
                 <p className="mt-0.5 text-xs text-slate-500">
                   {[
                     listing.sqm != null && `${listing.sqm} m²`,
-                    formatPricePerSqm(listing, market),
+                    formatPricePerSqm(listing, market, ui.perSqm),
                     listing.rooms != null &&
                       (market === "cz"
                         ? (czechRoomLayoutFromListing(listing) ?? ui.rooms(listing.rooms))

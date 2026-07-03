@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
-import { batchPreviewListings, batchSaveListings, geocodeCityQuery } from "@/lib/api";
+import { batchPreviewListingsStream, batchSaveListings, geocodeCityQuery } from "@/lib/api";
 import {
   AREA_PRESETS,
   filterListingsByBounds,
@@ -15,8 +15,15 @@ import {
 import type { BatchPreviewResult, CombinedListingsData, ListingsProvider, MapListing, MapCenter } from "@/lib/types";
 import type { ListingSource } from "@/lib/listing-url";
 import { writeLocalListingsCache } from "@/lib/listings-cache-client";
-import { ITALY_DEFAULTS } from "@/lib/constants";
-import { CZECH_DEFAULTS } from "@/lib/constants-cz";
+import {
+  BATCH_FETCH_ALL_PAGES,
+  batchFetchPageDefault,
+  batchFetchPageCap,
+  batchFetchPagePresets,
+  formatBatchFetchPagesLabel,
+  isBatchFetchAllPages,
+} from "@/lib/batch-fetch-pages";
+import { batchFetchProgressPercent, type BatchFetchProgressState } from "@/lib/batch-fetch-progress";
 import type { MarketId } from "@/lib/markets";
 import { cn } from "@/lib/utils";
 import { CheckSquare, Loader2, MapPin, Square, X } from "lucide-react";
@@ -99,13 +106,16 @@ export default function BatchFetchPanel({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fetchStatus, setFetchStatus] = useState<string | null>(null);
+  const [fetchProgress, setFetchProgress] = useState<BatchFetchProgressState | null>(null);
   const [areaCenter, setAreaCenter] = useState<MapCenter | null>(null);
   const [geocoding, setGeocoding] = useState(false);
-  const [maxPages, setMaxPages] = useState<number>(
-    market === "cz" ? CZECH_DEFAULTS.batch_fetch_max_pages : ITALY_DEFAULTS.batch_fetch_max_pages,
-  );
-  const maxPagesCap =
-    market === "cz" ? CZECH_DEFAULTS.batch_fetch_max_pages_cap : ITALY_DEFAULTS.batch_fetch_max_pages_cap;
+  const [maxPages, setMaxPages] = useState<number>(() => batchFetchPageDefault(market));
+  const maxPagesCap = batchFetchPageCap(market);
+  const pagePresets = useMemo(() => batchFetchPagePresets(market), [market]);
+
+  useEffect(() => {
+    setMaxPages(batchFetchPageDefault(market));
+  }, [market]);
 
   useEffect(() => {
     setMounted(true);
@@ -223,18 +233,27 @@ export default function BatchFetchPanel({
     setFetching(true);
     setError(null);
     setFetchStatus("Recupero annunci in corso…");
+    setFetchProgress(null);
     setPreview(null);
     setRows([]);
     setBounds(null);
 
     try {
-      const result = await batchPreviewListings(city.trim(), operations, {
+      const result = await batchPreviewListingsStream(city.trim(), operations, {
         zone: zone.trim() || undefined,
         refresh: true,
         provider: market === "cz" ? "sreality" : provider,
         portal: market === "cz" ? undefined : portal,
         maxPages,
         market,
+        onProgress: (progress) => {
+          setFetchProgress(progress);
+          setFetchStatus(
+            progress.label
+              ? `${progress.label} · ${progress.listingsTotal} annunci`
+              : "Recupero annunci in corso…",
+          );
+        },
       });
       setPreview(result);
       if (result.center) setAreaCenter(result.center);
@@ -244,7 +263,7 @@ export default function BatchFetchPanel({
       const saleCount = result.sale?.listings.length ?? 0;
       const rentCount = result.rent?.listings.length ?? 0;
       setFetchStatus(
-        `Recuperati ${formatOpCounts(saleCount, rentCount)} (${maxPages} pag.) · salvati in data/listings/ e browser`,
+        `Recuperati ${formatOpCounts(saleCount, rentCount)} (${formatBatchFetchPagesLabel(maxPages, market)}) · salvati in data/listings/ e browser`,
       );
 
       onSaved({
@@ -276,8 +295,10 @@ export default function BatchFetchPanel({
     } catch (e) {
       setError(e instanceof Error ? e.message : "Recupero non riuscito");
       setFetchStatus(null);
+      setFetchProgress(null);
     } finally {
       setFetching(false);
+      setFetchProgress(null);
     }
   };
 
@@ -587,18 +608,47 @@ export default function BatchFetchPanel({
               Pagine {market === "cz" ? "Sreality" : portal === "immobiliare" ? "Immobiliare" : "Idealista"} per operazione
             </label>
             <div className="flex flex-wrap items-center gap-3">
-              <input
-                type="range"
-                min={1}
-                max={maxPagesCap}
-                step={1}
-                value={maxPages}
-                onChange={(e) => setMaxPages(Number(e.target.value))}
-                className="min-w-[120px] flex-1"
-              />
-              <span className="text-sm text-slate-300">{maxPages} pag.</span>
+              <div className="flex flex-wrap gap-2">
+                {pagePresets.map((preset) => {
+                  const isAll = preset === BATCH_FETCH_ALL_PAGES;
+                  const label = isAll ? "All" : String(preset);
+                  return (
+                    <button
+                      key={isAll ? "all" : preset}
+                      type="button"
+                      onClick={() => setMaxPages(preset)}
+                      className={cn(
+                        "rounded-lg border px-3 py-1.5 text-sm",
+                        maxPages === preset
+                          ? "border-accent/50 bg-accent/10 text-accent"
+                          : "border-surface-border text-slate-400 hover:text-slate-200",
+                      )}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+              {!isBatchFetchAllPages(maxPages) && (
+                <>
+                  <input
+                    type="range"
+                    min={1}
+                    max={maxPagesCap}
+                    step={1}
+                    value={maxPages}
+                    onChange={(e) => setMaxPages(Number(e.target.value))}
+                    className="min-w-[120px] flex-1"
+                  />
+                  <span className="text-sm text-slate-300">{maxPages} pag.</span>
+                </>
+              )}
               <span className="text-xs text-slate-500">
-                Più pagine = più annunci (vendita e affitto separati)
+                {isBatchFetchAllPages(maxPages)
+                  ? market === "cz"
+                    ? "Stáhnout všechny dostupné stránky (v prodej a pronájem zvlášť)"
+                    : "Scarica tutte le pagine disponibili (vendita e affitto separati)"
+                  : "Più pagine = più annunci (vendita e affitto separati)"}
               </span>
             </div>
           </div>
@@ -646,8 +696,38 @@ export default function BatchFetchPanel({
               {fetching ? <Loader2 size={16} className="animate-spin" /> : null}
               Recupera anteprima
             </button>
-            {fetchStatus && <span className="self-center text-xs text-slate-500">{fetchStatus}</span>}
+            {fetchStatus && !fetching && (
+              <span className="self-center text-xs text-slate-500">{fetchStatus}</span>
+            )}
           </div>
+
+          {fetching && fetchProgress && fetchProgress.total > 0 && (
+            <div className="space-y-2">
+              <div className="h-2 w-full overflow-hidden rounded-full bg-surface-border">
+                <div
+                  className="h-full rounded-full bg-accent transition-[width] duration-300"
+                  style={{
+                    width: `${batchFetchProgressPercent(fetchProgress.current, fetchProgress.total)}%`,
+                  }}
+                />
+              </div>
+              <p className="text-xs text-slate-500">
+                {fetchProgress.label}
+                {fetchProgress.listingsTotal > 0 ? ` · ${fetchProgress.listingsTotal} annunci` : ""}
+                {" · "}
+                {fetchProgress.current}/{fetchProgress.total}
+              </p>
+            </div>
+          )}
+
+          {fetching && !fetchProgress && (
+            <div className="space-y-2">
+              <div className="h-2 w-full overflow-hidden rounded-full bg-surface-border">
+                <div className="h-full w-1/3 animate-pulse rounded-full bg-accent/70" />
+              </div>
+              <p className="text-xs text-slate-500">{fetchStatus}</p>
+            </div>
+          )}
 
           {error && <p className="text-sm text-red-400">{error}</p>}
 

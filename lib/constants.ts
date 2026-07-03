@@ -41,6 +41,8 @@ export const ITALY_DEFAULTS = {
   batch_fetch_max_pages: 5,
   /** Massimo pagine consentite in batch */
   batch_fetch_max_pages_cap: 10,
+  /** Hard cap when fetching all pages */
+  batch_fetch_all_pages_hard_cap: 100,
 } as const;
 
 /** Canone mensile da rendimento lordo ~5–6% */
