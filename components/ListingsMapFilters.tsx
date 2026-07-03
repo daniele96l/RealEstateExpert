@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  EMPTY_LISTINGS_FILTERS,
   PROPERTY_TYPE_OPTIONS,
   CONDITION_FILTER_OPTIONS,
   ROOMS_OPTIONS,
@@ -23,6 +22,23 @@ interface Props {
   onReset: () => void;
 }
 
+function Section({
+  title,
+  children,
+  className,
+}: {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <section className={cn("space-y-2", className)}>
+      <h4 className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{title}</h4>
+      {children}
+    </section>
+  );
+}
+
 function FilterField({
   label,
   children,
@@ -33,8 +49,8 @@ function FilterField({
   className?: string;
 }) {
   return (
-    <label className={cn("block min-w-[88px] flex-1", className)}>
-      <span className="mb-1 block text-[10px] font-medium uppercase tracking-wide text-slate-500">{label}</span>
+    <label className={cn("block", className)}>
+      <span className="mb-1 block text-[10px] text-slate-500">{label}</span>
       {children}
     </label>
   );
@@ -53,7 +69,7 @@ function NumberInput({
     <input
       type="text"
       inputMode="decimal"
-      className="input-field !py-2 text-sm"
+      className="input-field w-full !py-2 text-sm"
       placeholder={placeholder}
       value={value != null ? String(value) : ""}
       onChange={(e) => onChange(parseFilterNumber(e.target.value))}
@@ -61,28 +77,33 @@ function NumberInput({
   );
 }
 
-function PriceRange({
+function MinMaxRow({
   label,
   min,
   max,
-  placeholders,
+  minPlaceholder,
+  maxPlaceholder,
   onMinChange,
   onMaxChange,
 }: {
   label: string;
   min: number | null;
   max: number | null;
-  placeholders: [string, string];
+  minPlaceholder?: string;
+  maxPlaceholder?: string;
   onMinChange: (value: number | null) => void;
   onMaxChange: (value: number | null) => void;
 }) {
   return (
-    <div className="flex min-w-[180px] flex-[2] gap-2">
-      <FilterField label={`${label} min`}>
-        <NumberInput value={min} placeholder={placeholders[0]} onChange={onMinChange} />
+    <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-end gap-2">
+      <FilterField label={`${label} · min`}>
+        <NumberInput value={min} placeholder={minPlaceholder ?? "Min"} onChange={onMinChange} />
       </FilterField>
-      <FilterField label={`${label} max`}>
-        <NumberInput value={max} placeholder={placeholders[1]} onChange={onMaxChange} />
+      <span className="pb-2.5 text-slate-600" aria-hidden>
+        —
+      </span>
+      <FilterField label={`${label} · max`}>
+        <NumberInput value={max} placeholder={maxPlaceholder ?? "Max"} onChange={onMaxChange} />
       </FilterField>
     </div>
   );
@@ -95,9 +116,9 @@ export default function ListingsMapFilters({ viewMode, filters, onChange, onRese
   const active = hasActiveFilters(filters);
 
   return (
-    <div className="mt-3 rounded-xl border border-surface-border/80 bg-surface-raised/30 p-3">
-      <div className="mb-2 flex items-center justify-between gap-2">
-        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Filtri</p>
+    <div className="mt-3 rounded-xl border border-surface-border/80 bg-surface-raised/30 p-3 sm:p-4">
+      <div className="mb-3 flex items-center justify-between gap-2 border-b border-surface-border/50 pb-2">
+        <p className="text-xs font-semibold text-slate-300">Filtri annunci</p>
         {active && (
           <button
             type="button"
@@ -108,144 +129,156 @@ export default function ListingsMapFilters({ viewMode, filters, onChange, onRese
           </button>
         )}
       </div>
-      <div className="flex flex-wrap gap-2">
-        {showSalePrice && (
-          <PriceRange
-            label="Prezzo €"
-            min={filters.salePriceMin}
-            max={filters.salePriceMax}
-            placeholders={["Min", "100k"]}
-            onMinChange={(salePriceMin) => onChange({ ...filters, salePriceMin })}
-            onMaxChange={(salePriceMax) => onChange({ ...filters, salePriceMax })}
-          />
+
+      <div className="space-y-4">
+        {(showSalePrice || showRentPrice) && (
+          <Section title="Prezzo">
+            <div className="grid gap-3 lg:grid-cols-2">
+              {showSalePrice && (
+                <MinMaxRow
+                  label="Vendita €"
+                  min={filters.salePriceMin}
+                  max={filters.salePriceMax}
+                  minPlaceholder="Min"
+                  maxPlaceholder="100k"
+                  onMinChange={(salePriceMin) => onChange({ ...filters, salePriceMin })}
+                  onMaxChange={(salePriceMax) => onChange({ ...filters, salePriceMax })}
+                />
+              )}
+              {showRentPrice && (
+                <MinMaxRow
+                  label="Affitto €/mese"
+                  min={filters.rentPriceMin}
+                  max={filters.rentPriceMax}
+                  onMinChange={(rentPriceMin) => onChange({ ...filters, rentPriceMin })}
+                  onMaxChange={(rentPriceMax) => onChange({ ...filters, rentPriceMax })}
+                />
+              )}
+            </div>
+          </Section>
         )}
-        {showRentPrice && (
-          <PriceRange
-            label="Affitto €/mese"
-            min={filters.rentPriceMin}
-            max={filters.rentPriceMax}
-            placeholders={["Min", "Max"]}
-            onMinChange={(rentPriceMin) => onChange({ ...filters, rentPriceMin })}
-            onMaxChange={(rentPriceMax) => onChange({ ...filters, rentPriceMax })}
-          />
-        )}
-        <div className="flex min-w-[140px] flex-[2] gap-2">
-          <FilterField label="m² min">
-            <NumberInput
-              value={filters.sqmMin}
-              placeholder="Min"
-              onChange={(sqmMin) => onChange({ ...filters, sqmMin })}
-            />
-          </FilterField>
-          <FilterField label="m² max">
-            <NumberInput
-              value={filters.sqmMax}
-              placeholder="100"
-              onChange={(sqmMax) => onChange({ ...filters, sqmMax })}
-            />
-          </FilterField>
-        </div>
-        <FilterField label="Locali" className="min-w-[88px] max-w-[120px]">
-          <select
-            className="select-field !py-2 text-sm"
-            value={filters.rooms ?? ""}
-            onChange={(e) =>
-              onChange({
-                ...filters,
-                rooms: e.target.value ? Number(e.target.value) : null,
-              })
-            }
-          >
-            <option value="">Tutti</option>
-            {ROOMS_OPTIONS.map(({ value, label }) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </FilterField>
-        <FilterField label="Tipologia" className="min-w-[140px] flex-[1.5]">
-          <select
-            className="select-field !py-2 text-sm"
-            value={filters.propertyType ?? ""}
-            onChange={(e) =>
-              onChange({
-                ...filters,
-                propertyType: e.target.value || null,
-              })
-            }
-          >
-            <option value="">Tutte</option>
-            {PROPERTY_TYPE_OPTIONS.map(({ value, label }) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </FilterField>
-        {showRenovationFilter && (
-          <FilterField label="Stato" className="min-w-[140px] flex-[1.5]">
-            <select
-              className="select-field !py-2 text-sm"
-              value={filters.condition}
-              onChange={(e) =>
-                onChange({
-                  ...filters,
-                  condition: e.target.value as ConditionFilter,
-                })
-              }
-            >
-              {CONDITION_FILTER_OPTIONS.map(({ value, label }) => (
-                <option key={value} value={value}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </FilterField>
-        )}
-      </div>
-      <div className="mt-3 flex flex-wrap items-end gap-2 border-t border-surface-border/60 pt-3">
-        <FilterField label="Zona" className="min-w-[140px] max-w-[180px]">
-          <select
-            className="select-field !py-2 text-sm"
-            value={filters.areaPreset}
-            onChange={(e) =>
-              onChange({
-                ...filters,
-                areaPreset: e.target.value as AreaFilterPreset,
-                areaLat: null,
-                areaLng: null,
-              })
-            }
-          >
-            <option value="off">Tutta la città</option>
-            <option value="centro">Centro (1 km)</option>
-            <option value="quartiere">Quartiere (2,5 km)</option>
-            <option value="custom">Personalizzata</option>
-          </select>
-        </FilterField>
-        {filters.areaPreset === "custom" && (
-          <FilterField label={`Raggio (${formatDistance(filters.areaRadiusM ?? 2500)})`} className="min-w-[160px] flex-[2]">
-            <input
-              type="range"
-              min={300}
-              max={8000}
-              step={100}
-              value={filters.areaRadiusM ?? 2500}
-              onChange={(e) =>
-                onChange({ ...filters, areaRadiusM: Number(e.target.value) })
-              }
-              className="w-full accent-accent"
-            />
-          </FilterField>
-        )}
-        {filters.areaPreset !== "off" && (
-          <p className="pb-2 text-[11px] leading-relaxed text-slate-500">
-            Cerchio sulla mappa — clicca per spostare il centro
-            {filters.areaPreset === "centro" && " · 1 km"}
-            {filters.areaPreset === "quartiere" && " · 2,5 km"}
-          </p>
-        )}
+
+        <Section title="Immobile">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="sm:col-span-2">
+              <MinMaxRow
+                label="Superficie m²"
+                min={filters.sqmMin}
+                max={filters.sqmMax}
+                maxPlaceholder="100"
+                onMinChange={(sqmMin) => onChange({ ...filters, sqmMin })}
+                onMaxChange={(sqmMax) => onChange({ ...filters, sqmMax })}
+              />
+            </div>
+            <FilterField label="Locali">
+              <select
+                className="select-field w-full !py-2 text-sm"
+                value={filters.rooms ?? ""}
+                onChange={(e) =>
+                  onChange({
+                    ...filters,
+                    rooms: e.target.value ? Number(e.target.value) : null,
+                  })
+                }
+              >
+                <option value="">Tutti</option>
+                {ROOMS_OPTIONS.map(({ value, label }) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </FilterField>
+            <FilterField label="Tipologia">
+              <select
+                className="select-field w-full !py-2 text-sm"
+                value={filters.propertyType ?? ""}
+                onChange={(e) =>
+                  onChange({
+                    ...filters,
+                    propertyType: e.target.value || null,
+                  })
+                }
+              >
+                <option value="">Tutte</option>
+                {PROPERTY_TYPE_OPTIONS.map(({ value, label }) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </FilterField>
+            {showRenovationFilter && (
+              <FilterField label="Stato" className="sm:col-span-2 lg:col-span-1">
+                <select
+                  className="select-field w-full !py-2 text-sm"
+                  value={filters.condition}
+                  onChange={(e) =>
+                    onChange({
+                      ...filters,
+                      condition: e.target.value as ConditionFilter,
+                    })
+                  }
+                >
+                  {CONDITION_FILTER_OPTIONS.map(({ value, label }) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </FilterField>
+            )}
+          </div>
+        </Section>
+
+        <Section title="Zona sulla mappa">
+          <div className="grid gap-3 sm:grid-cols-[minmax(140px,200px)_1fr] sm:items-end">
+            <FilterField label="Area">
+              <select
+                className="select-field w-full !py-2 text-sm"
+                value={filters.areaPreset}
+                onChange={(e) =>
+                  onChange({
+                    ...filters,
+                    areaPreset: e.target.value as AreaFilterPreset,
+                    areaLat: null,
+                    areaLng: null,
+                  })
+                }
+              >
+                <option value="off">Tutta la città</option>
+                <option value="centro">Centro (1 km)</option>
+                <option value="quartiere">Quartiere (2,5 km)</option>
+                <option value="custom">Personalizzata</option>
+              </select>
+            </FilterField>
+            {filters.areaPreset === "custom" ? (
+              <FilterField label={`Raggio · ${formatDistance(filters.areaRadiusM ?? 2500)}`}>
+                <input
+                  type="range"
+                  min={300}
+                  max={8000}
+                  step={100}
+                  value={filters.areaRadiusM ?? 2500}
+                  onChange={(e) =>
+                    onChange({ ...filters, areaRadiusM: Number(e.target.value) })
+                  }
+                  className="w-full accent-accent"
+                />
+              </FilterField>
+            ) : filters.areaPreset !== "off" ? (
+              <p className="pb-2 text-[11px] leading-relaxed text-slate-500">
+                Cerchio sulla mappa — clicca per spostare il centro
+                {filters.areaPreset === "centro" && " · raggio 1 km"}
+                {filters.areaPreset === "quartiere" && " · raggio 2,5 km"}
+              </p>
+            ) : (
+              <p className="pb-2 text-[11px] text-slate-600">
+                Nessun filtro geografico — mostra tutti gli annunci in città
+              </p>
+            )}
+          </div>
+        </Section>
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import L from "leaflet";
 import type { GeoBounds, GeoPoint } from "@/lib/geo-filter";
 import { formatDistance } from "@/lib/geo-filter";
 import { ListingMapPreview } from "@/components/ListingMapPreview";
+import type { ListingProfitPreview } from "@/lib/listing-profit-preview";
+import type { ProfitGradientRange } from "@/lib/profit-gradient";
 import { readLocalPropertyDetailCache } from "@/lib/property-detail-cache-client";
 import type { CityListingsCache, MapListing } from "@/lib/types";
 import "leaflet/dist/leaflet.css";
@@ -114,16 +116,25 @@ function AreaFilterLayer({
 
 const ListingPopup = memo(function ListingPopup({
   listing,
+  profit,
+  profitRange,
   onOpen,
 }: {
   listing: MapListing;
+  profit?: ListingProfitPreview | null;
+  profitRange?: ProfitGradientRange;
   onOpen: () => void;
 }) {
   const imageUrl = readLocalPropertyDetailCache(listing.id)?.images?.[0] ?? null;
 
   return (
     <div className="space-y-2">
-      <ListingMapPreview listing={listing} imageUrl={imageUrl} />
+      <ListingMapPreview
+        listing={listing}
+        imageUrl={imageUrl}
+        profit={profit}
+        profitRange={profitRange}
+      />
       <button
         type="button"
         onClick={onOpen}
@@ -139,11 +150,15 @@ const ListingMarker = memo(function ListingMarker({
   listing,
   highlighted,
   dimmed,
+  profit,
+  profitRange,
   onOpen,
 }: {
   listing: MapListing;
   highlighted: boolean;
   dimmed: boolean;
+  profit?: ListingProfitPreview | null;
+  profitRange?: ProfitGradientRange;
   onOpen: () => void;
 }) {
   const icon =
@@ -163,7 +178,12 @@ const ListingMarker = memo(function ListingMarker({
       zIndexOffset={highlighted ? 1000 : 0}
     >
       <Popup minWidth={240} maxWidth={260} className="listing-map-popup">
-        <ListingPopup listing={listing} onOpen={onOpen} />
+        <ListingPopup
+          listing={listing}
+          profit={profit}
+          profitRange={profitRange}
+          onOpen={onOpen}
+        />
       </Popup>
     </Marker>
   );
@@ -181,6 +201,8 @@ interface Props {
   onFilterAreaCenterChange?: (lat: number, lng: number) => void;
   viewportListings?: MapListing[];
   onViewportBoundsChange?: (bounds: GeoBounds) => void;
+  profitPreviews?: Map<string, ListingProfitPreview>;
+  profitRange?: ProfitGradientRange;
 }
 
 export default function ListingsMapView({
@@ -195,6 +217,8 @@ export default function ListingsMapView({
   onFilterAreaCenterChange,
   viewportListings,
   onViewportBoundsChange,
+  profitPreviews,
+  profitRange,
 }: Props) {
   const center: [number, number] = [data.center.lat, data.center.lng];
   const mappable = useMemo(() => {
@@ -243,6 +267,8 @@ export default function ListingsMapView({
               listing={listing}
               highlighted={highlighted}
               dimmed={dimOthers && !highlighted}
+              profit={profitPreviews?.get(listing.id) ?? null}
+              profitRange={profitRange}
               onOpen={() => onSelect(listing)}
             />
           );

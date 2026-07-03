@@ -13,6 +13,8 @@ import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } f
 import PropertyDetailPanel from "@/components/PropertyDetailPanel";
 import BatchFetchPanel from "@/components/BatchFetchPanel";
 import ListingsMapFilters from "@/components/ListingsMapFilters";
+import ListingProfitSettingsPanel from "@/components/ListingProfitSettingsPanel";
+import ListingProfitFiltersPanel from "@/components/ListingProfitFiltersPanel";
 import { cn } from "@/lib/utils";
 import {
   EMPTY_LISTINGS_FILTERS,
@@ -33,6 +35,28 @@ import {
   mergeListingCondition,
 } from "@/lib/listing-condition-enrich";
 import { filterListingsByBounds, type GeoBounds } from "@/lib/geo-filter";
+import { computeListingProfitPreviews, profitSettingsSummary } from "@/lib/listing-profit-preview";
+import {
+  profitGradientBorderStyle,
+  profitGradientTextStyle,
+  profitRangeFromValues,
+} from "@/lib/profit-gradient";
+import {
+  applyListingProfitFilters,
+  EMPTY_LISTING_PROFIT_FILTERS,
+  hasActiveListingProfitFilters,
+  loadListingProfitFilters,
+  saveListingProfitFilters,
+  sanitizeListingProfitFilters,
+  type ListingProfitFilters,
+} from "@/lib/listing-profit-filters";
+import {
+  DEFAULT_LISTING_PROFIT_SETTINGS,
+  loadListingProfitSettings,
+  saveListingProfitSettings,
+  sanitizeListingProfitSettings,
+  type ListingProfitSettings,
+} from "@/lib/listing-profit-settings";
 import type { SimilarRentEstimateMethod } from "@/lib/rent-price-basis";
 import { Layers, Link2, MapPin } from "lucide-react";
 import type { CombinedListingsData } from "@/lib/types";
@@ -44,6 +68,15 @@ const ListingsMapView = dynamic(() => import("./ListingsMapView"), {
   ),
 });
 
+const ListingPriceRentScatter = dynamic(() => import("./ListingPriceRentScatter"), {
+  ssr: false,
+  loading: () => (
+    <div className="border-t border-surface-border/80 px-4 py-6 text-center text-sm text-slate-500">
+      Caricamento grafico…
+    </div>
+  ),
+});
+
 function formatPrice(price: number, operation: "sale" | "rent") {
   const formatted = new Intl.NumberFormat("it-IT", {
     style: "currency",
@@ -51,6 +84,15 @@ function formatPrice(price: number, operation: "sale" | "rent") {
     maximumFractionDigits: 0,
   }).format(price);
   return operation === "rent" ? `${formatted}/mese` : formatted;
+}
+
+function formatProfitEuro(value: number): string {
+  return new Intl.NumberFormat("it-IT", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+    signDisplay: "exceptZero",
+  }).format(value);
 }
 
 function listingKey(listing: MapListing): string {
@@ -151,6 +193,35 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   const [importUrl, setImportUrl] = useState("");
   const [importLoading, setImportLoading] = useState(false);
   const [importError, setImportError] = useState<string | null>(null);
+  const [profitSettings, setProfitSettings] = useState<ListingProfitSettings>(DEFAULT_LISTING_PROFIT_SETTINGS);
+  const [profitSettingsReady, setProfitSettingsReady] = useState(false);
+  const [profitFilters, setProfitFilters] = useState<ListingProfitFilters>(EMPTY_LISTING_PROFIT_FILTERS);
+  const [profitFiltersReady, setProfitFiltersReady] = useState(false);
+
+  useEffect(() => {
+    setProfitSettings(loadListingProfitSettings());
+    setProfitFilters(loadListingProfitFilters());
+    setProfitSettingsReady(true);
+    setProfitFiltersReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!profitSettingsReady) return;
+    saveListingProfitSettings(profitSettings);
+  }, [profitSettings, profitSettingsReady]);
+
+  useEffect(() => {
+    if (!profitFiltersReady) return;
+    saveListingProfitFilters(profitFilters);
+  }, [profitFilters, profitFiltersReady]);
+
+  const handleProfitSettingsChange = useCallback((next: ListingProfitSettings) => {
+    setProfitSettings(sanitizeListingProfitSettings(next));
+  }, []);
+
+  const handleProfitFiltersChange = useCallback((next: ListingProfitFilters) => {
+    setProfitFilters(sanitizeListingProfitFilters(next));
+  }, []);
 
   useEffect(() => {
     getListingsProviders()
@@ -360,10 +431,39 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
     [enrichedListings, filters, mapCenterPoint],
   );
 
+  const rentPool = useMemo(
+    () =>
+      rentCache?.listings?.length
+        ? rentCache.listings
+        : baseListings.filter((l) => l.operation === "rent"),
+    [rentCache, baseListings],
+  );
+
+  const showProfitPreview = viewMode === "sale" || viewMode === "both";
+
+  const profitPreviews = useMemo(() => {
+    if (!showProfitPreview) return new Map();
+    const sales = displayListings.filter((l) => l.operation === "sale");
+    return computeListingProfitPreviews(sales, rentPool, profitSettings);
+  }, [displayListings, rentPool, profitSettings, showProfitPreview]);
+
+  const profitFilteredListings = useMemo(() => {
+    if (!showProfitPreview) return displayListings;
+    return applyListingProfitFilters(displayListings, profitPreviews, profitFilters);
+  }, [displayListings, profitPreviews, profitFilters, showProfitPreview]);
+
   const visibleListings = useMemo(() => {
-    if (!mapBounds) return displayListings;
-    return filterListingsByBounds(displayListings, mapBounds);
-  }, [displayListings, mapBounds]);
+    if (!mapBounds) return profitFilteredListings;
+    return filterListingsByBounds(profitFilteredListings, mapBounds);
+  }, [profitFilteredListings, mapBounds]);
+
+  const profitRange = useMemo(() => {
+    const values = visibleListings
+      .filter((l) => l.operation === "sale")
+      .map((l) => profitPreviews.get(l.id)?.monthlyNetProfit)
+      .filter((v): v is number => v != null);
+    return profitRangeFromValues(values);
+  }, [visibleListings, profitPreviews]);
 
   const websiteSourceLabel = useMemo(
     () => formatListingsWebsiteSource(inferListingsWebsiteSource(baseListings)),
@@ -371,6 +471,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
   );
 
   const filtersActive = hasActiveFilters(filters);
+  const profitFiltersActive = hasActiveListingProfitFilters(profitFilters);
   const areaFilterCenter = resolveAreaFilterCenter(filters, mapCenterPoint);
   const areaFilterRadius = resolveAreaFilterRadius(filters);
   const mapData: CityListingsCache | null = center
@@ -385,14 +486,14 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
         fetched_at:
           combinedData?.fetched_at ?? saleCache?.fetched_at ?? rentCache?.fetched_at ?? "",
         center,
-        listings: displayListings,
+        listings: profitFilteredListings,
         provider:
           combinedData?.provider ?? saleCache?.provider ?? rentCache?.provider ?? provider,
       }
     : null;
 
   return (
-    <div className="card-glass overflow-hidden">
+    <div className="card-glass overflow-x-hidden">
       <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
         <div className="mb-3 flex items-center gap-2">
           <MapPin size={18} className="text-accent" />
@@ -474,7 +575,9 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
         {importError && <p className="mt-2 text-sm text-red-400">{importError}</p>}
         {mapData && (
           <p className="mt-2 text-xs text-slate-500">
-            {filtersActive ? `${displayListings.length} di ${baseListings.length} annunci` : `${displayListings.length} annunci`}
+            {filtersActive || profitFiltersActive
+              ? `${profitFilteredListings.length} di ${baseListings.length} annunci`
+              : `${profitFilteredListings.length} annunci`}
             {isCombinedView && " (vendita + affitto)"}
             {" · "}
             {mapData.center.display_name ?? city}
@@ -500,6 +603,7 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
       </div>
 
       {!detailOpen && (
+        <>
         <div className="grid gap-0 lg:grid-cols-[1fr_280px]">
           <div className="h-[400px] border-b border-surface-border/80 lg:border-b-0 lg:border-r">
             {mapData ? (
@@ -517,6 +621,8 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                 onFilterAreaCenterChange={(lat, lng) =>
                   setFilters((prev) => ({ ...prev, areaLat: lat, areaLng: lng }))
                 }
+                profitPreviews={showProfitPreview ? profitPreviews : undefined}
+                profitRange={showProfitPreview ? profitRange : undefined}
               />
             ) : (
               <div className="flex h-full items-center justify-center px-6 text-center text-sm text-slate-500">
@@ -524,15 +630,43 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
               </div>
             )}
           </div>
-          <div className="max-h-[400px] overflow-y-auto p-3">
-            {mapBounds && visibleListings.length < displayListings.length && (
+          <div className="flex max-h-[400px] flex-col border-surface-border/80">
+            {showProfitPreview && (
+              <div className="flex shrink-0 items-center justify-between gap-2 border-b border-surface-border/60 bg-surface-raised/60 px-3 py-2">
+                <div className="min-w-0">
+                  <p className="text-[11px] font-medium text-slate-300">Utile netto stimato</p>
+                  <p className="truncate text-[10px] text-slate-500">
+                    {profitSettingsSummary(profitSettings)}
+                  </p>
+                </div>
+                <div className="flex shrink-0 items-center gap-0.5">
+                  <ListingProfitFiltersPanel
+                    filters={profitFilters}
+                    onChange={handleProfitFiltersChange}
+                  />
+                  <ListingProfitSettingsPanel
+                    settings={profitSettings}
+                    onChange={handleProfitSettingsChange}
+                  />
+                </div>
+              </div>
+            )}
+            <div className="min-h-0 flex-1 overflow-y-auto p-3">
+            {mapBounds && visibleListings.length < profitFilteredListings.length && (
               <p className="mb-2 text-[11px] text-slate-500">
-                {visibleListings.length} in vista · {displayListings.length} totali
+                {visibleListings.length} in vista · {profitFilteredListings.length} totali
+                {profitFiltersActive ? " (filtri utile)" : ""}
+              </p>
+            )}
+            {!mapBounds && profitFiltersActive && profitFilteredListings.length < displayListings.length && (
+              <p className="mb-2 text-[11px] text-accent/80">
+                Filtri utile: {profitFilteredListings.length} di {displayListings.length} annunci
               </p>
             )}
             {visibleListings.map((listing) => {
               const key = listingKey(listing);
               const statoLabel = listingConditionLabel(listing);
+              const profit = listing.operation === "sale" ? profitPreviews.get(listing.id) : null;
               return (
               <button
                 key={key}
@@ -540,13 +674,16 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                 onClick={() => handleSelect(listing)}
                 onMouseEnter={() => setHoveredListingKey(key)}
                 onMouseLeave={() => setHoveredListingKey(null)}
+                style={profit ? profitGradientBorderStyle(profit.monthlyNetProfit, profitRange) : undefined}
                 className={cn(
                   "mb-2 w-full rounded-lg border p-3 text-left text-sm transition-colors",
                   selectedId === listing.id
                     ? "border-accent/50 bg-accent/10"
                     : hoveredListingKey === key
                       ? "border-accent/30 bg-accent/5"
-                      : "border-surface-border/60 hover:bg-surface-raised/50",
+                      : profit
+                        ? "hover:brightness-110"
+                        : "border-surface-border/60 hover:bg-surface-raised/50",
                 )}
               >
                 <div className="mb-1 flex flex-wrap items-center gap-2">
@@ -587,18 +724,60 @@ export default function ListingsMap({ onSelectListing, onUseSimilarRent, onUseAv
                     Stato: {statoLabel}
                   </p>
                 )}
+                {profit && (
+                  <p
+                    className="mt-1.5 text-xs font-semibold"
+                    style={profitGradientTextStyle(profit.monthlyNetProfit, profitRange)}
+                  >
+                    Utile netto: {formatProfitEuro(profit.monthlyNetProfit)}/mese
+                  </p>
+                )}
+                {profit && (
+                  <p className="mt-0.5 text-[10px] leading-snug text-slate-500">
+                    {formatProfitEuro(profit.year1NetProfit)}/anno · affitto stim.{" "}
+                    {formatPrice(profit.estimatedMonthlyRent, "rent")}
+                    {profitSettings.rentMethod === "per_sqm" &&
+                      profit.avgRentPerSqm != null &&
+                      ` · ${profit.avgRentPerSqm.toFixed(1)} €/m²`}
+                    {profitSettings.rentMethod === "per_room" &&
+                      profit.avgRentPerRoom != null &&
+                      ` · ${Math.round(profit.avgRentPerRoom)} €/stanza`}
+                    {" · "}
+                    {profit.neighborCount} affitti in zona
+                  </p>
+                )}
               </button>
               );
             })}
             {mapData && visibleListings.length === 0 && (
               <p className="text-sm text-slate-500">
-                {displayListings.length === 0
+                {profitFilteredListings.length === 0
                   ? "Nessun annuncio trovato"
                   : "Nessun annuncio in questa area — sposta o zooma la mappa"}
               </p>
             )}
+            </div>
           </div>
         </div>
+        </>
+      )}
+
+      {showProfitPreview && (
+        <ListingPriceRentScatter
+          listings={visibleListings}
+          profitPreviews={profitPreviews}
+          mapInView={mapBounds != null}
+          selectedId={selectedId}
+          hoveredId={
+            hoveredListingKey?.startsWith("sale-")
+              ? hoveredListingKey.slice("sale-".length)
+              : null
+          }
+          onSelect={(listing) => void handleSelect(listing)}
+          onHover={(listing) =>
+            setHoveredListingKey(listing ? listingKey(listing) : null)
+          }
+        />
       )}
 
       {detailOpen && !mapData && !activeCache && (
