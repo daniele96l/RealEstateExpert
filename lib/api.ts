@@ -102,18 +102,22 @@ export async function getCachedListings(
 export async function fetchMarketHistory(
   city: string,
   refresh = false,
+  market: "it" | "cz" = "it",
 ): Promise<MarketPriceHistory> {
   const res = await fetch("/api/market/history", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ city, refresh }),
+    body: JSON.stringify({ city, refresh, market }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Caricamento dati mercato non riuscito"));
   return res.json();
 }
 
-export async function getCachedMarketHistory(city: string): Promise<MarketPriceHistory | null> {
-  const params = new URLSearchParams({ city });
+export async function getCachedMarketHistory(
+  city: string,
+  market: "it" | "cz" = "it",
+): Promise<MarketPriceHistory | null> {
+  const params = new URLSearchParams({ city, market });
   const res = await fetch(`/api/market/history?${params}`);
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(await parseError(res, "Errore lettura cache mercato"));

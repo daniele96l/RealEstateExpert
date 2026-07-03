@@ -408,6 +408,7 @@ export default function PropertyDetailPanel({
                 similarRentals={similarRentals}
                 loading={similarLoading}
                 radiusM={similarRadiusM}
+                market={market}
               />
             )}
 

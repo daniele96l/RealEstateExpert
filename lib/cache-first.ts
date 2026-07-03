@@ -82,20 +82,21 @@ export async function loadPropertyDetailCacheFirst(
 export async function loadMarketHistoryCacheFirst(
   city: string,
   refresh: boolean,
+  market: "it" | "cz" = "it",
 ): Promise<{ data: MarketPriceHistory; source: CacheSource }> {
   const trimmed = city.trim();
   if (!refresh) {
-    const local = readLocalMarketCache(trimmed);
+    const local = readLocalMarketCache(trimmed, market);
     if (local) return { data: local, source: "local" };
 
-    const server = await getCachedMarketHistory(trimmed);
+    const server = await getCachedMarketHistory(trimmed, market);
     if (server) {
-      writeLocalMarketCache(server);
+      writeLocalMarketCache(server, market);
       return { data: server, source: "server" };
     }
   }
 
-  const data = await fetchMarketHistory(trimmed, refresh);
-  writeLocalMarketCache(data);
+  const data = await fetchMarketHistory(trimmed, refresh, market);
+  writeLocalMarketCache(data, market);
   return { data, source: "network" };
 }

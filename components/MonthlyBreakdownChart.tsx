@@ -205,7 +205,7 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
     return { ...base, opex, months: data.length };
   }, [data, opexBars]);
 
-  const summaryRows = useMemo(() => {
+  const breakdownRows = useMemo(() => {
     if (!totals) return [];
     return [
       { label: labels.rent, labelIt: labels.rentIt, yearly: totals.affitto, color: COLORS.affitto },
@@ -217,14 +217,18 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
         yearly: totals.opex[b.key],
         color: b.color,
       })),
-      {
-        label: labels.net,
-        labelIt: labels.netIt,
-        yearly: totals.netto,
-        color: totals.netto >= 0 ? COLORS.affitto : "#f87171",
-      },
     ];
   }, [totals, activeOpex, labels]);
+
+  const netRow = useMemo(() => {
+    if (!totals) return null;
+    return {
+      label: labels.net,
+      labelIt: labels.netIt,
+      yearly: totals.netto,
+      color: totals.netto >= 0 ? COLORS.affitto : "#f87171",
+    };
+  }, [totals, labels]);
 
   return (
     <div className="card-glass p-5">
@@ -336,7 +340,7 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
             </p>
           )}
           <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-4 lg:grid-cols-6">
-            {summaryRows.map((row) => (
+            {breakdownRows.map((row) => (
               <div key={row.label} className="rounded-lg bg-surface-border/30 px-3 py-2">
                 <div className="flex items-start gap-1.5">
                   <span
@@ -361,6 +365,44 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
               </div>
             ))}
           </div>
+          {netRow && (
+            <div
+              className={cn(
+                "mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border px-4 py-3",
+                netRow.yearly >= 0
+                  ? "border-emerald-500/35 bg-emerald-500/10"
+                  : "border-red-500/35 bg-red-500/10",
+              )}
+            >
+              <div className="flex items-start gap-2">
+                <span
+                  className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full"
+                  style={{ background: netRow.color }}
+                />
+                <div>
+                  <p className="text-sm font-semibold text-slate-100">{netRow.label}</p>
+                  {netRow.labelIt && (
+                    <p className="text-xs text-slate-500">{netRow.labelIt}</p>
+                  )}
+                </div>
+              </div>
+              <div className="text-right">
+                <p
+                  className={cn(
+                    "text-lg font-bold tabular-nums",
+                    netRow.yearly >= 0 ? "text-emerald-400" : "text-red-400",
+                  )}
+                >
+                  {fmtMoney(netRow.yearly / totals.months, market)}
+                  <span className="ml-1 text-xs font-normal text-slate-500">{labels.perMonth}</span>
+                </p>
+                <p className="mt-0.5 text-sm tabular-nums text-slate-400">
+                  {fmtMoney(netRow.yearly, market)}
+                  <span className="ml-1 text-[10px] text-slate-500">{labels.perYear}</span>
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -11,17 +11,24 @@ import {
   ImmobiliareMarketError,
   ScrapingBeeError,
 } from "@/lib/server/immobiliare-market";
+import { fetchSrealityMarketHistory, SrealityMarketError } from "@/lib/server/sreality-market";
 import { getMarketCache, saveMarketCache } from "@/lib/server/market-cache";
 import type { MarketProviderMode } from "@/lib/server/config";
+import type { MarketId } from "@/lib/markets";
 
 export const maxDuration = 120;
+
+function parseMarket(value: string | null | undefined): MarketId {
+  return value === "cz" ? "cz" : "it";
+}
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const city = searchParams.get("city")?.trim();
+  const market = parseMarket(searchParams.get("market"));
 
   if (city) {
-    const cached = await getMarketCache(city);
+    const cached = await getMarketCache(city, market);
     if (!cached) {
       return NextResponse.json({ detail: "Nessun dato mercato in cache per questa città" }, { status: 404 });
     }
@@ -41,20 +48,29 @@ export async function POST(request: Request) {
       city?: string;
       refresh?: boolean;
       provider?: MarketProviderMode;
+      market?: MarketId;
     };
 
     if (!body.city?.trim()) {
       return NextResponse.json({ detail: "Città obbligatoria" }, { status: 400 });
     }
 
+    const market = body.market === "cz" ? "cz" : "it";
+
     if (!body.refresh) {
-      const cached = await getMarketCache(body.city);
+      const cached = await getMarketCache(body.city, market);
       if (cached) return NextResponse.json(cached);
+    }
+
+    if (market === "cz") {
+      const data = await fetchSrealityMarketHistory(body.city, market);
+      await saveMarketCache(data, market);
+      return NextResponse.json(data);
     }
 
     const preferred = body.provider ?? getDefaultMarketProvider();
     const data = await fetchMarketHistory(body.city, preferred);
-    await saveMarketCache(data);
+    await saveMarketCache(data, market);
     return NextResponse.json(data);
   } catch (err) {
     if (err instanceof GeocodeError) {
@@ -63,7 +79,8 @@ export async function POST(request: Request) {
     if (
       err instanceof ImmobiliareMarketError ||
       err instanceof ScrapingBeeError ||
-      err instanceof ImmobiliareInsightsError
+      err instanceof ImmobiliareInsightsError ||
+      err instanceof SrealityMarketError
     ) {
       return NextResponse.json({ detail: err.message }, { status: 502 });
     }

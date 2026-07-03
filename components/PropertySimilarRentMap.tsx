@@ -4,7 +4,9 @@ import { useEffect, useMemo } from "react";
 import { Circle, MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import type { ListingDetail, MapListing } from "@/lib/types";
-import { fmtEuro } from "@/lib/utils";
+import type { MarketId } from "@/lib/markets";
+import { listingsUiLabels } from "@/lib/listings-ui-labels";
+import { fmtMoney } from "@/lib/utils";
 import "leaflet/dist/leaflet.css";
 
 delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
@@ -33,8 +35,9 @@ function rentIcon(highlighted = false) {
   });
 }
 
-function formatRent(price: number) {
-  return `${fmtEuro(price)}/mese`;
+function formatRent(price: number, market: MarketId) {
+  const ui = listingsUiLabels(market);
+  return `${fmtMoney(price, market)}${ui.perMonth}`;
 }
 
 function FitMarkers({ points }: { points: [number, number][] }) {
@@ -62,6 +65,7 @@ interface Props {
   similarRentals: MapListing[] | null;
   loading?: boolean;
   radiusM?: number | null;
+  market?: MarketId;
 }
 
 export default function PropertySimilarRentMap({
@@ -69,7 +73,9 @@ export default function PropertySimilarRentMap({
   similarRentals,
   loading = false,
   radiusM = 2_500,
+  market = "it",
 }: Props) {
+  const ui = listingsUiLabels(market);
   const saleCoords = hasCoords(saleProperty) ? ([saleProperty.lat, saleProperty.lng] as [number, number]) : null;
   const rentMarkers = useMemo(
     () => (similarRentals ?? []).filter(hasCoords),
@@ -83,13 +89,13 @@ export default function PropertySimilarRentMap({
     return points;
   }, [saleCoords, rentMarkers]);
 
-  const defaultCenter: [number, number] = saleCoords ?? [38.111, 15.661];
+  const defaultCenter: [number, number] = saleCoords ?? (market === "cz" ? [49.195, 16.608] : [38.111, 15.661]);
   const canShowMap = saleCoords != null || rentMarkers.length > 0;
 
   if (!canShowMap) {
     return (
       <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 px-4 py-8 text-center text-sm text-slate-500">
-        Posizione non disponibile per la mappa.
+        {market === "cz" ? "Poloha není k dispozici." : "Posizione non disponibile per la mappa."}
       </div>
     );
   }
@@ -97,15 +103,17 @@ export default function PropertySimilarRentMap({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between gap-2">
-        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Mappa zona</p>
+        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+          {market === "cz" ? "Mapa okolí" : "Mappa zona"}
+        </p>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
           <span className="inline-flex items-center gap-1">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-emerald-500/30" />
-            In vendita
+            {ui.sale}
           </span>
           <span className="inline-flex items-center gap-1">
             <span className="inline-block h-2 w-2 rounded-full bg-blue-500" />
-            Affitti simili ({rentMarkers.length})
+            {ui.rentsInArea(rentMarkers.length)}
           </span>
         </div>
       </div>
@@ -126,9 +134,9 @@ export default function PropertySimilarRentMap({
               <Marker position={saleCoords} icon={saleIcon()} zIndexOffset={2000}>
                 <Popup>
                   <div className="text-sm">
-                    <p className="font-medium text-emerald-700">In vendita</p>
+                    <p className="font-medium text-emerald-700">{ui.sale}</p>
                     <p className="line-clamp-2">{saleProperty.title}</p>
-                    <p>{fmtEuro(saleProperty.price)}</p>
+                    <p>{fmtMoney(saleProperty.price, market)}</p>
                   </div>
                 </Popup>
               </Marker>
@@ -143,9 +151,11 @@ export default function PropertySimilarRentMap({
             >
               <Popup>
                 <div className="text-sm">
-                  <p className="font-medium text-blue-700">Affitto simile</p>
+                  <p className="font-medium text-blue-700">
+                    {market === "cz" ? "Podobný pronájem" : "Affitto simile"}
+                  </p>
                   <p className="line-clamp-2">{rent.title}</p>
-                  <p>{formatRent(rent.price)}</p>
+                  <p>{formatRent(rent.price, market)}</p>
                 </div>
               </Popup>
             </Marker>
@@ -154,16 +164,11 @@ export default function PropertySimilarRentMap({
         {loading && (
           <div className="pointer-events-none absolute inset-0 flex items-end justify-center bg-black/10 pb-3">
             <span className="rounded-full border border-surface-border/80 bg-surface-raised/95 px-3 py-1 text-xs text-slate-400">
-              Caricamento affitti simili…
+              {market === "cz" ? "Načítání podobných pronájmů…" : "Caricamento affitti simili…"}
             </span>
           </div>
         )}
       </div>
-      <p className="text-[11px] leading-relaxed text-slate-500">
-        {radiusM != null && radiusM > 0
-          ? `Cerchio tratteggiato: raggio ~${(radiusM / 1000).toLocaleString("it-IT", { maximumFractionDigits: 1 })} km per gli affitti simili.`
-          : "Ricerca per corrispondenza testuale di zona (senza limite geografico)."}
-      </p>
     </div>
   );
 }

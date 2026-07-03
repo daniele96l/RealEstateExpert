@@ -190,7 +190,7 @@ export interface MapCenter {
 
 export type ListingsProvider = "scrapingbee" | "rapidapi" | "realtyapi" | "direct" | "sreality";
 
-export type MarketProvider = "scrapingbee" | "insights";
+export type MarketProvider = "scrapingbee" | "insights" | "sreality";
 
 export interface PriceHistoryPoint {
   year: number;
