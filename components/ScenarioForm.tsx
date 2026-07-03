@@ -235,7 +235,21 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
               </>
             )}
             <Field label={t("scenario.downPayment")} hint={t("scenario.downPaymentHint")}>
-              <input type="number" step="1" className="input-field" {...register("down_payment_pct", { valueAsNumber: true })} />
+              <input
+                type="number"
+                step="5"
+                min={0}
+                max={100}
+                className="input-field"
+                {...register("down_payment_pct", {
+                  valueAsNumber: true,
+                  setValueAs: (v) => {
+                    const n = typeof v === "string" ? Number(v) : v;
+                    if (!Number.isFinite(n)) return 0;
+                    return Math.min(100, Math.max(0, n));
+                  },
+                })}
+              />
             </Field>
             <Field label={t("scenario.mortgageRate")}>
               <input type="number" step="0.1" className="input-field" {...register("interest_rate_annual", { valueAsNumber: true })} />
