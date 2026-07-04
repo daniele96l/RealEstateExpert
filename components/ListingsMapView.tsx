@@ -54,6 +54,9 @@ function MapBoundsReporter({ onBoundsChange }: { onBoundsChange: (bounds: GeoBou
   const map = useMap();
 
   const report = useCallback(() => {
+    const size = map.getSize();
+    if (size.x <= 0 || size.y <= 0) return;
+
     const bounds = map.getBounds();
     onBoundsChange({
       south: bounds.getSouth(),
@@ -64,8 +67,9 @@ function MapBoundsReporter({ onBoundsChange }: { onBoundsChange: (bounds: GeoBou
   }, [map, onBoundsChange]);
 
   useEffect(() => {
+    map.invalidateSize();
     report();
-  }, [report]);
+  }, [map, report]);
 
   useMapEvents({
     moveend: report,
@@ -246,8 +250,11 @@ export default function ListingsMapView({
   const center: [number, number] = [data.center.lat, data.center.lng];
   const mapKey = `${data.city}-${data.operation}-${data.center.lat}-${data.center.lng}`;
   const mappable = useMemo(() => {
-    const listings = viewportListings ?? combinedListings ?? data.listings;
-    return listings.filter((l) => l.lat !== 0 || l.lng !== 0);
+    const source =
+      viewportListings && viewportListings.length > 0
+        ? viewportListings
+        : combinedListings ?? data.listings;
+    return source.filter((l) => l.lat !== 0 || l.lng !== 0);
   }, [viewportListings, combinedListings, data.listings]);
 
   const counts = useMemo(() => {

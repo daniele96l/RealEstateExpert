@@ -1,5 +1,6 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
+import { mkdir, readFile, rename, writeFile } from "fs/promises";
 import path from "path";
+import { randomUUID } from "crypto";
 
 function isReadOnlyFsError(err: unknown): boolean {
   const code = (err as NodeJS.ErrnoException)?.code;
@@ -25,7 +26,10 @@ export async function writeJsonFile(filePath: string, data: unknown): Promise<vo
 
   try {
     await mkdir(path.dirname(filePath), { recursive: true });
-    await writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
+    const payload = JSON.stringify(data, null, 2);
+    const tempPath = `${filePath}.${randomUUID()}.tmp`;
+    await writeFile(tempPath, payload, "utf-8");
+    await rename(tempPath, filePath);
   } catch (err) {
     if (isReadOnlyFsError(err)) return;
     throw err;

@@ -72,7 +72,7 @@
       "address": "Uzbecká, Bohunice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -89,7 +89,7 @@
       "address": "Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Novostavba",
       "condition": null,
       "needs_renovation": null
     },
@@ -106,7 +106,7 @@
       "address": "Francouzská, Zábrdovice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -123,7 +123,7 @@
       "address": "Karla Kryla, Sadová, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -140,7 +140,7 @@
       "address": "Havlíčkova, Stránice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -157,7 +157,7 @@
       "address": "Viniční, Židenice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -174,7 +174,7 @@
       "address": "Zikova, Líšeň, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -191,7 +191,7 @@
       "address": "Viniční, Židenice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -208,7 +208,7 @@
       "address": "Renneská třída, Štýřice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Před rekonstrukcí",
       "condition": null,
       "needs_renovation": null
     },
@@ -225,7 +225,7 @@
       "address": "Kosatcová, Lesná, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Novostavba",
       "condition": null,
       "needs_renovation": null
     },
@@ -242,7 +242,7 @@
       "address": "Kosatcová, Lesná, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Novostavba",
       "condition": null,
       "needs_renovation": null
     },
@@ -259,7 +259,7 @@
       "address": "Šárka, Kohoutovice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Novostavba",
       "condition": null,
       "needs_renovation": null
     },
@@ -276,7 +276,7 @@
       "address": "Valtická, Židenice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Po rekonstrukci",
       "condition": null,
       "needs_renovation": null
     },
@@ -293,7 +293,7 @@
       "address": "Starý Lískovec, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Ve výstavbě",
       "condition": null,
       "needs_renovation": null
     },
@@ -310,7 +310,7 @@
       "address": "Kotlářská, Veveří, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -327,7 +327,7 @@
       "address": "Bratislavská, Zábrdovice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -344,7 +344,7 @@
       "address": "Palackého třída, Královo Pole, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -361,7 +361,7 @@
       "address": "Charbulova, Černovice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Novostavba",
       "condition": null,
       "needs_renovation": null
     },
@@ -378,7 +378,7 @@
       "address": "Mojžíšova, Královo Pole, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -395,7 +395,7 @@
       "address": "Ječná, Řečkovice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Novostavba",
       "condition": null,
       "needs_renovation": null
     },
@@ -412,7 +412,7 @@
       "address": "Ječná, Řečkovice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Novostavba",
       "condition": null,
       "needs_renovation": null
     },
@@ -429,7 +429,7 @@
       "address": "Ječná, Řečkovice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Novostavba",
       "condition": null,
       "needs_renovation": null
     },
@@ -446,7 +446,7 @@
       "address": "Starý Lískovec, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Ve výstavbě",
       "condition": null,
       "needs_renovation": null
     },
@@ -463,7 +463,7 @@
       "address": "Starý Lískovec, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Ve výstavbě",
       "condition": null,
       "needs_renovation": null
     },

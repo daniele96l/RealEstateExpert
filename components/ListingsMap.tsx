@@ -313,6 +313,10 @@ export default function ListingsMap({
   }, []);
 
   useEffect(() => {
+    setMapBounds(null);
+  }, [detailOpen]);
+
+  useEffect(() => {
     getListingsProviders()
       .then((p) => {
         setProvidersAvailable({
@@ -552,7 +556,11 @@ export default function ListingsMap({
 
   const visibleListings = useMemo(() => {
     if (!mapBounds) return profitFilteredListings;
-    return filterListingsByBounds(profitFilteredListings, mapBounds);
+    const inBounds = filterListingsByBounds(profitFilteredListings, mapBounds);
+    if (inBounds.length === 0 && profitFilteredListings.length > 0) {
+      return profitFilteredListings;
+    }
+    return inBounds;
   }, [profitFilteredListings, mapBounds]);
 
   const profitRange = useMemo(() => {
@@ -771,7 +779,7 @@ export default function ListingsMap({
                 hoveredListingKey={hoveredListingKey}
                 onSelect={handleSelect}
                 combinedListings={isCombinedView ? displayListings : undefined}
-                viewportListings={visibleListings}
+                viewportListings={profitFilteredListings}
                 onViewportBoundsChange={setMapBounds}
                 areaRadiusM={combinedData?.areaRadiusM}
                 filterAreaCenter={areaFilterCenter}

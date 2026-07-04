@@ -67,7 +67,9 @@ export function mergeCityCacheConditionFromServer(
   local: CityListingsCache | null,
   server: CityListingsCache | null,
 ): CityListingsCache | null {
-  if (!local || !server) return local;
+  if (!local) return server;
+  if (!server) return local;
+  if (!local.listings.length && server.listings.length > 0) return server;
   return {
     ...local,
     listings: mergeListingsConditionFromServer(local.listings, server.listings),

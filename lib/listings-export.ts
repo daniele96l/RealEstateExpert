@@ -438,7 +438,7 @@ export async function persistListingsExport(
         city: ctx.city,
         center: updatedSaleCache.center,
         provider: ctx.provider,
-        sale: updatedSaleCache.listings,
+        sale: bundle.listings.map(exportRecordToMapListing),
         market: ctx.market,
       });
     } catch {
