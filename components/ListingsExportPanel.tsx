@@ -19,7 +19,7 @@ import { CZ_ROOM_LAYOUT_OPTIONS } from "@/lib/czech-room-layout";
 import type { MarketId } from "@/lib/markets";
 import { useI18n } from "@/lib/i18n/context";
 import { cn } from "@/lib/utils";
-import { Download, Loader2 } from "lucide-react";
+import { ChevronDown, Download, Loader2 } from "lucide-react";
 
 interface Props {
   market: MarketId;
@@ -31,6 +31,7 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
   const { t } = useI18n();
   const currency = market === "cz" ? "Kč" : "€";
 
+  const [showOptions, setShowOptions] = useState(false);
   const [useMapFilters, setUseMapFilters] = useState(true);
   const [applyMapBounds, setApplyMapBounds] = useState(true);
   const [includeProfitPreview, setIncludeProfitPreview] = useState(true);
@@ -67,6 +68,21 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
     return resolveExportSaleListings(context, exportOptions).length;
   }, [context, exportOptions]);
 
+  const statusLine = useMemo(() => {
+    if (exporting && progress) {
+      return progress.total > 0
+        ? `${t("export.exporting")} (${t("export.progress", { current: progress.current, total: progress.total })})`
+        : t("export.exporting");
+    }
+    if (lastResult && !exporting) {
+      if (lastResult.errors === -1) return t("export.failed");
+      return `${t("export.done", { count: lastResult.count })}${lastResult.errors > 0 ? ` · ${t("export.errors", { count: lastResult.errors })}` : ""}`;
+    }
+    if (!context?.hasData) return t("export.noData");
+    if (previewCount === 0) return t("export.noneMatch");
+    return t("export.ready", { count: previewCount, city: context.city });
+  }, [context, exporting, lastResult, previewCount, progress, t]);
+
   const handleExport = useCallback(async () => {
     if (!context?.hasData || previewCount === 0 || exporting) return;
     setExporting(true);
@@ -94,60 +110,91 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
   const salePresets = salePricePresetsForMarket(market);
 
   return (
-    <section className="card-glass overflow-hidden">
-      <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
-        <div className="flex items-center gap-2">
-          <Download size={18} className="text-accent" />
-          <h2 className="font-semibold text-slate-100">{t("export.title")}</h2>
+    <section className="card-glass relative z-0 overflow-hidden">
+      <div className="flex flex-col gap-2 px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+        <div className="flex min-w-0 flex-1 items-start gap-2">
+          <Download size={16} className="mt-0.5 shrink-0 text-accent" />
+          <div className="min-w-0 flex-1">
+            <h2 className="text-sm font-semibold text-slate-100">{t("export.title")}</h2>
+            <p
+              className={cn(
+                "text-xs leading-snug",
+                exporting ? "text-accent" : lastResult?.errors === -1 ? "text-amber-400" : lastResult && !exporting ? "text-emerald-400" : "text-slate-500",
+              )}
+            >
+              {exporting && <Loader2 size={12} className="mr-1 inline animate-spin" />}
+              {statusLine}
+            </p>
+          </div>
         </div>
-        <p className="mt-1 text-xs text-slate-500">{t("export.subtitle")}</p>
+        <div className="flex shrink-0 items-center gap-2 self-end sm:self-auto">
+          <button
+            type="button"
+            onClick={() => setShowOptions((v) => !v)}
+            className="flex items-center gap-1 rounded-lg border border-surface-border px-2.5 py-1.5 text-xs text-slate-400 hover:bg-surface-raised hover:text-slate-200"
+            aria-expanded={showOptions}
+          >
+            {showOptions ? t("export.hideOptions") : t("export.options")}
+            <ChevronDown size={14} className={cn("transition-transform", showOptions && "rotate-180")} />
+          </button>
+          <button
+            type="button"
+            disabled={!context?.hasData || previewCount === 0 || exporting}
+            onClick={() => void handleExport()}
+            className={cn(
+              "flex items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors",
+              "bg-accent text-surface-base hover:bg-accent/90",
+              "disabled:cursor-not-allowed disabled:opacity-40",
+            )}
+          >
+            {exporting ? <Loader2 size={16} className="animate-spin" /> : <Download size={16} />}
+            {t("export.button")}
+          </button>
+        </div>
       </div>
 
-      <div className="space-y-4 p-5">
-        <div className="flex flex-wrap gap-x-6 gap-y-2">
-          <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
-            <input
-              type="checkbox"
-              className="rounded border-surface-border"
-              checked={useMapFilters}
-              onChange={(e) => setUseMapFilters(e.target.checked)}
-            />
-            {t("export.useMapFilters")}
-          </label>
-          {useMapFilters && (
-            <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
+      {showOptions && (
+        <div className="space-y-3 border-t border-surface-border/60 px-4 py-3">
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-slate-300">
               <input
                 type="checkbox"
                 className="rounded border-surface-border"
-                checked={applyMapBounds}
-                onChange={(e) => setApplyMapBounds(e.target.checked)}
+                checked={useMapFilters}
+                onChange={(e) => setUseMapFilters(e.target.checked)}
               />
-              {t("export.applyMapBounds")}
+              {t("export.useMapFilters")}
             </label>
-          )}
-          <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
-            <input
-              type="checkbox"
-              className="rounded border-surface-border"
-              checked={includeProfitPreview}
-              onChange={(e) => setIncludeProfitPreview(e.target.checked)}
-            />
-            {t("export.includeProfit")}
-          </label>
-        </div>
+            {useMapFilters && (
+              <label className="flex cursor-pointer items-center gap-1.5 text-xs text-slate-300">
+                <input
+                  type="checkbox"
+                  className="rounded border-surface-border"
+                  checked={applyMapBounds}
+                  onChange={(e) => setApplyMapBounds(e.target.checked)}
+                />
+                {t("export.applyMapBounds")}
+              </label>
+            )}
+            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-slate-300">
+              <input
+                type="checkbox"
+                className="rounded border-surface-border"
+                checked={includeProfitPreview}
+                onChange={(e) => setIncludeProfitPreview(e.target.checked)}
+              />
+              {t("export.includeProfit")}
+            </label>
+          </div>
 
-        <p className="text-xs text-slate-500">{t("export.fetchAlways")}</p>
+          <p className="text-[11px] leading-snug text-slate-500">{t("export.fetchAlways")}</p>
 
-        {!useMapFilters && (
-          <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 p-4">
-            <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">
-              {t("export.customFilters")}
-            </p>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              <label className="block text-xs text-slate-400">
+          {!useMapFilters && (
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+              <label className="block text-[11px] text-slate-400">
                 {t("export.priceMin", { currency })}
                 <select
-                  className="select-field mt-1 w-full"
+                  className="select-field mt-0.5 w-full py-1 text-xs"
                   value={customFilters.salePriceMin ?? ""}
                   onChange={(e) =>
                     setCustomFilters((f) => ({
@@ -164,10 +211,10 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
                   ))}
                 </select>
               </label>
-              <label className="block text-xs text-slate-400">
+              <label className="block text-[11px] text-slate-400">
                 {t("export.priceMax", { currency })}
                 <select
-                  className="select-field mt-1 w-full"
+                  className="select-field mt-0.5 w-full py-1 text-xs"
                   value={customFilters.salePriceMax ?? ""}
                   onChange={(e) =>
                     setCustomFilters((f) => ({
@@ -184,10 +231,10 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
                   ))}
                 </select>
               </label>
-              <label className="block text-xs text-slate-400">
+              <label className="block text-[11px] text-slate-400">
                 {t("export.sqmMin")}
                 <select
-                  className="select-field mt-1 w-full"
+                  className="select-field mt-0.5 w-full py-1 text-xs"
                   value={customFilters.sqmMin ?? ""}
                   onChange={(e) =>
                     setCustomFilters((f) => ({
@@ -204,10 +251,10 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
                   ))}
                 </select>
               </label>
-              <label className="block text-xs text-slate-400">
+              <label className="block text-[11px] text-slate-400">
                 {t("export.sqmMax")}
                 <select
-                  className="select-field mt-1 w-full"
+                  className="select-field mt-0.5 w-full py-1 text-xs"
                   value={customFilters.sqmMax ?? ""}
                   onChange={(e) =>
                     setCustomFilters((f) => ({
@@ -225,10 +272,10 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
                 </select>
               </label>
               {market === "cz" && (
-                <label className="block text-xs text-slate-400 sm:col-span-2">
+                <label className="block text-[11px] text-slate-400 sm:col-span-2">
                   {t("export.roomLayout")}
                   <select
-                    className="select-field mt-1 w-full"
+                    className="select-field mt-0.5 w-full py-1 text-xs"
                     value={customFilters.roomLayout ?? ""}
                     onChange={(e) =>
                       setCustomFilters((f) => ({
@@ -247,55 +294,9 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
                 </label>
               )}
             </div>
-          </div>
-        )}
-
-        <p className="text-sm text-slate-400">
-          {!context?.hasData
-            ? t("export.noData")
-            : previewCount === 0
-              ? t("export.noneMatch")
-              : t("export.ready", { count: previewCount, city: context.city })}
-        </p>
-
-        {exporting && progress && (
-          <p className="flex items-center gap-2 text-sm text-accent">
-            <Loader2 size={16} className="animate-spin" />
-            {t("export.exporting")}{" "}
-            {progress.total > 0 && (
-              <span className="text-slate-500">
-                ({t("export.progress", { current: progress.current, total: progress.total })})
-              </span>
-            )}
-          </p>
-        )}
-
-        {lastResult && !exporting && (
-          <p className={cn("text-sm", lastResult.errors > 0 ? "text-amber-400" : "text-emerald-400")}>
-            {lastResult.errors === -1
-              ? t("export.failed")
-              : `${t("export.done", { count: lastResult.count })}${lastResult.errors > 0 ? ` · ${t("export.errors", { count: lastResult.errors })}` : ""}${lastResult.detailsCached > 0 ? ` · ${t("export.cachedDetails", { count: lastResult.detailsCached })}` : ""}${lastResult.cityListingsUpdated ? ` · ${t("export.cityCacheUpdated")}` : ""}${lastResult.savedPath ? ` · ${t("export.savedLocal", { path: lastResult.savedPath })}` : ` · ${t("export.savedBrowser")}`}`}
-          </p>
-        )}
-
-        <button
-          type="button"
-          disabled={!context?.hasData || previewCount === 0 || exporting}
-          onClick={() => void handleExport()}
-          className={cn(
-            "flex w-full items-center justify-center gap-3 rounded-xl px-6 py-5 text-lg font-semibold transition-colors",
-            "bg-accent text-surface-base hover:bg-accent/90",
-            "disabled:cursor-not-allowed disabled:opacity-40",
           )}
-        >
-          {exporting ? (
-            <Loader2 size={22} className="animate-spin" />
-          ) : (
-            <Download size={22} />
-          )}
-          {t("export.button")}
-        </button>
-      </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -305,6 +305,8 @@ const en: Translations = {
     cachedDetails: "{count} descriptions cached",
     cityCacheUpdated: "Map cache updated",
     failed: "Export failed",
+    options: "Options",
+    hideOptions: "Hide",
     roomLayout: "Layout",
   },
   meta: {

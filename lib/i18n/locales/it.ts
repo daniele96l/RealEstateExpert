@@ -307,6 +307,8 @@ const it = {
     cachedDetails: "{count} descrizioni in cache",
     cityCacheUpdated: "Cache mappa aggiornata",
     failed: "Esportazione non riuscita",
+    options: "Opzioni",
+    hideOptions: "Nascondi",
     roomLayout: "Disposizione",
   },
   meta: {

@@ -287,6 +287,11 @@ export default function HomePageContent() {
                 <MonthlyBreakdownChart result={result} market={market} />
                 <RoiChart result={result} market={market} />
                 <MarketPriceCharts city={marketCity} market={market} />
+                <ListingsExportPanel
+                  market={market}
+                  context={exportContext}
+                  onExportComplete={() => setExportCacheRefreshToken((n) => n + 1)}
+                />
               </>
             ) : (
               <div className="card-glass flex flex-col items-center justify-center px-8 py-24 text-center">
@@ -298,12 +303,6 @@ export default function HomePageContent() {
             )}
           </div>
         </div>
-
-        <ListingsExportPanel
-          market={market}
-          context={exportContext}
-          onExportComplete={() => setExportCacheRefreshToken((n) => n + 1)}
-        />
 
         <footer className="mt-12 border-t border-surface-border/40 pt-6 text-center text-xs text-slate-600">
           {market === "cz" ? t("home.footerCz") : t("home.footerIt")}
