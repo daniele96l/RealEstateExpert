@@ -218,8 +218,10 @@ const en: Translations = {
     totalEquity: "Total equity",
     cumulativeCashflow: "Cumulative cashflow",
     equityAndCash: "Equity + cash",
-    applyHistoricalCagr: "Apply historical market CAGR ({pct}%/yr)",
-    applyHistoricalCagrOff: "Historical market CAGR (off)",
+    appreciationRate: "Annual appreciation",
+    appreciationFlat: "0% (flat)",
+    appreciationPerYear: "{pct}%/yr",
+    appreciationHistorical: "Historical market ({pct}%/yr)",
     historicalCagrUnavailable: "Historical CAGR unavailable",
   },
   history: {

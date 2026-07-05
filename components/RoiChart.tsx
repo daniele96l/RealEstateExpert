@@ -16,7 +16,7 @@ import { loadMarketHistoryCacheFirst } from "@/lib/cache-first";
 import { historicalSaleCagr, propertyValueAtMonth } from "@/lib/market-cagr";
 import { getMarket, type MarketId } from "@/lib/markets";
 import type { AnalysisResult } from "@/lib/types";
-import { cn, fmtMoney } from "@/lib/utils";
+import { fmtMoney } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
 
 interface Props {
@@ -43,10 +43,13 @@ function annualizedReturn(totalReturnPct: number, years: number): number {
   return growthFactor > 0 ? (Math.pow(growthFactor, 1 / years) - 1) * 100 : 0;
 }
 
+const APPRECIATION_PRESETS = [0, 1, 2, 3, 4, 5, 6] as const;
+const HISTORICAL_APPRECIATION = "historical";
+
 export default function RoiChart({ result, market = "it", city = "" }: Props) {
   const { t } = useI18n();
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
-  const [applyHistoricalCagr, setApplyHistoricalCagr] = useState(false);
+  const [appreciationSelection, setAppreciationSelection] = useState<string>("0");
   const [historicalCagrPct, setHistoricalCagrPct] = useState<number | null>(null);
 
   const downPayment = result.summary.purchase_costs.down_payment;
@@ -77,13 +80,15 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
   }, [loadMarketCagr]);
 
   useEffect(() => {
-    if (historicalCagrPct == null && applyHistoricalCagr) {
-      setApplyHistoricalCagr(false);
+    if (historicalCagrPct == null && appreciationSelection === HISTORICAL_APPRECIATION) {
+      setAppreciationSelection("0");
     }
-  }, [historicalCagrPct, applyHistoricalCagr]);
+  }, [historicalCagrPct, appreciationSelection]);
 
   const appreciationRatePct =
-    applyHistoricalCagr && historicalCagrPct != null ? historicalCagrPct : 0;
+    appreciationSelection === HISTORICAL_APPRECIATION
+      ? (historicalCagrPct ?? 0)
+      : Number(appreciationSelection) || 0;
 
   const data = useMemo(() => {
     let cumPrincipal = 0;
@@ -170,35 +175,32 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
     return ticks;
   }, [maxMonth, yearTickStep]);
 
-  const cagrToggleLabel =
-    historicalCagrPct != null
-      ? applyHistoricalCagr
-        ? t("roi.applyHistoricalCagr", { pct: historicalCagrPct.toFixed(1) })
-        : t("roi.applyHistoricalCagrOff")
-      : t("roi.historicalCagrUnavailable");
-
   return (
     <div className="card-glass p-5">
-      <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
+      <div className="mb-5 space-y-4">
+        <div>
           <h2 className="text-base font-semibold text-slate-100">{t("roi.title")}</h2>
-          <p className="text-sm text-slate-500">
+          <p className="mt-1 max-w-3xl text-sm leading-relaxed text-slate-500">
             {t("roi.subtitle", { downPayment: fmtMoney(downPayment, market) })}
           </p>
-          <label
-            className={cn(
-              "mt-2 flex cursor-pointer items-center gap-2 text-xs",
-              historicalCagrPct != null ? "text-slate-300" : "cursor-not-allowed text-slate-600",
-            )}
-          >
-            <input
-              type="checkbox"
-              className="rounded border-surface-border"
-              checked={applyHistoricalCagr}
-              disabled={historicalCagrPct == null}
-              onChange={(e) => setApplyHistoricalCagr(e.target.checked)}
-            />
-            {cagrToggleLabel}
+          <label className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-400">
+            <span>{t("roi.appreciationRate")}</span>
+            <select
+              className="select-field !w-auto !py-1 text-xs"
+              value={appreciationSelection}
+              onChange={(e) => setAppreciationSelection(e.target.value)}
+            >
+              {APPRECIATION_PRESETS.map((pct) => (
+                <option key={pct} value={String(pct)}>
+                  {pct === 0 ? t("roi.appreciationFlat") : t("roi.appreciationPerYear", { pct })}
+                </option>
+              ))}
+              <option value={HISTORICAL_APPRECIATION} disabled={historicalCagrPct == null}>
+                {historicalCagrPct != null
+                  ? t("roi.appreciationHistorical", { pct: historicalCagrPct.toFixed(1) })
+                  : t("roi.historicalCagrUnavailable")}
+              </option>
+            </select>
           </label>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -287,9 +289,9 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
                   <p className="text-slate-400">
                     {t("roi.appreciation")}:{" "}
                     <span className="text-amber-400">{fmtMoney(row.appreciation, market)}</span>
-                    {applyHistoricalCagr && historicalCagrPct != null && (
+                    {appreciationRatePct !== 0 && (
                       <span className="ml-1 text-slate-500">
-                        ({historicalCagrPct.toFixed(1)}%/yr)
+                        ({appreciationRatePct.toFixed(1)}%/yr)
                       </span>
                     )}
                   </p>
