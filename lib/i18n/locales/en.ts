@@ -218,6 +218,9 @@ const en: Translations = {
     totalEquity: "Total equity",
     cumulativeCashflow: "Cumulative cashflow",
     equityAndCash: "Equity + cash",
+    applyHistoricalCagr: "Apply historical market CAGR ({pct}%/yr)",
+    applyHistoricalCagrOff: "Historical market CAGR (off)",
+    historicalCagrUnavailable: "Historical CAGR unavailable",
   },
   history: {
     title: "Analysis history",
@@ -272,6 +275,11 @@ const en: Translations = {
     listingsCount: "{count} listings",
     listingsFiltered: "{filtered} of {total} listings",
     saleAndRent: "(sale + rent)",
+    listingPrice: "Listing price",
+    renovationEstimate: "Est. renovation",
+    pricePlusRenovation: "Price + renovation",
+    includeRenovationCost: "Include renovation on price axis",
+    includeRenovationCostOff: "Renovation (off)",
   },
   analysisSources: {
     title: "Listings used in analysis",

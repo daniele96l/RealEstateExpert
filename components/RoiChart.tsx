@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ComposedChart,
   Area,
@@ -12,14 +12,17 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { loadMarketHistoryCacheFirst } from "@/lib/cache-first";
+import { historicalSaleCagr, propertyValueAtMonth } from "@/lib/market-cagr";
+import { getMarket, type MarketId } from "@/lib/markets";
 import type { AnalysisResult } from "@/lib/types";
-import { fmtMoney } from "@/lib/utils";
-import type { MarketId } from "@/lib/markets";
+import { cn, fmtMoney } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
 
 interface Props {
   result: AnalysisResult;
   market?: MarketId;
+  city?: string;
 }
 
 const COLORS = {
@@ -40,8 +43,12 @@ function annualizedReturn(totalReturnPct: number, years: number): number {
   return growthFactor > 0 ? (Math.pow(growthFactor, 1 / years) - 1) * 100 : 0;
 }
 
-export default function RoiChart({ result, market = "it" }: Props) {
+export default function RoiChart({ result, market = "it", city = "" }: Props) {
   const { t } = useI18n();
+  const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
+  const [applyHistoricalCagr, setApplyHistoricalCagr] = useState(false);
+  const [historicalCagrPct, setHistoricalCagrPct] = useState<number | null>(null);
+
   const downPayment = result.summary.purchase_costs.down_payment;
   const purchaseCosts = result.summary.purchase_costs;
   const taxesAndAccessories =
@@ -51,6 +58,32 @@ export default function RoiChart({ result, market = "it" }: Props) {
     purchaseCosts.agency;
   const purchasePrice = result.monthly_series[0]?.property_value ?? 0;
   const initialEquity = downPayment;
+
+  const loadMarketCagr = useCallback(async () => {
+    if (!city.trim()) {
+      setHistoricalCagrPct(null);
+      return;
+    }
+    try {
+      const { data } = await loadMarketHistoryCacheFirst(city.trim(), false, market);
+      setHistoricalCagrPct(historicalSaleCagr(data.sale ?? []));
+    } catch {
+      setHistoricalCagrPct(null);
+    }
+  }, [city, market]);
+
+  useEffect(() => {
+    void loadMarketCagr();
+  }, [loadMarketCagr]);
+
+  useEffect(() => {
+    if (historicalCagrPct == null && applyHistoricalCagr) {
+      setApplyHistoricalCagr(false);
+    }
+  }, [historicalCagrPct, applyHistoricalCagr]);
+
+  const appreciationRatePct =
+    applyHistoricalCagr && historicalCagrPct != null ? historicalCagrPct : 0;
 
   const data = useMemo(() => {
     let cumPrincipal = 0;
@@ -82,7 +115,12 @@ export default function RoiChart({ result, market = "it" }: Props) {
       yearCash += p.net_cash_flow;
       cumulativeCash += p.net_cash_flow;
       cumPrincipal += p.mortgage_principal;
-      const appreciation = p.property_value - purchasePrice;
+
+      const propertyValue =
+        appreciationRatePct !== 0
+          ? propertyValueAtMonth(purchasePrice, p.month, appreciationRatePct)
+          : p.property_value;
+      const appreciation = propertyValue - purchasePrice;
       const totalEquity = initialEquity + cumPrincipal + appreciation;
 
       points.push({
@@ -100,7 +138,14 @@ export default function RoiChart({ result, market = "it" }: Props) {
     }
 
     return points;
-  }, [result.monthly_series, downPayment, initialEquity, purchasePrice, taxesAndAccessories]);
+  }, [
+    result.monthly_series,
+    downPayment,
+    initialEquity,
+    purchasePrice,
+    taxesAndAccessories,
+    appreciationRatePct,
+  ]);
 
   const lastPoint = data[data.length - 1];
   const finalEquity = lastPoint?.totalEquity ?? initialEquity;
@@ -125,14 +170,36 @@ export default function RoiChart({ result, market = "it" }: Props) {
     return ticks;
   }, [maxMonth, yearTickStep]);
 
+  const cagrToggleLabel =
+    historicalCagrPct != null
+      ? applyHistoricalCagr
+        ? t("roi.applyHistoricalCagr", { pct: historicalCagrPct.toFixed(1) })
+        : t("roi.applyHistoricalCagrOff")
+      : t("roi.historicalCagrUnavailable");
+
   return (
     <div className="card-glass p-5">
       <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0 flex-1">
           <h2 className="text-base font-semibold text-slate-100">{t("roi.title")}</h2>
           <p className="text-sm text-slate-500">
             {t("roi.subtitle", { downPayment: fmtMoney(downPayment, market) })}
           </p>
+          <label
+            className={cn(
+              "mt-2 flex cursor-pointer items-center gap-2 text-xs",
+              historicalCagrPct != null ? "text-slate-300" : "cursor-not-allowed text-slate-600",
+            )}
+          >
+            <input
+              type="checkbox"
+              className="rounded border-surface-border"
+              checked={applyHistoricalCagr}
+              disabled={historicalCagrPct == null}
+              onChange={(e) => setApplyHistoricalCagr(e.target.checked)}
+            />
+            {cagrToggleLabel}
+          </label>
         </div>
         <div className="flex flex-wrap gap-2">
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
@@ -186,7 +253,7 @@ export default function RoiChart({ result, market = "it" }: Props) {
           <YAxis
             yAxisId="equity"
             tick={{ fill: COLORS.axis, fontSize: 11 }}
-            tickFormatter={(v) => `€${(v / 1000).toFixed(0)}k`}
+            tickFormatter={(v) => `${currencySymbol}${(v / 1000).toFixed(0)}k`}
             axisLine={false}
             tickLine={false}
             domain={["auto", "auto"]}
@@ -195,7 +262,7 @@ export default function RoiChart({ result, market = "it" }: Props) {
             yAxisId="cash"
             orientation="right"
             tick={{ fill: COLORS.axis, fontSize: 11 }}
-            tickFormatter={(v) => `€${(v / 1000).toFixed(0)}k`}
+            tickFormatter={(v) => `${currencySymbol}${(v / 1000).toFixed(0)}k`}
             axisLine={false}
             tickLine={false}
             domain={["auto", "auto"]}
@@ -207,42 +274,48 @@ export default function RoiChart({ result, market = "it" }: Props) {
               return (
                 <div className="rounded-xl border border-surface-border bg-[#1a2332] px-3 py-2 text-xs shadow-lg">
                   <p className="mb-2 font-medium text-slate-200">
-                    {label === 0 ? "Acquisto" : `Anno ${Math.ceil(label / 12)}`}
+                    {label === 0 ? t("roi.purchaseTooltip") : t("roi.yearTooltip", { year: Math.ceil(label / 12) })}
                   </p>
                   <p className="text-slate-400">
-                    Anticipo (quota iniziale):{" "}
+                    {t("roi.initialShare")}:{" "}
                     <span className="text-slate-200">{fmtMoney(row.initialEquity, market)}</span>
                   </p>
                   <p className="text-slate-400">
-                    Capitale mutuo ripagato:{" "}
+                    {t("roi.principalRepaid")}:{" "}
                     <span className="text-violet-400">{fmtMoney(row.principalEquity, market)}</span>
                   </p>
                   <p className="text-slate-400">
-                    Rivalutazione: <span className="text-amber-400">{fmtMoney(row.appreciation, market)}</span>
+                    {t("roi.appreciation")}:{" "}
+                    <span className="text-amber-400">{fmtMoney(row.appreciation, market)}</span>
+                    {applyHistoricalCagr && historicalCagrPct != null && (
+                      <span className="ml-1 text-slate-500">
+                        ({historicalCagrPct.toFixed(1)}%/yr)
+                      </span>
+                    )}
                   </p>
                   {row.year > 0 && (
                     <p className="text-slate-400">
-                      Cashflow anno {row.year}:{" "}
+                      Cashflow {row.year}:{" "}
                       <span className={row.yearlyCash >= 0 ? "text-emerald-400" : "text-red-400"}>
                         {fmtMoney(row.yearlyCash, market)}
                       </span>
                     </p>
                   )}
                   <p className="text-slate-400">
-                    Cashflow cumulato:{" "}
+                    {t("roi.cumulativeCash")}:{" "}
                     <span className={row.cumulativeCash >= 0 ? "text-emerald-400" : "text-red-400"}>
                       {fmtMoney(row.cumulativeCash, market)}
                     </span>
                   </p>
                   <p className="mt-2 border-t border-surface-border pt-2 font-semibold text-slate-200">
-                    Equity totale: {fmtMoney(row.totalEquity, market)}
+                    {t("roi.totalEquity")}: {fmtMoney(row.totalEquity, market)}
                     <span className="ml-2 text-slate-500">
                       ({row.roiPct >= 0 ? "+" : ""}
                       {row.roiPct.toFixed(1)}%)
                     </span>
                   </p>
                   <p className="font-semibold text-cyan-400">
-                    Equity + cashflow: {fmtMoney(row.equityPlusCash, market)}
+                    {t("roi.equityPlusCash")}: {fmtMoney(row.equityPlusCash, market)}
                   </p>
                 </div>
               );
@@ -253,7 +326,7 @@ export default function RoiChart({ result, market = "it" }: Props) {
             yAxisId="equity"
             type="monotone"
             dataKey="initialEquity"
-            name="Anticipo"
+            name={t("roi.downPayment")}
             stackId="equity"
             fill={COLORS.initial}
             stroke={COLORS.initial}
@@ -263,7 +336,7 @@ export default function RoiChart({ result, market = "it" }: Props) {
             yAxisId="equity"
             type="monotone"
             dataKey="principalEquity"
-            name="Capitale mutuo ripagato"
+            name={t("roi.principalPaid")}
             stackId="equity"
             fill={COLORS.principal}
             stroke={COLORS.principal}
@@ -273,7 +346,7 @@ export default function RoiChart({ result, market = "it" }: Props) {
             yAxisId="equity"
             type="monotone"
             dataKey="appreciation"
-            name="Rivalutazione"
+            name={t("roi.propertyAppreciation")}
             stackId="equity"
             fill={COLORS.appreciation}
             stroke={COLORS.appreciation}
@@ -283,7 +356,7 @@ export default function RoiChart({ result, market = "it" }: Props) {
             yAxisId="equity"
             type="monotone"
             dataKey="totalEquity"
-            name="Equity totale"
+            name={t("roi.totalEquity")}
             stroke={COLORS.total}
             strokeWidth={2.5}
             dot={false}
@@ -292,7 +365,7 @@ export default function RoiChart({ result, market = "it" }: Props) {
             yAxisId="equity"
             type="monotone"
             dataKey="equityPlusCash"
-            name="Equity + cashflow"
+            name={t("roi.equityAndCash")}
             stroke={COLORS.equityPlusCash}
             strokeWidth={2.5}
             dot={false}
@@ -301,7 +374,7 @@ export default function RoiChart({ result, market = "it" }: Props) {
             yAxisId="cash"
             type="monotone"
             dataKey="cumulativeCash"
-            name="Cashflow cumulato"
+            name={t("roi.cumulativeCashflow")}
             stroke={cashLineColor}
             strokeWidth={2}
             strokeDasharray="6 4"

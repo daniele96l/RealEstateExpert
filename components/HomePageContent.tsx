@@ -285,7 +285,7 @@ export default function HomePageContent() {
                   onScenarioChange={handlePurchaseScenarioChange}
                 />
                 <MonthlyBreakdownChart result={result} market={market} />
-                <RoiChart result={result} market={market} />
+                <RoiChart result={result} market={market} city={marketCity} />
                 <MarketPriceCharts city={marketCity} market={market} />
                 <ListingsExportPanel
                   market={market}

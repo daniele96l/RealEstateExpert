@@ -217,6 +217,9 @@ const it = {
     totalEquity: "Equity totale",
     cumulativeCashflow: "Cashflow cumulato",
     equityAndCash: "Equity + cash",
+    applyHistoricalCagr: "Apply historical market CAGR ({pct}%/yr)",
+    applyHistoricalCagrOff: "Historical market CAGR (off)",
+    historicalCagrUnavailable: "Historical CAGR unavailable",
   },
   history: {
     title: "Cronologia analisi",
@@ -274,6 +277,11 @@ const it = {
     listingsCount: "{count} annunci",
     listingsFiltered: "{filtered} di {total} annunci",
     saleAndRent: "(vendita + affitto)",
+    listingPrice: "Prezzo annuncio",
+    renovationEstimate: "Ristrutt. stimata",
+    pricePlusRenovation: "Prezzo + ristrutt.",
+    includeRenovationCost: "Includi ristrutturazione sull'asse prezzo",
+    includeRenovationCostOff: "Ristrutt. (off)",
   },
   analysisSources: {
     title: "Annunci usati nell'analisi",

@@ -11,6 +11,7 @@ import {
   YAxis,
   ZAxis,
 } from "recharts";
+import { listingRenovationCost } from "@/lib/constants";
 import type { ListingProfitPreview } from "@/lib/listing-profit-preview";
 import { listingConditionLabel } from "@/lib/property-condition";
 import {
@@ -27,7 +28,10 @@ import { cn, fmtMoney } from "@/lib/utils";
 export interface PriceRentScatterPoint {
   id: string;
   title: string;
+  /** Y-axis value (listing price, optionally + renovation). */
   price: number;
+  listingPrice: number;
+  renovationCost: number;
   expectedRent: number;
   monthlyNetProfit: number;
   fill: string;
@@ -128,16 +132,22 @@ function addFillColors(raw: RawScatterPoint[]): PriceRentScatterPoint[] {
 function buildRawPoints(
   listings: MapListing[],
   profitPreviews: Map<string, ListingProfitPreview>,
+  includeRenovationCost: boolean,
 ): RawScatterPoint[] {
   return listings
     .filter((l) => l.operation === "sale")
     .map((listing) => {
       const profit = profitPreviews.get(listing.id);
       if (!profit) return null;
+      const renovationCost =
+        listingRenovationCost(listing.needs_renovation, listing.sqm, listing.price) ?? 0;
+      const listingPrice = listing.price;
       return {
         id: listing.id,
         title: listing.title,
-        price: listing.price,
+        price: includeRenovationCost ? listingPrice + renovationCost : listingPrice,
+        listingPrice,
+        renovationCost,
         expectedRent: profit.estimatedMonthlyRent,
         monthlyNetProfit: profit.monthlyNetProfit,
         listing,
@@ -149,8 +159,9 @@ function buildRawPoints(
 function buildPoints(
   listings: MapListing[],
   profitPreviews: Map<string, ListingProfitPreview>,
+  includeRenovationCost = false,
 ): PriceRentScatterPoint[] {
-  return addFillColors(buildRawPoints(listings, profitPreviews));
+  return addFillColors(buildRawPoints(listings, profitPreviews, includeRenovationCost));
 }
 
 const ScatterDot = memo(function ScatterDot({
@@ -186,23 +197,40 @@ function ScatterTooltip({
   payload,
   market = "it",
   ui,
+  includeRenovationCost = false,
 }: {
   active?: boolean;
   payload?: Array<{ payload: PriceRentScatterPoint }>;
   market?: MarketId;
   ui: ListingsUiLabels;
+  includeRenovationCost?: boolean;
 }) {
   if (!active || !payload?.length) return null;
   const point = payload[0].payload;
   const fmt = (n: number) => fmtMoney(n, market);
   const conditionLabel = conditionLabelForMarket(listingConditionLabel(point.listing), market);
   const needsRenovation = point.listing.needs_renovation === true;
+  const priceLabel = market === "cz" ? "Cena" : "Prezzo";
   return (
     <div className="rounded-lg border border-surface-border bg-surface-raised px-3 py-2 text-xs shadow-lg">
       <p className="mb-1 max-w-[220px] font-medium text-slate-200 line-clamp-2">{point.title}</p>
-      <p className="text-slate-400">
-        {market === "cz" ? "Cena" : "Prezzo"}: {fmt(point.price)}
-      </p>
+      {includeRenovationCost && point.renovationCost > 0 ? (
+        <>
+          <p className="text-slate-400">
+            {ui.listingPrice}: {fmt(point.listingPrice)}
+          </p>
+          <p className="text-amber-400/90">
+            {ui.renovationEstimate}: {fmt(point.renovationCost)}
+          </p>
+          <p className="font-medium text-slate-300">
+            {ui.pricePlusRenovation}: {fmt(point.price)}
+          </p>
+        </>
+      ) : (
+        <p className="text-slate-400">
+          {priceLabel}: {fmt(point.price)}
+        </p>
+      )}
       <p className="text-slate-400">
         {ui.estRent}: {fmt(point.expectedRent)}{ui.perMonth}
       </p>
@@ -238,17 +266,26 @@ export default function ListingPriceRentScatter({
   const [logScale, setLogScale] = useState(true);
   const [expanded, setExpanded] = useState(false);
   const [showAllPoints, setShowAllPoints] = useState(false);
+  const [includeRenovationCost, setIncludeRenovationCost] = useState(false);
   const [localHoveredId, setLocalHoveredId] = useState<string | null>(null);
   const ui = listingsUiLabels(market, t);
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
   const rentAxisLabel = market === "cz" ? "Odhad nájmu" : "Affitto stimato";
-  const priceAxisLabel = market === "cz" ? "Cena" : "Prezzo";
+  const priceAxisLabel =
+    includeRenovationCost
+      ? ui.pricePlusRenovation
+      : market === "cz"
+        ? "Cena"
+        : "Prezzo";
+  const renovationToggleLabel = includeRenovationCost
+    ? t("listings.includeRenovationCost")
+    : t("listings.includeRenovationCostOff");
   const formatAxis = useCallback(
     (v: number) => axisCompact(v, currencySymbol),
     [currencySymbol],
   );
   const { chartPoints, outlierCount, totalPointCount } = useMemo(() => {
-    const raw = buildRawPoints(listings, profitPreviews);
+    const raw = buildRawPoints(listings, profitPreviews, includeRenovationCost);
     const { filtered, excludedCount } = excludeScatterOutliers(raw);
     const visible = filtered.length > 0 ? filtered : raw;
     return {
@@ -256,7 +293,7 @@ export default function ListingPriceRentScatter({
       outlierCount: filtered.length > 0 ? excludedCount : 0,
       totalPointCount: raw.length,
     };
-  }, [listings, profitPreviews]);
+  }, [listings, profitPreviews, includeRenovationCost]);
   const points = useMemo(
     () => (showAllPoints ? chartPoints : downsamplePoints(chartPoints, MAX_SCATTER_POINTS)),
     [chartPoints, showAllPoints],
@@ -365,6 +402,22 @@ export default function ListingPriceRentScatter({
               Asse log
             </button>
           )}
+          {expanded && (
+            <button
+              type="button"
+              onClick={() => setIncludeRenovationCost((v) => !v)}
+              className={cn(
+                "rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors",
+                includeRenovationCost
+                  ? "border-accent/50 bg-accent/15 text-accent"
+                  : "border-surface-border text-slate-400 hover:bg-surface-raised hover:text-slate-200",
+              )}
+              aria-pressed={includeRenovationCost}
+              title={renovationToggleLabel}
+            >
+              {includeRenovationCost ? ui.pricePlusRenovation : t("listings.includeRenovationCostOff")}
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
@@ -430,7 +483,13 @@ export default function ListingPriceRentScatter({
             />
             <ZAxis range={[64, 64]} />
             <Tooltip
-              content={<ScatterTooltip market={market} ui={ui} />}
+              content={
+                <ScatterTooltip
+                  market={market}
+                  ui={ui}
+                  includeRenovationCost={includeRenovationCost}
+                />
+              }
               cursor={{ strokeDasharray: "3 3", stroke: AXIS }}
               isAnimationActive={false}
             />

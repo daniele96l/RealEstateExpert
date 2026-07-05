@@ -22,6 +22,9 @@ export interface ListingsUiLabels {
   noListings: string;
   noListingsInArea: string;
   loadCityHint: string;
+  listingPrice: string;
+  renovationEstimate: string;
+  pricePlusRenovation: string;
 }
 
 export function listingsUiLabels(market: MarketId, t: TFunction): ListingsUiLabels {
@@ -46,6 +49,9 @@ export function listingsUiLabels(market: MarketId, t: TFunction): ListingsUiLabe
     noListings: t("listings.noListings"),
     noListingsInArea: t("listings.noListingsInArea"),
     loadCityHint: t("listings.loadCityHint"),
+    listingPrice: t("listings.listingPrice"),
+    renovationEstimate: t("listings.renovationEstimate"),
+    pricePlusRenovation: t("listings.pricePlusRenovation"),
   };
 }
 
