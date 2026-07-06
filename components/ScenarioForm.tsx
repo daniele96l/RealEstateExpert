@@ -95,6 +95,9 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
   const rentRooms = watch("rent_rooms");
   const monthlyRent = watch("monthly_rent");
   const maintenancePct = watch("maintenance_pct");
+  const propertyManagerFeePct = watch("property_manager_fee_pct");
+  const propertyManagerActive =
+    rentalMode !== "short_term_airbnb" && (propertyManagerFeePct ?? 0) > 0;
   const prevMode = useRef<RentalMode | null>(null);
   const prevPrice = useRef<number | null>(null);
   const syncScenarioRef = useRef(syncScenario);
@@ -305,22 +308,6 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
               </Field>
             ) : (
               <>
-                <Field label={t("scenario.rooms")}>
-                  <input
-                    type="number"
-                    min={1}
-                    className="input-field"
-                    {...register("rent_rooms", {
-                      valueAsNumber: true,
-                      setValueAs: (v) => {
-                        const n = typeof v === "string" ? Number(v) : v;
-                        return Number.isFinite(n) && n > 0
-                          ? Math.round(n)
-                          : ITALY_DEFAULTS.default_rent_rooms;
-                      },
-                    })}
-                  />
-                </Field>
                 <div className="sm:col-span-2">
                   <p className="label-field mb-2">{t("scenario.rentBasis")}</p>
                   <div className="mb-3 flex rounded-lg border border-surface-border overflow-hidden">
@@ -380,6 +367,29 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
             <Field label={t("scenario.condominio", { currency })}>
               <input type="number" className="input-field" {...register("condominio_monthly", { valueAsNumber: true })} />
             </Field>
+            {rentalMode !== "short_term_airbnb" && (
+              <Field
+                label={t("scenario.propertyManagerFee")}
+                hint={t("scenario.propertyManagerFeeHint")}
+              >
+                <input
+                  type="number"
+                  step="1"
+                  min={0}
+                  max={100}
+                  className="input-field"
+                  {...register("property_manager_fee_pct", {
+                    valueAsNumber: true,
+                    setValueAs: (v) => {
+                      const n = typeof v === "string" ? Number(v) : v;
+                      if (!Number.isFinite(n)) return 10;
+                      return Math.min(100, Math.max(0, n));
+                    },
+                  })}
+                />
+              </Field>
+            )}
+            {!propertyManagerActive && (
             <Field
               label={t("scenario.maintenance")}
               hint={t("scenario.maintenanceHint", {
@@ -401,6 +411,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
                 ))}
               </select>
             </Field>
+            )}
             <div className="sm:col-span-2">
               <Field
                 label={t("scenario.utilities", { currency })}

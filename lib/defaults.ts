@@ -56,6 +56,7 @@ export interface SimpleScenario {
   occupancy_pct: number;
   condominio_monthly: number;
   maintenance_pct: number;
+  property_manager_fee_pct: number;
   utilities_annual: number;
   utilities_auto: boolean;
   /** Czech: annual property tax (Kč) */
@@ -133,6 +134,7 @@ export function getDefaultSimpleScenario(market: MarketId = "it"): SimpleScenari
       occupancy_pct: preset.occupancy_pct,
       condominio_monthly: preset.condominio_monthly,
       maintenance_pct: maintenancePctForRentalMode("medium_term_semester", "cz"),
+      property_manager_fee_pct: CZECH_DEFAULTS.property_manager_fee_pct,
       utilities_annual: 0,
       utilities_auto: true,
       property_tax_annual: estimateCzechPropertyTax(price, sqm),
@@ -167,6 +169,7 @@ export function getDefaultSimpleScenario(market: MarketId = "it"): SimpleScenari
     occupancy_pct: preset.occupancy_pct,
     condominio_monthly: preset.condominio_monthly,
     maintenance_pct: maintenancePctForRentalMode("medium_term_semester", "it"),
+    property_manager_fee_pct: ITALY_DEFAULTS.property_manager_fee_pct,
     utilities_annual: 0,
     utilities_auto: true,
     property_tax_annual: 0,
@@ -217,6 +220,7 @@ export function toInvestmentScenario(s: SimpleScenario, market: MarketId = "it")
         insurance_annual: Math.round(2500 + s.purchase_price * 0.001),
         maintenance_pct: s.maintenance_pct,
         agency_fee_months: 0,
+        property_manager_fee_pct: s.property_manager_fee_pct,
         platform_fee_pct: s.rental_mode === "short_term_airbnb" ? CZECH_DEFAULTS.platform_fee_pct : 0,
         cleaning_fee_per_turnover: 0,
         utilities_landlord_annual: resolveUtilitiesAnnual(s, market),
@@ -274,6 +278,7 @@ export function toInvestmentScenario(s: SimpleScenario, market: MarketId = "it")
       insurance_annual: preset.operating.insurance_annual,
       maintenance_pct: s.maintenance_pct,
       agency_fee_months: preset.operating.agency_fee_months,
+      property_manager_fee_pct: s.property_manager_fee_pct,
       platform_fee_pct: preset.operating.platform_fee_pct,
       cleaning_fee_per_turnover: preset.operating.cleaning_fee_per_turnover,
       utilities_landlord_annual: resolveUtilitiesAnnual(s, market),
@@ -414,6 +419,14 @@ export function sanitizeSimple(s: SimpleScenario, market: MarketId = "it"): Simp
     condominio_monthly:
       s.condominio_monthly > 0 ? s.condominio_monthly : preset.condominio_monthly,
     maintenance_pct: sanitizeMaintenancePct(s.maintenance_pct, s.rental_mode, market),
+    property_manager_fee_pct:
+      Number.isFinite(s.property_manager_fee_pct) &&
+      s.property_manager_fee_pct >= 0 &&
+      s.property_manager_fee_pct <= 100
+        ? s.property_manager_fee_pct
+        : market === "cz"
+          ? CZECH_DEFAULTS.property_manager_fee_pct
+          : ITALY_DEFAULTS.property_manager_fee_pct,
     property_tax_annual:
       market === "cz"
         ? s.property_tax_annual > 0

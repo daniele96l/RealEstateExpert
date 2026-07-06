@@ -75,6 +75,8 @@ const it = {
     estimatedTotal: "Totale stimato: {amount}/mese ({rooms} stanze)",
     occupancy: "Occupazione (%)",
     condominio: "Condominio ({currency}/mese)",
+    propertyManagerFee: "Commissione gestore (%)",
+    propertyManagerFeeHint: "% del canone mensile — lungo/medio termine; include manutenzione",
     maintenance: "Manutenzione (% del prezzo / anno)",
     maintenanceHint: "~{monthly}/mese · {annual}/anno sul prezzo di acquisto",
     maintenanceOptions: {
@@ -182,6 +184,8 @@ const it = {
       tariCz: "Daň z nemovitosti",
       condominio: "Condominio",
       condominioCz: "Společenství vlastníků",
+      agencyFee: "Gestore immobile",
+      agencyFeeCz: "Správce nemovitosti",
       insurance: "Assicurazione",
       insuranceCz: "Pojištění",
       maintenance: "Manutenzione",

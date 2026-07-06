@@ -77,6 +77,8 @@ const en: Translations = {
     estimatedTotal: "Estimated total: {amount}/mo ({rooms} rooms)",
     occupancy: "Occupancy (%)",
     condominio: "HOA fees ({currency}/mo)",
+    propertyManagerFee: "Property manager fee (%)",
+    propertyManagerFeeHint: "% of monthly rent — long/medium term; includes maintenance",
     maintenance: "Maintenance (% of price / year)",
     maintenanceHint: "~{monthly}/mo · {annual}/yr at current purchase price",
     maintenanceOptions: {
@@ -183,6 +185,8 @@ const en: Translations = {
       tariCz: "Property tax",
       condominio: "HOA fees",
       condominioCz: "HOA / SVJ",
+      agencyFee: "Property manager",
+      agencyFeeCz: "Property manager",
       insurance: "Insurance",
       insuranceCz: "Insurance",
       maintenance: "Maintenance",

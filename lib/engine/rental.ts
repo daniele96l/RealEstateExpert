@@ -22,10 +22,12 @@ export function monthlyCleaningFee(scenario: InvestmentScenario): number {
   return turnovers * scenario.operating.cleaning_fee_per_turnover;
 }
 
-/** Commissione agenzia: calcolata sul canone pieno, non sul canone scontato per vacanza */
+/** Commissione gestione immobile: % del canone mensile pieno */
 export function monthlyAgencyFee(scenario: InvestmentScenario): number {
   if (scenario.rental.rental_mode === "short_term_airbnb") return 0;
   const fullRent = scenario.rental.monthly_rent ?? 0;
+  const pct = scenario.operating.property_manager_fee_pct;
+  if (pct > 0) return fullRent * (pct / 100);
   return (fullRent * scenario.operating.agency_fee_months) / 12;
 }
 

@@ -27,6 +27,7 @@ export function effectiveCedolareRate(s: InvestmentScenario): number {
 }
 
 export function effectiveMaintenancePct(s: InvestmentScenario): number {
+  if (s.operating.property_manager_fee_pct > 0) return 0;
   if (s.operating.maintenance_pct != null) return s.operating.maintenance_pct;
   if (s.rental.rental_mode === "long_term") return ITALY_DEFAULTS.maintenance_pct_long;
   if (s.rental.rental_mode === "medium_term_semester") return ITALY_DEFAULTS.maintenance_pct_medium;

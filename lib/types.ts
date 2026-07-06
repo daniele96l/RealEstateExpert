@@ -44,6 +44,7 @@ export interface InvestmentScenario {
     insurance_annual: number;
     maintenance_pct: number | null;
     agency_fee_months: number;
+    property_manager_fee_pct: number;
     platform_fee_pct: number;
     cleaning_fee_per_turnover: number;
     utilities_landlord_annual: number;

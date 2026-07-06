@@ -9,6 +9,8 @@ export const ITALY_DEFAULTS = {
   maintenance_pct_medium: 0.01,
   maintenance_pct_short: 0.012,
   agency_fee_months: 0,
+  /** Property manager fee as % of monthly rent */
+  property_manager_fee_pct: 10,
   platform_fee_pct: 0.15,
   cleaning_fee_per_turnover: 0,
   avg_stay_nights: 3.5,
