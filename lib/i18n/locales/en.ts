@@ -224,6 +224,22 @@ const en: Translations = {
     appreciationHistorical: "Historical market ({pct}%/yr)",
     historicalCagrUnavailable: "Historical CAGR unavailable",
   },
+  mortgageCapital: {
+    title: "Capital vs mortgage interest",
+    subtitle:
+      "Yearly stacked view: cash at purchase + cumulative interest vs purchase price + property appreciation.",
+    initialCapital: "Cash at purchase",
+    cumulativeInterest: "Cumulative interest",
+    totalInterest: "Total interest paid",
+    propertyValue: "House value",
+    purchasePrice: "Purchase price",
+    propertyAppreciation: "Appreciation",
+    noMortgage: "No mortgage",
+    interestExceedsCapital: "Interest exceeds cash at purchase",
+    monthLabel: "Month {month}",
+    purchaseTooltip: "Purchase",
+    yearTooltip: "Year {year}",
+  },
   history: {
     title: "Analysis history",
     loading: "Loading history…",

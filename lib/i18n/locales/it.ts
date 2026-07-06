@@ -223,6 +223,22 @@ const it = {
     appreciationHistorical: "Mercato storico ({pct}%/anno)",
     historicalCagrUnavailable: "CAGR storico non disponibile",
   },
+  mortgageCapital: {
+    title: "Capitale vs interessi mutuo",
+    subtitle:
+      "Vista annuale a barre: contanti all'acquisto + interessi cumulati vs prezzo d'acquisto + rivalutazione.",
+    initialCapital: "Contanti all'acquisto",
+    cumulativeInterest: "Interessi cumulati",
+    totalInterest: "Interessi totali pagati",
+    propertyValue: "Valore immobile",
+    purchasePrice: "Prezzo d'acquisto",
+    propertyAppreciation: "Rivalutazione",
+    noMortgage: "Nessun mutuo",
+    interestExceedsCapital: "Interessi superiori ai contanti iniziali",
+    monthLabel: "Mese {month}",
+    purchaseTooltip: "Acquisto",
+    yearTooltip: "Anno {year}",
+  },
   history: {
     title: "Cronologia analisi",
     loading: "Caricamento cronologia…",

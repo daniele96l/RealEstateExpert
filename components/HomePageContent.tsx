@@ -10,6 +10,7 @@ import AnalysisHistoryPanel from "@/components/AnalysisHistoryPanel";
 import MarketPriceCharts from "@/components/MarketPriceCharts";
 import PurchaseBreakdown from "@/components/PurchaseBreakdown";
 import MonthlyBreakdownChart from "@/components/MonthlyBreakdownChart";
+import MortgageCapitalChart from "@/components/MortgageCapitalChart";
 import RoiChart from "@/components/RoiChart";
 import ListingsExportPanel from "@/components/ListingsExportPanel";
 import {
@@ -285,6 +286,7 @@ export default function HomePageContent() {
                   onScenarioChange={handlePurchaseScenarioChange}
                 />
                 <MonthlyBreakdownChart result={result} market={market} />
+                <MortgageCapitalChart result={result} market={market} />
                 <RoiChart result={result} market={market} city={marketCity} />
                 <MarketPriceCharts city={marketCity} market={market} />
                 <ListingsExportPanel
