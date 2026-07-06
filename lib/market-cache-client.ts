@@ -1,32 +1,26 @@
 import type { MarketPriceHistory } from "./types";
 import type { MarketId } from "./markets";
 import { listingsCacheSlug } from "./markets";
+import { marketCacheFileSlugs, marketCitySlug } from "./market-cache-slugs";
 
-function citySlug(city: string): string {
-  return city
-    .trim()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "_")
-    .replace(/^_|_$/g, "");
-}
-
-function cacheKey(city: string, market: MarketId = "it"): string {
-  return `realestate_market_${market}_${citySlug(city)}`;
+function cacheKey(slug: string, market: MarketId = "it"): string {
+  return `realestate_market_${market}_${slug}`;
 }
 
 export function marketCacheFileLabel(city: string, market: MarketId = "it"): string {
-  const slug = market === "cz" ? listingsCacheSlug(market, city) : citySlug(city);
+  const slug = marketCacheFileSlugs(city, market)[0] ?? marketCitySlug(city);
   return `data/market/${slug}.json`;
 }
 
 export function readLocalMarketCache(city: string, market: MarketId = "it"): MarketPriceHistory | null {
   if (typeof window === "undefined") return null;
   try {
-    const raw = localStorage.getItem(cacheKey(city, market));
-    if (!raw) return null;
-    return JSON.parse(raw) as MarketPriceHistory;
+    for (const slug of marketCacheFileSlugs(city, market)) {
+      const raw = localStorage.getItem(cacheKey(slug, market));
+      if (!raw) continue;
+      return JSON.parse(raw) as MarketPriceHistory;
+    }
+    return null;
   } catch {
     return null;
   }
@@ -35,7 +29,10 @@ export function readLocalMarketCache(city: string, market: MarketId = "it"): Mar
 export function writeLocalMarketCache(data: MarketPriceHistory, market: MarketId = "it"): void {
   if (typeof window === "undefined") return;
   try {
-    localStorage.setItem(cacheKey(data.city, market), JSON.stringify(data));
+    const slug =
+      data.city_slug?.replace(/-/g, "_") ||
+      (market === "cz" ? listingsCacheSlug(market, data.city) : marketCitySlug(data.city));
+    localStorage.setItem(cacheKey(slug, market), JSON.stringify(data));
   } catch {
     /* quota exceeded — server JSON cache still available */
   }

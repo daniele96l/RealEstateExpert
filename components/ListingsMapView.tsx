@@ -50,6 +50,57 @@ function FlyTo({ center, zoom }: { center: [number, number]; zoom: number }) {
   return null;
 }
 
+function SafeTileLayer({
+  attribution,
+  url,
+}: {
+  attribution: string;
+  url: string;
+}) {
+  const map = useMap();
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const markReady = () => {
+      if (!cancelled) setReady(true);
+    };
+    if (map.getSize().x > 0 && map.getSize().y > 0) {
+      markReady();
+      return;
+    }
+    map.whenReady(markReady);
+    return () => {
+      cancelled = true;
+      setReady(false);
+    };
+  }, [map]);
+
+  if (!ready) return null;
+
+  return <TileLayer attribution={attribution} url={url} />;
+}
+
+function MapInvalidateOnResize() {
+  const map = useMap();
+
+  useEffect(() => {
+    const onResize = () => {
+      const size = map.getSize();
+      if (size.x > 0 && size.y > 0) map.invalidateSize();
+    };
+    onResize();
+    map.on("resize", onResize);
+    window.addEventListener("resize", onResize);
+    return () => {
+      map.off("resize", onResize);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [map]);
+
+  return null;
+}
+
 function MapBoundsReporter({ onBoundsChange }: { onBoundsChange: (bounds: GeoBounds) => void }) {
   const map = useMap();
 
@@ -240,15 +291,35 @@ export default function ListingsMapView({
   onLoadSavedPolygon,
   onDeleteSavedPolygon,
 }: Props) {
-  const [mapReady, setMapReady] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [canMountMap, setCanMountMap] = useState(false);
+  const [mapMountKey, setMapMountKey] = useState(0);
 
   useEffect(() => {
-    setMapReady(true);
-    return () => setMapReady(false);
+    const el = containerRef.current;
+    if (!el) return;
+
+    let hadSize = false;
+    const update = () => {
+      const { width, height } = el.getBoundingClientRect();
+      const hasSize = width > 0 && height > 0;
+      if (hasSize && !hadSize) {
+        setMapMountKey((k) => k + 1);
+        setCanMountMap(true);
+      } else if (!hasSize && hadSize) {
+        setCanMountMap(false);
+      }
+      hadSize = hasSize;
+    };
+
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    update();
+    return () => observer.disconnect();
   }, []);
 
   const center: [number, number] = [data.center.lat, data.center.lng];
-  const mapKey = `${data.city}-${data.operation}-${data.center.lat}-${data.center.lng}`;
+  const mapKey = `${data.city}-${data.operation}-${data.center.lat}-${data.center.lng}-${mapMountKey}`;
   const mappable = useMemo(() => {
     const source =
       viewportListings && viewportListings.length > 0
@@ -272,17 +343,18 @@ export default function ListingsMapView({
   }, []);
 
   return (
-    <div className="relative h-full w-full overflow-hidden">
-      {!mapReady ? (
+    <div ref={containerRef} className="relative h-full w-full overflow-hidden">
+      {!canMountMap ? (
         <div className="flex h-full items-center justify-center text-sm text-slate-500">
           Caricamento mappa…
         </div>
       ) : (
       <MapContainer key={mapKey} center={center} zoom={12} className="h-full w-full rounded-lg" scrollWheelZoom>
-        <TileLayer
+        <SafeTileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <MapInvalidateOnResize />
         <FlyTo center={center} zoom={12} />
         {onViewportBoundsChange && <MapBoundsReporter onBoundsChange={onViewportBoundsChange} />}
         {areaRadiusM != null && areaRadiusM > 0 && (
@@ -324,7 +396,7 @@ export default function ListingsMapView({
         })}
       </MapContainer>
       )}
-      {mapReady && showLegend && (
+      {canMountMap && showLegend && (
         <div className="absolute bottom-3 left-3 z-[1000] rounded-lg border border-surface-border/80 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
           <span className="inline-flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500" />
@@ -337,17 +409,17 @@ export default function ListingsMapView({
           </span>
         </div>
       )}
-      {mapReady && filterAreaCenter && filterAreaRadiusM != null && filterAreaRadiusM > 0 && (
+      {canMountMap && filterAreaCenter && filterAreaRadiusM != null && filterAreaRadiusM > 0 && (
         <div className="absolute bottom-3 right-3 z-[1000] rounded-lg border border-accent/30 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
           Filtro zona · {formatDistance(filterAreaRadiusM)}
         </div>
       )}
-      {mapReady && polygonDrawActive && isValidPolygon(polygonFilter) && (
+      {canMountMap && polygonDrawActive && isValidPolygon(polygonFilter) && (
         <div className="absolute bottom-3 right-3 z-[1000] rounded-lg border border-accent/30 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
           Filtro poligono attivo
         </div>
       )}
-      {mapReady && polygonDrawActive && onPolygonChange && (
+      {canMountMap && polygonDrawActive && onPolygonChange && (
         <MapPolygonToolbar
           polygon={polygonFilter ?? null}
           savedPolygons={savedPolygons}

@@ -3,8 +3,8 @@
 import { useMemo } from "react";
 import {
   Bar,
+  BarChart,
   CartesianGrid,
-  ComposedChart,
   Legend,
   ResponsiveContainer,
   Tooltip,
@@ -23,9 +23,7 @@ interface Props {
 
 const COLORS = {
   interest: "#f87171",
-  capital: "#60a5fa",
-  property: "#34d399",
-  appreciation: "#fbbf24",
+  equity: "#60a5fa",
   grid: "#2a3544",
   axis: "#64748b",
 };
@@ -33,70 +31,67 @@ const COLORS = {
 type ChartPoint = {
   month: number;
   year: number;
-  initialCapital: number;
+  equityPaid: number;
   cumulativeInterest: number;
-  purchasePrice: number;
-  propertyAppreciation: number;
-  propertyValue: number;
+  totalPaid: number;
 };
 
 function buildYearlyPoints(
   monthlySeries: AnalysisResult["monthly_series"],
-  initialCapital: number,
-): { data: ChartPoint[]; totalInterest: number; finalPropertyValue: number; interestCrossMonth: number | null } {
-  const purchasePrice = monthlySeries[0]?.property_value ?? 0;
+  downPayment: number,
+): {
+  data: ChartPoint[];
+  totalEquityPaid: number;
+  totalInterest: number;
+} {
   let cumulativeInterest = 0;
-  let crossMonth: number | null = null;
+  let cumulativePrincipal = 0;
   const lastMonth = monthlySeries[monthlySeries.length - 1]?.month ?? 0;
+  const data: ChartPoint[] = [];
 
-  const pushPoint = (month: number, year: number, propertyValue: number) => {
+  const pushPoint = (month: number, year: number) => {
+    const equityPaid = downPayment + cumulativePrincipal;
     data.push({
       month,
       year,
-      initialCapital,
+      equityPaid,
       cumulativeInterest,
-      purchasePrice,
-      propertyAppreciation: Math.max(0, propertyValue - purchasePrice),
-      propertyValue,
+      totalPaid: equityPaid + cumulativeInterest,
     });
   };
 
-  const data: ChartPoint[] = [];
-  pushPoint(0, 0, purchasePrice);
+  pushPoint(0, 0);
 
   for (const point of monthlySeries) {
     cumulativeInterest += point.mortgage_interest;
-    if (crossMonth == null && cumulativeInterest >= initialCapital && initialCapital > 0) {
-      crossMonth = point.month;
-    }
+    cumulativePrincipal += point.mortgage_principal;
     const isYearEnd = point.month % 12 === 0;
     const isLast = point.month === lastMonth;
     if (isYearEnd || isLast) {
-      pushPoint(point.month, point.year, point.property_value);
+      pushPoint(point.month, point.year);
     }
   }
 
-  const finalPropertyValue = data[data.length - 1]?.propertyValue ?? purchasePrice;
-
+  const last = data[data.length - 1];
   return {
     data,
+    totalEquityPaid: last?.equityPaid ?? downPayment,
     totalInterest: cumulativeInterest,
-    finalPropertyValue,
-    interestCrossMonth: crossMonth,
   };
 }
 
 export default function MortgageCapitalChart({ result, market = "it" }: Props) {
   const { t } = useI18n();
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
-  const initialCapital = result.summary.purchase_costs.total_initial_cash;
+  const downPayment = result.summary.purchase_costs.down_payment;
   const loanAmount = result.summary.purchase_costs.loan_amount;
 
-  const { data, totalInterest, finalPropertyValue, interestCrossMonth } = useMemo(
-    () => buildYearlyPoints(result.monthly_series, initialCapital),
-    [result.monthly_series, initialCapital],
+  const { data, totalEquityPaid, totalInterest } = useMemo(
+    () => buildYearlyPoints(result.monthly_series, downPayment),
+    [result.monthly_series, downPayment],
   );
 
+  const totalPaid = totalEquityPaid + totalInterest;
   const formatAxis = (value: number) => `${currencySymbol}${(value / 1000).toFixed(0)}k`;
 
   return (
@@ -111,9 +106,9 @@ export default function MortgageCapitalChart({ result, market = "it" }: Props) {
         <div className="flex flex-wrap gap-2">
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">
-              {t("mortgageCapital.initialCapital")}
+              {t("mortgageCapital.equityPaid")}
             </p>
-            <p className="text-lg font-bold text-slate-100">{fmtMoney(initialCapital, market)}</p>
+            <p className="text-lg font-bold text-sky-400">{fmtMoney(totalEquityPaid, market)}</p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">
@@ -126,25 +121,15 @@ export default function MortgageCapitalChart({ result, market = "it" }: Props) {
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-slate-500">
-              {t("mortgageCapital.propertyValue")}
+              {t("mortgageCapital.totalPaid")}
             </p>
-            <p className="text-lg font-bold text-emerald-400">{fmtMoney(finalPropertyValue, market)}</p>
+            <p className="text-lg font-bold text-slate-100">{fmtMoney(totalPaid, market)}</p>
           </div>
-          {interestCrossMonth != null && (
-            <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-              <p className="text-[10px] uppercase tracking-wide text-slate-500">
-                {t("mortgageCapital.interestExceedsCapital")}
-              </p>
-              <p className="text-lg font-bold text-amber-400">
-                {t("mortgageCapital.monthLabel", { month: interestCrossMonth })}
-              </p>
-            </div>
-          )}
         </div>
       </div>
 
       <ResponsiveContainer width="100%" height={320}>
-        <ComposedChart data={data} margin={{ top: 10, right: 12, left: 0, bottom: 0 }} barCategoryGap="18%">
+        <BarChart data={data} margin={{ top: 10, right: 12, left: 0, bottom: 0 }} barCategoryGap="20%">
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
           <XAxis
             dataKey="month"
@@ -172,23 +157,15 @@ export default function MortgageCapitalChart({ result, market = "it" }: Props) {
                       : t("mortgageCapital.yearTooltip", { year: Math.ceil(Number(label) / 12) })}
                   </p>
                   <p className="text-slate-400">
-                    {t("mortgageCapital.initialCapital")}:{" "}
-                    <span className="text-sky-400">{fmtMoney(row.initialCapital, market)}</span>
+                    {t("mortgageCapital.equityPaid")}:{" "}
+                    <span className="text-sky-400">{fmtMoney(row.equityPaid, market)}</span>
                   </p>
                   <p className="text-slate-400">
                     {t("mortgageCapital.cumulativeInterest")}:{" "}
                     <span className="text-red-400">{fmtMoney(row.cumulativeInterest, market)}</span>
                   </p>
-                  <p className="text-slate-400">
-                    {t("mortgageCapital.purchasePrice")}:{" "}
-                    <span className="text-emerald-400">{fmtMoney(row.purchasePrice, market)}</span>
-                  </p>
-                  <p className="text-slate-400">
-                    {t("mortgageCapital.propertyAppreciation")}:{" "}
-                    <span className="text-amber-400">{fmtMoney(row.propertyAppreciation, market)}</span>
-                  </p>
                   <p className="mt-1 font-medium text-slate-200">
-                    {t("mortgageCapital.propertyValue")}: {fmtMoney(row.propertyValue, market)}
+                    {t("mortgageCapital.totalPaid")}: {fmtMoney(row.totalPaid, market)}
                   </p>
                 </div>
               );
@@ -196,34 +173,20 @@ export default function MortgageCapitalChart({ result, market = "it" }: Props) {
           />
           <Legend wrapperStyle={{ paddingTop: 16, fontSize: 11 }} />
           <Bar
-            stackId="outlay"
-            dataKey="initialCapital"
-            name={t("mortgageCapital.initialCapital")}
-            fill={COLORS.capital}
+            stackId="paid"
+            dataKey="equityPaid"
+            name={t("mortgageCapital.equityPaid")}
+            fill={COLORS.equity}
             radius={[0, 0, 0, 0]}
           />
           <Bar
-            stackId="outlay"
+            stackId="paid"
             dataKey="cumulativeInterest"
             name={t("mortgageCapital.cumulativeInterest")}
             fill={COLORS.interest}
             radius={[4, 4, 0, 0]}
           />
-          <Bar
-            stackId="value"
-            dataKey="purchasePrice"
-            name={t("mortgageCapital.purchasePrice")}
-            fill={COLORS.property}
-            radius={[0, 0, 0, 0]}
-          />
-          <Bar
-            stackId="value"
-            dataKey="propertyAppreciation"
-            name={t("mortgageCapital.propertyAppreciation")}
-            fill={COLORS.appreciation}
-            radius={[4, 4, 0, 0]}
-          />
-        </ComposedChart>
+        </BarChart>
       </ResponsiveContainer>
     </div>
   );

@@ -43,7 +43,8 @@ export function citySlugVariants(city: string): string[] {
   }
 
   const aliases: Record<string, string[]> = {
-    reggio_calabria: ["reggio-calabria"],
+    reggio_calabria: ["reggio-calabria", "reggio_di_calabria"],
+    reggio_di_calabria: ["reggio-calabria", "reggio_calabria"],
     reggio_emilia: ["reggio-emilia"],
     la_spezia: ["la-spezia"],
     reggio_nell_emilia: ["reggio-emilia"],
