@@ -10,18 +10,24 @@ out/
 .env.local
 .env*.local
 
-# Listings cache (local dev); Czech Brno seed data is committed for Vercel
+# Listings cache (local dev); seed JSON committed for Vercel prod
 data/listings/*.json
 !data/listings/.gitkeep
 !data/listings/cz_brno_sale.json
 !data/listings/cz_brno_rent.json
+!data/listings/reggio_calabria_rent.json
+!data/listings/reggio_calabria_sale.json
 data/listings/details/
 data/listings/exports/
 data/market/*.json
 !data/market/.gitkeep
 data/analyses/*.json
 !data/analyses/.gitkeep
-data/occupancy/
+data/occupancy/*
+!data/occupancy/it_reggio_calabria/
+data/occupancy/it_reggio_calabria/*
+!data/occupancy/it_reggio_calabria/immobiliare_scraper/
+!data/occupancy/it_reggio_calabria/immobiliare_scraper/**
 data/gis/
 reggio_rentals/data/*.sqlite
 reggio_rentals/data/*.sqlite-journal

@@ -1,4 +1,5 @@
 import type {
+  CityListingsCache,
   ListingsProvider,
   MapListing,
   OccupancyBasicListing,
@@ -155,9 +156,16 @@ export async function rebuildRegistryUpTo(
   return rebuildRegistryFromSnapshots(snapshots, portal, lastProvider);
 }
 
+export interface OccupancySnapshotOptions {
+  /** Skip fetch when data was already scraped (e.g. prod sync script). */
+  prefetched?: CityListingsCache;
+  provider?: ListingsProvider;
+}
+
 export async function runOccupancySnapshot(
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
   onProgress?: (progress: OccupancySnapshotProgressState) => void,
+  options?: OccupancySnapshotOptions,
 ): Promise<OccupancySnapshotResult> {
   const maxPages =
     portal === "immobiliare_scraper"
@@ -183,17 +191,22 @@ export async function runOccupancySnapshot(
 
   const { data, provider } =
     portal === "immobiliare_scraper"
-      ? {
-          data: await fetchReggioRentalsListings(maxPages, (progress) => {
-            reportProgress(
-              progress.page,
-              progress.page,
-              progress.listingsTotal,
-              `Scraper · pag. ${progress.page}/${progress.maxPages}`,
-            );
-          }),
-          provider: "reggio_rentals" as const,
-        }
+      ? options?.prefetched
+        ? {
+            data: options.prefetched,
+            provider: (options.provider ?? "reggio_rentals") as const,
+          }
+        : {
+            data: await fetchReggioRentalsListings(maxPages, (progress) => {
+              reportProgress(
+                progress.page,
+                progress.page,
+                progress.listingsTotal,
+                `Scraper · pag. ${progress.page}/${progress.maxPages}`,
+              );
+            }),
+            provider: "reggio_rentals" as const,
+          }
       : await fetchItalyListingsWithFallback(
           OCCUPANCY_CITY,
           "rent",

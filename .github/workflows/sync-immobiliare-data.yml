@@ -1,0 +1,53 @@
+name: Sync Immobiliare scraper data
+
+on:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install Python scraper
+        run: |
+          pip install -e "./reggio_rentals[dev]"
+          playwright install chromium
+
+      - name: Scrape and export prod seed data
+        run: npm run data:sync-immobiliare
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/listings/reggio_calabria_rent.json data/occupancy/it_reggio_calabria/immobiliare_scraper/
+          if git diff --staged --quiet; then
+            echo "No data changes to commit"
+            exit 0
+          fi
+          git commit -m "$(cat <<'EOF'
+chore(data): refresh Immobiliare scraper seed for prod
+
+Automated sync of Reggio Calabria rental listings and occupancy snapshots.
+EOF
+)"
+          git push
