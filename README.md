@@ -45,6 +45,16 @@ SCRAPINGBEE_API_KEY=your_key_here
 
 Le chiavi restano server-side (mai esposte al browser).
 
+### Provider fallback (Italia)
+
+L'app prova automaticamente più sorgenti in ordine: **RealtyAPI** (Immobiliare) → **direct** (Immobiliare/Idealista via Playwright) → **ScrapingBee** (Idealista) → RapidAPI (se disponibile).
+
+Se RapidAPI risponde **429** (quota mensile), viene saltato per il resto della sessione. Imposta `RAPIDAPI_DISABLED=1` in `.env.local` per disabilitarlo del tutto.
+
+```bash
+npm run listings:test-providers -- "Reggio Calabria" --rent
+```
+
 ## Stack
 
 - **Next.js 15** — UI + API routes

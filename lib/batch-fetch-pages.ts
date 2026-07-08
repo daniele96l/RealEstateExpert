@@ -46,6 +46,13 @@ export function formatBatchFetchPagesLabel(maxPages: number, market: MarketId = 
   return `${maxPages} pag.`;
 }
 
+export function resolveItalyListingMaxPages(maxPages?: number): number {
+  return resolveBatchFetchPageLimit(
+    maxPages ?? BATCH_FETCH_ALL_PAGES,
+    "it",
+  );
+}
+
 export function batchFetchPagePresets(market: MarketId): number[] {
   const cap = batchFetchPageCap(market);
   const values = [1, 3, 5, cap].filter((n, i, arr) => n <= cap && arr.indexOf(n) === i);

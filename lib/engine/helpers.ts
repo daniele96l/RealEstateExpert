@@ -8,7 +8,9 @@ export function effectiveCadastralValue(s: InvestmentScenario): number {
 /** Imposta di registro: calcolata sul valore catastale (non sul prezzo) */
 export function effectiveRegistrationTaxPct(s: InvestmentScenario): number {
   if (s.property.registration_tax_pct != null) return s.property.registration_tax_pct;
-  return s.property.property_type === "prima_casa" ? 2 : 9;
+  return s.property.property_type === "prima_casa"
+    ? ITALY_DEFAULTS.registration_tax_pct_prima_casa
+    : ITALY_DEFAULTS.registration_tax_pct_investment;
 }
 
 export function effectiveOccupancyRate(s: InvestmentScenario): number {

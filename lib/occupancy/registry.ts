@@ -1,6 +1,6 @@
 import { readdir } from "fs/promises";
 import path from "path";
-import type { OccupancyRegistry, OccupancySnapshot } from "@/lib/types";
+import type { OccupancyRegistry, OccupancySnapshot, OccupancySnapshotSummary } from "@/lib/types";
 import { readJsonFile, writeJsonFile } from "@/lib/server/fs-cache-io";
 import {
   OCCUPANCY_CITY,
@@ -16,6 +16,7 @@ export function emptyRegistry(): OccupancyRegistry {
     market: OCCUPANCY_MARKET,
     updated_at: new Date().toISOString(),
     snapshot_count: 0,
+    last_provider: null,
     listings: {},
   };
 }
@@ -34,7 +35,7 @@ export async function saveSnapshot(snapshot: OccupancySnapshot): Promise<void> {
   await writeJsonFile(occupancySnapshotPath(snapshot.fetched_at), snapshot);
 }
 
-export async function loadSnapshotsInWindow(days: number): Promise<OccupancySnapshot[]> {
+export async function loadAllSnapshots(): Promise<OccupancySnapshot[]> {
   const dir = occupancySnapshotsDir();
   let files: string[];
   try {
@@ -43,15 +44,33 @@ export async function loadSnapshotsInWindow(days: number): Promise<OccupancySnap
     return [];
   }
 
-  const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
   const snapshots: OccupancySnapshot[] = [];
-
   for (const file of files.filter((f) => f.endsWith(".json")).sort()) {
     const data = await readJsonFile<OccupancySnapshot>(path.join(dir, file));
     if (!data?.fetched_at) continue;
-    if (new Date(data.fetched_at).getTime() < cutoff) continue;
     snapshots.push(data);
   }
 
-  return snapshots;
+  return snapshots.sort(
+    (a, b) => new Date(a.fetched_at).getTime() - new Date(b.fetched_at).getTime(),
+  );
+}
+
+export async function listSnapshotSummaries(): Promise<OccupancySnapshotSummary[]> {
+  const snapshots = await loadAllSnapshots();
+  return [...snapshots]
+    .map((s) => ({ fetched_at: s.fetched_at, active_count: s.active_count }))
+    .reverse();
+}
+
+export async function loadSnapshotsInWindow(
+  days: number,
+  asOfMs = Date.now(),
+): Promise<OccupancySnapshot[]> {
+  const cutoff = asOfMs - days * 24 * 60 * 60 * 1000;
+  const snapshots = await loadAllSnapshots();
+  return snapshots.filter((s) => {
+    const t = new Date(s.fetched_at).getTime();
+    return t >= cutoff && t <= asOfMs;
+  });
 }

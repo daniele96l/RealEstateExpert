@@ -7,14 +7,16 @@ import {
   enrichCityListingsCache,
   getEnrichedCache,
 } from "@/lib/server/listing-condition-enrich";
-import { fetchWithFallback, resolvePreferredProvider } from "@/lib/server/listings-fetch";
+import { fetchItalyListingsWithFallback } from "@/lib/server/italy-listings-fetch";
+import { resolvePreferredProvider } from "@/lib/server/listings-fetch";
 import { fetchSrealityCityListings, SrealitySearchError } from "@/lib/server/sreality-search";
 import { RapidApiIdealistaError } from "@/lib/server/rapidapi-idealista";
+import { RealtyApiImmobiliareError } from "@/lib/server/realtyapi-immobiliare";
 import { hasRapidApiKey, hasScrapingBeeKey, hasRealtyApiKey, getDefaultListingsProvider } from "@/lib/server/config";
 import { ScrapingBeeError } from "@/lib/server/scrapingbee";
 import type { ListingsProvider } from "@/lib/types";
+import { resolveBatchFetchPageLimit, resolveItalyListingMaxPages } from "@/lib/batch-fetch-pages";
 import { CZECH_DEFAULTS } from "@/lib/constants-cz";
-import { ITALY_DEFAULTS } from "@/lib/constants";
 
 export const maxDuration = 120;
 
@@ -74,10 +76,7 @@ export async function POST(request: Request) {
     }
 
     if (market === "cz") {
-      const maxPages = Math.min(
-        Math.max(body.maxPages ?? CZECH_DEFAULTS.listings_fetch_max_pages, 1),
-        CZECH_DEFAULTS.batch_fetch_max_pages_cap,
-      );
+      const maxPages = resolveBatchFetchPageLimit(body.maxPages, "cz");
       const data = await fetchSrealityCityListings(body.city, body.operation, market, { maxPages });
       const enriched = await enrichCityListingsCache({ ...data, provider: "sreality" });
       await saveCache(enriched, market);
@@ -85,11 +84,13 @@ export async function POST(request: Request) {
     }
 
     const preferred = resolvePreferredProvider(body.provider);
-    const maxPages = Math.min(
-      Math.max(body.maxPages ?? ITALY_DEFAULTS.listings_fetch_max_pages, 1),
-      ITALY_DEFAULTS.batch_fetch_max_pages_cap,
+    const maxPages = resolveItalyListingMaxPages(body.maxPages);
+    const { data, provider } = await fetchItalyListingsWithFallback(
+      body.city,
+      body.operation,
+      preferred,
+      maxPages,
     );
-    const { data, provider } = await fetchWithFallback(body.city, body.operation, preferred, maxPages);
     const enriched = await enrichCityListingsCache({ ...data, provider });
     await saveCache(enriched, market);
     return NextResponse.json(enriched);
@@ -101,6 +102,7 @@ export async function POST(request: Request) {
       err instanceof IdealistaSearchError ||
       err instanceof ScrapingBeeError ||
       err instanceof RapidApiIdealistaError ||
+      err instanceof RealtyApiImmobiliareError ||
       err instanceof SrealitySearchError
     ) {
       return NextResponse.json({ detail: err.message }, { status: 502 });

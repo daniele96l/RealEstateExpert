@@ -18,6 +18,10 @@ export function hasRapidApiKey(): boolean {
   return Boolean(process.env.RAPIDAPI_KEY?.trim());
 }
 
+export function isRapidApiEnabled(): boolean {
+  return hasRapidApiKey() && process.env.RAPIDAPI_DISABLED !== "1";
+}
+
 export function hasScrapingBeeKey(): boolean {
   return Boolean(process.env.SCRAPINGBEE_API_KEY?.trim());
 }
@@ -38,8 +42,9 @@ export function getDefaultListingsProvider(): ListingsProvider {
     return env;
   }
   if (hasRealtyApiKey()) return "realtyapi";
-  if (hasRapidApiKey()) return "rapidapi";
-  return "scrapingbee";
+  if (hasScrapingBeeKey()) return "scrapingbee";
+  if (isRapidApiEnabled()) return "rapidapi";
+  return "direct";
 }
 
 export function hasImmobiliareInsightsCredentials(): boolean {

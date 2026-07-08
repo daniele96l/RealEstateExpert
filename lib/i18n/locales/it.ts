@@ -102,7 +102,8 @@ const it = {
     regime: "Regime",
     flatTax: "Cedolare secca",
     imu: "IMU",
-    primaryHomeExempt: "Esonero — abitazione principale (prima casa).",
+    primaryHomeNote:
+      "Imposta di registro al 2% sul catastale. L'IMU resta dovuta se l'immobile è affittato.",
     typicalOccupancy: "Occupazione tipica",
     cleaning: "Pulizie",
     cleaningSemester: "~€{fee} × {turns} cambi/anno tra semestri.",
@@ -166,6 +167,7 @@ const it = {
     notCoveredByMortgage: "Non coperto dal mutuo",
     editAbove: "Non coperto dal mutuo — modifica sopra",
     registrationTax: "Imposta di registro",
+    registrationTaxHint: "{pct}% sul catastale ({cadastral}) — {regime}",
     vat: "IVA",
     notary: "Notaio",
     agency: "Agenzia",
@@ -353,6 +355,28 @@ const it = {
     refreshing: "Aggiornamento…",
     lastUpdate: "Ultimo aggiornamento",
     snapshots: "Snapshot",
+    selectSnapshot: "Visualizza snapshot",
+    snapshotLatest: "Ultimo (live)",
+    snapshotHistorical: "Vista storica — metriche alla data dello scrape selezionato",
+    minimap: {
+      title: "Minimappa",
+      empty: "Nessun annuncio con coordinate disponibili.",
+    },
+    diff: {
+      title: "Confronto tra snapshot",
+      subtitle: "Annunci ancora online, nuovi o non più presenti rispetto allo scrape precedente",
+      noPrevious: "Serve almeno un secondo snapshot per confrontare gli annunci.",
+      comparedTo: "Rispetto a {date}",
+      stillActive: "Ancora online",
+      new: "Nuovi",
+      removed: "Non più online",
+      filterAll: "Tutti",
+      noListings: "Nessun annuncio in questa categoria.",
+      table: {
+        status: "Stato",
+      },
+    },
+    lastProvider: "Ultimo provider",
     needsSnapshots:
       "Servono almeno 2 aggiornamenti (in giorni diversi) per stimare giorni sul mercato e occupancy.",
     disclaimer:
@@ -361,7 +385,7 @@ const it = {
     refreshError: "Aggiornamento non riuscito",
     refreshSummary: "Caricati {fetched} annunci · {newCount} nuovi · {rented} presumibilmente affittati",
     areasTitle: "Aree",
-    areasSubtitle: "Zone inferite dall'indirizzo degli annunci",
+    areasSubtitle: "Quartieri Immobiliare.it (da indirizzo e coordinate)",
     noAreas: "Nessun dato per area — esegui un aggiornamento.",
     kpi: {
       active: "Annunci attivi",
@@ -373,7 +397,7 @@ const it = {
       occupancyHint: "Proxy da annunci tracciati, non dati ISTAT",
     },
     table: {
-      zone: "Zona",
+      zone: "Quartiere",
       active: "Attivi",
       rented: "Affittati ({days} gg)",
       avgDom: "DOM medio",
@@ -384,6 +408,8 @@ const it = {
     preview: {
       title: "Anteprima cache affitti",
       subtitle: "Ultimi annunci in affitto salvati localmente (mappa Idealista)",
+      snapshotTitle: "Annunci allo snapshot",
+      snapshotSubtitle: "Elenco annunci attivi nello scrape selezionato",
       cachedAt: "Cache del",
       provider: "Provider",
       listings: "Annunci in cache",
@@ -392,10 +418,10 @@ const it = {
       avgSqm: "Superficie media",
       topAreas: "Zone principali",
       table: {
-        zone: "Zona / indirizzo",
+        zone: "Quartiere / indirizzo",
         rooms: "Locali",
         sqm: "m²",
-        rent: "Canone",
+        rent: "Canone mensile",
       },
     },
   },

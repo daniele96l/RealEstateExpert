@@ -1,6 +1,8 @@
+import { loadEnvLocal } from "../lib/server/load-env";
 import { runOccupancySnapshot } from "../lib/occupancy/snapshot";
 
 async function main() {
+  loadEnvLocal();
   console.log("Running occupancy snapshot for Reggio Calabria…");
   const result = await runOccupancySnapshot();
   console.log(`Snapshot #${result.registry.snapshot_count}`);

@@ -4,11 +4,12 @@ import type {
   MapListing,
   OccupancyBasicListing,
   OccupancyListingsPreview,
+  OccupancySnapshot,
 } from "@/lib/types";
 import { getCache, mergeListings } from "@/lib/server/listings-cache";
 import { readJsonFile } from "@/lib/server/fs-cache-io";
 import { OCCUPANCY_CITY, OCCUPANCY_MARKET } from "./constants";
-import { resolveListingZone } from "./zone";
+import { remapListingZones, resolveListingZone, withResolvedZone } from "./zone";
 
 const PREVIEW_SAMPLE_SIZE = 8;
 const PREVIEW_AREA_LIMIT = 8;
@@ -37,7 +38,7 @@ function toBasic(listing: MapListing): OccupancyBasicListing {
     sqm: listing.sqm,
     rooms: listing.rooms,
     address: listing.address,
-    zone: resolveListingZone(listing.address),
+    zone: resolveListingZone(listing.address, listing.lat, listing.lng),
   };
 }
 
@@ -76,13 +77,13 @@ export async function loadListingsPreview(): Promise<OccupancyListingsPreview | 
   const cache = await loadMergedRentCache();
   if (!cache?.listings.length) return null;
 
-  const basics = cache.listings.map(toBasic);
+  const basics = remapListingZones(cache.listings.map(toBasic));
   const prices = basics.map((l) => l.price).filter((p) => p > 0);
   const sqms = basics.map((l) => l.sqm).filter((s): s is number => s != null && s > 0);
 
   const byZone = new Map<string, MapListing[]>();
   for (const listing of cache.listings) {
-    const zone = resolveListingZone(listing.address);
+    const zone = resolveListingZone(listing.address, listing.lat, listing.lng);
     const bucket = byZone.get(zone) ?? [];
     bucket.push(listing);
     byZone.set(zone, bucket);
@@ -109,6 +110,52 @@ export async function loadListingsPreview(): Promise<OccupancyListingsPreview | 
     source: "listings_cache",
     fetched_at: cache.fetched_at,
     provider: cache.provider ?? null,
+    listing_count: basics.length,
+    avg_price: average(prices),
+    median_price: median(prices),
+    avg_sqm: average(sqms),
+    areas,
+    sample,
+  };
+}
+
+export function buildPreviewFromSnapshot(
+  snapshot: OccupancySnapshot,
+  provider: string | null = null,
+): OccupancyListingsPreview {
+  const basics = remapListingZones(snapshot.listings);
+  const prices = basics.map((l) => l.price).filter((p) => p > 0);
+  const sqms = basics.map((l) => l.sqm).filter((s): s is number => s != null && s > 0);
+
+  const byZone = new Map<string, OccupancyBasicListing[]>();
+  for (const listing of basics) {
+    const zone = listing.zone ?? "Altro";
+    const bucket = byZone.get(zone) ?? [];
+    bucket.push(listing);
+    byZone.set(zone, bucket);
+  }
+
+  const areas = [...byZone.entries()]
+    .map(([zone, items]) => ({
+      zone,
+      count: items.length,
+      avg_price: average(items.map((l) => l.price).filter((p) => p > 0)),
+    }))
+    .sort((a, b) => b.count - a.count || a.zone.localeCompare(b.zone, "it"))
+    .slice(0, PREVIEW_AREA_LIMIT);
+
+  const sample = [...basics]
+    .sort((a, b) => b.price - a.price)
+    .slice(0, PREVIEW_SAMPLE_SIZE)
+    .map((item) => ({
+      ...item,
+      address: shortenAddress(item.address),
+    }));
+
+  return {
+    source: "occupancy_snapshot",
+    fetched_at: snapshot.fetched_at,
+    provider,
     listing_count: basics.length,
     avg_price: average(prices),
     median_price: median(prices),

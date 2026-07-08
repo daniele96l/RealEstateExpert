@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import { loadOccupancyDashboard } from "@/lib/occupancy/dashboard";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    const data = await loadOccupancyDashboard();
+    const { searchParams } = new URL(request.url);
+    const asOf = searchParams.get("asOf");
+    const data = await loadOccupancyDashboard(asOf);
     return NextResponse.json(data);
   } catch (err) {
     const message = err instanceof Error ? err.message : "Lettura metriche non riuscita";

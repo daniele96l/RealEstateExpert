@@ -13,6 +13,7 @@ import {
 } from "./immobiliare-search";
 import { mapRealEstateToDetail } from "./immobiliare-scraper";
 import { getRapidApiKey, hasRapidApiKey } from "./config";
+import { markRapidApiQuotaExhausted } from "./provider-quota";
 
 const RAPIDAPI_HOST = "immobiliare-it-scraper.p.rapidapi.com";
 
@@ -40,8 +41,9 @@ async function rapidApiGet(path: string, params: Record<string, string>): Promis
     );
   }
   if (response.status === 429) {
+    markRapidApiQuotaExhausted();
     throw new RapidApiImmobiliareError(
-      "Limite richieste RapidAPI raggiunto. Attendi qualche minuto o passa a un piano superiore.",
+      "Limite mensile RapidAPI esaurito. Verranno usati provider alternativi.",
     );
   }
   if (!response.ok) {

@@ -4,6 +4,7 @@ import { resolveListingCondition } from "@/lib/renovation-status";
 import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { parseRapidPropertyPayload } from "./property-detail";
 import { getRapidApiKey } from "./config";
+import { markRapidApiQuotaExhausted } from "./provider-quota";
 import { geocodeCity, locationMatchesCity, normalizeCitySlug } from "./geocode";
 
 const RAPIDAPI_HOST = "idealista17.p.rapidapi.com";
@@ -51,6 +52,12 @@ async function rapidApiGet<T>(path: string, params: Record<string, string>): Pro
 
   if (response.status === 401 || response.status === 403) {
     throw new RapidApiIdealistaError("Chiave RapidAPI non valida o piano insufficiente");
+  }
+  if (response.status === 429) {
+    markRapidApiQuotaExhausted();
+    throw new RapidApiIdealistaError(
+      "Limite mensile RapidAPI Idealista17 esaurito. Verranno usati provider alternativi.",
+    );
   }
   if (!response.ok) {
     const text = await response.text();

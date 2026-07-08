@@ -1,6 +1,7 @@
 #!/usr/bin/env npx tsx
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { BATCH_FETCH_ALL_PAGES, resolveItalyListingMaxPages } from "../lib/batch-fetch-pages";
 import { fetchImmobiliareListingDetail } from "../lib/server/immobiliare-import";
 import { fetchImmobiliareCityListings } from "../lib/server/immobiliare-search";
 import { getCache, mergeListingCache, saveCache } from "../lib/server/listings-cache";
@@ -12,10 +13,14 @@ async function main() {
   const sale = !args.includes("--rent-only");
   const rent = !args.includes("--sale-only");
   const withDetails = args.includes("--details");
-  const maxPages = Number(args.find((a) => a.startsWith("--max-pages="))?.split("=")[1] ?? "20");
+  const maxPagesArg = args.find((a) => a.startsWith("--max-pages="))?.split("=")[1];
+  const maxPages = maxPagesArg != null ? Number(maxPagesArg) : BATCH_FETCH_ALL_PAGES;
+  const pageLimit = resolveItalyListingMaxPages(maxPages);
   const limit = Number(args.find((a) => a.startsWith("--limit="))?.split("=")[1] ?? "0");
 
-  console.error(`Scraping Immobiliare: ${city} (maxPages=${maxPages}, details=${withDetails})`);
+  console.error(
+    `Scraping Immobiliare: ${city} (maxPages=${maxPages === BATCH_FETCH_ALL_PAGES ? "all" : pageLimit}, details=${withDetails})`,
+  );
 
   const caches = [];
   if (sale) {

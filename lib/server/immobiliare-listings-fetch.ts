@@ -1,6 +1,7 @@
 import type { CityListingsCache, ListingsProvider } from "@/lib/types";
 import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
-import { hasRapidApiKey, hasRealtyApiKey } from "./config";
+import { hasRealtyApiKey, isRapidApiEnabled } from "./config";
+import { shouldSkipRapidApi } from "./provider-quota";
 import { ImmobiliareBrowserError } from "./immobiliare-browser";
 import { fetchImmobiliareCityListings, ImmobiliareSearchError } from "./immobiliare-search";
 import {
@@ -22,7 +23,7 @@ export {
 const IMMOBILIARE_PROVIDERS: ListingsProvider[] = ["realtyapi", "rapidapi", "direct"];
 
 function isImmobiliareProviderConfigured(provider: ListingsProvider): boolean {
-  if (provider === "rapidapi") return hasRapidApiKey();
+  if (provider === "rapidapi") return isRapidApiEnabled() && !shouldSkipRapidApi();
   if (provider === "realtyapi") return hasRealtyApiKey();
   if (provider === "direct") return true;
   return false;

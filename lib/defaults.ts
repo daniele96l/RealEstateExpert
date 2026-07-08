@@ -2,6 +2,7 @@ import type { EnergyClass, InvestmentScenario, RentalMode } from "./types";
 import type { MarketId } from "./markets";
 import {
   ITALY_DEFAULTS,
+  applyNotaryFeeFloor,
   estimateFurnishing,
   estimateMonthlyRent,
   estimateNightlyRate,
@@ -467,9 +468,25 @@ function effectiveCadastralFromSimple(s: SimpleScenario): number {
     : price * ITALY_DEFAULTS.cadastral_ratio;
 }
 
+export function effectiveRegistrationTaxPctFromSimple(s: SimpleScenario): number {
+  if (s.registration_tax_pct != null) return s.registration_tax_pct;
+  return s.property_type === "prima_casa"
+    ? ITALY_DEFAULTS.registration_tax_pct_prima_casa
+    : ITALY_DEFAULTS.registration_tax_pct_investment;
+}
+
+export { effectiveCadastralFromSimple };
+
 function financedProjectTotalFromSimple(s: SimpleScenario): number {
   const price = s.purchase_price > 0 ? s.purchase_price : ITALY_DEFAULTS.default_purchase_price;
   return price + Math.max(0, s.renovation_cost) + Math.max(0, s.furnishing_cost);
+}
+
+function hasMortgageFromSimple(s: SimpleScenario): boolean {
+  const projectTotal = financedProjectTotalFromSimple(s);
+  if (projectTotal <= 0) return false;
+  if (s.loan_amount != null) return s.loan_amount > 0;
+  return s.down_payment_pct < 100;
 }
 
 export function applyPurchaseCostEdit(
@@ -495,8 +512,10 @@ export function applyPurchaseCostEdit(
         registration_tax_pct: cadastral > 0 ? (v / cadastral) * 100 : s.registration_tax_pct,
       };
     }
-    case "notary":
-      return { ...s, notary_pct: price > 0 ? (v / price) * 100 : s.notary_pct };
+    case "notary": {
+      const clamped = applyNotaryFeeFloor(v, hasMortgageFromSimple(s));
+      return { ...s, notary_pct: price > 0 ? (clamped / price) * 100 : s.notary_pct };
+    }
     case "agency":
       return { ...s, agency_pct: price > 0 ? (v / price) * 100 : s.agency_pct };
     case "renovation":

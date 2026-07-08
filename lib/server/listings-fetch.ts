@@ -1,5 +1,6 @@
 import { fetchCityListings, IdealistaSearchError } from "@/lib/server/idealista-search";
-import { hasRapidApiKey, hasScrapingBeeKey, getDefaultListingsProvider } from "@/lib/server/config";
+import { hasScrapingBeeKey, getDefaultListingsProvider, isRapidApiEnabled } from "@/lib/server/config";
+import { noteRapidApiError, shouldSkipRapidApi } from "@/lib/server/provider-quota";
 import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import type { CityListingsCache, ListingsProvider } from "@/lib/types";
 
@@ -20,7 +21,10 @@ export async function fetchWithFallback(
   const order: ListingsProvider[] =
     preferred === "rapidapi" ? ["rapidapi", "scrapingbee"] : ["scrapingbee", "rapidapi"];
 
-  const available = order.filter((p) => (p === "rapidapi" ? hasRapidApiKey() : hasScrapingBeeKey()));
+  const available = order.filter((p) => {
+    if (p === "rapidapi") return isRapidApiEnabled() && !shouldSkipRapidApi();
+    return hasScrapingBeeKey();
+  });
   if (!available.length) {
     throw new Error("Nessuna API configurata. Aggiungi RAPIDAPI_KEY o SCRAPINGBEE_API_KEY in .env.local");
   }
@@ -31,6 +35,7 @@ export async function fetchWithFallback(
       const data = await fetchCityListings(city, operation, provider, maxPages, onPage);
       return { data, provider };
     } catch (err) {
+      noteRapidApiError(err);
       lastError = err;
     }
   }

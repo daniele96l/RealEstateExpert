@@ -4,13 +4,14 @@ import { resolveListingCondition } from "@/lib/renovation-status";
 import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { citySlugVariants, geocodeCity, normalizeCitySlug } from "./geocode";
 import { fetchCityListingsViaRapidApi } from "./rapidapi-idealista";
+import { fetchCityListingsViaDirect } from "./idealista-direct";
 import { fetchUrl } from "./scrapingbee";
 
 const IDEALISTA_BASE = "https://www.idealista.it";
 
 export class IdealistaSearchError extends Error {}
 
-function buildSearchUrl(
+export function buildIdealistaSearchUrl(
   slug: string,
   operation: "sale" | "rent",
   mapView: boolean,
@@ -144,7 +145,7 @@ function parseEmbeddedMarkers(html: string, operation: "sale" | "rent"): MapList
   return listings;
 }
 
-function parseListingCards(html: string, operation: "sale" | "rent"): MapListing[] {
+export function parseListingCards(html: string, operation: "sale" | "rent"): MapListing[] {
   const $ = cheerio.load(html);
   const listings: MapListing[] = [];
   const seen = new Set<string>();
@@ -210,6 +211,9 @@ export async function fetchCityListings(
   if (provider === "rapidapi") {
     return fetchCityListingsViaRapidApi(city, operation, maxPages, onPage);
   }
+  if (provider === "direct") {
+    return fetchCityListingsViaDirect(city, operation, maxPages, onPage);
+  }
   return fetchCityListingsViaScrapingBee(city, operation, maxPages, onPage);
 }
 
@@ -228,7 +232,7 @@ async function fetchCityListingsViaScrapingBee(
       const beforeCount = listings.length;
       for (const mapView of [true, false]) {
         try {
-          const html = await fetchUrl(buildSearchUrl(slug, operation, mapView, page));
+          const html = await fetchUrl(buildIdealistaSearchUrl(slug, operation, mapView, page));
           const pageListings = parseMapSearchHtml(html, operation);
           if (pageListings.length) {
             listings = mergeListingMaps(listings, pageListings);

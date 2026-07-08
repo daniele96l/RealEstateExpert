@@ -6,14 +6,10 @@ import {
 } from "@/lib/batch-fetch-progress";
 import type { MarketId } from "@/lib/markets";
 import { geocodeCity } from "@/lib/server/geocode";
-import {
-  buildImmobiliareSearchQuery,
-  fetchImmobiliareWithFallback,
-} from "@/lib/server/immobiliare-listings-fetch";
+import { fetchItalyListingsWithFallback } from "@/lib/server/italy-listings-fetch";
 import { getCache, mergeListingCache, replaceListingCache, saveCache } from "@/lib/server/listings-cache";
 import {
   buildSearchQuery,
-  fetchWithFallback,
   resolvePreferredProvider,
 } from "@/lib/server/listings-fetch";
 import { fetchSrealityCityListings } from "@/lib/server/sreality-search";
@@ -132,11 +128,7 @@ export async function runBatchPreview(
     return result;
   }
 
-  const portal: ListingSource = body.portal === "immobiliare" ? "immobiliare" : "idealista";
-  const searchQuery =
-    portal === "immobiliare"
-      ? buildImmobiliareSearchQuery(body.city, body.zone)
-      : buildSearchQuery(body.city, body.zone);
+  const searchQuery = buildSearchQuery(body.city, body.zone);
   const preferred = resolvePreferredProvider(body.provider);
 
   if (!body.refresh) {
@@ -171,22 +163,13 @@ export async function runBatchPreview(
   }> = [];
 
   for (const operation of operations) {
-    const { data, provider } =
-      portal === "immobiliare"
-        ? await fetchImmobiliareWithFallback(
-            searchQuery,
-            operation,
-            preferred,
-            maxPages,
-            (p) => emitPageProgress(p.operation, p.page, p.listingsTotal),
-          )
-        : await fetchWithFallback(
-            searchQuery,
-            operation,
-            preferred,
-            maxPages,
-            (p) => emitPageProgress(p.operation, p.page, p.listingsTotal),
-          );
+    const { data, provider } = await fetchItalyListingsWithFallback(
+      searchQuery,
+      operation,
+      preferred,
+      maxPages,
+      (p) => emitPageProgress(p.operation, p.page, p.listingsTotal),
+    );
     results.push({ operation, data: { ...data, provider }, provider });
   }
 

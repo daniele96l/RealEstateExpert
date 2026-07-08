@@ -1,4 +1,5 @@
 import type { InvestmentScenario, PurchaseCostBreakdown } from "../types";
+import { applyNotaryFeeFloor } from "../constants";
 import {
   effectiveCadastralValue,
   effectiveLoanAmount,
@@ -12,12 +13,15 @@ export function computePurchaseCosts(scenario: InvestmentScenario): PurchaseCost
   const cadastral = effectiveCadastralValue(scenario);
   const registrationTax = cadastral * (effectiveRegistrationTaxPct(scenario) / 100);
   const vat = price * (scenario.property.vat_pct / 100);
-  const notary = price * (scenario.property.notary_pct / 100);
+  const loanAmount = effectiveLoanAmount(scenario);
+  const notary = applyNotaryFeeFloor(
+    price * (scenario.property.notary_pct / 100),
+    loanAmount > 0,
+  );
   const agency = price * (scenario.property.agency_pct / 100);
   const downPayment = equityDownPayment(scenario);
   const renovation = scenario.renovation.renovation_cost;
   const furnishing = scenario.renovation.furnishing_cost;
-  const loanAmount = effectiveLoanAmount(scenario);
 
   return {
     down_payment: round2(downPayment),

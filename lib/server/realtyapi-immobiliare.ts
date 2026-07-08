@@ -109,6 +109,8 @@ function searchType(operation: "sale" | "rent"): string {
   return operation === "rent" ? "For_Rent" : "For_Sale";
 }
 
+const REALTYAPI_RESULTS_PER_PAGE = "50";
+
 export async function fetchCityListingsViaRealtyApi(
   city: string,
   operation: "sale" | "rent",
@@ -128,7 +130,7 @@ export async function fetchCityListingsViaRealtyApi(
       location,
       searchType: searchType(operation),
       page: String(page),
-      resultCount: "20",
+      resultCount: REALTYAPI_RESULTS_PER_PAGE,
     });
 
     const batch = (data.searchResults ?? [])
@@ -144,7 +146,9 @@ export async function fetchCityListingsViaRealtyApi(
       listingsTotal: byId.size,
     });
 
-    if (!batch.length || !data.nextPage) break;
+    if (!batch.length) break;
+    if (data.total != null && byId.size >= data.total) break;
+    if (!data.nextPage) break;
   }
 
   const listings = [...byId.values()];

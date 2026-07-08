@@ -295,8 +295,9 @@ export async function saveListingsExportToServer(
   return res.json();
 }
 
-export async function fetchOccupancyMetrics(): Promise<OccupancyDashboardData> {
-  const res = await fetch("/api/occupancy/metrics");
+export async function fetchOccupancyMetrics(asOf?: string | null): Promise<OccupancyDashboardData> {
+  const params = asOf ? `?asOf=${encodeURIComponent(asOf)}` : "";
+  const res = await fetch(`/api/occupancy/metrics${params}`);
   if (!res.ok) throw new Error(await parseError(res, "Lettura metriche occupancy non riuscita"));
   return res.json();
 }

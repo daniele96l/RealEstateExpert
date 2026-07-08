@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { applyPurchaseCostEdit, sanitizeSimple, type PurchaseCostField, type SimpleScenario } from "@/lib/defaults";
+import { applyPurchaseCostEdit, effectiveCadastralFromSimple, effectiveRegistrationTaxPctFromSimple, sanitizeSimple, type PurchaseCostField, type SimpleScenario } from "@/lib/defaults";
 import { fmtMoney } from "@/lib/utils";
 import type { MarketId } from "@/lib/markets";
 import { useI18n } from "@/lib/i18n/context";
@@ -57,13 +57,30 @@ export default function PurchaseBreakdown({ market, costs, scenario, onScenarioC
   const loanFurnishing = costs.furnishing * loanShare;
   const accessoryCosts = costs.registration_tax + costs.vat + costs.notary + costs.agency;
 
-  const cashRows: { label: string; field?: PurchaseCostField; value: number }[] = [
+  const registrationTaxHint =
+    market === "it"
+      ? `${t("purchase.registrationTaxHint", {
+          pct: effectiveRegistrationTaxPctFromSimple(scenario),
+          cadastral: fmtMoney(effectiveCadastralFromSimple(scenario), market),
+          regime:
+            scenario.property_type === "prima_casa"
+              ? t("scenario.primaryHome")
+              : t("scenario.investment"),
+        })} · ${t("purchase.notCoveredByMortgage")}`
+      : t("purchase.notCoveredByMortgage");
+
+  const cashRows: { label: string; field?: PurchaseCostField; value: number; hint?: string }[] = [
     ...(market === "it"
-      ? [{ label: t("purchase.registrationTax"), field: "registration_tax" as const, value: costs.registration_tax }]
+      ? [{
+          label: t("purchase.registrationTax"),
+          field: "registration_tax" as const,
+          value: costs.registration_tax,
+          hint: registrationTaxHint,
+        }]
       : []),
     ...(costs.vat > 0 ? [{ label: t("purchase.vat"), value: costs.vat }] : []),
-    { label: t("purchase.notary"), field: "notary", value: costs.notary },
-    { label: t("purchase.agency"), field: "agency", value: costs.agency },
+    { label: t("purchase.notary"), field: "notary", value: costs.notary, hint: t("purchase.notCoveredByMortgage") },
+    { label: t("purchase.agency"), field: "agency", value: costs.agency, hint: t("purchase.notCoveredByMortgage") },
   ];
 
   const loanRows: { label: string; field?: PurchaseCostField; value: number }[] = [
@@ -151,7 +168,7 @@ export default function PurchaseBreakdown({ market, costs, scenario, onScenarioC
             undefined,
             t("purchase.editAbove"),
           )}
-          {cashRows.map((r) => renderRow(r.label, r.value, r.field, t("purchase.notCoveredByMortgage")))}
+          {cashRows.map((r) => renderRow(r.label, r.value, r.field, r.hint ?? t("purchase.notCoveredByMortgage")))}
           <div className="flex justify-between border-t border-surface-border pt-2 text-sm font-semibold">
             <span className="text-slate-300">{t("purchase.totalCashAtPurchase")}</span>
             <span className="text-accent">{fmtMoney(costs.total_initial_cash, market)}</span>

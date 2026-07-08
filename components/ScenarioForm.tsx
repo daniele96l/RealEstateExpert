@@ -36,7 +36,7 @@ function Field({ label, hint, children }: { label: string; hint?: string; childr
   );
 }
 
-function RentalModeInfo({ mode, propertyType }: { mode: RentalMode; propertyType: "prima_casa" | "investment" }) {
+function RentalModeInfo({ mode }: { mode: RentalMode }) {
   const { t } = useI18n();
   const rules = getRentalModeRules(mode);
   const modeKey = mode as "long_term" | "medium_term_semester" | "short_term_airbnb";
@@ -51,10 +51,7 @@ function RentalModeInfo({ mode, propertyType }: { mode: RentalMode; propertyType
           <span className="text-slate-300">{t("scenario.flatTax")}:</span> {rules.cedolare_pct}% — {t(`rentalModes.${modeKey}.cedolareNote`)}
         </li>
         <li>
-          <span className="text-slate-300">{t("scenario.imu")}:</span>{" "}
-          {propertyType === "prima_casa"
-            ? t("scenario.primaryHomeExempt")
-            : t(`rentalModes.${modeKey}.imuNote`)}
+          <span className="text-slate-300">{t("scenario.imu")}:</span> {t(`rentalModes.${modeKey}.imuNote`)}
         </li>
         <li>
           <span className="text-slate-300">{t("scenario.typicalOccupancy")}:</span> {rules.occupancy_pct}% — {t(`rentalModes.${modeKey}.occupancyNote`)}
@@ -100,6 +97,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
     rentalMode !== "short_term_airbnb" && (propertyManagerFeePct ?? 0) > 0;
   const prevMode = useRef<RentalMode | null>(null);
   const prevPrice = useRef<number | null>(null);
+  const prevPropertyType = useRef(propertyType);
   const syncScenarioRef = useRef(syncScenario);
   syncScenarioRef.current = syncScenario;
 
@@ -152,6 +150,13 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
       setValue("sqm", estimateSqmFromPrice(purchasePrice));
     }
   }, [purchasePrice, setValue]);
+
+  useEffect(() => {
+    if (market !== "it") return;
+    if (prevPropertyType.current === propertyType) return;
+    prevPropertyType.current = propertyType;
+    setValue("registration_tax_pct", null);
+  }, [propertyType, setValue, market]);
 
   useEffect(() => {
     if (!utilitiesAuto) return;
@@ -221,7 +226,10 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
               />
             </Field>
             {market === "it" ? (
-            <Field label={t("scenario.propertyType")}>
+            <Field
+              label={t("scenario.propertyType")}
+              hint={propertyType === "prima_casa" ? t("scenario.primaryHomeNote") : undefined}
+            >
               <select className="select-field" {...register("property_type")}>
                 <option value="investment">{t("scenario.investment")}</option>
                 <option value="prima_casa">{t("scenario.primaryHome")}</option>
@@ -444,7 +452,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
                 </div>
               </Field>
             </div>
-            {market === "it" && <RentalModeInfo mode={rentalMode} propertyType={propertyType} />}
+            {market === "it" && <RentalModeInfo mode={rentalMode} />}
             {market === "cz" && (
               <div className="sm:col-span-2 rounded-xl border border-accent/20 bg-accent/5 p-3 text-xs text-slate-400">
                 {t("scenario.czTaxNote")}

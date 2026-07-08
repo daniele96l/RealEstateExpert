@@ -280,6 +280,7 @@ export interface OccupancyRegistry {
   market: "it";
   updated_at: string;
   snapshot_count: number;
+  last_provider: ListingsProvider | null;
   listings: Record<string, TrackedRentalListing>;
 }
 
@@ -304,6 +305,7 @@ export interface OccupancyCityMetrics {
   market: "it";
   updated_at: string | null;
   snapshot_count: number;
+  last_provider: ListingsProvider | null;
   active_count: number;
   rented_in_window: number;
   avg_days_on_market: number | null;
@@ -320,8 +322,38 @@ export interface OccupancyAreaPreview {
   avg_price: number | null;
 }
 
+export interface OccupancySnapshotSummary {
+  fetched_at: string;
+  active_count: number;
+}
+
+export type OccupancyListingChangeStatus = "still_active" | "new" | "removed";
+
+export interface OccupancySnapshotListing extends OccupancyBasicListing {
+  change_status: OccupancyListingChangeStatus;
+}
+
+export interface OccupancySnapshotDiff {
+  current_fetched_at: string;
+  previous_fetched_at: string;
+  still_active_count: number;
+  new_count: number;
+  removed_count: number;
+  listings: OccupancySnapshotListing[];
+}
+
+export interface OccupancyMapListing {
+  id: string;
+  lat: number;
+  lng: number;
+  zone: string | null;
+  price: number;
+  address: string | null;
+  change_status?: OccupancyListingChangeStatus;
+}
+
 export interface OccupancyListingsPreview {
-  source: "listings_cache";
+  source: "listings_cache" | "occupancy_snapshot";
   fetched_at: string;
   provider: string | null;
   listing_count: number;
@@ -335,4 +367,8 @@ export interface OccupancyListingsPreview {
 export interface OccupancyDashboardData {
   metrics: OccupancyCityMetrics;
   listings_preview: OccupancyListingsPreview | null;
+  snapshot_diff: OccupancySnapshotDiff | null;
+  map_listings: OccupancyMapListing[];
+  available_snapshots: OccupancySnapshotSummary[];
+  selected_snapshot_at: string | null;
 }

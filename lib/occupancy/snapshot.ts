@@ -1,10 +1,19 @@
-import type { MapListing, OccupancyBasicListing, OccupancyCityMetrics, TrackedRentalListing } from "@/lib/types";
-import { fetchWithFallback } from "@/lib/server/listings-fetch";
+import type {
+  ListingsProvider,
+  MapListing,
+  OccupancyBasicListing,
+  OccupancyCityMetrics,
+  OccupancyRegistry,
+  OccupancySnapshot,
+  TrackedRentalListing,
+} from "@/lib/types";
+import { fetchItalyListingsWithFallback } from "@/lib/server/italy-listings-fetch";
 import { getDefaultListingsProvider } from "@/lib/server/config";
 import {
   OCCUPANCY_CITY,
   OCCUPANCY_FETCH_MAX_PAGES,
 } from "./constants";
+import { resolveItalyListingMaxPages } from "@/lib/batch-fetch-pages";
 import { resolveListingZone } from "./zone";
 import { emptyRegistry, loadRegistry, saveRegistry, saveSnapshot } from "./registry";
 import { computeOccupancyMetrics } from "./metrics";
@@ -23,7 +32,7 @@ function mapListingToBasic(listing: MapListing): OccupancyBasicListing {
     sqm: listing.sqm,
     rooms: listing.rooms,
     address: listing.address,
-    zone: resolveListingZone(listing.address),
+    zone: resolveListingZone(listing.address, listing.lat, listing.lng),
   };
 }
 
@@ -82,12 +91,68 @@ export interface OccupancySnapshotResult {
   rented_count: number;
 }
 
+export function rebuildRegistryFromSnapshots(
+  snapshots: OccupancySnapshot[],
+  lastProvider: ListingsProvider | null = null,
+): OccupancyRegistry {
+  const listings: Record<string, TrackedRentalListing> = {};
+
+  for (const snapshot of snapshots) {
+    const fetchedAt = snapshot.fetched_at;
+    const currentIds = new Set(snapshot.listings.map((l) => l.id));
+
+    for (const basic of snapshot.listings) {
+      const existing = listings[basic.id];
+      if (!existing) {
+        listings[basic.id] = createTracked(basic, fetchedAt);
+        continue;
+      }
+      if (existing.status === "presumed_rented") {
+        listings[basic.id] = createTracked(basic, fetchedAt);
+        continue;
+      }
+      listings[basic.id] = updateTrackedFields(existing, basic, fetchedAt);
+    }
+
+    for (const [id, tracked] of Object.entries(listings)) {
+      if (tracked.status !== "active") continue;
+      if (currentIds.has(id)) continue;
+      listings[id] = markRented(tracked);
+    }
+  }
+
+  const last = snapshots[snapshots.length - 1];
+  return {
+    city: OCCUPANCY_CITY,
+    market: "it",
+    updated_at: last?.fetched_at ?? new Date().toISOString(),
+    snapshot_count: snapshots.length,
+    last_provider: lastProvider,
+    listings,
+  };
+}
+
+export async function rebuildRegistryUpTo(
+  targetFetchedAt: string,
+  lastProvider: ListingsProvider | null = null,
+): Promise<OccupancyRegistry | null> {
+  const { loadAllSnapshots } = await import("./registry");
+  const targetMs = new Date(targetFetchedAt).getTime();
+  if (!Number.isFinite(targetMs)) return null;
+
+  const snapshots = (await loadAllSnapshots()).filter(
+    (s) => new Date(s.fetched_at).getTime() <= targetMs,
+  );
+  if (!snapshots.length) return null;
+  return rebuildRegistryFromSnapshots(snapshots, lastProvider);
+}
+
 export async function runOccupancySnapshot(): Promise<OccupancySnapshotResult> {
-  const { data } = await fetchWithFallback(
+  const { data, provider } = await fetchItalyListingsWithFallback(
     OCCUPANCY_CITY,
     "rent",
     getDefaultListingsProvider(),
-    OCCUPANCY_FETCH_MAX_PAGES,
+    resolveItalyListingMaxPages(OCCUPANCY_FETCH_MAX_PAGES),
   );
 
   const fetchedAt = data.fetched_at || new Date().toISOString();
@@ -129,6 +194,7 @@ export async function runOccupancySnapshot(): Promise<OccupancySnapshotResult> {
     ...(registry.snapshot_count ? registry : emptyRegistry()),
     updated_at: fetchedAt,
     snapshot_count: registry.snapshot_count + 1,
+    last_provider: provider,
     listings,
   };
 

@@ -14,7 +14,8 @@
     "scrape:immobiliare:city:py": "python3 scripts/scrape_immobiliare_city.py",
     "immobiliare:captcha": "tsx scripts/open-immobiliare-captcha.ts",
     "scrape:idealista:city": "tsx scripts/scrape-idealista-city.ts",
-    "occupancy:poll": "tsx scripts/poll-occupancy-reggio.ts"
+    "occupancy:poll": "tsx scripts/poll-occupancy-reggio.ts",
+    "listings:test-providers": "tsx scripts/test-listing-providers.ts"
   },
   "dependencies": {
     "cheerio": "^1.2.0",

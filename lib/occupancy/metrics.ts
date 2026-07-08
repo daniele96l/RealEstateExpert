@@ -11,6 +11,17 @@ import {
   OCCUPANCY_WINDOW_DAYS,
 } from "./constants";
 import { loadSnapshotsInWindow } from "./registry";
+import { resolveListingZone } from "./zone";
+
+export interface ComputeOccupancyMetricsOptions {
+  asOf?: string;
+}
+
+function resolveAsOfMs(asOf?: string): number {
+  if (!asOf) return Date.now();
+  const ms = new Date(asOf).getTime();
+  return Number.isFinite(ms) ? ms : Date.now();
+}
 
 function median(values: number[]): number | null {
   if (!values.length) return null;
@@ -76,8 +87,8 @@ function aggregateListings(
   };
 }
 
-async function avgActiveInventoryLastDays(days: number): Promise<number | null> {
-  const snapshots = await loadSnapshotsInWindow(days);
+async function avgActiveInventoryLastDays(days: number, asOfMs: number): Promise<number | null> {
+  const snapshots = await loadSnapshotsInWindow(days, asOfMs);
   if (!snapshots.length) return null;
   const counts = snapshots.map((s) => s.active_count);
   return average(counts);
@@ -85,14 +96,20 @@ async function avgActiveInventoryLastDays(days: number): Promise<number | null> 
 
 export async function computeOccupancyMetrics(
   registry: OccupancyRegistry,
+  options?: ComputeOccupancyMetricsOptions,
 ): Promise<OccupancyCityMetrics> {
-  const all = Object.values(registry.listings);
-  const avgActive = await avgActiveInventoryLastDays(OCCUPANCY_TURNOVER_DAYS);
+  const asOfMs = resolveAsOfMs(options?.asOf ?? registry.updated_at);
+  const all = Object.values(registry.listings).map((listing) => ({
+    ...listing,
+    zone: resolveListingZone(listing.address, listing.lat, listing.lng),
+  }));
+  const avgActive = await avgActiveInventoryLastDays(OCCUPANCY_TURNOVER_DAYS, asOfMs);
   const cityTotals = aggregateListings(
     all,
     OCCUPANCY_WINDOW_DAYS,
     OCCUPANCY_TURNOVER_DAYS,
     avgActive,
+    asOfMs,
   );
 
   const byZone = new Map<string, TrackedRentalListing[]>();
@@ -106,7 +123,7 @@ export async function computeOccupancyMetrics(
   const areas: OccupancyAreaMetrics[] = [...byZone.entries()]
     .map(([zone, items]) => ({
       zone,
-      ...aggregateListings(items, OCCUPANCY_WINDOW_DAYS, OCCUPANCY_TURNOVER_DAYS, avgActive),
+      ...aggregateListings(items, OCCUPANCY_WINDOW_DAYS, OCCUPANCY_TURNOVER_DAYS, avgActive, asOfMs),
     }))
     .sort((a, b) => b.active_count - a.active_count || a.zone.localeCompare(b.zone, "it"));
 
@@ -115,6 +132,7 @@ export async function computeOccupancyMetrics(
     market: OCCUPANCY_MARKET,
     updated_at: registry.updated_at,
     snapshot_count: registry.snapshot_count,
+    last_provider: registry.last_provider ?? null,
     occupancy_window_days: OCCUPANCY_WINDOW_DAYS,
     areas,
     ...cityTotals,

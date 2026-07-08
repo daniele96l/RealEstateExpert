@@ -3,6 +3,12 @@ import type { EnergyClass, RentalMode } from "./types";
 /** Parametri fissi — stime tipiche Italia */
 export const ITALY_DEFAULTS = {
   notary_pct: 1.5,
+  /** Minimo onorario notaio (rogito senza mutuo) */
+  notary_fee_min_eur: 1000,
+  /** Minimo con mutuo (atto + ipoteca ≈ doppio) */
+  notary_fee_min_with_mortgage_eur: 2000,
+  registration_tax_pct_prima_casa: 2,
+  registration_tax_pct_investment: 9,
   agency_pct: 3,
   imu_rate: 0.0086,
   maintenance_pct_long: 0.008,
@@ -37,8 +43,8 @@ export const ITALY_DEFAULTS = {
   investment_down_payment_pct: 25,
   /** Locali predefiniti per calcolo affitto per stanza */
   default_rent_rooms: 2,
-  /** Pagine Idealista per richiesta singola (Carica) */
-  listings_fetch_max_pages: 1,
+  /** Pagine per richiesta singola (Carica): 0 = tutte fino al cap */
+  listings_fetch_max_pages: 0,
   /** Pagine Idealista per importazione batch (default) */
   batch_fetch_max_pages: 5,
   /** Massimo pagine consentite in batch */
@@ -67,6 +73,13 @@ export function estimateNightlyRate(purchasePrice: number): number {
 
 export function estimateCondominio(purchasePrice: number): number {
   return Math.round(Math.min(130, Math.max(45, purchasePrice * 0.00075)));
+}
+
+export function applyNotaryFeeFloor(feeEuro: number, hasMortgage: boolean): number {
+  const floor = hasMortgage
+    ? ITALY_DEFAULTS.notary_fee_min_with_mortgage_eur
+    : ITALY_DEFAULTS.notary_fee_min_eur;
+  return Math.round(Math.max(floor, feeEuro));
 }
 
 export function estimateTari(purchasePrice: number): number {

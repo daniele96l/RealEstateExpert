@@ -1,6 +1,7 @@
 import type { CityListingsCache, MapListing } from "@/lib/types";
 import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { geocodeCity, normalizeCitySlug, citySlugVariants } from "./geocode";
+import { resolveItalyListingMaxPages } from "@/lib/batch-fetch-pages";
 import { withImmobiliareBrowser } from "./immobiliare-browser";
 import { extractNextData, mapRealEstateToDetail } from "./immobiliare-scraper";
 
@@ -193,6 +194,79 @@ function parseSearchHtml(html: string, operation: Operation): {
   return parseSearchPayload(nextData, operation);
 }
 
+async function fetchSearchPageNative(
+  location: ImmobiliareLocation,
+  operation: Operation,
+  page: number,
+): Promise<{ listings: MapListing[]; currentPage: number; maxPages: number }> {
+  const response = await fetch(buildSearchApiUrl(location, operation, page), {
+    headers: {
+      Accept: "application/json",
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "Accept-Language": "it-IT,it;q=0.9",
+      Referer: buildImmobiliareSearchUrl(location, operation, page),
+    },
+    signal: AbortSignal.timeout(30_000),
+  });
+  if (!response.ok) {
+    throw new ImmobiliareSearchError(`API Immobiliare nativa fallita (${response.status})`);
+  }
+  const payload = await response.json();
+  const root = asRecord(payload);
+  if (root?.error) throw new ImmobiliareSearchError(String(root.error));
+  const parsed = parseSearchPayload(payload, operation);
+  if (!parsed.listings.length) {
+    throw new ImmobiliareSearchError("API Immobiliare nativa senza risultati");
+  }
+  return parsed;
+}
+
+async function fetchImmobiliareViaNativeApi(
+  city: string,
+  operation: Operation,
+  opts?: { maxPages?: number; onPage?: BatchFetchProgressCallback },
+): Promise<CityListingsCache> {
+  const maxPages = resolveItalyListingMaxPages(opts?.maxPages);
+  const location = await resolveImmobiliareLocation(city);
+  const geo = await geocodeCity(city);
+  const all: MapListing[] = [];
+  let page = 1;
+  let totalPages = 1;
+
+  while (page <= totalPages && page <= maxPages) {
+    const result = await fetchSearchPageNative(location, operation, page);
+    all.push(...result.listings);
+    totalPages = result.maxPages;
+    opts?.onPage?.({
+      operation,
+      page,
+      maxPages,
+      listingsTotal: all.length,
+    });
+    if (!result.listings.length) break;
+    page += 1;
+    await new Promise((r) => setTimeout(r, 400));
+  }
+
+  const byId = new Map<string, MapListing>();
+  for (const listing of all) byId.set(listing.id, listing);
+  if (!byId.size) throw new ImmobiliareSearchError(`Nessun annuncio Immobiliare per ${city}`);
+
+  return {
+    city: normalizeCitySlug(city),
+    operation,
+    fetched_at: new Date().toISOString(),
+    center: {
+      lat: location.center.lat || geo.lat,
+      lng: location.center.lng || geo.lng,
+      display_name: geo.display_name ?? location.label,
+    },
+    listings: [...byId.values()],
+    provider: "direct",
+  };
+}
+
 async function fetchSearchPage(
   fetchHtml: (url: string) => Promise<string>,
   fetchJson: (url: string) => Promise<unknown>,
@@ -220,7 +294,15 @@ export async function fetchImmobiliareCityListings(
   operation: Operation,
   opts?: { maxPages?: number; onPage?: BatchFetchProgressCallback },
 ): Promise<CityListingsCache> {
-  const maxPages = opts?.maxPages ?? 50;
+  const maxPages = resolveItalyListingMaxPages(opts?.maxPages);
+  const pageOpts = { ...opts, maxPages };
+
+  try {
+    return await fetchImmobiliareViaNativeApi(city, operation, pageOpts);
+  } catch {
+    /* fall through to Playwright */
+  }
+
   const location = await resolveImmobiliareLocation(city);
   const geo = await geocodeCity(city);
 
