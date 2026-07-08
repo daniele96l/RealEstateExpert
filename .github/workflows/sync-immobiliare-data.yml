@@ -44,10 +44,7 @@ jobs:
             echo "No data changes to commit"
             exit 0
           fi
-          git commit -m "$(cat <<'EOF'
-chore(data): refresh Immobiliare scraper seed for prod
-
-Automated sync of Reggio Calabria rental listings and occupancy snapshots.
-EOF
-)"
+          git commit \
+            -m "chore(data): refresh Immobiliare scraper seed for prod" \
+            -m "Automated sync of Reggio Calabria rental listings and occupancy snapshots."
           git push
