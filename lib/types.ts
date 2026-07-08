@@ -249,3 +249,90 @@ export interface CombinedListingsData {
   sale?: CityListingsCache;
   rent?: CityListingsCache;
 }
+
+export interface OccupancyBasicListing {
+  id: string;
+  price: number;
+  lat: number;
+  lng: number;
+  sqm: number | null;
+  rooms: number | null;
+  address: string | null;
+  zone: string | null;
+}
+
+export interface OccupancyPricePoint {
+  at: string;
+  price: number;
+}
+
+export interface TrackedRentalListing extends OccupancyBasicListing {
+  first_seen_at: string;
+  last_seen_at: string;
+  rented_at: string | null;
+  status: "active" | "presumed_rented";
+  days_on_market: number | null;
+  price_history: OccupancyPricePoint[];
+}
+
+export interface OccupancyRegistry {
+  city: string;
+  market: "it";
+  updated_at: string;
+  snapshot_count: number;
+  listings: Record<string, TrackedRentalListing>;
+}
+
+export interface OccupancySnapshot {
+  fetched_at: string;
+  active_count: number;
+  listings: OccupancyBasicListing[];
+}
+
+export interface OccupancyAreaMetrics {
+  zone: string;
+  active_count: number;
+  rented_in_window: number;
+  avg_days_on_market: number | null;
+  median_days_on_market: number | null;
+  turnover_30d: number | null;
+  estimated_occupancy_pct: number | null;
+}
+
+export interface OccupancyCityMetrics {
+  city: string;
+  market: "it";
+  updated_at: string | null;
+  snapshot_count: number;
+  active_count: number;
+  rented_in_window: number;
+  avg_days_on_market: number | null;
+  median_days_on_market: number | null;
+  turnover_30d: number | null;
+  estimated_occupancy_pct: number | null;
+  occupancy_window_days: number;
+  areas: OccupancyAreaMetrics[];
+}
+
+export interface OccupancyAreaPreview {
+  zone: string;
+  count: number;
+  avg_price: number | null;
+}
+
+export interface OccupancyListingsPreview {
+  source: "listings_cache";
+  fetched_at: string;
+  provider: string | null;
+  listing_count: number;
+  avg_price: number | null;
+  median_price: number | null;
+  avg_sqm: number | null;
+  areas: OccupancyAreaPreview[];
+  sample: OccupancyBasicListing[];
+}
+
+export interface OccupancyDashboardData {
+  metrics: OccupancyCityMetrics;
+  listings_preview: OccupancyListingsPreview | null;
+}

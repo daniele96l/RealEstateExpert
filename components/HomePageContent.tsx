@@ -13,6 +13,7 @@ import MonthlyBreakdownChart from "@/components/MonthlyBreakdownChart";
 import MortgageCapitalChart from "@/components/MortgageCapitalChart";
 import RoiChart from "@/components/RoiChart";
 import ListingsExportPanel from "@/components/ListingsExportPanel";
+import OccupancyRatePanel from "@/components/OccupancyRatePanel";
 import {
   getDefaultSimpleScenario,
   sanitizeSimple,
@@ -38,6 +39,9 @@ import { clearLocalListingsCacheForMarket } from "@/lib/listings-cache-client";
 import type { AnalysisResult, ListingDetail, MapListing } from "@/lib/types";
 import type { ListingsExportContext } from "@/lib/listings-export";
 import { Building2, BarChart3 } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+type PageTab = "analysis" | "occupancy";
 
 function initialMarketScenario(): SimpleScenario {
   const stored = typeof window !== "undefined" ? readStoredMarket() : "it";
@@ -64,6 +68,7 @@ export default function HomePageContent() {
   const [listingsResetToken, setListingsResetToken] = useState(0);
   const [exportCacheRefreshToken, setExportCacheRefreshToken] = useState(0);
   const [exportContext, setExportContext] = useState<ListingsExportContext | null>(null);
+  const [pageTab, setPageTab] = useState<PageTab>("analysis");
 
   useEffect(() => {
     const stored = readStoredMarket();
@@ -110,6 +115,7 @@ export default function HomePageContent() {
     setFormSyncToken((n) => n + 1);
     setAnalysisSource(null);
     setListingsResetToken((n) => n + 1);
+    setPageTab("analysis");
   }, [market]);
 
   const handleSelectListing = useCallback((listing: MapListing, detail?: ListingDetail) => {
@@ -241,7 +247,48 @@ export default function HomePageContent() {
         </div>
       </header>
 
+      {market === "it" ? (
+        <div className="border-b border-surface-border/40 bg-surface-raised/20">
+          <div className="mx-auto flex max-w-7xl px-4 py-3 sm:px-6">
+            <div
+              className="flex rounded-xl border border-surface-border bg-surface-raised/60 p-1 shadow-inner"
+              role="tablist"
+              aria-label={t("nav.pageTabsAria")}
+            >
+              {(
+                [
+                  { id: "analysis" as const, label: t("nav.analysis") },
+                  { id: "occupancy" as const, label: t("nav.occupancy") },
+                ] as const
+              ).map(({ id, label }) => {
+                const active = pageTab === id;
+                return (
+                  <button
+                    key={id}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setPageTab(id)}
+                    className={cn(
+                      "rounded-lg px-4 py-2 text-sm font-semibold transition-colors sm:px-5",
+                      active
+                        ? "bg-accent text-white shadow-md"
+                        : "text-slate-400 hover:bg-surface-border/40 hover:text-slate-200",
+                    )}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+        {pageTab === "occupancy" && market === "it" ? (
+          <OccupancyRatePanel />
+        ) : (
         <div className="grid gap-8 lg:grid-cols-[minmax(320px,420px)_1fr]">
           <div
             id="parametri"
@@ -305,6 +352,7 @@ export default function HomePageContent() {
             )}
           </div>
         </div>
+        )}
 
         <footer className="mt-12 border-t border-surface-border/40 pt-6 text-center text-xs text-slate-600">
           {market === "cz" ? t("home.footerCz") : t("home.footerIt")}

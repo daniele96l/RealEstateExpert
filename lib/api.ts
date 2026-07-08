@@ -7,6 +7,8 @@ import type {
   MapListing,
   MapCenter,
   MarketPriceHistory,
+  OccupancyCityMetrics,
+  OccupancyDashboardData,
 } from "./types";
 import type { ListingsExportBundle } from "./listings-export";
 import type { BatchFetchProgressState, BatchFetchStreamEvent } from "./batch-fetch-progress";
@@ -290,5 +292,24 @@ export async function saveListingsExportToServer(
     body: JSON.stringify(bundle),
   });
   if (!res.ok) throw new Error(await parseError(res, "Salvataggio export non riuscito"));
+  return res.json();
+}
+
+export async function fetchOccupancyMetrics(): Promise<OccupancyDashboardData> {
+  const res = await fetch("/api/occupancy/metrics");
+  if (!res.ok) throw new Error(await parseError(res, "Lettura metriche occupancy non riuscita"));
+  return res.json();
+}
+
+export async function refreshOccupancySnapshot(): Promise<{
+  metrics: OccupancyCityMetrics;
+  listings_preview: OccupancyDashboardData["listings_preview"];
+  fetched_count: number;
+  new_count: number;
+  rented_count: number;
+  snapshot_count: number;
+}> {
+  const res = await fetch("/api/occupancy/snapshot", { method: "POST" });
+  if (!res.ok) throw new Error(await parseError(res, "Aggiornamento occupancy non riuscito"));
   return res.json();
 }

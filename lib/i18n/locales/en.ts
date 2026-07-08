@@ -33,6 +33,9 @@ const en: Translations = {
   },
   nav: {
     parameters: "Parameters",
+    analysis: "Investment analysis",
+    occupancy: "Occupancy Rate",
+    pageTabsAria: "Main section",
   },
   home: {
     emptyTitle: "Enter your data and analyze",
@@ -338,6 +341,61 @@ const en: Translations = {
   meta: {
     title: "RealEstateExpert — Real estate investment analyzer",
     description: "Analyze cash flow of a real estate investment in Italy",
+  },
+  occupancy: {
+    title: "Occupancy Rate",
+    subtitle:
+      "Idealista rental tracking — time on market, turnover, and estimated occupancy by area.",
+    cityLocked: "Reggio Calabria",
+    refresh: "Refresh data",
+    refreshing: "Refreshing…",
+    lastUpdate: "Last update",
+    snapshots: "Snapshots",
+    needsSnapshots:
+      "At least 2 refreshes on different days are needed to estimate days on market and occupancy.",
+    disclaimer:
+      "Estimated occupancy from Idealista listings tracked over time. Removed listings are assumed rented.",
+    loadError: "Could not load metrics",
+    refreshError: "Refresh failed",
+    refreshSummary: "Fetched {fetched} listings · {newCount} new · {rented} presumed rented",
+    areasTitle: "Areas",
+    areasSubtitle: "Zones inferred from listing addresses",
+    noAreas: "No area data — run a refresh.",
+    kpi: {
+      active: "Active listings",
+      avgDom: "Days on market (avg)",
+      domHint: "Presumed rented listings only",
+      turnover: "30-day turnover",
+      turnoverHint: "Rented / average active inventory",
+      occupancy: "Estimated occupancy ({days}d)",
+      occupancyHint: "Portal-tracked proxy, not official census data",
+    },
+    table: {
+      zone: "Area",
+      active: "Active",
+      rented: "Rented ({days}d)",
+      avgDom: "Avg DOM",
+      medianDom: "Median DOM",
+      turnover: "30d turnover",
+      occupancy: "Occupancy",
+    },
+    preview: {
+      title: "Cached rentals preview",
+      subtitle: "Latest locally saved rent listings (Idealista map cache)",
+      cachedAt: "Cached on",
+      provider: "Provider",
+      listings: "Cached listings",
+      avgRent: "Average rent",
+      medianRent: "Median rent",
+      avgSqm: "Average size",
+      topAreas: "Top areas",
+      table: {
+        zone: "Area / address",
+        rooms: "Rooms",
+        sqm: "m²",
+        rent: "Rent",
+      },
+    },
   },
 };
 

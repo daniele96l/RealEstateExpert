@@ -19,7 +19,7 @@ function listingHaystack(listing: MapListing): string {
   return `${listing.title} ${listing.address ?? ""}`.toLowerCase();
 }
 
-function inferZoneFromAddress(address: string | null): string | null {
+export function inferZoneFromAddress(address: string | null): string | null {
   if (!address?.trim()) return null;
   const parts = address.split(",").map((p) => p.trim()).filter(Boolean);
   if (parts.length < 2) return null;

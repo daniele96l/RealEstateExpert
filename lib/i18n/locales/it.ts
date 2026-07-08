@@ -31,6 +31,9 @@ const it = {
   },
   nav: {
     parameters: "Parametri",
+    analysis: "Analisi investimento",
+    occupancy: "Occupancy Rate",
+    pageTabsAria: "Sezione principale",
   },
   home: {
     emptyTitle: "Inserisci i dati e analizza",
@@ -340,6 +343,61 @@ const it = {
   meta: {
     title: "RealEstateExpert — Analizzatore investimenti immobiliari",
     description: "Analizza il flusso di cassa di un investimento immobiliare in Italia",
+  },
+  occupancy: {
+    title: "Occupancy Rate",
+    subtitle:
+      "Monitoraggio affitti Idealista — tempo sul mercato, turnover e occupazione stimata per zona.",
+    cityLocked: "Reggio Calabria",
+    refresh: "Aggiorna dati",
+    refreshing: "Aggiornamento…",
+    lastUpdate: "Ultimo aggiornamento",
+    snapshots: "Snapshot",
+    needsSnapshots:
+      "Servono almeno 2 aggiornamenti (in giorni diversi) per stimare giorni sul mercato e occupancy.",
+    disclaimer:
+      "Occupazione stimata su annunci Idealista tracciati nel tempo. Un annuncio rimosso è considerato affittato.",
+    loadError: "Impossibile caricare le metriche",
+    refreshError: "Aggiornamento non riuscito",
+    refreshSummary: "Caricati {fetched} annunci · {newCount} nuovi · {rented} presumibilmente affittati",
+    areasTitle: "Aree",
+    areasSubtitle: "Zone inferite dall'indirizzo degli annunci",
+    noAreas: "Nessun dato per area — esegui un aggiornamento.",
+    kpi: {
+      active: "Annunci attivi",
+      avgDom: "Giorni sul mercato (media)",
+      domHint: "Solo annunci presumibilmente affittati",
+      turnover: "Turnover 30 gg",
+      turnoverHint: "Affittati / inventario medio attivo",
+      occupancy: "Occupazione stimata ({days} gg)",
+      occupancyHint: "Proxy da annunci tracciati, non dati ISTAT",
+    },
+    table: {
+      zone: "Zona",
+      active: "Attivi",
+      rented: "Affittati ({days} gg)",
+      avgDom: "DOM medio",
+      medianDom: "DOM mediano",
+      turnover: "Turnover 30 gg",
+      occupancy: "Occupazione",
+    },
+    preview: {
+      title: "Anteprima cache affitti",
+      subtitle: "Ultimi annunci in affitto salvati localmente (mappa Idealista)",
+      cachedAt: "Cache del",
+      provider: "Provider",
+      listings: "Annunci in cache",
+      avgRent: "Affitto medio",
+      medianRent: "Affitto mediano",
+      avgSqm: "Superficie media",
+      topAreas: "Zone principali",
+      table: {
+        zone: "Zona / indirizzo",
+        rooms: "Locali",
+        sqm: "m²",
+        rent: "Canone",
+      },
+    },
   },
 } as const;
 

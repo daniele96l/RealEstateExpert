@@ -21,6 +21,7 @@ data/market/*.json
 !data/market/.gitkeep
 data/analyses/*.json
 !data/analyses/.gitkeep
+data/occupancy/
 
 # IDE
 .idea/
