@@ -11,6 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import { loadMarketHistoryCacheFirst } from "@/lib/cache-first";
+import { historicalPriceCagr } from "@/lib/market-cagr";
 import { getMarket, type MarketId } from "@/lib/markets";
 import { fmtMoney, cn } from "@/lib/utils";
 import { marketCacheFileLabel } from "@/lib/market-cache-client";
@@ -35,6 +36,11 @@ function downsample(points: PriceHistoryPoint[], maxPoints = 36): PriceHistoryPo
   return points.filter((_, i) => i % step === 0 || i === points.length - 1);
 }
 
+function formatGrowthPct(value: number): string {
+  const sign = value >= 0 ? "+" : "";
+  return `${sign}${value.toFixed(1)}%`;
+}
+
 function PriceChart({
   title,
   contract,
@@ -51,6 +57,9 @@ function PriceChart({
     label: p.label,
     price: p.price_sqm_avg,
   }));
+  const cagrPct = historicalPriceCagr(points);
+  const periodLabel =
+    points.length >= 2 ? `${points[0].label} – ${points[points.length - 1].label}` : null;
 
   return (
     <div className="rounded-xl border border-surface-border/60 bg-surface-raised/20 p-4">
@@ -113,6 +122,16 @@ function PriceChart({
             />
           </LineChart>
         </ResponsiveContainer>
+      )}
+      {cagrPct != null && (
+        <div className="mt-3 border-t border-surface-border/40 pt-3 text-xs text-slate-400">
+          <span>{market === "cz" ? "Průměrný roční růst" : "Crescita media annua"}: </span>
+          <span className={cn("font-semibold", cagrPct >= 0 ? "text-emerald-400" : "text-red-400")}>
+            {formatGrowthPct(cagrPct)}
+            {market === "cz" ? "/rok" : "/anno"}
+          </span>
+          {periodLabel ? <span className="text-slate-500"> · {periodLabel}</span> : null}
+        </div>
       )}
     </div>
   );

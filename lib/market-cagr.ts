@@ -18,6 +18,11 @@ export function historicalSaleCagr(points: PriceHistoryPoint[]): number | null {
   return (Math.pow(growthFactor, 1 / years) - 1) * 100;
 }
 
+/** Annualized CAGR (%) from first to last price point (sale or rent series). */
+export function historicalPriceCagr(points: PriceHistoryPoint[]): number | null {
+  return historicalSaleCagr(points);
+}
+
 export function propertyValueAtMonth(
   purchasePrice: number,
   month: number,
@@ -28,4 +33,9 @@ export function propertyValueAtMonth(
   }
   const rate = annualAppreciationPct / 100;
   return purchasePrice * Math.pow(1 + rate, month / 12);
+}
+
+export function rentMultiplierAtMonth(month: number, annualAppreciationPct: number): number {
+  if (month <= 0 || annualAppreciationPct === 0) return 1;
+  return Math.pow(1 + annualAppreciationPct / 100, month / 12);
 }

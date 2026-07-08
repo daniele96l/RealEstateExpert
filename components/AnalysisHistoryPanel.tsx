@@ -11,16 +11,15 @@ import {
   writeLocalAnalysisHistory,
 } from "@/lib/analysis-history-client";
 import { inferAnalysisMarket, type SavedAnalysisComparison } from "@/lib/analysis-history";
-import type { ListingAnalysisSource } from "@/lib/listing-analysis";
-import type { SimpleScenario } from "@/lib/defaults";
 import { getMarket, type MarketId } from "@/lib/markets";
 import { useI18n } from "@/lib/i18n/context";
-import { fmtMoney } from "@/lib/utils";
+import { cn, fmtMoney } from "@/lib/utils";
 import { Clock, Download, FileUp, History, Trash2 } from "lucide-react";
 
 interface Props {
   market: MarketId;
-  onRestore: (source: ListingAnalysisSource, scenario: SimpleScenario) => void;
+  onRestore: (item: SavedAnalysisComparison) => void;
+  activeId?: string | null;
   refreshToken?: number;
 }
 
@@ -38,7 +37,12 @@ function formatWhen(iso: string, locale: string): string {
   }
 }
 
-export default function AnalysisHistoryPanel({ market, onRestore, refreshToken = 0 }: Props) {
+export default function AnalysisHistoryPanel({
+  market,
+  onRestore,
+  activeId = null,
+  refreshToken = 0,
+}: Props) {
   const { t, locale } = useI18n();
   const [items, setItems] = useState<SavedAnalysisComparison[]>([]);
   const [loading, setLoading] = useState(true);
@@ -63,7 +67,7 @@ export default function AnalysisHistoryPanel({ market, onRestore, refreshToken =
   }, [reload, refreshToken]);
 
   const handleRestore = (item: SavedAnalysisComparison) => {
-    onRestore(item.source, item.scenario);
+    onRestore(item);
     document.getElementById("parametri")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -173,8 +177,16 @@ export default function AnalysisHistoryPanel({ market, onRestore, refreshToken =
         <p className="px-5 py-6 text-sm text-slate-500">{t("history.loading")}</p>
       ) : (
         <ul className="divide-y divide-surface-border/60">
-          {visibleItems.map((item) => (
-            <li key={item.id} className="flex flex-wrap items-start gap-3 px-5 py-4">
+          {visibleItems.map((item) => {
+            const selected = item.id === activeId;
+            return (
+            <li
+              key={item.id}
+              className={cn(
+                "flex flex-wrap items-start gap-3 px-5 py-4 transition-colors",
+                selected && "bg-accent/5 ring-1 ring-inset ring-accent/25",
+              )}
+            >
               <div className="min-w-0 flex-1">
                 <p className="font-medium text-slate-200 line-clamp-2">{item.label}</p>
                 <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
@@ -207,13 +219,19 @@ export default function AnalysisHistoryPanel({ market, onRestore, refreshToken =
                 <button
                   type="button"
                   onClick={() => handleRestore(item)}
-                  className="rounded-lg bg-accent/20 px-3 py-2 text-xs font-medium text-accent hover:bg-accent/30"
+                  className={cn(
+                    "rounded-lg px-3 py-2 text-xs font-medium",
+                    selected
+                      ? "bg-accent text-white"
+                      : "bg-accent/20 text-accent hover:bg-accent/30",
+                  )}
                 >
-                  {t("common.restore")}
+                  {selected ? t("common.selected") : t("common.restore")}
                 </button>
               </div>
             </li>
-          ))}
+            );
+          })}
         </ul>
       )}
     </section>

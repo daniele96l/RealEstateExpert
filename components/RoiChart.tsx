@@ -13,9 +13,13 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { loadMarketHistoryCacheFirst } from "@/lib/cache-first";
-import { historicalSaleCagr, propertyValueAtMonth } from "@/lib/market-cagr";
+import {
+  historicalSaleCagr,
+  propertyValueAtMonth,
+  rentMultiplierAtMonth,
+} from "@/lib/market-cagr";
 import { getMarket, type MarketId } from "@/lib/markets";
-import type { AnalysisResult } from "@/lib/types";
+import type { AnalysisResult, MonthlyCashFlowPoint } from "@/lib/types";
 import { fmtMoney } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
 
@@ -45,12 +49,65 @@ function annualizedReturn(totalReturnPct: number, years: number): number {
 
 const APPRECIATION_PRESETS = [0, 1, 2, 3, 4, 5, 6] as const;
 const HISTORICAL_APPRECIATION = "historical";
+const TIME_RANGE_PRESETS = [5, 10, 15, 20] as const;
+const TIME_RANGE_FULL = "full";
+
+function adjustNetCashFlowForRentGrowth(point: MonthlyCashFlowPoint, rentMultiplier: number): number {
+  if (rentMultiplier === 1) return point.net_cash_flow;
+  const scalable = point.gross_rent - point.platform_fee - point.rental_tax - point.agency_fee;
+  return point.net_cash_flow + scalable * (rentMultiplier - 1);
+}
+
+interface AppreciationSelectProps {
+  label: string;
+  value: string;
+  historicalCagrPct: number | null;
+  onChange: (value: string) => void;
+  t: (key: string, params?: Record<string, string | number>) => string;
+}
+
+function AppreciationSelect({
+  label,
+  value,
+  historicalCagrPct,
+  onChange,
+  t,
+}: AppreciationSelectProps) {
+  return (
+    <label className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+      <span>{label}</span>
+      <select
+        className="select-field !w-auto !py-1 text-xs"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      >
+        {APPRECIATION_PRESETS.map((pct) => (
+          <option key={pct} value={String(pct)}>
+            {pct === 0 ? t("roi.appreciationFlat") : t("roi.appreciationPerYear", { pct })}
+          </option>
+        ))}
+        <option value={HISTORICAL_APPRECIATION} disabled={historicalCagrPct == null}>
+          {historicalCagrPct != null
+            ? t("roi.appreciationHistorical", { pct: historicalCagrPct.toFixed(1) })
+            : t("roi.historicalCagrUnavailable")}
+        </option>
+      </select>
+    </label>
+  );
+}
 
 export default function RoiChart({ result, market = "it", city = "" }: Props) {
   const { t } = useI18n();
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
   const [appreciationSelection, setAppreciationSelection] = useState<string>("0");
+  const [rentAppreciationSelection, setRentAppreciationSelection] = useState<string>("0");
   const [historicalCagrPct, setHistoricalCagrPct] = useState<number | null>(null);
+  const [historicalRentCagrPct, setHistoricalRentCagrPct] = useState<number | null>(null);
+  const [timeRangeSelection, setTimeRangeSelection] = useState<string>(TIME_RANGE_FULL);
+
+  const fullProjectionYears = Math.ceil(
+    (result.monthly_series[result.monthly_series.length - 1]?.month ?? 0) / 12,
+  );
 
   const downPayment = result.summary.purchase_costs.down_payment;
   const purchaseCosts = result.summary.purchase_costs;
@@ -65,13 +122,16 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
   const loadMarketCagr = useCallback(async () => {
     if (!city.trim()) {
       setHistoricalCagrPct(null);
+      setHistoricalRentCagrPct(null);
       return;
     }
     try {
       const { data } = await loadMarketHistoryCacheFirst(city.trim(), false, market);
       setHistoricalCagrPct(historicalSaleCagr(data.sale ?? []));
+      setHistoricalRentCagrPct(historicalSaleCagr(data.rent ?? []));
     } catch {
       setHistoricalCagrPct(null);
+      setHistoricalRentCagrPct(null);
     }
   }, [city, market]);
 
@@ -85,10 +145,35 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
     }
   }, [historicalCagrPct, appreciationSelection]);
 
+  useEffect(() => {
+    if (historicalRentCagrPct == null && rentAppreciationSelection === HISTORICAL_APPRECIATION) {
+      setRentAppreciationSelection("0");
+    }
+  }, [historicalRentCagrPct, rentAppreciationSelection]);
+
+  useEffect(() => {
+    setTimeRangeSelection(TIME_RANGE_FULL);
+  }, [fullProjectionYears, result.monthly_series.length]);
+
+  const selectedYears =
+    timeRangeSelection === TIME_RANGE_FULL
+      ? fullProjectionYears
+      : Math.min(Number(timeRangeSelection) || fullProjectionYears, fullProjectionYears);
+
+  const timeRangeOptions = useMemo(() => {
+    const presets = TIME_RANGE_PRESETS.filter((years) => years < fullProjectionYears);
+    return presets;
+  }, [fullProjectionYears]);
+
   const appreciationRatePct =
     appreciationSelection === HISTORICAL_APPRECIATION
       ? (historicalCagrPct ?? 0)
       : Number(appreciationSelection) || 0;
+
+  const rentAppreciationRatePct =
+    rentAppreciationSelection === HISTORICAL_APPRECIATION
+      ? (historicalRentCagrPct ?? 0)
+      : Number(rentAppreciationSelection) || 0;
 
   const data = useMemo(() => {
     let cumPrincipal = 0;
@@ -117,8 +202,10 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
         currentYear = p.year;
         yearCash = 0;
       }
-      yearCash += p.net_cash_flow;
-      cumulativeCash += p.net_cash_flow;
+      const rentMultiplier = rentMultiplierAtMonth(p.month, rentAppreciationRatePct);
+      const netCashFlow = adjustNetCashFlowForRentGrowth(p, rentMultiplier);
+      yearCash += netCashFlow;
+      cumulativeCash += netCashFlow;
       cumPrincipal += p.mortgage_principal;
 
       const propertyValue =
@@ -150,9 +237,15 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
     purchasePrice,
     taxesAndAccessories,
     appreciationRatePct,
+    rentAppreciationRatePct,
   ]);
 
-  const lastPoint = data[data.length - 1];
+  const chartData = useMemo(() => {
+    const maxMonth = selectedYears * 12;
+    return data.filter((point) => point.month <= maxMonth);
+  }, [data, selectedYears]);
+
+  const lastPoint = chartData[chartData.length - 1];
   const finalEquity = lastPoint?.totalEquity ?? initialEquity;
   const finalCumulativeCash = lastPoint?.cumulativeCash ?? -taxesAndAccessories;
   const finalEquityPlusCash = lastPoint?.equityPlusCash ?? initialEquity;
@@ -183,25 +276,39 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
           <p className="mt-1 max-w-3xl text-sm leading-relaxed text-slate-500">
             {t("roi.subtitle", { downPayment: fmtMoney(downPayment, market) })}
           </p>
-          <label className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-400">
-            <span>{t("roi.appreciationRate")}</span>
-            <select
-              className="select-field !w-auto !py-1 text-xs"
+          <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+            <AppreciationSelect
+              label={t("roi.appreciationRate")}
               value={appreciationSelection}
-              onChange={(e) => setAppreciationSelection(e.target.value)}
-            >
-              {APPRECIATION_PRESETS.map((pct) => (
-                <option key={pct} value={String(pct)}>
-                  {pct === 0 ? t("roi.appreciationFlat") : t("roi.appreciationPerYear", { pct })}
+              historicalCagrPct={historicalCagrPct}
+              onChange={setAppreciationSelection}
+              t={t}
+            />
+            <AppreciationSelect
+              label={t("roi.rentAppreciationRate")}
+              value={rentAppreciationSelection}
+              historicalCagrPct={historicalRentCagrPct}
+              onChange={setRentAppreciationSelection}
+              t={t}
+            />
+            <label className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+              <span>{t("roi.timeRange")}</span>
+              <select
+                className="select-field !w-auto !py-1 text-xs"
+                value={timeRangeSelection}
+                onChange={(e) => setTimeRangeSelection(e.target.value)}
+              >
+                {timeRangeOptions.map((years) => (
+                  <option key={years} value={String(years)}>
+                    {t("roi.timeRangeYears", { years })}
+                  </option>
+                ))}
+                <option value={TIME_RANGE_FULL}>
+                  {t("roi.timeRangeFull", { years: fullProjectionYears })}
                 </option>
-              ))}
-              <option value={HISTORICAL_APPRECIATION} disabled={historicalCagrPct == null}>
-                {historicalCagrPct != null
-                  ? t("roi.appreciationHistorical", { pct: historicalCagrPct.toFixed(1) })
-                  : t("roi.historicalCagrUnavailable")}
-              </option>
-            </select>
-          </label>
+              </select>
+            </label>
+          </div>
         </div>
         <div className="flex flex-wrap gap-2">
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
@@ -242,7 +349,7 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
       </div>
 
       <ResponsiveContainer width="100%" height={340}>
-        <ComposedChart data={data} margin={{ top: 10, right: 48, left: 0, bottom: 0 }}>
+        <ComposedChart data={chartData} margin={{ top: 10, right: 48, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
           <XAxis
             dataKey="month"

@@ -28,7 +28,8 @@ import {
   scenarioFromListingAnalysis,
   type ListingAnalysisSource,
 } from "@/lib/listing-analysis";
-import { saveAnalysisComparison } from "@/lib/analysis-history-client";
+import { saveAnalysisComparison, loadAnalysisHistoryCacheFirst } from "@/lib/analysis-history-client";
+import { inferAnalysisMarket, type SavedAnalysisComparison } from "@/lib/analysis-history";
 import { useI18n } from "@/lib/i18n/context";
 import {
   getMarket,
@@ -65,6 +66,7 @@ export default function HomePageContent() {
   const [formSyncToken, setFormSyncToken] = useState(0);
   const [marketCity, setMarketCity] = useState("Reggio Calabria");
   const [analysisSource, setAnalysisSource] = useState<ListingAnalysisSource | null>(null);
+  const [activeHistoryId, setActiveHistoryId] = useState<string | null>(null);
   const [historyRefreshToken, setHistoryRefreshToken] = useState(0);
   const [listingsResetToken, setListingsResetToken] = useState(0);
   const [exportCacheRefreshToken, setExportCacheRefreshToken] = useState(0);
@@ -116,6 +118,7 @@ export default function HomePageContent() {
     setFormPrefill(undefined);
     setFormSyncToken((n) => n + 1);
     setAnalysisSource(null);
+    setActiveHistoryId(null);
     setListingsResetToken((n) => n + 1);
     setPageTab("analysis");
   }, [market]);
@@ -183,38 +186,49 @@ export default function HomePageContent() {
       };
       setAnalysisSource(source);
       setFormPrefill(next);
-      saveAnalysisComparison(source, next, marketCity, market);
+      const saved = saveAnalysisComparison(source, next, marketCity, market);
+      setActiveHistoryId(saved.id);
       setHistoryRefreshToken((n) => n + 1);
       document.getElementById("parametri")?.scrollIntoView({ behavior: "smooth", block: "start" });
     },
     [marketCity, market],
   );
 
-  const handleRestoreAnalysis = useCallback(
-    (source: ListingAnalysisSource, restoredScenario: SimpleScenario) => {
-      const method = source.rentEstimateMethod ?? "per_room";
-      const summary = similarRentEstimateSummary(source.sale, source.similarRentals, method);
+  const restoreFromHistory = useCallback(
+    (item: SavedAnalysisComparison) => {
+      const method = item.source.rentEstimateMethod ?? "per_room";
+      const summary = similarRentEstimateSummary(item.source.sale, item.source.similarRentals, method);
       const scenario =
         summary.avgRentPerRoom != null
           ? scenarioFromListingAnalysis(
-              source.sale,
+              item.source.sale,
               summary.avgRentPerRoom,
               summary.avgWholeMonthly,
               market,
             )
-          : restoredScenario;
+          : item.scenario;
       setAnalysisSource({
-        ...source,
-        avgRentPerRoom: summary.avgRentPerRoom ?? source.avgRentPerRoom,
+        ...item.source,
+        avgRentPerRoom: summary.avgRentPerRoom ?? item.source.avgRentPerRoom,
         avgWholeMonthly: summary.avgWholeMonthly,
         rentEstimateMethod: method,
       });
       setFormPrefill(scenario);
       updateScenario(scenario);
       setFormSyncToken((n) => n + 1);
+      setActiveHistoryId(item.id);
     },
-    [updateScenario],
+    [updateScenario, market],
   );
+
+  useEffect(() => {
+    if (!marketReady || analysisSource) return;
+    void (async () => {
+      const { data } = await loadAnalysisHistoryCacheFirst();
+      const latest = data.items.find((item) => inferAnalysisMarket(item) === market);
+      if (latest) restoreFromHistory(latest);
+    })();
+  }, [marketReady, market, analysisSource, restoreFromHistory]);
 
   const marketCfg = getMarket(market);
   const subtitle = market === "cz" ? t("market.subtitleCz") : t("market.subtitleIt");
@@ -320,7 +334,8 @@ export default function HomePageContent() {
             />
             <AnalysisHistoryPanel
               market={market}
-              onRestore={handleRestoreAnalysis}
+              onRestore={restoreFromHistory}
+              activeId={activeHistoryId}
               refreshToken={historyRefreshToken}
             />
             {result ? (

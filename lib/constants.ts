@@ -40,7 +40,7 @@ export const ITALY_DEFAULTS = {
   /** Tasso mutuo indicativo 2025–2026 */
   mortgage_rate_pct: 3.0,
   /** Anticipo minimo tipico per investimento */
-  investment_down_payment_pct: 25,
+  investment_down_payment_pct: 20,
   /** Locali predefiniti per calcolo affitto per stanza */
   default_rent_rooms: 2,
   /** Pagine per richiesta singola (Carica): 0 = tutte fino al cap */
