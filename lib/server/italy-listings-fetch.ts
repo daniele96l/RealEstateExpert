@@ -97,11 +97,14 @@ export async function fetchItalyListingsWithFallback(
   preferred: ListingsProvider,
   maxPages?: number,
   onPage?: BatchFetchProgressCallback,
-): Promise<{ data: CityListingsCache; provider: ListingsProvider }> {
+  portal?: "idealista" | "immobiliare",
+): Promise<{ data: CityListingsCache; provider: ListingsProvider; portal: "idealista" | "immobiliare" }> {
   const pageLimit = resolveItalyListingMaxPages(maxPages);
-  const ordered = reorderAttempts(buildAttempts(city, operation, pageLimit, onPage), preferred).filter(
-    isConfigured,
-  );
+  let attempts = buildAttempts(city, operation, pageLimit, onPage);
+  if (portal) {
+    attempts = attempts.filter((attempt) => attempt.portal === portal);
+  }
+  const ordered = reorderAttempts(attempts, preferred).filter(isConfigured);
 
   if (!ordered.length) {
     throw new Error(
@@ -113,7 +116,11 @@ export async function fetchItalyListingsWithFallback(
   for (const attempt of ordered) {
     try {
       const data = await attempt.run();
-      return { data: { ...data, provider: attempt.id }, provider: attempt.id };
+      return {
+        data: { ...data, provider: attempt.id },
+        provider: attempt.id,
+        portal: attempt.portal,
+      };
     } catch (err) {
       noteRapidApiError(err);
       lastError = normalizeError(err);

@@ -1,3 +1,5 @@
+import type { OccupancyPortal } from "@/lib/occupancy/portals";
+
 export type PropertyType = "prima_casa" | "seconda_casa" | "investment";
 export type EnergyClass = "A4" | "A3" | "A2" | "A1" | "B" | "C" | "D" | "E" | "F" | "G";
 export type RenovationLevel = "none" | "minor" | "full" | "reconstruction";
@@ -189,7 +191,13 @@ export interface MapCenter {
   display_name: string | null;
 }
 
-export type ListingsProvider = "scrapingbee" | "rapidapi" | "realtyapi" | "direct" | "sreality";
+export type ListingsProvider =
+  | "scrapingbee"
+  | "rapidapi"
+  | "realtyapi"
+  | "direct"
+  | "sreality"
+  | "reggio_rentals";
 
 export type MarketProvider = "scrapingbee" | "insights" | "sreality";
 
@@ -275,9 +283,11 @@ export interface TrackedRentalListing extends OccupancyBasicListing {
   price_history: OccupancyPricePoint[];
 }
 
+
 export interface OccupancyRegistry {
   city: string;
   market: "it";
+  portal: OccupancyPortal;
   updated_at: string;
   snapshot_count: number;
   last_provider: ListingsProvider | null;
@@ -294,6 +304,8 @@ export interface OccupancyAreaMetrics {
   zone: string;
   active_count: number;
   rented_in_window: number;
+  avg_price: number | null;
+  avg_price_per_sqm: number | null;
   avg_days_on_market: number | null;
   median_days_on_market: number | null;
   turnover_30d: number | null;
@@ -303,6 +315,7 @@ export interface OccupancyAreaMetrics {
 export interface OccupancyCityMetrics {
   city: string;
   market: "it";
+  portal: OccupancyPortal;
   updated_at: string | null;
   snapshot_count: number;
   last_provider: ListingsProvider | null;
@@ -320,6 +333,7 @@ export interface OccupancyAreaPreview {
   zone: string;
   count: number;
   avg_price: number | null;
+  avg_price_per_sqm: number | null;
 }
 
 export interface OccupancySnapshotSummary {
@@ -360,9 +374,12 @@ export interface OccupancyListingsPreview {
   avg_price: number | null;
   median_price: number | null;
   avg_sqm: number | null;
+  avg_price_per_sqm: number | null;
+  median_price_per_sqm: number | null;
   areas: OccupancyAreaPreview[];
   sample: OccupancyBasicListing[];
 }
+
 
 export interface OccupancyDashboardData {
   metrics: OccupancyCityMetrics;
@@ -371,4 +388,5 @@ export interface OccupancyDashboardData {
   map_listings: OccupancyMapListing[];
   available_snapshots: OccupancySnapshotSummary[];
   selected_snapshot_at: string | null;
+  selected_portal: OccupancyPortal;
 }

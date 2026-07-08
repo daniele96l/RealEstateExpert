@@ -3,6 +3,10 @@
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { fetchOccupancyMetrics, refreshOccupancySnapshot } from "@/lib/api";
+import {
+  occupancySnapshotProgressPercent,
+  type OccupancySnapshotProgressState,
+} from "@/lib/occupancy-snapshot-progress";
 import { useI18n } from "@/lib/i18n/context";
 import { cn } from "@/lib/utils";
 import type {
@@ -59,6 +63,41 @@ function formatPct(value: number | null): string {
 function formatTurnover(value: number | null): string {
   if (value == null) return "—";
   return value.toFixed(2);
+}
+
+import type { OccupancyPortal } from "@/lib/occupancy/portals";
+
+const OCCUPANCY_PORTAL_STORAGE_KEY = "occupancy-portal";
+
+const OCCUPANCY_PORTAL_OPTIONS: Array<{
+  id: OccupancyPortal;
+  labelKey: "portalIdealista" | "portalImmobiliare" | "portalImmobiliareScraper";
+}> = [
+  { id: "idealista", labelKey: "portalIdealista" },
+  { id: "immobiliare", labelKey: "portalImmobiliare" },
+  { id: "immobiliare_scraper", labelKey: "portalImmobiliareScraper" },
+];
+
+function readStoredPortal(): OccupancyPortal {
+  if (typeof window === "undefined") return "idealista";
+  const saved = window.localStorage.getItem(OCCUPANCY_PORTAL_STORAGE_KEY);
+  if (saved === "immobiliare" || saved === "immobiliare_scraper") return saved;
+  return "idealista";
+}
+
+function formatProviderLabel(provider: string | null | undefined): string | null {
+  if (!provider) return null;
+  if (provider === "reggio_rentals") return "reggio-rentals (scraper)";
+  return provider;
+}
+
+function formatPricePerSqm(
+  price: number,
+  sqm: number | null | undefined,
+  perSqmLabel: string,
+): string {
+  if (sqm == null || sqm <= 0) return "—";
+  return `${fmtMoney(Math.round(price / sqm))}${perSqmLabel}`;
 }
 
 interface KpiProps {
@@ -128,46 +167,58 @@ export default function OccupancyRatePanel() {
   const [snapshotDiff, setSnapshotDiff] = useState<OccupancySnapshotDiff | null>(null);
   const [mapListings, setMapListings] = useState<OccupancyMapListing[]>([]);
   const [diffFilter, setDiffFilter] = useState<DiffFilter>("all");
+  const [diffPage, setDiffPage] = useState(0);
+  const [portal, setPortal] = useState<OccupancyPortal>(readStoredPortal);
   const [availableSnapshots, setAvailableSnapshots] = useState<OccupancySnapshotSummary[]>([]);
   const [selectedSnapshotAt, setSelectedSnapshotAt] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [refreshProgress, setRefreshProgress] = useState<OccupancySnapshotProgressState | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [lastRefreshSummary, setLastRefreshSummary] = useState<string | null>(null);
 
-  const load = useCallback(async (asOf?: string | null) => {
+  const load = useCallback(async (asOf?: string | null, portalArg?: OccupancyPortal) => {
+    const activePortal = portalArg ?? portal;
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchOccupancyMetrics(asOf);
+      const data = await fetchOccupancyMetrics(asOf, activePortal);
       setMetrics(data.metrics);
       setListingsPreview(data.listings_preview);
       setSnapshotDiff(data.snapshot_diff);
       setMapListings(data.map_listings);
       setAvailableSnapshots(data.available_snapshots);
       setSelectedSnapshotAt(data.selected_snapshot_at);
+      setPortal(data.selected_portal);
       setDiffFilter("all");
     } catch (err) {
       setError(err instanceof Error ? err.message : t("occupancy.loadError"));
     } finally {
       setLoading(false);
     }
-  }, [t]);
+  }, [portal, t]);
 
   useEffect(() => {
-    void load(selectedSnapshotAt);
-  }, [load, selectedSnapshotAt]);
+    void load(selectedSnapshotAt, portal);
+  }, [load, selectedSnapshotAt, portal]);
+
+  useEffect(() => {
+    setDiffPage(0);
+  }, [diffFilter, selectedSnapshotAt, snapshotDiff?.current_fetched_at]);
 
   const handleRefresh = async () => {
     setRefreshing(true);
+    setRefreshProgress(null);
     setError(null);
     setLastRefreshSummary(null);
     try {
-      const result = await refreshOccupancySnapshot();
+      const result = await refreshOccupancySnapshot(portal, {
+        onProgress: (progress) => setRefreshProgress(progress),
+      });
       setMetrics(result.metrics);
       setListingsPreview(result.listings_preview);
       setSelectedSnapshotAt(null);
-      const latest = await fetchOccupancyMetrics(null);
+      const latest = await fetchOccupancyMetrics(null, portal);
       setSnapshotDiff(latest.snapshot_diff);
       setMapListings(latest.map_listings);
       setAvailableSnapshots(latest.available_snapshots);
@@ -182,12 +233,28 @@ export default function OccupancyRatePanel() {
       setError(err instanceof Error ? err.message : t("occupancy.refreshError"));
     } finally {
       setRefreshing(false);
+      setRefreshProgress(null);
     }
   };
+
+  const perSqmLabel = t("listings.perSqm");
 
   const needsMoreSnapshots = (metrics?.snapshot_count ?? 0) < 2;
   const viewingHistorical = selectedSnapshotAt != null;
   const previewFromSnapshot = listingsPreview?.source === "occupancy_snapshot";
+  const portalNeedsFirstSnapshot =
+    (portal === "immobiliare" || portal === "immobiliare_scraper") &&
+    (metrics?.snapshot_count ?? 0) === 0 &&
+    !loading;
+
+  const handlePortalChange = (next: OccupancyPortal) => {
+    if (next === portal) return;
+    window.localStorage.setItem(OCCUPANCY_PORTAL_STORAGE_KEY, next);
+    setPortal(next);
+    setSelectedSnapshotAt(null);
+    setDiffPage(0);
+    setLastRefreshSummary(null);
+  };
 
   const statusLabel = (status: OccupancyListingChangeStatus) =>
     t(`occupancy.diff.${STATUS_STYLES[status].labelKey}`);
@@ -195,6 +262,13 @@ export default function OccupancyRatePanel() {
   const filteredDiffListings: OccupancySnapshotListing[] =
     snapshotDiff?.listings.filter((l) => diffFilter === "all" || l.change_status === diffFilter) ??
     [];
+
+  const diffPageSize = 10;
+  const diffPageCount = Math.ceil(filteredDiffListings.length / diffPageSize) || 1;
+  const pagedDiffListings = filteredDiffListings.slice(
+    diffPage * diffPageSize,
+    diffPage * diffPageSize + diffPageSize,
+  );
 
   const diffFilters: Array<{ id: DiffFilter; label: string; count?: number }> = snapshotDiff
     ? [
@@ -271,19 +345,76 @@ export default function OccupancyRatePanel() {
               <MapPin size={14} className="text-accent" />
               {t("occupancy.cityLocked")}
             </div>
+            <div className="mt-4">
+              <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">
+                {t("occupancy.dataSource")}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {OCCUPANCY_PORTAL_OPTIONS.map(({ id, labelKey }) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => handlePortalChange(id)}
+                    disabled={loading || refreshing}
+                    className={cn(
+                      "rounded-lg border px-3 py-1.5 text-sm transition-colors",
+                      portal === id
+                        ? "border-accent/60 bg-accent/15 text-white"
+                        : "border-surface-border/60 bg-surface-raised/40 text-slate-400 hover:text-slate-200",
+                    )}
+                  >
+                    {t(`occupancy.${labelKey}`)}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
-          <button
-            type="button"
-            onClick={() => void handleRefresh()}
-            disabled={refreshing}
-            className={cn(
-              "inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white transition-opacity",
-              refreshing && "opacity-60",
-            )}
-          >
-            <RefreshCw size={16} className={refreshing ? "animate-spin" : undefined} />
-            {refreshing ? t("occupancy.refreshing") : t("occupancy.refresh")}
-          </button>
+          <div className="flex min-w-[240px] flex-col gap-2">
+            <button
+              type="button"
+              onClick={() => void handleRefresh()}
+              disabled={refreshing}
+              className={cn(
+                "inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white transition-opacity",
+                refreshing && "opacity-60",
+              )}
+            >
+              <RefreshCw size={16} className={refreshing ? "animate-spin" : undefined} />
+              {refreshing ? t("occupancy.refreshing") : t("occupancy.refresh")}
+            </button>
+
+            {refreshing ? (
+              <div className="space-y-2">
+                <div className="h-2.5 w-full overflow-hidden rounded-full bg-surface-border">
+                  <div
+                    className={cn(
+                      "h-full rounded-full bg-accent transition-[width] duration-300",
+                      !refreshProgress?.current && "w-1/4 animate-pulse",
+                    )}
+                    style={
+                      refreshProgress && refreshProgress.total > 0 && refreshProgress.current > 0
+                        ? {
+                            width: `${occupancySnapshotProgressPercent(
+                              refreshProgress.current,
+                              refreshProgress.total,
+                            )}%`,
+                          }
+                        : undefined
+                    }
+                  />
+                </div>
+                <p className="text-xs text-slate-500">
+                  {refreshProgress?.label || t("occupancy.refreshProgress")}
+                  {refreshProgress && refreshProgress.listingsTotal > 0
+                    ? ` · ${refreshProgress.listingsTotal} ${t("occupancy.refreshListings")}`
+                    : ""}
+                  {refreshProgress && refreshProgress.total > 0
+                    ? ` · ${refreshProgress.current}/${refreshProgress.total}`
+                    : ""}
+                </p>
+              </div>
+            ) : null}
+          </div>
         </div>
 
         {error ? <p className="mt-4 text-sm text-red-400">{error}</p> : null}
@@ -300,7 +431,7 @@ export default function OccupancyRatePanel() {
           </span>
           {metrics?.last_provider ? (
             <span>
-              {t("occupancy.lastProvider")}: {metrics.last_provider}
+              {t("occupancy.lastProvider")}: {formatProviderLabel(metrics.last_provider)}
             </span>
           ) : null}
         </div>
@@ -334,6 +465,14 @@ export default function OccupancyRatePanel() {
           </div>
         ) : null}
 
+        {portalNeedsFirstSnapshot ? (
+          <div className="mt-4 rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-200">
+            {portal === "immobiliare_scraper"
+              ? t("occupancy.portalImmobiliareScraperHint")
+              : t("occupancy.portalImmobiliareHint")}
+          </div>
+        ) : null}
+
         {needsMoreSnapshots ? (
           <div className="mt-4 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
             {t("occupancy.needsSnapshots")}
@@ -357,12 +496,14 @@ export default function OccupancyRatePanel() {
                 {t("occupancy.preview.cachedAt")}: {formatWhen(listingsPreview.fetched_at, dateLocale)}
               </span>
               {listingsPreview.provider ? (
-                <span>{t("occupancy.preview.provider")}: {listingsPreview.provider}</span>
+                <span>
+                  {t("occupancy.preview.provider")}: {formatProviderLabel(listingsPreview.provider)}
+                </span>
               ) : null}
             </div>
           </div>
 
-          <div className="grid gap-4 border-b border-surface-border/40 p-6 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-4 border-b border-surface-border/40 p-6 sm:grid-cols-2 xl:grid-cols-5">
             <KpiCard
               label={t("occupancy.preview.listings")}
               value={String(listingsPreview.listing_count)}
@@ -374,6 +515,14 @@ export default function OccupancyRatePanel() {
             <KpiCard
               label={t("occupancy.preview.medianRent")}
               value={listingsPreview.median_price != null ? fmtMoney(listingsPreview.median_price) : "—"}
+            />
+            <KpiCard
+              label={t("occupancy.preview.avgRentPerSqm")}
+              value={
+                listingsPreview.avg_price_per_sqm != null
+                  ? `${fmtMoney(listingsPreview.avg_price_per_sqm)}${perSqmLabel}`
+                  : "—"
+              }
             />
             <KpiCard
               label={t("occupancy.preview.avgSqm")}
@@ -398,6 +547,9 @@ export default function OccupancyRatePanel() {
                     <span className="ml-2 text-slate-500">
                       {area.count}
                       {area.avg_price != null ? ` · ${fmtMoney(area.avg_price)}` : ""}
+                      {area.avg_price_per_sqm != null
+                        ? ` · ${fmtMoney(area.avg_price_per_sqm)}${perSqmLabel}`
+                        : ""}
                     </span>
                   </span>
                 ))}
@@ -413,7 +565,8 @@ export default function OccupancyRatePanel() {
                     <th className="px-6 py-3">{t("occupancy.preview.table.zone")}</th>
                     <th className="px-4 py-3">{t("occupancy.preview.table.rooms")}</th>
                     <th className="px-4 py-3">{t("occupancy.preview.table.sqm")}</th>
-                    <th className="px-6 py-3">{t("occupancy.preview.table.rent")}</th>
+                    <th className="px-4 py-3">{t("occupancy.preview.table.rent")}</th>
+                    <th className="px-6 py-3">{t("occupancy.preview.table.rentPerSqm")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -428,7 +581,10 @@ export default function OccupancyRatePanel() {
                       </td>
                       <td className="px-4 py-3">{listing.rooms ?? "—"}</td>
                       <td className="px-4 py-3">{listing.sqm ?? "—"}</td>
-                      <td className="px-6 py-3 font-medium text-accent">{fmtMoney(listing.price)}</td>
+                      <td className="px-4 py-3 font-medium text-accent">{fmtMoney(listing.price)}</td>
+                      <td className="px-6 py-3 text-slate-300">
+                        {formatPricePerSqm(listing.price, listing.sqm, perSqmLabel)}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -491,18 +647,19 @@ export default function OccupancyRatePanel() {
                   <th className="px-4 py-3">{t("occupancy.preview.table.zone")}</th>
                   <th className="px-4 py-3">{t("occupancy.preview.table.rooms")}</th>
                   <th className="px-4 py-3">{t("occupancy.preview.table.sqm")}</th>
-                  <th className="px-6 py-3">{t("occupancy.preview.table.rent")}</th>
+                  <th className="px-4 py-3">{t("occupancy.preview.table.rent")}</th>
+                  <th className="px-6 py-3">{t("occupancy.preview.table.rentPerSqm")}</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredDiffListings.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="px-6 py-8 text-center text-slate-500">
+                    <td colSpan={6} className="px-6 py-8 text-center text-slate-500">
                       {t("occupancy.diff.noListings")}
                     </td>
                   </tr>
                 ) : (
-                  filteredDiffListings.map((listing) => (
+                  pagedDiffListings.map((listing) => (
                     <tr
                       key={`${listing.id}-${listing.change_status}`}
                       className={cn(
@@ -523,13 +680,52 @@ export default function OccupancyRatePanel() {
                       </td>
                       <td className="px-4 py-3">{listing.rooms ?? "—"}</td>
                       <td className="px-4 py-3">{listing.sqm ?? "—"}</td>
-                      <td className="px-6 py-3 font-medium text-accent">{fmtMoney(listing.price)}</td>
+                      <td className="px-4 py-3 font-medium text-accent">{fmtMoney(listing.price)}</td>
+                      <td className="px-6 py-3 text-slate-300">
+                        {formatPricePerSqm(listing.price, listing.sqm, perSqmLabel)}
+                      </td>
                     </tr>
                   ))
                 )}
               </tbody>
             </table>
           </div>
+          {filteredDiffListings.length > diffPageSize ? (
+            <div className="flex items-center justify-between px-6 py-3 text-xs text-slate-500">
+              <button
+                type="button"
+                onClick={() => setDiffPage((p) => Math.max(0, p - 1))}
+                disabled={diffPage <= 0}
+                className={cn(
+                  "rounded-lg border px-3 py-1.5",
+                  diffPage <= 0
+                    ? "border-surface-border/60 bg-surface-raised/40 text-slate-400"
+                    : "border-surface-border/60 bg-surface-raised/40 hover:text-slate-200",
+                )}
+              >
+                {t("occupancy.diff.paginationPrev")}
+              </button>
+              <span>
+                {t("occupancy.diff.paginationPage", {
+                  current: diffPage + 1,
+                  total: diffPageCount,
+                })}
+              </span>
+              <button
+                type="button"
+                onClick={() => setDiffPage((p) => Math.min(diffPageCount - 1, p + 1))}
+                disabled={diffPage >= diffPageCount - 1}
+                className={cn(
+                  "rounded-lg border px-3 py-1.5",
+                  diffPage >= diffPageCount - 1
+                    ? "border-surface-border/60 bg-surface-raised/40 text-slate-400"
+                    : "border-surface-border/60 bg-surface-raised/40 hover:text-slate-200",
+                )}
+              >
+                {t("occupancy.diff.paginationNext")}
+              </button>
+            </div>
+          ) : null}
         </div>
       ) : availableSnapshots.length > 0 ? (
         <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 px-6 py-4 text-sm text-slate-400">
@@ -577,6 +773,8 @@ export default function OccupancyRatePanel() {
                     <th className="px-4 py-3">
                       {t("occupancy.table.rented", { days: metrics.occupancy_window_days })}
                     </th>
+                    <th className="px-4 py-3">{t("occupancy.table.avgRent")}</th>
+                    <th className="px-4 py-3">{t("occupancy.table.avgRentPerSqm")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.avgDom")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.medianDom")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.turnover")}</th>
@@ -586,7 +784,7 @@ export default function OccupancyRatePanel() {
                 <tbody>
                   {metrics.areas.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="px-6 py-8 text-center text-slate-500">
+                      <td colSpan={9} className="px-6 py-8 text-center text-slate-500">
                         {t("occupancy.noAreas")}
                       </td>
                     </tr>
@@ -599,6 +797,14 @@ export default function OccupancyRatePanel() {
                         <td className="px-6 py-3 font-medium text-slate-200">{area.zone}</td>
                         <td className="px-4 py-3">{area.active_count}</td>
                         <td className="px-4 py-3">{area.rented_in_window}</td>
+                        <td className="px-4 py-3">
+                          {area.avg_price != null ? fmtMoney(area.avg_price) : "—"}
+                        </td>
+                        <td className="px-4 py-3 text-slate-300">
+                          {area.avg_price_per_sqm != null
+                            ? `${fmtMoney(area.avg_price_per_sqm)}${perSqmLabel}`
+                            : "—"}
+                        </td>
                         <td className="px-4 py-3">{formatDays(area.avg_days_on_market)}</td>
                         <td className="px-4 py-3">{formatDays(area.median_days_on_market)}</td>
                         <td className="px-4 py-3">{formatTurnover(area.turnover_30d)}</td>

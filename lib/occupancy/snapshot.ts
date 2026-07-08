@@ -8,12 +8,16 @@ import type {
   TrackedRentalListing,
 } from "@/lib/types";
 import { fetchItalyListingsWithFallback } from "@/lib/server/italy-listings-fetch";
+import { fetchReggioRentalsListings } from "@/lib/server/reggio-rentals-fetch";
 import { getDefaultListingsProvider } from "@/lib/server/config";
 import {
+  DEFAULT_OCCUPANCY_PORTAL,
   OCCUPANCY_CITY,
   OCCUPANCY_FETCH_MAX_PAGES,
+  type OccupancyPortal,
 } from "./constants";
 import { resolveItalyListingMaxPages } from "@/lib/batch-fetch-pages";
+import type { OccupancySnapshotProgressState } from "@/lib/occupancy-snapshot-progress";
 import { resolveListingZone } from "./zone";
 import { emptyRegistry, loadRegistry, saveRegistry, saveSnapshot } from "./registry";
 import { computeOccupancyMetrics } from "./metrics";
@@ -93,6 +97,7 @@ export interface OccupancySnapshotResult {
 
 export function rebuildRegistryFromSnapshots(
   snapshots: OccupancySnapshot[],
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
   lastProvider: ListingsProvider | null = null,
 ): OccupancyRegistry {
   const listings: Record<string, TrackedRentalListing> = {};
@@ -125,6 +130,7 @@ export function rebuildRegistryFromSnapshots(
   return {
     city: OCCUPANCY_CITY,
     market: "it",
+    portal,
     updated_at: last?.fetched_at ?? new Date().toISOString(),
     snapshot_count: snapshots.length,
     last_provider: lastProvider,
@@ -134,33 +140,83 @@ export function rebuildRegistryFromSnapshots(
 
 export async function rebuildRegistryUpTo(
   targetFetchedAt: string,
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
   lastProvider: ListingsProvider | null = null,
 ): Promise<OccupancyRegistry | null> {
   const { loadAllSnapshots } = await import("./registry");
   const targetMs = new Date(targetFetchedAt).getTime();
   if (!Number.isFinite(targetMs)) return null;
 
-  const snapshots = (await loadAllSnapshots()).filter(
+  const snapshots = (await loadAllSnapshots(portal)).filter(
     (s) => new Date(s.fetched_at).getTime() <= targetMs,
   );
   if (!snapshots.length) return null;
-  return rebuildRegistryFromSnapshots(snapshots, lastProvider);
+  return rebuildRegistryFromSnapshots(snapshots, portal, lastProvider);
 }
 
-export async function runOccupancySnapshot(): Promise<OccupancySnapshotResult> {
-  const { data, provider } = await fetchItalyListingsWithFallback(
-    OCCUPANCY_CITY,
-    "rent",
-    getDefaultListingsProvider(),
-    resolveItalyListingMaxPages(OCCUPANCY_FETCH_MAX_PAGES),
-  );
+export async function runOccupancySnapshot(
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  onProgress?: (progress: OccupancySnapshotProgressState) => void,
+): Promise<OccupancySnapshotResult> {
+  const maxPages =
+    portal === "immobiliare_scraper"
+      ? Math.min(resolveItalyListingMaxPages(OCCUPANCY_FETCH_MAX_PAGES), 10)
+      : resolveItalyListingMaxPages(OCCUPANCY_FETCH_MAX_PAGES);
+  const totalSteps = maxPages + 1;
+
+  const reportProgress = (
+    current: number,
+    page: number,
+    listingsTotal: number,
+    label: string,
+  ) => {
+    onProgress?.({
+      current,
+      total: totalSteps,
+      page,
+      maxPages,
+      listingsTotal,
+      label,
+    });
+  };
+
+  const { data, provider } =
+    portal === "immobiliare_scraper"
+      ? {
+          data: await fetchReggioRentalsListings(maxPages, (progress) => {
+            reportProgress(
+              progress.page,
+              progress.page,
+              progress.listingsTotal,
+              `Scraper · pag. ${progress.page}/${progress.maxPages}`,
+            );
+          }),
+          provider: "reggio_rentals" as const,
+        }
+      : await fetchItalyListingsWithFallback(
+          OCCUPANCY_CITY,
+          "rent",
+          getDefaultListingsProvider(),
+          maxPages,
+          (pageProgress) => {
+            reportProgress(
+              pageProgress.page,
+              pageProgress.page,
+              pageProgress.listingsTotal,
+              `Pagina ${pageProgress.page}/${pageProgress.maxPages}`,
+            );
+          },
+          portal,
+        );
+
+  reportProgress(maxPages, maxPages, data.listings.length, "Salvataggio snapshot…");
 
   const fetchedAt = data.fetched_at || new Date().toISOString();
   const basics = data.listings.map(mapListingToBasic);
   const currentIds = new Set(basics.map((l) => l.id));
   const basicsById = new Map(basics.map((l) => [l.id, l]));
 
-  const registry = await loadRegistry();
+  const registry = await loadRegistry(portal);
   const listings = { ...registry.listings };
 
   let newCount = 0;
@@ -191,21 +247,27 @@ export async function runOccupancySnapshot(): Promise<OccupancySnapshotResult> {
   }
 
   const updatedRegistry = {
-    ...(registry.snapshot_count ? registry : emptyRegistry()),
+    ...(registry.snapshot_count ? registry : emptyRegistry(portal)),
+    portal,
     updated_at: fetchedAt,
     snapshot_count: registry.snapshot_count + 1,
     last_provider: provider,
     listings,
   };
 
-  await saveSnapshot({
-    fetched_at: fetchedAt,
-    active_count: basics.length,
-    listings: basics,
-  });
-  await saveRegistry(updatedRegistry);
+  await saveSnapshot(
+    {
+      fetched_at: fetchedAt,
+      active_count: basics.length,
+      listings: basics,
+    },
+    portal,
+  );
+  await saveRegistry(updatedRegistry, portal);
 
   const metrics = await computeOccupancyMetrics(updatedRegistry);
+
+  reportProgress(totalSteps, maxPages, basics.length, "Completato");
 
   return {
     registry: updatedRegistry,

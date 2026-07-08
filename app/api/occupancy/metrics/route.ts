@@ -5,7 +5,8 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const asOf = searchParams.get("asOf");
-    const data = await loadOccupancyDashboard(asOf);
+    const portal = searchParams.get("portal");
+    const data = await loadOccupancyDashboard(asOf, portal);
     return NextResponse.json(data);
   } catch (err) {
     const message = err instanceof Error ? err.message : "Lettura metriche non riuscita";

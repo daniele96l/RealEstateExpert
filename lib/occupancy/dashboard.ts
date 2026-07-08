@@ -4,6 +4,11 @@ import { buildPreviewFromSnapshot, loadListingsPreview } from "./listings-previe
 import { listSnapshotSummaries, loadAllSnapshots, loadRegistry } from "./registry";
 import { computeSnapshotDiff } from "./snapshot-diff";
 import { rebuildRegistryFromSnapshots } from "./snapshot";
+import {
+  DEFAULT_OCCUPANCY_PORTAL,
+  isOccupancyPortal,
+  type OccupancyPortal,
+} from "./constants";
 import type { OccupancyDashboardData, OccupancySnapshotDiff } from "@/lib/types";
 
 function resolveSnapshotDiff(
@@ -24,16 +29,23 @@ function resolveSnapshotDiff(
   return computeSnapshotDiff(latest, previous);
 }
 
-export async function loadOccupancyDashboard(asOf?: string | null): Promise<OccupancyDashboardData> {
+export async function loadOccupancyDashboard(
+  asOf?: string | null,
+  portalInput?: string | null,
+): Promise<OccupancyDashboardData> {
+  const portal: OccupancyPortal = isOccupancyPortal(portalInput)
+    ? portalInput
+    : DEFAULT_OCCUPANCY_PORTAL;
+
   const [currentRegistry, available_snapshots, allSnapshots] = await Promise.all([
-    loadRegistry(),
-    listSnapshotSummaries(),
-    loadAllSnapshots(),
+    loadRegistry(portal),
+    listSnapshotSummaries(portal),
+    loadAllSnapshots(portal),
   ]);
 
   const selected = asOf?.trim() || null;
   let registry = currentRegistry;
-  let listings_preview = await loadListingsPreview();
+  let listings_preview = await loadListingsPreview(portal);
 
   if (selected) {
     const targetMs = new Date(selected).getTime();
@@ -41,7 +53,11 @@ export async function loadOccupancyDashboard(asOf?: string | null): Promise<Occu
     const match = snapshots.find((s) => s.fetched_at === selected) ?? snapshots[snapshots.length - 1];
 
     if (match && snapshots.length) {
-      registry = rebuildRegistryFromSnapshots(snapshots, currentRegistry.last_provider ?? null);
+      registry = rebuildRegistryFromSnapshots(
+        snapshots,
+        portal,
+        currentRegistry.last_provider ?? null,
+      );
       listings_preview = buildPreviewFromSnapshot(match, currentRegistry.last_provider ?? null);
     }
   }
@@ -60,5 +76,6 @@ export async function loadOccupancyDashboard(asOf?: string | null): Promise<Occu
     map_listings,
     available_snapshots,
     selected_snapshot_at: selected,
+    selected_portal: portal,
   };
 }

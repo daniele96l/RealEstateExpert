@@ -8,7 +8,8 @@ import type {
 } from "@/lib/types";
 import { getCache, mergeListings } from "@/lib/server/listings-cache";
 import { readJsonFile } from "@/lib/server/fs-cache-io";
-import { OCCUPANCY_CITY, OCCUPANCY_MARKET } from "./constants";
+import { inferListingWebsiteSource } from "@/lib/listing-url";
+import { OCCUPANCY_CITY, OCCUPANCY_MARKET, DEFAULT_OCCUPANCY_PORTAL, type OccupancyPortal } from "./constants";
 import { remapListingZones, resolveListingZone, withResolvedZone } from "./zone";
 
 const PREVIEW_SAMPLE_SIZE = 8;
@@ -27,6 +28,20 @@ function median(values: number[]): number | null {
 function average(values: number[]): number | null {
   if (!values.length) return null;
   return Math.round(values.reduce((sum, v) => sum + v, 0) / values.length);
+}
+
+function pricePerSqmValues(listings: Array<{ price: number; sqm: number | null }>): number[] {
+  return listings
+    .filter((l) => l.price > 0 && l.sqm != null && l.sqm > 0)
+    .map((l) => l.price / l.sqm!);
+}
+
+function avgPricePerSqm(listings: Array<{ price: number; sqm: number | null }>): number | null {
+  return average(pricePerSqmValues(listings));
+}
+
+function medianPricePerSqm(listings: Array<{ price: number; sqm: number | null }>): number | null {
+  return median(pricePerSqmValues(listings));
 }
 
 function toBasic(listing: MapListing): OccupancyBasicListing {
@@ -49,32 +64,49 @@ function shortenAddress(address: string | null): string {
   return `${trimmed.slice(0, 69)}…`;
 }
 
-async function loadMergedRentCache(): Promise<CityListingsCache | null> {
+async function loadMergedRentCache(portal: OccupancyPortal): Promise<CityListingsCache | null> {
   const primary = await getCache(OCCUPANCY_MARKET, OCCUPANCY_CITY, "rent");
   const alt = await readJsonFile<CityListingsCache>(
     path.join(process.cwd(), "data", "listings", "reggio_di_calabria_rent.json"),
   );
 
   if (!primary && !alt) return null;
-  if (!primary) return alt;
-  if (!alt) return primary;
+  const merged = !primary
+    ? alt
+    : !alt
+      ? primary
+      : {
+          ...primary,
+          listings: mergeListings(primary.listings, alt.listings),
+          fetched_at:
+            new Date(primary.fetched_at).getTime() >= new Date(alt.fetched_at).getTime()
+              ? primary.fetched_at
+              : alt.fetched_at,
+          provider: primary.provider ?? alt.provider,
+        };
 
-  const mergedListings = mergeListings(primary.listings, alt.listings);
-  const fetchedAt =
-    new Date(primary.fetched_at).getTime() >= new Date(alt.fetched_at).getTime()
-      ? primary.fetched_at
-      : alt.fetched_at;
+  if (!merged?.listings.length) return null;
+
+  const listings = merged.listings.filter((listing) => {
+    const source = inferListingWebsiteSource(listing);
+    return source === portal || (source == null && portal === "idealista");
+  });
+
+  if (!listings.length) return null;
 
   return {
-    ...primary,
-    listings: mergedListings,
-    fetched_at: fetchedAt,
-    provider: primary.provider ?? alt.provider,
+    ...merged,
+    listings,
   };
 }
 
-export async function loadListingsPreview(): Promise<OccupancyListingsPreview | null> {
-  const cache = await loadMergedRentCache();
+export async function loadListingsPreview(
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+): Promise<OccupancyListingsPreview | null> {
+  if (portal === "immobiliare_scraper") {
+    return null;
+  }
+  const cache = await loadMergedRentCache(portal);
   if (!cache?.listings.length) return null;
 
   const basics = remapListingZones(cache.listings.map(toBasic));
@@ -94,6 +126,7 @@ export async function loadListingsPreview(): Promise<OccupancyListingsPreview | 
       zone,
       count: items.length,
       avg_price: average(items.map((l) => l.price).filter((p) => p > 0)),
+      avg_price_per_sqm: avgPricePerSqm(items),
     }))
     .sort((a, b) => b.count - a.count || a.zone.localeCompare(b.zone, "it"))
     .slice(0, PREVIEW_AREA_LIMIT);
@@ -114,6 +147,8 @@ export async function loadListingsPreview(): Promise<OccupancyListingsPreview | 
     avg_price: average(prices),
     median_price: median(prices),
     avg_sqm: average(sqms),
+    avg_price_per_sqm: avgPricePerSqm(basics),
+    median_price_per_sqm: medianPricePerSqm(basics),
     areas,
     sample,
   };
@@ -140,6 +175,7 @@ export function buildPreviewFromSnapshot(
       zone,
       count: items.length,
       avg_price: average(items.map((l) => l.price).filter((p) => p > 0)),
+      avg_price_per_sqm: avgPricePerSqm(items),
     }))
     .sort((a, b) => b.count - a.count || a.zone.localeCompare(b.zone, "it"))
     .slice(0, PREVIEW_AREA_LIMIT);
@@ -160,6 +196,8 @@ export function buildPreviewFromSnapshot(
     avg_price: average(prices),
     median_price: median(prices),
     avg_sqm: average(sqms),
+    avg_price_per_sqm: avgPricePerSqm(basics),
+    median_price_per_sqm: medianPricePerSqm(basics),
     areas,
     sample,
   };

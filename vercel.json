@@ -1,8 +1,16 @@
 {
   "crons": [
     {
-      "path": "/api/cron/occupancy",
+      "path": "/api/cron/occupancy?portal=idealista",
       "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/occupancy?portal=immobiliare",
+      "schedule": "20 6 * * *"
+    },
+    {
+      "path": "/api/cron/occupancy?portal=immobiliare_scraper",
+      "schedule": "40 6 * * *"
     }
   ]
 }

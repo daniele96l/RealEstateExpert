@@ -14,6 +14,11 @@ import type { ListingsExportBundle } from "./listings-export";
 import type { BatchFetchProgressState, BatchFetchStreamEvent } from "./batch-fetch-progress";
 
 import type { MarketId } from "./markets";
+import type { OccupancyPortal } from "./occupancy/portals";
+import type {
+  OccupancySnapshotProgressState,
+  OccupancySnapshotStreamEvent,
+} from "./occupancy-snapshot-progress";
 
 async function parseError(res: Response, fallback: string): Promise<string> {
   const text = await res.text();
@@ -295,14 +300,23 @@ export async function saveListingsExportToServer(
   return res.json();
 }
 
-export async function fetchOccupancyMetrics(asOf?: string | null): Promise<OccupancyDashboardData> {
-  const params = asOf ? `?asOf=${encodeURIComponent(asOf)}` : "";
-  const res = await fetch(`/api/occupancy/metrics${params}`);
+export async function fetchOccupancyMetrics(
+  asOf?: string | null,
+  portal?: OccupancyPortal | null,
+): Promise<OccupancyDashboardData> {
+  const params = new URLSearchParams();
+  if (asOf) params.set("asOf", asOf);
+  if (portal) params.set("portal", portal);
+  const query = params.toString();
+  const res = await fetch(`/api/occupancy/metrics${query ? `?${query}` : ""}`);
   if (!res.ok) throw new Error(await parseError(res, "Lettura metriche occupancy non riuscita"));
   return res.json();
 }
 
-export async function refreshOccupancySnapshot(): Promise<{
+export async function refreshOccupancySnapshot(
+  portal?: OccupancyPortal,
+  opts?: { onProgress?: (progress: OccupancySnapshotProgressState) => void },
+): Promise<{
   metrics: OccupancyCityMetrics;
   listings_preview: OccupancyDashboardData["listings_preview"];
   fetched_count: number;
@@ -310,7 +324,81 @@ export async function refreshOccupancySnapshot(): Promise<{
   rented_count: number;
   snapshot_count: number;
 }> {
-  const res = await fetch("/api/occupancy/snapshot", { method: "POST" });
+  if (opts?.onProgress) {
+    return refreshOccupancySnapshotStream(portal, opts.onProgress);
+  }
+
+  const res = await fetch("/api/occupancy/snapshot", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(portal ? { portal } : {}),
+  });
   if (!res.ok) throw new Error(await parseError(res, "Aggiornamento occupancy non riuscito"));
   return res.json();
+}
+
+export async function refreshOccupancySnapshotStream(
+  portal: OccupancyPortal | undefined,
+  onProgress: (progress: OccupancySnapshotProgressState) => void,
+): Promise<{
+  metrics: OccupancyCityMetrics;
+  listings_preview: OccupancyDashboardData["listings_preview"];
+  fetched_count: number;
+  new_count: number;
+  rented_count: number;
+  snapshot_count: number;
+}> {
+  const res = await fetch("/api/occupancy/snapshot", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      ...(portal ? { portal } : {}),
+      stream: true,
+    }),
+  });
+
+  if (!res.ok) throw new Error(await parseError(res, "Aggiornamento occupancy non riuscito"));
+  if (!res.body) throw new Error("Risposta streaming non disponibile");
+
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let result: {
+    metrics: OccupancyCityMetrics;
+    listings_preview: OccupancyDashboardData["listings_preview"];
+    fetched_count: number;
+    new_count: number;
+    rented_count: number;
+    snapshot_count: number;
+  } | null = null;
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+    buffer = lines.pop() ?? "";
+
+    for (const line of lines) {
+      if (!line.trim()) continue;
+      const event = JSON.parse(line) as OccupancySnapshotStreamEvent;
+      if (event.type === "progress") {
+        onProgress({
+          current: event.current,
+          total: event.total,
+          page: event.page,
+          maxPages: event.maxPages,
+          listingsTotal: event.listingsTotal,
+          label: event.label,
+        });
+      } else if (event.type === "done") {
+        result = event.result;
+      } else if (event.type === "error") {
+        throw new Error(event.message);
+      }
+    }
+  }
+
+  if (!result) throw new Error("Aggiornamento occupancy incompleto");
+  return result;
 }

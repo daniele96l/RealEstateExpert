@@ -9,6 +9,8 @@ import {
   OCCUPANCY_MARKET,
   OCCUPANCY_TURNOVER_DAYS,
   OCCUPANCY_WINDOW_DAYS,
+  DEFAULT_OCCUPANCY_PORTAL,
+  type OccupancyPortal,
 } from "./constants";
 import { loadSnapshotsInWindow } from "./registry";
 import { resolveListingZone } from "./zone";
@@ -65,6 +67,11 @@ function aggregateListings(
     .map((l) => l.days_on_market)
     .filter((d): d is number => d != null);
 
+  const priceValues = rentedWindow.map((l) => l.price).filter((p) => p > 0);
+  const pricePerSqmValues = rentedWindow
+    .map((l) => (l.sqm != null && l.sqm > 0 ? l.price / l.sqm : null))
+    .filter((v): v is number => v != null && v > 0);
+
   const rentedTurnover = items.filter((l) => rentedInWindow(l, turnoverDays, now)).length;
   const turnover =
     avgActiveInventory != null && avgActiveInventory > 0
@@ -80,6 +87,8 @@ function aggregateListings(
   return {
     active_count: active.length,
     rented_in_window: rentedWindow.length,
+    avg_price: average(priceValues),
+    avg_price_per_sqm: average(pricePerSqmValues),
     avg_days_on_market: average(domValues),
     median_days_on_market: median(domValues),
     turnover_30d: turnover,
@@ -87,8 +96,12 @@ function aggregateListings(
   };
 }
 
-async function avgActiveInventoryLastDays(days: number, asOfMs: number): Promise<number | null> {
-  const snapshots = await loadSnapshotsInWindow(days, asOfMs);
+async function avgActiveInventoryLastDays(
+  days: number,
+  asOfMs: number,
+  portal: OccupancyPortal,
+): Promise<number | null> {
+  const snapshots = await loadSnapshotsInWindow(days, asOfMs, portal);
   if (!snapshots.length) return null;
   const counts = snapshots.map((s) => s.active_count);
   return average(counts);
@@ -98,12 +111,13 @@ export async function computeOccupancyMetrics(
   registry: OccupancyRegistry,
   options?: ComputeOccupancyMetricsOptions,
 ): Promise<OccupancyCityMetrics> {
+  const portal = registry.portal ?? DEFAULT_OCCUPANCY_PORTAL;
   const asOfMs = resolveAsOfMs(options?.asOf ?? registry.updated_at);
   const all = Object.values(registry.listings).map((listing) => ({
     ...listing,
     zone: resolveListingZone(listing.address, listing.lat, listing.lng),
   }));
-  const avgActive = await avgActiveInventoryLastDays(OCCUPANCY_TURNOVER_DAYS, asOfMs);
+  const avgActive = await avgActiveInventoryLastDays(OCCUPANCY_TURNOVER_DAYS, asOfMs, portal);
   const cityTotals = aggregateListings(
     all,
     OCCUPANCY_WINDOW_DAYS,
@@ -130,6 +144,7 @@ export async function computeOccupancyMetrics(
   return {
     city: OCCUPANCY_CITY,
     market: OCCUPANCY_MARKET,
+    portal,
     updated_at: registry.updated_at,
     snapshot_count: registry.snapshot_count,
     last_provider: registry.last_provider ?? null,
@@ -139,8 +154,10 @@ export async function computeOccupancyMetrics(
   };
 }
 
-export async function loadOccupancyMetrics(): Promise<OccupancyCityMetrics> {
+export async function loadOccupancyMetrics(
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+): Promise<OccupancyCityMetrics> {
   const { loadRegistry } = await import("./registry");
-  const registry = await loadRegistry();
+  const registry = await loadRegistry(portal);
   return computeOccupancyMetrics(registry);
 }

@@ -1,0 +1,87 @@
+{
+  "props": {
+    "pageProps": {
+      "dehydratedState": {
+        "queries": [
+          {
+            "state": {
+              "data": {
+                "results": [
+                  {
+                    "realEstate": {
+                      "id": 97747342,
+                      "title": "Monolocale via Cardinale Tripepi",
+                      "typology": { "id": 14, "name": "Appartamento" },
+                      "contract": "rent",
+                      "price": {
+                        "value": 400,
+                        "formattedValue": "€ 400/mese"
+                      },
+                      "properties": [
+                        {
+                          "rooms": 1,
+                          "surface": "30 m²",
+                          "bathrooms": 1
+                        }
+                      ],
+                      "advertiser": {
+                        "supervisor": {
+                          "label": "privato",
+                          "phoneUrl": "https://www.immobiliare.it/captcha/example"
+                        },
+                        "agency": {
+                          "displayName": null,
+                          "label": "privato"
+                        }
+                      }
+                    },
+                    "seo": {
+                      "url": "https://www.immobiliare.it/annunci/97747342/"
+                    }
+                  },
+                  {
+                    "realEstate": {
+                      "id": 88112233,
+                      "title": "Bilocale duplex centro",
+                      "typology": { "id": 14, "name": "Appartamento" },
+                      "contract": "rent",
+                      "price": {
+                        "value": 650,
+                        "formattedValue": "€ 650/mese"
+                      },
+                      "properties": [
+                        {
+                          "rooms": 2,
+                          "surface": "55 m²",
+                          "bathrooms": 1
+                        },
+                        {
+                          "rooms": 1,
+                          "surface": "18 m²",
+                          "bathrooms": 1
+                        }
+                      ],
+                      "advertiser": {
+                        "supervisor": {
+                          "label": "agenzia",
+                          "phoneUrl": "https://www.immobiliare.it/captcha/example2"
+                        },
+                        "agency": {
+                          "displayName": "Studio Immobiliare RC",
+                          "label": "agenzia"
+                        }
+                      }
+                    },
+                    "seo": {
+                      "url": "https://www.immobiliare.it/annunci/88112233/"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
