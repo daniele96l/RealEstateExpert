@@ -20,7 +20,7 @@ import {
 } from "@/lib/market-cagr";
 import { getMarket, type MarketId } from "@/lib/markets";
 import type { AnalysisResult, MonthlyCashFlowPoint } from "@/lib/types";
-import { fmtMoney } from "@/lib/utils";
+import { fmtMoney, cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
 import { CHART_THEME } from "@/lib/chart-theme";
 
@@ -52,6 +52,40 @@ const APPRECIATION_PRESETS = [0, 1, 2, 3, 4, 5, 6] as const;
 const HISTORICAL_APPRECIATION = "historical";
 const TIME_RANGE_PRESETS = [5, 10, 15, 20] as const;
 const TIME_RANGE_FULL = "full";
+
+function RoiStatCard({
+  label,
+  value,
+  valueClassName = "text-neutral-900",
+  meta,
+  cagr,
+  cagrPositive,
+}: {
+  label: string;
+  value: string;
+  valueClassName?: string;
+  meta?: string;
+  cagr?: string;
+  cagrPositive?: boolean;
+}) {
+  return (
+    <div className="rounded-md bg-surface-border/40 px-2.5 py-1.5 text-right">
+      <p className="text-[9px] font-medium uppercase tracking-wide text-neutral-500 leading-tight">{label}</p>
+      <p className={cn("mt-0.5 text-sm font-bold leading-tight", valueClassName)}>{value}</p>
+      {meta && <p className="mt-0.5 text-[10px] leading-tight text-neutral-500">{meta}</p>}
+      {cagr != null && (
+        <p
+          className={cn(
+            "mt-0.5 text-[10px] font-medium leading-tight",
+            cagrPositive ? "text-green-600" : "text-red-400",
+          )}
+        >
+          {cagr}
+        </p>
+      )}
+    </div>
+  );
+}
 
 function adjustNetCashFlowForRentGrowth(point: MonthlyCashFlowPoint, rentMultiplier: number): number {
   if (rentMultiplier === 1) return point.net_cash_flow;
@@ -315,49 +349,38 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
             </label>
           </div>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("roi.downPayment")}</p>
-            <p className="text-lg font-bold text-neutral-900">{fmtMoney(downPayment, market)}</p>
-          </div>
-          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("roi.taxesAccessories")}</p>
-            <p className="text-lg font-bold text-neutral-900">{fmtMoney(taxesAndAccessories, market)}</p>
-          </div>
-          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("roi.downPaymentPlusFees")}</p>
-            <p className="text-lg font-bold text-neutral-900">{fmtMoney(initialInvestment, market)}</p>
-            <p className={`text-xs font-medium ${totalCagrOnInvestment >= 0 ? "text-green-600" : "text-red-400"}`}>
-              {totalCagrOnInvestment >= 0 ? "+" : ""}
-              {t("roi.cagrOnDownPaymentPlusFees", { pct: totalCagrOnInvestment.toFixed(1) })}
-            </p>
-          </div>
-          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("roi.finalEquity")}</p>
-            <p className="text-lg font-bold text-neutral-900">{fmtMoney(finalEquity, market)}</p>
-            {improvementCosts > 0 && (
-              <p className="text-[11px] text-neutral-500">
-                {t("roi.withoutImprovements", { amount: fmtMoney(finalEquityExImprovements, market) })}
-              </p>
-            )}
-            <p className={`text-xs font-medium ${equityCagr >= 0 ? "text-green-600" : "text-red-400"}`}>
-              {equityCagr >= 0 ? "+" : ""}
-              {t("roi.cagrOnDownPayment", { pct: equityCagr.toFixed(1) })}
-            </p>
-          </div>
-          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("common.total")}</p>
-            <p className="text-lg font-bold text-cyan-400">{fmtMoney(finalEquityPlusCash, market)}</p>
-            {improvementCosts > 0 && (
-              <p className="text-[11px] text-neutral-500">
-                {t("roi.withoutImprovements", { amount: fmtMoney(finalTotalExImprovements, market) })}
-              </p>
-            )}
-            <p className={`text-xs font-medium ${totalCagrOnAnticipo >= 0 ? "text-green-600" : "text-red-400"}`}>
-              {totalCagrOnAnticipo >= 0 ? "+" : ""}
-              {t("roi.cagrOnDownPayment", { pct: totalCagrOnAnticipo.toFixed(1) })}
-            </p>
-          </div>
+        <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:grid-cols-5">
+          <RoiStatCard label={t("roi.downPayment")} value={fmtMoney(downPayment, market)} />
+          <RoiStatCard label={t("roi.taxesAccessories")} value={fmtMoney(taxesAndAccessories, market)} />
+          <RoiStatCard
+            label={t("roi.downPaymentPlusFees")}
+            value={fmtMoney(initialInvestment, market)}
+            cagr={`${totalCagrOnInvestment >= 0 ? "+" : ""}${t("roi.cagrOnDownPaymentPlusFees", { pct: totalCagrOnInvestment.toFixed(1) })}`}
+            cagrPositive={totalCagrOnInvestment >= 0}
+          />
+          <RoiStatCard
+            label={t("roi.finalEquity")}
+            value={fmtMoney(finalEquity, market)}
+            meta={
+              improvementCosts > 0
+                ? t("roi.withoutImprovements", { amount: fmtMoney(finalEquityExImprovements, market) })
+                : undefined
+            }
+            cagr={`${equityCagr >= 0 ? "+" : ""}${t("roi.cagrOnDownPayment", { pct: equityCagr.toFixed(1) })}`}
+            cagrPositive={equityCagr >= 0}
+          />
+          <RoiStatCard
+            label={t("common.total")}
+            value={fmtMoney(finalEquityPlusCash, market)}
+            valueClassName="text-cyan-600"
+            meta={
+              improvementCosts > 0
+                ? t("roi.withoutImprovements", { amount: fmtMoney(finalTotalExImprovements, market) })
+                : undefined
+            }
+            cagr={`${totalCagrOnAnticipo >= 0 ? "+" : ""}${t("roi.cagrOnDownPayment", { pct: totalCagrOnAnticipo.toFixed(1) })}`}
+            cagrPositive={totalCagrOnAnticipo >= 0}
+          />
         </div>
       </div>
 
