@@ -336,11 +336,6 @@ export default function OccupancyRatePanel() {
         label: t("occupancy.minimap.overlays.price"),
         hint: t("occupancy.minimap.overlays.priceHint"),
       },
-      {
-        id: "darkMap" as const,
-        label: t("occupancy.minimap.overlays.darkMap"),
-        hint: t("occupancy.minimap.overlays.darkMapHint"),
-      },
     ],
     [t],
   );
@@ -362,6 +357,7 @@ export default function OccupancyRatePanel() {
           layersTitle={t("occupancy.minimap.layersTitle")}
           zonesLegendTitle={t("occupancy.minimap.zonesLegendTitle")}
           listingsCountLabel={t("occupancy.minimap.listingsCount")}
+          perSqmLabel={perSqmLabel}
           boundaryAttribution={t("occupancy.minimap.boundaryAttribution")}
           overlayOptions={mapOverlayOptions}
           statusLabels={{

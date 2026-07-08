@@ -21,6 +21,7 @@ function toMapListing(
     lng: number;
     zone: string | null;
     price: number;
+    sqm: number | null;
     address: string | null;
   },
   change_status?: OccupancyListingChangeStatus,
@@ -31,6 +32,7 @@ function toMapListing(
     lng: listing.lng,
     zone: listing.zone,
     price: listing.price,
+    sqm: listing.sqm,
     address: listing.address,
     change_status,
   };

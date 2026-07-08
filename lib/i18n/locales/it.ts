@@ -382,11 +382,11 @@ const it = {
         density: "Densità",
         densityHint: "Intensità annunci per area",
         price: "Prezzi",
-        priceHint: "Colore = canone medio per area",
+        priceHint: "Colore = canone medio al m² per area",
         darkMap: "Scura",
         darkMapHint: "Mappa base scura",
       },
-      boundaryAttribution: "Confini quartieri © OpenStreetMap / ISTAT",
+      boundaryAttribution: "Aree zone su partizione città per macro-zone Immobiliare · © OpenStreetMap",
     },
     diff: {
       title: "Confronto tra snapshot",

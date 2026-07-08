@@ -380,11 +380,11 @@ const en: Translations = {
         density: "Density",
         densityHint: "Listing intensity per area",
         price: "Prices",
-        priceHint: "Color = average rent per area",
+        priceHint: "Color = average rent per m² per area",
         darkMap: "Dark",
         darkMapHint: "Dark base map",
       },
-      boundaryAttribution: "Zone boundaries © OpenStreetMap / ISTAT",
+      boundaryAttribution: "Zone areas partition city by Immobiliare macro-areas · © OpenStreetMap",
     },
     diff: {
       title: "Snapshot comparison",

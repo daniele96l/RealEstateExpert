@@ -58,6 +58,32 @@ export function polygonCentroid(polygon: GeoPolygon): GeoPoint | null {
   return { lat, lng };
 }
 
+/** Approximate circle as a polygon ring (closed on output when asGeoJsonRing). */
+export function circlePolygon(center: GeoPoint, radiusM: number, steps = 48): GeoPolygon {
+  if (radiusM <= 0 || steps < 8) return [];
+  const R = 6_371_000;
+  const lat1 = (center.lat * Math.PI) / 180;
+  const lng1 = (center.lng * Math.PI) / 180;
+  const points: GeoPolygon = [];
+
+  for (let i = 0; i < steps; i += 1) {
+    const bearing = (i / steps) * 2 * Math.PI;
+    const lat2 = Math.asin(
+      Math.sin(lat1) * Math.cos(radiusM / R) +
+        Math.cos(lat1) * Math.sin(radiusM / R) * Math.cos(bearing),
+    );
+    const lng2 =
+      lng1 +
+      Math.atan2(
+        Math.sin(bearing) * Math.sin(radiusM / R) * Math.cos(lat1),
+        Math.cos(radiusM / R) - Math.sin(lat1) * Math.sin(lat2),
+      );
+    points.push({ lat: (lat2 * 180) / Math.PI, lng: (lng2 * 180) / Math.PI });
+  }
+
+  return points;
+}
+
 export function isValidPolygon(polygon: GeoPolygon | null | undefined): polygon is GeoPolygon {
   return Array.isArray(polygon) && polygon.length >= 3;
 }

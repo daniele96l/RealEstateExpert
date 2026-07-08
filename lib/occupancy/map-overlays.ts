@@ -28,7 +28,7 @@ export interface ZoneOverlayStats {
   lng: number;
   polygons: GeoPolygon[];
   count: number;
-  avgPrice: number | null;
+  avgPricePerSqm: number | null;
 }
 
 export function priceHeatColor(value: number, min: number, max: number): string {
@@ -45,21 +45,27 @@ export function densityFillOpacity(count: number, maxCount: number): number {
 }
 
 export function buildZoneOverlayStats(listings: OccupancyMapListing[]): ZoneOverlayStats[] {
-  const pricesByZone = new Map<string, number[]>();
+  const listingsByZone = new Map<string, OccupancyMapListing[]>();
   for (const listing of listings) {
     if (!listing.zone || listing.price <= 0) continue;
-    const bucket = pricesByZone.get(listing.zone) ?? [];
-    bucket.push(listing.price);
-    pricesByZone.set(listing.zone, bucket);
+    const bucket = listingsByZone.get(listing.zone) ?? [];
+    bucket.push(listing);
+    listingsByZone.set(listing.zone, bucket);
   }
 
   const polygonFeatures = allReggioZonePolygonFeatures();
   const polygonByZone = new Map(polygonFeatures.map((f) => [f.zone, f]));
 
   return GEO_ZONES.map((geo) => {
-    const prices = pricesByZone.get(geo.zone) ?? [];
-    const count = prices.length;
-    const avgPrice = count > 0 ? Math.round(prices.reduce((sum, p) => sum + p, 0) / count) : null;
+    const zoneListings = listingsByZone.get(geo.zone) ?? [];
+    const count = zoneListings.length;
+    const perSqmValues = zoneListings
+      .filter((listing) => listing.sqm != null && listing.sqm > 0)
+      .map((listing) => listing.price / listing.sqm!);
+    const avgPricePerSqm =
+      perSqmValues.length > 0
+        ? Math.round(perSqmValues.reduce((sum, value) => sum + value, 0) / perSqmValues.length)
+        : null;
     const polygonFeature = polygonByZone.get(geo.zone);
 
     return {
@@ -68,7 +74,7 @@ export function buildZoneOverlayStats(listings: OccupancyMapListing[]): ZoneOver
       lng: polygonFeature?.centroid?.lng ?? geo.lng,
       polygons: polygonFeature?.polygons ?? [],
       count,
-      avgPrice,
+      avgPricePerSqm,
     };
   });
 }

@@ -10,17 +10,24 @@ import path from "path";
 import union from "@turf/union";
 import simplify from "@turf/simplify";
 import area from "@turf/area";
-import { featureCollection } from "@turf/helpers";
+import bbox from "@turf/bbox";
+import booleanPointInPolygon from "@turf/boolean-point-in-polygon";
+import intersect from "@turf/intersect";
+import voronoi from "@turf/voronoi";
+import { featureCollection, point } from "@turf/helpers";
 import type {
   Feature,
   FeatureCollection,
   MultiPolygon,
+  Point,
   Polygon,
   Position,
 } from "geojson";
 // @ts-expect-error shapefile has no types
 import * as shapefile from "shapefile";
 import zoneMapping from "../lib/occupancy/reggio-zone-mapping.json";
+import { GEO_ZONES } from "../lib/occupancy/reggio-zone-geo";
+import { circlePolygon } from "../lib/geo-filter";
 
 const ROOT = process.cwd();
 const OUTPUT_PATH = path.join(ROOT, "lib/occupancy/data/zone-polygons.json");
@@ -28,14 +35,20 @@ const ISTAT_GIS_DIR = path.join(ROOT, "data/gis/ASC_21");
 const REGGIO_ISTAT_CODE = "080063";
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
 const USER_AGENT = "RealEstateExpert/1.0 (occupancy zone builder)";
+const CIRCLES_ONLY = process.argv.includes("--circles-only");
+const SKIP_OSM = CIRCLES_ONLY || process.argv.includes("--voronoi-only");
+/** Reject polygons spanning more than ~11 km (Nominatim often returns the whole comune). */
+const MAX_ZONE_SPAN_DEG = 0.1;
 
-const OVERPASS_URL = "https://overpass.kumi.systems/api/interpreter";
+const OVERPASS_URL = "https://maps.mail.ru/osm/tools/overpass/api/interpreter";
 const OVERPASS_QUERY = `
 [out:json][timeout:90];
-area["name"="Reggio di Calabria"]["admin_level"="8"]->.city;
+relation(39503);
+map_to_area->.city;
 (
+  way(area.city)["place"~"suburb|neighbourhood|quarter|village|hamlet"];
   relation(area.city)["place"~"suburb|neighbourhood|quarter"];
-  way(area.city)["place"~"suburb|neighbourhood|quarter"];
+  way(area.city)["landuse"="residential"]["name"];
 );
 out geom;
 `;
@@ -101,41 +114,107 @@ function geoJsonToPolygonFeature(
   };
 }
 
+function bboxSpan(geometry: Polygon | MultiPolygon): { lon: number; lat: number } {
+  const rings: Position[][] = [];
+  if (geometry.type === "Polygon") {
+    if (geometry.coordinates[0]) rings.push(geometry.coordinates[0]);
+  } else {
+    for (const poly of geometry.coordinates) {
+      if (poly[0]) rings.push(poly[0]);
+    }
+  }
+
+  let minLon = Infinity;
+  let maxLon = -Infinity;
+  let minLat = Infinity;
+  let maxLat = -Infinity;
+  for (const ring of rings) {
+    for (const [lon, lat] of ring) {
+      minLon = Math.min(minLon, lon);
+      maxLon = Math.max(maxLon, lon);
+      minLat = Math.min(minLat, lat);
+      maxLat = Math.max(maxLat, lat);
+    }
+  }
+
+  return { lon: maxLon - minLon, lat: maxLat - minLat };
+}
+
+function isOversizedPolygon(geometry: Polygon | MultiPolygon): boolean {
+  const span = bboxSpan(geometry);
+  return span.lon > MAX_ZONE_SPAN_DEG || span.lat > MAX_ZONE_SPAN_DEG;
+}
+
+function buildCircleZoneFeature(macroZone: string): Feature<Polygon> {
+  const geo = GEO_ZONES.find((entry) => entry.zone === macroZone);
+  if (!geo) {
+    throw new Error(`Missing GEO_ZONES entry for ${macroZone}`);
+  }
+
+  const ring = circlePolygon({ lat: geo.lat, lng: geo.lng }, geo.maxM, 48).map(
+    (point) => [point.lng, point.lat] as Position,
+  );
+  const first = ring[0]!;
+  ring.push([...first]);
+
+  return {
+    type: "Feature",
+    properties: {
+      zone: macroZone,
+      sources: ["GEO_ZONES:circle"],
+    },
+    geometry: {
+      type: "Polygon",
+      coordinates: [ring],
+    },
+  };
+}
+
 async function fetchNominatimPolygon(
   suburb: string,
   macroZone: string,
 ): Promise<Feature<Polygon | MultiPolygon> | null> {
-  const params = new URLSearchParams({
-    city: "Reggio Calabria",
-    suburb,
-    format: "geojson",
-    polygon_geojson: "1",
-    limit: "1",
-  });
+  const queries = [
+    `${suburb}, Reggio di Calabria, Calabria, Italy`,
+    `${suburb}, Reggio Calabria, Italy`,
+  ];
 
-  const response = await fetch(`${NOMINATIM_URL}?${params}`, {
-    headers: { "User-Agent": USER_AGENT },
-  });
-  if (!response.ok) return null;
+  for (const q of queries) {
+    const params = new URLSearchParams({
+      q,
+      format: "geojson",
+      polygon_geojson: "1",
+      limit: "3",
+      countrycodes: "it",
+    });
 
-  const payload = (await response.json()) as FeatureCollection;
-  const feature = payload.features?.[0];
-  if (!feature?.geometry) return null;
+    const response = await fetch(`${NOMINATIM_URL}?${params}`, {
+      headers: { "User-Agent": USER_AGENT },
+    });
+    if (!response.ok) continue;
 
-  const geomType = feature.geometry.type;
-  if (geomType !== "Polygon" && geomType !== "MultiPolygon") return null;
+    const payload = (await response.json()) as FeatureCollection;
+    for (const feature of payload.features ?? []) {
+      if (!feature.geometry) continue;
+      const geomType = feature.geometry.type;
+      if (geomType !== "Polygon" && geomType !== "MultiPolygon") continue;
+      if (isOversizedPolygon(feature.geometry as Polygon | MultiPolygon)) continue;
 
-  const name =
-    (feature.properties?.name as string | undefined) ??
-    (feature.properties?.display_name as string | undefined)?.split(",")[0] ??
-    suburb;
+      const name =
+        (feature.properties?.name as string | undefined) ??
+        (feature.properties?.display_name as string | undefined)?.split(",")[0] ??
+        suburb;
 
-  return geoJsonToPolygonFeature(
-    feature.geometry as Polygon | MultiPolygon,
-    name,
-    macroZone,
-    `OSM:Nominatim:${suburb}`,
-  );
+      return geoJsonToPolygonFeature(
+        feature.geometry as Polygon | MultiPolygon,
+        name,
+        macroZone,
+        `OSM:Nominatim:${suburb}`,
+      );
+    }
+  }
+
+  return null;
 }
 
 async function fetchNominatimFeatures(): Promise<Feature<Polygon | MultiPolygon>[]> {
@@ -217,7 +296,9 @@ async function fetchOverpassFeatures(): Promise<Feature<Polygon | MultiPolygon>[
     const features: Feature<Polygon | MultiPolygon>[] = [];
     for (const element of payload.elements ?? []) {
       const feature = elementToPolygonFeature(element, `OSM:Overpass:${element.tags?.name ?? element.id}`);
-      if (feature) features.push(feature);
+      if (!feature) continue;
+      if (isOversizedPolygon(feature.geometry)) continue;
+      features.push(feature);
     }
     console.log(`  Overpass polygons: ${features.length}`);
     return features;
@@ -299,10 +380,116 @@ function simplifyFeature(
   }
 }
 
+async function fetchCityBoundary(): Promise<Feature<Polygon | MultiPolygon>> {
+  const params = new URLSearchParams({
+    q: "Reggio di Calabria, Calabria, Italy",
+    format: "geojson",
+    polygon_geojson: "1",
+    limit: "1",
+    countrycodes: "it",
+  });
+
+  const response = await fetch(`${NOMINATIM_URL}?${params}`, {
+    headers: { "User-Agent": USER_AGENT },
+  });
+  if (!response.ok) {
+    throw new Error(`City boundary fetch failed (${response.status})`);
+  }
+
+  const payload = (await response.json()) as FeatureCollection;
+  const feature = payload.features?.[0];
+  if (!feature?.geometry) {
+    throw new Error("City boundary not found in Nominatim");
+  }
+
+  return simplify(feature as Feature<Polygon | MultiPolygon>, {
+    tolerance: 0.0015,
+    highQuality: true,
+  }) as Feature<Polygon | MultiPolygon>;
+}
+
+function buildVoronoiZoneMap(
+  cityBoundary: Feature<Polygon | MultiPolygon>,
+): Map<string, Feature<Polygon | MultiPolygon>> {
+  const cityBbox = bbox(cityBoundary);
+  const [minX, minY, maxX, maxY] = cityBbox;
+  const pad = 0.03;
+
+  const seeds = GEO_ZONES.map((geo) =>
+    point([geo.lng, geo.lat], { macroZone: geo.zone }),
+  );
+  const ghostPoints = [
+    point([minX - pad, minY - pad], { ghost: true }),
+    point([maxX + pad, minY - pad], { ghost: true }),
+    point([minX - pad, maxY + pad], { ghost: true }),
+    point([maxX + pad, maxY + pad], { ghost: true }),
+    point([(minX + maxX) / 2, minY - pad], { ghost: true }),
+    point([(minX + maxX) / 2, maxY + pad], { ghost: true }),
+    point([minX - pad, (minY + maxY) / 2], { ghost: true }),
+    point([maxX + pad, (minY + maxY) / 2], { ghost: true }),
+  ];
+
+  const diagram = voronoi(
+    featureCollection([...seeds, ...ghostPoints] as Feature<
+      Point,
+      { macroZone?: string; ghost?: boolean }
+    >[]),
+    {
+      bbox: [minX - pad, minY - pad, maxX + pad, maxY + pad],
+    },
+  );
+
+  const zoneMap = new Map<string, Feature<Polygon | MultiPolygon>>();
+
+  for (const geo of GEO_ZONES) {
+    const seed = point([geo.lng, geo.lat], { macroZone: geo.zone });
+    let cell =
+      diagram.features.find((feature) => feature.properties?.macroZone === geo.zone) ?? null;
+
+    if (!cell) {
+      cell =
+        diagram.features.find(
+          (feature) =>
+            !feature.properties?.ghost &&
+            feature.geometry?.type === "Polygon" &&
+            booleanPointInPolygon(seed, feature as Feature<Polygon>),
+        ) ?? null;
+    }
+
+    if (!cell?.geometry || cell.geometry.type !== "Polygon") {
+      zoneMap.set(geo.zone, buildCircleZoneFeature(geo.zone));
+      continue;
+    }
+
+    const clipped = intersect(featureCollection([cell as Feature<Polygon>, cityBoundary]));
+    if (!clipped?.geometry) {
+      zoneMap.set(geo.zone, buildCircleZoneFeature(geo.zone));
+      continue;
+    }
+
+    const simplified = simplifyFeature(clipped as Feature<Polygon | MultiPolygon>);
+    simplified.properties = {
+      zone: geo.zone,
+      sources: ["GEO_ZONES:voronoi", "OSM:city-boundary"],
+    };
+    zoneMap.set(geo.zone, simplified);
+  }
+
+  return zoneMap;
+}
+
 async function main() {
-  const nominatimFeatures = await fetchNominatimFeatures();
-  const overpassFeatures = await fetchOverpassFeatures();
-  const istatFeatures = await fetchIstatFeatures();
+  const nominatimFeatures = SKIP_OSM ? [] : await fetchNominatimFeatures();
+  const overpassFeatures = SKIP_OSM ? [] : await fetchOverpassFeatures();
+  const istatFeatures = SKIP_OSM ? [] : await fetchIstatFeatures();
+
+  let voronoiByZone = new Map<string, Feature<Polygon | MultiPolygon>>();
+  if (!CIRCLES_ONLY) {
+    console.log("Building Voronoi macro-zones clipped to city boundary…");
+    const cityBoundary = await fetchCityBoundary();
+    voronoiByZone = buildVoronoiZoneMap(cityBoundary);
+    console.log(`  Voronoi zones: ${voronoiByZone.size}`);
+  }
 
   const allFeatures = [...nominatimFeatures, ...overpassFeatures];
   const byZone = new Map<string, Feature<Polygon | MultiPolygon>[]>();
@@ -341,13 +528,27 @@ async function main() {
     }
 
     if (!zoneFeatures.length) {
-      report.push(`${macroZone}: MISSING`);
+      const voronoiZone = voronoiByZone.get(macroZone);
+      if (voronoiZone) {
+        report.push(`${macroZone}: Voronoi partition`);
+        outputFeatures.push(voronoiZone);
+        continue;
+      }
+      report.push(`${macroZone}: MISSING -> circle fallback`);
+      outputFeatures.push(buildCircleZoneFeature(macroZone));
       continue;
     }
 
     const merged = unionFeatures(zoneFeatures);
-    if (!merged) {
-      report.push(`${macroZone}: union failed`);
+    if (!merged || isOversizedPolygon(merged.geometry)) {
+      const voronoiZone = voronoiByZone.get(macroZone);
+      if (voronoiZone) {
+        report.push(`${macroZone}: invalid OSM union -> Voronoi partition`);
+        outputFeatures.push(voronoiZone);
+        continue;
+      }
+      report.push(`${macroZone}: invalid union -> circle fallback`);
+      outputFeatures.push(buildCircleZoneFeature(macroZone));
       continue;
     }
 

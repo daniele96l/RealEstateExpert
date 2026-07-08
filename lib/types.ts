@@ -362,6 +362,7 @@ export interface OccupancyMapListing {
   lng: number;
   zone: string | null;
   price: number;
+  sqm: number | null;
   address: string | null;
   change_status?: OccupancyListingChangeStatus;
 }

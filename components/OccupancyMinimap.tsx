@@ -118,6 +118,7 @@ interface Props {
   zonesLegendTitle?: string;
   overlayOptions?: OverlayOption[];
   listingsCountLabel?: string;
+  perSqmLabel?: string;
   boundaryAttribution?: string;
 }
 
@@ -131,12 +132,14 @@ function ZoneLegend({
   activeOverlays,
   priceRange,
   listingsCountLabel,
+  perSqmLabel,
 }: {
   title: string;
   zoneStats: ReturnType<typeof buildZoneOverlayStats>;
   activeOverlays: Set<OccupancyMapOverlayId>;
   priceRange: { min: number; max: number };
   listingsCountLabel: string;
+  perSqmLabel: string;
 }) {
   const showZones = activeOverlays.has("zones");
   const showDensity = activeOverlays.has("density");
@@ -155,8 +158,8 @@ function ZoneLegend({
         <ul className="space-y-1">
           {items.map((zone) => {
             const color =
-              showPrice && zone.avgPrice != null
-                ? priceHeatColor(zone.avgPrice, priceRange.min, priceRange.max)
+              showPrice && zone.avgPricePerSqm != null
+                ? priceHeatColor(zone.avgPricePerSqm, priceRange.min, priceRange.max)
                 : showDensity
                   ? "#6366f1"
                   : zonePaletteColor(zone.zone);
@@ -166,7 +169,7 @@ function ZoneLegend({
                     zone.count,
                     Math.max(...items.map((entry) => entry.count), 1),
                   )
-                : showPrice && zone.avgPrice != null
+                : showPrice && zone.avgPricePerSqm != null
                   ? 0.55
                   : 0.45;
 
@@ -178,8 +181,11 @@ function ZoneLegend({
                 />
                 <span className="min-w-0">
                   <span className="block font-medium text-slate-200">{zoneShortLabel(zone.zone)}</span>
-                  {showPrice && zone.avgPrice != null ? (
-                    <span className="text-[10px] text-slate-400">{fmtMoney(zone.avgPrice)}</span>
+                  {showPrice && zone.avgPricePerSqm != null ? (
+                    <span className="text-[10px] text-slate-400">
+                      {fmtMoney(zone.avgPricePerSqm)}
+                      {perSqmLabel}
+                    </span>
                   ) : showDensity && zone.count > 0 ? (
                     <span className="text-[10px] text-slate-400">
                       {zone.count} {listingsCountLabel}
@@ -254,11 +260,13 @@ function MapOverlays({
   zoneStats,
   priceRange,
   listingsCountLabel,
+  perSqmLabel = "/m²",
 }: {
   activeOverlays: Set<OccupancyMapOverlayId>;
   zoneStats: ReturnType<typeof buildZoneOverlayStats>;
   priceRange: { min: number; max: number };
   listingsCountLabel: string;
+  perSqmLabel: string;
 }) {
   const showZones = activeOverlays.has("zones");
   const showDensity = activeOverlays.has("density");
@@ -317,9 +325,9 @@ function MapOverlays({
 
       {showPrice
         ? zoneStats
-            .filter((zone) => zone.avgPrice != null && zone.polygons.length > 0)
+            .filter((zone) => zone.avgPricePerSqm != null && zone.polygons.length > 0)
             .map((zone) => {
-              const color = priceHeatColor(zone.avgPrice!, priceRange.min, priceRange.max);
+              const color = priceHeatColor(zone.avgPricePerSqm!, priceRange.min, priceRange.max);
               return (
                 <ZonePolygons
                   key={`price-${zone.zone}`}
@@ -335,7 +343,10 @@ function MapOverlays({
                   tooltip={
                     <div className="text-xs text-slate-800">
                       <p className="font-medium">{zone.zone}</p>
-                      <p className="mt-0.5 font-semibold">{fmtMoney(zone.avgPrice!)}</p>
+                      <p className="mt-0.5 font-semibold">
+                        {fmtMoney(zone.avgPricePerSqm!)}
+                        {perSqmLabel}
+                      </p>
                       <p className="text-slate-600">
                         {zone.count} {listingsCountLabel}
                       </p>
@@ -378,6 +389,7 @@ function MapCanvas({
   layersTitle,
   zonesLegendTitle = "Zones",
   listingsCountLabel,
+  perSqmLabel = "/m²",
   boundaryAttribution,
 }: {
   listings: OccupancyMapListing[];
@@ -394,6 +406,7 @@ function MapCanvas({
   layersTitle: string;
   zonesLegendTitle: string;
   listingsCountLabel: string;
+  perSqmLabel: string;
   boundaryAttribution?: string;
 }) {
   const tile = activeOverlays.has("darkMap") ? MAP_TILES.dark : MAP_TILES.light;
@@ -424,6 +437,7 @@ function MapCanvas({
           zoneStats={zoneStats}
           priceRange={priceRange}
           listingsCountLabel={listingsCountLabel}
+          perSqmLabel={perSqmLabel}
         />
         {listings.map((listing) => {
           const status = listing.change_status ?? "still_active";
@@ -458,6 +472,7 @@ function MapCanvas({
         activeOverlays={activeOverlays}
         priceRange={priceRange}
         listingsCountLabel={listingsCountLabel}
+        perSqmLabel={perSqmLabel}
       />
 
       {overlayOptions.length > 0 ? (
@@ -516,6 +531,7 @@ export default function OccupancyMinimap({
   zonesLegendTitle = "Zones",
   overlayOptions = [],
   listingsCountLabel = "listings",
+  perSqmLabel = "/m²",
   boundaryAttribution,
 }: Props) {
   const [expanded, setExpanded] = useState(false);
@@ -533,7 +549,7 @@ export default function OccupancyMinimap({
 
   const priceRange = useMemo(() => {
     const prices = zoneStats
-      .map((zone) => zone.avgPrice)
+      .map((zone) => zone.avgPricePerSqm)
       .filter((value): value is number => value != null && value > 0);
     if (!prices.length) return { min: 0, max: 0 };
     return { min: Math.min(...prices), max: Math.max(...prices) };
@@ -583,6 +599,7 @@ export default function OccupancyMinimap({
       layersTitle={layersTitle}
       zonesLegendTitle={zonesLegendTitle}
       listingsCountLabel={listingsCountLabel}
+      perSqmLabel={perSqmLabel}
       boundaryAttribution={boundaryAttribution}
     />
   );
