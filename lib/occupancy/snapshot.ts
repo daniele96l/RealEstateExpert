@@ -194,7 +194,7 @@ export async function runOccupancySnapshot(
       ? options?.prefetched
         ? {
             data: options.prefetched,
-            provider: (options.provider ?? "reggio_rentals") as const,
+            provider: options.provider ?? "reggio_rentals",
           }
         : {
             data: await fetchReggioRentalsListings(maxPages, (progress) => {

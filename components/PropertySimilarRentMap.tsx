@@ -66,7 +66,7 @@ function PopupListingLink({
       className="group block cursor-pointer text-inherit no-underline hover:opacity-95"
     >
       {children}
-      <span className="mt-2 inline-flex items-center gap-1 text-xs text-accent group-hover:underline">
+      <span className="mt-2 inline-flex items-center gap-1 text-xs text-neutral-900 group-hover:underline">
         <ExternalLink size={12} />
         {source}
       </span>
@@ -129,7 +129,7 @@ export default function PropertySimilarRentMap({
 
   if (!canShowMap) {
     return (
-      <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 px-4 py-8 text-center text-sm text-slate-500">
+      <div className="rounded-xl border border-surface-border/60 bg-white px-4 py-8 text-center text-sm text-neutral-500">
         {market === "cz" ? "Poloha není k dispozici." : "Posizione non disponibile per la mappa."}
       </div>
     );
@@ -138,10 +138,10 @@ export default function PropertySimilarRentMap({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between gap-2">
-        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+        <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">
           {market === "cz" ? "Mapa okolí" : "Mappa zona"}
         </p>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-neutral-500">
           <span className="inline-flex items-center gap-1">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-emerald-500/30" />
             {ui.sale}
@@ -170,14 +170,14 @@ export default function PropertySimilarRentMap({
                 <Popup closeOnClick={false}>
                   <PopupListingLink listing={saleProperty} market={market}>
                     <div className="text-sm">
-                      <p className="font-medium text-emerald-700">{ui.sale}</p>
+                      <p className="font-medium text-green-700">{ui.sale}</p>
                       <p className="line-clamp-2">{saleProperty.title}</p>
                       {saleProperty.sqm != null && (
-                        <p className="text-xs text-slate-500">{saleProperty.sqm} m²</p>
+                        <p className="text-xs text-neutral-500">{saleProperty.sqm} m²</p>
                       )}
                       <p>{fmtMoney(saleProperty.price, market)}</p>
                       {saleProperty.sqm != null && saleProperty.sqm > 0 && (
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-neutral-500">
                           {fmtMoney(Math.round(saleProperty.price / saleProperty.sqm), market)}
                           {ui.perSqm}
                         </p>
@@ -204,7 +204,7 @@ export default function PropertySimilarRentMap({
                     <p className="line-clamp-2">{rent.title}</p>
                     {(rent.sqm != null ||
                       (market === "cz" ? czechRoomLayoutFromListing(rent) : rent.rooms != null)) && (
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-neutral-500">
                         {[
                           market === "cz"
                             ? czechRoomLayoutFromListing(rent)
@@ -219,7 +219,7 @@ export default function PropertySimilarRentMap({
                     )}
                     <p>{formatRent(rent.price, market, ui.perMonth)}</p>
                     {rent.sqm != null && rent.sqm > 0 && (
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-neutral-500">
                         {fmtMoney(Math.round(rent.price / rent.sqm), market)}
                         {ui.perSqm}
                       </p>
@@ -232,7 +232,7 @@ export default function PropertySimilarRentMap({
         </MapContainer>
         {loading && (
           <div className="pointer-events-none absolute inset-0 flex items-end justify-center bg-black/10 pb-3">
-            <span className="rounded-full border border-surface-border/80 bg-surface-raised/95 px-3 py-1 text-xs text-slate-400">
+            <span className="rounded-full border border-surface-border bg-white px-3 py-1 text-xs text-neutral-600">
               {market === "cz" ? "Načítání podobných pronájmů…" : "Caricamento affitti simili…"}
             </span>
           </div>

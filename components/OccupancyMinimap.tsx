@@ -151,8 +151,8 @@ function ZoneLegend({
 
   return (
     <div className="pointer-events-none absolute left-2 top-2 z-[1000] max-h-[calc(100%-4.5rem)] max-w-[min(100%-5rem,220px)]">
-      <div className="pointer-events-auto max-h-[inherit] overflow-y-auto rounded-xl border border-surface-border/80 bg-surface-raised/95 p-2 shadow-lg backdrop-blur-sm">
-        <div className="mb-1.5 px-0.5 text-[10px] font-medium uppercase tracking-wide text-slate-500">
+      <div className="pointer-events-auto max-h-[inherit] overflow-y-auto rounded-xl border border-surface-border bg-white p-2 shadow-lg ">
+        <div className="mb-1.5 px-0.5 text-[10px] font-medium uppercase tracking-wide text-neutral-500">
           {title}
         </div>
         <ul className="space-y-1">
@@ -174,20 +174,20 @@ function ZoneLegend({
                   : 0.45;
 
             return (
-              <li key={zone.zone} className="flex items-start gap-2 text-[11px] leading-tight text-slate-300">
+              <li key={zone.zone} className="flex items-start gap-2 text-[11px] leading-tight text-neutral-700">
                 <span
                   className="mt-0.5 inline-block h-2.5 w-2.5 shrink-0 rounded-sm ring-1 ring-white/15"
                   style={{ backgroundColor: color, opacity: showDensity ? fillOpacity + 0.35 : 1 }}
                 />
                 <span className="min-w-0">
-                  <span className="block font-medium text-slate-200">{zoneShortLabel(zone.zone)}</span>
+                  <span className="block font-medium text-neutral-800">{zoneShortLabel(zone.zone)}</span>
                   {showPrice && zone.avgPricePerSqm != null ? (
-                    <span className="text-[10px] text-slate-400">
+                    <span className="text-[10px] text-neutral-600">
                       {fmtMoney(zone.avgPricePerSqm)}
                       {perSqmLabel}
                     </span>
                   ) : showDensity && zone.count > 0 ? (
-                    <span className="text-[10px] text-slate-400">
+                    <span className="text-[10px] text-neutral-600">
                       {zone.count} {listingsCountLabel}
                     </span>
                   ) : null}
@@ -205,7 +205,7 @@ function Legend({ legend }: { legend: OccupancyMinimapLegendItem[] }) {
   if (!legend.length) return null;
 
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-slate-500">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-neutral-500">
       {legend.map((item) => (
         <span key={item.status} className="inline-flex items-center gap-1.5">
           <span
@@ -347,7 +347,7 @@ function MapOverlays({
                         {fmtMoney(zone.avgPricePerSqm!)}
                         {perSqmLabel}
                       </p>
-                      <p className="text-slate-600">
+                      <p className="text-neutral-500">
                         {zone.count} {listingsCountLabel}
                       </p>
                     </div>
@@ -451,7 +451,7 @@ function MapCanvas({
                 <div className="text-sm">
                   <p className="font-medium text-slate-800">{listing.zone ?? "—"}</p>
                   {listing.address ? (
-                    <p className="mt-0.5 text-xs text-slate-600">{listing.address}</p>
+                    <p className="mt-0.5 text-xs text-neutral-500">{listing.address}</p>
                   ) : null}
                   {statusLabels[status] ? (
                     <p className="mt-1 text-xs font-medium" style={{ color: STATUS_COLORS[status] }}>
@@ -478,8 +478,8 @@ function MapCanvas({
       {overlayOptions.length > 0 ? (
         <div className="pointer-events-none absolute bottom-2 left-2 z-[1000] max-w-[calc(100%-4.5rem)]">
           <div className="pointer-events-auto">
-          <div className="rounded-xl border border-surface-border/80 bg-surface-raised/95 p-2 shadow-lg backdrop-blur-sm">
-            <div className="mb-1.5 flex items-center gap-1.5 px-1 text-[10px] font-medium uppercase tracking-wide text-slate-500">
+          <div className="rounded-xl border border-surface-border bg-white p-2 shadow-lg ">
+            <div className="mb-1.5 flex items-center gap-1.5 px-1 text-[10px] font-medium uppercase tracking-wide text-neutral-500">
               <Layers size={12} />
               <span>{layersTitle}</span>
             </div>
@@ -495,8 +495,8 @@ function MapCanvas({
                     className={cn(
                       "rounded-lg border px-2 py-1 text-[11px] font-medium transition-colors",
                       active
-                        ? "border-accent/60 bg-accent/20 text-white"
-                        : "border-surface-border/60 bg-surface/40 text-slate-400 hover:text-slate-200",
+                        ? "border-neutral-900 bg-neutral-900 text-white"
+                        : "border-surface-border/60 bg-surface/40 text-neutral-600 hover:text-neutral-800",
                     )}
                   >
                     {option.label}
@@ -510,7 +510,7 @@ function MapCanvas({
       ) : null}
 
       {showBoundaryCredit ? (
-        <p className="pointer-events-none absolute bottom-1 right-2 z-[1000] max-w-[55%] text-right text-[9px] leading-tight text-slate-500/90">
+        <p className="pointer-events-none absolute bottom-1 right-2 z-[1000] max-w-[55%] text-right text-[9px] leading-tight text-neutral-500/90">
           {boundaryAttribution}
         </p>
       ) : null}
@@ -577,7 +577,7 @@ export default function OccupancyMinimap({
 
   if (!listings.length) {
     return (
-      <div className="flex h-52 items-center justify-center rounded-xl border border-surface-border/60 bg-surface-raised/20 text-sm text-slate-500">
+      <div className="flex h-52 items-center justify-center rounded-xl border border-surface-border/60 bg-neutral-50 text-sm text-neutral-500">
         {emptyLabel}
       </div>
     );
@@ -613,7 +613,7 @@ export default function OccupancyMinimap({
           <button
             type="button"
             onClick={() => setExpanded(true)}
-            className="absolute right-2 top-2 z-[1000] inline-flex items-center gap-1.5 rounded-lg border border-surface-border/80 bg-surface-raised/95 px-2.5 py-1.5 text-xs font-medium text-slate-200 shadow-lg backdrop-blur-sm transition-colors hover:border-accent/50 hover:text-white"
+            className="absolute right-2 top-2 z-[1000] inline-flex items-center gap-1.5 rounded-lg border border-surface-border bg-white px-2.5 py-1.5 text-xs font-medium text-neutral-800 shadow-lg  transition-colors hover:border-neutral-900 hover:text-white"
             aria-label={expandLabel}
           >
             <Maximize2 size={14} />
@@ -625,22 +625,22 @@ export default function OccupancyMinimap({
       {expanded && mounted
         ? createPortal(
             <div
-              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-900/40 p-4 "
               onClick={() => setExpanded(false)}
               role="dialog"
               aria-modal="true"
               aria-label={expandedTitle}
             >
               <div
-                className="card-glass flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden shadow-2xl"
+                className="card flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden shadow-2xl"
                 onClick={(event) => event.stopPropagation()}
               >
-                <div className="flex shrink-0 items-center justify-between border-b border-surface-border/80 px-5 py-4">
-                  <h3 className="text-base font-semibold text-white">{expandedTitle}</h3>
+                <div className="flex shrink-0 items-center justify-between border-b border-surface-border px-5 py-4">
+                  <h3 className="text-base font-semibold text-neutral-900">{expandedTitle}</h3>
                   <button
                     type="button"
                     onClick={() => setExpanded(false)}
-                    className="rounded-lg p-1.5 text-slate-400 hover:bg-surface-raised hover:text-slate-200"
+                    className="rounded-lg p-1.5 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800"
                     aria-label={closeLabel}
                   >
                     <X size={18} />

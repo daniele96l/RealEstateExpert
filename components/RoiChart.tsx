@@ -22,6 +22,7 @@ import { getMarket, type MarketId } from "@/lib/markets";
 import type { AnalysisResult, MonthlyCashFlowPoint } from "@/lib/types";
 import { fmtMoney } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
+import { CHART_THEME } from "@/lib/chart-theme";
 
 interface Props {
   result: AnalysisResult;
@@ -30,15 +31,15 @@ interface Props {
 }
 
 const COLORS = {
-  total: "#60a5fa",
-  initial: "#64748b",
-  principal: "#a78bfa",
-  appreciation: "#fbbf24",
-  cashPositive: "#34d399",
-  cashNegative: "#f87171",
-  equityPlusCash: "#22d3ee",
-  grid: "#2a3544",
-  axis: "#64748b",
+  total: CHART_THEME.series.blue,
+  initial: CHART_THEME.tertiary,
+  principal: CHART_THEME.series.violet,
+  appreciation: CHART_THEME.series.amber,
+  cashPositive: CHART_THEME.positive,
+  cashNegative: CHART_THEME.negative,
+  equityPlusCash: CHART_THEME.primary,
+  grid: CHART_THEME.grid,
+  axis: CHART_THEME.axis,
 };
 
 function annualizedReturn(totalReturnPct: number, years: number): number {
@@ -74,7 +75,7 @@ function AppreciationSelect({
   t,
 }: AppreciationSelectProps) {
   return (
-    <label className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+    <label className="flex flex-wrap items-center gap-2 text-xs text-neutral-600">
       <span>{label}</span>
       <select
         className="select-field !w-auto !py-1 text-xs"
@@ -269,11 +270,11 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
   }, [maxMonth, yearTickStep]);
 
   return (
-    <div className="card-glass p-5">
+    <div className="card p-5">
       <div className="mb-5 space-y-4">
         <div>
-          <h2 className="text-base font-semibold text-slate-100">{t("roi.title")}</h2>
-          <p className="mt-1 max-w-3xl text-sm leading-relaxed text-slate-500">
+          <h2 className="text-base font-semibold text-neutral-900">{t("roi.title")}</h2>
+          <p className="mt-1 max-w-3xl text-sm leading-relaxed text-neutral-500">
             {t("roi.subtitle", { downPayment: fmtMoney(downPayment, market) })}
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -291,7 +292,7 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
               onChange={setRentAppreciationSelection}
               t={t}
             />
-            <label className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+            <label className="flex flex-wrap items-center gap-2 text-xs text-neutral-600">
               <span>{t("roi.timeRange")}</span>
               <select
                 className="select-field !w-auto !py-1 text-xs"
@@ -312,35 +313,35 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
         </div>
         <div className="flex flex-wrap gap-2">
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("roi.downPayment")}</p>
-            <p className="text-lg font-bold text-slate-100">{fmtMoney(downPayment, market)}</p>
+            <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("roi.downPayment")}</p>
+            <p className="text-lg font-bold text-neutral-900">{fmtMoney(downPayment, market)}</p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("roi.taxesAccessories")}</p>
-            <p className="text-lg font-bold text-slate-100">{fmtMoney(taxesAndAccessories, market)}</p>
+            <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("roi.taxesAccessories")}</p>
+            <p className="text-lg font-bold text-neutral-900">{fmtMoney(taxesAndAccessories, market)}</p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("roi.finalEquity")}</p>
-            <p className="text-lg font-bold text-slate-100">{fmtMoney(finalEquity, market)}</p>
+            <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("roi.finalEquity")}</p>
+            <p className="text-lg font-bold text-neutral-900">{fmtMoney(finalEquity, market)}</p>
             {improvementCosts > 0 && (
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-neutral-500">
                 {t("roi.withoutImprovements", { amount: fmtMoney(finalEquityExImprovements, market) })}
               </p>
             )}
-            <p className={`text-xs font-medium ${equityCagr >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+            <p className={`text-xs font-medium ${equityCagr >= 0 ? "text-green-600" : "text-red-400"}`}>
               {equityCagr >= 0 ? "+" : ""}
               {t("roi.cagrOnDownPayment", { pct: equityCagr.toFixed(1) })}
             </p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("common.total")}</p>
+            <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("common.total")}</p>
             <p className="text-lg font-bold text-cyan-400">{fmtMoney(finalEquityPlusCash, market)}</p>
             {improvementCosts > 0 && (
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-neutral-500">
                 {t("roi.withoutImprovements", { amount: fmtMoney(finalTotalExImprovements, market) })}
               </p>
             )}
-            <p className={`text-xs font-medium ${totalCagrOnAnticipo >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+            <p className={`text-xs font-medium ${totalCagrOnAnticipo >= 0 ? "text-green-600" : "text-red-400"}`}>
               {totalCagrOnAnticipo >= 0 ? "+" : ""}
               {t("roi.cagrOnDownPayment", { pct: totalCagrOnAnticipo.toFixed(1) })}
             </p>
@@ -381,44 +382,44 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
               if (!active || !payload?.length) return null;
               const row = payload[0]?.payload;
               return (
-                <div className="rounded-xl border border-surface-border bg-[#1a2332] px-3 py-2 text-xs shadow-lg">
-                  <p className="mb-2 font-medium text-slate-200">
+                <div className="rounded-xl border border-surface-border bg-white px-3 py-2 text-xs shadow-lg">
+                  <p className="mb-2 font-medium text-neutral-800">
                     {label === 0 ? t("roi.purchaseTooltip") : t("roi.yearTooltip", { year: Math.ceil(label / 12) })}
                   </p>
-                  <p className="text-slate-400">
+                  <p className="text-neutral-600">
                     {t("roi.initialShare")}:{" "}
-                    <span className="text-slate-200">{fmtMoney(row.initialEquity, market)}</span>
+                    <span className="text-neutral-800">{fmtMoney(row.initialEquity, market)}</span>
                   </p>
-                  <p className="text-slate-400">
+                  <p className="text-neutral-600">
                     {t("roi.principalRepaid")}:{" "}
                     <span className="text-violet-400">{fmtMoney(row.principalEquity, market)}</span>
                   </p>
-                  <p className="text-slate-400">
+                  <p className="text-neutral-600">
                     {t("roi.appreciation")}:{" "}
                     <span className="text-amber-400">{fmtMoney(row.appreciation, market)}</span>
                     {appreciationRatePct !== 0 && (
-                      <span className="ml-1 text-slate-500">
+                      <span className="ml-1 text-neutral-500">
                         ({appreciationRatePct.toFixed(1)}%/yr)
                       </span>
                     )}
                   </p>
                   {row.year > 0 && (
-                    <p className="text-slate-400">
+                    <p className="text-neutral-600">
                       Cashflow {row.year}:{" "}
-                      <span className={row.yearlyCash >= 0 ? "text-emerald-400" : "text-red-400"}>
+                      <span className={row.yearlyCash >= 0 ? "text-green-600" : "text-red-400"}>
                         {fmtMoney(row.yearlyCash, market)}
                       </span>
                     </p>
                   )}
-                  <p className="text-slate-400">
+                  <p className="text-neutral-600">
                     {t("roi.cumulativeCash")}:{" "}
-                    <span className={row.cumulativeCash >= 0 ? "text-emerald-400" : "text-red-400"}>
+                    <span className={row.cumulativeCash >= 0 ? "text-green-600" : "text-red-400"}>
                       {fmtMoney(row.cumulativeCash, market)}
                     </span>
                   </p>
-                  <p className="mt-2 border-t border-surface-border pt-2 font-semibold text-slate-200">
+                  <p className="mt-2 border-t border-surface-border pt-2 font-semibold text-neutral-800">
                     {t("roi.totalEquity")}: {fmtMoney(row.totalEquity, market)}
-                    <span className="ml-2 text-slate-500">
+                    <span className="ml-2 text-neutral-500">
                       ({row.roiPct >= 0 ? "+" : ""}
                       {row.roiPct.toFixed(1)}%)
                     </span>

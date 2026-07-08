@@ -33,7 +33,7 @@ import dynamic from "next/dynamic";
 const AreaSelectMap = dynamic(() => import("./AreaSelectMap"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-[200px] items-center justify-center rounded-lg border border-surface-border bg-surface-raised/40 text-sm text-slate-500">
+    <div className="flex h-[200px] items-center justify-center rounded-lg border border-surface-border bg-neutral-50 text-sm text-neutral-500">
       Caricamento mappa…
     </div>
   ),
@@ -372,25 +372,25 @@ export default function BatchFetchPanel({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-900/40 p-4 "
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label="Importazione batch annunci"
     >
       <div
-        className="card-glass flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden bg-surface-raised shadow-2xl"
+        className="card flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden bg-white shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex shrink-0 items-center justify-between border-b border-surface-border/80 bg-surface-raised px-5 py-4">
+        <div className="flex shrink-0 items-center justify-between border-b border-surface-border bg-white px-5 py-4">
           <div className="flex items-center gap-2">
-            <MapPin size={18} className="text-accent" />
-            <h2 className="font-semibold text-slate-100">Importazione batch</h2>
+            <MapPin size={18} className="text-neutral-900" />
+            <h2 className="font-semibold text-neutral-900">Importazione batch</h2>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-1.5 text-slate-400 hover:bg-surface-raised hover:text-slate-200"
+            className="rounded-lg p-1.5 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800"
             aria-label="Chiudi"
           >
             <X size={18} />
@@ -400,7 +400,7 @@ export default function BatchFetchPanel({
         <div className="flex-1 overflow-y-auto bg-surface px-5 py-4 space-y-4">
           <div className="grid gap-3 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-xs text-slate-500">Città</label>
+              <label className="mb-1 block text-xs text-neutral-500">Città</label>
               <input
                 type="text"
                 className="input-field w-full"
@@ -410,7 +410,7 @@ export default function BatchFetchPanel({
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-slate-500">Zona (opzionale)</label>
+              <label className="mb-1 block text-xs text-neutral-500">Zona (opzionale)</label>
               <input
                 type="text"
                 className="input-field w-full"
@@ -422,24 +422,24 @@ export default function BatchFetchPanel({
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <label className="flex items-center gap-2 text-sm text-slate-300">
+            <label className="flex items-center gap-2 text-sm text-neutral-700">
               <input type="checkbox" checked={fetchSale} onChange={(e) => setFetchSale(e.target.checked)} />
               Vendita
             </label>
-            <label className="flex items-center gap-2 text-sm text-slate-300">
+            <label className="flex items-center gap-2 text-sm text-neutral-700">
               <input type="checkbox" checked={fetchRent} onChange={(e) => setFetchRent(e.target.checked)} />
               Affitto
             </label>
           </div>
 
           {market === "cz" ? (
-            <p className="text-sm text-slate-400">
-              Fonte: <span className="text-slate-200">Sreality.cz</span> — Brno (API pubblica)
+            <p className="text-sm text-neutral-600">
+              Fonte: <span className="text-neutral-800">Sreality.cz</span> — Brno (API pubblica)
             </p>
           ) : (
             <>
           <div>
-            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Portale</p>
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-500">Portale</p>
             <div className="flex flex-wrap gap-2">
               {(
                 [
@@ -459,8 +459,8 @@ export default function BatchFetchPanel({
                   className={cn(
                     "rounded-lg border px-3 py-1.5 text-sm",
                     portal === id
-                      ? "border-accent/50 bg-accent/10 text-accent"
-                      : "border-surface-border text-slate-400 hover:text-slate-200",
+                      ? "border-neutral-900 bg-neutral-50 text-neutral-900"
+                      : "border-surface-border text-neutral-600 hover:text-neutral-800",
                   )}
                 >
                   {label}
@@ -470,7 +470,7 @@ export default function BatchFetchPanel({
           </div>
 
           <div>
-            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Provider</p>
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-500">Provider</p>
             <div className="flex rounded-lg border border-surface-border overflow-hidden">
               {(
                 portal === "immobiliare"
@@ -492,7 +492,7 @@ export default function BatchFetchPanel({
                   className={cn(
                     "px-3 py-1.5 text-sm",
                     !enabled && "cursor-not-allowed opacity-40",
-                    provider === id ? "bg-accent/20 text-accent" : "text-slate-400 hover:text-slate-200",
+                    provider === id ? "bg-neutral-100 text-neutral-900" : "text-neutral-600 hover:text-neutral-800",
                   )}
                 >
                   {label}
@@ -500,7 +500,7 @@ export default function BatchFetchPanel({
               ))}
             </div>
             {portal === "immobiliare" && provider === "rapidapi" && providersAvailable.rapidapi && (
-              <p className="mt-2 text-xs text-slate-500">
+              <p className="mt-2 text-xs text-neutral-500">
                 RapidAPI richiede abbonamento a &quot;Immobiliare.it Scraper&quot;. In alternativa usa RealtyAPI.
               </p>
             )}
@@ -514,7 +514,7 @@ export default function BatchFetchPanel({
           )}
 
           <div>
-            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Area</p>
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-500">Area</p>
             <div className="mb-2 flex flex-wrap gap-2">
               <button
                 type="button"
@@ -525,8 +525,8 @@ export default function BatchFetchPanel({
                 className={cn(
                   "rounded-lg border px-3 py-1.5 text-sm",
                   areaMode === "radius"
-                    ? "border-accent/50 bg-accent/10 text-accent"
-                    : "border-surface-border text-slate-400",
+                    ? "border-neutral-900 bg-neutral-50 text-neutral-900"
+                    : "border-surface-border text-neutral-600",
                 )}
               >
                 Raggio
@@ -537,8 +537,8 @@ export default function BatchFetchPanel({
                 className={cn(
                   "rounded-lg border px-3 py-1.5 text-sm",
                   areaMode === "rectangle"
-                    ? "border-accent/50 bg-accent/10 text-accent"
-                    : "border-surface-border text-slate-400",
+                    ? "border-neutral-900 bg-neutral-50 text-neutral-900"
+                    : "border-surface-border text-neutral-600",
                 )}
               >
                 Rettangolo
@@ -557,8 +557,8 @@ export default function BatchFetchPanel({
                     className={cn(
                       "rounded-lg border px-3 py-1.5 text-sm",
                       areaPreset === key
-                        ? "border-accent/50 bg-accent/10 text-accent"
-                        : "border-surface-border text-slate-400 hover:text-slate-200",
+                        ? "border-neutral-900 bg-neutral-50 text-neutral-900"
+                        : "border-surface-border text-neutral-600 hover:text-neutral-800",
                     )}
                   >
                     {AREA_PRESETS[key].label}
@@ -570,8 +570,8 @@ export default function BatchFetchPanel({
                   className={cn(
                     "rounded-lg border px-3 py-1.5 text-sm",
                     areaPreset === "custom"
-                      ? "border-accent/50 bg-accent/10 text-accent"
-                      : "border-surface-border text-slate-400 hover:text-slate-200",
+                      ? "border-neutral-900 bg-neutral-50 text-neutral-900"
+                      : "border-surface-border text-neutral-600 hover:text-neutral-800",
                   )}
                 >
                   Personalizzato
@@ -587,15 +587,15 @@ export default function BatchFetchPanel({
                       onChange={(e) => setCustomRadiusM(Number(e.target.value))}
                       className="flex-1"
                     />
-                    <span className="text-xs text-slate-400">{formatDistance(customRadiusM)}</span>
+                    <span className="text-xs text-neutral-600">{formatDistance(customRadiusM)}</span>
                   </div>
                 )}
               </div>
             )}
 
             {geocoding && !areaCenter && (
-              <div className="mt-3 flex h-[260px] items-center justify-center rounded-lg border border-surface-border bg-surface-raised/50 text-sm text-slate-500">
-                <Loader2 size={16} className="mr-2 animate-spin text-accent" />
+              <div className="mt-3 flex h-[260px] items-center justify-center rounded-lg border border-surface-border bg-white/50 text-sm text-neutral-500">
+                <Loader2 size={16} className="mr-2 animate-spin text-neutral-900" />
                 Caricamento mappa…
               </div>
             )}
@@ -621,7 +621,7 @@ export default function BatchFetchPanel({
           </div>
 
           <div>
-            <label className="mb-1 block text-xs text-slate-500">
+            <label className="mb-1 block text-xs text-neutral-500">
               Pagine {market === "cz" ? "Sreality" : portal === "immobiliare" ? "Immobiliare" : "Idealista"} per operazione
             </label>
             <div className="flex flex-wrap items-center gap-3">
@@ -637,8 +637,8 @@ export default function BatchFetchPanel({
                       className={cn(
                         "rounded-lg border px-3 py-1.5 text-sm",
                         maxPages === preset
-                          ? "border-accent/50 bg-accent/10 text-accent"
-                          : "border-surface-border text-slate-400 hover:text-slate-200",
+                          ? "border-neutral-900 bg-neutral-50 text-neutral-900"
+                          : "border-surface-border text-neutral-600 hover:text-neutral-800",
                       )}
                     >
                       {label}
@@ -657,10 +657,10 @@ export default function BatchFetchPanel({
                     onChange={(e) => setMaxPages(Number(e.target.value))}
                     className="min-w-[120px] flex-1"
                   />
-                  <span className="text-sm text-slate-300">{maxPages} pag.</span>
+                  <span className="text-sm text-neutral-700">{maxPages} pag.</span>
                 </>
               )}
-              <span className="text-xs text-slate-500">
+              <span className="text-xs text-neutral-500">
                 {isBatchFetchAllPages(maxPages)
                   ? market === "cz"
                     ? "Stáhnout všechny dostupné stránky (v prodej a pronájem zvlášť)"
@@ -672,7 +672,7 @@ export default function BatchFetchPanel({
 
           <div className="grid gap-3 sm:grid-cols-3">
             <div>
-              <label className="mb-1 block text-xs text-slate-500">Prezzo min</label>
+              <label className="mb-1 block text-xs text-neutral-500">Prezzo min</label>
               <input
                 type="number"
                 className="input-field w-full"
@@ -682,7 +682,7 @@ export default function BatchFetchPanel({
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-slate-500">Prezzo max</label>
+              <label className="mb-1 block text-xs text-neutral-500">Prezzo max</label>
               <input
                 type="number"
                 className="input-field w-full"
@@ -692,7 +692,7 @@ export default function BatchFetchPanel({
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-slate-500">Min m²</label>
+              <label className="mb-1 block text-xs text-neutral-500">Min m²</label>
               <input
                 type="number"
                 className="input-field w-full"
@@ -731,7 +731,7 @@ export default function BatchFetchPanel({
                     }
                   />
                 </div>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-neutral-500">
                   {fetchProgress?.label || fetchStatus || "Recupero annunci in corso…"}
                   {fetchProgress && fetchProgress.listingsTotal > 0
                     ? ` · ${fetchProgress.listingsTotal} annunci`
@@ -744,7 +744,7 @@ export default function BatchFetchPanel({
             )}
 
             {fetchStatus && !fetching && (
-              <p className="text-xs text-slate-500">{fetchStatus}</p>
+              <p className="text-xs text-neutral-500">{fetchStatus}</p>
             )}
           </div>
 
@@ -753,7 +753,7 @@ export default function BatchFetchPanel({
           {rows.length > 0 && (
             <div>
               <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-neutral-500">
                   Recuperati: {formatOpCounts(recoveredCounts.sale, recoveredCounts.rent)}
                   {" · "}
                   In area: {formatOpCounts(inAreaCounts.sale, inAreaCounts.rent)}
@@ -764,7 +764,7 @@ export default function BatchFetchPanel({
                   <button
                     type="button"
                     onClick={selectAll}
-                    className="flex items-center gap-1 text-xs text-accent hover:underline"
+                    className="flex items-center gap-1 text-xs text-neutral-900 hover:underline"
                   >
                     <CheckSquare size={12} />
                     Seleziona tutti
@@ -772,16 +772,16 @@ export default function BatchFetchPanel({
                   <button
                     type="button"
                     onClick={deselectAll}
-                    className="flex items-center gap-1 text-xs text-slate-400 hover:underline"
+                    className="flex items-center gap-1 text-xs text-neutral-600 hover:underline"
                   >
                     <Square size={12} />
                     Deseleziona
                   </button>
                 </div>
               </div>
-              <div className="max-h-[280px] overflow-y-auto rounded-lg border border-surface-border bg-surface-raised/50">
+              <div className="max-h-[280px] overflow-y-auto rounded-lg border border-surface-border bg-white/50">
                 <table className="w-full text-left text-sm">
-                  <thead className="sticky top-0 bg-surface-raised text-xs text-slate-500">
+                  <thead className="sticky top-0 bg-white text-xs text-neutral-500">
                     <tr>
                       <th className="p-2 w-8" />
                       <th className="p-2">Tipo</th>
@@ -797,7 +797,7 @@ export default function BatchFetchPanel({
                         key={listing.id}
                         className={cn(
                           "border-t border-surface-border/40",
-                          selected ? "bg-accent/5" : "opacity-60",
+                          selected ? "bg-neutral-50" : "opacity-60",
                         )}
                       >
                         <td className="p-2">
@@ -812,21 +812,21 @@ export default function BatchFetchPanel({
                             className={cn(
                               "rounded px-1.5 py-0.5 text-xs",
                               listing.operation === "sale"
-                                ? "bg-emerald-500/20 text-emerald-400"
+                                ? "bg-green-50 text-green-600"
                                 : "bg-blue-500/20 text-blue-400",
                             )}
                           >
                             {listing.operation === "sale" ? "Vendita" : "Affitto"}
                           </span>
                         </td>
-                        <td className="p-2 max-w-[180px] truncate text-slate-200" title={listing.title}>
+                        <td className="p-2 max-w-[180px] truncate text-neutral-800" title={listing.title}>
                           {listing.title}
                         </td>
-                        <td className="p-2 text-accent whitespace-nowrap">
+                        <td className="p-2 text-neutral-900 whitespace-nowrap">
                           {formatPrice(listing.price, listing.operation)}
                         </td>
-                        <td className="p-2 text-slate-400">{listing.sqm ?? "—"}</td>
-                        <td className="p-2 text-slate-400 whitespace-nowrap">{formatDistance(distanceM)}</td>
+                        <td className="p-2 text-neutral-600">{listing.sqm ?? "—"}</td>
+                        <td className="p-2 text-neutral-600 whitespace-nowrap">{formatDistance(distanceM)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -836,11 +836,11 @@ export default function BatchFetchPanel({
           )}
         </div>
 
-        <div className="flex shrink-0 justify-end gap-2 border-t border-surface-border/80 bg-surface-raised px-5 py-4">
+        <div className="flex shrink-0 justify-end gap-2 border-t border-surface-border bg-white px-5 py-4">
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg border border-surface-border px-4 py-2 text-sm text-slate-300 hover:bg-surface-raised"
+            className="rounded-lg border border-surface-border px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100"
           >
             Annulla
           </button>

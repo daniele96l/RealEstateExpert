@@ -212,37 +212,37 @@ function ScatterTooltip({
   const needsRenovation = point.listing.needs_renovation === true;
   const priceLabel = market === "cz" ? "Cena" : "Prezzo";
   return (
-    <div className="rounded-lg border border-surface-border bg-surface-raised px-3 py-2 text-xs shadow-lg">
-      <p className="mb-1 max-w-[220px] font-medium text-slate-200 line-clamp-2">{point.title}</p>
+    <div className="rounded-lg border border-surface-border bg-white px-3 py-2 text-xs shadow-lg">
+      <p className="mb-1 max-w-[220px] font-medium text-neutral-800 line-clamp-2">{point.title}</p>
       {includeRenovationCost && point.renovationCost > 0 ? (
         <>
-          <p className="text-slate-400">
+          <p className="text-neutral-600">
             {ui.listingPrice}: {fmt(point.listingPrice)}
           </p>
           <p className="text-amber-400/90">
             {ui.renovationEstimate}: {fmt(point.renovationCost)}
           </p>
-          <p className="font-medium text-slate-300">
+          <p className="font-medium text-neutral-700">
             {ui.pricePlusRenovation}: {fmt(point.price)}
           </p>
         </>
       ) : (
-        <p className="text-slate-400">
+        <p className="text-neutral-600">
           {priceLabel}: {fmt(point.price)}
         </p>
       )}
-      <p className="text-slate-400">
+      <p className="text-neutral-600">
         {ui.estRent}: {fmt(point.expectedRent)}{ui.perMonth}
       </p>
       {conditionLabel && (
-        <p className={cn("text-slate-400", needsRenovation && "font-medium text-amber-400")}>
+        <p className={cn("text-neutral-600", needsRenovation && "font-medium text-amber-400")}>
           {ui.condition}: {conditionLabel}
         </p>
       )}
       <p
         className={cn(
           "mt-1 font-medium",
-          point.monthlyNetProfit >= 0 ? "text-emerald-400" : "text-red-400",
+          point.monthlyNetProfit >= 0 ? "text-green-600" : "text-red-400",
         )}
       >
         {ui.netProfit}: {fmt(point.monthlyNetProfit)}{ui.perMonth}
@@ -343,12 +343,12 @@ export default function ListingPriceRentScatter({
     return (
       <div
         className={cn(
-          "border-t border-surface-border/80 bg-surface-raised/20 px-4 py-6 text-center",
+          "border-t border-surface-border bg-neutral-50 px-4 py-6 text-center",
           className,
         )}
       >
-        <h3 className="text-sm font-semibold text-slate-200">Prezzo vs affitto stimato</h3>
-        <p className="mt-1 text-xs text-slate-500">
+        <h3 className="text-sm font-semibold text-neutral-800">Prezzo vs affitto stimato</h3>
+        <p className="mt-1 text-xs text-neutral-500">
           Nessun punto da mostrare
           {mapInView ? " nell'area visibile della mappa" : ""} — servono annunci in vendita e cache
           affitti per la città.
@@ -358,11 +358,11 @@ export default function ListingPriceRentScatter({
   }
 
   return (
-    <div className={cn("border-t border-surface-border/80 bg-surface-raised/20 px-4 py-4", className)}>
+    <div className={cn("border-t border-surface-border bg-neutral-50 px-4 py-4", className)}>
       <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
         <div>
-          <h3 className="text-sm font-semibold text-slate-200">Prezzo vs affitto stimato</h3>
-          <p className="text-[11px] text-slate-500">
+          <h3 className="text-sm font-semibold text-neutral-800">Prezzo vs affitto stimato</h3>
+          <p className="text-[11px] text-neutral-500">
             {totalPointCount} annunci{mapInView ? " in vista sulla mappa" : ""}
             {outlierCount > 0 ? ` · ${outlierCount} outlier esclusi` : ""}
             {!showAllPoints && sampledCount > 0 ? ` · grafico su ${points.length} campioni` : ""}
@@ -378,8 +378,8 @@ export default function ListingPriceRentScatter({
               className={cn(
                 "rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors",
                 showAllPoints
-                  ? "border-accent/50 bg-accent/15 text-accent"
-                  : "border-surface-border text-slate-400 hover:bg-surface-raised hover:text-slate-200",
+                  ? "border-neutral-900 bg-neutral-100 text-neutral-900"
+                  : "border-surface-border text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800",
               )}
               aria-pressed={showAllPoints}
               title="Mostra ogni annuncio — può rallentare il browser"
@@ -394,8 +394,8 @@ export default function ListingPriceRentScatter({
               className={cn(
                 "rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors",
                 logScale
-                  ? "border-accent/50 bg-accent/15 text-accent"
-                  : "border-surface-border text-slate-400 hover:bg-surface-raised hover:text-slate-200",
+                  ? "border-neutral-900 bg-neutral-100 text-neutral-900"
+                  : "border-surface-border text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800",
               )}
               aria-pressed={logScale}
             >
@@ -409,8 +409,8 @@ export default function ListingPriceRentScatter({
               className={cn(
                 "rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors",
                 includeRenovationCost
-                  ? "border-accent/50 bg-accent/15 text-accent"
-                  : "border-surface-border text-slate-400 hover:bg-surface-raised hover:text-slate-200",
+                  ? "border-neutral-900 bg-neutral-100 text-neutral-900"
+                  : "border-surface-border text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800",
               )}
               aria-pressed={includeRenovationCost}
               title={renovationToggleLabel}
@@ -421,13 +421,13 @@ export default function ListingPriceRentScatter({
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
-            className="rounded-lg border border-surface-border px-2.5 py-1 text-[11px] font-medium text-slate-300 hover:bg-surface-raised hover:text-slate-100"
+            className="rounded-lg border border-surface-border px-2.5 py-1 text-[11px] font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900"
             aria-expanded={expanded}
           >
             {expanded ? "Nascondi grafico" : "Mostra grafico"}
           </button>
           {expanded && (
-            <div className="flex items-center gap-1 text-[10px] text-slate-500">
+            <div className="flex items-center gap-1 text-[10px] text-neutral-500">
               <span
                 className="h-2 w-8 rounded-full"
                 style={{

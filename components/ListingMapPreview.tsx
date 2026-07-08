@@ -2,6 +2,7 @@ import type { ListingProfitPreview } from "@/lib/listing-profit-preview";
 import { profitGradientColor, type ProfitGradientRange } from "@/lib/profit-gradient";
 import { listingConditionLabel } from "@/lib/property-condition";
 import type { MapListing } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 function formatPrice(price: number, operation: "sale" | "rent") {
   const formatted = new Intl.NumberFormat("it-IT", {
@@ -42,106 +43,59 @@ export function ListingMapPreview({
 
   const statoLabel = listingConditionLabel(listing);
   const needsRenovation = listing.needs_renovation === true;
-  const accent = listing.operation === "sale" ? "#10b981" : "#3b82f6";
   const profitColor =
     profit && profitRange
       ? profitGradientColor(profit.monthlyNetProfit, profitRange)
       : profit && profit.monthlyNetProfit >= 0
-        ? "#34d399"
-        : "#f87171";
+        ? "#16a34a"
+        : "#dc2626";
 
   return (
-    <div
-      style={{
-        width: 220,
-        overflow: "hidden",
-        borderRadius: 10,
-        background: "#0f172a",
-        border: "1px solid rgba(148,163,184,0.25)",
-        boxShadow: "0 8px 24px rgba(0,0,0,0.45)",
-        fontFamily: "system-ui, sans-serif",
-      }}
-    >
+    <div className="w-[220px] overflow-hidden rounded-lg border border-neutral-200 bg-white font-sans shadow-card">
       {imageUrl ? (
-        <img
-          src={imageUrl}
-          alt=""
-          style={{ display: "block", width: "100%", height: 96, objectFit: "cover" }}
-        />
+        <img src={imageUrl} alt="" className="block h-24 w-full object-cover" />
       ) : (
         <div
-          style={{
-            height: 72,
-            background: `linear-gradient(135deg, ${accent}22, ${accent}08)`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: accent,
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: "0.06em",
-            textTransform: "uppercase",
-          }}
+          className={cn(
+            "flex h-[72px] items-center justify-center text-[11px] font-semibold uppercase tracking-wide",
+            listing.operation === "sale" ? "bg-neutral-100 text-neutral-800" : "bg-neutral-50 text-neutral-700",
+          )}
         >
           {listing.operation === "sale" ? "Vendita" : "Affitto"}
         </div>
       )}
-      <div style={{ padding: "10px 12px 12px" }}>
-        <p
-          style={{
-            margin: 0,
-            fontSize: 13,
-            fontWeight: 600,
-            lineHeight: 1.35,
-            color: "#f1f5f9",
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
-          }}
-        >
-          {listing.title}
-        </p>
-        <p style={{ margin: "6px 0 0", fontSize: 15, fontWeight: 700, color: accent }}>
-          {formatPrice(listing.price, listing.operation)}
-        </p>
-        {meta && (
-          <p style={{ margin: "4px 0 0", fontSize: 11, color: "#94a3b8", lineHeight: 1.35 }}>{meta}</p>
-        )}
-        {statoLabel && (
+      <div className="p-3">
+        <p className="line-clamp-2 text-[13px] font-semibold leading-snug text-neutral-900">{listing.title}</p>
+        <p className="mt-1.5 text-[15px] font-bold text-neutral-900">{formatPrice(listing.price, listing.operation)}</p>
+        {meta ? <p className="mt-1 text-[11px] leading-snug text-neutral-500">{meta}</p> : null}
+        {statoLabel ? (
           <p
-            style={{
-              margin: "6px 0 0",
-              fontSize: 11,
-              fontWeight: 600,
-              color: needsRenovation ? "#fbbf24" : listing.needs_renovation === false ? "#34d399" : "#94a3b8",
-            }}
+            className={cn(
+              "mt-1.5 text-[11px] font-semibold",
+              needsRenovation
+                ? "text-amber-700"
+                : listing.needs_renovation === false
+                  ? "text-green-600"
+                  : "text-neutral-500",
+            )}
           >
             Stato: {statoLabel}
             {needsRenovation ? " · Ristrutturazione consigliata" : ""}
           </p>
-        )}
-        {profit && listing.operation === "sale" && (
-          <div
-            style={{
-              marginTop: 8,
-              paddingTop: 8,
-              borderTop: "1px solid rgba(148,163,184,0.2)",
-            }}
-          >
-            <p style={{ margin: 0, fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-              Stima investimento
-            </p>
-            <p style={{ margin: "4px 0 0", fontSize: 13, fontWeight: 700, color: profitColor }}>
+        ) : null}
+        {profit && listing.operation === "sale" ? (
+          <div className="mt-2 border-t border-neutral-200 pt-2">
+            <p className="text-[10px] uppercase tracking-wide text-neutral-500">Stima investimento</p>
+            <p className="mt-1 text-[13px] font-bold" style={{ color: profitColor }}>
               {formatProfitEuro(profit.monthlyNetProfit)}/mese
             </p>
-            <p style={{ margin: "2px 0 0", fontSize: 10, color: "#94a3b8", lineHeight: 1.35 }}>
+            <p className="mt-0.5 text-[10px] leading-snug text-neutral-500">
               Affitto stim. {formatPrice(profit.estimatedMonthlyRent, "rent")}
               {" · "}
               {profit.neighborCount} comparabili
             </p>
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );

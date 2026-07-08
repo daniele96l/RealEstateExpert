@@ -15,6 +15,7 @@ import { getMarket, type MarketId } from "@/lib/markets";
 import type { AnalysisResult } from "@/lib/types";
 import { fmtMoney } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
+import { CHART_THEME } from "@/lib/chart-theme";
 
 interface Props {
   result: AnalysisResult;
@@ -22,10 +23,10 @@ interface Props {
 }
 
 const COLORS = {
-  interest: "#f87171",
-  equity: "#60a5fa",
-  grid: "#2a3544",
-  axis: "#64748b",
+  interest: CHART_THEME.negative,
+  equity: CHART_THEME.series.blue,
+  grid: CHART_THEME.grid,
+  axis: CHART_THEME.axis,
 };
 
 type ChartPoint = {
@@ -95,35 +96,35 @@ export default function MortgageCapitalChart({ result, market = "it" }: Props) {
   const formatAxis = (value: number) => `${currencySymbol}${(value / 1000).toFixed(0)}k`;
 
   return (
-    <div className="card-glass p-5">
+    <div className="card p-5">
       <div className="mb-5 space-y-4">
         <div>
-          <h2 className="text-base font-semibold text-slate-100">{t("mortgageCapital.title")}</h2>
-          <p className="mt-1 max-w-3xl text-sm leading-relaxed text-slate-500">
+          <h2 className="text-base font-semibold text-neutral-900">{t("mortgageCapital.title")}</h2>
+          <p className="mt-1 max-w-3xl text-sm leading-relaxed text-neutral-500">
             {t("mortgageCapital.subtitle")}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">
+            <p className="text-[10px] uppercase tracking-wide text-neutral-500">
               {t("mortgageCapital.equityPaid")}
             </p>
             <p className="text-lg font-bold text-sky-400">{fmtMoney(totalEquityPaid, market)}</p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">
+            <p className="text-[10px] uppercase tracking-wide text-neutral-500">
               {t("mortgageCapital.totalInterest")}
             </p>
             <p className="text-lg font-bold text-red-400">{fmtMoney(totalInterest, market)}</p>
             {loanAmount <= 0 && (
-              <p className="text-[11px] text-slate-500">{t("mortgageCapital.noMortgage")}</p>
+              <p className="text-[11px] text-neutral-500">{t("mortgageCapital.noMortgage")}</p>
             )}
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">
+            <p className="text-[10px] uppercase tracking-wide text-neutral-500">
               {t("mortgageCapital.totalPaid")}
             </p>
-            <p className="text-lg font-bold text-slate-100">{fmtMoney(totalPaid, market)}</p>
+            <p className="text-lg font-bold text-neutral-900">{fmtMoney(totalPaid, market)}</p>
           </div>
         </div>
       </div>
@@ -150,21 +151,21 @@ export default function MortgageCapitalChart({ result, market = "it" }: Props) {
               if (!active || !payload?.length) return null;
               const row = payload[0]?.payload as ChartPoint;
               return (
-                <div className="rounded-xl border border-surface-border bg-[#1a2332] px-3 py-2 text-xs shadow-lg">
-                  <p className="mb-2 font-medium text-slate-200">
+                <div className="rounded-xl border border-surface-border bg-white px-3 py-2 text-xs shadow-lg">
+                  <p className="mb-2 font-medium text-neutral-800">
                     {label === 0
                       ? t("mortgageCapital.purchaseTooltip")
                       : t("mortgageCapital.yearTooltip", { year: Math.ceil(Number(label) / 12) })}
                   </p>
-                  <p className="text-slate-400">
+                  <p className="text-neutral-600">
                     {t("mortgageCapital.equityPaid")}:{" "}
                     <span className="text-sky-400">{fmtMoney(row.equityPaid, market)}</span>
                   </p>
-                  <p className="text-slate-400">
+                  <p className="text-neutral-600">
                     {t("mortgageCapital.cumulativeInterest")}:{" "}
                     <span className="text-red-400">{fmtMoney(row.cumulativeInterest, market)}</span>
                   </p>
-                  <p className="mt-1 font-medium text-slate-200">
+                  <p className="mt-1 font-medium text-neutral-800">
                     {t("mortgageCapital.totalPaid")}: {fmtMoney(row.totalPaid, market)}
                   </p>
                 </div>

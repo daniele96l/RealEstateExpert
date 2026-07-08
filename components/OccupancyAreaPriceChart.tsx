@@ -77,22 +77,22 @@ function ChartTooltip({
   if (!row) return null;
 
   return (
-    <div className="rounded-xl border border-surface-border/80 bg-surface-raised/95 px-3 py-2.5 text-sm shadow-xl backdrop-blur-md">
-      <p className="max-w-xs font-medium text-slate-100">{row.zone}</p>
-      <p className="mt-2 text-base font-semibold text-accent">{row.displayValue}</p>
-      <div className="mt-2 space-y-1 text-xs text-slate-400">
+    <div className="rounded-xl border border-surface-border bg-white px-3 py-2.5 text-sm shadow-xl backdrop-blur-md">
+      <p className="max-w-xs font-medium text-neutral-900">{row.zone}</p>
+      <p className="mt-2 text-base font-semibold text-neutral-900">{row.displayValue}</p>
+      <div className="mt-2 space-y-1 text-xs text-neutral-600">
         <p>
-          {listingsLabel}: <span className="text-slate-200">{row.count}</span>
+          {listingsLabel}: <span className="text-neutral-800">{row.count}</span>
         </p>
         {row.avg_price != null ? (
           <p>
-            {avgRentLabel}: <span className="text-slate-200">{fmtMoney(row.avg_price)}</span>
+            {avgRentLabel}: <span className="text-neutral-800">{fmtMoney(row.avg_price)}</span>
           </p>
         ) : null}
         {row.avg_price_per_sqm != null ? (
           <p>
             {perSqmFullLabel}:{" "}
-            <span className="text-slate-200">
+            <span className="text-neutral-800">
               {fmtMoney(row.avg_price_per_sqm)}
               {perSqmLabel}
             </span>
@@ -153,7 +153,7 @@ export default function OccupancyAreaPriceChart({
 
   if (!rows.length) {
     return (
-      <div className="flex h-40 items-center justify-center px-6 text-sm text-slate-500">
+      <div className="flex h-40 items-center justify-center px-6 text-sm text-neutral-500">
         {t("occupancy.areaChart.empty")}
       </div>
     );
@@ -166,18 +166,18 @@ export default function OccupancyAreaPriceChart({
     <div className="px-6 py-5">
       <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h3 className="text-base font-semibold text-white">{t("occupancy.areaChart.title")}</h3>
-          <p className="mt-1 text-sm text-slate-400">{t("occupancy.areaChart.subtitle")}</p>
+          <h3 className="text-base font-semibold text-neutral-900">{t("occupancy.areaChart.title")}</h3>
+          <p className="mt-1 text-sm text-neutral-600">{t("occupancy.areaChart.subtitle")}</p>
         </div>
-        <div className="inline-flex rounded-lg border border-surface-border/60 bg-surface-raised/40 p-1">
+        <div className="inline-flex rounded-lg border border-surface-border/60 bg-neutral-50 p-1">
           <button
             type="button"
             onClick={() => setMode("per_sqm")}
             className={cn(
               "rounded-md px-3 py-1.5 text-xs font-medium transition-colors",
               mode === "per_sqm"
-                ? "bg-accent/20 text-white"
-                : "text-slate-400 hover:text-slate-200",
+                ? "bg-neutral-900 text-white"
+                : "text-neutral-600 hover:text-neutral-800",
             )}
           >
             {t("occupancy.areaChart.modePerSqm")}
@@ -188,8 +188,8 @@ export default function OccupancyAreaPriceChart({
             className={cn(
               "rounded-md px-3 py-1.5 text-xs font-medium transition-colors",
               mode === "rent"
-                ? "bg-accent/20 text-white"
-                : "text-slate-400 hover:text-slate-200",
+                ? "bg-neutral-900 text-white"
+                : "text-neutral-600 hover:text-neutral-800",
             )}
           >
             {t("occupancy.areaChart.modeRent")}
@@ -198,18 +198,18 @@ export default function OccupancyAreaPriceChart({
       </div>
 
       <div className="mb-4 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-4 py-3">
-          <p className="text-xs uppercase tracking-wide text-emerald-300/80">
+        <div className="rounded-xl border border-green-200 bg-green-50 px-4 py-3">
+          <p className="text-xs uppercase tracking-wide text-green-700/80">
             {t("occupancy.areaChart.cheapest")}
           </p>
-          <p className="mt-1 truncate text-sm font-medium text-slate-200">{cheapest?.shortZone}</p>
-          <p className="mt-0.5 text-lg font-bold text-emerald-300">{cheapest?.displayValue}</p>
+          <p className="mt-1 truncate text-sm font-medium text-neutral-800">{cheapest?.shortZone}</p>
+          <p className="mt-0.5 text-lg font-bold text-green-700">{cheapest?.displayValue}</p>
         </div>
         <div className="rounded-xl border border-sky-500/20 bg-sky-500/5 px-4 py-3">
           <p className="text-xs uppercase tracking-wide text-sky-300/80">
             {t("occupancy.areaChart.cityAvg")}
           </p>
-          <p className="mt-1 text-sm text-slate-400">{t("occupancy.areaChart.allAreas")}</p>
+          <p className="mt-1 text-sm text-neutral-600">{t("occupancy.areaChart.allAreas")}</p>
           <p className="mt-0.5 text-lg font-bold text-sky-300">
             {resolvedCityAvg != null
               ? mode === "rent"
@@ -222,12 +222,12 @@ export default function OccupancyAreaPriceChart({
           <p className="text-xs uppercase tracking-wide text-rose-300/80">
             {t("occupancy.areaChart.priciest")}
           </p>
-          <p className="mt-1 truncate text-sm font-medium text-slate-200">{priciest?.shortZone}</p>
+          <p className="mt-1 truncate text-sm font-medium text-neutral-800">{priciest?.shortZone}</p>
           <p className="mt-0.5 text-lg font-bold text-rose-300">{priciest?.displayValue}</p>
         </div>
       </div>
 
-      <div className="flex items-center gap-2 text-[11px] text-slate-500">
+      <div className="flex items-center gap-2 text-[11px] text-neutral-500">
         <span>{t("occupancy.areaChart.scaleLow")}</span>
         <div className="h-2 flex-1 rounded-full bg-gradient-to-r from-emerald-400 via-sky-400 to-rose-400" />
         <span>{t("occupancy.areaChart.scaleHigh")}</span>

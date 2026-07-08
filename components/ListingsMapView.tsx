@@ -195,7 +195,7 @@ const ListingPopup = memo(function ListingPopup({
       <button
         type="button"
         onClick={onOpen}
-        className="w-full rounded-lg bg-accent px-3 py-2 text-xs font-medium text-white hover:bg-emerald-500"
+        className="w-full rounded-lg bg-accent px-3 py-2 text-xs font-medium text-white hover:bg-neutral-800"
       >
         Apri scheda
       </button>
@@ -345,7 +345,7 @@ export default function ListingsMapView({
   return (
     <div ref={containerRef} className="relative h-full w-full overflow-hidden">
       {!canMountMap ? (
-        <div className="flex h-full items-center justify-center text-sm text-slate-500">
+        <div className="flex h-full items-center justify-center text-sm text-neutral-500">
           Caricamento mappa…
         </div>
       ) : (
@@ -397,12 +397,12 @@ export default function ListingsMapView({
       </MapContainer>
       )}
       {canMountMap && showLegend && (
-        <div className="absolute bottom-3 left-3 z-[1000] rounded-lg border border-surface-border/80 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
+        <div className="absolute bottom-3 left-3 z-[1000] rounded-lg border border-surface-border bg-white px-3 py-2 text-xs text-neutral-700 ">
           <span className="inline-flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500" />
             Vendita ({counts.sale})
           </span>
-          <span className="mx-2 text-slate-600">·</span>
+          <span className="mx-2 text-neutral-500">·</span>
           <span className="inline-flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-blue-500" />
             Affitto ({counts.rent})
@@ -410,12 +410,12 @@ export default function ListingsMapView({
         </div>
       )}
       {canMountMap && filterAreaCenter && filterAreaRadiusM != null && filterAreaRadiusM > 0 && (
-        <div className="absolute bottom-3 right-3 z-[1000] rounded-lg border border-accent/30 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
+        <div className="absolute bottom-3 right-3 z-[1000] rounded-lg border border-neutral-300 bg-white px-3 py-2 text-xs text-neutral-700 ">
           Filtro zona · {formatDistance(filterAreaRadiusM)}
         </div>
       )}
       {canMountMap && polygonDrawActive && isValidPolygon(polygonFilter) && (
-        <div className="absolute bottom-3 right-3 z-[1000] rounded-lg border border-accent/30 bg-surface-raised/95 px-3 py-2 text-xs text-slate-300 backdrop-blur-sm">
+        <div className="absolute bottom-3 right-3 z-[1000] rounded-lg border border-neutral-300 bg-white px-3 py-2 text-xs text-neutral-700 ">
           Filtro poligono attivo
         </div>
       )}
@@ -454,16 +454,16 @@ function MapPolygonToolbar({
   const canSave = isValidPolygon(polygon) && onSavePolygon;
 
   return (
-    <div className="absolute left-3 top-3 z-[1000] w-56 space-y-2 rounded-lg border border-accent/30 bg-surface-raised/95 p-3 text-xs text-slate-300 shadow-lg backdrop-blur-sm">
-      <p className="font-medium text-slate-200">Area disegnata</p>
+    <div className="absolute left-3 top-3 z-[1000] w-56 space-y-2 rounded-lg border border-neutral-300 bg-white p-3 text-xs text-neutral-700 shadow-lg ">
+      <p className="font-medium text-neutral-800">Area disegnata</p>
       <button
         type="button"
         onClick={onStartDraw}
-        className="w-full rounded-md border border-accent/40 bg-accent/15 px-2 py-2 text-xs font-medium text-accent hover:bg-accent/25"
+        className="w-full rounded-md border border-neutral-300 bg-neutral-100 px-2 py-2 text-xs font-medium text-neutral-900 hover:hover:bg-neutral-200"
       >
         Disegna poligono
       </button>
-      <p className="text-[11px] leading-relaxed text-slate-500">
+      <p className="text-[11px] leading-relaxed text-neutral-500">
         Clicca sulla mappa per ogni vertice, poi chiudi il poligono. Usa anche lo
         strumento in alto a destra sulla mappa.
       </p>
@@ -474,7 +474,7 @@ function MapPolygonToolbar({
             const name = window.prompt("Nome area salvata", "La mia zona");
             if (name != null && name.trim()) onSavePolygon(name.trim());
           }}
-          className="w-full rounded-md border border-accent/40 bg-accent/15 px-2 py-1.5 text-xs font-medium text-accent hover:bg-accent/25"
+          className="w-full rounded-md border border-neutral-300 bg-neutral-100 px-2 py-1.5 text-xs font-medium text-neutral-900 hover:hover:bg-neutral-200"
         >
           Salva poligono
         </button>
@@ -483,20 +483,20 @@ function MapPolygonToolbar({
         <button
           type="button"
           onClick={onClearPolygon}
-          className="w-full rounded-md border border-surface-border px-2 py-1.5 text-xs text-slate-400 hover:bg-surface-raised"
+          className="w-full rounded-md border border-surface-border px-2 py-1.5 text-xs text-neutral-600 hover:bg-neutral-100"
         >
           Cancella area
         </button>
       )}
       {savedPolygons.length > 0 && onLoadSavedPolygon && (
         <div className="space-y-1 border-t border-surface-border/60 pt-2">
-          <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Salvate</p>
+          <p className="text-[10px] font-semibold uppercase tracking-wide text-neutral-500">Salvate</p>
           {savedPolygons.map((saved) => (
             <div key={saved.id} className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={() => onLoadSavedPolygon(saved.id)}
-                className="min-w-0 flex-1 truncate rounded-md border border-surface-border px-2 py-1 text-left text-xs text-slate-300 hover:bg-surface-raised"
+                className="min-w-0 flex-1 truncate rounded-md border border-surface-border px-2 py-1 text-left text-xs text-neutral-700 hover:bg-neutral-100"
                 title={saved.name}
               >
                 {saved.name}
@@ -505,7 +505,7 @@ function MapPolygonToolbar({
                 <button
                   type="button"
                   onClick={() => onDeleteSavedPolygon(saved.id)}
-                  className="shrink-0 rounded-md border border-surface-border px-1.5 py-1 text-slate-500 hover:text-red-400"
+                  className="shrink-0 rounded-md border border-surface-border px-1.5 py-1 text-neutral-500 hover:text-red-400"
                   aria-label={`Elimina ${saved.name}`}
                 >
                   ×

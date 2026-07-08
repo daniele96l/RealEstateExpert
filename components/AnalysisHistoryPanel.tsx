@@ -86,11 +86,11 @@ export default function AnalysisHistoryPanel({
 
   if (!loading && visibleItems.length === 0) {
     return (
-      <section className="card-glass overflow-hidden">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
+      <section className="card overflow-hidden">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-surface-border bg-neutral-50 px-5 py-4">
           <div className="flex items-center gap-2">
-            <History size={18} className="text-accent" />
-            <h2 className="font-semibold text-slate-100">{t("history.title")}</h2>
+            <History size={18} className="text-neutral-900" />
+            <h2 className="font-semibold text-neutral-900">{t("history.title")}</h2>
           </div>
           <div className="flex items-center gap-2">
             <input
@@ -107,14 +107,14 @@ export default function AnalysisHistoryPanel({
             <button
               type="button"
               onClick={() => fileRef.current?.click()}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-slate-300 hover:bg-surface-raised"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-100"
             >
               <FileUp size={14} />
               {t("common.importJson")}
             </button>
           </div>
         </div>
-        <p className="px-5 py-6 text-sm text-slate-500">
+        <p className="px-5 py-6 text-sm text-neutral-500">
           {items.length > 0
             ? market === "cz"
               ? t("history.emptyCz")
@@ -126,14 +126,14 @@ export default function AnalysisHistoryPanel({
   }
 
   return (
-    <section className="card-glass overflow-hidden">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
+    <section className="card overflow-hidden">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-surface-border bg-neutral-50 px-5 py-4">
         <div>
           <div className="flex items-center gap-2">
-            <History size={18} className="text-accent" />
-            <h2 className="font-semibold text-slate-100">{t("history.title")}</h2>
+            <History size={18} className="text-neutral-900" />
+            <h2 className="font-semibold text-neutral-900">{t("history.title")}</h2>
           </div>
-          <p className="mt-1 text-xs text-slate-500">
+          <p className="mt-1 text-xs text-neutral-500">
             {t("history.autoSave", { market: marketCfg.label, file: analysisHistoryFileLabel() })}
           </p>
         </div>
@@ -157,7 +157,7 @@ export default function AnalysisHistoryPanel({
                 market === "cz" ? "analisi_cronologia_cz.json" : "analisi_cronologia_it.json",
               )
             }
-            className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-slate-300 hover:bg-surface-raised"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-100"
           >
             <Download size={14} />
             {t("common.export")}
@@ -165,7 +165,7 @@ export default function AnalysisHistoryPanel({
           <button
             type="button"
             onClick={() => fileRef.current?.click()}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-slate-300 hover:bg-surface-raised"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-100"
           >
             <FileUp size={14} />
             {t("common.importJson")}
@@ -174,7 +174,7 @@ export default function AnalysisHistoryPanel({
       </div>
 
       {loading ? (
-        <p className="px-5 py-6 text-sm text-slate-500">{t("history.loading")}</p>
+        <p className="px-5 py-6 text-sm text-neutral-500">{t("history.loading")}</p>
       ) : (
         <ul className="divide-y divide-surface-border/60">
           {visibleItems.map((item) => {
@@ -184,12 +184,12 @@ export default function AnalysisHistoryPanel({
               key={item.id}
               className={cn(
                 "flex flex-wrap items-start gap-3 px-5 py-4 transition-colors",
-                selected && "bg-accent/5 ring-1 ring-inset ring-accent/25",
+                selected && "bg-neutral-100 ring-1 ring-inset ring-neutral-300",
               )}
             >
               <div className="min-w-0 flex-1">
-                <p className="font-medium text-slate-200 line-clamp-2">{item.label}</p>
-                <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+                <p className="font-medium text-neutral-800 line-clamp-2">{item.label}</p>
+                <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500">
                   <span className="inline-flex items-center gap-1">
                     <Clock size={12} />
                     {formatWhen(item.savedAt, dateLocale)}
@@ -203,7 +203,7 @@ export default function AnalysisHistoryPanel({
                 <button
                   type="button"
                   onClick={() => downloadAnalysisJson(item)}
-                  className="rounded-lg border border-surface-border p-2 text-slate-400 hover:bg-surface-raised hover:text-slate-200"
+                  className="rounded-lg border border-surface-border p-2 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800"
                   title={t("common.exportJson")}
                 >
                   <Download size={14} />
@@ -211,7 +211,7 @@ export default function AnalysisHistoryPanel({
                 <button
                   type="button"
                   onClick={() => handleDelete(item.id)}
-                  className="rounded-lg border border-surface-border p-2 text-slate-400 hover:bg-red-500/10 hover:text-red-400"
+                  className="rounded-lg border border-surface-border p-2 text-neutral-600 hover:bg-red-500/10 hover:text-red-400"
                   title={t("common.delete")}
                 >
                   <Trash2 size={14} />
@@ -223,7 +223,7 @@ export default function AnalysisHistoryPanel({
                     "rounded-lg px-3 py-2 text-xs font-medium",
                     selected
                       ? "bg-accent text-white"
-                      : "bg-accent/20 text-accent hover:bg-accent/30",
+                      : "bg-neutral-100 text-neutral-900 hover:bg-neutral-200",
                   )}
                 >
                   {selected ? t("common.selected") : t("common.restore")}

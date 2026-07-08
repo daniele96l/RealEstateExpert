@@ -37,7 +37,7 @@ function EditableEuro({
     <input
       type="text"
       inputMode="numeric"
-      className="w-[5.5rem] rounded border border-surface-border bg-surface-raised/60 px-2 py-0.5 text-right text-sm font-medium text-slate-200 focus:border-accent focus:outline-none"
+      className="w-[5.5rem] rounded border border-surface-border bg-white px-2 py-0.5 text-right text-sm font-medium text-neutral-800 focus:border-neutral-400 focus:outline-none"
       value={draft}
       onChange={(e) => setDraft(e.target.value)}
       onBlur={commit}
@@ -102,48 +102,48 @@ export default function PurchaseBreakdown({ market, costs, scenario, onScenarioC
   ) => (
     <div key={label} className="flex items-start justify-between gap-3 text-sm">
       <div className="min-w-0">
-        <span className="text-slate-500">{label}</span>
-        {hint && <p className="text-[11px] text-slate-600">{hint}</p>}
+        <span className="text-neutral-500">{label}</span>
+        {hint && <p className="text-[11px] text-neutral-500">{hint}</p>}
       </div>
       {field ? (
         <EditableEuro value={value} onCommit={(n) => handleEdit(field, n)} />
       ) : (
-        <span className="shrink-0 text-sm font-medium text-slate-200">{fmtMoney(value, market)}</span>
+        <span className="shrink-0 text-sm font-medium text-neutral-800">{fmtMoney(value, market)}</span>
       )}
     </div>
   );
 
   return (
-    <div className="card-glass p-5">
-      <h2 className="mb-1 text-sm font-semibold text-slate-300">{t("purchase.title")}</h2>
-      <p className="mb-4 text-xs text-slate-500">{t("purchase.subtitle")}</p>
+    <div className="card p-5">
+      <h2 className="mb-1 text-sm font-semibold text-neutral-700">{t("purchase.title")}</h2>
+      <p className="mb-4 text-xs text-neutral-500">{t("purchase.subtitle")}</p>
 
       <div className="mb-4 grid gap-2 sm:grid-cols-3">
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
-          <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("purchase.initialEquity")}</p>
-          <p className="text-lg font-bold text-slate-100">{fmtMoney(costs.down_payment, market)}</p>
-          <p className="text-[11px] text-slate-600">{t("purchase.initialEquityHint")}</p>
+          <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("purchase.initialEquity")}</p>
+          <p className="text-lg font-bold text-neutral-900">{fmtMoney(costs.down_payment, market)}</p>
+          <p className="text-[11px] text-neutral-500">{t("purchase.initialEquityHint")}</p>
         </div>
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
-          <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("purchase.cashUpfront")}</p>
-          <p className="text-lg font-bold text-accent">{fmtMoney(costs.total_initial_cash, market)}</p>
-          <p className="text-[11px] text-slate-600">{t("purchase.cashUpfrontHint")}</p>
+          <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("purchase.cashUpfront")}</p>
+          <p className="text-lg font-bold text-neutral-900">{fmtMoney(costs.total_initial_cash, market)}</p>
+          <p className="text-[11px] text-neutral-500">{t("purchase.cashUpfrontHint")}</p>
         </div>
         <div className="rounded-lg bg-surface-border/30 px-3 py-2">
-          <p className="text-[10px] uppercase tracking-wide text-slate-500">{t("purchase.coveredByMortgage")}</p>
-          <p className="text-lg font-bold text-slate-100">{fmtMoney(costs.loan_amount, market)}</p>
-          <p className="text-[11px] text-slate-600">{t("purchase.coveredByMortgageHint")}</p>
+          <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("purchase.coveredByMortgage")}</p>
+          <p className="text-lg font-bold text-neutral-900">{fmtMoney(costs.loan_amount, market)}</p>
+          <p className="text-[11px] text-neutral-500">{t("purchase.coveredByMortgageHint")}</p>
         </div>
       </div>
 
       <div className="space-y-4">
         <div className="space-y-2">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">{t("purchase.propertyPrice")}</p>
+          <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-500">{t("purchase.propertyPrice")}</p>
           {renderRow(t("purchase.purchasePrice"), purchasePrice)}
         </div>
 
         <div className="space-y-2 border-t border-surface-border pt-3">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">
+          <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-500">
             {t("purchase.financedSection")}
           </p>
           {loanRows.map((r) =>
@@ -159,7 +159,7 @@ export default function PurchaseBreakdown({ market, costs, scenario, onScenarioC
         </div>
 
         <div className="space-y-2 border-t border-surface-border pt-3">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">
+          <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-500">
             {t("purchase.immediateCash")}
           </p>
           {renderRow(
@@ -170,10 +170,10 @@ export default function PurchaseBreakdown({ market, costs, scenario, onScenarioC
           )}
           {cashRows.map((r) => renderRow(r.label, r.value, r.field, r.hint ?? t("purchase.notCoveredByMortgage")))}
           <div className="flex justify-between border-t border-surface-border pt-2 text-sm font-semibold">
-            <span className="text-slate-300">{t("purchase.totalCashAtPurchase")}</span>
-            <span className="text-accent">{fmtMoney(costs.total_initial_cash, market)}</span>
+            <span className="text-neutral-700">{t("purchase.totalCashAtPurchase")}</span>
+            <span className="text-neutral-900">{fmtMoney(costs.total_initial_cash, market)}</span>
           </div>
-          <div className="flex justify-between text-sm text-slate-500">
+          <div className="flex justify-between text-sm text-neutral-500">
             <span>{t("purchase.taxesAndAccessories")}</span>
             <span>{fmtMoney(accessoryCosts, market)}</span>
           </div>

@@ -15,6 +15,7 @@ import RoiChart from "@/components/RoiChart";
 import ListingsExportPanel from "@/components/ListingsExportPanel";
 import OccupancyRatePanel from "@/components/OccupancyRatePanel";
 import OccupancyRemovalsLog from "@/components/OccupancyRemovalsLog";
+import SegmentedControl from "@/components/ui/SegmentedControl";
 import {
   getDefaultSimpleScenario,
   sanitizeSimple,
@@ -235,7 +236,7 @@ export default function HomePageContent() {
 
   if (!marketReady || !i18nReady) {
     return (
-      <div className="flex min-h-screen items-center justify-center text-slate-400">
+      <div className="flex min-h-screen items-center justify-center text-neutral-600">
         {t("common.loading")}
       </div>
     );
@@ -243,20 +244,20 @@ export default function HomePageContent() {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b border-surface-border/60 bg-surface-raised/30 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-5 sm:px-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20 text-accent">
-            <Building2 size={22} />
+      <header className="border-b border-surface-border bg-white">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-4 sm:px-6">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-surface-border bg-neutral-50 text-neutral-900">
+            <Building2 size={20} />
           </div>
           <div className="min-w-0 flex-1">
-            <h1 className="text-xl font-bold tracking-tight text-white sm:text-2xl">RealEstateExpert</h1>
-            <p className="text-sm text-slate-400">{subtitle}</p>
+            <h1 className="text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl">RealEstateExpert</h1>
+            <p className="text-sm text-neutral-600">{subtitle}</p>
           </div>
           <LanguageToggle />
           <MarketToggle market={market} onChange={handleMarketChange} className="order-last w-full sm:order-none sm:w-auto" />
           <a
             href="#parametri"
-            className="rounded-lg border border-surface-border px-3 py-1.5 text-sm text-slate-300 hover:bg-surface-raised lg:hidden"
+            className="rounded-lg border border-surface-border px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-100 lg:hidden"
           >
             {t("nav.parameters")}
           </a>
@@ -264,48 +265,26 @@ export default function HomePageContent() {
       </header>
 
       {market === "it" ? (
-        <div className="border-b border-surface-border/40 bg-surface-raised/20">
+        <div className="border-b border-surface-border bg-neutral-50">
           <div className="mx-auto flex max-w-7xl px-4 py-3 sm:px-6">
-            <div
-              className="flex rounded-xl border border-surface-border bg-surface-raised/60 p-1 shadow-inner"
-              role="tablist"
-              aria-label={t("nav.pageTabsAria")}
-            >
-              {(
-                [
-                  { id: "analysis" as const, label: t("nav.analysis") },
-                  { id: "occupancy" as const, label: t("nav.occupancy") },
-                ] as const
-              ).map(({ id, label }) => {
-                const active = pageTab === id;
-                return (
-                  <button
-                    key={id}
-                    type="button"
-                    role="tab"
-                    aria-selected={active}
-                    onClick={() => setPageTab(id)}
-                    className={cn(
-                      "rounded-lg px-4 py-2 text-sm font-semibold transition-colors sm:px-5",
-                      active
-                        ? "bg-accent text-white shadow-md"
-                        : "text-slate-400 hover:bg-surface-border/40 hover:text-slate-200",
-                    )}
-                  >
-                    {label}
-                  </button>
-                );
-              })}
-            </div>
+            <SegmentedControl
+              ariaLabel={t("nav.pageTabsAria")}
+              value={pageTab}
+              onChange={setPageTab}
+              options={[
+                { id: "analysis" as const, label: t("nav.analysis") },
+                { id: "occupancy" as const, label: t("nav.occupancy") },
+              ]}
+            />
           </div>
         </div>
       ) : null}
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+      <main className="mx-auto max-w-7xl bg-surface px-4 py-8 sm:px-6">
         {pageTab === "occupancy" && market === "it" ? (
           <OccupancyRatePanel onDataMutated={() => setOccupancyLogRefresh((n) => n + 1)} />
         ) : (
-        <div className="grid gap-8 lg:grid-cols-[minmax(320px,420px)_1fr]">
+        <div className="grid gap-10 lg:grid-cols-[minmax(320px,420px)_1fr]">
           <div
             id="parametri"
             className="lg:sticky lg:top-6 lg:z-10 lg:max-h-[calc(100vh-3rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain lg:pr-1"
@@ -360,18 +339,18 @@ export default function HomePageContent() {
                 />
               </>
             ) : (
-              <div className="card-glass flex flex-col items-center justify-center px-8 py-24 text-center">
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+              <div className="card flex flex-col items-center justify-center px-8 py-24 text-center">
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-neutral-50 text-neutral-900">
                   <BarChart3 size={32} />
                 </div>
-                <h2 className="text-lg font-semibold text-slate-200">{t("home.emptyTitle")}</h2>
+                <h2 className="text-lg font-semibold text-neutral-800">{t("home.emptyTitle")}</h2>
               </div>
             )}
           </div>
         </div>
         )}
 
-        <footer className="mt-12 border-t border-surface-border/40 pt-6 text-center text-xs text-slate-600">
+        <footer className="mt-12 border-t border-surface-border pt-6 text-center text-xs text-neutral-500">
           {market === "cz" ? t("home.footerCz") : t("home.footerIt")}
         </footer>
 

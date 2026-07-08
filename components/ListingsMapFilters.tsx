@@ -40,7 +40,7 @@ function Section({
 }) {
   return (
     <section className={cn("space-y-2", className)}>
-      <h4 className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{title}</h4>
+      <h4 className="text-[10px] font-semibold uppercase tracking-wider text-neutral-500">{title}</h4>
       {children}
     </section>
   );
@@ -57,7 +57,7 @@ function FilterField({
 }) {
   return (
     <label className={cn("block", className)}>
-      <span className="mb-1 block text-[10px] text-slate-500">{label}</span>
+      <span className="mb-1 block text-[10px] text-neutral-500">{label}</span>
       {children}
     </label>
   );
@@ -124,7 +124,7 @@ function MinMaxRow({
           formatOption={fmt}
         />
       </FilterField>
-      <span className="pb-2.5 text-slate-600" aria-hidden>
+      <span className="pb-2.5 text-neutral-500" aria-hidden>
         —
       </span>
       <FilterField label={`${label} · max`}>
@@ -148,14 +148,14 @@ export default function ListingsMapFilters({ market, viewMode, filters, onChange
   const active = hasActiveFilters(filters);
 
   return (
-    <div className="mt-3 rounded-xl border border-surface-border/80 bg-surface-raised/30 p-3 sm:p-4">
+    <div className="mt-3 rounded-xl border border-surface-border bg-white p-3 sm:p-4">
       <div className="mb-3 flex items-center justify-between gap-2 border-b border-surface-border/50 pb-2">
-        <p className="text-xs font-semibold text-slate-300">Filtri annunci</p>
+        <p className="text-xs font-semibold text-neutral-700">Filtri annunci</p>
         {active && (
           <button
             type="button"
             onClick={onReset}
-            className="text-xs font-medium text-accent hover:text-accent/80"
+            className="text-xs font-medium text-neutral-900 hover:text-neutral-900/80"
           >
             Reimposta
           </button>
@@ -336,18 +336,18 @@ export default function ListingsMapFilters({ market, viewMode, filters, onChange
                 />
               </FilterField>
             ) : filters.areaPreset === "polygon" ? (
-              <p className="pb-2 text-[11px] leading-relaxed text-slate-500">
+              <p className="pb-2 text-[11px] leading-relaxed text-neutral-500">
                 Disegna un poligono sulla mappa (strumento in alto a destra). Solo gli annunci
                 all&apos;interno vengono mostrati. Puoi salvare l&apos;area per riutilizzarla.
               </p>
             ) : filters.areaPreset !== "off" ? (
-              <p className="pb-2 text-[11px] leading-relaxed text-slate-500">
+              <p className="pb-2 text-[11px] leading-relaxed text-neutral-500">
                 Cerchio sulla mappa — clicca per spostare il centro
                 {filters.areaPreset === "centro" && " · raggio 1 km"}
                 {filters.areaPreset === "quartiere" && " · raggio 2,5 km"}
               </p>
             ) : (
-              <p className="pb-2 text-[11px] text-slate-600">
+              <p className="pb-2 text-[11px] text-neutral-500">
                 Nessun filtro geografico — mostra tutti gli annunci in città
               </p>
             )}

@@ -6,14 +6,18 @@ const config: Config = {
     extend: {
       colors: {
         surface: {
-          DEFAULT: "#0f1419",
-          raised: "#1a2332",
-          border: "#2a3544",
+          DEFAULT: "#fafafa",
+          raised: "#ffffff",
+          border: "#e5e5e5",
+        },
+        foreground: {
+          DEFAULT: "#171717",
+          muted: "#737373",
         },
         accent: {
-          DEFAULT: "#10b981",
-          muted: "#059669",
-          glow: "rgba(16, 185, 129, 0.15)",
+          DEFAULT: "#171717",
+          muted: "#404040",
+          glow: "rgba(23, 23, 23, 0.08)",
         },
       },
       fontFamily: {
@@ -21,8 +25,8 @@ const config: Config = {
         display: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 40px rgba(16, 185, 129, 0.12)",
-        card: "0 4px 24px rgba(0, 0, 0, 0.25)",
+        glow: "0 0 0 1px rgba(23, 23, 23, 0.06)",
+        card: "0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04)",
       },
     },
   },

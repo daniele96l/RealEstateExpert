@@ -21,7 +21,7 @@ import { useI18n } from "@/lib/i18n/context";
 const PropertySimilarRentMap = dynamic(() => import("./PropertySimilarRentMap"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-[360px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-slate-500">
+    <div className="flex h-[360px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-neutral-500">
       Caricamento mappa…
     </div>
   ),
@@ -44,10 +44,10 @@ function RentComparableRow({
   const wholeFlat = estimateWholeFlatRent(rent, basis);
 
   return (
-    <div className="rounded-lg border border-surface-border/60 bg-surface-raised/40 p-3">
-      <p className="text-sm font-medium text-slate-200 line-clamp-2">{rent.title}</p>
+    <div className="rounded-lg border border-surface-border/60 bg-neutral-50 p-3">
+      <p className="text-sm font-medium text-neutral-800 line-clamp-2">{rent.title}</p>
       <div className="mt-1 flex flex-wrap items-center gap-2">
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-neutral-500">
           {wholeFlat
             ? [
                 `${fmtMoney(wholeFlat.pricePerRoom, market)}/mese/stanza`,
@@ -75,7 +75,7 @@ function RentComparableRow({
         href={rent.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-2 inline-flex items-center gap-1 text-xs text-accent hover:underline"
+        className="mt-2 inline-flex items-center gap-1 text-xs text-neutral-900 hover:underline"
       >
         <ExternalLink size={12} />
         Idealista
@@ -97,15 +97,15 @@ export default function AnalysisSourcesPanel({ source, scenario, market = "it" }
   const grossRent = resolveScenarioMonthlyRent(scenario);
 
   return (
-    <section className="card-glass overflow-hidden">
-      <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
+    <section className="card overflow-hidden">
+      <div className="border-b border-surface-border bg-neutral-50 px-5 py-4">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <Building2 size={18} className="text-accent" />
-              <h2 className="font-semibold text-slate-100">{t("analysisSources.title")}</h2>
+              <Building2 size={18} className="text-neutral-900" />
+              <h2 className="font-semibold text-neutral-900">{t("analysisSources.title")}</h2>
             </div>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-neutral-500">
               {t("analysisSources.subtitle", { count: similarRentals.length })}
             </p>
           </div>
@@ -114,7 +114,7 @@ export default function AnalysisSourcesPanel({ source, scenario, market = "it" }
             onClick={() =>
               downloadAnalysisJson(createSavedComparison(source, scenario, undefined, market))
             }
-            className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-slate-300 hover:bg-surface-raised"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-100"
           >
             <Download size={14} />
             {t("common.exportJson")}
@@ -128,14 +128,14 @@ export default function AnalysisSourcesPanel({ source, scenario, market = "it" }
 
       <div className="grid gap-4 p-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <div className="space-y-3">
-          <div className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-emerald-400">
+          <div className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-green-600">
             <Home size={14} />
             Acquisto
           </div>
-          <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
-            <p className="font-medium text-slate-100 line-clamp-2">{sale.title}</p>
-            <p className="mt-1 text-lg font-bold text-accent">{fmtMoney(sale.price, market)}</p>
-            <p className="mt-1 text-xs text-slate-500">
+          <div className="rounded-xl border border-green-200 bg-green-50 p-4">
+            <p className="font-medium text-neutral-900 line-clamp-2">{sale.title}</p>
+            <p className="mt-1 text-lg font-bold text-neutral-900">{fmtMoney(sale.price, market)}</p>
+            <p className="mt-1 text-xs text-neutral-500">
               {[
                 sale.sqm != null && `${sale.sqm} m²`,
                 sale.rooms != null && `${sale.rooms} locali`,
@@ -148,15 +148,15 @@ export default function AnalysisSourcesPanel({ source, scenario, market = "it" }
               href={sale.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-1 text-xs text-accent hover:underline"
+              className="mt-3 inline-flex items-center gap-1 text-xs text-neutral-900 hover:underline"
             >
               <ExternalLink size={12} />
               Apri su Idealista
             </a>
           </div>
 
-          <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 p-3 text-xs text-slate-400">
-            <p className="font-medium text-slate-300">Valori applicati al form</p>
+          <div className="rounded-xl border border-surface-border/60 bg-white p-3 text-xs text-neutral-600">
+            <p className="font-medium text-neutral-700">Valori applicati al form</p>
             <ul className="mt-2 space-y-1">
               <li>Prezzo acquisto: {fmtMoney(scenario.purchase_price, market)}</li>
               <li>Superficie: {scenario.sqm} m²</li>
@@ -182,18 +182,18 @@ export default function AnalysisSourcesPanel({ source, scenario, market = "it" }
             Affitti simili ({similarRentals.length})
           </div>
 
-          <div className="rounded-xl border border-accent/30 bg-accent/10 px-3 py-2.5">
-            <p className="text-[10px] font-medium uppercase tracking-wide text-accent">
+          <div className="rounded-xl border border-neutral-300 bg-neutral-50 px-3 py-2.5">
+            <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-900">
               Media usata nell&apos;analisi
               {method === "per_sqm" ? " (€/m²)" : ""}
             </p>
             {method === "per_sqm" && avgWholeMonthly != null && avgRentPerSqm != null && sale.sqm ? (
               <>
-                <p className="mt-0.5 text-base font-bold text-slate-100">
+                <p className="mt-0.5 text-base font-bold text-neutral-900">
                   {fmtMoney(avgWholeMonthly, market)}
-                  <span className="text-sm font-normal text-slate-400">/mese intero</span>
+                  <span className="text-sm font-normal text-neutral-600">/mese intero</span>
                 </p>
-                <p className="mt-0.5 text-xs text-slate-500">
+                <p className="mt-0.5 text-xs text-neutral-500">
                   {avgRentPerSqm.toLocaleString("it-IT", {
                     style: "currency",
                     currency: "EUR",
@@ -204,23 +204,23 @@ export default function AnalysisSourcesPanel({ source, scenario, market = "it" }
               </>
             ) : underTwoLocali && avgWholeMonthly != null && avgRentPerRoom != null ? (
               <>
-                <p className="mt-0.5 text-base font-bold text-slate-100">
+                <p className="mt-0.5 text-base font-bold text-neutral-900">
                   {fmtMoney(avgWholeMonthly, market)}
-                  <span className="text-sm font-normal text-slate-400">/mese intero</span>
+                  <span className="text-sm font-normal text-neutral-600">/mese intero</span>
                 </p>
-                <p className="mt-0.5 text-xs text-slate-500">
+                <p className="mt-0.5 text-xs text-neutral-500">
                   {fmtMoney(avgRentPerRoom, market)}/stanza × {SINGLE_RENTABLE_ROOM_PREMIUM.toLocaleString("it-IT")} ={" "}
                   {fmtMoney(avgWholeMonthly, market)}/mese
                 </p>
               </>
             ) : avgRentPerRoom != null ? (
               <>
-                <p className="mt-0.5 text-base font-bold text-slate-100">
+                <p className="mt-0.5 text-base font-bold text-neutral-900">
                   {fmtMoney(avgRentPerRoom, market)}
-                  <span className="text-sm font-normal text-slate-400">/mese/stanza</span>
+                  <span className="text-sm font-normal text-neutral-600">/mese/stanza</span>
                 </p>
                 {avgWholeMonthly != null && rentableRooms != null && (
-                  <p className="mt-0.5 text-xs text-slate-500">
+                  <p className="mt-0.5 text-xs text-neutral-500">
                     {fmtMoney(avgRentPerRoom, market)}/stanza × {rentableRooms} stanze = {fmtMoney(avgWholeMonthly, market)}/mese
                   </p>
                 )}

@@ -16,6 +16,7 @@ import { cn, fmtMoney } from "@/lib/utils";
 import { getMarket, type MarketId } from "@/lib/markets";
 import { useI18n, type TFunction } from "@/lib/i18n/context";
 import itLocale from "@/lib/i18n/locales/it";
+import { CHART_THEME } from "@/lib/chart-theme";
 
 interface Props {
   result: AnalysisResult;
@@ -27,11 +28,11 @@ function legendLabel(primary: string, secondary?: string) {
 }
 
 const COLORS = {
-  affitto: "#34d399",
-  mutuo: "#a78bfa",
-  imposte: "#fb923c",
-  grid: "#2a3544",
-  axis: "#64748b",
+  affitto: CHART_THEME.positive,
+  mutuo: CHART_THEME.series.violet,
+  imposte: CHART_THEME.series.amber,
+  grid: CHART_THEME.grid,
+  axis: CHART_THEME.axis,
 };
 
 const OPEX_BAR_DEFS = [
@@ -235,18 +236,18 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
   }, [totals, labels]);
 
   return (
-    <div className="card-glass p-5">
+    <div className="card p-5">
       <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-base font-semibold text-slate-100">{labels.title}</h2>
-          {labels.titleIt && <p className="text-xs text-slate-600">{labels.titleIt}</p>}
-          <p className="text-sm text-slate-500">{labels.subtitle}</p>
-          {labels.subtitleIt && <p className="text-xs text-slate-600">{labels.subtitleIt}</p>}
-          <p className="mt-1 text-xs text-slate-500">
+          <h2 className="text-base font-semibold text-neutral-900">{labels.title}</h2>
+          {labels.titleIt && <p className="text-xs text-neutral-500">{labels.titleIt}</p>}
+          <p className="text-sm text-neutral-500">{labels.subtitle}</p>
+          {labels.subtitleIt && <p className="text-xs text-neutral-500">{labels.subtitleIt}</p>}
+          <p className="mt-1 text-xs text-neutral-500">
             {labels.mortgageOn(fmtMoney(result.summary.loan_amount, market))}
           </p>
           {labels.mortgageOnIt && (
-            <p className="text-[10px] text-slate-600">
+            <p className="text-[10px] text-neutral-500">
               {labels.mortgageOnIt(fmtMoney(result.summary.loan_amount, market))}
             </p>
           )}
@@ -260,7 +261,7 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
                 onClick={() => setYear(y)}
                 className={cn(
                   "shrink-0 rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
-                  year === y ? "bg-accent/20 text-accent" : "text-slate-400 hover:text-slate-200",
+                  year === y ? "bg-neutral-100 text-neutral-900" : "text-neutral-600 hover:text-neutral-800",
                 )}
               >
                 {labels.yearButton(y)}
@@ -287,7 +288,7 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
           />
           <Tooltip
             contentStyle={{
-              background: "#1a2332",
+              background: "#ffffff",
               border: "1px solid #2a3544",
               borderRadius: "12px",
             }}
@@ -335,11 +336,11 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
 
       {totals && (
         <div className="mt-4 border-t border-surface-border/60 pt-4">
-          <p className="mb-3 text-xs font-medium text-slate-400">
+          <p className="mb-3 text-xs font-medium text-neutral-600">
             {labels.yearTotal(year, totals.months)}
           </p>
           {labels.yearTotalIt && (
-            <p className="-mt-2 mb-3 text-[10px] text-slate-600">
+            <p className="-mt-2 mb-3 text-[10px] text-neutral-500">
               {labels.yearTotalIt(year, totals.months)}
             </p>
           )}
@@ -352,19 +353,19 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
                     style={{ background: row.color }}
                   />
                   <div className="min-w-0">
-                    <span className="text-slate-500">{row.label}</span>
+                    <span className="text-neutral-500">{row.label}</span>
                     {row.labelIt && (
-                      <span className="block text-[10px] leading-tight text-slate-600">{row.labelIt}</span>
+                      <span className="block text-[10px] leading-tight text-neutral-500">{row.labelIt}</span>
                     )}
                   </div>
                 </div>
-                <p className="mt-1.5 font-semibold text-slate-200">
+                <p className="mt-1.5 font-semibold text-neutral-800">
                   {fmtMoney(row.yearly / totals.months, market)}
-                  <span className="ml-1 text-[10px] font-normal text-slate-500">{labels.perMonth}</span>
+                  <span className="ml-1 text-[10px] font-normal text-neutral-500">{labels.perMonth}</span>
                 </p>
-                <p className="mt-0.5 text-slate-400">
+                <p className="mt-0.5 text-neutral-600">
                   {fmtMoney(row.yearly, market)}
-                  <span className="ml-1 text-[10px] text-slate-500">{labels.perYear}</span>
+                  <span className="ml-1 text-[10px] text-neutral-500">{labels.perYear}</span>
                 </p>
               </div>
             ))}
@@ -374,7 +375,7 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
               className={cn(
                 "mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border px-4 py-3",
                 netRow.yearly >= 0
-                  ? "border-emerald-500/35 bg-emerald-500/10"
+                  ? "border-green-200 bg-green-50"
                   : "border-red-500/35 bg-red-500/10",
               )}
             >
@@ -384,9 +385,9 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
                   style={{ background: netRow.color }}
                 />
                 <div>
-                  <p className="text-sm font-semibold text-slate-100">{netRow.label}</p>
+                  <p className="text-sm font-semibold text-neutral-900">{netRow.label}</p>
                   {netRow.labelIt && (
-                    <p className="text-xs text-slate-500">{netRow.labelIt}</p>
+                    <p className="text-xs text-neutral-500">{netRow.labelIt}</p>
                   )}
                 </div>
               </div>
@@ -394,15 +395,15 @@ export default function MonthlyBreakdownChart({ result, market = "it" }: Props) 
                 <p
                   className={cn(
                     "text-lg font-bold tabular-nums",
-                    netRow.yearly >= 0 ? "text-emerald-400" : "text-red-400",
+                    netRow.yearly >= 0 ? "text-green-600" : "text-red-400",
                   )}
                 >
                   {fmtMoney(netRow.yearly / totals.months, market)}
-                  <span className="ml-1 text-xs font-normal text-slate-500">{labels.perMonth}</span>
+                  <span className="ml-1 text-xs font-normal text-neutral-500">{labels.perMonth}</span>
                 </p>
-                <p className="mt-0.5 text-sm tabular-nums text-slate-400">
+                <p className="mt-0.5 text-sm tabular-nums text-neutral-600">
                   {fmtMoney(netRow.yearly, market)}
-                  <span className="ml-1 text-[10px] text-slate-500">{labels.perYear}</span>
+                  <span className="ml-1 text-[10px] text-neutral-500">{labels.perYear}</span>
                 </p>
               </div>
             </div>

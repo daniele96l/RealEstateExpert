@@ -57,7 +57,7 @@ import {
 const PropertySimilarRentMap = dynamic(() => import("./PropertySimilarRentMap"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-[360px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-slate-500">
+    <div className="flex h-[360px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-neutral-500">
       Caricamento mappa…
     </div>
   ),
@@ -92,12 +92,12 @@ function Spec({
   value: string;
 }) {
   return (
-    <div className="rounded-xl border border-surface-border/60 bg-surface-raised/40 p-3">
-      <div className="mb-1 flex items-center gap-1.5 text-xs text-slate-500">
-        <Icon size={13} className="text-accent/80" />
+    <div className="rounded-xl border border-surface-border/60 bg-neutral-50 p-3">
+      <div className="mb-1 flex items-center gap-1.5 text-xs text-neutral-500">
+        <Icon size={13} className="text-neutral-900/80" />
         {label}
       </div>
-      <p className="text-sm font-semibold text-slate-100">{value}</p>
+      <p className="text-sm font-semibold text-neutral-900">{value}</p>
     </div>
   );
 }
@@ -274,7 +274,7 @@ export default function PropertyDetailPanel({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-900/40 p-4 "
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -282,38 +282,38 @@ export default function PropertyDetailPanel({
     >
       <div
         className={cn(
-          "card-glass flex max-h-[90vh] w-full overflow-hidden shadow-2xl",
+          "card flex max-h-[90vh] w-full overflow-hidden shadow-2xl",
           showSimilarColumn ? "max-w-6xl flex-row" : "max-w-2xl flex-col",
         )}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-          <div className="sticky top-0 z-10 flex shrink-0 items-start justify-between gap-3 border-b border-surface-border/80 bg-surface-raised/95 px-5 py-4 backdrop-blur-xl">
+          <div className="sticky top-0 z-10 flex shrink-0 items-start justify-between gap-3 border-b border-surface-border bg-white px-5 py-4 ">
             <div className="min-w-0 flex-1">
               {loading ? (
-                <div className="flex items-center gap-2 text-sm text-slate-400">
-                  <Loader2 size={16} className="animate-spin text-accent" />
+                <div className="flex items-center gap-2 text-sm text-neutral-600">
+                  <Loader2 size={16} className="animate-spin text-neutral-900" />
                   Caricamento scheda immobile…
                 </div>
               ) : error ? (
                 <p className="text-sm text-red-400">{error}</p>
               ) : detail ? (
                 <>
-                  <p className="text-xs font-medium uppercase tracking-wide text-accent">Scheda immobile</p>
-                  <h3 className="mt-1 text-base font-semibold text-slate-100">{detail.title}</h3>
-                  <p className="mt-1 text-lg font-bold text-accent">{priceLabel}</p>
+                  <p className="text-xs font-medium uppercase tracking-wide text-neutral-900">Scheda immobile</p>
+                  <h3 className="mt-1 text-base font-semibold text-neutral-900">{detail.title}</h3>
+                  <p className="mt-1 text-lg font-bold text-neutral-900">{priceLabel}</p>
                   {quickMortgageMonthly != null && quickMortgageMonthly > 0 && (
-                    <p className="mt-0.5 text-xs text-slate-400">
+                    <p className="mt-0.5 text-xs text-neutral-600">
                       {market === "cz"
                         ? `Odhad hypotéky na ${marketDefaults.default_loan_years} let při ${marketDefaults.mortgage_rate_pct}%: `
                         : `Stima mutuo mensile su ${marketDefaults.default_loan_years} anni con tassi al ${marketDefaults.mortgage_rate_pct}%: `}
-                      <span className="font-medium text-slate-300">
+                      <span className="font-medium text-neutral-700">
                         {fmt(quickMortgageMonthly)}{ui.perMonth}
                       </span>
                     </p>
                   )}
                   {(detail.zone || detail.city_label) && (
-                    <p className="mt-1 flex items-center gap-1 text-xs text-slate-500">
+                    <p className="mt-1 flex items-center gap-1 text-xs text-neutral-500">
                       <MapPin size={12} />
                       {[detail.zone, detail.city_label].filter(Boolean).join(" · ")}
                     </p>
@@ -329,7 +329,7 @@ export default function PropertyDetailPanel({
                   rel="noopener noreferrer"
                   className={cn(
                     "inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-surface-border px-4 py-2.5",
-                    "text-sm text-slate-300 hover:bg-surface-raised",
+                    "text-sm text-neutral-700 hover:bg-neutral-100",
                   )}
                 >
                   <ExternalLink size={14} />
@@ -339,7 +339,7 @@ export default function PropertyDetailPanel({
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-lg border border-surface-border p-1.5 text-slate-400 hover:bg-surface-border/40 hover:text-slate-200"
+                className="rounded-lg border border-surface-border p-1.5 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800"
                 aria-label="Chiudi"
               >
                 <X size={16} />
@@ -426,8 +426,8 @@ export default function PropertyDetailPanel({
                 { label: "Zona", value: detail.zone ?? "—" },
               ].map((row) => (
                 <div key={row.label} className="rounded-lg bg-surface-border/20 px-3 py-2">
-                  <p className="text-slate-500">{row.label}</p>
-                  <p className="font-medium text-slate-200">{row.value}</p>
+                  <p className="text-neutral-500">{row.label}</p>
+                  <p className="font-medium text-neutral-800">{row.value}</p>
                 </div>
               ))}
             </div>
@@ -443,14 +443,14 @@ export default function PropertyDetailPanel({
             )}
 
             {detail.description && (
-              <div className="rounded-xl border border-surface-border/60 bg-surface-raised/30 p-3">
+              <div className="rounded-xl border border-surface-border/60 bg-white p-3">
                 <div className="mb-1.5 flex items-center justify-between gap-2">
-                  <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Descrizione</p>
+                  <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Descrizione</p>
                   {detail.description.length > 120 && (
                     <button
                       type="button"
                       onClick={() => setDescriptionExpanded((v) => !v)}
-                      className="shrink-0 text-xs font-medium text-accent hover:text-accent/80"
+                      className="shrink-0 text-xs font-medium text-neutral-900 hover:text-neutral-900/80"
                     >
                       {descriptionExpanded ? "Mostra meno" : "Mostra tutto"}
                     </button>
@@ -471,7 +471,7 @@ export default function PropertyDetailPanel({
                         }
                   }
                   className={cn(
-                    "text-sm leading-snug text-slate-300",
+                    "text-sm leading-snug text-neutral-700",
                     descriptionExpanded
                       ? "max-h-36 overflow-y-auto pr-1"
                       : "max-h-[3.25rem] cursor-pointer overflow-hidden line-clamp-2",
@@ -483,7 +483,7 @@ export default function PropertyDetailPanel({
             )}
 
             {cacheSource && detail.fetched_at && (
-              <p className="text-xs text-slate-600">
+              <p className="text-xs text-neutral-500">
                 {cacheSource === "server"
                   ? `Da cache ${propertyDetailCacheFileLabel(detail.id)}`
                   : "Da cache browser"}
@@ -504,18 +504,18 @@ export default function PropertyDetailPanel({
         </div>
 
         {showSimilarColumn && detail && (
-          <aside className="flex min-h-0 w-80 shrink-0 flex-col border-l border-surface-border/80 bg-accent/5 xl:w-96">
-              <div className="flex shrink-0 items-start justify-between gap-2 border-b border-accent/20 px-4 py-3">
+          <aside className="flex min-h-0 w-80 shrink-0 flex-col border-l border-surface-border bg-neutral-50 xl:w-96">
+              <div className="flex shrink-0 items-start justify-between gap-2 border-b border-neutral-200 px-4 py-3">
                 <div className="min-w-0">
-                  <p className="text-xs font-medium uppercase tracking-wide text-accent">Affitti simili</p>
-                  <p className="mt-0.5 text-xs text-slate-500">
+                  <p className="text-xs font-medium uppercase tracking-wide text-neutral-900">Affitti simili</p>
+                  <p className="mt-0.5 text-xs text-neutral-500">
                     Stessa zona{detail.zone ? `: ${detail.zone}` : ""}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={closeSimilarColumn}
-                  className="rounded-lg border border-surface-border p-1 text-slate-400 hover:bg-surface-border/40 hover:text-slate-200"
+                  className="rounded-lg border border-surface-border p-1 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800"
                   aria-label="Chiudi affitti simili"
                 >
                   <X size={14} />
@@ -524,8 +524,8 @@ export default function PropertyDetailPanel({
 
               <div className="min-h-0 flex-1 overflow-y-auto p-4">
                 {similarLoading && (
-                  <div className="flex items-center justify-center gap-2 py-12 text-sm text-slate-400">
-                    <Loader2 size={16} className="animate-spin text-accent" />
+                  <div className="flex items-center justify-center gap-2 py-12 text-sm text-neutral-600">
+                    <Loader2 size={16} className="animate-spin text-neutral-900" />
                     Ricerca in corso…
                   </div>
                 )}
@@ -542,11 +542,11 @@ export default function PropertyDetailPanel({
                 )}
 
                 {!similarLoading && rentPool.length > 0 && (
-                  <div className="mb-3 space-y-2 rounded-lg border border-surface-border/60 bg-surface-raised/30 p-3">
-                    <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">
+                  <div className="mb-3 space-y-2 rounded-lg border border-surface-border/60 bg-white p-3">
+                    <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-500">
                       Filtri comparabili
                     </p>
-                    <label className="block text-xs text-slate-400">
+                    <label className="block text-xs text-neutral-600">
                       {market === "cz" ? "Metoda odhadu nájmu" : "Metodo stima affitto"}
                       <select
                         value={similarFilters.rentEstimateMethod}
@@ -556,7 +556,7 @@ export default function PropertyDetailPanel({
                             rentEstimateMethod: e.target.value as SimilarRentEstimateMethod,
                           }))
                         }
-                        className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                        className="mt-1 w-full rounded-lg border border-surface-border bg-white px-2 py-1.5 text-sm text-neutral-800"
                       >
                         <option value="per_sqm">
                           {market === "cz" ? `Průměr ${pricePerSqmLabel} v okolí` : `Media ${pricePerSqmLabel} in zona`}
@@ -566,7 +566,7 @@ export default function PropertyDetailPanel({
                         </option>
                       </select>
                     </label>
-                    <label className="block text-xs text-slate-400">
+                    <label className="block text-xs text-neutral-600">
                       {market === "cz" ? "Poloměr" : "Raggio"}
                       <select
                         value={similarFilters.radiusPresetId}
@@ -576,7 +576,7 @@ export default function PropertyDetailPanel({
                             radiusPresetId: e.target.value as SimilarRentFilterState["radiusPresetId"],
                           }))
                         }
-                        className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                        className="mt-1 w-full rounded-lg border border-surface-border bg-white px-2 py-1.5 text-sm text-neutral-800"
                       >
                         {SIMILAR_RENT_RADIUS_PRESETS.map((preset) => (
                           <option key={preset.id} value={preset.id}>
@@ -585,7 +585,7 @@ export default function PropertyDetailPanel({
                         ))}
                       </select>
                     </label>
-                    <label className="block text-xs text-slate-400">
+                    <label className="block text-xs text-neutral-600">
                       Locali
                       <select
                         value={similarFilters.roomsFilter}
@@ -595,7 +595,7 @@ export default function PropertyDetailPanel({
                             roomsFilter: e.target.value as SimilarRentFilterState["roomsFilter"],
                           }))
                         }
-                        className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                        className="mt-1 w-full rounded-lg border border-surface-border bg-white px-2 py-1.5 text-sm text-neutral-800"
                       >
                         <option value="any">Qualsiasi</option>
                         <option value="similar">
@@ -606,7 +606,7 @@ export default function PropertyDetailPanel({
                         </option>
                       </select>
                     </label>
-                    <label className="block text-xs text-slate-400">
+                    <label className="block text-xs text-neutral-600">
                       Metratura
                       <select
                         value={similarFilters.sqmFilter}
@@ -616,7 +616,7 @@ export default function PropertyDetailPanel({
                             sqmFilter: e.target.value as SimilarRentFilterState["sqmFilter"],
                           }))
                         }
-                        className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                        className="mt-1 w-full rounded-lg border border-surface-border bg-white px-2 py-1.5 text-sm text-neutral-800"
                       >
                         <option value="any">Qualsiasi</option>
                         <option value="similar">
@@ -626,7 +626,7 @@ export default function PropertyDetailPanel({
                       </select>
                     </label>
                     {detail.property_type && (
-                      <label className="block text-xs text-slate-400">
+                      <label className="block text-xs text-neutral-600">
                         Tipo
                         <select
                           value={similarFilters.propertyTypeFilter}
@@ -636,14 +636,14 @@ export default function PropertyDetailPanel({
                               propertyTypeFilter: e.target.value as SimilarRentFilterState["propertyTypeFilter"],
                             }))
                           }
-                          className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                          className="mt-1 w-full rounded-lg border border-surface-border bg-white px-2 py-1.5 text-sm text-neutral-800"
                         >
                           <option value="any">Qualsiasi</option>
                           <option value="match">Stesso tipo ({detail.property_type})</option>
                         </select>
                       </label>
                     )}
-                    <label className="block text-xs text-slate-400">
+                    <label className="block text-xs text-neutral-600">
                       Max comparabili
                       <select
                         value={similarRentLimitSelectValue(similarFilters.limit)}
@@ -653,7 +653,7 @@ export default function PropertyDetailPanel({
                             limit: similarRentLimitFromSelect(e.target.value),
                           }))
                         }
-                        className="mt-1 w-full rounded-lg border border-surface-border bg-surface-raised/60 px-2 py-1.5 text-sm text-slate-200"
+                        className="mt-1 w-full rounded-lg border border-surface-border bg-white px-2 py-1.5 text-sm text-neutral-800"
                       >
                         {SIMILAR_RENT_LIMIT_OPTIONS.map((opt) => (
                           <option
@@ -671,8 +671,8 @@ export default function PropertyDetailPanel({
                 {similarRentals && similarRentals.length > 0 && !similarLoading && (
                   <>
                     {canUseRentEstimate && (
-                      <div className="mb-3 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2.5">
-                        <p className="text-[10px] font-medium uppercase tracking-wide text-accent">
+                      <div className="mb-3 rounded-lg border border-neutral-300 bg-neutral-50 px-3 py-2.5">
+                        <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-900">
                           {rentEstimateMethod === "per_sqm"
                             ? market === "cz"
                               ? `Odhad nájmu (${pricePerSqmLabel})`
@@ -681,11 +681,11 @@ export default function PropertyDetailPanel({
                               ? `Odhad nájmu (${ui.perRoom})`
                               : `Stima affitto (${ui.perRoom})`}
                         </p>
-                        <p className="mt-0.5 text-lg font-bold text-slate-100">
+                        <p className="mt-0.5 text-lg font-bold text-neutral-900">
                           {fmt(avgWholeMonthly!)}
-                          <span className="text-sm font-normal text-slate-400">{ui.perMonth}</span>
+                          <span className="text-sm font-normal text-neutral-600">{ui.perMonth}</span>
                         </p>
-                        <p className="mt-0.5 text-xs text-slate-500">
+                        <p className="mt-0.5 text-xs text-neutral-500">
                           {market === "cz"
                             ? estimateSampleCount === comparableCount
                               ? `Průměr z ${estimateSampleCount} pronájmů · ${similarRadiusLabel}`
@@ -717,7 +717,7 @@ export default function PropertyDetailPanel({
                             </>
                           )}
                         </p>
-                        <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
+                        <p className="mt-2 text-[11px] leading-relaxed text-neutral-500">
                           {rentEstimateMethod === "per_sqm"
                             ? market === "cz"
                               ? `Průměrný měsíční nájem ${pricePerSqmLabel} z porovnatelných inzerátů s uvedenou plochou, aplikovaný na ${detail.sqm} m² prodávané nemovitosti.`
@@ -739,8 +739,8 @@ export default function PropertyDetailPanel({
                               onClose();
                             }}
                             className={cn(
-                              "mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-accent/40",
-                              "bg-accent/15 px-3 py-2 text-xs font-medium text-accent hover:bg-accent/25",
+                              "mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-neutral-300",
+                              "bg-neutral-100 px-3 py-2 text-xs font-medium text-neutral-900 hover:hover:bg-neutral-200",
                             )}
                           >
                             <LayoutDashboard size={12} />
@@ -768,12 +768,12 @@ export default function PropertyDetailPanel({
                         return (
                           <div
                             key={rent.id}
-                            className="rounded-lg border border-surface-border/60 bg-surface-raised/40 p-3"
+                            className="rounded-lg border border-surface-border/60 bg-neutral-50 p-3"
                           >
                             <div className="min-w-0">
-                              <p className="text-sm font-medium text-slate-200 line-clamp-2">{rent.title}</p>
+                              <p className="text-sm font-medium text-neutral-800 line-clamp-2">{rent.title}</p>
                               <div className="mt-1 flex flex-wrap items-center gap-2">
-                                <p className="text-xs text-slate-500">
+                                <p className="text-xs text-neutral-500">
                                   {wholeFlat
                                     ? [
                                         `${fmt(wholeFlat.pricePerRoom)}${ui.perMonth}/stanza`,
@@ -808,7 +808,7 @@ export default function PropertyDetailPanel({
                                 rel="noopener noreferrer"
                                 className={cn(
                                   "inline-flex items-center justify-center gap-1 rounded-lg border border-surface-border px-2.5 py-1.5",
-                                  "text-xs text-slate-300 hover:bg-surface-raised",
+                                  "text-xs text-neutral-700 hover:bg-neutral-100",
                                 )}
                               >
                                 <ExternalLink size={12} />
@@ -818,8 +818,8 @@ export default function PropertyDetailPanel({
                                 type="button"
                                 onClick={() => onOpenSimilarRent?.(detail, rentForAnalysis)}
                                 className={cn(
-                                  "inline-flex items-center justify-center gap-1 rounded-lg border border-accent/40 bg-accent/10 px-2.5 py-1.5",
-                                  "text-xs font-medium text-accent hover:bg-accent/20",
+                                  "inline-flex items-center justify-center gap-1 rounded-lg border border-neutral-300 bg-neutral-50 px-2.5 py-1.5",
+                                  "text-xs font-medium text-neutral-900 hover:bg-neutral-100",
                                 )}
                               >
                                 <LayoutDashboard size={12} />

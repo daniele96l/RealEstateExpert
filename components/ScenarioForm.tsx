@@ -31,7 +31,7 @@ function Field({ label, hint, children }: { label: string; hint?: string; childr
     <div>
       <label className="label-field">{label}</label>
       {children}
-      {hint && <p className="mt-1 text-xs text-slate-500">{hint}</p>}
+      {hint && <p className="mt-1 text-xs text-neutral-500">{hint}</p>}
     </div>
   );
 }
@@ -41,27 +41,27 @@ function RentalModeInfo({ mode }: { mode: RentalMode }) {
   const rules = getRentalModeRules(mode);
   const modeKey = mode as "long_term" | "medium_term_semester" | "short_term_airbnb";
   return (
-    <div className="sm:col-span-2 rounded-xl border border-accent/20 bg-accent/5 p-3 text-xs text-slate-400">
-      <div className="mb-2 flex items-center gap-1.5 font-medium text-accent">
+    <div className="sm:col-span-2 rounded-xl border border-neutral-200 bg-neutral-50 p-3 text-xs text-neutral-600">
+      <div className="mb-2 flex items-center gap-1.5 font-medium text-neutral-900">
         <Info size={14} />
         {t("scenario.regime")}: {t(`rentalModes.${modeKey}.label`)}
       </div>
       <ul className="space-y-1.5 leading-relaxed">
         <li>
-          <span className="text-slate-300">{t("scenario.flatTax")}:</span> {rules.cedolare_pct}% — {t(`rentalModes.${modeKey}.cedolareNote`)}
+          <span className="text-neutral-700">{t("scenario.flatTax")}:</span> {rules.cedolare_pct}% — {t(`rentalModes.${modeKey}.cedolareNote`)}
         </li>
         <li>
-          <span className="text-slate-300">{t("scenario.imu")}:</span> {t(`rentalModes.${modeKey}.imuNote`)}
+          <span className="text-neutral-700">{t("scenario.imu")}:</span> {t(`rentalModes.${modeKey}.imuNote`)}
         </li>
         <li>
-          <span className="text-slate-300">{t("scenario.typicalOccupancy")}:</span> {rules.occupancy_pct}% — {t(`rentalModes.${modeKey}.occupancyNote`)}
+          <span className="text-neutral-700">{t("scenario.typicalOccupancy")}:</span> {rules.occupancy_pct}% — {t(`rentalModes.${modeKey}.occupancyNote`)}
         </li>
         {mode === "medium_term_semester" ? (
           <li>{t(`rentalModes.${modeKey}.utilitiesNote`)}</li>
         ) : mode === "short_term_airbnb" ? (
           <>
             <li>
-              <span className="text-slate-300">{t("scenario.platform")}:</span>{" "}
+              <span className="text-neutral-700">{t("scenario.platform")}:</span>{" "}
               {t("scenario.platformFee", { pct: rules.platform_fee_pct * 100 })}
             </li>
             <li>{t(`rentalModes.${modeKey}.utilitiesNote`)}</li>
@@ -187,23 +187,23 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
   }, [watch, onChange]);
 
   return (
-    <div className="card-glass overflow-hidden">
-      <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
+    <div className="card overflow-hidden">
+      <div className="border-b border-surface-border bg-neutral-50 px-5 py-4">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <Sparkles size={18} className="text-accent" />
-            <h2 className="font-semibold text-slate-100">{t("scenario.title")}</h2>
+            <Sparkles size={18} className="text-neutral-900" />
+            <h2 className="font-semibold text-neutral-900">{t("scenario.title")}</h2>
           </div>
-          <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-accent">
+          <span className="rounded-full border border-neutral-300 bg-neutral-50 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-neutral-900">
             {t("common.live")}
           </span>
         </div>
-        <p className="mt-1.5 text-xs text-slate-500">{t("scenario.subtitle")}</p>
+        <p className="mt-1.5 text-xs text-neutral-500">{t("scenario.subtitle")}</p>
       </div>
 
       <div className="space-y-6 p-5">
         <section>
-          <div className="mb-3 flex items-center gap-2 text-sm font-medium text-accent">
+          <div className="mb-3 flex items-center gap-2 text-sm font-medium text-neutral-900">
             <Home size={16} />
             {t("scenario.purchaseSection")}
           </div>
@@ -298,7 +298,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
         </section>
 
         <section>
-          <div className="mb-3 flex items-center gap-2 text-sm font-medium text-accent">
+          <div className="mb-3 flex items-center gap-2 text-sm font-medium text-neutral-900">
             <Key size={16} />
             {t("scenario.rentSection")}
           </div>
@@ -332,8 +332,8 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
                         className={cn(
                           "flex-1 px-3 py-2 text-sm transition-colors",
                           rentPriceBasis === id
-                            ? "bg-accent/20 text-accent"
-                            : "text-slate-400 hover:text-slate-200",
+                            ? "bg-neutral-100 text-neutral-900"
+                            : "text-neutral-600 hover:text-neutral-800",
                         )}
                       >
                         {label}
@@ -441,7 +441,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
                     disabled={utilitiesAuto}
                     {...register("utilities_annual", { valueAsNumber: true })}
                   />
-                  <label className="flex shrink-0 cursor-pointer items-center gap-1.5 rounded-lg border border-surface-border px-3 text-xs text-slate-400">
+                  <label className="flex shrink-0 cursor-pointer items-center gap-1.5 rounded-lg border border-surface-border px-3 text-xs text-neutral-600">
                     <input
                       type="checkbox"
                       className="rounded border-surface-border"
@@ -454,7 +454,7 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
             </div>
             {market === "it" && <RentalModeInfo mode={rentalMode} />}
             {market === "cz" && (
-              <div className="sm:col-span-2 rounded-xl border border-accent/20 bg-accent/5 p-3 text-xs text-slate-400">
+              <div className="sm:col-span-2 rounded-xl border border-neutral-200 bg-neutral-50 p-3 text-xs text-neutral-600">
                 {t("scenario.czTaxNote")}
               </div>
             )}
@@ -462,13 +462,13 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
         </section>
 
         {market === "it" && (
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-neutral-500">
           {t("scenario.sourcesPrefix")}{" "}
           <a
             href="https://www.agenziaentrate.gov.it/portale/le-locazioni-brevi-e-la-cedolare-secca"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent/80 hover:underline"
+            className="text-neutral-900/80 hover:underline"
           >
             Agenzia delle Entrate
           </a>

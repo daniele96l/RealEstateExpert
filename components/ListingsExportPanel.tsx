@@ -110,16 +110,16 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
   const salePresets = salePricePresetsForMarket(market);
 
   return (
-    <section className="card-glass relative z-0 overflow-hidden">
+    <section className="card relative z-0 overflow-hidden">
       <div className="flex flex-col gap-2 px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
         <div className="flex min-w-0 flex-1 items-start gap-2">
-          <Download size={16} className="mt-0.5 shrink-0 text-accent" />
+          <Download size={16} className="mt-0.5 shrink-0 text-neutral-900" />
           <div className="min-w-0 flex-1">
-            <h2 className="text-sm font-semibold text-slate-100">{t("export.title")}</h2>
+            <h2 className="text-sm font-semibold text-neutral-900">{t("export.title")}</h2>
             <p
               className={cn(
                 "text-xs leading-snug",
-                exporting ? "text-accent" : lastResult?.errors === -1 ? "text-amber-400" : lastResult && !exporting ? "text-emerald-400" : "text-slate-500",
+                exporting ? "text-neutral-900" : lastResult?.errors === -1 ? "text-amber-400" : lastResult && !exporting ? "text-green-600" : "text-neutral-500",
               )}
             >
               {exporting && <Loader2 size={12} className="mr-1 inline animate-spin" />}
@@ -131,7 +131,7 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
           <button
             type="button"
             onClick={() => setShowOptions((v) => !v)}
-            className="flex items-center gap-1 rounded-lg border border-surface-border px-2.5 py-1.5 text-xs text-slate-400 hover:bg-surface-raised hover:text-slate-200"
+            className="flex items-center gap-1 rounded-lg border border-surface-border px-2.5 py-1.5 text-xs text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800"
             aria-expanded={showOptions}
           >
             {showOptions ? t("export.hideOptions") : t("export.options")}
@@ -143,7 +143,7 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
             onClick={() => void handleExport()}
             className={cn(
               "flex items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors",
-              "bg-accent text-surface-base hover:bg-accent/90",
+              "bg-accent text-surface-base hover:bg-neutral-800",
               "disabled:cursor-not-allowed disabled:opacity-40",
             )}
           >
@@ -156,7 +156,7 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
       {showOptions && (
         <div className="space-y-3 border-t border-surface-border/60 px-4 py-3">
           <div className="flex flex-wrap gap-x-4 gap-y-1.5">
-            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-slate-300">
+            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-neutral-700">
               <input
                 type="checkbox"
                 className="rounded border-surface-border"
@@ -166,7 +166,7 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
               {t("export.useMapFilters")}
             </label>
             {useMapFilters && (
-              <label className="flex cursor-pointer items-center gap-1.5 text-xs text-slate-300">
+              <label className="flex cursor-pointer items-center gap-1.5 text-xs text-neutral-700">
                 <input
                   type="checkbox"
                   className="rounded border-surface-border"
@@ -176,7 +176,7 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
                 {t("export.applyMapBounds")}
               </label>
             )}
-            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-slate-300">
+            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-neutral-700">
               <input
                 type="checkbox"
                 className="rounded border-surface-border"
@@ -187,11 +187,11 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
             </label>
           </div>
 
-          <p className="text-[11px] leading-snug text-slate-500">{t("export.fetchAlways")}</p>
+          <p className="text-[11px] leading-snug text-neutral-500">{t("export.fetchAlways")}</p>
 
           {!useMapFilters && (
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-              <label className="block text-[11px] text-slate-400">
+              <label className="block text-[11px] text-neutral-600">
                 {t("export.priceMin", { currency })}
                 <select
                   className="select-field mt-0.5 w-full py-1 text-xs"
@@ -211,7 +211,7 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
                   ))}
                 </select>
               </label>
-              <label className="block text-[11px] text-slate-400">
+              <label className="block text-[11px] text-neutral-600">
                 {t("export.priceMax", { currency })}
                 <select
                   className="select-field mt-0.5 w-full py-1 text-xs"
@@ -231,7 +231,7 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
                   ))}
                 </select>
               </label>
-              <label className="block text-[11px] text-slate-400">
+              <label className="block text-[11px] text-neutral-600">
                 {t("export.sqmMin")}
                 <select
                   className="select-field mt-0.5 w-full py-1 text-xs"
@@ -251,7 +251,7 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
                   ))}
                 </select>
               </label>
-              <label className="block text-[11px] text-slate-400">
+              <label className="block text-[11px] text-neutral-600">
                 {t("export.sqmMax")}
                 <select
                   className="select-field mt-0.5 w-full py-1 text-xs"
@@ -272,7 +272,7 @@ export default function ListingsExportPanel({ market, context, onExportComplete 
                 </select>
               </label>
               {market === "cz" && (
-                <label className="block text-[11px] text-slate-400 sm:col-span-2">
+                <label className="block text-[11px] text-neutral-600 sm:col-span-2">
                   {t("export.roomLayout")}
                   <select
                     className="select-field mt-0.5 w-full py-1 text-xs"

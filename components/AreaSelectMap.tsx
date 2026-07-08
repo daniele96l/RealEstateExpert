@@ -165,7 +165,7 @@ export default function AreaSelectMap({
 
   return (
     <div className="space-y-2">
-      <p className="text-xs text-slate-500">
+      <p className="text-xs text-neutral-500">
         {mode === "rectangle"
           ? "Usa lo strumento rettangolo in alto a destra sulla mappa per definire l'area."
           : radiusM != null && radiusM > 0
@@ -174,7 +174,7 @@ export default function AreaSelectMap({
       </p>
       <div className="h-[260px] overflow-hidden rounded-lg border border-surface-border">
         {!mapReady ? (
-          <div className="flex h-full items-center justify-center text-sm text-slate-500">
+          <div className="flex h-full items-center justify-center text-sm text-neutral-500">
             Caricamento mappa…
           </div>
         ) : (

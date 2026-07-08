@@ -36,9 +36,9 @@ export default function CashFlowChart({ result }: Props) {
   const breakEven = result.summary.break_even_month;
 
   return (
-    <div className="card-glass p-5">
-      <h2 className="mb-1 text-base font-semibold text-slate-100">Flusso di cassa mensile</h2>
-      <p className="mb-5 text-sm text-slate-500">Andamento mensile e posizione cumulata nel tempo</p>
+    <div className="card p-5">
+      <h2 className="mb-1 text-base font-semibold text-neutral-900">Flusso di cassa mensile</h2>
+      <p className="mb-5 text-sm text-neutral-500">Andamento mensile e posizione cumulata nel tempo</p>
       <ResponsiveContainer width="100%" height={340}>
         <ComposedChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={CHART_COLORS.grid} vertical={false} />
@@ -67,7 +67,7 @@ export default function CashFlowChart({ result }: Props) {
           />
           <Tooltip
             contentStyle={{
-              background: "#1a2332",
+              background: "#ffffff",
               border: "1px solid #2a3544",
               borderRadius: "12px",
             }}

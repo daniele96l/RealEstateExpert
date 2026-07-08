@@ -102,9 +102,9 @@ export default function ListingProfitPanel({
         type="button"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "rounded-md p-1.5 text-slate-400 transition-colors hover:bg-surface-raised hover:text-slate-200",
-          open && "bg-surface-raised text-accent",
-          active && !open && "text-accent",
+          "rounded-md p-1.5 text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-800",
+          open && "bg-white text-neutral-900",
+          active && !open && "text-neutral-900",
         )}
         aria-label="Utile: calcolo e filtri"
         title="Utile: calcolo e filtri"
@@ -118,16 +118,16 @@ export default function ListingProfitPanel({
           <div
             ref={menuRef}
             style={{ top: menuStyle.top, right: menuStyle.right }}
-            className="fixed z-[1100] max-h-[min(70vh,520px)] w-[min(300px,calc(100vw-2rem))] overflow-y-auto rounded-lg border border-surface-border bg-surface-raised p-3 shadow-xl"
+            className="fixed z-[1100] max-h-[min(70vh,520px)] w-[min(300px,calc(100vw-2rem))] overflow-y-auto rounded-lg border border-surface-border bg-white p-3 shadow-xl"
           >
             <div className="mb-3 flex items-center justify-between gap-2">
-              <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+              <p className="text-xs font-semibold uppercase tracking-wide text-neutral-600">
                 Calcolo utile
               </p>
               {settingsActive && (
                 <button
                   type="button"
-                  className="text-[10px] font-medium text-accent hover:text-accent/80"
+                  className="text-[10px] font-medium text-neutral-900 hover:text-neutral-900/80"
                   onClick={() => onSettingsChange(DEFAULT_LISTING_PROFIT_SETTINGS)}
                 >
                   Reimposta calcolo
@@ -135,7 +135,7 @@ export default function ListingProfitPanel({
               )}
             </div>
 
-            <label className="mb-2 block text-[11px] text-slate-500">
+            <label className="mb-2 block text-[11px] text-neutral-500">
               Affitto stimato da vicini
               <select
                 className="input-field mt-1 w-full py-1.5 text-xs"
@@ -151,7 +151,7 @@ export default function ListingProfitPanel({
               </select>
             </label>
 
-            <label className="mb-2 block text-[11px] text-slate-500">
+            <label className="mb-2 block text-[11px] text-neutral-500">
               Raggio comparabili
               <select
                 className="input-field mt-1 w-full py-1.5 text-xs"
@@ -167,7 +167,7 @@ export default function ListingProfitPanel({
             </label>
 
             <div className="mb-2 grid grid-cols-2 gap-2">
-              <label className="block text-[11px] text-slate-500">
+              <label className="block text-[11px] text-neutral-500">
                 Tasso mutuo %
                 <input
                   type="number"
@@ -179,7 +179,7 @@ export default function ListingProfitPanel({
                   onChange={(e) => patchSettings({ mortgageRatePct: Number(e.target.value) })}
                 />
               </label>
-              <label className="block text-[11px] text-slate-500">
+              <label className="block text-[11px] text-neutral-500">
                 Anni mutuo
                 <input
                   type="number"
@@ -193,7 +193,7 @@ export default function ListingProfitPanel({
               </label>
             </div>
 
-            <label className="mb-2 block text-[11px] text-slate-500">
+            <label className="mb-2 block text-[11px] text-neutral-500">
               Anticipo %
               <input
                 type="number"
@@ -206,7 +206,7 @@ export default function ListingProfitPanel({
               />
             </label>
 
-            <label className="mb-3 block text-[11px] text-slate-500">
+            <label className="mb-3 block text-[11px] text-neutral-500">
               Regime affitto
               <select
                 className="input-field mt-1 w-full py-1.5 text-xs"
@@ -227,13 +227,13 @@ export default function ListingProfitPanel({
 
             <div className="mb-3 border-t border-surface-border/60 pt-3">
               <div className="mb-2 flex items-center justify-between gap-2">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                <p className="text-xs font-semibold uppercase tracking-wide text-neutral-600">
                   Filtri
                 </p>
                 {filtersActive && (
                   <button
                     type="button"
-                    className="text-[10px] font-medium text-accent hover:text-accent/80"
+                    className="text-[10px] font-medium text-neutral-900 hover:text-neutral-900/80"
                     onClick={() => onFiltersChange(EMPTY_LISTING_PROFIT_FILTERS)}
                   >
                     Reimposta filtri
@@ -242,7 +242,7 @@ export default function ListingProfitPanel({
               </div>
 
               <div className="mb-2 grid grid-cols-2 gap-2">
-                <label className="block text-[11px] text-slate-500">
+                <label className="block text-[11px] text-neutral-500">
                   Utile min €/mese
                   <input
                     type="text"
@@ -253,7 +253,7 @@ export default function ListingProfitPanel({
                     onChange={(e) => patchFilters({ monthlyMin: parseFilterNumber(e.target.value) })}
                   />
                 </label>
-                <label className="block text-[11px] text-slate-500">
+                <label className="block text-[11px] text-neutral-500">
                   Utile max €/mese
                   <input
                     type="text"
@@ -266,7 +266,7 @@ export default function ListingProfitPanel({
                 </label>
               </div>
 
-              <label className="mb-2 flex cursor-pointer items-center gap-2 text-[11px] text-slate-400">
+              <label className="mb-2 flex cursor-pointer items-center gap-2 text-[11px] text-neutral-600">
                 <input
                   type="checkbox"
                   className="accent-accent"
@@ -276,7 +276,7 @@ export default function ListingProfitPanel({
                 Solo utile positivo
               </label>
 
-              <label className="mb-2 flex cursor-pointer items-center gap-2 text-[11px] text-slate-400">
+              <label className="mb-2 flex cursor-pointer items-center gap-2 text-[11px] text-neutral-600">
                 <input
                   type="checkbox"
                   className="accent-accent"
@@ -286,7 +286,7 @@ export default function ListingProfitPanel({
                 Nascondi senza stima
               </label>
 
-              <label className="block text-[11px] text-slate-500">
+              <label className="block text-[11px] text-neutral-500">
                 Ordina per
                 <select
                   className="input-field mt-1 w-full py-1.5 text-xs"

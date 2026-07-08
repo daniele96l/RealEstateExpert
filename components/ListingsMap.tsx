@@ -76,14 +76,14 @@ import type { CombinedListingsData } from "@/lib/types";
 const ListingsMapView = dynamic(() => import("./ListingsMapView"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-full items-center justify-center text-sm text-slate-500">Caricamento mappa…</div>
+    <div className="flex h-full items-center justify-center text-sm text-neutral-500">Caricamento mappa…</div>
   ),
 });
 
 const ListingPriceRentScatter = dynamic(() => import("./ListingPriceRentScatter"), {
   ssr: false,
   loading: () => (
-    <div className="border-t border-surface-border/80 px-4 py-6 text-center text-sm text-slate-500">
+    <div className="border-t border-surface-border px-4 py-6 text-center text-sm text-neutral-500">
       Caricamento grafico…
     </div>
   ),
@@ -643,13 +643,13 @@ export default function ListingsMap({
   ]);
 
   return (
-    <div className="card-glass overflow-x-hidden">
-      <div className="border-b border-surface-border/80 bg-surface-raised/40 px-5 py-4">
+    <div className="card overflow-x-hidden">
+      <div className="border-b border-surface-border bg-neutral-50 px-5 py-4">
         <div className="mb-3 flex items-center gap-2">
-          <MapPin size={18} className="text-accent" />
-          <h2 className="font-semibold text-slate-100">{ui.mapTitle}</h2>
+          <MapPin size={18} className="text-neutral-900" />
+          <h2 className="font-semibold text-neutral-900">{ui.mapTitle}</h2>
         </div>
-        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">{ui.searchCity}</p>
+        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-neutral-500">{ui.searchCity}</p>
         <div className="flex flex-wrap gap-2">
           <input
             type="text"
@@ -673,7 +673,7 @@ export default function ListingsMap({
                 onClick={() => setViewMode(id)}
                 className={cn(
                   "px-3 py-2 text-sm",
-                  viewMode === id ? "bg-accent/20 text-accent" : "text-slate-400 hover:text-slate-200",
+                  viewMode === id ? "bg-neutral-100 text-neutral-900" : "text-neutral-600 hover:text-neutral-800",
                 )}
               >
                 {label}
@@ -684,7 +684,7 @@ export default function ListingsMap({
             type="button"
             disabled={loading}
             onClick={() => setBatchOpen(true)}
-            className="flex items-center gap-1 rounded-lg border border-accent/30 bg-accent/10 px-3 py-2 text-sm text-accent hover:bg-accent/20"
+            className="flex items-center gap-1 rounded-lg border border-neutral-300 bg-neutral-50 px-3 py-2 text-sm text-neutral-900 hover:bg-neutral-100"
           >
             <Layers size={14} />
             {t("listings.batchImport")}
@@ -692,7 +692,7 @@ export default function ListingsMap({
         </div>
         {market === "it" && (
           <>
-        <p className="mb-3 mt-4 text-xs font-medium uppercase tracking-wide text-slate-500">
+        <p className="mb-3 mt-4 text-xs font-medium uppercase tracking-wide text-neutral-500">
           Importa annuncio
         </p>
         <div className="flex flex-wrap gap-2">
@@ -712,7 +712,7 @@ export default function ListingsMap({
             type="button"
             disabled={importLoading || !importUrl.trim()}
             onClick={() => void handleImportUrl()}
-            className="flex items-center gap-1 rounded-lg border border-surface-border bg-surface-raised/60 px-3 py-2 text-sm text-slate-200 hover:bg-surface-raised disabled:opacity-50"
+            className="flex items-center gap-1 rounded-lg border border-surface-border bg-white px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 disabled:opacity-50"
           >
             <Link2 size={14} />
             {importLoading ? "Importazione…" : "Importa annuncio"}
@@ -730,7 +730,7 @@ export default function ListingsMap({
         {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
         {importError && <p className="mt-2 text-sm text-red-400">{importError}</p>}
         {mapData && (
-          <p className="mt-2 text-xs text-slate-500">
+          <p className="mt-2 text-xs text-neutral-500">
             {filtersActive || profitFiltersActive
               ? `${profitFilteredListings.length} di ${baseListings.length} annunci`
               : `${profitFilteredListings.length} annunci`}
@@ -759,7 +759,7 @@ export default function ListingsMap({
                   ? ` · ${cacheFileLabel(market, city, "sale")}, ${cacheFileLabel(market, city, "rent")}`
                   : ` · ${cacheFileLabel(market, city, viewMode)}`}
             {mapData.fetched_at && (
-              <span className="text-slate-600">
+              <span className="text-neutral-500">
                 {" "}
                 · {new Date(mapData.fetched_at).toLocaleString("it-IT")}
               </span>
@@ -771,7 +771,7 @@ export default function ListingsMap({
       <div className={cn(detailOpen && "hidden")}>
         <>
         <div className="grid gap-0 lg:grid-cols-[1fr_280px]">
-          <div className="h-[400px] overflow-hidden border-b border-surface-border/80 lg:border-b-0 lg:border-r">
+          <div className="h-[400px] overflow-hidden border-b border-surface-border lg:border-b-0 lg:border-r">
             {mapData ? (
               <ListingsMapView
                 data={mapData}
@@ -798,17 +798,17 @@ export default function ListingsMap({
                 onDeleteSavedPolygon={handleDeleteSavedPolygon}
               />
             ) : (
-              <div className="flex h-full items-center justify-center px-6 text-center text-sm text-slate-500">
+              <div className="flex h-full items-center justify-center px-6 text-center text-sm text-neutral-500">
                 {ui.loadCityHint}
               </div>
             )}
           </div>
-          <div className="flex max-h-[400px] flex-col border-surface-border/80">
+          <div className="flex max-h-[400px] flex-col border-surface-border">
             {showProfitPreview && (
-              <div className="flex shrink-0 items-center justify-between gap-2 border-b border-surface-border/60 bg-surface-raised/60 px-3 py-2">
+              <div className="flex shrink-0 items-center justify-between gap-2 border-b border-surface-border/60 bg-white px-3 py-2">
                 <div className="min-w-0">
-                  <p className="text-[11px] font-medium text-slate-300">{ui.estNetProfit}</p>
-                  <p className="truncate text-[10px] text-slate-500">
+                  <p className="text-[11px] font-medium text-neutral-700">{ui.estNetProfit}</p>
+                  <p className="truncate text-[10px] text-neutral-500">
                     {profitSettingsSummary(profitSettings, market)}
                   </p>
                 </div>
@@ -824,13 +824,13 @@ export default function ListingsMap({
             )}
             <div className="min-h-0 flex-1 overflow-y-auto p-3">
             {mapBounds && visibleListings.length < profitFilteredListings.length && (
-              <p className="mb-2 text-[11px] text-slate-500">
+              <p className="mb-2 text-[11px] text-neutral-500">
                 {ui.inView(visibleListings.length, profitFilteredListings.length)}
                 {profitFiltersActive ? (market === "cz" ? " (filtry zisku)" : " (filtri utile)") : ""}
               </p>
             )}
             {!mapBounds && profitFiltersActive && profitFilteredListings.length < displayListings.length && (
-              <p className="mb-2 text-[11px] text-accent/80">
+              <p className="mb-2 text-[11px] text-neutral-900/80">
                 {ui.profitFilters(profitFilteredListings.length, displayListings.length)}
               </p>
             )}
@@ -849,12 +849,12 @@ export default function ListingsMap({
                 className={cn(
                   "mb-2 w-full rounded-lg border p-3 text-left text-sm transition-colors",
                   selectedId === listing.id
-                    ? "border-accent/50 bg-accent/10"
+                    ? "border-neutral-900 bg-neutral-50"
                     : hoveredListingKey === key
-                      ? "border-accent/30 bg-accent/5"
+                      ? "border-neutral-300 bg-neutral-50"
                       : profit
                         ? "hover:brightness-110"
-                        : "border-surface-border/60 hover:bg-surface-raised/50",
+                        : "border-surface-border/60 hover:bg-neutral-100/50",
                 )}
               >
                 <div className="mb-1 flex flex-wrap items-center gap-2">
@@ -863,7 +863,7 @@ export default function ListingsMap({
                       className={cn(
                         "rounded px-1.5 py-0.5 text-[10px] font-medium uppercase",
                         listing.operation === "sale"
-                          ? "bg-emerald-500/20 text-emerald-400"
+                          ? "bg-green-50 text-green-600"
                           : "bg-blue-500/20 text-blue-400",
                       )}
                     >
@@ -871,9 +871,9 @@ export default function ListingsMap({
                     </span>
                   )}
                 </div>
-                <p className="font-medium text-slate-200 line-clamp-2">{listing.title}</p>
-                <p className="mt-1 text-accent">{formatPrice(listing.price, listing.operation, market, ui.perMonth)}</p>
-                <p className="mt-0.5 text-xs text-slate-500">
+                <p className="font-medium text-neutral-800 line-clamp-2">{listing.title}</p>
+                <p className="mt-1 text-neutral-900">{formatPrice(listing.price, listing.operation, market, ui.perMonth)}</p>
+                <p className="mt-0.5 text-xs text-neutral-500">
                   {[
                     listing.sqm != null && `${listing.sqm} m²`,
                     formatPricePerSqm(listing, market, ui.perSqm),
@@ -892,8 +892,8 @@ export default function ListingsMap({
                       listing.needs_renovation === true
                         ? "text-amber-400"
                         : listing.needs_renovation === false
-                          ? "text-emerald-400"
-                          : "text-slate-400",
+                          ? "text-green-600"
+                          : "text-neutral-600",
                     )}
                   >
                     {ui.condition}: {statoLabel}
@@ -908,7 +908,7 @@ export default function ListingsMap({
                   </p>
                 )}
                 {profit && (
-                  <p className="mt-0.5 text-[10px] leading-snug text-slate-500">
+                  <p className="mt-0.5 text-[10px] leading-snug text-neutral-500">
                     {formatProfitAmount(profit.year1NetProfit, market)}{ui.perYear} · {ui.estRent}{" "}
                     {formatPrice(profit.estimatedMonthlyRent, "rent", market, ui.perMonth)}
                     {profitSettings.rentMethod === "per_sqm" &&
@@ -925,7 +925,7 @@ export default function ListingsMap({
               );
             })}
             {mapData && visibleListings.length === 0 && (
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-neutral-500">
                 {profitFilteredListings.length === 0
                   ? ui.noListings
                   : ui.noListingsInArea}
@@ -954,7 +954,7 @@ export default function ListingsMap({
       )}
 
       {detailOpen && !mapData && !activeCache && (
-        <div className="flex h-40 items-center justify-center text-sm text-slate-500">
+        <div className="flex h-40 items-center justify-center text-sm text-neutral-500">
           Caricamento…
         </div>
       )}
