@@ -1,0 +1,301 @@
+{
+  "city": "Brno",
+  "region": "Česko",
+  "region_slug": "cz_brno",
+  "city_slug": "cz_brno",
+  "mercato_url": "https://www.sreality.cz/cenova-mapa",
+  "sale": [
+    {
+      "year": 2022,
+      "month": 7,
+      "label": "07/2022",
+      "price_sqm_avg": 74258
+    },
+    {
+      "year": 2022,
+      "month": 8,
+      "label": "08/2022",
+      "price_sqm_avg": 79983
+    },
+    {
+      "year": 2022,
+      "month": 9,
+      "label": "09/2022",
+      "price_sqm_avg": 84318
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "label": "10/2022",
+      "price_sqm_avg": 79035
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "label": "11/2022",
+      "price_sqm_avg": 84182
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "label": "12/2022",
+      "price_sqm_avg": 81172
+    },
+    {
+      "year": 2023,
+      "month": 1,
+      "label": "01/2023",
+      "price_sqm_avg": 78716
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "label": "02/2023",
+      "price_sqm_avg": 79201
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "label": "03/2023",
+      "price_sqm_avg": 77523
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "label": "04/2023",
+      "price_sqm_avg": 75824
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "label": "05/2023",
+      "price_sqm_avg": 75310
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "label": "06/2023",
+      "price_sqm_avg": 77637
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "label": "07/2023",
+      "price_sqm_avg": 89194
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "label": "08/2023",
+      "price_sqm_avg": 84282
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "label": "09/2023",
+      "price_sqm_avg": 81785
+    },
+    {
+      "year": 2023,
+      "month": 10,
+      "label": "10/2023",
+      "price_sqm_avg": 78892
+    },
+    {
+      "year": 2023,
+      "month": 11,
+      "label": "11/2023",
+      "price_sqm_avg": 78225
+    },
+    {
+      "year": 2023,
+      "month": 12,
+      "label": "12/2023",
+      "price_sqm_avg": 86463
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "label": "01/2024",
+      "price_sqm_avg": 85494
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "label": "02/2024",
+      "price_sqm_avg": 81637
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "label": "03/2024",
+      "price_sqm_avg": 83713
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "label": "04/2024",
+      "price_sqm_avg": 85293
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "label": "05/2024",
+      "price_sqm_avg": 86231
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "label": "06/2024",
+      "price_sqm_avg": 85537
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "label": "07/2024",
+      "price_sqm_avg": 85582
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "label": "08/2024",
+      "price_sqm_avg": 92984
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "label": "09/2024",
+      "price_sqm_avg": 88508
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "label": "10/2024",
+      "price_sqm_avg": 88274
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "label": "11/2024",
+      "price_sqm_avg": 85900
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "label": "12/2024",
+      "price_sqm_avg": 88287
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "label": "01/2025",
+      "price_sqm_avg": 89438
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "label": "02/2025",
+      "price_sqm_avg": 92400
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "label": "03/2025",
+      "price_sqm_avg": 93215
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "label": "04/2025",
+      "price_sqm_avg": 94078
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "label": "05/2025",
+      "price_sqm_avg": 100565
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "label": "06/2025",
+      "price_sqm_avg": 99145
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "label": "07/2025",
+      "price_sqm_avg": 95899
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "label": "08/2025",
+      "price_sqm_avg": 102099
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "label": "09/2025",
+      "price_sqm_avg": 98821
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "label": "10/2025",
+      "price_sqm_avg": 101081
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "label": "11/2025",
+      "price_sqm_avg": 105240
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "label": "12/2025",
+      "price_sqm_avg": 109457
+    },
+    {
+      "year": 2026,
+      "month": 1,
+      "label": "01/2026",
+      "price_sqm_avg": 102911
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "label": "02/2026",
+      "price_sqm_avg": 110321
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "label": "03/2026",
+      "price_sqm_avg": 105068
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "label": "04/2026",
+      "price_sqm_avg": 105885
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "label": "05/2026",
+      "price_sqm_avg": 101649
+    }
+  ],
+  "rent": [
+    {
+      "year": 2026,
+      "month": 7,
+      "label": "07/2026",
+      "price_sqm_avg": 415
+    }
+  ],
+  "provider": "sreality",
+  "fetched_at": "2026-07-03T22:32:44.874Z"
+}

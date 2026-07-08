@@ -21,6 +21,8 @@ data/listings/details/
 data/listings/exports/
 data/market/*.json
 !data/market/.gitkeep
+!data/market/reggio_calabria.json
+!data/market/cz_brno.json
 data/analyses/*.json
 !data/analyses/.gitkeep
 data/occupancy/*

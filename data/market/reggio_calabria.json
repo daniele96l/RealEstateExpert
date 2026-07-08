@@ -1,0 +1,1213 @@
+{
+  "city": "Reggio Calabria",
+  "region": "Calabria",
+  "region_slug": "calabria",
+  "city_slug": "reggio-calabria",
+  "mercato_url": "https://www.immobiliare.it/mercato-immobiliare/calabria/reggio-calabria/",
+  "sale": [
+    {
+      "year": 2018,
+      "month": 4,
+      "label": "apr 18",
+      "price_sqm_avg": 937
+    },
+    {
+      "year": 2018,
+      "month": 5,
+      "label": "mag 18",
+      "price_sqm_avg": 945
+    },
+    {
+      "year": 2018,
+      "month": 6,
+      "label": "giu 18",
+      "price_sqm_avg": 940
+    },
+    {
+      "year": 2018,
+      "month": 7,
+      "label": "lug 18",
+      "price_sqm_avg": 929
+    },
+    {
+      "year": 2018,
+      "month": 8,
+      "label": "ago 18",
+      "price_sqm_avg": 926
+    },
+    {
+      "year": 2018,
+      "month": 9,
+      "label": "set 18",
+      "price_sqm_avg": 914
+    },
+    {
+      "year": 2018,
+      "month": 10,
+      "label": "ott 18",
+      "price_sqm_avg": 909
+    },
+    {
+      "year": 2018,
+      "month": 11,
+      "label": "nov 18",
+      "price_sqm_avg": 910
+    },
+    {
+      "year": 2018,
+      "month": 12,
+      "label": "dic 18",
+      "price_sqm_avg": 904
+    },
+    {
+      "year": 2019,
+      "month": 1,
+      "label": "gen 19",
+      "price_sqm_avg": 914
+    },
+    {
+      "year": 2019,
+      "month": 2,
+      "label": "feb 19",
+      "price_sqm_avg": 889
+    },
+    {
+      "year": 2019,
+      "month": 3,
+      "label": "mar 19",
+      "price_sqm_avg": 877
+    },
+    {
+      "year": 2019,
+      "month": 4,
+      "label": "apr 19",
+      "price_sqm_avg": 881
+    },
+    {
+      "year": 2019,
+      "month": 5,
+      "label": "mag 19",
+      "price_sqm_avg": 880
+    },
+    {
+      "year": 2019,
+      "month": 6,
+      "label": "giu 19",
+      "price_sqm_avg": 873
+    },
+    {
+      "year": 2019,
+      "month": 7,
+      "label": "lug 19",
+      "price_sqm_avg": 872
+    },
+    {
+      "year": 2019,
+      "month": 8,
+      "label": "ago 19",
+      "price_sqm_avg": 880
+    },
+    {
+      "year": 2019,
+      "month": 9,
+      "label": "set 19",
+      "price_sqm_avg": 878
+    },
+    {
+      "year": 2019,
+      "month": 10,
+      "label": "ott 19",
+      "price_sqm_avg": 898
+    },
+    {
+      "year": 2019,
+      "month": 11,
+      "label": "nov 19",
+      "price_sqm_avg": 911
+    },
+    {
+      "year": 2019,
+      "month": 12,
+      "label": "dic 19",
+      "price_sqm_avg": 911
+    },
+    {
+      "year": 2020,
+      "month": 1,
+      "label": "gen 20",
+      "price_sqm_avg": 902
+    },
+    {
+      "year": 2020,
+      "month": 2,
+      "label": "feb 20",
+      "price_sqm_avg": 882
+    },
+    {
+      "year": 2020,
+      "month": 3,
+      "label": "mar 20",
+      "price_sqm_avg": 879
+    },
+    {
+      "year": 2020,
+      "month": 4,
+      "label": "apr 20",
+      "price_sqm_avg": 875
+    },
+    {
+      "year": 2020,
+      "month": 5,
+      "label": "mag 20",
+      "price_sqm_avg": 867
+    },
+    {
+      "year": 2020,
+      "month": 6,
+      "label": "giu 20",
+      "price_sqm_avg": 870
+    },
+    {
+      "year": 2020,
+      "month": 7,
+      "label": "lug 20",
+      "price_sqm_avg": 877
+    },
+    {
+      "year": 2020,
+      "month": 8,
+      "label": "ago 20",
+      "price_sqm_avg": 881
+    },
+    {
+      "year": 2020,
+      "month": 9,
+      "label": "set 20",
+      "price_sqm_avg": 874
+    },
+    {
+      "year": 2020,
+      "month": 10,
+      "label": "ott 20",
+      "price_sqm_avg": 858
+    },
+    {
+      "year": 2020,
+      "month": 11,
+      "label": "nov 20",
+      "price_sqm_avg": 869
+    },
+    {
+      "year": 2020,
+      "month": 12,
+      "label": "dic 20",
+      "price_sqm_avg": 879
+    },
+    {
+      "year": 2021,
+      "month": 1,
+      "label": "gen 21",
+      "price_sqm_avg": 885
+    },
+    {
+      "year": 2021,
+      "month": 2,
+      "label": "feb 21",
+      "price_sqm_avg": 886
+    },
+    {
+      "year": 2021,
+      "month": 3,
+      "label": "mar 21",
+      "price_sqm_avg": 884
+    },
+    {
+      "year": 2021,
+      "month": 4,
+      "label": "apr 21",
+      "price_sqm_avg": 887
+    },
+    {
+      "year": 2021,
+      "month": 5,
+      "label": "mag 21",
+      "price_sqm_avg": 876
+    },
+    {
+      "year": 2021,
+      "month": 6,
+      "label": "giu 21",
+      "price_sqm_avg": 873
+    },
+    {
+      "year": 2021,
+      "month": 7,
+      "label": "lug 21",
+      "price_sqm_avg": 862
+    },
+    {
+      "year": 2021,
+      "month": 8,
+      "label": "ago 21",
+      "price_sqm_avg": 854
+    },
+    {
+      "year": 2021,
+      "month": 9,
+      "label": "set 21",
+      "price_sqm_avg": 854
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "label": "ott 21",
+      "price_sqm_avg": 861
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "label": "nov 21",
+      "price_sqm_avg": 852
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "label": "dic 21",
+      "price_sqm_avg": 856
+    },
+    {
+      "year": 2022,
+      "month": 1,
+      "label": "gen 22",
+      "price_sqm_avg": 851
+    },
+    {
+      "year": 2022,
+      "month": 2,
+      "label": "feb 22",
+      "price_sqm_avg": 846
+    },
+    {
+      "year": 2022,
+      "month": 3,
+      "label": "mar 22",
+      "price_sqm_avg": 849
+    },
+    {
+      "year": 2022,
+      "month": 4,
+      "label": "apr 22",
+      "price_sqm_avg": 852
+    },
+    {
+      "year": 2022,
+      "month": 5,
+      "label": "mag 22",
+      "price_sqm_avg": 841
+    },
+    {
+      "year": 2022,
+      "month": 6,
+      "label": "giu 22",
+      "price_sqm_avg": 841
+    },
+    {
+      "year": 2022,
+      "month": 7,
+      "label": "lug 22",
+      "price_sqm_avg": 840
+    },
+    {
+      "year": 2022,
+      "month": 8,
+      "label": "ago 22",
+      "price_sqm_avg": 833
+    },
+    {
+      "year": 2022,
+      "month": 9,
+      "label": "set 22",
+      "price_sqm_avg": 833
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "label": "ott 22",
+      "price_sqm_avg": 835
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "label": "nov 22",
+      "price_sqm_avg": 839
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "label": "dic 22",
+      "price_sqm_avg": 837
+    },
+    {
+      "year": 2023,
+      "month": 1,
+      "label": "gen 23",
+      "price_sqm_avg": 837
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "label": "feb 23",
+      "price_sqm_avg": 842
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "label": "mar 23",
+      "price_sqm_avg": 845
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "label": "apr 23",
+      "price_sqm_avg": 845
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "label": "mag 23",
+      "price_sqm_avg": 876
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "label": "giu 23",
+      "price_sqm_avg": 874
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "label": "lug 23",
+      "price_sqm_avg": 877
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "label": "ago 23",
+      "price_sqm_avg": 882
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "label": "set 23",
+      "price_sqm_avg": 883
+    },
+    {
+      "year": 2023,
+      "month": 10,
+      "label": "ott 23",
+      "price_sqm_avg": 880
+    },
+    {
+      "year": 2023,
+      "month": 11,
+      "label": "nov 23",
+      "price_sqm_avg": 883
+    },
+    {
+      "year": 2023,
+      "month": 12,
+      "label": "dic 23",
+      "price_sqm_avg": 886
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "label": "gen 24",
+      "price_sqm_avg": 880
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "label": "feb 24",
+      "price_sqm_avg": 867
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "label": "mar 24",
+      "price_sqm_avg": 868
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "label": "apr 24",
+      "price_sqm_avg": 867
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "label": "mag 24",
+      "price_sqm_avg": 870
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "label": "giu 24",
+      "price_sqm_avg": 867
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "label": "lug 24",
+      "price_sqm_avg": 878
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "label": "ago 24",
+      "price_sqm_avg": 872
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "label": "set 24",
+      "price_sqm_avg": 883
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "label": "ott 24",
+      "price_sqm_avg": 875
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "label": "nov 24",
+      "price_sqm_avg": 880
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "label": "dic 24",
+      "price_sqm_avg": 880
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "label": "gen 25",
+      "price_sqm_avg": 873
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "label": "feb 25",
+      "price_sqm_avg": 865
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "label": "mar 25",
+      "price_sqm_avg": 873
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "label": "apr 25",
+      "price_sqm_avg": 865
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "label": "mag 25",
+      "price_sqm_avg": 864
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "label": "giu 25",
+      "price_sqm_avg": 861
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "label": "lug 25",
+      "price_sqm_avg": 868
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "label": "ago 25",
+      "price_sqm_avg": 864
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "label": "set 25",
+      "price_sqm_avg": 856
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "label": "ott 25",
+      "price_sqm_avg": 846
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "label": "nov 25",
+      "price_sqm_avg": 851
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "label": "dic 25",
+      "price_sqm_avg": 854
+    },
+    {
+      "year": 2026,
+      "month": 1,
+      "label": "gen 26",
+      "price_sqm_avg": 859
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "label": "feb 26",
+      "price_sqm_avg": 856
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "label": "mar 26",
+      "price_sqm_avg": 852
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "label": "apr 26",
+      "price_sqm_avg": 848
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "label": "mag 26",
+      "price_sqm_avg": 846
+    },
+    {
+      "year": 2026,
+      "month": 6,
+      "label": "giu 26",
+      "price_sqm_avg": 844
+    },
+    {
+      "year": 2026,
+      "month": 7,
+      "label": "lug 26",
+      "price_sqm_avg": 846
+    }
+  ],
+  "rent": [
+    {
+      "year": 2018,
+      "month": 4,
+      "label": "apr 18",
+      "price_sqm_avg": 4.14
+    },
+    {
+      "year": 2018,
+      "month": 5,
+      "label": "mag 18",
+      "price_sqm_avg": 4.1
+    },
+    {
+      "year": 2018,
+      "month": 6,
+      "label": "giu 18",
+      "price_sqm_avg": 4.16
+    },
+    {
+      "year": 2018,
+      "month": 7,
+      "label": "lug 18",
+      "price_sqm_avg": 4.29
+    },
+    {
+      "year": 2018,
+      "month": 8,
+      "label": "ago 18",
+      "price_sqm_avg": 4.24
+    },
+    {
+      "year": 2018,
+      "month": 9,
+      "label": "set 18",
+      "price_sqm_avg": 4.27
+    },
+    {
+      "year": 2018,
+      "month": 10,
+      "label": "ott 18",
+      "price_sqm_avg": 4.37
+    },
+    {
+      "year": 2018,
+      "month": 11,
+      "label": "nov 18",
+      "price_sqm_avg": 4.38
+    },
+    {
+      "year": 2018,
+      "month": 12,
+      "label": "dic 18",
+      "price_sqm_avg": 4.4
+    },
+    {
+      "year": 2019,
+      "month": 1,
+      "label": "gen 19",
+      "price_sqm_avg": 4.33
+    },
+    {
+      "year": 2019,
+      "month": 2,
+      "label": "feb 19",
+      "price_sqm_avg": 4.24
+    },
+    {
+      "year": 2019,
+      "month": 3,
+      "label": "mar 19",
+      "price_sqm_avg": 4.24
+    },
+    {
+      "year": 2019,
+      "month": 4,
+      "label": "apr 19",
+      "price_sqm_avg": 4.26
+    },
+    {
+      "year": 2019,
+      "month": 5,
+      "label": "mag 19",
+      "price_sqm_avg": 4.25
+    },
+    {
+      "year": 2019,
+      "month": 6,
+      "label": "giu 19",
+      "price_sqm_avg": 4.18
+    },
+    {
+      "year": 2019,
+      "month": 7,
+      "label": "lug 19",
+      "price_sqm_avg": 4.24
+    },
+    {
+      "year": 2019,
+      "month": 8,
+      "label": "ago 19",
+      "price_sqm_avg": 4.24
+    },
+    {
+      "year": 2019,
+      "month": 9,
+      "label": "set 19",
+      "price_sqm_avg": 4.26
+    },
+    {
+      "year": 2019,
+      "month": 10,
+      "label": "ott 19",
+      "price_sqm_avg": 4.36
+    },
+    {
+      "year": 2019,
+      "month": 11,
+      "label": "nov 19",
+      "price_sqm_avg": 4.44
+    },
+    {
+      "year": 2019,
+      "month": 12,
+      "label": "dic 19",
+      "price_sqm_avg": 4.54
+    },
+    {
+      "year": 2020,
+      "month": 1,
+      "label": "gen 20",
+      "price_sqm_avg": 4.43
+    },
+    {
+      "year": 2020,
+      "month": 2,
+      "label": "feb 20",
+      "price_sqm_avg": 4.56
+    },
+    {
+      "year": 2020,
+      "month": 3,
+      "label": "mar 20",
+      "price_sqm_avg": 4.57
+    },
+    {
+      "year": 2020,
+      "month": 4,
+      "label": "apr 20",
+      "price_sqm_avg": 4.61
+    },
+    {
+      "year": 2020,
+      "month": 5,
+      "label": "mag 20",
+      "price_sqm_avg": 4.67
+    },
+    {
+      "year": 2020,
+      "month": 6,
+      "label": "giu 20",
+      "price_sqm_avg": 4.6
+    },
+    {
+      "year": 2020,
+      "month": 7,
+      "label": "lug 20",
+      "price_sqm_avg": 4.62
+    },
+    {
+      "year": 2020,
+      "month": 8,
+      "label": "ago 20",
+      "price_sqm_avg": 4.69
+    },
+    {
+      "year": 2020,
+      "month": 9,
+      "label": "set 20",
+      "price_sqm_avg": 4.76
+    },
+    {
+      "year": 2020,
+      "month": 10,
+      "label": "ott 20",
+      "price_sqm_avg": 4.76
+    },
+    {
+      "year": 2020,
+      "month": 11,
+      "label": "nov 20",
+      "price_sqm_avg": 4.75
+    },
+    {
+      "year": 2020,
+      "month": 12,
+      "label": "dic 20",
+      "price_sqm_avg": 4.8
+    },
+    {
+      "year": 2021,
+      "month": 1,
+      "label": "gen 21",
+      "price_sqm_avg": 4.74
+    },
+    {
+      "year": 2021,
+      "month": 2,
+      "label": "feb 21",
+      "price_sqm_avg": 4.76
+    },
+    {
+      "year": 2021,
+      "month": 3,
+      "label": "mar 21",
+      "price_sqm_avg": 4.87
+    },
+    {
+      "year": 2021,
+      "month": 4,
+      "label": "apr 21",
+      "price_sqm_avg": 4.91
+    },
+    {
+      "year": 2021,
+      "month": 5,
+      "label": "mag 21",
+      "price_sqm_avg": 4.94
+    },
+    {
+      "year": 2021,
+      "month": 6,
+      "label": "giu 21",
+      "price_sqm_avg": 4.98
+    },
+    {
+      "year": 2021,
+      "month": 7,
+      "label": "lug 21",
+      "price_sqm_avg": 5
+    },
+    {
+      "year": 2021,
+      "month": 8,
+      "label": "ago 21",
+      "price_sqm_avg": 5.01
+    },
+    {
+      "year": 2021,
+      "month": 9,
+      "label": "set 21",
+      "price_sqm_avg": 5.07
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "label": "ott 21",
+      "price_sqm_avg": 5.09
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "label": "nov 21",
+      "price_sqm_avg": 4.95
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "label": "dic 21",
+      "price_sqm_avg": 4.9
+    },
+    {
+      "year": 2022,
+      "month": 1,
+      "label": "gen 22",
+      "price_sqm_avg": 4.78
+    },
+    {
+      "year": 2022,
+      "month": 2,
+      "label": "feb 22",
+      "price_sqm_avg": 4.87
+    },
+    {
+      "year": 2022,
+      "month": 3,
+      "label": "mar 22",
+      "price_sqm_avg": 4.83
+    },
+    {
+      "year": 2022,
+      "month": 4,
+      "label": "apr 22",
+      "price_sqm_avg": 4.94
+    },
+    {
+      "year": 2022,
+      "month": 5,
+      "label": "mag 22",
+      "price_sqm_avg": 4.94
+    },
+    {
+      "year": 2022,
+      "month": 6,
+      "label": "giu 22",
+      "price_sqm_avg": 4.88
+    },
+    {
+      "year": 2022,
+      "month": 7,
+      "label": "lug 22",
+      "price_sqm_avg": 4.91
+    },
+    {
+      "year": 2022,
+      "month": 8,
+      "label": "ago 22",
+      "price_sqm_avg": 4.97
+    },
+    {
+      "year": 2022,
+      "month": 9,
+      "label": "set 22",
+      "price_sqm_avg": 5.04
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "label": "ott 22",
+      "price_sqm_avg": 5.12
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "label": "nov 22",
+      "price_sqm_avg": 5.09
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "label": "dic 22",
+      "price_sqm_avg": 5.11
+    },
+    {
+      "year": 2023,
+      "month": 1,
+      "label": "gen 23",
+      "price_sqm_avg": 5
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "label": "feb 23",
+      "price_sqm_avg": 4.98
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "label": "mar 23",
+      "price_sqm_avg": 5
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "label": "apr 23",
+      "price_sqm_avg": 5.07
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "label": "mag 23",
+      "price_sqm_avg": 5.21
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "label": "giu 23",
+      "price_sqm_avg": 5.09
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "label": "lug 23",
+      "price_sqm_avg": 5.09
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "label": "ago 23",
+      "price_sqm_avg": 5.15
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "label": "set 23",
+      "price_sqm_avg": 5.14
+    },
+    {
+      "year": 2023,
+      "month": 10,
+      "label": "ott 23",
+      "price_sqm_avg": 5.18
+    },
+    {
+      "year": 2023,
+      "month": 11,
+      "label": "nov 23",
+      "price_sqm_avg": 5.22
+    },
+    {
+      "year": 2023,
+      "month": 12,
+      "label": "dic 23",
+      "price_sqm_avg": 5.2
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "label": "gen 24",
+      "price_sqm_avg": 5.28
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "label": "feb 24",
+      "price_sqm_avg": 5.17
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "label": "mar 24",
+      "price_sqm_avg": 5.24
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "label": "apr 24",
+      "price_sqm_avg": 5.3
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "label": "mag 24",
+      "price_sqm_avg": 5.25
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "label": "giu 24",
+      "price_sqm_avg": 5.29
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "label": "lug 24",
+      "price_sqm_avg": 5.29
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "label": "ago 24",
+      "price_sqm_avg": 5.37
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "label": "set 24",
+      "price_sqm_avg": 5.51
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "label": "ott 24",
+      "price_sqm_avg": 5.51
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "label": "nov 24",
+      "price_sqm_avg": 5.52
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "label": "dic 24",
+      "price_sqm_avg": 5.55
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "label": "gen 25",
+      "price_sqm_avg": 5.56
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "label": "feb 25",
+      "price_sqm_avg": 5.6
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "label": "mar 25",
+      "price_sqm_avg": 5.52
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "label": "apr 25",
+      "price_sqm_avg": 5.33
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "label": "mag 25",
+      "price_sqm_avg": 5.26
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "label": "giu 25",
+      "price_sqm_avg": 5.23
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "label": "lug 25",
+      "price_sqm_avg": 5.33
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "label": "ago 25",
+      "price_sqm_avg": 5.48
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "label": "set 25",
+      "price_sqm_avg": 5.46
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "label": "ott 25",
+      "price_sqm_avg": 5.64
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "label": "nov 25",
+      "price_sqm_avg": 5.67
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "label": "dic 25",
+      "price_sqm_avg": 6
+    },
+    {
+      "year": 2026,
+      "month": 1,
+      "label": "gen 26",
+      "price_sqm_avg": 6.23
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "label": "feb 26",
+      "price_sqm_avg": 6.3
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "label": "mar 26",
+      "price_sqm_avg": 6.32
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "label": "apr 26",
+      "price_sqm_avg": 6.2
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "label": "mag 26",
+      "price_sqm_avg": 6.34
+    },
+    {
+      "year": 2026,
+      "month": 6,
+      "label": "giu 26",
+      "price_sqm_avg": 6.14
+    },
+    {
+      "year": 2026,
+      "month": 7,
+      "label": "lug 26",
+      "price_sqm_avg": 6.27
+    }
+  ],
+  "provider": "scrapingbee",
+  "fetched_at": "2026-07-01T21:11:50.522Z"
+}
