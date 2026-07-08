@@ -115,9 +115,10 @@ export default function ScenarioForm({ market, onChange, prefill, syncScenario, 
     if (!syncToken) return;
     const synced = syncScenarioRef.current;
     if (synced == null) return;
-    reset(synced);
+    reset({ ...synced }, { keepDefaultValues: false });
     prevMode.current = synced.rental_mode;
     prevPrice.current = synced.purchase_price;
+    prevPropertyType.current = synced.property_type;
   }, [syncToken, reset]);
 
   useEffect(() => {

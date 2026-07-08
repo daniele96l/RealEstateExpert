@@ -220,7 +220,7 @@ export default function AnalysisHistoryPanel({
                   type="button"
                   onClick={() => handleRestore(item)}
                   className={cn(
-                    "rounded-lg px-3 py-2 text-xs font-medium",
+                    "inline-flex items-center justify-center rounded-lg px-3 py-2 text-xs font-medium",
                     selected
                       ? "bg-accent text-white"
                       : "bg-neutral-100 text-neutral-900 hover:bg-neutral-200",

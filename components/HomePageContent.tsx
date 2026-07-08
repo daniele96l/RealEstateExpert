@@ -214,7 +214,7 @@ export default function HomePageContent() {
         avgWholeMonthly: summary.avgWholeMonthly,
         rentEstimateMethod: method,
       });
-      setFormPrefill(scenario);
+      setFormPrefill(undefined);
       updateScenario(scenario);
       setFormSyncToken((n) => n + 1);
       setActiveHistoryId(item.id);
@@ -349,10 +349,6 @@ export default function HomePageContent() {
           </div>
         </div>
         )}
-
-        <footer className="mt-12 border-t border-surface-border pt-6 text-center text-xs text-neutral-500">
-          {market === "cz" ? t("home.footerCz") : t("home.footerIt")}
-        </footer>
 
         {market === "it" && pageTab === "occupancy" ? (
           <OccupancyRemovalsLog refreshToken={occupancyLogRefresh} />
