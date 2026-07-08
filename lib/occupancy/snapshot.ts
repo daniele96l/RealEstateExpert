@@ -21,6 +21,7 @@ import type { OccupancySnapshotProgressState } from "@/lib/occupancy-snapshot-pr
 import { resolveListingZone } from "./zone";
 import { emptyRegistry, loadRegistry, saveRegistry, saveSnapshot } from "./registry";
 import { computeOccupancyMetrics } from "./metrics";
+import { logPresumedRentalRemoval } from "./removal-log";
 
 function daysBetween(startIso: string, endIso: string): number {
   const ms = new Date(endIso).getTime() - new Date(startIso).getTime();
@@ -242,8 +243,10 @@ export async function runOccupancySnapshot(
   for (const [id, tracked] of Object.entries(listings)) {
     if (tracked.status !== "active") continue;
     if (currentIds.has(id)) continue;
-    listings[id] = markRented(tracked);
+    const rented = markRented(tracked);
+    listings[id] = rented;
     rentedCount++;
+    await logPresumedRentalRemoval(rented, fetchedAt, portal);
   }
 
   const updatedRegistry = {

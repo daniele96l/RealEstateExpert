@@ -448,6 +448,22 @@ const en: Translations = {
       turnover: "30d turnover",
       occupancy: "Occupancy",
     },
+    removals: {
+      title: "Presumed rental log",
+      subtitle:
+        "Listings no longer online after a refresh — treated as rented (presumed).",
+      empty: "No removals logged yet — run at least two refreshes on different days.",
+      loadError: "Could not load removal log",
+      table: {
+        detected: "Detected",
+        zone: "Zone",
+        rent: "Rent",
+        rentPerSqm: "€/m²",
+        dom: "DOM",
+        priceHistory: "Price history",
+        address: "Address",
+      },
+    },
     preview: {
       title: "Cached rentals preview",
       subtitle: "Latest locally saved rent listings (Idealista map cache)",

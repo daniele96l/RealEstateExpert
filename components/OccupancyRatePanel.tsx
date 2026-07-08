@@ -160,7 +160,7 @@ function ListingStatusBadge({
   );
 }
 
-export default function OccupancyRatePanel() {
+export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: () => void } = {}) {
   const { t, locale } = useI18n();
   const dateLocale = locale === "en" ? "en-GB" : "it-IT";
   const [metrics, setMetrics] = useState<OccupancyCityMetrics | null>(null);
@@ -230,6 +230,7 @@ export default function OccupancyRatePanel() {
           rented: result.rented_count,
         }),
       );
+      onDataMutated?.();
     } catch (err) {
       setError(err instanceof Error ? err.message : t("occupancy.refreshError"));
     } finally {
@@ -261,6 +262,7 @@ export default function OccupancyRatePanel() {
     setSelectedSnapshotAt(null);
     setDiffPage(0);
     setLastRefreshSummary(null);
+    onDataMutated?.();
   };
 
   const statusLabel = (status: OccupancyListingChangeStatus) =>

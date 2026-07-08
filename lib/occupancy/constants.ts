@@ -47,6 +47,12 @@ export function occupancySnapshotPath(
   return path.join(occupancySnapshotsDir(portal), `${safe}.json`);
 }
 
+export function occupancyRemovalsLogPath(
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+): string {
+  return path.join(occupancyDataDir(portal), "removals.json");
+}
+
 export function isOccupancyCityAllowed(city: string): boolean {
   return city.trim().toLowerCase() === OCCUPANCY_CITY.toLowerCase();
 }

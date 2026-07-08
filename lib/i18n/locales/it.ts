@@ -450,6 +450,22 @@ const it = {
       turnover: "Turnover 30 gg",
       occupancy: "Occupazione",
     },
+    removals: {
+      title: "Log affitti presumibili",
+      subtitle:
+        "Annunci non più online al successivo aggiornamento — trattati come affittati (presunto).",
+      empty: "Nessuna rimozione registrata — esegui almeno due aggiornamenti in giorni diversi.",
+      loadError: "Impossibile caricare il log",
+      table: {
+        detected: "Rilevato",
+        zone: "Zona",
+        rent: "Canone",
+        rentPerSqm: "€/m²",
+        dom: "DOM",
+        priceHistory: "Storico prezzi",
+        address: "Indirizzo",
+      },
+    },
     preview: {
       title: "Anteprima cache affitti",
       subtitle: "Ultimi annunci in affitto salvati localmente (mappa Idealista)",

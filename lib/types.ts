@@ -356,6 +356,25 @@ export interface OccupancySnapshotDiff {
   listings: OccupancySnapshotListing[];
 }
 
+/** Logged when a listing disappears from the portal (presumed rented). */
+export interface OccupancyRemovalEvent {
+  id: string;
+  portal: OccupancyPortal;
+  detected_at: string;
+  presumed_rented_at: string;
+  first_seen_at: string;
+  last_seen_at: string;
+  days_on_market: number | null;
+  price: number;
+  sqm: number | null;
+  rooms: number | null;
+  address: string | null;
+  zone: string | null;
+  lat: number;
+  lng: number;
+  price_history: OccupancyPricePoint[];
+}
+
 export interface OccupancyMapListing {
   id: string;
   lat: number;

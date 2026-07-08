@@ -14,6 +14,7 @@ import MortgageCapitalChart from "@/components/MortgageCapitalChart";
 import RoiChart from "@/components/RoiChart";
 import ListingsExportPanel from "@/components/ListingsExportPanel";
 import OccupancyRatePanel from "@/components/OccupancyRatePanel";
+import OccupancyRemovalsLog from "@/components/OccupancyRemovalsLog";
 import {
   getDefaultSimpleScenario,
   sanitizeSimple,
@@ -69,6 +70,7 @@ export default function HomePageContent() {
   const [exportCacheRefreshToken, setExportCacheRefreshToken] = useState(0);
   const [exportContext, setExportContext] = useState<ListingsExportContext | null>(null);
   const [pageTab, setPageTab] = useState<PageTab>("analysis");
+  const [occupancyLogRefresh, setOccupancyLogRefresh] = useState(0);
 
   useEffect(() => {
     const stored = readStoredMarket();
@@ -287,7 +289,7 @@ export default function HomePageContent() {
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
         {pageTab === "occupancy" && market === "it" ? (
-          <OccupancyRatePanel />
+          <OccupancyRatePanel onDataMutated={() => setOccupancyLogRefresh((n) => n + 1)} />
         ) : (
         <div className="grid gap-8 lg:grid-cols-[minmax(320px,420px)_1fr]">
           <div
@@ -357,6 +359,10 @@ export default function HomePageContent() {
         <footer className="mt-12 border-t border-surface-border/40 pt-6 text-center text-xs text-slate-600">
           {market === "cz" ? t("home.footerCz") : t("home.footerIt")}
         </footer>
+
+        {market === "it" && pageTab === "occupancy" ? (
+          <OccupancyRemovalsLog refreshToken={occupancyLogRefresh} />
+        ) : null}
       </main>
     </div>
   );

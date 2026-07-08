@@ -9,6 +9,7 @@ import type {
   MarketPriceHistory,
   OccupancyCityMetrics,
   OccupancyDashboardData,
+  OccupancyRemovalEvent,
 } from "./types";
 import type { ListingsExportBundle } from "./listings-export";
 import type { BatchFetchProgressState, BatchFetchStreamEvent } from "./batch-fetch-progress";
@@ -401,4 +402,17 @@ export async function refreshOccupancySnapshotStream(
 
   if (!result) throw new Error("Aggiornamento occupancy incompleto");
   return result;
+}
+
+export async function fetchOccupancyRemovals(
+  portal?: OccupancyPortal | null,
+  limit = 50,
+): Promise<{ events: OccupancyRemovalEvent[]; portal: OccupancyPortal }> {
+  const params = new URLSearchParams();
+  if (portal) params.set("portal", portal);
+  if (limit !== 50) params.set("limit", String(limit));
+  const query = params.toString();
+  const res = await fetch(`/api/occupancy/removals${query ? `?${query}` : ""}`);
+  if (!res.ok) throw new Error(await parseError(res, "Lettura log rimozioni non riuscita"));
+  return res.json();
 }
