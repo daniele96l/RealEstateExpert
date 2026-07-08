@@ -260,6 +260,10 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
   const finalTotalExImprovements = finalEquityPlusCash - improvementCosts;
   const equityCagr = annualizedReturn(equityRoi, projectionYears);
   const totalCagrOnAnticipo = annualizedReturn(totalRoiOnAnticipo, projectionYears);
+  const initialInvestment = downPayment + taxesAndAccessories;
+  const totalRoiOnInvestment =
+    initialInvestment > 0 ? ((finalEquityPlusCash - initialInvestment) / initialInvestment) * 100 : 0;
+  const totalCagrOnInvestment = annualizedReturn(totalRoiOnInvestment, projectionYears);
   const cashLineColor = finalCumulativeCash >= 0 ? COLORS.cashPositive : COLORS.cashNegative;
   const maxMonth = lastPoint?.month ?? 0;
   const yearTickStep = maxMonth > 240 ? 60 : maxMonth > 120 ? 24 : 12;
@@ -319,6 +323,14 @@ export default function RoiChart({ result, market = "it", city = "" }: Props) {
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("roi.taxesAccessories")}</p>
             <p className="text-lg font-bold text-neutral-900">{fmtMoney(taxesAndAccessories, market)}</p>
+          </div>
+          <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
+            <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("roi.downPaymentPlusFees")}</p>
+            <p className="text-lg font-bold text-neutral-900">{fmtMoney(initialInvestment, market)}</p>
+            <p className={`text-xs font-medium ${totalCagrOnInvestment >= 0 ? "text-green-600" : "text-red-400"}`}>
+              {totalCagrOnInvestment >= 0 ? "+" : ""}
+              {t("roi.cagrOnDownPaymentPlusFees", { pct: totalCagrOnInvestment.toFixed(1) })}
+            </p>
           </div>
           <div className="rounded-lg bg-surface-border/40 px-3 py-2 text-right">
             <p className="text-[10px] uppercase tracking-wide text-neutral-500">{t("roi.finalEquity")}</p>

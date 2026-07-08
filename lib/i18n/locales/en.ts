@@ -214,6 +214,8 @@ const en: Translations = {
     finalEquity: "Final equity",
     withoutImprovements: "Excl. renovation & furnishing: {amount}",
     cagrOnDownPayment: "{pct}% CAGR on down payment",
+    downPaymentPlusFees: "Down payment + fees",
+    cagrOnDownPaymentPlusFees: "{pct}% CAGR on down payment + fees",
     purchaseTooltip: "Purchase",
     yearTooltip: "Year {year}",
     initialShare: "Down payment (initial share)",

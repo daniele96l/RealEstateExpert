@@ -213,6 +213,8 @@ const it = {
     finalEquity: "Equity finale",
     withoutImprovements: "Senza ristrutt. e arred.: {amount}",
     cagrOnDownPayment: "{pct}% CAGR su anticipo",
+    downPaymentPlusFees: "Anticipo + tasse",
+    cagrOnDownPaymentPlusFees: "{pct}% CAGR su anticipo + tasse",
     purchaseTooltip: "Acquisto",
     yearTooltip: "Anno {year}",
     initialShare: "Anticipo (quota iniziale)",
