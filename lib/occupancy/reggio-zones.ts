@@ -1,4 +1,5 @@
 import { distanceMeters } from "@/lib/geo-filter";
+import { pointInReggioMacroZone } from "./reggio-zone-polygons";
 import { OCCUPANCY_FALLBACK_ZONE } from "./constants";
 
 /** Immobiliare.it macro-areas for Reggio Calabria. */
@@ -31,7 +32,7 @@ const KEYWORD_RULES: Array<{ zone: ReggioMacroZone; pattern: RegExp }> = [
   { zone: REGGIO_MACRO_ZONES.MODENA, pattern: /san\s*giorgio|san\s*sperato|\bmodena\b|santo\s*stefano/i },
 ];
 
-const GEO_ZONES: Array<{ zone: ReggioMacroZone; lat: number; lng: number; maxM: number }> = [
+export const GEO_ZONES: Array<{ zone: ReggioMacroZone; lat: number; lng: number; maxM: number }> = [
   { zone: REGGIO_MACRO_ZONES.PELLARO, lat: 38.005, lng: 15.655, maxM: 4_500 },
   { zone: REGGIO_MACRO_ZONES.ARCHI, lat: 38.075, lng: 15.638, maxM: 3_500 },
   { zone: REGGIO_MACRO_ZONES.CENTRO, lat: 38.111, lng: 15.648, maxM: 2_200 },
@@ -75,6 +76,9 @@ function matchKeywordZone(text: string): ReggioMacroZone | null {
 }
 
 function matchGeoZone(lat: number, lng: number): ReggioMacroZone | null {
+  const polygonZone = pointInReggioMacroZone(lat, lng);
+  if (polygonZone) return polygonZone as ReggioMacroZone;
+
   let best: { zone: ReggioMacroZone; distance: number } | null = null;
 
   for (const candidate of GEO_ZONES) {

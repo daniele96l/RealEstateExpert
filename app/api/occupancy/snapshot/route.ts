@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isOccupancyPortal } from "@/lib/occupancy/constants";
-import { loadListingsPreview } from "@/lib/occupancy/listings-preview";
+import { resolveListingsPreview } from "@/lib/occupancy/listings-preview";
+import { loadAllSnapshots } from "@/lib/occupancy/registry";
 import { runOccupancySnapshot } from "@/lib/occupancy/snapshot";
 
 export const maxDuration = 300;
@@ -26,7 +27,12 @@ export async function POST(request: Request) {
             const result = await runOccupancySnapshot(portal, (progress) => {
               controller.enqueue(encoder.encode(`${JSON.stringify({ type: "progress", ...progress })}\n`));
             });
-            const listings_preview = await loadListingsPreview(result.registry.portal);
+            const snapshots = await loadAllSnapshots(result.registry.portal);
+            const listings_preview = await resolveListingsPreview(
+              result.registry.portal,
+              snapshots,
+              result.registry.last_provider ?? null,
+            );
             controller.enqueue(
               encoder.encode(
                 `${JSON.stringify({
@@ -60,7 +66,12 @@ export async function POST(request: Request) {
     }
 
     const result = await runOccupancySnapshot(portal);
-    const listings_preview = await loadListingsPreview(result.registry.portal);
+    const snapshots = await loadAllSnapshots(result.registry.portal);
+    const listings_preview = await resolveListingsPreview(
+      result.registry.portal,
+      snapshots,
+      result.registry.last_provider ?? null,
+    );
     return NextResponse.json({
       metrics: result.metrics,
       listings_preview,

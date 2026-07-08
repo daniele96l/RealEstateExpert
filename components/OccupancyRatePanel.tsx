@@ -20,6 +20,7 @@ import type {
 } from "@/lib/types";
 import { fmtMoney } from "@/lib/utils";
 import { Activity, CalendarDays, MapPin, RefreshCw } from "lucide-react";
+import OccupancyAreaPriceChart from "@/components/OccupancyAreaPriceChart";
 
 const OccupancyMinimap = dynamic(() => import("@/components/OccupancyMinimap"), {
   ssr: false,
@@ -238,6 +239,12 @@ export default function OccupancyRatePanel() {
   };
 
   const perSqmLabel = t("listings.perSqm");
+  const areaPriceAreas = listingsPreview?.areas ?? [];
+  const showAreaPriceChart = areaPriceAreas.some(
+    (area) =>
+      (area.avg_price != null && area.avg_price > 0) ||
+      (area.avg_price_per_sqm != null && area.avg_price_per_sqm > 0),
+  );
 
   const needsMoreSnapshots = (metrics?.snapshot_count ?? 0) < 2;
   const viewingHistorical = selectedSnapshotAt != null;
@@ -312,9 +319,35 @@ export default function OccupancyRatePanel() {
       ]
     : [];
 
-  const minimapBlock =
+  const mapOverlayOptions = useMemo(
+    () => [
+      {
+        id: "zones" as const,
+        label: t("occupancy.minimap.overlays.zones"),
+        hint: t("occupancy.minimap.overlays.zonesHint"),
+      },
+      {
+        id: "density" as const,
+        label: t("occupancy.minimap.overlays.density"),
+        hint: t("occupancy.minimap.overlays.densityHint"),
+      },
+      {
+        id: "price" as const,
+        label: t("occupancy.minimap.overlays.price"),
+        hint: t("occupancy.minimap.overlays.priceHint"),
+      },
+      {
+        id: "darkMap" as const,
+        label: t("occupancy.minimap.overlays.darkMap"),
+        hint: t("occupancy.minimap.overlays.darkMapHint"),
+      },
+    ],
+    [t],
+  );
+
+  const minimapContent =
     mapListings.length > 0 ? (
-      <div className="border-b border-surface-border/40 px-6 py-4">
+      <>
         <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">
           {t("occupancy.minimap.title")}
         </p>
@@ -322,14 +355,27 @@ export default function OccupancyRatePanel() {
           listings={filteredMapListings}
           legend={mapLegend}
           emptyLabel={t("occupancy.minimap.empty")}
+          expandable
+          expandLabel={t("occupancy.minimap.expand")}
+          expandedTitle={t("occupancy.minimap.expandedTitle")}
+          closeLabel={t("occupancy.minimap.close")}
+          layersTitle={t("occupancy.minimap.layersTitle")}
+          zonesLegendTitle={t("occupancy.minimap.zonesLegendTitle")}
+          listingsCountLabel={t("occupancy.minimap.listingsCount")}
+          boundaryAttribution={t("occupancy.minimap.boundaryAttribution")}
+          overlayOptions={mapOverlayOptions}
           statusLabels={{
             still_active: statusLabel("still_active"),
             new: statusLabel("new"),
             removed: statusLabel("removed"),
           }}
         />
-      </div>
+      </>
     ) : null;
+
+  const minimapBlock = minimapContent ? (
+    <div className="border-b border-surface-border/40 px-6 py-4">{minimapContent}</div>
+  ) : null;
 
   return (
     <div className="space-y-6">
@@ -532,31 +578,6 @@ export default function OccupancyRatePanel() {
 
           {mapListings.length > 0 && !snapshotDiff ? minimapBlock : null}
 
-          {listingsPreview.areas.length > 0 ? (
-            <div className="border-b border-surface-border/40 px-6 py-4">
-              <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">
-                {t("occupancy.preview.topAreas")}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {listingsPreview.areas.map((area) => (
-                  <span
-                    key={area.zone}
-                    className="rounded-lg border border-surface-border/60 bg-surface-raised/40 px-3 py-1.5 text-sm text-slate-300"
-                  >
-                    {area.zone}
-                    <span className="ml-2 text-slate-500">
-                      {area.count}
-                      {area.avg_price != null ? ` · ${fmtMoney(area.avg_price)}` : ""}
-                      {area.avg_price_per_sqm != null
-                        ? ` · ${fmtMoney(area.avg_price_per_sqm)}${perSqmLabel}`
-                        : ""}
-                    </span>
-                  </span>
-                ))}
-              </div>
-            </div>
-          ) : null}
-
           {listingsPreview.sample.length > 0 && !snapshotDiff ? (
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm">
@@ -606,19 +627,21 @@ export default function OccupancyRatePanel() {
             </p>
           </div>
 
-          <div className="grid gap-4 border-b border-surface-border/40 p-6 sm:grid-cols-3">
-            <KpiCard
-              label={t("occupancy.diff.stillActive")}
-              value={String(snapshotDiff.still_active_count)}
-            />
-            <KpiCard label={t("occupancy.diff.new")} value={String(snapshotDiff.new_count)} />
-            <KpiCard
-              label={t("occupancy.diff.removed")}
-              value={String(snapshotDiff.removed_count)}
-            />
-          </div>
+          <div className="grid border-b border-surface-border/40 lg:grid-cols-2 lg:items-center">
+            <div className="grid gap-4 p-6 sm:grid-cols-3 lg:grid-cols-1 lg:border-r lg:border-surface-border/40">
+              <KpiCard
+                label={t("occupancy.diff.stillActive")}
+                value={String(snapshotDiff.still_active_count)}
+              />
+              <KpiCard label={t("occupancy.diff.new")} value={String(snapshotDiff.new_count)} />
+              <KpiCard
+                label={t("occupancy.diff.removed")}
+                value={String(snapshotDiff.removed_count)}
+              />
+            </div>
 
-          {minimapBlock}
+            {minimapContent ? <div className="p-6">{minimapContent}</div> : null}
+          </div>
 
           <div className="flex flex-wrap gap-2 border-b border-surface-border/40 px-6 py-4">
             {diffFilters.map((filter) => (
@@ -817,6 +840,17 @@ export default function OccupancyRatePanel() {
             </div>
           </div>
         </>
+      ) : null}
+
+      {!loading && showAreaPriceChart ? (
+        <div className="card-glass overflow-hidden">
+          <OccupancyAreaPriceChart
+            areas={areaPriceAreas}
+            perSqmLabel={perSqmLabel}
+            cityAvgRent={listingsPreview?.avg_price}
+            cityAvgPerSqm={listingsPreview?.avg_price_per_sqm}
+          />
+        </div>
       ) : null}
     </div>
   );

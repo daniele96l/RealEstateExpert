@@ -22,6 +22,7 @@ data/market/*.json
 data/analyses/*.json
 !data/analyses/.gitkeep
 data/occupancy/
+data/gis/
 reggio_rentals/data/*.sqlite
 reggio_rentals/data/*.sqlite-journal
 

@@ -1,6 +1,6 @@
 import { computeOccupancyMetrics } from "./metrics";
 import { buildMapListings } from "./map-listings";
-import { buildPreviewFromSnapshot, loadListingsPreview } from "./listings-preview";
+import { buildPreviewFromSnapshot, resolveListingsPreview } from "./listings-preview";
 import { listSnapshotSummaries, loadAllSnapshots, loadRegistry } from "./registry";
 import { computeSnapshotDiff } from "./snapshot-diff";
 import { rebuildRegistryFromSnapshots } from "./snapshot";
@@ -45,7 +45,11 @@ export async function loadOccupancyDashboard(
 
   const selected = asOf?.trim() || null;
   let registry = currentRegistry;
-  let listings_preview = await loadListingsPreview(portal);
+  let listings_preview = await resolveListingsPreview(
+    portal,
+    allSnapshots,
+    currentRegistry.last_provider ?? null,
+  );
 
   if (selected) {
     const targetMs = new Date(selected).getTime();

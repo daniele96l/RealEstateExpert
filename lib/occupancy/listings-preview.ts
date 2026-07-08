@@ -13,7 +13,7 @@ import { OCCUPANCY_CITY, OCCUPANCY_MARKET, DEFAULT_OCCUPANCY_PORTAL, type Occupa
 import { remapListingZones, resolveListingZone, withResolvedZone } from "./zone";
 
 const PREVIEW_SAMPLE_SIZE = 8;
-const PREVIEW_AREA_LIMIT = 8;
+const PREVIEW_AREA_LIMIT = 20;
 
 function median(values: number[]): number | null {
   if (!values.length) return null;
@@ -103,9 +103,6 @@ async function loadMergedRentCache(portal: OccupancyPortal): Promise<CityListing
 export async function loadListingsPreview(
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
 ): Promise<OccupancyListingsPreview | null> {
-  if (portal === "immobiliare_scraper") {
-    return null;
-  }
   const cache = await loadMergedRentCache(portal);
   if (!cache?.listings.length) return null;
 
@@ -201,4 +198,20 @@ export function buildPreviewFromSnapshot(
     areas,
     sample,
   };
+}
+
+export async function resolveListingsPreview(
+  portal: OccupancyPortal,
+  snapshots: OccupancySnapshot[],
+  provider: string | null = null,
+): Promise<OccupancyListingsPreview | null> {
+  const fromCache = await loadListingsPreview(portal);
+  if (fromCache) return fromCache;
+
+  const latest = snapshots[snapshots.length - 1];
+  if (latest?.listings.length) {
+    return buildPreviewFromSnapshot(latest, provider);
+  }
+
+  return null;
 }

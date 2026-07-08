@@ -1,0 +1,75 @@
+{
+  "macroZones": [
+    "Centro Storico, Pineta Zerbi",
+    "Ravagnese, Gallina, Armo",
+    "Archi, Gallico, Catona",
+    "San Gregorio, Pellaro",
+    "Terreti, Ortì",
+    "Trabocchetto, Spirito Santo, Tremulini, Eremo",
+    "Santa Caterina, San Brunello, Vito",
+    "Ferrovieri, Stadio, Sbarre",
+    "Modena, San Giorgio Extra, San Sperato"
+  ],
+  "sources": {
+    "Centro Storico, Pineta Zerbi": [
+      "Centro Storico",
+      "Centro",
+      "Pineta Zerbi",
+      "Reggio Nord",
+      "Duomo",
+      "San Rocco"
+    ],
+    "Ravagnese, Gallina, Armo": [
+      "Ravagnese",
+      "Arangea",
+      "Gallina",
+      "Armo"
+    ],
+    "Archi, Gallico, Catona": [
+      "Archi",
+      "Gallico",
+      "Catona",
+      "Sambatello",
+      "Masella"
+    ],
+    "San Gregorio, Pellaro": [
+      "Pellaro",
+      "San Gregorio",
+      "Occhio di Pellaro",
+      "San Leo"
+    ],
+    "Terreti, Ortì": [
+      "Terreti",
+      "Ortì",
+      "Orti"
+    ],
+    "Trabocchetto, Spirito Santo, Tremulini, Eremo": [
+      "Trabocchetto",
+      "Spirito Santo",
+      "Tremulini",
+      "Eremo",
+      "Condera"
+    ],
+    "Santa Caterina, San Brunello, Vito": [
+      "Santa Caterina",
+      "San Brunello",
+      "Vito",
+      "Pentimele",
+      "Nervesa"
+    ],
+    "Ferrovieri, Stadio, Sbarre": [
+      "Ferrovieri",
+      "Stadio",
+      "Sbarre",
+      "Gebbione",
+      "Rione Ferrovieri"
+    ],
+    "Modena, San Giorgio Extra, San Sperato": [
+      "Modena",
+      "San Giorgio",
+      "San Giorgio Extra",
+      "San Sperato",
+      "Santo Stefano"
+    ]
+  }
+}
