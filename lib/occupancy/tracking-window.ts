@@ -1,5 +1,24 @@
 import type { OccupancySnapshot } from "@/lib/types";
 import { OCCUPANCY_TURNOVER_DAYS, OCCUPANCY_WINDOW_DAYS } from "./constants";
+import type { OccupancyMetricsPeriod } from "./metrics-period";
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+export function resolveWindowStartMs(
+  asOfMs: number,
+  windowDays: number,
+  trackingStartedAt: string | null,
+  period?: OccupancyMetricsPeriod,
+): number {
+  if (period === "longest" && trackingStartedAt) {
+    return new Date(trackingStartedAt).getTime();
+  }
+  const calendarStart = asOfMs - windowDays * DAY_MS;
+  if (!trackingStartedAt) return calendarStart;
+  const trackingStartMs = new Date(trackingStartedAt).getTime();
+  if (!Number.isFinite(trackingStartMs)) return calendarStart;
+  return Math.max(calendarStart, trackingStartMs);
+}
 
 export interface OccupancyMetricsContext {
   tracking_days: number;

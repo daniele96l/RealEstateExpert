@@ -27,6 +27,7 @@ import type { OccupancySnapshotProgressState } from "@/lib/occupancy-snapshot-pr
 import { resolveListingZone } from "./zone";
 import { emptyRegistry, loadRegistry, saveRegistry, saveSnapshot } from "./registry";
 import { computeOccupancyMetrics } from "./metrics";
+import { DEFAULT_OCCUPANCY_METRICS_PERIOD } from "./metrics-period";
 import { logPresumedRentalRemoval } from "./removal-log";
 
 function daysBetween(startIso: string, endIso: string): number {
@@ -334,7 +335,10 @@ export async function runOccupancySnapshot(
   );
   await saveRegistry(updatedRegistry, citySlug, portal);
 
-  const metrics = await computeOccupancyMetrics(updatedRegistry, { citySlug });
+  const metrics = await computeOccupancyMetrics(updatedRegistry, {
+    citySlug,
+    period: DEFAULT_OCCUPANCY_METRICS_PERIOD,
+  });
 
   reportProgress(totalSteps, maxPages, basics.length, "Completato");
 

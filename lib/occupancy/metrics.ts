@@ -1,5 +1,6 @@
 import type {
   OccupancyAreaMetrics,
+  OccupancyBasicListing,
   OccupancyCityMetrics,
   OccupancyRegistry,
   TrackedRentalListing,
@@ -11,16 +12,22 @@ import {
   type OccupancyPortal,
 } from "./constants";
 import { getOccupancyCityConfig, type OccupancyCitySlug } from "./cities";
-import { loadAllSnapshots, loadSnapshotsInWindow } from "./registry";
+import { loadAllSnapshots } from "./registry";
 import { computeSegmentGroups } from "./segment-metrics";
 import { resolveListingZone } from "./zone";
-import { aggregateOccupancyListings, averageMetricValues } from "./aggregate";
+import {
+  aggregateOccupancyListings,
+  computeScopedInventoryBasis,
+  timeWeightedAverageActiveCount,
+} from "./aggregate";
 import {
   resolveOccupancyMetricsContext,
+  resolveWindowStartMs,
   zoneInventoryBasis,
   type OccupancyMetricsContext,
 } from "./tracking-window";
 import {
+  DEFAULT_OCCUPANCY_METRICS_PERIOD,
   occupancyMetricsPeriodDays,
   type OccupancyMetricsPeriod,
 } from "./metrics-period";
@@ -57,34 +64,51 @@ function resolveAsOfMs(asOf?: string): number {
   return Number.isFinite(ms) ? ms : Date.now();
 }
 
-async function avgActiveInventoryLastDays(
-  days: number,
-  asOfMs: number,
-  citySlug: Parameters<typeof loadSnapshotsInWindow>[2],
-  portal: OccupancyPortal,
-): Promise<number | null> {
-  if (days <= 0) return null;
-  const snapshots = await loadSnapshotsInWindow(days, asOfMs, citySlug, portal);
-  if (!snapshots.length) return null;
-  const counts = snapshots.map((s) => s.active_count);
-  return averageMetricValues(counts);
+function listingInZone(
+  listing: OccupancyBasicListing,
+  zone: string,
+  citySlug: OccupancyCitySlug,
+): boolean {
+  const resolved =
+    listing.zone ?? resolveListingZone(listing.address, listing.lat, listing.lng, citySlug);
+  return resolved === zone;
 }
 
-function aggregateOptions(
+function avgActiveInventoryInWindow(
+  snapshots: Awaited<ReturnType<typeof loadAllSnapshots>>,
+  windowDays: number,
+  asOfMs: number,
+  windowStartMs: number,
+): number | null {
+  if (windowDays <= 0) return null;
+  return timeWeightedAverageActiveCount(snapshots, windowStartMs, asOfMs);
+}
+
+function buildAggregateOptions(
   ctx: OccupancyMetricsContext,
   occupancyInventoryBasis: number | null,
   turnoverInventoryBasis: number | null,
+  asOfMs: number,
   period?: OccupancyMetricsPeriod,
 ) {
-  const windowStartMs =
-    period === "longest" && ctx.tracking_started_at
-      ? new Date(ctx.tracking_started_at).getTime()
-      : null;
+  const occupancyWindowStartMs = resolveWindowStartMs(
+    asOfMs,
+    ctx.occupancy_window_days,
+    ctx.tracking_started_at,
+    period,
+  );
+  const turnoverWindowStartMs = resolveWindowStartMs(
+    asOfMs,
+    ctx.turnover_window_days,
+    ctx.tracking_started_at,
+    period,
+  );
   return {
     flowMetricsReady: ctx.flow_metrics_ready,
     occupancyInventoryBasis,
     turnoverInventoryBasis,
-    windowStartMs,
+    windowStartMs: occupancyWindowStartMs,
+    turnoverWindowStartMs,
   };
 }
 
@@ -105,9 +129,20 @@ export async function computeOccupancyMetrics(
   const asOfMs = resolveAsOfMs(
     options?.asOf ?? allSnapshots[allSnapshots.length - 1]?.fetched_at ?? registry.updated_at,
   );
-  const ctx = applyMetricsPeriod(
-    resolveOccupancyMetricsContext(allSnapshots, asOfMs),
-    options?.period,
+  const period = options?.period;
+  const ctx = applyMetricsPeriod(resolveOccupancyMetricsContext(allSnapshots, asOfMs), period);
+
+  const occupancyWindowStartMs = resolveWindowStartMs(
+    asOfMs,
+    ctx.occupancy_window_days,
+    ctx.tracking_started_at,
+    period,
+  );
+  const turnoverWindowStartMs = resolveWindowStartMs(
+    asOfMs,
+    ctx.turnover_window_days,
+    ctx.tracking_started_at,
+    period,
   );
 
   const all = Object.values(registry.listings).map((listing) => ({
@@ -115,24 +150,25 @@ export async function computeOccupancyMetrics(
     zone: resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
   }));
 
-  const avgActiveOccupancy = await avgActiveInventoryLastDays(
+  const avgActiveOccupancy = avgActiveInventoryInWindow(
+    allSnapshots,
     ctx.occupancy_window_days,
     asOfMs,
-    citySlug,
-    portal,
+    occupancyWindowStartMs,
   );
-  const avgActiveTurnover = await avgActiveInventoryLastDays(
+  const avgActiveTurnover = avgActiveInventoryInWindow(
+    allSnapshots,
     ctx.turnover_window_days,
     asOfMs,
-    citySlug,
-    portal,
+    turnoverWindowStartMs,
   );
 
-  const cityAggregateOptions = aggregateOptions(
+  const cityAggregateOptions = buildAggregateOptions(
     ctx,
     avgActiveOccupancy,
     avgActiveTurnover,
-    options?.period,
+    asOfMs,
+    period,
   );
   const cityTotals = aggregateOccupancyListings(
     all,
@@ -154,16 +190,22 @@ export async function computeOccupancyMetrics(
   const areas: OccupancyAreaMetrics[] = [...byZone.entries()]
     .map(([zone, items]) => {
       const zoneActive = items.filter((l) => l.status === "active").length;
-      const zoneTurnoverBasis = zoneInventoryBasis(
-        avgActiveTurnover,
-        cityTotals.active_count,
-        zoneActive,
-      );
-      const zoneOccupancyBasis = zoneInventoryBasis(
-        avgActiveOccupancy,
-        cityTotals.active_count,
-        zoneActive,
-      );
+      const zoneTurnoverBasis =
+        computeScopedInventoryBasis(
+          allSnapshots,
+          turnoverWindowStartMs,
+          asOfMs,
+          (listing) => listingInZone(listing, zone, citySlug),
+        ) ??
+        zoneInventoryBasis(avgActiveTurnover, cityTotals.active_count, zoneActive);
+      const zoneOccupancyBasis =
+        computeScopedInventoryBasis(
+          allSnapshots,
+          occupancyWindowStartMs,
+          asOfMs,
+          (listing) => listingInZone(listing, zone, citySlug),
+        ) ??
+        zoneInventoryBasis(avgActiveOccupancy, cityTotals.active_count, zoneActive);
       return {
         zone,
         ...aggregateOccupancyListings(
@@ -190,6 +232,9 @@ export async function computeOccupancyMetrics(
     asOfMs,
     {
       ...cityAggregateOptions,
+      snapshots: allSnapshots,
+      occupancyWindowStartMs,
+      turnoverWindowStartMs,
       cityActive: cityTotals.active_count,
       avgActiveOccupancy,
       avgActiveTurnover,
@@ -224,7 +269,10 @@ export async function loadOccupancyMetrics(
 ): Promise<OccupancyCityMetrics> {
   const { loadRegistry } = await import("./registry");
   const registry = await loadRegistry(citySlug, portal);
-  return computeOccupancyMetrics(registry, { citySlug });
+  return computeOccupancyMetrics(registry, {
+    citySlug,
+    period: DEFAULT_OCCUPANCY_METRICS_PERIOD,
+  });
 }
 
 // Re-export constants for callers/tests that referenced them from metrics.

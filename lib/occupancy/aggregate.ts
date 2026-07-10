@@ -1,4 +1,94 @@
-import type { OccupancyAreaMetrics, TrackedRentalListing } from "@/lib/types";
+import type {
+  OccupancyAreaMetrics,
+  OccupancyBasicListing,
+  OccupancySnapshot,
+  TrackedRentalListing,
+} from "@/lib/types";
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+function snapshotMs(snapshot: Pick<OccupancySnapshot, "fetched_at">): number {
+  return new Date(snapshot.fetched_at).getTime();
+}
+
+function activeCountAt(
+  snapshots: Pick<OccupancySnapshot, "fetched_at" | "active_count">[],
+  atMs: number,
+): number | null {
+  let carried: number | null = null;
+  for (const snapshot of snapshots) {
+    const t = snapshotMs(snapshot);
+    if (!Number.isFinite(t)) continue;
+    if (t <= atMs) {
+      carried = snapshot.active_count;
+      continue;
+    }
+    break;
+  }
+  if (carried != null) return carried;
+  const next = snapshots.find((snapshot) => snapshotMs(snapshot) >= atMs);
+  return next?.active_count ?? null;
+}
+
+/** Time-weighted mean active inventory (last observation carried forward between snapshots). */
+export function timeWeightedAverageActiveCount(
+  snapshots: Pick<OccupancySnapshot, "fetched_at" | "active_count">[],
+  windowStartMs: number,
+  asOfMs: number,
+): number | null {
+  if (windowStartMs >= asOfMs) return null;
+
+  const ordered = [...snapshots]
+    .filter((snapshot) => {
+      const t = snapshotMs(snapshot);
+      return Number.isFinite(t) && t <= asOfMs;
+    })
+    .sort((a, b) => snapshotMs(a) - snapshotMs(b));
+
+  if (!ordered.length) return null;
+
+  const windowMs = asOfMs - windowStartMs;
+  const boundaries = new Set<number>([windowStartMs, asOfMs]);
+  for (const snapshot of ordered) {
+    const t = snapshotMs(snapshot);
+    if (t > windowStartMs && t < asOfMs) boundaries.add(t);
+  }
+
+  const times = [...boundaries].sort((a, b) => a - b);
+  let weightedSum = 0;
+
+  for (let i = 0; i < times.length - 1; i++) {
+    const segStart = times[i]!;
+    const segEnd = times[i + 1]!;
+    const duration = segEnd - segStart;
+    if (duration <= 0) continue;
+
+    const count = activeCountAt(ordered, segStart);
+    if (count == null) continue;
+    weightedSum += count * duration;
+  }
+
+  if (weightedSum <= 0) return null;
+  return Math.round(weightedSum / windowMs);
+}
+
+export function computeScopedInventoryBasis(
+  snapshots: OccupancySnapshot[],
+  windowStartMs: number,
+  asOfMs: number,
+  match: (listing: OccupancyBasicListing) => boolean,
+): number | null {
+  const series = snapshots
+    .filter((snapshot) => {
+      const t = snapshotMs(snapshot);
+      return Number.isFinite(t) && t <= asOfMs;
+    })
+    .map((snapshot) => ({
+      fetched_at: snapshot.fetched_at,
+      active_count: snapshot.listings.filter(match).length,
+    }));
+  return timeWeightedAverageActiveCount(series, windowStartMs, asOfMs);
+}
 
 function median(values: number[]): number | null {
   if (!values.length) return null;
@@ -16,10 +106,14 @@ function average(values: number[]): number | null {
 }
 
 
+function daysBetweenMs(startMs: number, endMs: number): number {
+  if (!Number.isFinite(startMs)) return 0;
+  return Math.max(0, Math.round((endMs - startMs) / DAY_MS));
+}
+
 function daysBetween(startIso: string, endMs: number): number {
   const start = new Date(startIso).getTime();
-  if (!Number.isFinite(start)) return 0;
-  return Math.max(0, Math.round((endMs - start) / (24 * 60 * 60 * 1000)));
+  return daysBetweenMs(start, endMs);
 }
 
 function wasTrackedBeforeRemoval(listing: TrackedRentalListing): boolean {
@@ -53,6 +147,7 @@ export interface AggregateOccupancyOptions {
   turnoverInventoryBasis?: number | null;
   flowMetricsReady?: boolean;
   windowStartMs?: number | null;
+  turnoverWindowStartMs?: number | null;
 }
 
 export function aggregateOccupancyListings(
@@ -65,6 +160,7 @@ export function aggregateOccupancyListings(
 ): Omit<OccupancyAreaMetrics, "zone"> {
   const flowReady = options?.flowMetricsReady ?? windowDays > 0;
   const windowStartMs = options?.windowStartMs;
+  const turnoverWindowStartMs = options?.turnoverWindowStartMs ?? windowStartMs;
   const active = items.filter((l) => l.status === "active");
   const rentedWindow = flowReady
     ? items.filter((l) => rentedInWindow(l, windowDays, now, windowStartMs))
@@ -79,7 +175,7 @@ export function aggregateOccupancyListings(
     .filter((v): v is number => v != null && v > 0);
 
   const rentedTurnover = flowReady
-    ? items.filter((l) => rentedInWindow(l, turnoverDays, now, windowStartMs)).length
+    ? items.filter((l) => rentedInWindow(l, turnoverDays, now, turnoverWindowStartMs)).length
     : 0;
 
   const turnoverBasis =
@@ -103,7 +199,18 @@ export function aggregateOccupancyListings(
       ? Math.round((rentedWindow.length / occupancyDenominator) * 1000) / 10
       : null;
 
-  const activeWaitingDays = active.map((listing) => daysBetween(listing.first_seen_at, now));
+  const effectiveWindowStartMs =
+    windowStartMs ?? (flowReady ? now - windowDays * DAY_MS : now);
+  const activeWaitingDays = flowReady
+    ? active.map((listing) => {
+        const firstMs = new Date(listing.first_seen_at).getTime();
+        const startMs = Math.max(
+          Number.isFinite(firstMs) ? firstMs : effectiveWindowStartMs,
+          effectiveWindowStartMs,
+        );
+        return daysBetweenMs(startMs, now);
+      })
+    : [];
   const avg_waiting_days = activeWaitingDays.length ? average(activeWaitingDays) : null;
 
   return {

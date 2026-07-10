@@ -491,13 +491,13 @@ const en: Translations = {
     kpi: {
       active: "Active listings",
       avgDom: "Days on market (avg)",
-      domHint: "Presumed rented listings only",
+      domHint: "Presumed rented listings in the {period} window only",
       allCity: "Whole city",
       areaFilter: "Area",
       metricsPeriod: "Period",
-      metricsPeriodDaily: "Daily",
+      metricsPeriodDaily: "Daily (1d)",
       metricsPeriodWeekly: "Weekly",
-      metricsPeriodMonthly: "Monthly",
+      metricsPeriodMonthly: "Last 30 days",
       metricsPeriodLongest: "Full span",
       longestPeriodBanner:
         "Full tracking span: {from} → {to} ({days}d, {snapshotDays} days with snapshots).",
@@ -522,14 +522,15 @@ const en: Translations = {
       avgDom: "Avg DOM",
       medianDom: "Median DOM",
       avgWaitingDays: "Avg waiting · {period}",
-      avgWaitingDaysHint: "Average days active listings have been online in the {period} view.",
+      avgWaitingDaysHint:
+        "Average days active listings have been online during the {period} window.",
       turnover: "Turnover · {period}",
       turnoverHint:
         "Inventory cycles in the {period} view. Ratio: presumed rentals ÷ avg active listings ({days}d). 1.0× ≈ one full cycle.",
       occupancy: "Occupancy",
       occupancyHint:
         "Estimated share in the {period} view: rented ÷ (avg active + rented). Only removals after at least 1 day online.",
-      periodLabelDaily: "daily",
+      periodLabelDaily: "daily (1d)",
       periodLabelWeekly: "weekly ({days}d)",
       periodLabelMonthly: "monthly ({days}d)",
       periodLabelLongest: "full span ({days}d)",

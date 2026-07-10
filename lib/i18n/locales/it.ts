@@ -493,13 +493,13 @@ const it = {
     kpi: {
       active: "Annunci attivi",
       avgDom: "Giorni sul mercato (media)",
-      domHint: "Solo annunci presumibilmente affittati",
+      domHint: "Solo annunci presumibilmente affittati nel periodo {period}",
       allCity: "Tutta la città",
       areaFilter: "Zona",
       metricsPeriod: "Periodo",
-      metricsPeriodDaily: "Giornaliero",
+      metricsPeriodDaily: "Giornaliero (1 gg)",
       metricsPeriodWeekly: "Settimanale",
-      metricsPeriodMonthly: "Mensile",
+      metricsPeriodMonthly: "Ultimi 30 gg",
       metricsPeriodLongest: "Intero periodo",
       longestPeriodBanner:
         "Periodo completo: {from} → {to} ({days} gg, {snapshotDays} giorni con snapshot).",
@@ -525,14 +525,14 @@ const it = {
       medianDom: "DOM mediano",
       avgWaitingDays: "Attesa media · {period}",
       avgWaitingDaysHint:
-        "Media giorni online degli annunci attivi nel periodo {period}.",
+        "Media giorni online degli annunci attivi durante il periodo {period}.",
       turnover: "Rotazione · {period}",
       turnoverHint:
         "Rinnovi inventario nel periodo {period}. Rapporto: affittati presumibilmente ÷ media annunci attivi ({days} gg). 1,0× ≈ un rinnovo completo.",
       occupancy: "Occupazione",
       occupancyHint:
         "Quota stimata nel periodo {period}: affittati ÷ (media attivi + affittati). Solo rimozioni dopo almeno 1 giorno online.",
-      periodLabelDaily: "giornaliero",
+      periodLabelDaily: "giornaliero (1 gg)",
       periodLabelWeekly: "settimanale ({days} gg)",
       periodLabelMonthly: "mensile ({days} gg)",
       periodLabelLongest: "intero periodo ({days} gg)",

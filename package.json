@@ -21,7 +21,8 @@
     "data:sync-brno": "tsx scripts/sync-prod-brno.ts",
     "data:sync-occupancy": "npm run data:sync-immobiliare && npm run data:sync-brno",
     "build:reggio-zones": "tsx scripts/build-reggio-zone-polygons.ts",
-    "listings:test-providers": "tsx scripts/test-listing-providers.ts"
+    "listings:test-providers": "tsx scripts/test-listing-providers.ts",
+    "test:occupancy-rebasing": "tsx lib/occupancy/rebasing.test.ts"
   },
   "dependencies": {
     "@turf/bbox": "^7.3.5",

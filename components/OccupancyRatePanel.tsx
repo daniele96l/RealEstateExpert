@@ -129,6 +129,7 @@ import {
 } from "@/lib/occupancy/cities";
 import { defaultPortalForCity, portalsForCity } from "@/lib/occupancy/portals";
 import {
+  occupancyMetricsPeriodDays,
   resolveOccupancyMetricsPeriod,
   type OccupancyMetricsPeriod,
 } from "@/lib/occupancy/metrics-period";
@@ -573,6 +574,8 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const turnoverPeriodLabel = metrics
     ? metricsPeriodTableLabel(metricsPeriod, metrics.turnover_window_days, t)
     : "";
+  const periodTargetDays =
+    metricsPeriod === "longest" ? null : occupancyMetricsPeriodDays(metricsPeriod);
 
   const diffFilters: Array<{ id: DiffFilter; label: string; count: number }> = snapshotDiff
     ? [
@@ -1154,13 +1157,13 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                 })}
               </p>
             </div>
-          ) : metrics.tracking_days < metrics.occupancy_target_days ? (
+          ) : periodTargetDays != null && metrics.tracking_days < periodTargetDays ? (
             <div className="rounded-xl border border-amber-200/80 bg-amber-50 px-4 py-3 text-sm text-amber-900">
               {t("occupancy.earlyTrackingBanner", {
                 tracking: metrics.tracking_days,
                 snapshotDays: metrics.tracking_snapshot_days,
                 occupancy: metrics.occupancy_window_days,
-                target: metrics.occupancy_target_days,
+                target: periodTargetDays,
               })}
             </div>
           ) : null}
@@ -1173,7 +1176,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
             <KpiCard
               label={t("occupancy.kpi.avgDom")}
               value={formatDays(kpiMetrics.avg_days_on_market)}
-              hint={t("occupancy.kpi.domHint")}
+              hint={t("occupancy.kpi.domHint", { period: occupancyPeriodLabel })}
             />
             <KpiCard
               label={t("occupancy.kpi.turnover", { period: turnoverPeriodLabel })}

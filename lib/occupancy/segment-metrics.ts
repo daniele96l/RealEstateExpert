@@ -1,11 +1,21 @@
 import type { MarketId } from "@/lib/markets";
-import type { OccupancySegmentGroups, OccupancySegmentMetrics, TrackedRentalListing } from "@/lib/types";
-import { aggregateOccupancyListings, type AggregateOccupancyOptions } from "./aggregate";
+import type {
+  OccupancyBasicListing,
+  OccupancySegmentGroups,
+  OccupancySegmentMetrics,
+  OccupancySnapshot,
+  TrackedRentalListing,
+} from "@/lib/types";
+import {
+  aggregateOccupancyListings,
+  computeScopedInventoryBasis,
+  type AggregateOccupancyOptions,
+} from "./aggregate";
 import { zoneInventoryBasis } from "./tracking-window";
 
 interface SegmentBucket {
   id: string;
-  match: (listing: TrackedRentalListing) => boolean;
+  match: (listing: OccupancyBasicListing) => boolean;
 }
 
 function priceBuckets(market: MarketId): SegmentBucket[] {
@@ -45,6 +55,9 @@ const SIZE_BUCKETS: SegmentBucket[] = [
 ];
 
 export interface SegmentGroupOptions extends AggregateOccupancyOptions {
+  snapshots: OccupancySnapshot[];
+  occupancyWindowStartMs: number;
+  turnoverWindowStartMs: number;
   cityActive: number;
   avgActiveOccupancy: number | null;
   avgActiveTurnover: number | null;
@@ -63,22 +76,30 @@ function buildGroup(
       const items = listings.filter(bucket.match);
       if (!items.length) return null;
       const segmentActive = items.filter((l) => l.status === "active").length;
-      const turnoverBasis = zoneInventoryBasis(
-        options.avgActiveTurnover,
-        options.cityActive,
-        segmentActive,
-      );
-      const occupancyBasis = zoneInventoryBasis(
-        options.avgActiveOccupancy,
-        options.cityActive,
-        segmentActive,
-      );
+      const turnoverBasis =
+        computeScopedInventoryBasis(
+          options.snapshots,
+          options.turnoverWindowStartMs,
+          asOfMs,
+          bucket.match,
+        ) ??
+        zoneInventoryBasis(options.avgActiveTurnover, options.cityActive, segmentActive);
+      const occupancyBasis =
+        computeScopedInventoryBasis(
+          options.snapshots,
+          options.occupancyWindowStartMs,
+          asOfMs,
+          bucket.match,
+        ) ??
+        zoneInventoryBasis(options.avgActiveOccupancy, options.cityActive, segmentActive);
       return {
         segment_id: bucket.id,
         ...aggregateOccupancyListings(items, windowDays, turnoverDays, turnoverBasis, asOfMs, {
           flowMetricsReady: options.flowMetricsReady,
           occupancyInventoryBasis: occupancyBasis,
           turnoverInventoryBasis: turnoverBasis,
+          windowStartMs: options.windowStartMs,
+          turnoverWindowStartMs: options.turnoverWindowStartMs,
         }),
       };
     })
