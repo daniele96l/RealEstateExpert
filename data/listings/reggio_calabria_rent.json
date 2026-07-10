@@ -1,7 +1,7 @@
 {
   "city": "reggio_calabria",
   "operation": "rent",
-  "fetched_at": "2026-07-09T10:29:17Z",
+  "fetched_at": "2026-07-10T10:27:47Z",
   "center": {
     "lat": 38.1035389,
     "lng": 15.6397556,
@@ -1857,6 +1857,23 @@
       "address": "Bilocale via dei Filippini 38, Centro Storico, Reggio Calabria",
       "property_type": "Bilocale",
       "property_type_label": "Bilocale",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null
+    },
+    {
+      "id": "im_130813882",
+      "title": "Trilocale via Mantova, 29, Sbarre, Reggio Calabria",
+      "price": 500,
+      "operation": "rent",
+      "url": "https://www.immobiliare.it/annunci/130813882/",
+      "lat": 38.0958,
+      "lng": 15.6411,
+      "sqm": 102,
+      "rooms": null,
+      "address": "Trilocale via Mantova, 29, Sbarre, Reggio Calabria",
+      "property_type": "Trilocale",
+      "property_type_label": "Trilocale",
       "condition_status": null,
       "condition": null,
       "needs_renovation": null
