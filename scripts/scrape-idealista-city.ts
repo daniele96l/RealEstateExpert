@@ -1,6 +1,6 @@
 #!/usr/bin/env npx tsx
 import { BATCH_FETCH_ALL_PAGES, resolveItalyListingMaxPages } from "../lib/batch-fetch-pages";
-import { fetchItalyListingsWithFallback } from "../lib/server/italy-listings-fetch";
+import { fetchItalyListingsScraped } from "../lib/server/italy-listings-scrape";
 import { loadEnvLocal } from "../lib/server/load-env";
 import { getCache, mergeListingCache, saveCache } from "../lib/server/listings-cache";
 
@@ -22,9 +22,9 @@ async function main() {
     "sale" | "rent"
   >) {
     console.error(`→ ${op === "sale" ? "vendita" : "affitto"}...`);
-    const { data, provider } = await fetchItalyListingsWithFallback(city, op, "realtyapi", maxPages);
+    const data = await fetchItalyListingsScraped(city, op, "idealista", maxPages);
     const existing = await getCache("it", data.city, op);
-    const merged = mergeListingCache(existing, { ...data, provider });
+    const merged = mergeListingCache(existing, { ...data, provider: "direct" });
     await saveCache(merged);
     results.push({
       operation: op,

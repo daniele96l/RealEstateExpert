@@ -1,30 +1,11 @@
-import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
-import { fetchPropertyDetailsViaScrapingBee } from "./idealista-import";
+import { isIdealistaListingUrl, isImmobiliareListingUrl } from "@/lib/listing-url";
+import type { ListingDetail, MapListing } from "@/lib/types";
+import { fetchImmobiliareListingDetail } from "./immobiliare-import";
+import { fetchPropertyDetailsViaScrape, IdealistaImportError } from "./idealista-import";
 import { listingToDetail } from "./property-detail";
-import {
-  getDefaultListingsProvider,
-  hasRapidApiKey,
-  hasScrapingBeeKey,
-} from "./config";
-import { fetchPropertyDetailsByUrl as fetchRapidDetail } from "./rapidapi-idealista";
 import { fetchPropertyDetailForSrealityListing, isSrealityListing } from "./sreality-detail";
 
-async function fetchDetail(
-  url: string,
-  provider: ListingsProvider,
-  base?: MapListing,
-): Promise<ListingDetail> {
-  if (provider === "rapidapi") {
-    return fetchRapidDetail(url, base);
-  }
-  const listing = await fetchPropertyDetailsViaScrapingBee(url);
-  return listingToDetail({ ...listing, ...base, id: listing.id || base?.id || "" });
-}
-
-export async function fetchPropertyDetailForListing(
-  listing: MapListing,
-  preferredProvider?: ListingsProvider,
-): Promise<ListingDetail> {
+export async function fetchPropertyDetailForListing(listing: MapListing): Promise<ListingDetail> {
   const url = listing.url?.trim();
   if (!url) throw new Error("URL annuncio mancante");
 
@@ -32,24 +13,17 @@ export async function fetchPropertyDetailForListing(
     return fetchPropertyDetailForSrealityListing(listing);
   }
 
-  const preferred = preferredProvider ?? getDefaultListingsProvider();
-  const order: ListingsProvider[] =
-    preferred === "rapidapi" ? ["rapidapi", "scrapingbee"] : ["scrapingbee", "rapidapi"];
-  const available = order.filter((p) => (p === "rapidapi" ? hasRapidApiKey() : hasScrapingBeeKey()));
-
-  if (!available.length) {
-    throw new Error("Nessuna API configurata. Aggiungi RAPIDAPI_KEY o SCRAPINGBEE_API_KEY in .env.local");
+  if (isImmobiliareListingUrl(url)) {
+    return fetchImmobiliareListingDetail(url);
   }
 
-  let lastError: unknown;
-  for (const provider of available) {
-    try {
-      return await fetchDetail(url, provider, listing);
-    } catch (err) {
-      lastError = err;
-    }
+  if (isIdealistaListingUrl(url) || /^\d+$/.test(listing.id)) {
+    const idealistaUrl =
+      url || `https://www.idealista.it/immobile/${listing.id.replace(/^id_/, "")}/`;
+    const mapListing = await fetchPropertyDetailsViaScrape(idealistaUrl);
+    return listingToDetail({ ...mapListing, ...listing, id: mapListing.id || listing.id });
   }
 
   if (listing.id) return listingToDetail(listing);
-  throw lastError instanceof Error ? lastError : new Error("Dettaglio annuncio non disponibile");
+  throw new IdealistaImportError("URL non riconosciuto");
 }

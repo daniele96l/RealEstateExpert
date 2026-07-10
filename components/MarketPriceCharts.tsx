@@ -277,7 +277,7 @@ export default function MarketPriceCharts({ city, market = "it" }: Props) {
           ) : (
             <>
               Dati mercato — immobiliare.it
-              {data.provider === "insights" ? " (Insights API)" : " (ScrapingBee)"}
+              {data.provider === "scrape" ? " (scraper)" : data.provider === "sreality" ? " (Sreality)" : ""}
               {fromCache && cacheSource === "server" && ` · cache ${marketCacheFileLabel(city, market)}`}
               {fromCache && cacheSource === "local" && " · cache browser"}
             </>

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-import { getListingsProviders, getCachedListings, importFromIdealista } from "@/lib/api";
+import { getCachedListings, importFromIdealista } from "@/lib/api";
 import {
   loadCityListingsCacheOnly,
   loadPropertyDetailCacheFirst,
@@ -18,6 +18,17 @@ import { cn, fmtMoney } from "@/lib/utils";
 import type { MarketId } from "@/lib/markets";
 import type { ListingsExportContext } from "@/lib/listings-export";
 import { enrichSaleListingsForExport, hydratePropertyDetailsFromLatestExport } from "@/lib/listings-export";
+
+function formatListingsProviderLabel(provider: ListingsProvider | undefined): string | null {
+  if (!provider) return null;
+  if (provider === "sreality") return "Sreality";
+  if (provider === "direct") return "Scraper";
+  if (provider === "idealista_scraper") return "Idealista (scraper)";
+  if (provider === "casa_scraper") return "Casa.it (scraper)";
+  if (provider === "subito_scraper") return "Subito (scraper)";
+  if (provider === "reggio_rentals") return "Immobiliare (scraper)";
+  return provider;
+}
 import type { SimilarRentEstimateMethod } from "@/lib/rent-price-basis";
 import {
   emptyListingsFilters,
@@ -209,12 +220,6 @@ export default function ListingsMap({
   const { t } = useI18n();
   const [city, setCity] = useState(defaultCity);
   const [viewMode, setViewMode] = useState<ViewMode>("sale");
-  const [provider, setProvider] = useState<ListingsProvider>("rapidapi");
-  const [providersAvailable, setProvidersAvailable] = useState({
-    scrapingbee: false,
-    rapidapi: false,
-    realtyapi: false,
-  });
   const [saleCache, setSaleCache] = useState<CityListingsCache | null>(null);
   const [rentCache, setRentCache] = useState<CityListingsCache | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -316,18 +321,6 @@ export default function ListingsMap({
     setMapBounds(null);
   }, [detailOpen]);
 
-  useEffect(() => {
-    getListingsProviders()
-      .then((p) => {
-        setProvidersAvailable({
-          scrapingbee: p.scrapingbee,
-          rapidapi: p.rapidapi,
-          realtyapi: p.realtyapi,
-        });
-        setProvider(p.default_provider);
-      })
-      .catch(() => {});
-  }, []);
 
   const loadCachesOnly = useCallback(async () => {
     if (!city.trim()) return;
@@ -403,7 +396,7 @@ export default function ListingsMap({
           onSelectListing?.(listing, preloadedDetail);
           return;
         }
-        const { detail, source } = await loadPropertyDetailCacheFirst(listing, provider, false);
+        const { detail, source } = await loadPropertyDetailCacheFirst(listing, false);
         setSelectedDetail(detail);
         setDetailCacheSource(source === "network" ? null : source);
         if (
@@ -421,7 +414,7 @@ export default function ListingsMap({
         setDetailLoading(false);
       }
     },
-    [provider, market, onSelectListing],
+    [market, onSelectListing],
   );
 
   const handleOpenSimilarRent = useCallback(
@@ -446,7 +439,7 @@ export default function ListingsMap({
     setImportLoading(true);
     setImportError(null);
     try {
-      const imported = await importFromIdealista(url, provider);
+      const imported = await importFromIdealista(url);
       const listing = imported.listings[0];
       if (!listing) throw new Error("Annuncio non trovato");
 
@@ -481,7 +474,7 @@ export default function ListingsMap({
     } finally {
       setImportLoading(false);
     }
-  }, [importUrl, provider, market, onCityChange]);
+  }, [importUrl, market, onCityChange]);
 
   const handleBatchSaved = useCallback(
     (saved: CombinedListingsData) => {
@@ -594,7 +587,7 @@ export default function ListingsMap({
         center,
         listings: profitFilteredListings,
         provider:
-          combinedData?.provider ?? saleCache?.provider ?? rentCache?.provider ?? provider,
+          combinedData?.provider ?? saleCache?.provider ?? rentCache?.provider ?? "direct",
       }
     : null;
 
@@ -615,7 +608,7 @@ export default function ListingsMap({
     onExportContextChange({
       market,
       city,
-      provider: combinedData?.provider ?? saleCache?.provider ?? rentCache?.provider ?? provider,
+      provider: combinedData?.provider ?? saleCache?.provider ?? rentCache?.provider ?? "direct",
       saleListings: allSale,
       rentPool,
       filters,
@@ -629,7 +622,6 @@ export default function ListingsMap({
     onExportContextChange,
     market,
     city,
-    provider,
     viewMode,
     combinedData,
     saleCache,
@@ -738,18 +730,8 @@ export default function ListingsMap({
             {" · "}
             {mapData.center.display_name ?? city}
             {websiteSourceLabel ? ` · ${websiteSourceLabel}` : ""}
-            {mapData.provider
-              ? ` · ${
-                  mapData.provider === "sreality"
-                    ? "Sreality"
-                    : mapData.provider === "rapidapi"
-                    ? "RapidAPI"
-                    : mapData.provider === "realtyapi"
-                      ? "RealtyAPI"
-                      : mapData.provider === "direct"
-                        ? "Diretto"
-                        : "ScrapingBee"
-                }`
+            {formatListingsProviderLabel(mapData.provider)
+              ? ` · ${formatListingsProviderLabel(mapData.provider)}`
               : ""}
             {combinedData
               ? " · importazione batch"
@@ -964,7 +946,7 @@ export default function ListingsMap({
         detail={selectedDetail}
         loading={detailLoading}
         error={detailError}
-        provider={provider}
+        provider="direct"
         cacheSource={detailCacheSource}
         mapCity={city}
         market={market}
@@ -978,8 +960,6 @@ export default function ListingsMap({
         open={batchOpen}
         market={market}
         city={city}
-        provider={provider}
-        providersAvailable={providersAvailable}
         onClose={() => setBatchOpen(false)}
         onSaved={handleBatchSaved}
       />

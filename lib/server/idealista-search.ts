@@ -1,11 +1,8 @@
 import * as cheerio from "cheerio";
-import type { CityListingsCache, ListingsProvider, MapListing } from "@/lib/types";
+import type { CityListingsCache, MapListing } from "@/lib/types";
 import { resolveListingCondition } from "@/lib/renovation-status";
 import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
-import { citySlugVariants, geocodeCity, normalizeCitySlug } from "./geocode";
-import { fetchCityListingsViaRapidApi } from "./rapidapi-idealista";
 import { fetchCityListingsViaDirect } from "./idealista-direct";
-import { fetchUrl } from "./scrapingbee";
 
 const IDEALISTA_BASE = "https://www.idealista.it";
 
@@ -204,74 +201,9 @@ export function parseMapSearchHtml(html: string, operation: "sale" | "rent"): Ma
 export async function fetchCityListings(
   city: string,
   operation: "sale" | "rent",
-  provider: ListingsProvider = "scrapingbee",
+  _provider?: unknown,
   maxPages = 1,
   onPage?: BatchFetchProgressCallback,
 ): Promise<CityListingsCache> {
-  if (provider === "rapidapi") {
-    return fetchCityListingsViaRapidApi(city, operation, maxPages, onPage);
-  }
-  if (provider === "direct") {
-    return fetchCityListingsViaDirect(city, operation, maxPages, onPage);
-  }
-  return fetchCityListingsViaScrapingBee(city, operation, maxPages, onPage);
-}
-
-async function fetchCityListingsViaScrapingBee(
-  city: string,
-  operation: "sale" | "rent",
-  maxPages = 1,
-  onPage?: BatchFetchProgressCallback,
-): Promise<CityListingsCache> {
-  const centerData = await geocodeCity(city);
-  let listings: MapListing[] = [];
-  let lastError: unknown;
-
-  for (const slug of citySlugVariants(city)) {
-    for (let page = 1; page <= maxPages; page++) {
-      const beforeCount = listings.length;
-      for (const mapView of [true, false]) {
-        try {
-          const html = await fetchUrl(buildIdealistaSearchUrl(slug, operation, mapView, page));
-          const pageListings = parseMapSearchHtml(html, operation);
-          if (pageListings.length) {
-            listings = mergeListingMaps(listings, pageListings);
-            break;
-          }
-          const cards = parseListingCards(html, operation);
-          if (cards.length) {
-            listings = mergeListingMaps(listings, cards);
-            break;
-          }
-        } catch (err) {
-          lastError = err;
-        }
-      }
-      if (listings.length === beforeCount) break;
-      onPage?.({
-        operation,
-        page,
-        maxPages,
-        listingsTotal: listings.length,
-      });
-    }
-    if (listings.length) break;
-  }
-
-  if (!listings.length) {
-    if (lastError) throw new IdealistaSearchError(`Impossibile recuperare annunci: ${lastError}`);
-    throw new IdealistaSearchError(`Nessun annuncio trovato per ${city}`);
-  }
-
-  return {
-    city: normalizeCitySlug(city),
-    operation,
-    fetched_at: new Date().toISOString(),
-    center: {
-      lat: centerData.lat,
-      lng: centerData.lng,
-      display_name: centerData.display_name ?? null,
-    },
-    listings,
-  };
+  return fetchCityListingsViaDirect(city, operation, maxPages, onPage, { forceNavigation: true });
 }

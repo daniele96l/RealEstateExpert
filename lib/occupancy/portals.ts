@@ -4,24 +4,36 @@ import {
   defaultOccupancyCitySlug,
 } from "./cities";
 
-export type OccupancyPortal = "idealista" | "immobiliare" | "immobiliare_scraper" | "sreality";
+export type OccupancyPortal =
+  | "immobiliare_scraper"
+  | "idealista_scraper"
+  | "casa_scraper"
+  | "subito_scraper"
+  | "sreality";
 
 export const OCCUPANCY_PORTALS: OccupancyPortal[] = [
-  "idealista",
-  "immobiliare",
   "immobiliare_scraper",
+  "idealista_scraper",
+  "casa_scraper",
+  "subito_scraper",
   "sreality",
 ];
 
-export const DEFAULT_OCCUPANCY_PORTAL: OccupancyPortal = "idealista";
+export const OCCUPANCY_SCRAPER_PORTALS: OccupancyPortal[] = [
+  "immobiliare_scraper",
+  "idealista_scraper",
+  "casa_scraper",
+  "subito_scraper",
+];
+
+export function isOccupancyScraperPortal(portal: OccupancyPortal): boolean {
+  return OCCUPANCY_SCRAPER_PORTALS.includes(portal);
+}
+
+export const DEFAULT_OCCUPANCY_PORTAL: OccupancyPortal = "idealista_scraper";
 
 export function isOccupancyPortal(value: string | null | undefined): value is OccupancyPortal {
-  return (
-    value === "idealista" ||
-    value === "immobiliare" ||
-    value === "immobiliare_scraper" ||
-    value === "sreality"
-  );
+  return OCCUPANCY_PORTALS.includes(value as OccupancyPortal);
 }
 
 export function portalsForCity(citySlug: OccupancyCitySlug = defaultOccupancyCitySlug()): OccupancyPortal[] {

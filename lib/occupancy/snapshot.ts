@@ -8,15 +8,17 @@ import type {
   OccupancySnapshot,
   TrackedRentalListing,
 } from "@/lib/types";
-import { fetchItalyListingsWithFallback } from "@/lib/server/italy-listings-fetch";
-import { fetchReggioRentalsListings } from "@/lib/server/reggio-rentals-fetch";
 import { fetchBrnoRentalsListings } from "@/lib/server/brno-rentals-fetch";
-import { getDefaultListingsProvider } from "@/lib/server/config";
+import { fetchReggioRentalsListings } from "@/lib/server/reggio-rentals-fetch";
+import { fetchIdealistaScraperListings } from "@/lib/server/idealista-rentals-fetch";
+import { fetchCasaScraperListings } from "@/lib/server/casa-rentals-fetch";
+import { fetchSubitoScraperListings } from "@/lib/server/subito-rentals-fetch";
 import {
   DEFAULT_OCCUPANCY_PORTAL,
   OCCUPANCY_FETCH_MAX_PAGES,
   type OccupancyPortal,
 } from "./constants";
+import { isOccupancyScraperPortal } from "./portals";
 import {
   defaultOccupancyCitySlug,
   getOccupancyCityConfig,
@@ -216,23 +218,61 @@ async function fetchOccupancyListings(
     return { data, provider: "reggio_rentals" };
   }
 
-  const italyPortal = portal === "idealista" || portal === "immobiliare" ? portal : "idealista";
-  const result = await fetchItalyListingsWithFallback(
-    cityConfig.city,
-    "rent",
-    getDefaultListingsProvider(),
-    maxPages,
-    (pageProgress) => {
+  if (portal === "idealista_scraper") {
+    if (options?.prefetched) {
+      return {
+        data: options.prefetched,
+        provider: options.provider ?? "idealista_scraper",
+      };
+    }
+    const data = await fetchIdealistaScraperListings(maxPages, (progress) => {
       reportProgress(
-        pageProgress.page,
-        pageProgress.page,
-        pageProgress.listingsTotal,
-        `Pagina ${pageProgress.page}/${pageProgress.maxPages}`,
+        progress.page,
+        progress.page,
+        progress.listingsTotal,
+        `Idealista · pag. ${progress.page}/${progress.maxPages}`,
       );
-    },
-    italyPortal,
-  );
-  return { data: result.data, provider: result.provider };
+    });
+    return { data, provider: "idealista_scraper" };
+  }
+
+  if (portal === "casa_scraper") {
+    if (options?.prefetched) {
+      return {
+        data: options.prefetched,
+        provider: options.provider ?? "casa_scraper",
+      };
+    }
+    const data = await fetchCasaScraperListings(maxPages, (progress) => {
+      reportProgress(
+        progress.page,
+        progress.page,
+        progress.listingsTotal,
+        `Casa.it · pag. ${progress.page}/${progress.maxPages}`,
+      );
+    });
+    return { data, provider: "casa_scraper" };
+  }
+
+  if (portal === "subito_scraper") {
+    if (options?.prefetched) {
+      return {
+        data: options.prefetched,
+        provider: options.provider ?? "subito_scraper",
+      };
+    }
+    const data = await fetchSubitoScraperListings(maxPages, (progress) => {
+      reportProgress(
+        progress.page,
+        progress.page,
+        progress.listingsTotal,
+        `Subito · pag. ${progress.page}/${progress.maxPages}`,
+      );
+    });
+    return { data, provider: "subito_scraper" };
+  }
+
+  throw new Error(`Portale occupancy non supportato: ${portal}`);
 }
 
 export async function runOccupancySnapshot(
@@ -243,7 +283,7 @@ export async function runOccupancySnapshot(
   const citySlug = options?.citySlug ?? defaultOccupancyCitySlug();
   const cityConfig = getOccupancyCityConfig(citySlug);
   const maxPages =
-    portal === "immobiliare_scraper"
+    isOccupancyScraperPortal(portal)
       ? Math.min(resolveItalyListingMaxPages(OCCUPANCY_FETCH_MAX_PAGES), 10)
       : cityConfig.market === "cz"
         ? resolveBatchFetchPageLimit(OCCUPANCY_FETCH_MAX_PAGES, "cz")

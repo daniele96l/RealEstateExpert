@@ -67,7 +67,7 @@ export async function POST(request: Request) {
     const result: BatchSaveResult = {
       city: citySlug,
       center: body.center,
-      provider: provider ?? "rapidapi",
+      provider: provider ?? "direct",
       fetched_at: fetchedAt,
       sale: saleCache,
       rent: rentCache,

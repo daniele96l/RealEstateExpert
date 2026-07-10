@@ -69,6 +69,15 @@ function shortenAddress(address: string | null): string {
   return `${trimmed.slice(0, 69)}…`;
 }
 
+function listingSourceForPortal(portal: OccupancyPortal): string | null {
+  if (portal === "idealista_scraper") return "idealista";
+  if (portal === "immobiliare_scraper") return "immobiliare";
+  if (portal === "casa_scraper") return "casa";
+  if (portal === "subito_scraper") return "subito";
+  if (portal === "sreality") return "sreality";
+  return null;
+}
+
 async function loadMergedRentCache(
   citySlug: OccupancyCitySlug,
   portal: OccupancyPortal,
@@ -106,7 +115,8 @@ async function loadMergedRentCache(
 
   const listings = merged.listings.filter((listing) => {
     const source = inferListingWebsiteSource(listing);
-    return source === portal || (source == null && portal === "idealista");
+    const expected = listingSourceForPortal(portal);
+    return expected ? source === expected : false;
   });
 
   if (!listings.length) return null;

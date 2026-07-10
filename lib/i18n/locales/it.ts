@@ -367,10 +367,19 @@ const it = {
     portalIdealista: "Idealista",
     portalImmobiliare: "Immobiliare.it (API)",
     portalImmobiliareScraper: "Immobiliare.it (scraper)",
+    portalIdealistaScraper: "Idealista (scraper)",
+    portalCasaScraper: "Casa.it (scraper)",
+    portalSubitoScraper: "Subito.it (scraper)",
     portalSreality: "Sreality.cz",
     portalImmobiliareHint: "Nessuno snapshot Immobiliare API ancora — premi Aggiorna dati per avviare il tracciamento.",
     portalImmobiliareScraperHint:
       "Nessuno snapshot dallo scraper locale ancora — premi Aggiorna dati per eseguire reggio_rentals.",
+    portalIdealistaScraperHint:
+      "Nessuno snapshot Idealista (scraper) ancora — premi Aggiorna dati per avviare Playwright.",
+    portalCasaScraperHint:
+      "Nessuno snapshot Casa.it (scraper) ancora — premi Aggiorna dati per avviare lo scraper.",
+    portalSubitoScraperHint:
+      "Nessuno snapshot Subito.it (scraper) ancora — premi Aggiorna dati per avviare lo scraper.",
     portalSrealityHint:
       "Nessuno snapshot Sreality ancora — premi Aggiorna dati per avviare il tracciamento.",
     refresh: "Aggiorna dati",

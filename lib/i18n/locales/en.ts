@@ -365,10 +365,19 @@ const en: Translations = {
     portalIdealista: "Idealista",
     portalImmobiliare: "Immobiliare.it (API)",
     portalImmobiliareScraper: "Immobiliare.it (scraper)",
+    portalIdealistaScraper: "Idealista (scraper)",
+    portalCasaScraper: "Casa.it (scraper)",
+    portalSubitoScraper: "Subito.it (scraper)",
     portalSreality: "Sreality.cz",
     portalImmobiliareHint: "No Immobiliare API snapshots yet — click Refresh data to start tracking.",
     portalImmobiliareScraperHint:
       "No local scraper snapshots yet — click Refresh data to run reggio_rentals.",
+    portalIdealistaScraperHint:
+      "No Idealista (scraper) snapshots yet — click Refresh data to run Playwright.",
+    portalCasaScraperHint:
+      "No Casa.it (scraper) snapshots yet — click Refresh data to run the scraper.",
+    portalSubitoScraperHint:
+      "No Subito.it (scraper) snapshots yet — click Refresh data to run the scraper.",
     portalSrealityHint:
       "No Sreality snapshots yet — click Refresh data to start tracking.",
     refresh: "Refresh data",

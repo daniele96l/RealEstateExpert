@@ -54,14 +54,13 @@ export async function loadCityListingsCacheFirst(
     }
   }
 
-  const data = await fetchListings(trimmed, operation, refresh, provider, market);
+  const data = await fetchListings(trimmed, operation, refresh, "idealista", market);
   writeLocalListingsCache(market, data);
   return { data, source: "network" };
 }
 
 export async function loadPropertyDetailCacheFirst(
   listing: MapListing,
-  provider?: ListingsProvider,
   refresh = false,
 ): Promise<{ detail: ListingDetail; source: CacheSource }> {
   if (!refresh) {
@@ -78,7 +77,7 @@ export async function loadPropertyDetailCacheFirst(
     }
   }
 
-  const detail = await fetchPropertyDetail(listing, refresh, provider);
+  const detail = await fetchPropertyDetail(listing, refresh);
   writeLocalPropertyDetailCache(detail);
   try {
     await savePropertyDetailToServerCache(detail);

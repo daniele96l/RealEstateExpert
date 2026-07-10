@@ -192,14 +192,14 @@ export interface MapCenter {
 }
 
 export type ListingsProvider =
-  | "scrapingbee"
-  | "rapidapi"
-  | "realtyapi"
   | "direct"
   | "sreality"
-  | "reggio_rentals";
+  | "reggio_rentals"
+  | "idealista_scraper"
+  | "casa_scraper"
+  | "subito_scraper";
 
-export type MarketProvider = "scrapingbee" | "insights" | "sreality";
+export type MarketProvider = "scrape" | "sreality";
 
 export interface PriceHistoryPoint {
   year: number;

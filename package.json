@@ -21,7 +21,9 @@
     "data:sync-brno": "tsx scripts/sync-prod-brno.ts",
     "data:sync-occupancy": "npm run data:sync-immobiliare && npm run data:sync-brno",
     "build:reggio-zones": "tsx scripts/build-reggio-zone-polygons.ts",
-    "listings:test-providers": "tsx scripts/test-listing-providers.ts",
+    "scrape:test-portals": "tsx scripts/test-portal-scrapers.ts",
+    "test:casa-scraper": "tsx lib/server/casa-search.test.ts",
+    "test:subito-scraper": "tsx lib/server/subito-search.test.ts",
     "test:occupancy-rebasing": "tsx lib/occupancy/rebasing.test.ts"
   },
   "dependencies": {

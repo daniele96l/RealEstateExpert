@@ -50,9 +50,7 @@ export function occupancyDataDir(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
 ): string {
-  const base = occupancyCityDir(citySlug);
-  if (portal === "idealista") return base;
-  return path.join(base, portal);
+  return path.join(occupancyCityDir(citySlug), portal);
 }
 
 export function occupancyRegistryPath(

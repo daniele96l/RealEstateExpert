@@ -127,7 +127,7 @@ import {
   isOccupancyCitySlug,
   type OccupancyCitySlug,
 } from "@/lib/occupancy/cities";
-import { defaultPortalForCity, portalsForCity } from "@/lib/occupancy/portals";
+import { defaultPortalForCity, portalsForCity, isOccupancyScraperPortal } from "@/lib/occupancy/portals";
 import {
   occupancyMetricsPeriodDays,
   resolveOccupancyMetricsPeriod,
@@ -153,11 +153,19 @@ const METRICS_PERIOD_OPTIONS: Array<{
 
 const OCCUPANCY_PORTAL_OPTIONS: Array<{
   id: OccupancyPortal;
-  labelKey: "portalIdealista" | "portalImmobiliare" | "portalImmobiliareScraper" | "portalSreality";
+  labelKey:
+    | "portalIdealista"
+    | "portalImmobiliare"
+    | "portalImmobiliareScraper"
+    | "portalIdealistaScraper"
+    | "portalCasaScraper"
+    | "portalSubitoScraper"
+    | "portalSreality";
 }> = [
-  { id: "idealista", labelKey: "portalIdealista" },
-  { id: "immobiliare", labelKey: "portalImmobiliare" },
   { id: "immobiliare_scraper", labelKey: "portalImmobiliareScraper" },
+  { id: "idealista_scraper", labelKey: "portalIdealistaScraper" },
+  { id: "casa_scraper", labelKey: "portalCasaScraper" },
+  { id: "subito_scraper", labelKey: "portalSubitoScraper" },
   { id: "sreality", labelKey: "portalSreality" },
 ];
 
@@ -185,6 +193,9 @@ function readStoredMetricsPeriod(): OccupancyMetricsPeriod {
 function formatProviderLabel(provider: string | null | undefined): string | null {
   if (!provider) return null;
   if (provider === "reggio_rentals") return "reggio-rentals (scraper)";
+  if (provider === "idealista_scraper") return "Idealista (scraper)";
+  if (provider === "casa_scraper") return "Casa.it (scraper)";
+  if (provider === "subito_scraper") return "Subito.it (scraper)";
   if (provider === "sreality") return "Sreality.cz";
   return provider;
 }
@@ -489,7 +500,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const viewingHistorical = selectedSnapshotAt != null;
   const previewFromSnapshot = listingsPreview?.source === "occupancy_snapshot";
   const portalNeedsFirstSnapshot =
-    (portal === "immobiliare" || portal === "immobiliare_scraper" || portal === "sreality") &&
+    (isOccupancyScraperPortal(portal) || portal === "sreality") &&
     (metrics?.snapshot_count ?? 0) === 0 &&
     !loading;
 
@@ -829,9 +840,15 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
           <div className="mt-4 rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-200">
             {portal === "immobiliare_scraper"
               ? t("occupancy.portalImmobiliareScraperHint")
-              : portal === "sreality"
-                ? t("occupancy.portalSrealityHint")
-                : t("occupancy.portalImmobiliareHint")}
+              : portal === "idealista_scraper"
+                ? t("occupancy.portalIdealistaScraperHint")
+                : portal === "casa_scraper"
+                  ? t("occupancy.portalCasaScraperHint")
+                  : portal === "subito_scraper"
+                    ? t("occupancy.portalSubitoScraperHint")
+                    : portal === "sreality"
+                      ? t("occupancy.portalSrealityHint")
+                      : t("occupancy.portalImmobiliareHint")}
           </div>
         ) : null}
 

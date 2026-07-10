@@ -33,15 +33,11 @@ async function parseError(res: Response, fallback: string): Promise<string> {
   return fallback;
 }
 
-export async function importFromIdealista(
-  url: string,
-  provider?: ListingsProvider,
-  refresh = false,
-): Promise<CityListingsCache> {
+export async function importFromIdealista(url: string, _provider?: ListingsProvider, refresh = false): Promise<CityListingsCache> {
   const res = await fetch("/api/import/idealista", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url, provider, refresh }),
+    body: JSON.stringify({ url, refresh }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Importazione non riuscita"));
   return res.json();
@@ -51,29 +47,19 @@ export async function fetchListings(
   city: string,
   operation: "sale" | "rent",
   refresh = false,
-  provider?: ListingsProvider,
+  portal: "idealista" | "immobiliare" = "idealista",
   market: MarketId = "it",
   maxPages?: number,
 ): Promise<CityListingsCache> {
   const res = await fetch("/api/listings/fetch", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ city, operation, refresh, provider, market, maxPages }),
+    body: JSON.stringify({ city, operation, refresh, portal, market, maxPages }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Caricamento annunci non riuscito"));
   return res.json();
 }
 
-export async function getListingsProviders(): Promise<{
-  default_provider: ListingsProvider;
-  scrapingbee: boolean;
-  rapidapi: boolean;
-  realtyapi: boolean;
-}> {
-  const res = await fetch("/api/listings/fetch");
-  if (!res.ok) throw new Error("Impossibile leggere configurazione provider");
-  return res.json();
-}
 
 export async function getCachedPropertyDetail(id: string): Promise<ListingDetail | null> {
   const params = new URLSearchParams({ id });
@@ -86,12 +72,11 @@ export async function getCachedPropertyDetail(id: string): Promise<ListingDetail
 export async function fetchPropertyDetail(
   listing: MapListing,
   refresh = false,
-  provider?: ListingsProvider,
 ): Promise<ListingDetail> {
   const res = await fetch("/api/listings/property", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url: listing.url, listing, refresh, provider }),
+    body: JSON.stringify({ url: listing.url, listing, refresh }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Dettaglio annuncio non disponibile"));
   return res.json();
@@ -140,7 +125,6 @@ export async function batchPreviewListings(
   opts?: {
     zone?: string;
     refresh?: boolean;
-    provider?: ListingsProvider;
     portal?: "idealista" | "immobiliare" | "sreality";
     maxPages?: number;
     market?: MarketId;
@@ -154,7 +138,6 @@ export async function batchPreviewListings(
       zone: opts?.zone,
       operations,
       refresh: opts?.refresh ?? true,
-      provider: opts?.provider,
       portal: opts?.portal,
       maxPages: opts?.maxPages,
       market: opts?.market ?? "it",
@@ -170,7 +153,6 @@ export async function batchPreviewListingsStream(
   opts: {
     zone?: string;
     refresh?: boolean;
-    provider?: ListingsProvider;
     portal?: "idealista" | "immobiliare" | "sreality";
     maxPages?: number;
     market?: MarketId;
@@ -185,7 +167,6 @@ export async function batchPreviewListingsStream(
       zone: opts.zone,
       operations,
       refresh: opts.refresh ?? true,
-      provider: opts.provider,
       portal: opts.portal,
       maxPages: opts.maxPages,
       market: opts.market ?? "it",

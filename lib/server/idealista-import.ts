@@ -1,15 +1,11 @@
 import * as cheerio from "cheerio";
 import type { CityListingsCache, ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
+import { normalizeIdealistaListingUrl } from "@/lib/listing-url";
 import { geocodeCity, normalizeCitySlug } from "./geocode";
 import { saveCache } from "./listings-cache";
 import { listingToDetail } from "./property-detail";
 import { savePropertyDetailCache } from "./property-detail-cache";
-import {
-  RapidApiIdealistaError,
-  fetchPropertyDetailsByUrl,
-  normalizeIdealistaListingUrl,
-} from "./rapidapi-idealista";
-import { fetchUrl } from "./scrapingbee";
+import { withIdealistaBrowser } from "./idealista-browser";
 
 export class IdealistaImportError extends Error {}
 
@@ -156,9 +152,11 @@ async function ensureCoordinates(listing: MapListing): Promise<MapListing> {
   }
 }
 
-export async function fetchPropertyDetailsViaScrapingBee(url: string): Promise<MapListing> {
+export async function fetchPropertyDetailsViaScrape(url: string): Promise<MapListing> {
   const normalized = normalizeIdealistaListingUrl(url);
-  const html = await fetchUrl(normalized);
+  const html = await withIdealistaBrowser(async (session) =>
+    session.fetchHtml(normalized, { forceNavigation: true }),
+  );
   const listing = parsePropertyDetailHtml(html, normalized);
   return ensureCoordinates(listing);
 }
@@ -194,62 +192,17 @@ async function toCityListingsCache(
   };
 }
 
-export async function importListingFromUrl(
-  url: string,
-  preferred: ListingsProvider,
-  hasRapidApi: boolean,
-  hasScrapingBee: boolean,
-): Promise<CityListingsCache> {
-  const order: ListingsProvider[] =
-    preferred === "rapidapi" ? ["rapidapi", "scrapingbee"] : ["scrapingbee", "rapidapi"];
-  const available = order.filter((p) => (p === "rapidapi" ? hasRapidApi : hasScrapingBee));
-
-  if (!available.length) {
-    throw new IdealistaImportError(
-      "Nessuna API configurata. Aggiungi RAPIDAPI_KEY o SCRAPINGBEE_API_KEY in .env.local",
-    );
+export async function importListingFromUrl(url: string): Promise<CityListingsCache> {
+  try {
+    const fetched = await fetchPropertyDetailsViaScrape(url);
+    const detail: ListingDetail = listingToDetail(fetched);
+    await savePropertyDetailCache(detail);
+    const cache = await toCityListingsCache(fetched, "direct");
+    await saveCache(cache);
+    return cache;
+  } catch (err) {
+    if (err instanceof IdealistaImportError) throw err;
+    if (err instanceof Error) throw new IdealistaImportError(err.message);
+    throw new IdealistaImportError("Importazione Idealista non riuscita.");
   }
-
-  let lastError: unknown;
-  for (const provider of available) {
-    try {
-      const fetched =
-        provider === "rapidapi"
-          ? await fetchPropertyDetailsByUrl(url)
-          : await fetchPropertyDetailsViaScrapingBee(url);
-
-      const detail: ListingDetail =
-        provider === "rapidapi"
-          ? (fetched as ListingDetail)
-          : listingToDetail(fetched as MapListing);
-
-      const mapListing: MapListing = {
-        id: detail.id,
-        title: detail.title,
-        price: detail.price,
-        operation: detail.operation,
-        url: detail.url,
-        lat: detail.lat,
-        lng: detail.lng,
-        sqm: detail.sqm,
-        rooms: detail.rooms,
-        address: detail.address,
-        property_type: detail.property_type ?? null,
-        property_type_label: detail.property_type_label ?? null,
-        condition_status: detail.condition_status,
-        condition: detail.condition,
-        needs_renovation: detail.needs_renovation,
-      };
-
-      await savePropertyDetailCache(detail);
-      const cache = await toCityListingsCache(mapListing, provider);
-      await saveCache(cache);
-      return cache;
-    } catch (err) {
-      lastError = err;
-    }
-  }
-
-  if (lastError instanceof Error) throw lastError;
-  throw new IdealistaImportError("Impossibile importare l'annuncio");
 }

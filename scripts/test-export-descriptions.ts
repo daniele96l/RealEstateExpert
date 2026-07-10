@@ -64,7 +64,7 @@ async function testExportFlow(listings: MapListing[]) {
     const cachePath = path.join(DETAILS_DIR, `${listing.id}.json`);
     if (fs.existsSync(cachePath)) fs.unlinkSync(cachePath);
 
-    const detail = await fetchPropertyDetailForListing(listing, "sreality");
+    const detail = await fetchPropertyDetailForListing(listing);
     fs.mkdirSync(DETAILS_DIR, { recursive: true });
     fs.writeFileSync(cachePath, JSON.stringify(detail, null, 2));
 

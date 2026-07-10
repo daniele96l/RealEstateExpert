@@ -1,9 +1,28 @@
 export type ListingSource = "idealista" | "immobiliare" | "sreality";
-export type ListingsWebsiteSource = ListingSource | "mixed";
+export type ListingWebsiteSource = ListingSource | "casa" | "subito";
+export type ListingsWebsiteSource = ListingSource | "mixed" | "casa" | "subito";
 
-export function inferListingWebsiteSource(listing: { id: string; url: string }): ListingSource | null {
+export function isCasaListingUrl(url: string): boolean {
+  return /casa\.it\/immobili\/\d+/i.test(url);
+}
+
+export function isSubitoListingUrl(url: string): boolean {
+  return /subito\.it\/.+\-\d+\.htm/i.test(url);
+}
+
+export function casaListingCacheId(numericId: string): string {
+  return `ca_${numericId}`;
+}
+
+export function subitoListingCacheId(numericId: string): string {
+  return `sb_${numericId}`;
+}
+
+export function inferListingWebsiteSource(listing: { id: string; url: string }): ListingWebsiteSource | null {
   if (listing.id.startsWith("sr_") || /sreality\.cz/i.test(listing.url)) return "sreality";
   if (listing.id.startsWith("im_") || isImmobiliareListingUrl(listing.url)) return "immobiliare";
+  if (listing.id.startsWith("ca_") || isCasaListingUrl(listing.url)) return "casa";
+  if (listing.id.startsWith("sb_") || isSubitoListingUrl(listing.url)) return "subito";
   if (isIdealistaListingUrl(listing.url) || /idealista\.it/i.test(listing.url)) return "idealista";
   if (/^\d+$/.test(listing.id)) return "idealista";
   return null;
@@ -16,16 +35,22 @@ export function inferListingsWebsiteSource(
   let idealista = false;
   let immobiliare = false;
   let sreality = false;
+  let casa = false;
+  let subito = false;
   for (const listing of listings) {
     const source = inferListingWebsiteSource(listing);
     if (source === "idealista") idealista = true;
     if (source === "immobiliare") immobiliare = true;
     if (source === "sreality") sreality = true;
+    if (source === "casa") casa = true;
+    if (source === "subito") subito = true;
   }
-  const count = [idealista, immobiliare, sreality].filter(Boolean).length;
+  const count = [idealista, immobiliare, sreality, casa, subito].filter(Boolean).length;
   if (count > 1) return "mixed";
   if (sreality) return "sreality";
   if (immobiliare) return "immobiliare";
+  if (casa) return "casa";
+  if (subito) return "subito";
   if (idealista) return "idealista";
   return "idealista";
 }
@@ -35,6 +60,8 @@ export function formatListingsWebsiteSource(source: ListingsWebsiteSource | null
   if (source === "idealista") return "Idealista";
   if (source === "immobiliare") return "Immobiliare.it";
   if (source === "sreality") return "Sreality.cz";
+  if (source === "casa") return "Casa.it";
+  if (source === "subito") return "Subito.it";
   return "Idealista + Immobiliare.it";
 }
 
@@ -69,7 +96,34 @@ export function extractListingCacheId(url: string): string | null {
   if (idealistaId) return idealistaId;
   const immobiliareId = extractImmobiliareListingId(url);
   if (immobiliareId) return immobiliareListingCacheId(immobiliareId);
+  const casaId = url.match(/casa\.it\/immobili\/(\d+)/i)?.[1];
+  if (casaId) return casaListingCacheId(casaId);
+  const subitoId = url.match(/-(\d+)\.htm/i)?.[1];
+  if (subitoId && /subito\.it/i.test(url)) return subitoListingCacheId(subitoId);
   return null;
+}
+
+export function normalizeIdealistaListingUrl(raw: string): string {
+  const trimmed = raw.trim();
+  if (!trimmed) throw new Error("URL obbligatorio");
+
+  let parsed: URL;
+  try {
+    parsed = new URL(trimmed.startsWith("http") ? trimmed : `https://${trimmed}`);
+  } catch {
+    throw new Error("URL non valido");
+  }
+
+  if (!parsed.hostname.includes("idealista.it")) {
+    throw new Error("Inserisci un URL Idealista italiano (idealista.it)");
+  }
+
+  const idMatch = parsed.pathname.match(/\/immobile\/(\d+)/);
+  if (!idMatch) {
+    throw new Error("URL non riconosciuto — usa un link del tipo idealista.it/immobile/12345678/");
+  }
+
+  return `https://www.idealista.it/immobile/${idMatch[1]}/`;
 }
 
 export function normalizeImmobiliareListingUrl(raw: string): string {

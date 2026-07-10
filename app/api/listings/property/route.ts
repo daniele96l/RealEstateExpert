@@ -1,14 +1,13 @@
 import { NextResponse } from "next/server";
-import { getDefaultListingsProvider, hasRapidApiKey, hasScrapingBeeKey } from "@/lib/server/config";
-import { RapidApiIdealistaError } from "@/lib/server/rapidapi-idealista";
 import { fetchPropertyDetailForListing } from "@/lib/server/fetch-property-detail";
 import { getPropertyDetailCache, savePropertyDetailCache } from "@/lib/server/property-detail-cache";
 import { syncListingConditionToCityCaches } from "@/lib/server/listing-condition-enrich";
 import { listingToDetail } from "@/lib/server/property-detail";
-import { ScrapingBeeError } from "@/lib/server/scrapingbee";
 import { propertyDetailCacheFileLabel } from "@/lib/property-detail-cache-client";
 import { isSrealityListing, SrealityDetailError } from "@/lib/server/sreality-detail";
-import type { ListingDetail, ListingsProvider, MapListing } from "@/lib/types";
+import { IdealistaImportError } from "@/lib/server/idealista-import";
+import { ImmobiliareImportError } from "@/lib/server/immobiliare-import";
+import type { ListingDetail, MapListing } from "@/lib/types";
 
 function resolveListingCacheId(url: string, listing?: MapListing): string | undefined {
   if (listing?.id?.trim()) return listing.id.trim();
@@ -33,11 +32,7 @@ export async function GET(request: Request) {
     return NextResponse.json(cached);
   }
 
-  return NextResponse.json({
-    default_provider: getDefaultListingsProvider(),
-    scrapingbee: hasScrapingBeeKey(),
-    rapidapi: hasRapidApiKey(),
-  });
+  return NextResponse.json({ default_provider: "direct" });
 }
 
 export async function POST(request: Request) {
@@ -46,7 +41,6 @@ export async function POST(request: Request) {
       url?: string;
       listing?: MapListing;
       refresh?: boolean;
-      provider?: ListingsProvider;
     };
 
     const url = body.url ?? body.listing?.url;
@@ -84,52 +78,21 @@ export async function POST(request: Request) {
       }
     }
 
-    if (isSrealityListing(listingStub)) {
-      const detail = await fetchPropertyDetailForListing(listingStub, "sreality");
+    try {
+      const detail = await fetchPropertyDetailForListing(listingStub);
       await savePropertyDetailCache(detail);
       await syncListingConditionToCityCaches(detail);
       return NextResponse.json(detail);
-    }
-
-    const preferred = body.provider ?? getDefaultListingsProvider();
-    const order: ListingsProvider[] =
-      preferred === "rapidapi" ? ["rapidapi", "scrapingbee"] : ["scrapingbee", "rapidapi"];
-    const available = order.filter((p) => (p === "rapidapi" ? hasRapidApiKey() : hasScrapingBeeKey()));
-
-    if (!available.length) {
-      return NextResponse.json(
-        { detail: "Nessuna API configurata. Aggiungi RAPIDAPI_KEY o SCRAPINGBEE_API_KEY in .env.local" },
-        { status: 500 },
-      );
-    }
-
-    let lastError: unknown;
-    for (const provider of available) {
-      try {
-        const detail = await fetchPropertyDetailForListing(listingStub, provider);
-        await savePropertyDetailCache(detail);
-        await syncListingConditionToCityCaches(detail);
-        return NextResponse.json(detail);
-      } catch (err) {
-        lastError = err;
+    } catch (err) {
+      if (body.listing) {
+        const fallback = listingToDetail(listingStub);
+        await savePropertyDetailCache(fallback);
+        return NextResponse.json(fallback);
       }
+      throw err;
     }
-
-    if (body.listing) {
-      const fallback = listingToDetail(listingStub);
-      await savePropertyDetailCache(fallback);
-      return NextResponse.json(fallback);
-    }
-
-    throw lastError;
   } catch (err) {
-    if (err instanceof SrealityDetailError) {
-      return NextResponse.json({ detail: err.message }, { status: 502 });
-    }
-    if (err instanceof RapidApiIdealistaError) {
-      return NextResponse.json({ detail: err.message }, { status: 502 });
-    }
-    if (err instanceof ScrapingBeeError) {
+    if (err instanceof SrealityDetailError || err instanceof IdealistaImportError || err instanceof ImmobiliareImportError) {
       return NextResponse.json({ detail: err.message }, { status: 502 });
     }
     if (err instanceof Error) {
@@ -139,7 +102,6 @@ export async function POST(request: Request) {
   }
 }
 
-/** Persist a detail object to data/listings/details/{id}.json (local dev cache). */
 export async function PUT(request: Request) {
   try {
     const body = (await request.json()) as { detail?: ListingDetail };

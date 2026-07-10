@@ -1,6 +1,6 @@
 # RealEstateExpert
 
-Analizzatore di investimenti immobiliari in Italia — app Next.js con calcoli lato client e annunci Idealista via **RapidAPI** o **ScrapingBee**.
+Analizzatore di investimenti immobiliari in Italia — app Next.js con calcoli lato client e annunci da **scraping diretto** (Playwright).
 
 Modella costi di acquisto, mutuo, ristrutturazione, affitto lungo/breve termine, imposte italiane (IMU, cedolare secca) e proietta il flusso di cassa su 20 anni.
 
@@ -9,8 +9,9 @@ Modella costi di acquisto, mutuo, ristrutturazione, affitto lungo/breve termine,
 ## Avvio
 
 ```bash
-cp .env.example .env.local   # inserisci RAPIDAPI_KEY e/o SCRAPINGBEE_API_KEY
+cp .env.example .env.local
 npm install
+npx playwright install chromium
 npm run dev
 ```
 
@@ -20,45 +21,31 @@ Un solo processo — UI, API routes e simulatore sono tutti in Next.js (deployab
 
 ## Mappa annunci per città
 
-1. Nella sezione **Mappa annunci Idealista**, inserisci una città (es. Milano)
-2. Scegli **Vendita** o **Affitto**, seleziona **RapidAPI** o **ScrapingBee**, e clicca **Carica**
+1. Nella sezione **Mappa annunci**, inserisci una città (es. Milano)
+2. Scegli **Vendita** o **Affitto** e clicca **Carica** (o usa l'importazione batch)
 3. La mappa mostra i marker; clicca un annuncio per precompilare il form di analisi
-4. **Aggiorna** forza un nuovo download da Idealista; altrimenti i dati vengono letti da cache JSON locale
+4. **Aggiorna** forza un nuovo download; altrimenti i dati vengono letti da cache JSON locale
 
 I dati vengono salvati in `data/listings/{citta}_{operation}.json`.
 
-## Configurazione API annunci
+## Fonti dati (scraping)
 
-In `.env.local`:
+- **Idealista** — Playwright su idealista.it
+- **Immobiliare.it** — Playwright / scraper Python per occupancy
+- **Casa.it / Subito.it** — scraper Playwright (occupancy Reggio Calabria)
+- **Sreality.cz** — API pubblica (mercato Brno)
 
-```env
-# RapidAPI Idealista17 (consigliato)
-RAPIDAPI_KEY=your_rapidapi_key_here
-LISTINGS_PROVIDER=rapidapi
-
-# Alternativa: scraping HTML
-SCRAPINGBEE_API_KEY=your_key_here
-```
-
-- **RapidAPI** — [Idealista17](https://rapidapi.com/happyendpoint/api/idealista17): usa `smart-search` + `property-search-by-url`
-- **ScrapingBee** — scraping diretto di idealista.it (~5 crediti per città)
-
-Le chiavi restano server-side (mai esposte al browser).
-
-### Provider fallback (Italia)
-
-L'app prova automaticamente più sorgenti in ordine: **RealtyAPI** (Immobiliare) → **direct** (Immobiliare/Idealista via Playwright) → **ScrapingBee** (Idealista) → RapidAPI (se disponibile).
-
-Se RapidAPI risponde **429** (quota mensile), viene saltato per il resto della sessione. Imposta `RAPIDAPI_DISABLED=1` in `.env.local` per disabilitarlo del tutto.
+Nessuna chiave RapidAPI, ScrapingBee o RealtyAPI richiesta.
 
 ```bash
-npm run listings:test-providers -- "Reggio Calabria" --rent
+npm run scrape:idealista:city -- "Reggio Calabria"
+npm run scrape:test-portals
 ```
 
 ## Stack
 
 - **Next.js 15** — UI + API routes
-- **RapidAPI Idealista17** / **ScrapingBee** — annunci Idealista
+- **Playwright** — scraping portali immobiliari
 - **Leaflet** — mappa annunci
 - **Recharts** — grafici flusso di cassa
 
@@ -71,7 +58,7 @@ app/
 components/                   # Form, mappa, grafici
 lib/
   engine/                     # Simulatore (client-side)
-  server/                     # RapidAPI, ScrapingBee, geocoding
+  server/                     # scrapers, geocoding
   api.ts                      # Client fetch verso /api/*
 data/listings/                # Cache JSON (gitignored)
 ```
@@ -83,7 +70,7 @@ npm run build
 vercel --prod
 ```
 
-Imposta le variabili d'ambiente `RAPIDAPI_KEY`, `SCRAPINGBEE_API_KEY` e `LISTINGS_PROVIDER` nel dashboard Vercel.
+Playwright su Vercel richiede configurazione runtime adeguata; in locale usa `npm run dev`.
 
 ## Assunzioni (v1)
 

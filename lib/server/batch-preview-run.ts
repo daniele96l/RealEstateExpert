@@ -6,12 +6,9 @@ import {
 } from "@/lib/batch-fetch-progress";
 import type { MarketId } from "@/lib/markets";
 import { geocodeCity } from "@/lib/server/geocode";
-import { fetchItalyListingsWithFallback } from "@/lib/server/italy-listings-fetch";
+import { fetchItalyListingsScraped } from "@/lib/server/italy-listings-scrape";
 import { getCache, mergeListingCache, replaceListingCache, saveCache } from "@/lib/server/listings-cache";
-import {
-  buildSearchQuery,
-  resolvePreferredProvider,
-} from "@/lib/server/listings-fetch";
+import { buildSearchQuery } from "@/lib/server/listings-fetch";
 import { fetchSrealityCityListings } from "@/lib/server/sreality-search";
 import type { BatchPreviewResult, ListingsProvider } from "@/lib/types";
 
@@ -20,7 +17,6 @@ export interface BatchPreviewRequest {
   zone?: string;
   operations: ("sale" | "rent")[];
   refresh?: boolean;
-  provider?: ListingsProvider;
   portal?: ListingSource;
   maxPages?: number;
   market: MarketId;
@@ -129,7 +125,7 @@ export async function runBatchPreview(
   }
 
   const searchQuery = buildSearchQuery(body.city, body.zone);
-  const preferred = resolvePreferredProvider(body.provider);
+  const portal = body.portal ?? "idealista";
 
   if (!body.refresh) {
     const cachedParts = await Promise.all(
@@ -141,7 +137,7 @@ export async function runBatchPreview(
     const hits = cachedParts.filter((p): p is NonNullable<typeof p> => p != null);
     if (hits.length === operations.length) {
       const center = hits[0]!.cached.center;
-      const provider = hits[0]!.cached.provider ?? preferred;
+      const provider = hits[0]!.cached.provider ?? "direct";
       const result: BatchPreviewResult = {
         city: hits[0]!.cached.city,
         center,
@@ -163,14 +159,14 @@ export async function runBatchPreview(
   }> = [];
 
   for (const operation of operations) {
-    const { data, provider } = await fetchItalyListingsWithFallback(
+    const data = await fetchItalyListingsScraped(
       searchQuery,
       operation,
-      preferred,
+      portal,
       maxPages,
       (p) => emitPageProgress(p.operation, p.page, p.listingsTotal),
     );
-    results.push({ operation, data: { ...data, provider }, provider });
+    results.push({ operation, data: { ...data, provider: "direct" }, provider: "direct" });
   }
 
   const centerData = await geocodeCity(body.city.trim(), market);
@@ -191,7 +187,7 @@ export async function runBatchPreview(
       lng: centerData.lng || avgLng,
       display_name: centerData.display_name ?? null,
     },
-    provider: results[0]?.provider ?? preferred,
+    provider: results[0]?.provider ?? "direct",
     fetched_at: new Date().toISOString(),
   };
 

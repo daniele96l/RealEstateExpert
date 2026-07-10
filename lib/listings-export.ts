@@ -357,11 +357,7 @@ export async function buildListingsExport(
       async (listing) => {
         const profit = profitById.get(listing.id) ?? null;
         try {
-          const { detail, source } = await loadPropertyDetailCacheFirst(
-            listing,
-            ctx.provider,
-            true,
-          );
+          const { detail, source } = await loadPropertyDetailCacheFirst(listing, true);
           await persistDetailLocally(detail);
           if (source === "network") stats.fetched++;
           else stats.cached++;

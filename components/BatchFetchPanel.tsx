@@ -49,8 +49,6 @@ interface Props {
   open: boolean;
   market: MarketId;
   city: string;
-  provider: ListingsProvider;
-  providersAvailable: { scrapingbee: boolean; rapidapi: boolean; realtyapi: boolean };
   onClose: () => void;
   onSaved: (data: CombinedListingsData) => void;
 }
@@ -82,8 +80,6 @@ export default function BatchFetchPanel({
   open,
   market,
   city: initialCity,
-  provider: initialProvider,
-  providersAvailable,
   onClose,
   onSaved,
 }: Props) {
@@ -92,7 +88,6 @@ export default function BatchFetchPanel({
   const [zone, setZone] = useState("");
   const [fetchSale, setFetchSale] = useState(true);
   const [fetchRent, setFetchRent] = useState(true);
-  const [provider, setProvider] = useState(initialProvider);
   const [portal, setPortal] = useState<ListingSource>("idealista");
   const [areaPreset, setAreaPreset] = useState<AreaPresetId>("city");
   const [customRadiusM, setCustomRadiusM] = useState(1500);
@@ -125,11 +120,8 @@ export default function BatchFetchPanel({
   useEffect(() => {
     if (open) {
       setCity(initialCity);
-      setProvider(
-        portal === "immobiliare" && initialProvider === "scrapingbee" ? "rapidapi" : initialProvider,
-      );
     }
-  }, [open, initialCity, initialProvider, portal]);
+  }, [open, initialCity]);
 
   useEffect(() => {
     if (!open) return;
@@ -254,7 +246,6 @@ export default function BatchFetchPanel({
       const result = await batchPreviewListingsStream(city.trim(), operations, {
         zone: zone.trim() || undefined,
         refresh: true,
-        provider: market === "cz" ? "sreality" : provider,
         portal: market === "cz" ? undefined : portal,
         maxPages,
         market,
@@ -437,80 +428,34 @@ export default function BatchFetchPanel({
               Fonte: <span className="text-neutral-800">Sreality.cz</span> — Brno (API pubblica)
             </p>
           ) : (
-            <>
-          <div>
-            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-500">Portale</p>
-            <div className="flex flex-wrap gap-2">
-              {(
-                [
-                  { id: "idealista" as const, label: "Idealista" },
-                  { id: "immobiliare" as const, label: "Immobiliare.it" },
-                ] as const
-              ).map(({ id, label }) => (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => {
-                    setPortal(id);
-                    if (id === "immobiliare" && provider === "scrapingbee") {
-                      setProvider("rapidapi");
-                    }
-                  }}
-                  className={cn(
-                    "rounded-lg border px-3 py-1.5 text-sm",
-                    portal === id
-                      ? "border-neutral-900 bg-neutral-50 text-neutral-900"
-                      : "border-surface-border text-neutral-600 hover:text-neutral-800",
-                  )}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-500">Provider</p>
-            <div className="flex rounded-lg border border-surface-border overflow-hidden">
-              {(
-                portal === "immobiliare"
-                  ? ([
-                      { id: "realtyapi" as const, label: "RealtyAPI", enabled: providersAvailable.realtyapi },
-                      { id: "rapidapi" as const, label: "RapidAPI", enabled: providersAvailable.rapidapi },
-                      { id: "direct" as const, label: "Diretto", enabled: true },
-                    ] as const)
-                  : ([
-                      { id: "rapidapi" as const, label: "RapidAPI", enabled: providersAvailable.rapidapi },
-                      { id: "scrapingbee" as const, label: "ScrapingBee", enabled: providersAvailable.scrapingbee },
-                    ] as const)
-              ).map(({ id, label, enabled }) => (
-                <button
-                  key={id}
-                  type="button"
-                  disabled={!enabled}
-                  onClick={() => setProvider(id)}
-                  className={cn(
-                    "px-3 py-1.5 text-sm",
-                    !enabled && "cursor-not-allowed opacity-40",
-                    provider === id ? "bg-neutral-100 text-neutral-900" : "text-neutral-600 hover:text-neutral-800",
-                  )}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-            {portal === "immobiliare" && provider === "rapidapi" && providersAvailable.rapidapi && (
+            <div>
+              <p className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-500">Portale</p>
+              <div className="flex flex-wrap gap-2">
+                {(
+                  [
+                    { id: "idealista" as const, label: "Idealista" },
+                    { id: "immobiliare" as const, label: "Immobiliare.it" },
+                  ] as const
+                ).map(({ id, label }) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => setPortal(id)}
+                    className={cn(
+                      "rounded-lg border px-3 py-1.5 text-sm",
+                      portal === id
+                        ? "border-neutral-900 bg-neutral-50 text-neutral-900"
+                        : "border-surface-border text-neutral-600 hover:text-neutral-800",
+                    )}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
               <p className="mt-2 text-xs text-neutral-500">
-                RapidAPI richiede abbonamento a &quot;Immobiliare.it Scraper&quot;. In alternativa usa RealtyAPI.
+                Gli annunci vengono scaricati via Playwright (scraping diretto).
               </p>
-            )}
-            {portal === "immobiliare" && !providersAvailable.realtyapi && !providersAvailable.rapidapi && (
-              <p className="mt-2 text-xs text-amber-400">
-                Configura REALTYAPI_KEY o RAPIDAPI_KEY in .env.local — oppure usa Diretto.
-              </p>
-            )}
-          </div>
-            </>
+            </div>
           )}
 
           <div>

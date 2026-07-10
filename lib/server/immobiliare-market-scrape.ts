@@ -1,7 +1,7 @@
 import * as cheerio from "cheerio";
 import type { PriceHistoryPoint } from "@/lib/types";
 import { parseGeographyFromRsc, resolveMercatoLocation, type MercatoLocation } from "./immobiliare-zone";
-import { fetchUrl, ScrapingBeeError } from "./scrapingbee";
+import { withPortalBrowser } from "./portal-browser";
 
 export class ImmobiliareMarketError extends Error {}
 
@@ -110,7 +110,10 @@ export async function fetchMarketHistoryViaScrape(city: string): Promise<{
 
   for (const url of urls) {
     try {
-      html = await fetchUrl(url);
+      html = await withPortalBrowser(
+        async (session) => session.fetchHtml(url, { forceNavigation: true }),
+        { pageHasContent: (pageHtml) => pageHtml.includes("Prezzo medio") },
+      );
       if (html.includes("Prezzo medio")) break;
     } catch (err) {
       lastError = err;
@@ -135,5 +138,3 @@ export async function fetchMarketHistoryViaScrape(city: string): Promise<{
   const { sale, rent } = parseChartCards(html);
   return { location, sale, rent };
 }
-
-export { ScrapingBeeError };
