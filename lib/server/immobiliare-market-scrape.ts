@@ -62,14 +62,14 @@ function parseChartCards(html: string): { sale: PriceHistoryPoint[]; rent: Price
   const sale: PriceHistoryPoint[] = [];
   const rent: PriceHistoryPoint[] = [];
 
-  $(".ChartCard_card__Eh_wU").each((_, el) => {
+  $('[class*="ChartCard_card"], [class*="ChartCard"]').each((_, el) => {
     const card = $(el);
-    const eyebrow = card.find('[class*="Header_eyebrow"]').first().text().trim().toLowerCase();
-    const title = card.find('[class*="Header_title"]').first().text().trim();
+    const eyebrow = card.find('[class*="Header_eyebrow"], [class*="eyebrow"]').first().text().trim().toLowerCase();
+    const title = card.find('[class*="Header_title"], h2, h3').first().text().trim();
     if (!title.includes("Prezzo medio")) return;
 
     const gridPrices = card
-      .find('[class*="LineChart_gridItem__horizontal"]')
+      .find('[class*="LineChart_gridItem"], [class*="gridItem__horizontal"]')
       .map((__, node) => parseEuroValue($(node).text()))
       .get()
       .filter((v): v is number => v != null);
@@ -78,16 +78,44 @@ function parseChartCards(html: string): { sale: PriceHistoryPoint[]; rent: Price
 
     const minPrice = Math.min(...gridPrices);
     const maxPrice = Math.max(...gridPrices);
-    const pathD = card.find('[class*="LineChart_svgLine"]').attr("d");
+    const pathD =
+      card.find('[class*="LineChart_svgLine"], [class*="svgLine"] path').attr("d") ??
+      card.find('path[class*="svgLine"]').attr("d");
     if (!pathD) return;
 
-    const contract = eyebrow === "affitto" ? "rent" : "sale";
+    const contract = eyebrow.includes("affitto") ? "rent" : "sale";
     const endDate = contract === "rent" ? rentEnd : saleEnd;
     const series = pathToSeries(pathD, minPrice, maxPrice, endDate);
 
     if (contract === "rent") rent.push(...series);
     else sale.push(...series);
   });
+
+  if (!sale.length && !rent.length) {
+    return parseChartCardsFromPayload(html);
+  }
+
+  return { sale, rent };
+}
+
+function parseChartCardsFromPayload(html: string): { sale: PriceHistoryPoint[]; rent: PriceHistoryPoint[] } {
+  const sale: PriceHistoryPoint[] = [];
+  const rent: PriceHistoryPoint[] = [];
+
+  for (const contract of ["sale", "rent"] as const) {
+    const endDate = parseLastValidDate(html, contract) ?? new Date().toISOString().slice(0, 10);
+    const blockRe = new RegExp(
+      `"type":"${contract}"[\\s\\S]{0,4000}?"minPrice":(\\d+(?:\\.\\d+)?)[\\s\\S]{0,2000}?"maxPrice":(\\d+(?:\\.\\d+)?)[\\s\\S]{0,4000}?"path":"([^"]+)"`,
+    );
+    const match = html.match(blockRe);
+    if (!match) continue;
+    const minPrice = parseFloat(match[1]);
+    const maxPrice = parseFloat(match[2]);
+    const pathD = match[3].replace(/\\u002F/g, "/");
+    const series = pathToSeries(pathD, minPrice, maxPrice, endDate);
+    if (contract === "rent") rent.push(...series);
+    else sale.push(...series);
+  }
 
   if (!sale.length && !rent.length) {
     throw new ImmobiliareMarketError("Grafici prezzo non trovati nella pagina immobiliare.it");
