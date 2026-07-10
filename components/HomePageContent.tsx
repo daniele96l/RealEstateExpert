@@ -264,7 +264,7 @@ export default function HomePageContent() {
         </div>
       </header>
 
-      {market === "it" ? (
+      {(market === "it" || market === "cz") ? (
         <div className="border-b border-surface-border bg-neutral-50">
           <div className="mx-auto flex max-w-7xl px-4 py-3 sm:px-6">
             <SegmentedControl
@@ -281,7 +281,7 @@ export default function HomePageContent() {
       ) : null}
 
       <main className="mx-auto max-w-7xl bg-surface px-4 py-8 sm:px-6">
-        {pageTab === "occupancy" && market === "it" ? (
+        {pageTab === "occupancy" ? (
           <OccupancyRatePanel onDataMutated={() => setOccupancyLogRefresh((n) => n + 1)} />
         ) : (
         <div className="grid gap-10 lg:grid-cols-[minmax(320px,420px)_1fr]">
@@ -350,7 +350,7 @@ export default function HomePageContent() {
         </div>
         )}
 
-        {market === "it" && pageTab === "occupancy" ? (
+        {pageTab === "occupancy" ? (
           <OccupancyRemovalsLog refreshToken={occupancyLogRefresh} />
         ) : null}
       </main>

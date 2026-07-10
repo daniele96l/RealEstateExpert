@@ -2,6 +2,7 @@ import type { GeoPolygon } from "@/lib/geo-filter";
 import type { OccupancyMapListing } from "@/lib/types";
 import { allReggioZonePolygonFeatures } from "./reggio-zone-polygons";
 import { GEO_ZONES } from "./reggio-zones";
+import { defaultOccupancyCitySlug, type OccupancyCitySlug } from "./cities";
 
 const ZONE_PALETTE = [
   "#38bdf8",
@@ -44,13 +45,41 @@ export function densityFillOpacity(count: number, maxCount: number): number {
   return Math.min(0.42, 0.1 + (count / maxCount) * 0.32);
 }
 
-export function buildZoneOverlayStats(listings: OccupancyMapListing[]): ZoneOverlayStats[] {
+export function buildZoneOverlayStats(
+  listings: OccupancyMapListing[],
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
+): ZoneOverlayStats[] {
   const listingsByZone = new Map<string, OccupancyMapListing[]>();
   for (const listing of listings) {
     if (!listing.zone || listing.price <= 0) continue;
     const bucket = listingsByZone.get(listing.zone) ?? [];
     bucket.push(listing);
     listingsByZone.set(listing.zone, bucket);
+  }
+
+  if (citySlug === "brno") {
+    return [...listingsByZone.entries()]
+      .map(([zone, zoneListings]) => {
+        const count = zoneListings.length;
+        const perSqmValues = zoneListings
+          .filter((listing) => listing.sqm != null && listing.sqm > 0)
+          .map((listing) => listing.price / listing.sqm!);
+        const avgPricePerSqm =
+          perSqmValues.length > 0
+            ? Math.round(perSqmValues.reduce((sum, value) => sum + value, 0) / perSqmValues.length)
+            : null;
+        const lat = zoneListings.reduce((sum, listing) => sum + listing.lat, 0) / count;
+        const lng = zoneListings.reduce((sum, listing) => sum + listing.lng, 0) / count;
+        return {
+          zone,
+          lat,
+          lng,
+          polygons: [] as GeoPolygon[],
+          count,
+          avgPricePerSqm,
+        };
+      })
+      .sort((a, b) => b.count - a.count || a.zone.localeCompare(b.zone, "cs"));
   }
 
   const polygonFeatures = allReggioZonePolygonFeatures();

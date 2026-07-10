@@ -1,16 +1,20 @@
 {
   "crons": [
     {
-      "path": "/api/cron/occupancy?portal=idealista",
+      "path": "/api/cron/occupancy?portal=idealista&city=reggio_calabria",
       "schedule": "0 6 * * *"
     },
     {
-      "path": "/api/cron/occupancy?portal=immobiliare",
+      "path": "/api/cron/occupancy?portal=immobiliare&city=reggio_calabria",
       "schedule": "20 6 * * *"
     },
     {
-      "path": "/api/cron/occupancy?portal=immobiliare_scraper",
+      "path": "/api/cron/occupancy?portal=immobiliare_scraper&city=reggio_calabria",
       "schedule": "40 6 * * *"
+    },
+    {
+      "path": "/api/cron/occupancy?portal=sreality&city=brno",
+      "schedule": "0 7 * * *"
     }
   ]
 }

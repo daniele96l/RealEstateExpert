@@ -286,7 +286,7 @@ export interface TrackedRentalListing extends OccupancyBasicListing {
 
 export interface OccupancyRegistry {
   city: string;
-  market: "it";
+  market: "it" | "cz";
   portal: OccupancyPortal;
   updated_at: string;
   snapshot_count: number;
@@ -309,12 +309,14 @@ export interface OccupancyAreaMetrics {
   avg_days_on_market: number | null;
   median_days_on_market: number | null;
   turnover_30d: number | null;
+  turnover_rented_30d: number;
+  turnover_inventory_basis: number | null;
   estimated_occupancy_pct: number | null;
 }
 
 export interface OccupancyCityMetrics {
   city: string;
-  market: "it";
+  market: "it" | "cz";
   portal: OccupancyPortal;
   updated_at: string | null;
   snapshot_count: number;
@@ -324,6 +326,8 @@ export interface OccupancyCityMetrics {
   avg_days_on_market: number | null;
   median_days_on_market: number | null;
   turnover_30d: number | null;
+  turnover_rented_30d: number;
+  turnover_inventory_basis: number | null;
   estimated_occupancy_pct: number | null;
   occupancy_window_days: number;
   areas: OccupancyAreaMetrics[];
@@ -409,4 +413,5 @@ export interface OccupancyDashboardData {
   available_snapshots: OccupancySnapshotSummary[];
   selected_snapshot_at: string | null;
   selected_portal: OccupancyPortal;
+  selected_city: import("@/lib/occupancy/cities").OccupancyCitySlug;
 }

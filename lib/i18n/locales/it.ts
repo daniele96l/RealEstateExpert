@@ -358,13 +358,21 @@ const it = {
     subtitle:
       "Monitoraggio affitti — tempo sul mercato, turnover e occupazione stimata per zona.",
     cityLocked: "Reggio Calabria",
+    citySelect: "Città",
+    cities: {
+      reggio_calabria: "Reggio Calabria",
+      brno: "Brno",
+    },
     dataSource: "Fonte dati",
     portalIdealista: "Idealista",
     portalImmobiliare: "Immobiliare.it (API)",
     portalImmobiliareScraper: "Immobiliare.it (scraper)",
+    portalSreality: "Sreality.cz",
     portalImmobiliareHint: "Nessuno snapshot Immobiliare API ancora — premi Aggiorna dati per avviare il tracciamento.",
     portalImmobiliareScraperHint:
       "Nessuno snapshot dallo scraper locale ancora — premi Aggiorna dati per eseguire reggio_rentals.",
+    portalSrealityHint:
+      "Nessuno snapshot Sreality ancora — premi Aggiorna dati per avviare il tracciamento.",
     refresh: "Aggiorna dati",
     refreshing: "Aggiornamento…",
     refreshProgress: "Recupero annunci in corso…",
@@ -441,8 +449,11 @@ const it = {
       active: "Annunci attivi",
       avgDom: "Giorni sul mercato (media)",
       domHint: "Solo annunci presumibilmente affittati",
-      turnover: "Turnover 30 gg",
-      turnoverHint: "Affittati / inventario medio attivo",
+      allCity: "Tutta la città",
+      areaFilter: "Zona",
+      turnover: "Rotazione inventario (30 gg)",
+      turnoverHint:
+        "{rented} affittati ÷ {inventory} attivi (media 30 gg). 1,0× = l'inventario medio si rinnova una volta.",
       occupancy: "Occupazione stimata ({days} gg)",
       occupancyHint: "Proxy da annunci tracciati, non dati ISTAT",
     },
@@ -454,7 +465,7 @@ const it = {
       avgRentPerSqm: "€/m²",
       avgDom: "DOM medio",
       medianDom: "DOM mediano",
-      turnover: "Turnover 30 gg",
+      turnover: "Rotazione (30 gg)",
       occupancy: "Occupazione",
     },
     removals: {
@@ -463,6 +474,8 @@ const it = {
         "Annunci non più online al successivo aggiornamento — trattati come affittati (presunto).",
       empty: "Nessuna rimozione registrata — esegui almeno due aggiornamenti in giorni diversi.",
       loadError: "Impossibile caricare il log",
+      total: "{count} rimozioni",
+      showing: "{from}–{to} di {total}",
       table: {
         detected: "Rilevato",
         zone: "Zona",

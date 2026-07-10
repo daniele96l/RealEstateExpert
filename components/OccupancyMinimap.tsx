@@ -107,6 +107,8 @@ interface OverlayOption {
 
 interface Props {
   listings: OccupancyMapListing[];
+  mapCenter?: [number, number];
+  citySlug?: import("@/lib/occupancy/cities").OccupancyCitySlug;
   legend?: OccupancyMinimapLegendItem[];
   emptyLabel: string;
   statusLabels?: Partial<Record<OccupancyListingChangeStatus, string>>;
@@ -391,6 +393,7 @@ function MapCanvas({
   listingsCountLabel,
   perSqmLabel = "/m²",
   boundaryAttribution,
+  mapCenter,
 }: {
   listings: OccupancyMapListing[];
   points: [number, number][];
@@ -408,6 +411,7 @@ function MapCanvas({
   listingsCountLabel: string;
   perSqmLabel: string;
   boundaryAttribution?: string;
+  mapCenter: [number, number];
 }) {
   const tile = activeOverlays.has("darkMap") ? MAP_TILES.dark : MAP_TILES.light;
   const showBoundaryCredit =
@@ -424,7 +428,7 @@ function MapCanvas({
       )}
     >
       <MapContainer
-        center={DEFAULT_CENTER}
+        center={mapCenter}
         zoom={12}
         className="h-full w-full"
         scrollWheelZoom={scrollWheelZoom}
@@ -520,6 +524,8 @@ function MapCanvas({
 
 export default function OccupancyMinimap({
   listings,
+  mapCenter = DEFAULT_CENTER,
+  citySlug = "reggio_calabria",
   legend = [],
   emptyLabel,
   statusLabels = {},
@@ -545,7 +551,7 @@ export default function OccupancyMinimap({
     [listings],
   );
 
-  const zoneStats = useMemo(() => buildZoneOverlayStats(listings), [listings]);
+  const zoneStats = useMemo(() => buildZoneOverlayStats(listings, citySlug), [listings, citySlug]);
 
   const priceRange = useMemo(() => {
     const prices = zoneStats
@@ -601,6 +607,7 @@ export default function OccupancyMinimap({
       listingsCountLabel={listingsCountLabel}
       perSqmLabel={perSqmLabel}
       boundaryAttribution={boundaryAttribution}
+      mapCenter={mapCenter}
     />
   );
 

@@ -5,13 +5,12 @@ import type {
   TrackedRentalListing,
 } from "@/lib/types";
 import {
-  OCCUPANCY_CITY,
-  OCCUPANCY_MARKET,
   OCCUPANCY_TURNOVER_DAYS,
   OCCUPANCY_WINDOW_DAYS,
   DEFAULT_OCCUPANCY_PORTAL,
   type OccupancyPortal,
 } from "./constants";
+import { getOccupancyCityConfig, type OccupancyCitySlug } from "./cities";
 import { loadSnapshotsInWindow } from "./registry";
 import { resolveListingZone } from "./zone";
 
@@ -73,12 +72,16 @@ function aggregateListings(
     .filter((v): v is number => v != null && v > 0);
 
   const rentedTurnover = items.filter((l) => rentedInWindow(l, turnoverDays, now)).length;
-  const turnover =
+  const inventoryBasis =
     avgActiveInventory != null && avgActiveInventory > 0
-      ? Math.round((rentedTurnover / avgActiveInventory) * 100) / 100
+      ? avgActiveInventory
       : active.length > 0
-        ? Math.round((rentedTurnover / active.length) * 100) / 100
+        ? active.length
         : null;
+  const turnover =
+    inventoryBasis != null && inventoryBasis > 0
+      ? Math.round((rentedTurnover / inventoryBasis) * 100) / 100
+      : null;
 
   const denominator = active.length + rentedWindow.length;
   const occupancy =
@@ -92,6 +95,8 @@ function aggregateListings(
     avg_days_on_market: average(domValues),
     median_days_on_market: median(domValues),
     turnover_30d: turnover,
+    turnover_rented_30d: rentedTurnover,
+    turnover_inventory_basis: inventoryBasis,
     estimated_occupancy_pct: occupancy,
   };
 }
@@ -99,9 +104,10 @@ function aggregateListings(
 async function avgActiveInventoryLastDays(
   days: number,
   asOfMs: number,
+  citySlug: Parameters<typeof loadSnapshotsInWindow>[2],
   portal: OccupancyPortal,
 ): Promise<number | null> {
-  const snapshots = await loadSnapshotsInWindow(days, asOfMs, portal);
+  const snapshots = await loadSnapshotsInWindow(days, asOfMs, citySlug, portal);
   if (!snapshots.length) return null;
   const counts = snapshots.map((s) => s.active_count);
   return average(counts);
@@ -109,15 +115,23 @@ async function avgActiveInventoryLastDays(
 
 export async function computeOccupancyMetrics(
   registry: OccupancyRegistry,
-  options?: ComputeOccupancyMetricsOptions,
+  options?: ComputeOccupancyMetricsOptions & { citySlug?: OccupancyCitySlug },
 ): Promise<OccupancyCityMetrics> {
   const portal = registry.portal ?? DEFAULT_OCCUPANCY_PORTAL;
+  const citySlug =
+    options?.citySlug ??
+    (registry.market === "cz"
+      ? "brno"
+      : registry.city.toLowerCase().includes("brno")
+        ? "brno"
+        : "reggio_calabria");
+  const cityConfig = getOccupancyCityConfig(citySlug);
   const asOfMs = resolveAsOfMs(options?.asOf ?? registry.updated_at);
   const all = Object.values(registry.listings).map((listing) => ({
     ...listing,
-    zone: resolveListingZone(listing.address, listing.lat, listing.lng),
+    zone: resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
   }));
-  const avgActive = await avgActiveInventoryLastDays(OCCUPANCY_TURNOVER_DAYS, asOfMs, portal);
+  const avgActive = await avgActiveInventoryLastDays(OCCUPANCY_TURNOVER_DAYS, asOfMs, citySlug, portal);
   const cityTotals = aggregateListings(
     all,
     OCCUPANCY_WINDOW_DAYS,
@@ -137,13 +151,13 @@ export async function computeOccupancyMetrics(
   const areas: OccupancyAreaMetrics[] = [...byZone.entries()]
     .map(([zone, items]) => ({
       zone,
-      ...aggregateListings(items, OCCUPANCY_WINDOW_DAYS, OCCUPANCY_TURNOVER_DAYS, avgActive, asOfMs),
+      ...aggregateListings(items, OCCUPANCY_WINDOW_DAYS, OCCUPANCY_TURNOVER_DAYS, null, asOfMs),
     }))
     .sort((a, b) => b.active_count - a.active_count || a.zone.localeCompare(b.zone, "it"));
 
   return {
-    city: OCCUPANCY_CITY,
-    market: OCCUPANCY_MARKET,
+    city: cityConfig.city,
+    market: cityConfig.market,
     portal,
     updated_at: registry.updated_at,
     snapshot_count: registry.snapshot_count,
@@ -155,9 +169,10 @@ export async function computeOccupancyMetrics(
 }
 
 export async function loadOccupancyMetrics(
+  citySlug: OccupancyCitySlug = "reggio_calabria",
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
 ): Promise<OccupancyCityMetrics> {
   const { loadRegistry } = await import("./registry");
-  const registry = await loadRegistry(portal);
-  return computeOccupancyMetrics(registry);
+  const registry = await loadRegistry(citySlug, portal);
+  return computeOccupancyMetrics(registry, { citySlug });
 }

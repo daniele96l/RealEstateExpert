@@ -1,13 +1,19 @@
 import { loadEnvLocal } from "../lib/server/load-env";
+import { resolveOccupancyCitySlug } from "../lib/occupancy/constants";
+import { getOccupancyCityConfig } from "../lib/occupancy/cities";
 import { portalsForCity } from "../lib/occupancy/portals";
 import { runOccupancySnapshot } from "../lib/occupancy/snapshot";
 
 async function main() {
   loadEnvLocal();
-  const citySlug = "reggio_calabria" as const;
-  console.log("Running occupancy snapshots for Reggio Calabria…");
+  const cityArg = process.argv.find((arg) => arg.startsWith("--city="))?.split("=")[1];
+  const citySlug = resolveOccupancyCitySlug(cityArg ?? null);
+  const { city } = getOccupancyCityConfig(citySlug);
+  const portals = portalsForCity(citySlug);
 
-  for (const portal of portalsForCity(citySlug)) {
+  console.log(`Running occupancy snapshots for ${city}…`);
+
+  for (const portal of portals) {
     console.log(`\n[${portal}]`);
     const result = await runOccupancySnapshot(portal, undefined, { citySlug });
     console.log(`Snapshot #${result.registry.snapshot_count}`);

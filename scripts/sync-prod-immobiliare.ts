@@ -18,6 +18,7 @@ async function main() {
   console.log(`Saved listings cache: ${cache.listings.length} rentals`);
 
   const result = await runOccupancySnapshot("immobiliare_scraper", undefined, {
+    citySlug: "reggio_calabria",
     prefetched: cache,
     provider: "reggio_rentals",
   });

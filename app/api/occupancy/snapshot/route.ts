@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { isOccupancyPortal } from "@/lib/occupancy/constants";
+import { resolveOccupancyCitySlug } from "@/lib/occupancy/constants";
+import { resolveOccupancyPortal } from "@/lib/occupancy/portals";
 import { resolveListingsPreview } from "@/lib/occupancy/listings-preview";
 import { loadAllSnapshots } from "@/lib/occupancy/registry";
 import { runOccupancySnapshot } from "@/lib/occupancy/snapshot";
@@ -15,20 +16,27 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json().catch(() => ({}))) as {
       portal?: string;
+      city?: string;
       stream?: boolean;
     };
-    const portal = isOccupancyPortal(body.portal) ? body.portal : undefined;
+    const citySlug = resolveOccupancyCitySlug(body.city);
+    const portal = resolveOccupancyPortal(body.portal, citySlug);
 
     if (body.stream) {
       const encoder = new TextEncoder();
       const stream = new ReadableStream({
         async start(controller) {
           try {
-            const result = await runOccupancySnapshot(portal, (progress) => {
-              controller.enqueue(encoder.encode(`${JSON.stringify({ type: "progress", ...progress })}\n`));
-            });
-            const snapshots = await loadAllSnapshots(result.registry.portal);
+            const result = await runOccupancySnapshot(
+              portal,
+              (progress) => {
+                controller.enqueue(encoder.encode(`${JSON.stringify({ type: "progress", ...progress })}\n`));
+              },
+              { citySlug },
+            );
+            const snapshots = await loadAllSnapshots(citySlug, result.registry.portal);
             const listings_preview = await resolveListingsPreview(
+              citySlug,
               result.registry.portal,
               snapshots,
               result.registry.last_provider ?? null,
@@ -65,9 +73,10 @@ export async function POST(request: Request) {
       });
     }
 
-    const result = await runOccupancySnapshot(portal);
-    const snapshots = await loadAllSnapshots(result.registry.portal);
+    const result = await runOccupancySnapshot(portal, undefined, { citySlug });
+    const snapshots = await loadAllSnapshots(citySlug, result.registry.portal);
     const listings_preview = await resolveListingsPreview(
+      citySlug,
       result.registry.portal,
       snapshots,
       result.registry.last_provider ?? null,

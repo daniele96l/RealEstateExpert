@@ -304,10 +304,12 @@ export async function saveListingsExportToServer(
 export async function fetchOccupancyMetrics(
   asOf?: string | null,
   portal?: OccupancyPortal | null,
+  city?: string | null,
 ): Promise<OccupancyDashboardData> {
   const params = new URLSearchParams();
   if (asOf) params.set("asOf", asOf);
   if (portal) params.set("portal", portal);
+  if (city) params.set("city", city);
   const query = params.toString();
   const res = await fetch(`/api/occupancy/metrics${query ? `?${query}` : ""}`);
   if (!res.ok) throw new Error(await parseError(res, "Lettura metriche occupancy non riuscita"));
@@ -316,7 +318,10 @@ export async function fetchOccupancyMetrics(
 
 export async function refreshOccupancySnapshot(
   portal?: OccupancyPortal,
-  opts?: { onProgress?: (progress: OccupancySnapshotProgressState) => void },
+  opts?: {
+    city?: string | null;
+    onProgress?: (progress: OccupancySnapshotProgressState) => void;
+  },
 ): Promise<{
   metrics: OccupancyCityMetrics;
   listings_preview: OccupancyDashboardData["listings_preview"];
@@ -326,13 +331,16 @@ export async function refreshOccupancySnapshot(
   snapshot_count: number;
 }> {
   if (opts?.onProgress) {
-    return refreshOccupancySnapshotStream(portal, opts.onProgress);
+    return refreshOccupancySnapshotStream(portal, opts.city, opts.onProgress);
   }
 
   const res = await fetch("/api/occupancy/snapshot", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(portal ? { portal } : {}),
+    body: JSON.stringify({
+      ...(portal ? { portal } : {}),
+      ...(opts?.city ? { city: opts.city } : {}),
+    }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Aggiornamento occupancy non riuscito"));
   return res.json();
@@ -340,6 +348,7 @@ export async function refreshOccupancySnapshot(
 
 export async function refreshOccupancySnapshotStream(
   portal: OccupancyPortal | undefined,
+  city: string | null | undefined,
   onProgress: (progress: OccupancySnapshotProgressState) => void,
 ): Promise<{
   metrics: OccupancyCityMetrics;
@@ -354,6 +363,7 @@ export async function refreshOccupancySnapshotStream(
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       ...(portal ? { portal } : {}),
+      ...(city ? { city } : {}),
       stream: true,
     }),
   });
@@ -407,9 +417,11 @@ export async function refreshOccupancySnapshotStream(
 export async function fetchOccupancyRemovals(
   portal?: OccupancyPortal | null,
   limit = 50,
-): Promise<{ events: OccupancyRemovalEvent[]; portal: OccupancyPortal }> {
+  city?: string | null,
+): Promise<{ events: OccupancyRemovalEvent[]; portal: OccupancyPortal; city: string }> {
   const params = new URLSearchParams();
   if (portal) params.set("portal", portal);
+  if (city) params.set("city", city);
   if (limit !== 50) params.set("limit", String(limit));
   const query = params.toString();
   const res = await fetch(`/api/occupancy/removals${query ? `?${query}` : ""}`);

@@ -6,9 +6,10 @@ import { computeSnapshotDiff } from "./snapshot-diff";
 import { rebuildRegistryFromSnapshots } from "./snapshot";
 import {
   DEFAULT_OCCUPANCY_PORTAL,
-  isOccupancyPortal,
-  type OccupancyPortal,
+  resolveOccupancyCitySlug,
+  type OccupancyCitySlug,
 } from "./constants";
+import { resolveOccupancyPortal } from "./portals";
 import type { OccupancyDashboardData, OccupancySnapshotDiff } from "@/lib/types";
 
 function resolveSnapshotDiff(
@@ -32,20 +33,21 @@ function resolveSnapshotDiff(
 export async function loadOccupancyDashboard(
   asOf?: string | null,
   portalInput?: string | null,
+  cityInput?: string | null,
 ): Promise<OccupancyDashboardData> {
-  const portal: OccupancyPortal = isOccupancyPortal(portalInput)
-    ? portalInput
-    : DEFAULT_OCCUPANCY_PORTAL;
+  const citySlug: OccupancyCitySlug = resolveOccupancyCitySlug(cityInput);
+  const portal = resolveOccupancyPortal(portalInput, citySlug);
 
   const [currentRegistry, available_snapshots, allSnapshots] = await Promise.all([
-    loadRegistry(portal),
-    listSnapshotSummaries(portal),
-    loadAllSnapshots(portal),
+    loadRegistry(citySlug, portal),
+    listSnapshotSummaries(citySlug, portal),
+    loadAllSnapshots(citySlug, portal),
   ]);
 
   const selected = asOf?.trim() || null;
   let registry = currentRegistry;
   let listings_preview = await resolveListingsPreview(
+    citySlug,
     portal,
     allSnapshots,
     currentRegistry.last_provider ?? null,
@@ -59,15 +61,21 @@ export async function loadOccupancyDashboard(
     if (match && snapshots.length) {
       registry = rebuildRegistryFromSnapshots(
         snapshots,
+        citySlug,
         portal,
         currentRegistry.last_provider ?? null,
       );
-      listings_preview = buildPreviewFromSnapshot(match, currentRegistry.last_provider ?? null);
+      listings_preview = buildPreviewFromSnapshot(
+        match,
+        currentRegistry.last_provider ?? null,
+        citySlug,
+      );
     }
   }
 
   const metrics = await computeOccupancyMetrics(registry, {
     asOf: selected ?? registry.updated_at,
+    citySlug,
   });
 
   const snapshot_diff = resolveSnapshotDiff(allSnapshots, selected);
@@ -81,5 +89,6 @@ export async function loadOccupancyDashboard(
     available_snapshots,
     selected_snapshot_at: selected,
     selected_portal: portal,
+    selected_city: citySlug,
   };
 }

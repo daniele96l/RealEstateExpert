@@ -356,13 +356,21 @@ const en: Translations = {
     subtitle:
       "Rental tracking — time on market, turnover, and estimated occupancy by area.",
     cityLocked: "Reggio Calabria",
+    citySelect: "City",
+    cities: {
+      reggio_calabria: "Reggio Calabria",
+      brno: "Brno",
+    },
     dataSource: "Data source",
     portalIdealista: "Idealista",
     portalImmobiliare: "Immobiliare.it (API)",
     portalImmobiliareScraper: "Immobiliare.it (scraper)",
+    portalSreality: "Sreality.cz",
     portalImmobiliareHint: "No Immobiliare API snapshots yet — click Refresh data to start tracking.",
     portalImmobiliareScraperHint:
       "No local scraper snapshots yet — click Refresh data to run reggio_rentals.",
+    portalSrealityHint:
+      "No Sreality snapshots yet — click Refresh data to start tracking.",
     refresh: "Refresh data",
     refreshing: "Refreshing…",
     refreshProgress: "Fetching listings…",
@@ -439,8 +447,11 @@ const en: Translations = {
       active: "Active listings",
       avgDom: "Days on market (avg)",
       domHint: "Presumed rented listings only",
-      turnover: "30-day turnover",
-      turnoverHint: "Rented / average active inventory",
+      allCity: "Whole city",
+      areaFilter: "Area",
+      turnover: "Inventory turnover (30d)",
+      turnoverHint:
+        "{rented} rented ÷ {inventory} avg active (30d). 1.0× = one full inventory cycle.",
       occupancy: "Estimated occupancy ({days}d)",
       occupancyHint: "Portal-tracked proxy, not official census data",
     },
@@ -452,7 +463,7 @@ const en: Translations = {
       avgRentPerSqm: "€/m²",
       avgDom: "Avg DOM",
       medianDom: "Median DOM",
-      turnover: "30d turnover",
+      turnover: "Turnover (30d)",
       occupancy: "Occupancy",
     },
     removals: {
@@ -461,6 +472,8 @@ const en: Translations = {
         "Listings no longer online after a refresh — treated as rented (presumed).",
       empty: "No removals logged yet — run at least two refreshes on different days.",
       loadError: "Could not load removal log",
+      total: "{count} removals",
+      showing: "{from}–{to} of {total}",
       table: {
         detected: "Detected",
         zone: "Zone",

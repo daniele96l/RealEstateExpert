@@ -1,16 +1,18 @@
 import { NextResponse } from "next/server";
 import { loadRemovalEvents } from "@/lib/occupancy/removal-log";
-import { DEFAULT_OCCUPANCY_PORTAL, isOccupancyPortal } from "@/lib/occupancy/constants";
+import { resolveOccupancyCitySlug } from "@/lib/occupancy/constants";
+import { resolveOccupancyPortal } from "@/lib/occupancy/portals";
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const portalParam = searchParams.get("portal");
-    const limitParam = searchParams.get("limit");
-    const portal = isOccupancyPortal(portalParam) ? portalParam : DEFAULT_OCCUPANCY_PORTAL;
-    const limit = limitParam ? Math.min(Math.max(Number(limitParam) || 50, 1), 200) : 50;
-    const events = await loadRemovalEvents(portal, limit);
-    return NextResponse.json({ events, portal });
+    const portal = searchParams.get("portal");
+    const city = searchParams.get("city");
+    const limit = Math.min(Math.max(Number(searchParams.get("limit") ?? "500") || 500, 1), 500);
+    const citySlug = resolveOccupancyCitySlug(city);
+    const resolvedPortal = resolveOccupancyPortal(portal, citySlug);
+    const events = await loadRemovalEvents(citySlug, resolvedPortal, limit);
+    return NextResponse.json({ events, portal: resolvedPortal, city: citySlug });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Lettura log rimozioni non riuscita";
     return NextResponse.json({ detail: message }, { status: 500 });

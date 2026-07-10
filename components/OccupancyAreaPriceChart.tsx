@@ -14,6 +14,7 @@ import {
   YAxis,
 } from "recharts";
 import type { OccupancyAreaPreview } from "@/lib/types";
+import type { MarketId } from "@/lib/markets";
 import { cn, fmtMoney } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
 
@@ -29,6 +30,7 @@ function defaultMode(areas: OccupancyAreaPreview[]): ChartMode {
 interface Props {
   areas: OccupancyAreaPreview[];
   perSqmLabel: string;
+  market?: MarketId;
   cityAvgRent?: number | null;
   cityAvgPerSqm?: number | null;
 }
@@ -64,10 +66,12 @@ function ChartTooltip({
   listingsLabel,
   avgRentLabel,
   perSqmFullLabel,
+  market,
 }: {
   active?: boolean;
   payload?: Array<{ payload: ChartRow }>;
   perSqmLabel: string;
+  market: MarketId;
   listingsLabel: string;
   avgRentLabel: string;
   perSqmFullLabel: string;
@@ -86,14 +90,14 @@ function ChartTooltip({
         </p>
         {row.avg_price != null ? (
           <p>
-            {avgRentLabel}: <span className="text-neutral-800">{fmtMoney(row.avg_price)}</span>
+            {avgRentLabel}: <span className="text-neutral-800">{fmtMoney(row.avg_price, market)}</span>
           </p>
         ) : null}
         {row.avg_price_per_sqm != null ? (
           <p>
             {perSqmFullLabel}:{" "}
             <span className="text-neutral-800">
-              {fmtMoney(row.avg_price_per_sqm)}
+              {fmtMoney(row.avg_price_per_sqm, market)}
               {perSqmLabel}
             </span>
           </p>
@@ -106,6 +110,7 @@ function ChartTooltip({
 export default function OccupancyAreaPriceChart({
   areas,
   perSqmLabel,
+  market = "it",
   cityAvgRent,
   cityAvgPerSqm,
 }: Props) {
@@ -133,7 +138,7 @@ export default function OccupancyAreaPriceChart({
       const value = area[valueKey]!;
       const ratio = (value - min) / span;
       const displayValue =
-        mode === "rent" ? fmtMoney(value) : `${fmtMoney(value)}${perSqmLabel}`;
+        mode === "rent" ? fmtMoney(value, market) : `${fmtMoney(value, market)}${perSqmLabel}`;
 
       return {
         zone: area.zone,
@@ -146,7 +151,7 @@ export default function OccupancyAreaPriceChart({
         color: colorForRatio(ratio),
       };
     });
-  }, [areas, mode, perSqmLabel]);
+  }, [areas, mode, perSqmLabel, market]);
 
   const chartHeight = Math.max(260, rows.length * 42 + 48);
   const resolvedCityAvg = mode === "rent" ? cityAvgRent : cityAvgPerSqm;
@@ -213,8 +218,8 @@ export default function OccupancyAreaPriceChart({
           <p className="mt-0.5 text-lg font-bold text-sky-300">
             {resolvedCityAvg != null
               ? mode === "rent"
-                ? fmtMoney(resolvedCityAvg)
-                : `${fmtMoney(resolvedCityAvg)}${perSqmLabel}`
+                ? fmtMoney(resolvedCityAvg, market)
+                : `${fmtMoney(resolvedCityAvg, market)}${perSqmLabel}`
               : "—"}
           </p>
         </div>
@@ -264,6 +269,7 @@ export default function OccupancyAreaPriceChart({
               content={
                 <ChartTooltip
                   perSqmLabel={perSqmLabel}
+                  market={market}
                   listingsLabel={t("occupancy.areaChart.listings")}
                   avgRentLabel={t("occupancy.table.avgRent")}
                   perSqmFullLabel={t("occupancy.table.avgRentPerSqm")}

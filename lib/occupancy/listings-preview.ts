@@ -9,7 +9,12 @@ import type {
 import { getCache, mergeListings } from "@/lib/server/listings-cache";
 import { readJsonFile } from "@/lib/server/fs-cache-io";
 import { inferListingWebsiteSource } from "@/lib/listing-url";
-import { OCCUPANCY_CITY, OCCUPANCY_MARKET, DEFAULT_OCCUPANCY_PORTAL, type OccupancyPortal } from "./constants";
+import { DEFAULT_OCCUPANCY_PORTAL, type OccupancyPortal } from "./constants";
+import {
+  defaultOccupancyCitySlug,
+  getOccupancyCityConfig,
+  type OccupancyCitySlug,
+} from "./cities";
 import { remapListingZones, resolveListingZone, withResolvedZone } from "./zone";
 
 const PREVIEW_SAMPLE_SIZE = 8;
@@ -44,7 +49,7 @@ function medianPricePerSqm(listings: Array<{ price: number; sqm: number | null }
   return median(pricePerSqmValues(listings));
 }
 
-function toBasic(listing: MapListing): OccupancyBasicListing {
+function toBasic(listing: MapListing, citySlug: OccupancyCitySlug): OccupancyBasicListing {
   return {
     id: listing.id,
     price: listing.price,
@@ -53,7 +58,7 @@ function toBasic(listing: MapListing): OccupancyBasicListing {
     sqm: listing.sqm,
     rooms: listing.rooms,
     address: listing.address,
-    zone: resolveListingZone(listing.address, listing.lat, listing.lng),
+    zone: resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
   };
 }
 
@@ -64,8 +69,20 @@ function shortenAddress(address: string | null): string {
   return `${trimmed.slice(0, 69)}…`;
 }
 
-async function loadMergedRentCache(portal: OccupancyPortal): Promise<CityListingsCache | null> {
-  const primary = await getCache(OCCUPANCY_MARKET, OCCUPANCY_CITY, "rent");
+async function loadMergedRentCache(
+  citySlug: OccupancyCitySlug,
+  portal: OccupancyPortal,
+): Promise<CityListingsCache | null> {
+  const { city, market } = getOccupancyCityConfig(citySlug);
+  const primary = await getCache(market, city, "rent");
+
+  if (citySlug === "brno") {
+    if (!primary?.listings.length) return null;
+    const listings = primary.listings.filter((listing) => inferListingWebsiteSource(listing) === "sreality");
+    if (!listings.length) return null;
+    return { ...primary, listings };
+  }
+
   const alt = await readJsonFile<CityListingsCache>(
     path.join(process.cwd(), "data", "listings", "reggio_di_calabria_rent.json"),
   );
@@ -101,18 +118,19 @@ async function loadMergedRentCache(portal: OccupancyPortal): Promise<CityListing
 }
 
 export async function loadListingsPreview(
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
 ): Promise<OccupancyListingsPreview | null> {
-  const cache = await loadMergedRentCache(portal);
+  const cache = await loadMergedRentCache(citySlug, portal);
   if (!cache?.listings.length) return null;
 
-  const basics = remapListingZones(cache.listings.map(toBasic));
+  const basics = remapListingZones(cache.listings.map((listing) => toBasic(listing, citySlug)), citySlug);
   const prices = basics.map((l) => l.price).filter((p) => p > 0);
   const sqms = basics.map((l) => l.sqm).filter((s): s is number => s != null && s > 0);
 
   const byZone = new Map<string, MapListing[]>();
   for (const listing of cache.listings) {
-    const zone = resolveListingZone(listing.address, listing.lat, listing.lng);
+    const zone = resolveListingZone(listing.address, listing.lat, listing.lng, citySlug);
     const bucket = byZone.get(zone) ?? [];
     bucket.push(listing);
     byZone.set(zone, bucket);
@@ -154,8 +172,9 @@ export async function loadListingsPreview(
 export function buildPreviewFromSnapshot(
   snapshot: OccupancySnapshot,
   provider: string | null = null,
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
 ): OccupancyListingsPreview {
-  const basics = remapListingZones(snapshot.listings);
+  const basics = remapListingZones(snapshot.listings, citySlug);
   const prices = basics.map((l) => l.price).filter((p) => p > 0);
   const sqms = basics.map((l) => l.sqm).filter((s): s is number => s != null && s > 0);
 
@@ -201,16 +220,17 @@ export function buildPreviewFromSnapshot(
 }
 
 export async function resolveListingsPreview(
+  citySlug: OccupancyCitySlug,
   portal: OccupancyPortal,
   snapshots: OccupancySnapshot[],
   provider: string | null = null,
 ): Promise<OccupancyListingsPreview | null> {
-  const fromCache = await loadListingsPreview(portal);
+  const fromCache = await loadListingsPreview(citySlug, portal);
   if (fromCache) return fromCache;
 
   const latest = snapshots[snapshots.length - 1];
   if (latest?.listings.length) {
-    return buildPreviewFromSnapshot(latest, provider);
+    return buildPreviewFromSnapshot(latest, provider, citySlug);
   }
 
   return null;

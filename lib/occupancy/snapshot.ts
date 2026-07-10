@@ -10,14 +10,19 @@ import type {
 } from "@/lib/types";
 import { fetchItalyListingsWithFallback } from "@/lib/server/italy-listings-fetch";
 import { fetchReggioRentalsListings } from "@/lib/server/reggio-rentals-fetch";
+import { fetchBrnoRentalsListings } from "@/lib/server/brno-rentals-fetch";
 import { getDefaultListingsProvider } from "@/lib/server/config";
 import {
   DEFAULT_OCCUPANCY_PORTAL,
-  OCCUPANCY_CITY,
   OCCUPANCY_FETCH_MAX_PAGES,
   type OccupancyPortal,
 } from "./constants";
-import { resolveItalyListingMaxPages } from "@/lib/batch-fetch-pages";
+import {
+  defaultOccupancyCitySlug,
+  getOccupancyCityConfig,
+  type OccupancyCitySlug,
+} from "./cities";
+import { resolveBatchFetchPageLimit, resolveItalyListingMaxPages } from "@/lib/batch-fetch-pages";
 import type { OccupancySnapshotProgressState } from "@/lib/occupancy-snapshot-progress";
 import { resolveListingZone } from "./zone";
 import { emptyRegistry, loadRegistry, saveRegistry, saveSnapshot } from "./registry";
@@ -29,7 +34,7 @@ function daysBetween(startIso: string, endIso: string): number {
   return Math.max(0, Math.round(ms / (24 * 60 * 60 * 1000)));
 }
 
-function mapListingToBasic(listing: MapListing): OccupancyBasicListing {
+function mapListingToBasic(listing: MapListing, citySlug: OccupancyCitySlug): OccupancyBasicListing {
   return {
     id: listing.id,
     price: listing.price,
@@ -38,7 +43,7 @@ function mapListingToBasic(listing: MapListing): OccupancyBasicListing {
     sqm: listing.sqm,
     rooms: listing.rooms,
     address: listing.address,
-    zone: resolveListingZone(listing.address, listing.lat, listing.lng),
+    zone: resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
   };
 }
 
@@ -99,9 +104,11 @@ export interface OccupancySnapshotResult {
 
 export function rebuildRegistryFromSnapshots(
   snapshots: OccupancySnapshot[],
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
   lastProvider: ListingsProvider | null = null,
 ): OccupancyRegistry {
+  const { city, market } = getOccupancyCityConfig(citySlug);
   const listings: Record<string, TrackedRentalListing> = {};
 
   for (const snapshot of snapshots) {
@@ -130,8 +137,8 @@ export function rebuildRegistryFromSnapshots(
 
   const last = snapshots[snapshots.length - 1];
   return {
-    city: OCCUPANCY_CITY,
-    market: "it",
+    city,
+    market,
     portal,
     updated_at: last?.fetched_at ?? new Date().toISOString(),
     snapshot_count: snapshots.length,
@@ -142,6 +149,7 @@ export function rebuildRegistryFromSnapshots(
 
 export async function rebuildRegistryUpTo(
   targetFetchedAt: string,
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
   lastProvider: ListingsProvider | null = null,
 ): Promise<OccupancyRegistry | null> {
@@ -149,17 +157,82 @@ export async function rebuildRegistryUpTo(
   const targetMs = new Date(targetFetchedAt).getTime();
   if (!Number.isFinite(targetMs)) return null;
 
-  const snapshots = (await loadAllSnapshots(portal)).filter(
+  const snapshots = (await loadAllSnapshots(citySlug, portal)).filter(
     (s) => new Date(s.fetched_at).getTime() <= targetMs,
   );
   if (!snapshots.length) return null;
-  return rebuildRegistryFromSnapshots(snapshots, portal, lastProvider);
+  return rebuildRegistryFromSnapshots(snapshots, citySlug, portal, lastProvider);
 }
 
 export interface OccupancySnapshotOptions {
+  citySlug?: OccupancyCitySlug;
   /** Skip fetch when data was already scraped (e.g. prod sync script). */
   prefetched?: CityListingsCache;
   provider?: ListingsProvider;
+}
+
+async function fetchOccupancyListings(
+  citySlug: OccupancyCitySlug,
+  portal: OccupancyPortal,
+  maxPages: number,
+  reportProgress: (current: number, page: number, listingsTotal: number, label: string) => void,
+  options?: OccupancySnapshotOptions,
+): Promise<{ data: CityListingsCache; provider: ListingsProvider }> {
+  const cityConfig = getOccupancyCityConfig(citySlug);
+
+  if (citySlug === "brno" && portal === "sreality") {
+    if (options?.prefetched) {
+      return {
+        data: options.prefetched,
+        provider: options.provider ?? "sreality",
+      };
+    }
+    const data = await fetchBrnoRentalsListings(maxPages, (progress) => {
+      reportProgress(
+        progress.page,
+        progress.page,
+        progress.listingsTotal,
+        `Sreality · str. ${progress.page}/${progress.maxPages}`,
+      );
+    });
+    return { data, provider: "sreality" };
+  }
+
+  if (portal === "immobiliare_scraper") {
+    if (options?.prefetched) {
+      return {
+        data: options.prefetched,
+        provider: options.provider ?? "reggio_rentals",
+      };
+    }
+    const data = await fetchReggioRentalsListings(maxPages, (progress) => {
+      reportProgress(
+        progress.page,
+        progress.page,
+        progress.listingsTotal,
+        `Scraper · pag. ${progress.page}/${progress.maxPages}`,
+      );
+    });
+    return { data, provider: "reggio_rentals" };
+  }
+
+  const italyPortal = portal === "idealista" || portal === "immobiliare" ? portal : "idealista";
+  const result = await fetchItalyListingsWithFallback(
+    cityConfig.city,
+    "rent",
+    getDefaultListingsProvider(),
+    maxPages,
+    (pageProgress) => {
+      reportProgress(
+        pageProgress.page,
+        pageProgress.page,
+        pageProgress.listingsTotal,
+        `Pagina ${pageProgress.page}/${pageProgress.maxPages}`,
+      );
+    },
+    italyPortal,
+  );
+  return { data: result.data, provider: result.provider };
 }
 
 export async function runOccupancySnapshot(
@@ -167,10 +240,14 @@ export async function runOccupancySnapshot(
   onProgress?: (progress: OccupancySnapshotProgressState) => void,
   options?: OccupancySnapshotOptions,
 ): Promise<OccupancySnapshotResult> {
+  const citySlug = options?.citySlug ?? defaultOccupancyCitySlug();
+  const cityConfig = getOccupancyCityConfig(citySlug);
   const maxPages =
     portal === "immobiliare_scraper"
       ? Math.min(resolveItalyListingMaxPages(OCCUPANCY_FETCH_MAX_PAGES), 10)
-      : resolveItalyListingMaxPages(OCCUPANCY_FETCH_MAX_PAGES);
+      : cityConfig.market === "cz"
+        ? resolveBatchFetchPageLimit(OCCUPANCY_FETCH_MAX_PAGES, "cz")
+        : resolveItalyListingMaxPages(OCCUPANCY_FETCH_MAX_PAGES);
   const totalSteps = maxPages + 1;
 
   const reportProgress = (
@@ -189,52 +266,26 @@ export async function runOccupancySnapshot(
     });
   };
 
-  const { data, provider } =
-    portal === "immobiliare_scraper"
-      ? options?.prefetched
-        ? {
-            data: options.prefetched,
-            provider: options.provider ?? "reggio_rentals",
-          }
-        : {
-            data: await fetchReggioRentalsListings(maxPages, (progress) => {
-              reportProgress(
-                progress.page,
-                progress.page,
-                progress.listingsTotal,
-                `Scraper · pag. ${progress.page}/${progress.maxPages}`,
-              );
-            }),
-            provider: "reggio_rentals" as const,
-          }
-      : await fetchItalyListingsWithFallback(
-          OCCUPANCY_CITY,
-          "rent",
-          getDefaultListingsProvider(),
-          maxPages,
-          (pageProgress) => {
-            reportProgress(
-              pageProgress.page,
-              pageProgress.page,
-              pageProgress.listingsTotal,
-              `Pagina ${pageProgress.page}/${pageProgress.maxPages}`,
-            );
-          },
-          portal,
-        );
+  const { data, provider } = await fetchOccupancyListings(
+    citySlug,
+    portal,
+    maxPages,
+    reportProgress,
+    options,
+  );
 
   reportProgress(maxPages, maxPages, data.listings.length, "Salvataggio snapshot…");
 
   const fetchedAt = data.fetched_at || new Date().toISOString();
-  const basics = data.listings.map(mapListingToBasic);
+  const basics = data.listings.map((listing) => mapListingToBasic(listing, citySlug));
   const currentIds = new Set(basics.map((l) => l.id));
-  const basicsById = new Map(basics.map((l) => [l.id, l]));
 
-  const registry = await loadRegistry(portal);
+  const registry = await loadRegistry(citySlug, portal);
   const listings = { ...registry.listings };
 
   let newCount = 0;
   let rentedCount = 0;
+  const currency = cityConfig.market === "cz" ? "CZK" : "EUR";
 
   for (const basic of basics) {
     const existing = listings[basic.id];
@@ -259,11 +310,13 @@ export async function runOccupancySnapshot(
     const rented = markRented(tracked);
     listings[id] = rented;
     rentedCount++;
-    await logPresumedRentalRemoval(rented, fetchedAt, portal);
+    await logPresumedRentalRemoval(rented, fetchedAt, portal, citySlug, currency);
   }
 
   const updatedRegistry = {
-    ...(registry.snapshot_count ? registry : emptyRegistry(portal)),
+    ...(registry.snapshot_count ? registry : emptyRegistry(citySlug, portal)),
+    city: cityConfig.city,
+    market: cityConfig.market,
     portal,
     updated_at: fetchedAt,
     snapshot_count: registry.snapshot_count + 1,
@@ -277,11 +330,12 @@ export async function runOccupancySnapshot(
       active_count: basics.length,
       listings: basics,
     },
+    citySlug,
     portal,
   );
-  await saveRegistry(updatedRegistry, portal);
+  await saveRegistry(updatedRegistry, citySlug, portal);
 
-  const metrics = await computeOccupancyMetrics(updatedRegistry);
+  const metrics = await computeOccupancyMetrics(updatedRegistry, { citySlug });
 
   reportProgress(totalSteps, maxPages, basics.length, "Completato");
 
