@@ -12,7 +12,13 @@ from pathlib import Path
 
 from reggio_rentals import config
 from reggio_rentals.browser import BrowserSession, ScrapeError, retrying_goto
-from reggio_rentals.parser import ParseError, extract_next_data, parse_results
+from reggio_rentals.models import Listing
+from reggio_rentals.parser import (
+    ParseError,
+    enrich_listings_from_details,
+    extract_next_data,
+    parse_results,
+)
 from reggio_rentals.storage import init_db, upsert_listings
 
 logger = logging.getLogger(__name__)
@@ -41,6 +47,7 @@ def run(pages: int, db_path: Path) -> RunSummary:
     total_parsed = 0
     total_upserted = 0
     pages_scraped = 0
+    all_listings: list[Listing] = []
 
     try:
         with BrowserSession() as session:
@@ -71,6 +78,7 @@ def run(pages: int, db_path: Path) -> RunSummary:
                     logger.info("No listings on page %s — stopping pagination", page_num)
                     break
 
+                all_listings.extend(listings)
                 rows = upsert_listings(conn, listings)
                 total_parsed += len(listings)
                 total_upserted += rows
@@ -84,6 +92,21 @@ def run(pages: int, db_path: Path) -> RunSummary:
                 )
                 if page_num < pages:
                     time.sleep(config.PAGE_DELAY_SECONDS)
+
+            if all_listings:
+                enriched = enrich_listings_from_details(page, all_listings)
+                dates_changed = any(
+                    enriched_row.listing_published_at != original.listing_published_at
+                    or enriched_row.listing_updated_at != original.listing_updated_at
+                    for enriched_row, original in zip(enriched, all_listings, strict=True)
+                )
+                if dates_changed:
+                    detail_rows = upsert_listings(conn, enriched)
+                    total_upserted += detail_rows
+                    logger.info(
+                        "Detail enrichment updated %s listing rows with portal dates",
+                        detail_rows,
+                    )
     except (ScrapeError, ParseError):
         if pages_scraped > 0:
             logger.warning("Scrape ended early after %s page(s)", pages_scraped)

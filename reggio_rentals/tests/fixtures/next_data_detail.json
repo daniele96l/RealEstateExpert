@@ -1,0 +1,20 @@
+{
+  "props": {
+    "pageProps": {
+      "realEstate": {
+        "id": 97747342,
+        "creationDate": 1745310056,
+        "lastModified": 1754402065,
+        "title": "Monolocale via Cardinale Tripepi",
+        "price": { "value": 400 },
+        "properties": [
+          {
+            "rooms": 1,
+            "surface": "30 m²",
+            "lastUpdate": "Annuncio aggiornato il 15/04/2026"
+          }
+        ]
+      }
+    }
+  }
+}

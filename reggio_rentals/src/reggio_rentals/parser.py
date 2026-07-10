@@ -3,10 +3,16 @@
 from __future__ import annotations
 
 import json
+import logging
 import re
+import time
 from typing import Any
 
+from reggio_rentals import config
+from reggio_rentals.dates import extract_listing_dates
 from reggio_rentals.models import Listing
+
+logger = logging.getLogger(__name__)
 
 _NEXT_DATA_RE = re.compile(
     r'<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)</script>',
@@ -109,6 +115,7 @@ def _listing_from_unit(
     price_eur_month = int(price_value) if isinstance(price_value, (int, float)) else None
     rooms = property_row.get("rooms")
     bathrooms = property_row.get("bathrooms")
+    listing_published_at, listing_updated_at = extract_listing_dates(real_estate, property_row)
 
     return Listing(
         id=listing_id,
@@ -130,6 +137,8 @@ def _listing_from_unit(
         lat=lat,
         lng=lng,
         scraped_at=scraped_at,
+        listing_published_at=listing_published_at,
+        listing_updated_at=listing_updated_at,
     )
 
 
@@ -161,3 +170,105 @@ def parse_results(next_data: dict[str, Any], scraped_at: str) -> list[Listing]:
             )
 
     return listings
+
+
+def _find_real_estate_by_id(node: Any, listing_id: int) -> dict[str, Any] | None:
+    if isinstance(node, dict):
+        nested = _as_dict(node.get("realEstate"))
+        if nested and nested.get("id") == listing_id:
+            return nested
+        if node.get("id") == listing_id and (
+            node.get("price") is not None or node.get("properties") is not None
+        ):
+            return node
+        for value in node.values():
+            found = _find_real_estate_by_id(value, listing_id)
+            if found:
+                return found
+    elif isinstance(node, list):
+        for item in node:
+            found = _find_real_estate_by_id(item, listing_id)
+            if found:
+                return found
+    return None
+
+
+def _detail_html_from_page(page, detail_url: str) -> str | None:
+    try:
+        in_page = page.evaluate(
+            """async (targetUrl) => {
+              try {
+                const res = await fetch(targetUrl, { credentials: 'include' });
+                const html = await res.text();
+                return { status: res.status, html };
+              } catch (error) {
+                return { status: 0, html: '', error: String(error) };
+              }
+            }""",
+            detail_url,
+        )
+        if (
+            isinstance(in_page, dict)
+            and in_page.get("status") == 200
+            and isinstance(in_page.get("html"), str)
+            and "__NEXT_DATA__" in in_page["html"]
+        ):
+            return in_page["html"]
+    except Exception as exc:
+        logger.debug("In-page detail fetch failed for %s: %s", detail_url, exc)
+
+    from reggio_rentals.browser import retrying_goto
+
+    try:
+        retrying_goto(page, detail_url)
+    except Exception as exc:
+        logger.warning("Detail navigation failed for %s: %s", detail_url, exc)
+        return None
+
+    html = page.content()
+    return html if "__NEXT_DATA__" in html else None
+
+
+def enrich_listings_from_details(page, listings: list[Listing]) -> list[Listing]:
+    from dataclasses import replace
+
+    dates_by_id: dict[int, tuple[str | None, str | None]] = {}
+    listing_ids = sorted({listing.id for listing in listings})
+
+    for listing_id in listing_ids:
+        rows = [listing for listing in listings if listing.id == listing_id]
+        if all(row.listing_updated_at and row.listing_published_at for row in rows):
+            continue
+
+        detail_url = f"{config.BASE_URL}/annunci/{listing_id}/"
+        html = _detail_html_from_page(page, detail_url)
+        if not html:
+            continue
+
+        next_data = extract_next_data(html)
+        if not next_data:
+            continue
+
+        real_estate = _find_real_estate_by_id(next_data, listing_id)
+        if not real_estate:
+            continue
+
+        properties = _as_list(real_estate.get("properties"))
+        property_row = _as_dict(properties[0]) if properties else {}
+        dates_by_id[listing_id] = extract_listing_dates(real_estate, property_row)
+        time.sleep(config.PAGE_DELAY_SECONDS)
+
+    if not dates_by_id:
+        return listings
+
+    enriched: list[Listing] = []
+    for listing in listings:
+        published, updated = dates_by_id.get(listing.id, (listing.listing_published_at, listing.listing_updated_at))
+        enriched.append(
+            replace(
+                listing,
+                listing_published_at=listing.listing_published_at or published,
+                listing_updated_at=listing.listing_updated_at or updated,
+            )
+        )
+    return enriched

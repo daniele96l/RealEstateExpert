@@ -12,7 +12,6 @@
     "scrape:immobiliare": "tsx scripts/scrape-immobiliare.ts",
     "scrape:immobiliare:city": "tsx scripts/scrape-immobiliare-city.ts",
     "scrape:immobiliare:city:py": "python3 scripts/scrape_immobiliare_city.py",
-    "immobiliare:captcha": "tsx scripts/open-immobiliare-captcha.ts",
     "scrape:idealista:city": "tsx scripts/scrape-idealista-city.ts",
     "occupancy:poll": "tsx scripts/poll-occupancy.ts --city=reggio_calabria",
     "occupancy:poll:brno": "tsx scripts/poll-occupancy.ts --city=brno",
@@ -22,6 +21,7 @@
     "data:sync-occupancy": "npm run data:sync-immobiliare && npm run data:sync-brno",
     "build:reggio-zones": "tsx scripts/build-reggio-zone-polygons.ts",
     "scrape:test-portals": "tsx scripts/test-portal-scrapers.ts",
+    "scrape:test-all": "tsx scripts/test-all-scrapers.ts",
     "test:casa-scraper": "tsx lib/server/casa-search.test.ts",
     "test:subito-scraper": "tsx lib/server/subito-search.test.ts",
     "test:occupancy-rebasing": "tsx lib/occupancy/rebasing.test.ts"
@@ -53,6 +53,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.20",
+    "patchright": "^1.61.1",
     "playwright": "^1.51.0",
     "postcss": "^8.4.49",
     "shapefile": "^0.6.6",

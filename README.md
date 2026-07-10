@@ -39,8 +39,11 @@ Nessuna chiave RapidAPI, ScrapingBee o RealtyAPI richiesta.
 
 ```bash
 npm run scrape:idealista:city -- "Reggio Calabria"
-npm run scrape:test-portals
+npm run scrape:test-portals      # occupancy portals only
+npm run scrape:test-all          # all live scrapers (exits 1 on failure)
 ```
+
+Idealista is the hardest portal (DataDome). The scraper tries patchright, persistent profile, in-page fetch, and XHR capture. If blocked, set `SCRAPER_PROXY_SERVER` in `.env.local`.
 
 ## Stack
 

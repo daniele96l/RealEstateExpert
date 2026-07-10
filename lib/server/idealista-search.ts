@@ -155,10 +155,14 @@ export function parseListingCards(html: string, operation: "sale" | "rent"): Map
     if (seen.has(id)) return;
 
     const title = $(el).text().replace(/\s+/g, " ").trim() || `Immobile ${id}`;
-    const card = $(el).closest("article, [class*='item']");
+    const card =
+      $(el).closest(".item-info-container, article, li[class*='item'], div[class*='listing']").first() ||
+      $(el).parent();
     const cardText = card.length ? card.text().replace(/\s+/g, " ") : title;
 
-    const price = parsePrice(cardText.match(/[\d.,]+\s*€/)?.[0]);
+    const price =
+      parsePrice(cardText.match(/[\d.,]+\s*€/)?.[0]) ??
+      parsePrice(cardText.match(/([\d.,]+)\s*€\s*\/\s*mese/i)?.[1]);
     if (price == null) return;
 
     let sqm: number | null = null;
@@ -195,7 +199,7 @@ export function parseListingCards(html: string, operation: "sale" | "rent"): Map
 export function parseMapSearchHtml(html: string, operation: "sale" | "rent"): MapListing[] {
   const markers = parseEmbeddedMarkers(html, operation);
   if (markers.length) return markers;
-  return parseListingCards(html, operation).filter((l) => l.lat !== 0 || l.lng !== 0);
+  return parseListingCards(html, operation);
 }
 
 export async function fetchCityListings(

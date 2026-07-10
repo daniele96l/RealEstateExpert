@@ -8,7 +8,8 @@ export async function GET(request: Request) {
     const portal = searchParams.get("portal");
     const city = searchParams.get("city");
     const period = searchParams.get("period");
-    const data = await loadOccupancyDashboard(asOf, portal, city, period);
+    const basis = searchParams.get("basis");
+    const data = await loadOccupancyDashboard(asOf, portal, city, period, basis);
     return NextResponse.json(data);
   } catch (err) {
     const message = err instanceof Error ? err.message : "Lettura metriche non riuscita";

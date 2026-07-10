@@ -161,6 +161,8 @@ export interface MapListing {
   condition_status: string | null;
   condition: string | null;
   needs_renovation: boolean | null;
+  listing_published_at?: string | null;
+  listing_updated_at?: string | null;
 }
 
 export interface ListingDetail extends MapListing {
@@ -267,6 +269,8 @@ export interface OccupancyBasicListing {
   rooms: number | null;
   address: string | null;
   zone: string | null;
+  listing_published_at?: string | null;
+  listing_updated_at?: string | null;
 }
 
 export interface OccupancyPricePoint {
@@ -352,6 +356,7 @@ export interface OccupancyCityMetrics {
   tracking_started_at: string | null;
   tracking_ended_at: string | null;
   flow_metrics_ready: boolean;
+  metrics_basis: import("@/lib/occupancy/metrics-basis").OccupancyMetricsBasis;
   areas: OccupancyAreaMetrics[];
   segments: OccupancySegmentGroups;
 }
@@ -438,4 +443,5 @@ export interface OccupancyDashboardData {
   selected_portal: OccupancyPortal;
   selected_city: import("@/lib/occupancy/cities").OccupancyCitySlug;
   selected_metrics_period: import("@/lib/occupancy/metrics-period").OccupancyMetricsPeriod;
+  selected_metrics_basis: import("@/lib/occupancy/metrics-basis").OccupancyMetricsBasis;
 }

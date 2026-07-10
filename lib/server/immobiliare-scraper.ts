@@ -2,6 +2,7 @@ import * as cheerio from "cheerio";
 import { immobiliareListingCacheId } from "@/lib/listing-url";
 import { resolvePropertyCondition } from "@/lib/property-condition";
 import type { ListingDetail } from "@/lib/types";
+import { extractImmobiliareListingDates } from "./immobiliare-dates";
 import { normalizeEnergyClass } from "./property-detail";
 
 export class ImmobiliareScrapeError extends Error {}
@@ -79,7 +80,7 @@ export function immobiliareBlockReason(html: string): string | null {
     return "IP temporaneamente bloccato da Immobiliare (DataDome). Attendi 24–48 ore o usa un'altra rete (hotspot/VPN). Evita di rilanciare lo scraper finché il sito non si apre nel browser normale.";
   }
   if (html.includes("captcha-delivery.com")) {
-    return "Captcha DataDome attivo. Apri immobiliare.it nel browser normale (Safari/Chrome, non Playwright) e verifica che funzioni prima di riscrapare.";
+    return "Captcha DataDome attivo. Attendi 24–48h o imposta SCRAPER_PROXY_SERVER.";
   }
   return "Accesso a Immobiliare bloccato.";
 }
@@ -378,6 +379,8 @@ export function mapRealEstateToDetail(
     title,
   );
 
+  const { listing_published_at, listing_updated_at } = extractImmobiliareListingDates(re, main);
+
   return {
     id: immobiliareListingCacheId(numericId),
     title,
@@ -411,6 +414,8 @@ export function mapRealEstateToDetail(
     description,
     images,
     fetched_at: new Date().toISOString(),
+    listing_published_at,
+    listing_updated_at,
   };
 }
 

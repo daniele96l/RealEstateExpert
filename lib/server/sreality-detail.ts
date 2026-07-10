@@ -1,6 +1,7 @@
 import { inferListingWebsiteSource } from "@/lib/listing-url";
 import { resolvePropertyCondition } from "@/lib/property-condition";
 import type { ListingDetail, MapListing } from "@/lib/types";
+import { extractSrealityListingDates } from "./sreality-dates";
 import { listingToDetail, normalizeEnergyClass } from "./property-detail";
 
 export class SrealityDetailError extends Error {}
@@ -16,6 +17,8 @@ interface SrealityNamedValue {
 interface SrealityEstateParams {
   usableArea?: number | null;
   floorNumber?: number | null;
+  since?: string | null;
+  edited?: string | null;
   elevator?: SrealityNamedValue | null;
   terrace?: boolean | null;
   balcony?: boolean | null;
@@ -161,6 +164,7 @@ export function parseSrealityEstateDetail(
     .map((img) => (img.url ? normalizeImageUrl(img.url) : null))
     .filter((u): u is string => Boolean(u))
     .slice(0, 12);
+  const { listing_published_at, listing_updated_at } = extractSrealityListingDates(estate.params);
 
   const listing: MapListing = {
     id: srealityListingId(estate.id, base, sourceUrl),
@@ -178,6 +182,8 @@ export function parseSrealityEstateDetail(
     condition_status: conditionInfo.condition_status ?? conditionStatus,
     condition: conditionInfo.condition ?? base?.condition ?? null,
     needs_renovation: conditionInfo.needs_renovation ?? base?.needs_renovation ?? null,
+    listing_published_at: listing_published_at ?? base?.listing_published_at ?? null,
+    listing_updated_at: listing_updated_at ?? base?.listing_updated_at ?? null,
   };
 
   const builtYear =

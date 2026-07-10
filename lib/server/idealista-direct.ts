@@ -84,5 +84,5 @@ export async function fetchCityListingsViaDirect(
       listings,
       provider: "direct",
     };
-  });
+  }, operation);
 }

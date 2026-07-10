@@ -11,6 +11,8 @@ import {
   computeScopedInventoryBasis,
   type AggregateOccupancyOptions,
 } from "./aggregate";
+import { aggregatePostedOccupancyListings } from "./aggregate-posted";
+import type { OccupancyMetricsBasis } from "./metrics-basis";
 import { zoneInventoryBasis } from "./tracking-window";
 
 interface SegmentBucket {
@@ -61,6 +63,7 @@ export interface SegmentGroupOptions extends AggregateOccupancyOptions {
   cityActive: number;
   avgActiveOccupancy: number | null;
   avgActiveTurnover: number | null;
+  metricsBasis?: OccupancyMetricsBasis;
 }
 
 function buildGroup(
@@ -75,6 +78,17 @@ function buildGroup(
     .map((bucket) => {
       const items = listings.filter(bucket.match);
       if (!items.length) return null;
+
+      if (options.metricsBasis === "posted") {
+        return {
+          segment_id: bucket.id,
+          ...aggregatePostedOccupancyListings(items, windowDays, asOfMs, {
+            flowMetricsReady: options.flowMetricsReady,
+            windowStartMs: options.windowStartMs,
+          }),
+        };
+      }
+
       const segmentActive = items.filter((l) => l.status === "active").length;
       const turnoverBasis =
         computeScopedInventoryBasis(

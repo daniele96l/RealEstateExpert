@@ -10,6 +10,8 @@
                   {
                     "realEstate": {
                       "id": 97747342,
+                      "creationDate": 1745310056,
+                      "lastModified": 1754402065,
                       "title": "Monolocale via Cardinale Tripepi",
                       "typology": { "id": 14, "name": "Appartamento" },
                       "contract": "rent",
@@ -21,7 +23,8 @@
                         {
                           "rooms": 1,
                           "surface": "30 m²",
-                          "bathrooms": 1
+                          "bathrooms": 1,
+                          "lastUpdate": "Annuncio aggiornato il 15/04/2026"
                         }
                       ],
                       "advertiser": {

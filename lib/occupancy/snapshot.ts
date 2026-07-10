@@ -47,6 +47,8 @@ function mapListingToBasic(listing: MapListing, citySlug: OccupancyCitySlug): Oc
     rooms: listing.rooms,
     address: listing.address,
     zone: resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
+    listing_published_at: listing.listing_published_at ?? null,
+    listing_updated_at: listing.listing_updated_at ?? null,
   };
 }
 
@@ -82,6 +84,8 @@ function updateTrackedFields(
     rooms: basic.rooms,
     address: basic.address,
     zone: basic.zone,
+    listing_published_at: basic.listing_published_at ?? tracked.listing_published_at ?? null,
+    listing_updated_at: basic.listing_updated_at ?? tracked.listing_updated_at ?? null,
     last_seen_at: at,
     price_history: priceHistory,
   };

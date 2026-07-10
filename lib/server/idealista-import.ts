@@ -5,7 +5,7 @@ import { geocodeCity, normalizeCitySlug } from "./geocode";
 import { saveCache } from "./listings-cache";
 import { listingToDetail } from "./property-detail";
 import { savePropertyDetailCache } from "./property-detail-cache";
-import { withIdealistaBrowser } from "./idealista-browser";
+import { fetchIdealistaPageHtml } from "./idealista-browser";
 
 export class IdealistaImportError extends Error {}
 
@@ -154,9 +154,7 @@ async function ensureCoordinates(listing: MapListing): Promise<MapListing> {
 
 export async function fetchPropertyDetailsViaScrape(url: string): Promise<MapListing> {
   const normalized = normalizeIdealistaListingUrl(url);
-  const html = await withIdealistaBrowser(async (session) =>
-    session.fetchHtml(normalized, { forceNavigation: true }),
-  );
+  const html = await fetchIdealistaPageHtml(normalized, "sale");
   const listing = parsePropertyDetailHtml(html, normalized);
   return ensureCoordinates(listing);
 }

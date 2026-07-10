@@ -22,3 +22,5 @@ class Listing:
     lat: float | None
     lng: float | None
     scraped_at: str
+    listing_published_at: str | None = None
+    listing_updated_at: str | None = None

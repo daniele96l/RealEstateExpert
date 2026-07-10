@@ -24,6 +24,8 @@ def test_parse_results_row_count_and_multi_unit() -> None:
     assert single[0].unit_index == 0
     assert single[0].surface_sqm == 30
     assert single[0].url == "https://www.immobiliare.it/annunci/97747342/"
+    assert single[0].listing_published_at == "2025-04-22"
+    assert single[0].listing_updated_at == "2025-08-05"
 
     assert len(multi) == 2
     assert [row.unit_index for row in multi] == [0, 1]

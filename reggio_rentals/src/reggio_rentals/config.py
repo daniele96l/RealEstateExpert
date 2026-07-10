@@ -37,8 +37,10 @@ WARMUP_NETWORKIDLE_TIMEOUT_MS = 6_000
 GOTO_NETWORKIDLE_TIMEOUT_MS = 8_000
 MAX_RETRIES = 3
 
-# Future hook for residential proxies (not implemented in v0.1).
-PROXY_SERVER: str | None = None
+# Future hook for residential proxies — set SCRAPER_PROXY_SERVER in the environment.
+import os
+
+PROXY_SERVER: str | None = os.environ.get("SCRAPER_PROXY_SERVER", "").strip() or None
 
 
 def search_url(page: int) -> str:

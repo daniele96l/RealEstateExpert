@@ -156,6 +156,8 @@ export function mapSearchResultToListing(
     condition_status: detail.condition_status,
     condition: detail.condition,
     needs_renovation: detail.needs_renovation,
+    listing_published_at: detail.listing_published_at ?? null,
+    listing_updated_at: detail.listing_updated_at ?? null,
   };
 }
 

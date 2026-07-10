@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS listings (
   advertiser_name TEXT,
   lat REAL,
   lng REAL,
+  listing_published_at TEXT,
+  listing_updated_at TEXT,
   PRIMARY KEY (id, unit_index)
 );
 CREATE INDEX IF NOT EXISTS idx_scraped_at ON listings(scraped_at);
@@ -35,8 +37,9 @@ CREATE INDEX IF NOT EXISTS idx_scraped_at ON listings(scraped_at);
 UPSERT_SQL = """
 INSERT OR REPLACE INTO listings (
   id, unit_index, scraped_at, title, url, price_eur_month, price_formatted,
-  typology, surface_sqm, rooms, bathrooms, advertiser_label, advertiser_name, lat, lng
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  typology, surface_sqm, rooms, bathrooms, advertiser_label, advertiser_name, lat, lng,
+  listing_published_at, listing_updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 """
 
 
@@ -44,7 +47,12 @@ def init_db(path: Path) -> sqlite3.Connection:
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(path)
     conn.executescript(SCHEMA_SQL)
-    for column, col_type in (("lat", "REAL"), ("lng", "REAL")):
+    for column, col_type in (
+        ("lat", "REAL"),
+        ("lng", "REAL"),
+        ("listing_published_at", "TEXT"),
+        ("listing_updated_at", "TEXT"),
+    ):
         try:
             conn.execute(f"ALTER TABLE listings ADD COLUMN {column} {col_type}")
         except sqlite3.OperationalError:
@@ -74,6 +82,8 @@ def upsert_listings(conn: sqlite3.Connection, listings: list[Listing]) -> int:
             listing.advertiser_name,
             listing.lat,
             listing.lng,
+            listing.listing_published_at,
+            listing.listing_updated_at,
         )
         for listing in listings
     ]

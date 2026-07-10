@@ -15,6 +15,7 @@ import {
   resolveOccupancyMetricsPeriod,
   type OccupancyMetricsPeriod,
 } from "./metrics-period";
+import { resolveOccupancyMetricsBasis } from "./metrics-basis";
 
 function resolveSnapshotDiff(
   snapshots: Awaited<ReturnType<typeof loadAllSnapshots>>,
@@ -39,10 +40,12 @@ export async function loadOccupancyDashboard(
   portalInput?: string | null,
   cityInput?: string | null,
   periodInput?: string | null,
+  basisInput?: string | null,
 ): Promise<OccupancyDashboardData> {
   const citySlug: OccupancyCitySlug = resolveOccupancyCitySlug(cityInput);
   const portal = resolveOccupancyPortal(portalInput, citySlug);
   const period = resolveOccupancyMetricsPeriod(periodInput);
+  const basis = resolveOccupancyMetricsBasis(basisInput);
 
   const [currentRegistry, available_snapshots, allSnapshots] = await Promise.all([
     loadRegistry(citySlug, portal),
@@ -101,6 +104,7 @@ export async function loadOccupancyDashboard(
     asOf: selected ?? latestSnapshotAt ?? registry.updated_at,
     citySlug,
     period,
+    basis,
   });
 
   const snapshot_diff = resolveSnapshotDiff(allSnapshots, selected);
@@ -116,5 +120,6 @@ export async function loadOccupancyDashboard(
     selected_portal: portal,
     selected_city: citySlug,
     selected_metrics_period: period,
+    selected_metrics_basis: basis,
   };
 }

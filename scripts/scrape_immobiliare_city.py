@@ -121,6 +121,67 @@ def find_results(node):
     return None
 
 
+ITALIAN_DATE_RE = re.compile(r"(\d{1,2})/(\d{1,2})/(\d{4})")
+
+
+def _iso_date_from_parts(year: int, month: int, day: int) -> str | None:
+    if year < 1970 or year > 2100 or month < 1 or month > 12 or day < 1 or day > 31:
+        return None
+    return f"{year:04d}-{month:02d}-{day:02d}"
+
+
+def _normalize_unix_timestamp(value) -> str | None:
+    if not isinstance(value, (int, float)) or value <= 0:
+        return None
+    from datetime import UTC, datetime
+
+    seconds = value / 1000 if value > 1e12 else value
+    return datetime.fromtimestamp(seconds, tz=UTC).date().isoformat()
+
+
+def _parse_italian_date_string(value) -> str | None:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    match = ITALIAN_DATE_RE.search(value)
+    if not match:
+        return None
+    day, month, year = (int(match.group(1)), int(match.group(2)), int(match.group(3)))
+    return _iso_date_from_parts(year, month, day)
+
+
+def _extract_listing_dates(real_estate: dict, property_row: dict) -> tuple[str | None, str | None]:
+    sources = [real_estate, property_row]
+    published = None
+    updated = None
+
+    for source in sources:
+        if published is None:
+            published = _normalize_unix_timestamp(source.get("creationDate"))
+
+    for source in sources:
+        modified = _normalize_unix_timestamp(source.get("lastModified"))
+        if modified:
+            updated = modified
+            break
+
+    if updated is None:
+        for source in sources:
+            label = _parse_italian_date_string(source.get("lastUpdate"))
+            if label:
+                updated = label
+                break
+            for value in source.values():
+                if isinstance(value, str) and "aggiornato" in value.lower():
+                    label = _parse_italian_date_string(value)
+                    if label:
+                        updated = label
+                        break
+            if updated:
+                break
+
+    return published, updated
+
+
 def map_result(item: dict, operation: str) -> dict | None:
     re = item.get("realEstate") or item
     lid = str(re.get("id", ""))
@@ -141,6 +202,7 @@ def map_result(item: dict, operation: str) -> dict | None:
     if sqm_raw:
         m = re.search(r"(\d+)", str(sqm_raw))
         sqm = int(m.group(1)) if m else None
+    listing_published_at, listing_updated_at = _extract_listing_dates(re, props)
     return {
         "id": f"im_{lid}",
         "title": str(re.get("title", f"Annuncio {lid}"))[:200],
@@ -157,6 +219,8 @@ def map_result(item: dict, operation: str) -> dict | None:
         "condition_status": None,
         "condition": None,
         "needs_renovation": None,
+        "listing_published_at": listing_published_at,
+        "listing_updated_at": listing_updated_at,
     }
 
 
@@ -176,8 +240,8 @@ def fetch_page(s, loc: dict, operation: str, page: int) -> tuple[list, int]:
     r = s.get(page_url, headers={"Accept": "text/html"})
     if "captcha-delivery" in r.text and "__NEXT_DATA__" not in r.text:
         raise RuntimeError(
-            "DataDome captcha — esegui con browser: "
-            "IMMOBILIARE_BROWSER_HEADED=1 npm run scrape:immobiliare:city -- \"reggio calabria\""
+            "DataDome captcha — attendi 24–48h, imposta SCRAPER_PROXY_SERVER, "
+            "oppure usa npm run scrape:immobiliare:city (Playwright headless)"
         )
     data = extract_next_data(r.text)
     if not data:

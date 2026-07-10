@@ -75,6 +75,8 @@ async function toCityListingsCache(
     condition_status: located.condition_status,
     condition: located.condition,
     needs_renovation: located.needs_renovation,
+    listing_published_at: located.listing_published_at ?? null,
+    listing_updated_at: located.listing_updated_at ?? null,
   };
 
   return {

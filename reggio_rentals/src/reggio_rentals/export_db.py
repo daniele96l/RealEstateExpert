@@ -17,7 +17,7 @@ def export_listings(db_path: Path) -> list[dict]:
             """
             SELECT id, unit_index, scraped_at, title, url, price_eur_month, price_formatted,
                    typology, surface_sqm, rooms, bathrooms, advertiser_label, advertiser_name,
-                   lat, lng
+                   lat, lng, listing_published_at, listing_updated_at
             FROM listings
             ORDER BY id, unit_index
             """

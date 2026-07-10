@@ -33,6 +33,8 @@ interface ReggioRentalsRow {
   advertiser_name: string | null;
   lat: number | null;
   lng: number | null;
+  listing_published_at?: string | null;
+  listing_updated_at?: string | null;
 }
 
 interface ReggioRentalsExport {
@@ -73,19 +75,23 @@ function mapRow(row: ReggioRentalsRow): MapListing | null {
     condition_status: null,
     condition: null,
     needs_renovation: null,
+    listing_published_at: row.listing_published_at ?? null,
+    listing_updated_at: row.listing_updated_at ?? null,
   };
 }
 
 function pythonEnv() {
   const root = reggioRentalsRoot();
-  return {
-    cwd: root,
-    env: {
-      ...process.env,
-      PYTHONPATH: path.join(root, "src"),
-      REGGIO_RENTALS_QUIET: "1",
-    },
+  const env: NodeJS.ProcessEnv = {
+    ...process.env,
+    PYTHONPATH: path.join(root, "src"),
+    REGGIO_RENTALS_QUIET: "1",
   };
+  const proxy = process.env.SCRAPER_PROXY_SERVER?.trim();
+  if (proxy) {
+    env.SCRAPER_PROXY_SERVER = proxy;
+  }
+  return { cwd: root, env };
 }
 
 function extractScraperError(stderr: string, exitCode: number | null): string {

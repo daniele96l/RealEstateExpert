@@ -49,6 +49,19 @@ function formatWhen(iso: string | null, locale: string): string {
   }
 }
 
+function formatListingDate(iso: string | null | undefined, locale: string): string {
+  if (!iso) return "—";
+  try {
+    return new Date(iso).toLocaleDateString(locale, {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  } catch {
+    return iso;
+  }
+}
+
 function formatSnapshotOption(snapshot: OccupancySnapshotSummary, locale: string): string {
   const when = formatWhen(snapshot.fetched_at, locale);
   return `${when} · ${snapshot.active_count}`;
@@ -133,6 +146,11 @@ import {
   resolveOccupancyMetricsPeriod,
   type OccupancyMetricsPeriod,
 } from "@/lib/occupancy/metrics-period";
+import {
+  OCCUPANCY_METRICS_BASIS_STORAGE_KEY,
+  resolveOccupancyMetricsBasis,
+  type OccupancyMetricsBasis,
+} from "@/lib/occupancy/metrics-basis";
 
 const OCCUPANCY_PORTAL_STORAGE_KEY = "occupancy-portal";
 const OCCUPANCY_METRICS_PERIOD_STORAGE_KEY = "occupancy-metrics-period";
@@ -181,6 +199,19 @@ function readStoredPortal(citySlug: OccupancyCitySlug): OccupancyPortal {
   const allowed = portalsForCity(citySlug);
   if (saved && allowed.includes(saved as OccupancyPortal)) return saved as OccupancyPortal;
   return defaultPortalForCity(citySlug);
+}
+
+const METRICS_BASIS_OPTIONS: Array<{
+  id: OccupancyMetricsBasis;
+  labelKey: "metricsBasisTracking" | "metricsBasisPosted";
+}> = [
+  { id: "tracking", labelKey: "metricsBasisTracking" },
+  { id: "posted", labelKey: "metricsBasisPosted" },
+];
+
+function readStoredMetricsBasis(): OccupancyMetricsBasis {
+  if (typeof window === "undefined") return resolveOccupancyMetricsBasis(null);
+  return resolveOccupancyMetricsBasis(window.localStorage.getItem(OCCUPANCY_METRICS_BASIS_STORAGE_KEY));
 }
 
 function readStoredMetricsPeriod(): OccupancyMetricsPeriod {
@@ -233,6 +264,7 @@ type OccupancyKpiSlice = Pick<
   OccupancyCityMetrics,
   | "active_count"
   | "avg_days_on_market"
+  | "rented_in_window"
   | "turnover_30d"
   | "turnover_rented_30d"
   | "turnover_inventory_basis"
@@ -244,6 +276,7 @@ function kpiSliceFromCity(metrics: OccupancyCityMetrics): OccupancyKpiSlice {
   return {
     active_count: metrics.active_count,
     avg_days_on_market: metrics.avg_days_on_market,
+    rented_in_window: metrics.rented_in_window,
     turnover_30d: metrics.turnover_30d,
     turnover_rented_30d: metrics.turnover_rented_30d,
     turnover_inventory_basis: metrics.turnover_inventory_basis,
@@ -256,6 +289,7 @@ function kpiSliceFromArea(area: OccupancyAreaMetrics, occupancyWindowDays: numbe
   return {
     active_count: area.active_count,
     avg_days_on_market: area.avg_days_on_market,
+    rented_in_window: area.rented_in_window,
     turnover_30d: area.turnover_30d,
     turnover_rented_30d: area.turnover_rented_30d,
     turnover_inventory_basis: area.turnover_inventory_basis,
@@ -398,6 +432,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const [breakdownPage, setBreakdownPage] = useState(0);
   const [metricsAreaFilter, setMetricsAreaFilter] = useState<"all" | string>("all");
   const [metricsPeriod, setMetricsPeriod] = useState<OccupancyMetricsPeriod>(readStoredMetricsPeriod);
+  const [metricsBasis, setMetricsBasis] = useState<OccupancyMetricsBasis>(readStoredMetricsBasis);
   const [citySlug, setCitySlug] = useState<OccupancyCitySlug>(readStoredCity);
   const cityConfig = getOccupancyCityConfig(citySlug);
   const occupancyMarket = cityConfig.market;
@@ -410,14 +445,15 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const [error, setError] = useState<string | null>(null);
   const [lastRefreshSummary, setLastRefreshSummary] = useState<string | null>(null);
 
-  const load = useCallback(async (asOf?: string | null, portalArg?: OccupancyPortal, cityArg?: OccupancyCitySlug, periodArg?: OccupancyMetricsPeriod) => {
+  const load = useCallback(async (asOf?: string | null, portalArg?: OccupancyPortal, cityArg?: OccupancyCitySlug, periodArg?: OccupancyMetricsPeriod, basisArg?: OccupancyMetricsBasis) => {
     const activePortal = portalArg ?? portal;
     const activeCity = cityArg ?? citySlug;
     const activePeriod = periodArg ?? metricsPeriod;
+    const activeBasis = basisArg ?? metricsBasis;
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchOccupancyMetrics(asOf, activePortal, activeCity, activePeriod);
+      const data = await fetchOccupancyMetrics(asOf, activePortal, activeCity, activePeriod, activeBasis);
       setMetrics(data.metrics);
       setListingsPreview(data.listings_preview);
       setSnapshotDiff(data.snapshot_diff);
@@ -427,17 +463,18 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
       setPortal(data.selected_portal);
       setCitySlug(data.selected_city);
       setMetricsPeriod(data.selected_metrics_period);
+      setMetricsBasis(data.selected_metrics_basis);
       setDiffFilter("all");
     } catch (err) {
       setError(err instanceof Error ? err.message : t("occupancy.loadError"));
     } finally {
       setLoading(false);
     }
-  }, [portal, citySlug, metricsPeriod, t]);
+  }, [portal, citySlug, metricsPeriod, metricsBasis, t]);
 
   useEffect(() => {
-    void load(selectedSnapshotAt, portal, citySlug, metricsPeriod);
-  }, [load, selectedSnapshotAt, portal, citySlug, metricsPeriod]);
+    void load(selectedSnapshotAt, portal, citySlug, metricsPeriod, metricsBasis);
+  }, [load, selectedSnapshotAt, portal, citySlug, metricsPeriod, metricsBasis]);
 
   useEffect(() => {
     setDiffPage(0);
@@ -466,7 +503,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
         onProgress: (progress) => setRefreshProgress(progress),
       });
       setSelectedSnapshotAt(null);
-      const latest = await fetchOccupancyMetrics(null, portal, citySlug, metricsPeriod);
+      const latest = await fetchOccupancyMetrics(null, portal, citySlug, metricsPeriod, metricsBasis);
       setMetrics(latest.metrics);
       setListingsPreview(latest.listings_preview);
       setSnapshotDiff(latest.snapshot_diff);
@@ -496,7 +533,8 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
       (area.avg_price_per_sqm != null && area.avg_price_per_sqm > 0),
   );
 
-  const needsMoreSnapshots = (metrics?.snapshot_count ?? 0) < 2;
+  const isPostedBasis = metricsBasis === "posted";
+  const needsMoreSnapshots = !isPostedBasis && (metrics?.snapshot_count ?? 0) < 2;
   const viewingHistorical = selectedSnapshotAt != null;
   const previewFromSnapshot = listingsPreview?.source === "occupancy_snapshot";
   const portalNeedsFirstSnapshot =
@@ -517,6 +555,13 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
     setPortal(nextPortal);
     setSelectedSnapshotAt(null);
     setDiffPage(0);
+  };
+
+  const handleMetricsBasisChange = (next: OccupancyMetricsBasis) => {
+    if (next === metricsBasis) return;
+    window.localStorage.setItem(OCCUPANCY_METRICS_BASIS_STORAGE_KEY, next);
+    setMetricsBasis(next);
+    setBreakdownPage(0);
   };
 
   const handleMetricsPeriodChange = (next: OccupancyMetricsPeriod) => {
@@ -858,7 +903,9 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
           </div>
         ) : null}
 
-        <p className="mt-4 text-xs text-neutral-500">{t("occupancy.disclaimer")}</p>
+        <p className="mt-4 text-xs text-neutral-500">
+          {isPostedBasis ? t("occupancy.disclaimerPosted") : t("occupancy.disclaimer")}
+        </p>
       </div>
 
       {listingsPreview ? (
@@ -920,6 +967,8 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                     <th className="px-4 py-3">{t("occupancy.preview.table.rooms")}</th>
                     <th className="px-4 py-3">{t("occupancy.preview.table.sqm")}</th>
                     <th className="px-4 py-3">{t("occupancy.preview.table.rent")}</th>
+                    <th className="px-4 py-3">{t("occupancy.preview.table.published")}</th>
+                    <th className="px-4 py-3">{t("occupancy.preview.table.updated")}</th>
                     <th className="px-6 py-3">{t("occupancy.preview.table.rentPerSqm")}</th>
                   </tr>
                 </thead>
@@ -936,6 +985,12 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                       <td className="px-4 py-3">{listing.rooms ?? "—"}</td>
                       <td className="px-4 py-3">{listing.sqm ?? "—"}</td>
                       <td className="px-4 py-3 font-medium text-neutral-900">{fmtMoney(listing.price, occupancyMarket)}</td>
+                      <td className="px-4 py-3 text-neutral-600">
+                        {formatListingDate(listing.listing_published_at, dateLocale)}
+                      </td>
+                      <td className="px-4 py-3 text-neutral-600">
+                        {formatListingDate(listing.listing_updated_at, dateLocale)}
+                      </td>
                       <td className="px-6 py-3 text-neutral-700">
                         {formatPricePerSqm(listing.price, listing.sqm, perSqmLabel, occupancyMarket)}
                       </td>
@@ -958,6 +1013,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                 date: formatWhen(snapshotDiff.previous_fetched_at, dateLocale),
               })}
             </p>
+            <p className="mt-1 text-xs text-neutral-500">{t("occupancy.diff.portalDatesHint")}</p>
           </div>
 
           <div className="grid border-b border-surface-border/40 lg:grid-cols-2 lg:items-center">
@@ -1004,13 +1060,15 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                   <th className="px-4 py-3">{t("occupancy.preview.table.rooms")}</th>
                   <th className="px-4 py-3">{t("occupancy.preview.table.sqm")}</th>
                   <th className="px-4 py-3">{t("occupancy.preview.table.rent")}</th>
+                  <th className="px-4 py-3">{t("occupancy.preview.table.published")}</th>
+                  <th className="px-4 py-3">{t("occupancy.preview.table.updated")}</th>
                   <th className="px-6 py-3">{t("occupancy.preview.table.rentPerSqm")}</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredDiffListings.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="px-6 py-8 text-center text-neutral-500">
+                    <td colSpan={8} className="px-6 py-8 text-center text-neutral-500">
                       {t("occupancy.diff.noListings")}
                     </td>
                   </tr>
@@ -1037,6 +1095,12 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                       <td className="px-4 py-3">{listing.rooms ?? "—"}</td>
                       <td className="px-4 py-3">{listing.sqm ?? "—"}</td>
                       <td className="px-4 py-3 font-medium text-neutral-900">{fmtMoney(listing.price, occupancyMarket)}</td>
+                      <td className="px-4 py-3 text-neutral-600">
+                        {formatListingDate(listing.listing_published_at, dateLocale)}
+                      </td>
+                      <td className="px-4 py-3 text-neutral-600">
+                        {formatListingDate(listing.listing_updated_at, dateLocale)}
+                      </td>
                       <td className="px-6 py-3 text-neutral-700">
                         {formatPricePerSqm(listing.price, listing.sqm, perSqmLabel, occupancyMarket)}
                       </td>
@@ -1101,6 +1165,24 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex flex-wrap items-center gap-2">
+                <span className="text-sm text-neutral-600">{t("occupancy.kpi.metricsBasis")}</span>
+                {METRICS_BASIS_OPTIONS.map(({ id, labelKey }) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => handleMetricsBasisChange(id)}
+                    className={cn(
+                      "rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
+                      metricsBasis === id
+                        ? "border-neutral-900 bg-neutral-900 text-white"
+                        : "border-surface-border/60 bg-neutral-50 text-neutral-600 hover:text-neutral-800",
+                    )}
+                  >
+                    {t(`occupancy.kpi.${labelKey}`)}
+                  </button>
+                ))}
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-sm text-neutral-600">{t("occupancy.kpi.metricsPeriod")}</span>
                 {METRICS_PERIOD_OPTIONS.map(({ id, labelKey }) => (
                   <button
@@ -1141,11 +1223,13 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
 
           {!metrics.flow_metrics_ready ? (
             <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-              {viewingHistorical
-                ? t("occupancy.needsSnapshotsHistorical")
-                : t("occupancy.needsSnapshots")}
+              {isPostedBasis
+                ? t("occupancy.needsPostedDates")
+                : viewingHistorical
+                  ? t("occupancy.needsSnapshotsHistorical")
+                  : t("occupancy.needsSnapshots")}
             </div>
-          ) : metricsPeriod === "longest" ? (
+          ) : !isPostedBasis && metricsPeriod === "longest" ? (
             <div className="rounded-xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-950">
               <p>
                 {t("occupancy.kpi.longestPeriodBanner", {
@@ -1174,7 +1258,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                 })}
               </p>
             </div>
-          ) : periodTargetDays != null && metrics.tracking_days < periodTargetDays ? (
+          ) : !isPostedBasis && periodTargetDays != null && metrics.tracking_days < periodTargetDays ? (
             <div className="rounded-xl border border-amber-200/80 bg-amber-50 px-4 py-3 text-sm text-amber-900">
               {t("occupancy.earlyTrackingBanner", {
                 tracking: metrics.tracking_days,
@@ -1185,7 +1269,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
             </div>
           ) : null}
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className={cn("grid gap-4", isPostedBasis ? "sm:grid-cols-3" : "sm:grid-cols-2 xl:grid-cols-4")}>
             <KpiCard
               label={t("occupancy.kpi.active")}
               value={String(kpiMetrics.active_count)}
@@ -1193,26 +1277,40 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
             <KpiCard
               label={t("occupancy.kpi.avgDom")}
               value={formatDays(kpiMetrics.avg_days_on_market)}
-              hint={t("occupancy.kpi.domHint", { period: occupancyPeriodLabel })}
+              hint={
+                isPostedBasis
+                  ? t("occupancy.kpi.postedDomHint")
+                  : t("occupancy.kpi.domHint", { period: occupancyPeriodLabel })
+              }
             />
-            <KpiCard
-              label={t("occupancy.kpi.turnover", { period: turnoverPeriodLabel })}
-              value={formatTurnover(kpiMetrics.turnover_30d)}
-              valueTone={turnoverTone(kpiMetrics.turnover_30d)}
-              hint={t("occupancy.kpi.turnoverHint", {
-                rented: kpiMetrics.turnover_rented_30d,
-                inventory: kpiMetrics.turnover_inventory_basis ?? kpiMetrics.active_count,
-                days: metrics.turnover_window_days,
-              })}
-            />
-            <KpiCard
-              label={t("occupancy.kpi.occupancy", { period: occupancyPeriodLabel })}
-              value={formatPct(kpiMetrics.estimated_occupancy_pct)}
-              valueTone={occupancyTone(kpiMetrics.estimated_occupancy_pct)}
-              hint={t("occupancy.kpi.occupancyHint", {
-                period: occupancyPeriodLabel,
-              })}
-            />
+            {isPostedBasis ? (
+              <KpiCard
+                label={t("occupancy.kpi.postedInWindow", { period: occupancyPeriodLabel })}
+                value={String(kpiMetrics.rented_in_window)}
+                hint={t("occupancy.kpi.postedInWindowHint", { period: occupancyPeriodLabel })}
+              />
+            ) : (
+              <>
+                <KpiCard
+                  label={t("occupancy.kpi.turnover", { period: turnoverPeriodLabel })}
+                  value={formatTurnover(kpiMetrics.turnover_30d)}
+                  valueTone={turnoverTone(kpiMetrics.turnover_30d)}
+                  hint={t("occupancy.kpi.turnoverHint", {
+                    rented: kpiMetrics.turnover_rented_30d,
+                    inventory: kpiMetrics.turnover_inventory_basis ?? kpiMetrics.active_count,
+                    days: metrics.turnover_window_days,
+                  })}
+                />
+                <KpiCard
+                  label={t("occupancy.kpi.occupancy", { period: occupancyPeriodLabel })}
+                  value={formatPct(kpiMetrics.estimated_occupancy_pct)}
+                  valueTone={occupancyTone(kpiMetrics.estimated_occupancy_pct)}
+                  hint={t("occupancy.kpi.occupancyHint", {
+                    period: occupancyPeriodLabel,
+                  })}
+                />
+              </>
+            )}
           </div>
 
           <div className="card overflow-hidden">
@@ -1259,43 +1357,49 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                     </th>
                     <th className="px-4 py-3">{t("occupancy.table.active")}</th>
                     <th className="px-4 py-3">
-                      {t("occupancy.table.rented", { period: occupancyPeriodLabel })}
+                      {isPostedBasis
+                        ? t("occupancy.table.posted", { period: occupancyPeriodLabel })
+                        : t("occupancy.table.rented", { period: occupancyPeriodLabel })}
                     </th>
                     <th className="px-4 py-3">{t("occupancy.table.avgRent")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.avgRentPerSqm")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.avgDom")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.medianDom")}</th>
-                    <th
-                      className="px-4 py-3 cursor-help"
-                      title={t("occupancy.table.turnoverHint", {
-                        days: metrics.turnover_window_days,
-                        period: turnoverPeriodLabel,
-                      })}
-                    >
-                      {t("occupancy.table.turnover", { period: turnoverPeriodLabel })}
-                    </th>
-                    <th
-                      className="px-4 py-3 cursor-help"
-                      title={t("occupancy.table.avgWaitingDaysHint", {
-                        period: occupancyPeriodLabel,
-                      })}
-                    >
-                      {t("occupancy.table.avgWaitingDays", { period: occupancyPeriodLabel })}
-                    </th>
-                    <th
-                      className="px-6 py-3 cursor-help"
-                      title={t("occupancy.table.occupancyHint", {
-                        period: occupancyPeriodLabel,
-                      })}
-                    >
-                      {t("occupancy.table.occupancy")} · {occupancyPeriodLabel}
-                    </th>
+                    {!isPostedBasis ? (
+                      <>
+                        <th
+                          className="px-4 py-3 cursor-help"
+                          title={t("occupancy.table.turnoverHint", {
+                            days: metrics.turnover_window_days,
+                            period: turnoverPeriodLabel,
+                          })}
+                        >
+                          {t("occupancy.table.turnover", { period: turnoverPeriodLabel })}
+                        </th>
+                        <th
+                          className="px-4 py-3 cursor-help"
+                          title={t("occupancy.table.avgWaitingDaysHint", {
+                            period: occupancyPeriodLabel,
+                          })}
+                        >
+                          {t("occupancy.table.avgWaitingDays", { period: occupancyPeriodLabel })}
+                        </th>
+                        <th
+                          className="px-6 py-3 cursor-help"
+                          title={t("occupancy.table.occupancyHint", {
+                            period: occupancyPeriodLabel,
+                          })}
+                        >
+                          {t("occupancy.table.occupancy")} · {occupancyPeriodLabel}
+                        </th>
+                      </>
+                    ) : null}
                   </tr>
                 </thead>
                 <tbody>
                   {breakdownRows.length === 0 ? (
                     <tr>
-                      <td colSpan={10} className="px-6 py-8 text-center text-neutral-500">
+                      <td colSpan={isPostedBasis ? 7 : 10} className="px-6 py-8 text-center text-neutral-500">
                         {breakdownGroup === "zone" ? t("occupancy.noAreas") : t("occupancy.noSegments")}
                       </td>
                     </tr>
@@ -1329,39 +1433,43 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                         </td>
                         <td className="px-4 py-3">{formatDays(row.avg_days_on_market)}</td>
                         <td className="px-4 py-3">{formatDays(row.median_days_on_market)}</td>
-                        <td
-                          className="px-4 py-3"
-                          title={t("occupancy.table.turnoverHint", {
-                            rented: row.turnover_rented_30d,
-                            inventory: row.turnover_inventory_basis ?? row.active_count,
-                            days: metrics.turnover_window_days,
-                            period: turnoverPeriodLabel,
-                          })}
-                        >
-                          <MetricValue
-                            value={formatTurnover(row.turnover_30d)}
-                            tone={turnoverTone(row.turnover_30d)}
-                          />
-                        </td>
-                        <td
-                          className="px-4 py-3"
-                          title={t("occupancy.table.avgWaitingDaysHint", {
-                            period: occupancyPeriodLabel,
-                          })}
-                        >
-                          {formatDays(row.avg_waiting_days)}
-                        </td>
-                        <td
-                          className="px-6 py-3"
-                          title={t("occupancy.table.occupancyHint", {
-                            period: occupancyPeriodLabel,
-                          })}
-                        >
-                          <MetricValue
-                            value={formatPct(row.estimated_occupancy_pct)}
-                            tone={occupancyTone(row.estimated_occupancy_pct)}
-                          />
-                        </td>
+                        {!isPostedBasis ? (
+                          <>
+                            <td
+                              className="px-4 py-3"
+                              title={t("occupancy.table.turnoverHint", {
+                                rented: row.turnover_rented_30d,
+                                inventory: row.turnover_inventory_basis ?? row.active_count,
+                                days: metrics.turnover_window_days,
+                                period: turnoverPeriodLabel,
+                              })}
+                            >
+                              <MetricValue
+                                value={formatTurnover(row.turnover_30d)}
+                                tone={turnoverTone(row.turnover_30d)}
+                              />
+                            </td>
+                            <td
+                              className="px-4 py-3"
+                              title={t("occupancy.table.avgWaitingDaysHint", {
+                                period: occupancyPeriodLabel,
+                              })}
+                            >
+                              {formatDays(row.avg_waiting_days)}
+                            </td>
+                            <td
+                              className="px-6 py-3"
+                              title={t("occupancy.table.occupancyHint", {
+                                period: occupancyPeriodLabel,
+                              })}
+                            >
+                              <MetricValue
+                                value={formatPct(row.estimated_occupancy_pct)}
+                                tone={occupancyTone(row.estimated_occupancy_pct)}
+                              />
+                            </td>
+                          </>
+                        ) : null}
                       </tr>
                     ))
                   )}

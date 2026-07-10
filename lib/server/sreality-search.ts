@@ -2,6 +2,10 @@ import type { CityListingsCache, MapListing } from "@/lib/types";
 import { getMarket, listingsCacheSlug, type MarketId } from "@/lib/markets";
 import type { BatchFetchProgressCallback } from "@/lib/batch-fetch-progress";
 import { geocodeCity } from "./geocode";
+import {
+  extractSrealityListingDates,
+  srealityEstateIdFromListingId,
+} from "./sreality-dates";
 
 export class SrealitySearchError extends Error {}
 
@@ -176,6 +180,64 @@ function mapEstate(estate: SrealityEstate, operation: "sale" | "rent"): MapListi
   };
 }
 
+interface SrealityApiEstateResult {
+  since?: string | null;
+  edited?: string | null;
+}
+
+async function fetchSrealityListingDatesFromApi(
+  estateId: number,
+): Promise<{ listing_published_at: string | null; listing_updated_at: string | null }> {
+  const response = await fetch(`https://www.sreality.cz/api/v1/estates/${estateId}`, {
+    headers: {
+      Accept: "application/json",
+      "User-Agent": USER_AGENT,
+      Referer: "https://www.sreality.cz/",
+      "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8",
+    },
+    signal: AbortSignal.timeout(15_000),
+  });
+
+  if (!response.ok) {
+    return { listing_published_at: null, listing_updated_at: null };
+  }
+
+  const payload = (await response.json()) as { result?: SrealityApiEstateResult };
+  return extractSrealityListingDates(payload.result);
+}
+
+async function enrichSrealityListingsWithDates(listings: MapListing[]): Promise<MapListing[]> {
+  const enriched: MapListing[] = [];
+
+  for (const listing of listings) {
+    if (listing.listing_published_at && listing.listing_updated_at) {
+      enriched.push(listing);
+      continue;
+    }
+
+    const estateId = srealityEstateIdFromListingId(listing.id);
+    if (!estateId) {
+      enriched.push(listing);
+      continue;
+    }
+
+    try {
+      const dates = await fetchSrealityListingDatesFromApi(estateId);
+      enriched.push({
+        ...listing,
+        listing_published_at: listing.listing_published_at ?? dates.listing_published_at,
+        listing_updated_at: listing.listing_updated_at ?? dates.listing_updated_at,
+      });
+    } catch {
+      enriched.push(listing);
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 120));
+  }
+
+  return enriched;
+}
+
 async function fetchSrealityPage(
   citySeo: string,
   operation: "sale" | "rent",
@@ -270,7 +332,7 @@ export async function fetchSrealityCityListings(
     if (page >= maxPages) break;
   }
 
-  const listings = [...byId.values()];
+  const listings = await enrichSrealityListingsWithDates([...byId.values()]);
   if (!listings.length) {
     throw new SrealitySearchError(`Nessun annuncio Sreality per ${city} (${operation})`);
   }
