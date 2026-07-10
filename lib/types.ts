@@ -308,11 +308,24 @@ export interface OccupancyAreaMetrics {
   avg_price_per_sqm: number | null;
   avg_days_on_market: number | null;
   median_days_on_market: number | null;
+  avg_waiting_days: number | null;
   turnover_30d: number | null;
   turnover_rented_30d: number;
   turnover_inventory_basis: number | null;
   estimated_occupancy_pct: number | null;
 }
+
+export interface OccupancySegmentMetrics extends Omit<OccupancyAreaMetrics, "zone"> {
+  segment_id: string;
+}
+
+export interface OccupancySegmentGroups {
+  price: OccupancySegmentMetrics[];
+  rooms: OccupancySegmentMetrics[];
+  size: OccupancySegmentMetrics[];
+}
+
+export type OccupancySegmentGroupId = keyof OccupancySegmentGroups;
 
 export interface OccupancyCityMetrics {
   city: string;
@@ -325,12 +338,22 @@ export interface OccupancyCityMetrics {
   rented_in_window: number;
   avg_days_on_market: number | null;
   median_days_on_market: number | null;
+  avg_waiting_days: number | null;
   turnover_30d: number | null;
   turnover_rented_30d: number;
   turnover_inventory_basis: number | null;
   estimated_occupancy_pct: number | null;
   occupancy_window_days: number;
+  occupancy_target_days: number;
+  turnover_window_days: number;
+  turnover_target_days: number;
+  tracking_days: number;
+  tracking_snapshot_days: number;
+  tracking_started_at: string | null;
+  tracking_ended_at: string | null;
+  flow_metrics_ready: boolean;
   areas: OccupancyAreaMetrics[];
+  segments: OccupancySegmentGroups;
 }
 
 export interface OccupancyAreaPreview {
@@ -414,4 +437,5 @@ export interface OccupancyDashboardData {
   selected_snapshot_at: string | null;
   selected_portal: OccupancyPortal;
   selected_city: import("@/lib/occupancy/cities").OccupancyCitySlug;
+  selected_metrics_period: import("@/lib/occupancy/metrics-period").OccupancyMetricsPeriod;
 }

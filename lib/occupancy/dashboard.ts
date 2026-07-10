@@ -11,6 +11,10 @@ import {
 } from "./constants";
 import { resolveOccupancyPortal } from "./portals";
 import type { OccupancyDashboardData, OccupancySnapshotDiff } from "@/lib/types";
+import {
+  resolveOccupancyMetricsPeriod,
+  type OccupancyMetricsPeriod,
+} from "./metrics-period";
 
 function resolveSnapshotDiff(
   snapshots: Awaited<ReturnType<typeof loadAllSnapshots>>,
@@ -34,9 +38,11 @@ export async function loadOccupancyDashboard(
   asOf?: string | null,
   portalInput?: string | null,
   cityInput?: string | null,
+  periodInput?: string | null,
 ): Promise<OccupancyDashboardData> {
   const citySlug: OccupancyCitySlug = resolveOccupancyCitySlug(cityInput);
   const portal = resolveOccupancyPortal(portalInput, citySlug);
+  const period = resolveOccupancyMetricsPeriod(periodInput);
 
   const [currentRegistry, available_snapshots, allSnapshots] = await Promise.all([
     loadRegistry(citySlug, portal),
@@ -45,6 +51,8 @@ export async function loadOccupancyDashboard(
   ]);
 
   const selected = asOf?.trim() || null;
+  const latestSnapshot = allSnapshots[allSnapshots.length - 1] ?? null;
+  const latestSnapshotAt = latestSnapshot?.fetched_at ?? null;
   let registry = currentRegistry;
   let listings_preview = await resolveListingsPreview(
     citySlug,
@@ -71,11 +79,28 @@ export async function loadOccupancyDashboard(
         citySlug,
       );
     }
+  } else if (
+    latestSnapshotAt &&
+    new Date(currentRegistry.updated_at).getTime() < new Date(latestSnapshotAt).getTime() &&
+    allSnapshots.length > 0
+  ) {
+    registry = rebuildRegistryFromSnapshots(
+      allSnapshots,
+      citySlug,
+      portal,
+      currentRegistry.last_provider ?? null,
+    );
+    listings_preview = buildPreviewFromSnapshot(
+      latestSnapshot,
+      currentRegistry.last_provider ?? null,
+      citySlug,
+    );
   }
 
   const metrics = await computeOccupancyMetrics(registry, {
-    asOf: selected ?? registry.updated_at,
+    asOf: selected ?? latestSnapshotAt ?? registry.updated_at,
     citySlug,
+    period,
   });
 
   const snapshot_diff = resolveSnapshotDiff(allSnapshots, selected);
@@ -90,5 +115,6 @@ export async function loadOccupancyDashboard(
     selected_snapshot_at: selected,
     selected_portal: portal,
     selected_city: citySlug,
+    selected_metrics_period: period,
   };
 }

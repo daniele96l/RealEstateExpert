@@ -30,6 +30,10 @@ data/occupancy/*
 data/occupancy/it_reggio_calabria/*
 !data/occupancy/it_reggio_calabria/immobiliare_scraper/
 !data/occupancy/it_reggio_calabria/immobiliare_scraper/**
+!data/occupancy/cz_brno/
+data/occupancy/cz_brno/*
+!data/occupancy/cz_brno/sreality/
+!data/occupancy/cz_brno/sreality/**
 data/gis/
 reggio_rentals/data/*.sqlite
 reggio_rentals/data/*.sqlite-journal

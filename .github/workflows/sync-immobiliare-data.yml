@@ -1,4 +1,4 @@
-name: Sync Immobiliare scraper data
+name: Sync occupancy seed data
 
 on:
   schedule:
@@ -11,7 +11,7 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
@@ -32,19 +32,26 @@ jobs:
           pip install -e "./reggio_rentals[dev]"
           playwright install chromium
 
-      - name: Scrape and export prod seed data
+      - name: Scrape and export Reggio Calabria prod seed data
         run: npm run data:sync-immobiliare
+
+      - name: Scrape and export Brno prod seed data
+        run: npm run data:sync-brno
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/listings/reggio_calabria_rent.json data/occupancy/it_reggio_calabria/immobiliare_scraper/
+          git add \
+            data/listings/reggio_calabria_rent.json \
+            data/occupancy/it_reggio_calabria/immobiliare_scraper/ \
+            data/listings/cz_brno_rent.json \
+            data/occupancy/cz_brno/sreality/
           if git diff --staged --quiet; then
             echo "No data changes to commit"
             exit 0
           fi
           git commit \
-            -m "chore(data): refresh Immobiliare scraper seed for prod" \
-            -m "Automated sync of Reggio Calabria rental listings and occupancy snapshots."
+            -m "chore(data): refresh occupancy seed data for prod" \
+            -m "Automated sync of Reggio Calabria (Immobiliare scraper) and Brno (Sreality) rental listings and occupancy snapshots."
           git push

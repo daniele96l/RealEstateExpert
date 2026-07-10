@@ -422,12 +422,20 @@ const it = {
     },
     lastProvider: "Ultimo provider",
     needsSnapshots:
-      "Servono almeno 2 aggiornamenti (in giorni diversi) per stimare giorni sul mercato e occupancy.",
+      "Servono almeno 2 aggiornamenti (in giorni diversi) per stimare giorni sul mercato, rotazione e occupazione.",
+    needsSnapshotsHistorical:
+      "Questo snapshot copre un solo giorno di monitoraggio. Seleziona un aggiornamento più recente per vedere le metriche di flusso.",
+    earlyTrackingBanner:
+      "Monitoraggio attivo da {tracking} giorni ({snapshotDays} giorni con snapshot). Metriche di flusso calcolate su {occupancy} gg (obiettivo {target} gg) — diventeranno più stabili con il cron giornaliero.",
     disclaimer:
       "Occupazione stimata su annunci Idealista tracciati nel tempo. Un annuncio rimosso è considerato affittato.",
     loadError: "Impossibile caricare le metriche",
     refreshError: "Aggiornamento non riuscito",
     refreshSummary: "Caricati {fetched} annunci · {newCount} nuovi · {rented} presumibilmente affittati",
+    breakdownTitle: "Aree e tipologie",
+    breakdownSubtitle: "Quartieri o metriche per fascia di prezzo, locali e metratura",
+    breakdownGroupZone: "Quartieri",
+    breakdownRowCount: "{count} righe",
     areasTitle: "Aree",
     areasSubtitle: "Quartieri Immobiliare.it (da indirizzo e coordinate)",
     areaChart: {
@@ -445,28 +453,89 @@ const it = {
       scaleHigh: "Alto",
     },
     noAreas: "Nessun dato per area — esegui un aggiornamento.",
+    metricLegend:
+      "Colori: verde = forte, giallo = medio, rosso = debole (occupazione ≥75% / ≥55%; rotazione ≥1,2× / ≥0,7×).",
+    noSegments: "Nessun dato per questa tipologia.",
+    segmentsTitle: "Per tipologia",
+    segmentsSubtitle: "Metriche raggruppate per fascia di prezzo, locali o metratura",
+    segmentsGroupPrice: "Prezzo",
+    segmentsGroupRooms: "Locali",
+    segmentsGroupSize: "Metratura",
+    segments: {
+      price: {
+        under_500: "≤ €500/mese",
+        "500_750": "€501–750",
+        "750_1000": "€751–1.000",
+        "1000_1500": "€1.001–1.500",
+        over_1500: "> €1.500",
+        under_12000: "≤ 12.000 Kč",
+        "12000_18000": "12.001–18.000 Kč",
+        "18000_25000": "18.001–25.000 Kč",
+        "25000_35000": "25.001–35.000 Kč",
+        over_35000: "> 35.000 Kč",
+      },
+      rooms: {
+        "1": "1 locale",
+        "2": "2 locali",
+        "3": "3 locali",
+        "4_plus": "4+ locali",
+        unknown: "Locali non indicati",
+      },
+      size: {
+        under_40: "≤ 40 m²",
+        "40_60": "41–60 m²",
+        "60_80": "61–80 m²",
+        "80_100": "81–100 m²",
+        over_100: "> 100 m²",
+        unknown: "Metratura non indicata",
+      },
+    },
     kpi: {
       active: "Annunci attivi",
       avgDom: "Giorni sul mercato (media)",
       domHint: "Solo annunci presumibilmente affittati",
       allCity: "Tutta la città",
       areaFilter: "Zona",
-      turnover: "Rotazione inventario (30 gg)",
+      metricsPeriod: "Periodo",
+      metricsPeriodDaily: "Giornaliero",
+      metricsPeriodWeekly: "Settimanale",
+      metricsPeriodMonthly: "Mensile",
+      metricsPeriodLongest: "Intero periodo",
+      longestPeriodBanner:
+        "Periodo completo: {from} → {to} ({days} gg, {snapshotDays} giorni con snapshot).",
+      longestPeriodMathOccupancy:
+        "Occupazione = {rented} affittati ÷ ({inventory} media attivi + {rented}) = {pct}",
+      longestPeriodMathTurnover:
+        "Rotazione = {rented} affittati ÷ {inventory} media attivi = {turnover}",
+      turnover: "Rotazione inventario · {period}",
       turnoverHint:
-        "{rented} affittati ÷ {inventory} attivi (media 30 gg). 1,0× = l'inventario medio si rinnova una volta.",
-      occupancy: "Occupazione stimata ({days} gg)",
-      occupancyHint: "Proxy da annunci tracciati, non dati ISTAT",
+        "{rented} affittati ÷ {inventory} attivi (media {days} gg). 1,0× = l'inventario medio si rinnova una volta.",
+      occupancy: "Occupazione stimata · {period}",
+      occupancyHint:
+        "Affittati nel periodo {period} ÷ (media attivi + affittati). Solo annunci tracciati almeno 1 giorno prima della rimozione.",
     },
     table: {
       zone: "Quartiere",
+      segment: "Tipologia",
       active: "Attivi",
-      rented: "Affittati ({days} gg)",
+      rented: "Affittati · {period}",
       avgRent: "Affitto medio",
       avgRentPerSqm: "€/m²",
       avgDom: "DOM medio",
       medianDom: "DOM mediano",
-      turnover: "Rotazione (30 gg)",
+      avgWaitingDays: "Attesa media · {period}",
+      avgWaitingDaysHint:
+        "Media giorni online degli annunci attivi nel periodo {period}.",
+      turnover: "Rotazione · {period}",
+      turnoverHint:
+        "Rinnovi inventario nel periodo {period}. Rapporto: affittati presumibilmente ÷ media annunci attivi ({days} gg). 1,0× ≈ un rinnovo completo.",
       occupancy: "Occupazione",
+      occupancyHint:
+        "Quota stimata nel periodo {period}: affittati ÷ (media attivi + affittati). Solo rimozioni dopo almeno 1 giorno online.",
+      periodLabelDaily: "giornaliero",
+      periodLabelWeekly: "settimanale ({days} gg)",
+      periodLabelMonthly: "mensile ({days} gg)",
+      periodLabelLongest: "intero periodo ({days} gg)",
     },
     removals: {
       title: "Log affitti presumibili",

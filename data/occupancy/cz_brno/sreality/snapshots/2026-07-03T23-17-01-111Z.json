@@ -1,0 +1,7426 @@
+{
+  "fetched_at": "2026-07-03T23:17:01.111Z",
+  "active_count": 742,
+  "listings": [
+    {
+      "id": "sr_694394956",
+      "price": 13900,
+      "lat": 49.194393059833146,
+      "lng": 16.617492493445795,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Koliště, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1650323532",
+      "price": 17000,
+      "lat": 49.2167685199,
+      "lng": 16.6035748567,
+      "sqm": 42,
+      "rooms": 1,
+      "address": "Reissigova, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_1657139276",
+      "price": 21900,
+      "lat": 49.2123850022,
+      "lng": 16.5755645313,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Bráfova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_3639586892",
+      "price": 15500,
+      "lat": 49.2040229383269,
+      "lng": 16.6046895111426,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Cihlářská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3202761548",
+      "price": 13900,
+      "lat": 49.2183798430813,
+      "lng": 16.6171589002951,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "třída Generála Píky, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_2739527756",
+      "price": 23200,
+      "lat": 49.246081051639145,
+      "lng": 16.578849947746072,
+      "sqm": 75,
+      "rooms": 2,
+      "address": "Medlánecká, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_88727628",
+      "price": 35000,
+      "lat": 49.2116086595503,
+      "lng": 16.599902861839144,
+      "sqm": 100,
+      "rooms": 4,
+      "address": "Ptašínského, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_4216954956",
+      "price": 37500,
+      "lat": 49.2198014116911,
+      "lng": 16.5385623884176,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Bystrcká, Komín, Brno",
+      "zone": "Komín"
+    },
+    {
+      "id": "sr_2755702860",
+      "price": 25000,
+      "lat": 49.2126014112,
+      "lng": 16.6050952513,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Střední, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_1818116940",
+      "price": 48000,
+      "lat": 49.2301197896217,
+      "lng": 16.6076557117481,
+      "sqm": 120,
+      "rooms": 4,
+      "address": "Kumpoštova, Sadová, Brno",
+      "zone": "Sadová"
+    },
+    {
+      "id": "sr_1878348620",
+      "price": 25000,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1594315596",
+      "price": 37000,
+      "lat": 49.1917750457794,
+      "lng": 16.6059799327915,
+      "sqm": 102,
+      "rooms": 3,
+      "address": "Biskupská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2707903308",
+      "price": 14400,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3528126540",
+      "price": 33500,
+      "lat": 49.2029988645,
+      "lng": 16.6070015281,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Lidická, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2182840396",
+      "price": 49000,
+      "lat": 49.1756520597669,
+      "lng": 16.5670232754165,
+      "sqm": 100,
+      "rooms": 4,
+      "address": "Netroufalky, Bohunice, Brno",
+      "zone": "Bohunice"
+    },
+    {
+      "id": "sr_3308449868",
+      "price": 28000,
+      "lat": 49.2040540612208,
+      "lng": 16.616026782352,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Kunzova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_3158868044",
+      "price": 20000,
+      "lat": 49.1905767,
+      "lng": 16.5916171,
+      "sqm": 56,
+      "rooms": 2,
+      "address": "Hlinky, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1765142604",
+      "price": 17000,
+      "lat": 49.18806138888,
+      "lng": 16.59929249999,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2256134220",
+      "price": 22000,
+      "lat": 49.2153269916467,
+      "lng": 16.6619511804458,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Brno",
+      "zone": "Altro"
+    },
+    {
+      "id": "sr_3106705484",
+      "price": 18500,
+      "lat": 49.2452277712054,
+      "lng": 16.5736348802219,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Hrázka, Medlánky, Brno",
+      "zone": "Medlánky"
+    },
+    {
+      "id": "sr_2620366924",
+      "price": 18500,
+      "lat": 49.2086721,
+      "lng": 16.6611585,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Blatnická, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_1540194380",
+      "price": 17500,
+      "lat": 49.1926065071363,
+      "lng": 16.5915444939749,
+      "sqm": 50,
+      "rooms": 1,
+      "address": "Schovaná, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_624853068",
+      "price": 21900,
+      "lat": 49.2235298432769,
+      "lng": 16.5994345592362,
+      "sqm": 56,
+      "rooms": 2,
+      "address": "Košinova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_1518239820",
+      "price": 14200,
+      "lat": 49.2300648830487,
+      "lng": 16.5937926067179,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "Božetěchova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_4255809612",
+      "price": 19800,
+      "lat": 49.1806439778804,
+      "lng": 16.670572831903,
+      "sqm": 42,
+      "rooms": 2,
+      "address": "Kigginsova, Slatina, Brno",
+      "zone": "Slatina"
+    },
+    {
+      "id": "sr_1115258956",
+      "price": 17000,
+      "lat": 49.2211447406661,
+      "lng": 16.5937376472595,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "Slovinská, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_2877222988",
+      "price": 14500,
+      "lat": 49.2007815332433,
+      "lng": 16.6057294172003,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Mášova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1919873100",
+      "price": 21500,
+      "lat": 49.1874390434064,
+      "lng": 16.6656115258181,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Bělohorská, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_1485762636",
+      "price": 43000,
+      "lat": 49.2082813667497,
+      "lng": 16.5753273997554,
+      "sqm": 190,
+      "rooms": 5,
+      "address": "Šmejkalova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_535228492",
+      "price": 18000,
+      "lat": 49.2211447406661,
+      "lng": 16.5937376472595,
+      "sqm": 45,
+      "rooms": 1,
+      "address": "Slovinská, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_3191599180",
+      "price": 16900,
+      "lat": 49.2433070631887,
+      "lng": 16.5835657721662,
+      "sqm": 33,
+      "rooms": 2,
+      "address": "Vránova, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_3732508748",
+      "price": 17900,
+      "lat": 49.2183548146567,
+      "lng": 16.5997412725233,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Poděbradova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_3861614668",
+      "price": 22000,
+      "lat": 49.248654581596,
+      "lng": 16.575332593938,
+      "sqm": 80,
+      "rooms": 3,
+      "address": "Škrétova, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_310878284",
+      "price": 14500,
+      "lat": 49.2286229411094,
+      "lng": 16.6186984281466,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "Fillova, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_568238156",
+      "price": 14000,
+      "lat": 49.207835597826,
+      "lng": 16.628488812226,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Svitavská, Brno-sever, Brno",
+      "zone": "Brno-sever"
+    },
+    {
+      "id": "sr_3637157964",
+      "price": 24000,
+      "lat": 49.2011893346465,
+      "lng": 16.6143908713831,
+      "sqm": 72,
+      "rooms": 3,
+      "address": "Milady Horákové, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1622909004",
+      "price": 21000,
+      "lat": 49.1693739353396,
+      "lng": 16.5593102110981,
+      "sqm": 62,
+      "rooms": 3,
+      "address": "Dunajská, Starý Lískovec, Brno",
+      "zone": "Starý Lískovec"
+    },
+    {
+      "id": "sr_3772203852",
+      "price": 12900,
+      "lat": 49.2439130941754,
+      "lng": 16.5882824810626,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Novoměstská, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_2835276",
+      "price": 14900,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_4152255308",
+      "price": 13500,
+      "lat": 49.2178582963644,
+      "lng": 16.4961272746617,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Přírodní, Žebětín, Brno",
+      "zone": "Žebětín"
+    },
+    {
+      "id": "sr_641855564",
+      "price": 15900,
+      "lat": 49.1990325355159,
+      "lng": 16.6455583676198,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Gajdošova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_594141260",
+      "price": 16650,
+      "lat": 49.1944617580186,
+      "lng": 16.6180512451794,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Vlhká, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3406598220",
+      "price": 15000,
+      "lat": 49.220565,
+      "lng": 16.596743,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Palackého třída, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_1634328652",
+      "price": 12500,
+      "lat": 49.22283238753345,
+      "lng": 16.62665865394994,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Halasovo náměstí, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_124379212",
+      "price": 16500,
+      "lat": 49.19451870132489,
+      "lng": 16.6546030490238,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Slatinská, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_1520099404",
+      "price": 39900,
+      "lat": 49.1992635,
+      "lng": 16.6463747,
+      "sqm": 194,
+      "rooms": 3,
+      "address": "Hrozňatova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3785023564",
+      "price": 15000,
+      "lat": 49.199905882668894,
+      "lng": 16.68229149007024,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Trnkova, Brno",
+      "zone": "Trnkova"
+    },
+    {
+      "id": "sr_2392191052",
+      "price": 15000,
+      "lat": 49.1989378630622,
+      "lng": 16.61224091648296,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Koliště, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1956941900",
+      "price": 13900,
+      "lat": 49.1878355545543,
+      "lng": 16.6176102868398,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Dornych, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_2914160716",
+      "price": 15000,
+      "lat": 49.1865581245738,
+      "lng": 16.6129349766644,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Placzkova, Brno",
+      "zone": "Placzkova"
+    },
+    {
+      "id": "sr_2947870796",
+      "price": 13000,
+      "lat": 49.1783039105955,
+      "lng": 16.5533085465236,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Koniklecová, Nový Lískovec, Brno",
+      "zone": "Nový Lískovec"
+    },
+    {
+      "id": "sr_74022988",
+      "price": 26000,
+      "lat": 49.1700482434565,
+      "lng": 16.5724899892622,
+      "sqm": 75,
+      "rooms": 3,
+      "address": "Okrouhlá, Bohunice, Brno",
+      "zone": "Bohunice"
+    },
+    {
+      "id": "sr_4273659980",
+      "price": 16000,
+      "lat": 49.201702,
+      "lng": 16.637733,
+      "sqm": 44,
+      "rooms": 1,
+      "address": "Koperníkova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_1136320588",
+      "price": 5500,
+      "lat": 49.2176205534343,
+      "lng": 16.5986879023967,
+      "sqm": 23,
+      "rooms": null,
+      "address": "Palackého třída, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_2696601676",
+      "price": 13900,
+      "lat": 49.2165206827279,
+      "lng": 16.4958642210681,
+      "sqm": 33,
+      "rooms": 1,
+      "address": "Žabí, Žebětín, Brno",
+      "zone": "Žebětín"
+    },
+    {
+      "id": "sr_2144333900",
+      "price": 50000,
+      "lat": 49.2061895595,
+      "lng": 16.6168905242,
+      "sqm": 160,
+      "rooms": 5,
+      "address": "Černopolní, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_3360522316",
+      "price": 21990,
+      "lat": 49.1858474203,
+      "lng": 16.6129413331,
+      "sqm": 62,
+      "rooms": 2,
+      "address": "Opuštěná, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2893628236",
+      "price": 24900,
+      "lat": 49.2096017647327,
+      "lng": 16.605061579182,
+      "sqm": 91,
+      "rooms": 2,
+      "address": "Skřivanova, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_1101717580",
+      "price": 21000,
+      "lat": 49.2242936674979,
+      "lng": 16.5897848977051,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Tyršova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_3736531020",
+      "price": 32720,
+      "lat": 49.2210024988,
+      "lng": 16.5815594415,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_484106316",
+      "price": 48000,
+      "lat": 49.196341338765,
+      "lng": 16.5933235474097,
+      "sqm": 131,
+      "rooms": 4,
+      "address": "Trýbova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3252346956",
+      "price": 17000,
+      "lat": 49.2295968808302,
+      "lng": 16.6019928828728,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Mojžíšova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_1205526604",
+      "price": 15500,
+      "lat": 49.1997087116,
+      "lng": 16.5907093097,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "bratří Čapků, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_701161548",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1170923596",
+      "price": 16000,
+      "lat": 49.2122351091162,
+      "lng": 16.6201892085565,
+      "sqm": 73,
+      "rooms": 2,
+      "address": "Babičkova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_902398028",
+      "price": 15000,
+      "lat": 49.21951832560056,
+      "lng": 16.59754342930823,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Palackého třída, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_2213208140",
+      "price": 38300,
+      "lat": 49.2000140033,
+      "lng": 16.6145929061,
+      "sqm": 91,
+      "rooms": 3,
+      "address": "Příkop, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3789979724",
+      "price": 31200,
+      "lat": 49.227112,
+      "lng": 16.593508,
+      "sqm": 56,
+      "rooms": 2,
+      "address": "Palackého třída, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_132882508",
+      "price": 14300,
+      "lat": 49.19447159848402,
+      "lng": 16.61780732376833,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Vlhká, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3757240396",
+      "price": 18000,
+      "lat": 49.197853628299,
+      "lng": 16.6502374588465,
+      "sqm": 52,
+      "rooms": 2,
+      "address": "Škrochova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_908845132",
+      "price": 14500,
+      "lat": 49.2004411937,
+      "lng": 16.624030321,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2483740748",
+      "price": 22500,
+      "lat": 49.2165449957217,
+      "lng": 16.4966613840206,
+      "sqm": 57,
+      "rooms": 3,
+      "address": "Chudčická, Žebětín, Brno",
+      "zone": "Žebětín"
+    },
+    {
+      "id": "sr_3124420684",
+      "price": 13900,
+      "lat": 49.2015915,
+      "lng": 16.62307,
+      "sqm": 33,
+      "rooms": 2,
+      "address": "Spolková, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3522490444",
+      "price": 17900,
+      "lat": 49.218628,
+      "lng": 16.517911,
+      "sqm": 52,
+      "rooms": 2,
+      "address": "Ondrouškova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_2973639500",
+      "price": 49990,
+      "lat": 49.1668941738225,
+      "lng": 16.602345239933,
+      "sqm": 166,
+      "rooms": 4,
+      "address": "Pražákova, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_3096424524",
+      "price": 14900,
+      "lat": 49.2015084684757,
+      "lng": 16.623513545168,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Spolková, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2787341132",
+      "price": 24000,
+      "lat": 49.1975805058,
+      "lng": 16.618551091,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_4227502156",
+      "price": 28000,
+      "lat": 49.1975805058,
+      "lng": 16.618551091,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3342266444",
+      "price": 17000,
+      "lat": 49.227456,
+      "lng": 16.533887,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "U Zoologické zahrady, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_472379468",
+      "price": 14500,
+      "lat": 49.22015,
+      "lng": 16.49465,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Hlinecká, Žebětín, Brno",
+      "zone": "Žebětín"
+    },
+    {
+      "id": "sr_540729420",
+      "price": 22500,
+      "lat": 49.2109704392917,
+      "lng": 16.587750259121,
+      "sqm": 75,
+      "rooms": 2,
+      "address": "Tábor, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_1882906700",
+      "price": 9900,
+      "lat": 49.1902418708485,
+      "lng": 16.5361396400622,
+      "sqm": 20,
+      "rooms": 1,
+      "address": "Řadová, Kohoutovice, Brno",
+      "zone": "Kohoutovice"
+    },
+    {
+      "id": "sr_658169932",
+      "price": 29900,
+      "lat": 49.1802214815,
+      "lng": 16.6192313044,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Komárovská, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_2687164492",
+      "price": 21500,
+      "lat": 49.2219618062217,
+      "lng": 16.5962284270332,
+      "sqm": 60,
+      "rooms": 2,
+      "address": "Palackého třída, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_1630199884",
+      "price": 12800,
+      "lat": 49.2525685838672,
+      "lng": 16.5786738039903,
+      "sqm": 63,
+      "rooms": 1,
+      "address": "Ladova, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_4269187148",
+      "price": 22500,
+      "lat": 49.2367187377919,
+      "lng": 16.5865294650584,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Kuřimská, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_3094118476",
+      "price": 18500,
+      "lat": 49.211337,
+      "lng": 16.590023,
+      "sqm": 49,
+      "rooms": 2,
+      "address": "Pod Kaštany, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_1893658700",
+      "price": 20990,
+      "lat": 49.2076419399123,
+      "lng": 16.6132996208114,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Schodová, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_4283097164",
+      "price": 19000,
+      "lat": 49.1867590205497,
+      "lng": 16.5951196254379,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Poříčí, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_759881804",
+      "price": 24000,
+      "lat": 49.2002000053941,
+      "lng": 16.6160565846595,
+      "sqm": 36,
+      "rooms": 2,
+      "address": "Příční, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3933921356",
+      "price": 15500,
+      "lat": 49.175480579663,
+      "lng": 16.5551166669402,
+      "sqm": 47,
+      "rooms": 2,
+      "address": "Svážná, Nový Lískovec, Brno",
+      "zone": "Nový Lískovec"
+    },
+    {
+      "id": "sr_3413827660",
+      "price": 16900,
+      "lat": 49.1866472,
+      "lng": 16.614291,
+      "sqm": 33,
+      "rooms": 1,
+      "address": "Trnitá, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_1811279948",
+      "price": 22000,
+      "lat": 49.190837109146415,
+      "lng": 16.61022254204042,
+      "sqm": 84,
+      "rooms": 3,
+      "address": "Bašty, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_810217548",
+      "price": 30000,
+      "lat": 49.2448917193118,
+      "lng": 16.5838451971298,
+      "sqm": 84,
+      "rooms": 3,
+      "address": "Měřičkova, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_2835517516",
+      "price": 23900,
+      "lat": 49.1783280213524,
+      "lng": 16.624686952629,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_3850035276",
+      "price": 25000,
+      "lat": 49.2156854747162,
+      "lng": 16.5179991330764,
+      "sqm": 71,
+      "rooms": 3,
+      "address": "Štouračova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_2728124492",
+      "price": 16000,
+      "lat": 49.20490150558249,
+      "lng": 16.622976114859664,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Jugoslávská, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_3550208076",
+      "price": 15900,
+      "lat": 49.181893,
+      "lng": 16.5889534,
+      "sqm": 39,
+      "rooms": 1,
+      "address": "Červený kopec, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_2258362444",
+      "price": 26900,
+      "lat": 49.2062531314634,
+      "lng": 16.6803746796528,
+      "sqm": 85,
+      "rooms": 4,
+      "address": "Ševelova, Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_2878070860",
+      "price": 14989,
+      "lat": 49.197106024060425,
+      "lng": 16.576692217314157,
+      "sqm": 52,
+      "rooms": 2,
+      "address": "Preslova, Brno",
+      "zone": "Preslova"
+    },
+    {
+      "id": "sr_2190205004",
+      "price": 14500,
+      "lat": 49.2061992084048,
+      "lng": 16.5537150268306,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Jasanová, Jundrov, Brno",
+      "zone": "Jundrov"
+    },
+    {
+      "id": "sr_1972101196",
+      "price": 13500,
+      "lat": 49.219189,
+      "lng": 16.55621,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Absolonova, Komín, Brno",
+      "zone": "Komín"
+    },
+    {
+      "id": "sr_3550838860",
+      "price": 14000,
+      "lat": 49.1675880648714,
+      "lng": 16.6106180710735,
+      "sqm": 41,
+      "rooms": 1,
+      "address": "Košuličova, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_24113228",
+      "price": 22000,
+      "lat": 49.201362,
+      "lng": 16.578839,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Rudišova, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_17494092",
+      "price": 15000,
+      "lat": 49.2112501752339,
+      "lng": 16.6339383313507,
+      "sqm": 38,
+      "rooms": 2,
+      "address": "Dukelská třída, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_1823203404",
+      "price": 24000,
+      "lat": 49.1306115384912,
+      "lng": 16.6506328101647,
+      "sqm": 94,
+      "rooms": 3,
+      "address": "Jánošíkova, Chrlice, Brno",
+      "zone": "Chrlice"
+    },
+    {
+      "id": "sr_3702251596",
+      "price": 18400,
+      "lat": 49.200148973887536,
+      "lng": 16.69534102240093,
+      "sqm": 62,
+      "rooms": 2,
+      "address": "Holzova, Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_3987464268",
+      "price": 24900,
+      "lat": 49.2040229383269,
+      "lng": 16.6046895111426,
+      "sqm": 68,
+      "rooms": 2,
+      "address": "Cihlářská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_4140929100",
+      "price": 14500,
+      "lat": 49.1878355545543,
+      "lng": 16.6176102868398,
+      "sqm": 19,
+      "rooms": 1,
+      "address": "Dornych, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_604143692",
+      "price": 22000,
+      "lat": 49.1813573466571,
+      "lng": 16.5908447078135,
+      "sqm": 43,
+      "rooms": 2,
+      "address": "Vinohrady, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_1946546252",
+      "price": 34000,
+      "lat": 49.1910253514386,
+      "lng": 16.6018521951098,
+      "sqm": 125,
+      "rooms": 4,
+      "address": "Anenská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_880890700",
+      "price": 20927,
+      "lat": 49.1967878654066,
+      "lng": 16.608378845051,
+      "sqm": 33,
+      "rooms": 1,
+      "address": "Jakubské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2357285708",
+      "price": 20483,
+      "lat": 49.1967878654066,
+      "lng": 16.608378845051,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Jakubské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3280356172",
+      "price": 18644,
+      "lat": 49.1967878654066,
+      "lng": 16.608378845051,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Jakubské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2544623692",
+      "price": 22700,
+      "lat": 49.189039562942305,
+      "lng": 16.59941731289425,
+      "sqm": 70,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2418704460",
+      "price": 25000,
+      "lat": 49.1931823805684,
+      "lng": 16.6087800874346,
+      "sqm": 83,
+      "rooms": 2,
+      "address": "Radnická, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2916712524",
+      "price": 22000,
+      "lat": 49.1806439778804,
+      "lng": 16.670572831903,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Kigginsova, Slatina, Brno",
+      "zone": "Slatina"
+    },
+    {
+      "id": "sr_1675067468",
+      "price": 21000,
+      "lat": 49.1969048252,
+      "lng": 16.6153288829,
+      "sqm": 43,
+      "rooms": 1,
+      "address": "Koliště, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_640122956",
+      "price": 18664,
+      "lat": 49.1967878654066,
+      "lng": 16.608378845051,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Jakubské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1932456012",
+      "price": 25000,
+      "lat": 49.1802214815,
+      "lng": 16.6192313044,
+      "sqm": 49,
+      "rooms": 2,
+      "address": "Komárovská, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_3638288460",
+      "price": 18500,
+      "lat": 49.21785829636441,
+      "lng": 16.496127274661728,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Přírodní, Žebětín, Brno",
+      "zone": "Žebětín"
+    },
+    {
+      "id": "sr_2581323852",
+      "price": 14000,
+      "lat": 49.1910253514386,
+      "lng": 16.6018521951098,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Anenská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_534503500",
+      "price": 21900,
+      "lat": 49.249596,
+      "lng": 16.624179,
+      "sqm": 49,
+      "rooms": 2,
+      "address": "Dohnalova, Soběšice, Brno",
+      "zone": "Soběšice"
+    },
+    {
+      "id": "sr_1202233420",
+      "price": 16500,
+      "lat": 49.2015084684757,
+      "lng": 16.623513545168,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Spolková, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1642524748",
+      "price": 16882,
+      "lat": 49.2016397852,
+      "lng": 16.6017089989,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Kounicova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1221320780",
+      "price": 13000,
+      "lat": 49.2069165723,
+      "lng": 16.6276818487,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Mostecká, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_902553676",
+      "price": 9900,
+      "lat": 49.22105385942571,
+      "lng": 16.575678982810174,
+      "sqm": 216,
+      "rooms": null,
+      "address": "Kainarova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_3120291916",
+      "price": 22000,
+      "lat": 49.2096363,
+      "lng": 16.5749506,
+      "sqm": 65,
+      "rooms": 3,
+      "address": "Dunajevského, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_4251447372",
+      "price": 30000,
+      "lat": 49.225818,
+      "lng": 16.594477,
+      "sqm": 90,
+      "rooms": 3,
+      "address": "Kollárova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_3621552204",
+      "price": 18000,
+      "lat": 49.197954,
+      "lng": 16.652432,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Viniční, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_1122795596",
+      "price": 22000,
+      "lat": 49.195113,
+      "lng": 16.654772,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Došlíkova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_1885573196",
+      "price": 16500,
+      "lat": 49.208287,
+      "lng": 16.575004,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Šmejkalova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_1383067724",
+      "price": 21000,
+      "lat": 49.199143,
+      "lng": 16.643739,
+      "sqm": 54,
+      "rooms": 3,
+      "address": "Kaleckého, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_2638475340",
+      "price": 21000,
+      "lat": 49.192298,
+      "lng": 16.544393,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Prokofjevova, Kohoutovice, Brno",
+      "zone": "Kohoutovice"
+    },
+    {
+      "id": "sr_3585273932",
+      "price": 31000,
+      "lat": 49.1858464,
+      "lng": 16.612941,
+      "sqm": 72,
+      "rooms": 3,
+      "address": "Opuštěná, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_8618060",
+      "price": 22000,
+      "lat": 49.195113,
+      "lng": 16.654772,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Došlíkova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_2731311180",
+      "price": 23000,
+      "lat": 49.197954,
+      "lng": 16.652432,
+      "sqm": 68,
+      "rooms": 2,
+      "address": "Viniční, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3303309388",
+      "price": 29000,
+      "lat": 49.193598,
+      "lng": 16.608153,
+      "sqm": 79,
+      "rooms": 3,
+      "address": "Panská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3186393164",
+      "price": 25000,
+      "lat": 49.195113,
+      "lng": 16.654772,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Došlíkova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_2574688332",
+      "price": 25000,
+      "lat": 49.212227,
+      "lng": 16.634899,
+      "sqm": 69,
+      "rooms": 3,
+      "address": "Dukelská třída, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_221856588",
+      "price": 31000,
+      "lat": 49.189286,
+      "lng": 16.600759,
+      "sqm": 106,
+      "rooms": null,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1882161228",
+      "price": 29000,
+      "lat": 49.20764193991233,
+      "lng": 16.613299620811375,
+      "sqm": 102,
+      "rooms": 3,
+      "address": "Schodová, Brno",
+      "zone": "Schodová"
+    },
+    {
+      "id": "sr_2261643340",
+      "price": 28500,
+      "lat": 49.232515593188644,
+      "lng": 16.507277045692614,
+      "sqm": 136,
+      "rooms": 3,
+      "address": "Rakovecká, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_2698833996",
+      "price": 26000,
+      "lat": 49.2116122581,
+      "lng": 16.692062375,
+      "sqm": 61,
+      "rooms": 3,
+      "address": "Chmelnice, Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_4179353676",
+      "price": 17500,
+      "lat": 49.213149718168296,
+      "lng": 16.643474269562443,
+      "sqm": 65,
+      "rooms": 3,
+      "address": "Karlova, Maloměřice, Brno",
+      "zone": "Maloměřice"
+    },
+    {
+      "id": "sr_2653246284",
+      "price": 20483,
+      "lat": 49.1967878654066,
+      "lng": 16.608378845051,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Jakubské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2450882636",
+      "price": 12500,
+      "lat": 49.1886917636466,
+      "lng": 16.5903857539816,
+      "sqm": 18,
+      "rooms": 1,
+      "address": "Veletržní, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3254338380",
+      "price": 16000,
+      "lat": 49.1982562774606,
+      "lng": 16.5931376459635,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Údolní, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3623718988",
+      "price": 36000,
+      "lat": 49.2028244554,
+      "lng": 16.5955117829,
+      "sqm": 136,
+      "rooms": 3,
+      "address": "Jiráskova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3831645004",
+      "price": 20990,
+      "lat": 49.1964560726579,
+      "lng": 16.6090721833642,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Běhounská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3627802700",
+      "price": 15000,
+      "lat": 49.2481792272881,
+      "lng": 16.5830352234052,
+      "sqm": 44,
+      "rooms": 1,
+      "address": "Horácké náměstí, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_2954403916",
+      "price": 14990,
+      "lat": 49.1913239189,
+      "lng": 16.6170086441,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Rumiště, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_3043000396",
+      "price": 15990,
+      "lat": 49.1985659571469,
+      "lng": 16.629933504184,
+      "sqm": 47,
+      "rooms": 1,
+      "address": "Pastrnkova, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2846916684",
+      "price": 17990,
+      "lat": 49.1866265395414,
+      "lng": 16.6145197106191,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Trnitá, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2207285324",
+      "price": 32990,
+      "lat": 49.1865581245738,
+      "lng": 16.6129349766644,
+      "sqm": 79,
+      "rooms": 3,
+      "address": "Placzkova, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_520024140",
+      "price": 13990,
+      "lat": 49.1941722601145,
+      "lng": 16.6679479125802,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Jedovnická, Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_3358847052",
+      "price": 15990,
+      "lat": 49.1672275595,
+      "lng": 16.6111295734,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Řepova, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_3135303756",
+      "price": 15990,
+      "lat": 49.1952811035,
+      "lng": 16.6177340535,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "Vlhká, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2404114508",
+      "price": 24900,
+      "lat": 49.2123847301658,
+      "lng": 16.6016021684346,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Štefánikova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3041149772",
+      "price": 28000,
+      "lat": 49.206015,
+      "lng": 16.5968861111,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Kounicova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1462009932",
+      "price": 14000,
+      "lat": 49.230159,
+      "lng": 16.657428,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Hradiska, Obřany, Brno",
+      "zone": "Obřany"
+    },
+    {
+      "id": "sr_480481356",
+      "price": 26000,
+      "lat": 49.1936309045038,
+      "lng": 16.6083429908691,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Panská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2070667340",
+      "price": 24000,
+      "lat": 49.226867191056,
+      "lng": 16.6473909610324,
+      "sqm": 66,
+      "rooms": 2,
+      "address": "Obřanská, Maloměřice, Brno",
+      "zone": "Maloměřice"
+    },
+    {
+      "id": "sr_2912481356",
+      "price": 19000,
+      "lat": 49.21701,
+      "lng": 16.56922,
+      "sqm": 49,
+      "rooms": 2,
+      "address": "Kroftova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_1668014156",
+      "price": 27000,
+      "lat": 49.1912296344627,
+      "lng": 16.5775193302528,
+      "sqm": 85,
+      "rooms": 3,
+      "address": "Hlinky, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2154070092",
+      "price": 19900,
+      "lat": 49.191210743674,
+      "lng": 16.6170889030312,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Rumiště, Brno",
+      "zone": "Rumiště"
+    },
+    {
+      "id": "sr_3029659724",
+      "price": 18000,
+      "lat": 49.2080910877996,
+      "lng": 16.5863340689141,
+      "sqm": 42,
+      "rooms": 2,
+      "address": "Matzenauerova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_119701580",
+      "price": 24900,
+      "lat": 49.2269682513345,
+      "lng": 16.5944030829673,
+      "sqm": 73,
+      "rooms": 2,
+      "address": "Metodějova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_896893004",
+      "price": 17500,
+      "lat": 49.196302302243,
+      "lng": 16.6475222298116,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Brno-Židenice, Brno",
+      "zone": "Brno-Židenice"
+    },
+    {
+      "id": "sr_3901026380",
+      "price": 16000,
+      "lat": 49.215130228,
+      "lng": 16.6034667964,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Střední, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_1854206028",
+      "price": 21800,
+      "lat": 49.215661572726866,
+      "lng": 16.570745246070025,
+      "sqm": 57,
+      "rooms": 3,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_914681932",
+      "price": 13000,
+      "lat": 49.201466,
+      "lng": 16.616793,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Francouzská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2662658124",
+      "price": 16990,
+      "lat": 49.184051445486176,
+      "lng": 16.59430869952246,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Vídeňská, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_1823797324",
+      "price": 24900,
+      "lat": 49.2123847301658,
+      "lng": 16.6016021684346,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Štefánikova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2360668236",
+      "price": 15900,
+      "lat": 49.1907923762598,
+      "lng": 16.5941599679541,
+      "sqm": 19,
+      "rooms": 1,
+      "address": "Mendlovo náměstí, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1387589708",
+      "price": 14490,
+      "lat": 49.18451431669537,
+      "lng": 16.59492837805053,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Vídeňská, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_2008346700",
+      "price": 23000,
+      "lat": 49.20161,
+      "lng": 16.59876,
+      "sqm": 65,
+      "rooms": 2,
+      "address": "Veveří, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_939389004",
+      "price": 19900,
+      "lat": 49.2161073825868,
+      "lng": 16.625253376028,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Hansmannova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_2577723468",
+      "price": 20000,
+      "lat": 49.20161,
+      "lng": 16.59876,
+      "sqm": 39,
+      "rooms": 2,
+      "address": "Veveří, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2460713036",
+      "price": 23000,
+      "lat": 49.1946199775826,
+      "lng": 16.6109122360726,
+      "sqm": 39,
+      "rooms": 1,
+      "address": "Jánská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1616506956",
+      "price": 15990,
+      "lat": 49.20764193991233,
+      "lng": 16.613299620811375,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Schodová, Brno",
+      "zone": "Schodová"
+    },
+    {
+      "id": "sr_1285877836",
+      "price": 22500,
+      "lat": 49.1745386274,
+      "lng": 16.5554500349,
+      "sqm": 73,
+      "rooms": 3,
+      "address": "Svážná, Nový Lískovec, Brno",
+      "zone": "Nový Lískovec"
+    },
+    {
+      "id": "sr_3970232396",
+      "price": 21900,
+      "lat": 49.1880615931422,
+      "lng": 16.5992946539284,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3869569100",
+      "price": 18000,
+      "lat": 49.1877687284652,
+      "lng": 16.5951443191874,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Ypsilantiho, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1182483276",
+      "price": 14900,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2627375180",
+      "price": 18900,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 45,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1809117260",
+      "price": 17900,
+      "lat": 49.1907923762598,
+      "lng": 16.5941599679541,
+      "sqm": 35,
+      "rooms": 2,
+      "address": "Mendlovo náměstí, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2396319820",
+      "price": 25900,
+      "lat": 49.1907923762598,
+      "lng": 16.5941599679541,
+      "sqm": 35,
+      "rooms": 2,
+      "address": "Mendlovo náměstí, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_114618444",
+      "price": 22000,
+      "lat": 49.2029849571783,
+      "lng": 16.5787334248181,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Wurmova, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_2650116172",
+      "price": 18500,
+      "lat": 49.194836887713265,
+      "lng": 16.610145647948478,
+      "sqm": 39,
+      "rooms": 1,
+      "address": "Poštovská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3009933900",
+      "price": 28000,
+      "lat": 49.2065607038458,
+      "lng": 16.5996006101615,
+      "sqm": 41,
+      "rooms": 1,
+      "address": "Kotlářská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3595006796",
+      "price": 24000,
+      "lat": 49.1988604569044,
+      "lng": 16.6225320438874,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2725860172",
+      "price": 24000,
+      "lat": 49.1925639936559,
+      "lng": 16.6103332115341,
+      "sqm": 62,
+      "rooms": 2,
+      "address": "Masarykova, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1104842828",
+      "price": 28000,
+      "lat": 49.1988604569044,
+      "lng": 16.6225320438874,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_756125772",
+      "price": 36000,
+      "lat": 49.1909753647357,
+      "lng": 16.6040129280014,
+      "sqm": 94,
+      "rooms": 3,
+      "address": "Kopečná, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_80605260",
+      "price": 33000,
+      "lat": 49.1944617580186,
+      "lng": 16.6180512451794,
+      "sqm": 83,
+      "rooms": 2,
+      "address": "Vlhká, Brno-střed, Brno",
+      "zone": "Brno-střed"
+    },
+    {
+      "id": "sr_1204678732",
+      "price": 28000,
+      "lat": 49.1944617580186,
+      "lng": 16.6180512451794,
+      "sqm": 46,
+      "rooms": 1,
+      "address": "Vlhká, Brno-střed, Brno",
+      "zone": "Brno-střed"
+    },
+    {
+      "id": "sr_30273612",
+      "price": 24000,
+      "lat": 49.1944617580186,
+      "lng": 16.6180512451794,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Vlhká, Brno-střed, Brno",
+      "zone": "Brno-střed"
+    },
+    {
+      "id": "sr_47050828",
+      "price": 29000,
+      "lat": 49.1988604569044,
+      "lng": 16.6225320438874,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2110648396",
+      "price": 27000,
+      "lat": 49.1988604569044,
+      "lng": 16.6225320438874,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2546266188",
+      "price": 30000,
+      "lat": 49.2020864584833,
+      "lng": 16.6209502382757,
+      "sqm": 81,
+      "rooms": 3,
+      "address": "Francouzská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1707405388",
+      "price": 14000,
+      "lat": 49.1904805556,
+      "lng": 16.6266472222,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Křenová, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2935287884",
+      "price": 20000,
+      "lat": 49.2614621729596,
+      "lng": 16.586354916315,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Brigádnická, Mokrá Hora, Brno",
+      "zone": "Mokrá Hora"
+    },
+    {
+      "id": "sr_1294365516",
+      "price": 15000,
+      "lat": 49.20159236645959,
+      "lng": 16.617543787189856,
+      "sqm": 43,
+      "rooms": 1,
+      "address": "Francouzská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2066018380",
+      "price": 24000,
+      "lat": 49.2301197896217,
+      "lng": 16.6076557117481,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Kumpoštova, Sadová, Brno",
+      "zone": "Sadová"
+    },
+    {
+      "id": "sr_928313420",
+      "price": 20000,
+      "lat": 49.1791818761356,
+      "lng": 16.5500109273742,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Plachty, Nový Lískovec, Brno",
+      "zone": "Nový Lískovec"
+    },
+    {
+      "id": "sr_1244692556",
+      "price": 15500,
+      "lat": 49.186588,
+      "lng": 16.614189,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Trnitá, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_1548021836",
+      "price": 25000,
+      "lat": 49.2011919324555,
+      "lng": 16.622232469052,
+      "sqm": 90,
+      "rooms": 3,
+      "address": "Hvězdová, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_427094092",
+      "price": 23000,
+      "lat": 49.1972757582543,
+      "lng": 16.6633201585571,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Líšeňská, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3669553228",
+      "price": 16500,
+      "lat": 49.1672275595,
+      "lng": 16.6111295734,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Řepova, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_316338252",
+      "price": 21900,
+      "lat": 49.1657515,
+      "lng": 16.6213324,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Jižní, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_4203802700",
+      "price": 22500,
+      "lat": 49.2165812353,
+      "lng": 16.614619792,
+      "sqm": 47,
+      "rooms": 2,
+      "address": "třída Generála Píky, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_259321932",
+      "price": 26000,
+      "lat": 49.1668941738225,
+      "lng": 16.602345239933,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Pražákova, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_1668608076",
+      "price": 10500,
+      "lat": 49.1967158312405,
+      "lng": 16.5526169437555,
+      "sqm": 17,
+      "rooms": 1,
+      "address": "Libušino údolí, Pisárky, Brno",
+      "zone": "Pisárky"
+    },
+    {
+      "id": "sr_45281356",
+      "price": 26000,
+      "lat": 49.226867191056,
+      "lng": 16.6473909610324,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Obřanská, Maloměřice, Brno",
+      "zone": "Maloměřice"
+    },
+    {
+      "id": "sr_3708633932",
+      "price": 17000,
+      "lat": 49.1802856660602,
+      "lng": 16.6214777788629,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Svatopetrská, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_4187353164",
+      "price": 16000,
+      "lat": 49.1989378630622,
+      "lng": 16.61224091648296,
+      "sqm": 31,
+      "rooms": 2,
+      "address": "Koliště, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3067146316",
+      "price": 14490,
+      "lat": 49.20119193245551,
+      "lng": 16.62223246905203,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Hvězdová, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3951423564",
+      "price": 8000,
+      "lat": 49.19748802629875,
+      "lng": 16.530933649663144,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "U Velké ceny, Kohoutovice, Brno",
+      "zone": "Kohoutovice"
+    },
+    {
+      "id": "sr_3263557708",
+      "price": 14700,
+      "lat": 49.1793147473299,
+      "lng": 16.6817641311469,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Tilhonova, Slatina, Brno",
+      "zone": "Slatina"
+    },
+    {
+      "id": "sr_2101051468",
+      "price": 22900,
+      "lat": 49.214254,
+      "lng": 16.686438,
+      "sqm": 86,
+      "rooms": 2,
+      "address": "Podbělová, Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_2062647372",
+      "price": 22900,
+      "lat": 49.1676295918454,
+      "lng": 16.6114018330464,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Košuličova, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_1035333708",
+      "price": 21000,
+      "lat": 49.228323519914,
+      "lng": 16.594294087937,
+      "sqm": 62,
+      "rooms": 2,
+      "address": "Kosmova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_599126092",
+      "price": 19500,
+      "lat": 49.21621050008021,
+      "lng": 16.496470438515964,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Křepelčí, Žebětín, Brno",
+      "zone": "Žebětín"
+    },
+    {
+      "id": "sr_61206604",
+      "price": 16000,
+      "lat": 49.21576588858852,
+      "lng": 16.519139620725856,
+      "sqm": 36,
+      "rooms": 1,
+      "address": "Štouračova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_396750924",
+      "price": 6000,
+      "lat": 49.201738,
+      "lng": 16.598601,
+      "sqm": 35,
+      "rooms": null,
+      "address": "Veveří, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1002827852",
+      "price": 16500,
+      "lat": 49.2183798430813,
+      "lng": 16.6171589002951,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "třída Generála Píky, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_518099020",
+      "price": 19900,
+      "lat": 49.2059053118052,
+      "lng": 16.6049257165686,
+      "sqm": 47,
+      "rooms": 1,
+      "address": "Burešova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2763690060",
+      "price": 16500,
+      "lat": 49.1866463363184,
+      "lng": 16.6142929485257,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Trnitá, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_735113292",
+      "price": 21900,
+      "lat": 49.1868360303039,
+      "lng": 16.6129113210732,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Placzkova, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_3821400140",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3357274188",
+      "price": 22000,
+      "lat": 49.228868872266,
+      "lng": 16.6396019881226,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Brno-Maloměřice a Obřany, Brno",
+      "zone": "Brno-Maloměřice a Obřany"
+    },
+    {
+      "id": "sr_3351638092",
+      "price": 38000,
+      "lat": 49.21837984308131,
+      "lng": 16.61715890029512,
+      "sqm": 102,
+      "rooms": 3,
+      "address": "třída Generála Píky, Brno",
+      "zone": "třída Generála Píky"
+    },
+    {
+      "id": "sr_2029383756",
+      "price": 21000,
+      "lat": 49.2059821269492,
+      "lng": 16.6791452715014,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Hubrova, Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_2968907852",
+      "price": 15900,
+      "lat": 49.189504,
+      "lng": 16.595575,
+      "sqm": 20,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_4126535756",
+      "price": 13500,
+      "lat": 49.2272263865796,
+      "lng": 16.6182552433626,
+      "sqm": 36,
+      "rooms": 1,
+      "address": "Brožíkova, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_1356263500",
+      "price": 18500,
+      "lat": 49.21293700982364,
+      "lng": 16.566758487384977,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Sochorova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_954593356",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3068522572",
+      "price": 17000,
+      "lat": 49.203466045930185,
+      "lng": 16.604034545005778,
+      "sqm": 42,
+      "rooms": 2,
+      "address": "Botanická, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2247458892",
+      "price": 15500,
+      "lat": 49.21724781442834,
+      "lng": 16.620597691969,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "náměstí SNP, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_2987782220",
+      "price": 16000,
+      "lat": 49.21675932107744,
+      "lng": 16.508670251363892,
+      "sqm": 42,
+      "rooms": 1,
+      "address": "Foltýnova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_3910434892",
+      "price": 15300,
+      "lat": 49.1990325355159,
+      "lng": 16.6455583676198,
+      "sqm": 33,
+      "rooms": 1,
+      "address": "Gajdošova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3323326540",
+      "price": 21000,
+      "lat": 49.1925758478738,
+      "lng": 16.5988108062181,
+      "sqm": 47,
+      "rooms": 3,
+      "address": "Pellicova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2568257612",
+      "price": 15800,
+      "lat": 49.2126014112,
+      "lng": 16.6050952513,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Střední, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_22052940",
+      "price": 15800,
+      "lat": 49.2110046668685,
+      "lng": 16.6049788530993,
+      "sqm": 54,
+      "rooms": 1,
+      "address": "Rybníček, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_622194764",
+      "price": 22300,
+      "lat": 49.1987837,
+      "lng": 16.6494767,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Viniční, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_1795551308",
+      "price": 27000,
+      "lat": 49.2022774664,
+      "lng": 16.5951236805,
+      "sqm": 73,
+      "rooms": 2,
+      "address": "Jana Uhra, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3763175500",
+      "price": 28000,
+      "lat": 49.22281735163958,
+      "lng": 16.597960747582924,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Rostislavovo náměstí, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_3473272908",
+      "price": 28000,
+      "lat": 49.2228173516396,
+      "lng": 16.5979607475829,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Rostislavovo náměstí, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_1829105740",
+      "price": 29000,
+      "lat": 49.193730120955,
+      "lng": 16.6397644423797,
+      "sqm": 65,
+      "rooms": 3,
+      "address": "Táborská, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_856027212",
+      "price": 14000,
+      "lat": 49.209745068847845,
+      "lng": 16.638845091891486,
+      "sqm": 39,
+      "rooms": 1,
+      "address": "Markéty Kuncové, Maloměřice, Brno",
+      "zone": "Maloměřice"
+    },
+    {
+      "id": "sr_1602875468",
+      "price": 23000,
+      "lat": 49.1703108840082,
+      "lng": 16.566307308672,
+      "sqm": 69,
+      "rooms": 3,
+      "address": "Mikuláškovo náměstí, Starý Lískovec, Brno",
+      "zone": "Starý Lískovec"
+    },
+    {
+      "id": "sr_2761507660",
+      "price": 23270,
+      "lat": 49.2210024,
+      "lng": 16.5815594,
+      "sqm": 43,
+      "rooms": 2,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_3661541452",
+      "price": 20840,
+      "lat": 49.2210024,
+      "lng": 16.5815594,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_1726918732",
+      "price": 24620,
+      "lat": 49.2210024,
+      "lng": 16.5815594,
+      "sqm": 41,
+      "rooms": 2,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_206151756",
+      "price": 23000,
+      "lat": 49.2210024,
+      "lng": 16.5815594,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_2061017164",
+      "price": 21500,
+      "lat": 49.1953636605,
+      "lng": 16.6107141987,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Kobližná, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3241537612",
+      "price": 18000,
+      "lat": 49.2155252950053,
+      "lng": 16.5650828259318,
+      "sqm": 39,
+      "rooms": 2,
+      "address": "Štursova, Komín, Brno",
+      "zone": "Komín"
+    },
+    {
+      "id": "sr_3444150348",
+      "price": 27000,
+      "lat": 49.1961849276261,
+      "lng": 16.6410601977736,
+      "sqm": 73,
+      "rooms": 3,
+      "address": "Jílkova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_2234904652",
+      "price": 13900,
+      "lat": 49.195812327558116,
+      "lng": 16.594249769918733,
+      "sqm": 33,
+      "rooms": 1,
+      "address": "Úvoz, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1051258956",
+      "price": 16490,
+      "lat": 49.1866472462,
+      "lng": 16.6142910816,
+      "sqm": 33,
+      "rooms": 1,
+      "address": "Trnitá, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_823372",
+      "price": 15400,
+      "lat": 49.271607276715,
+      "lng": 16.5924029537193,
+      "sqm": 39,
+      "rooms": 1,
+      "address": "Kleštínek, Jehnice, Brno",
+      "zone": "Jehnice"
+    },
+    {
+      "id": "sr_3341152332",
+      "price": 19900,
+      "lat": 49.1918122056,
+      "lng": 16.6158120147,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Křenová, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2917040204",
+      "price": 12000,
+      "lat": 49.221103,
+      "lng": 16.5521,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Součkova, Komín, Brno",
+      "zone": "Komín"
+    },
+    {
+      "id": "sr_3730174028",
+      "price": 12000,
+      "lat": 49.2228323875335,
+      "lng": 16.6266586539499,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Halasovo náměstí, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_3751166796",
+      "price": 14900,
+      "lat": 49.1649734621506,
+      "lng": 16.5696404900127,
+      "sqm": 36,
+      "rooms": 1,
+      "address": "U Leskavy, Starý Lískovec, Brno",
+      "zone": "Starý Lískovec"
+    },
+    {
+      "id": "sr_4051017804",
+      "price": 19900,
+      "lat": 49.1910253514386,
+      "lng": 16.6018521951098,
+      "sqm": 47,
+      "rooms": 2,
+      "address": "Anenská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2342031436",
+      "price": 26000,
+      "lat": 49.1925639936559,
+      "lng": 16.6103332115341,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Masarykova, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2763427916",
+      "price": 21400,
+      "lat": 49.1878355545543,
+      "lng": 16.6176102868398,
+      "sqm": 39,
+      "rooms": 2,
+      "address": "Dornych, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_601198668",
+      "price": 16200,
+      "lat": 49.2160361148471,
+      "lng": 16.6020928256553,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Reissigova, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_2543251532",
+      "price": 27000,
+      "lat": 49.206839,
+      "lng": 16.619726,
+      "sqm": 121,
+      "rooms": 2,
+      "address": "Žampachova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_3976237132",
+      "price": 14000,
+      "lat": 49.19369669577218,
+      "lng": 16.63467029237376,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "Kuklenská, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_2623729740",
+      "price": 16500,
+      "lat": 49.202429949343056,
+      "lng": 16.595072768875596,
+      "sqm": 36,
+      "rooms": 2,
+      "address": "Jana Uhra, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_92270668",
+      "price": 23000,
+      "lat": 49.250070597752234,
+      "lng": 16.584067605412656,
+      "sqm": 71,
+      "rooms": 3,
+      "address": "Horácké náměstí, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_1590722636",
+      "price": 12750,
+      "lat": 49.1888863964009,
+      "lng": 16.620667243558003,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Čechyňská, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_126283852",
+      "price": 14800,
+      "lat": 49.248198,
+      "lng": 16.583019,
+      "sqm": 44,
+      "rooms": 1,
+      "address": "Horácké náměstí, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_1404497996",
+      "price": 18000,
+      "lat": 49.196295177660204,
+      "lng": 16.607093453630128,
+      "sqm": 54,
+      "rooms": 3,
+      "address": "Jakubská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2426859596",
+      "price": 17000,
+      "lat": 49.219592,
+      "lng": 16.546838,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Branka, Komín, Brno",
+      "zone": "Komín"
+    },
+    {
+      "id": "sr_4185096268",
+      "price": 35000,
+      "lat": 49.2069031519479,
+      "lng": 16.5826424981101,
+      "sqm": 115,
+      "rooms": 4,
+      "address": "Březinova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_2002579532",
+      "price": 19000,
+      "lat": 49.219592,
+      "lng": 16.546838,
+      "sqm": 39,
+      "rooms": 2,
+      "address": "Branka, Komín, Brno",
+      "zone": "Komín"
+    },
+    {
+      "id": "sr_1590919244",
+      "price": 29000,
+      "lat": 49.1988131115029,
+      "lng": 16.6005237663423,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Jaselská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_248741964",
+      "price": 27500,
+      "lat": 49.1988131115029,
+      "lng": 16.6005237663423,
+      "sqm": 36,
+      "rooms": 2,
+      "address": "Jaselská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1054048332",
+      "price": 19000,
+      "lat": 49.1988131115029,
+      "lng": 16.6005237663423,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Jaselská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3922952268",
+      "price": 19500,
+      "lat": 49.1988131115029,
+      "lng": 16.6005237663423,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Jaselská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1540587596",
+      "price": 37000,
+      "lat": 49.1988131115029,
+      "lng": 16.6005237663423,
+      "sqm": 65,
+      "rooms": 3,
+      "address": "Jaselská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_729186380",
+      "price": 20000,
+      "lat": 49.1974654919543,
+      "lng": 16.5452880021685,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Borodinova, Kohoutovice, Brno",
+      "zone": "Kohoutovice"
+    },
+    {
+      "id": "sr_901029964",
+      "price": 23000,
+      "lat": 49.1967158312405,
+      "lng": 16.55261694375553,
+      "sqm": 67,
+      "rooms": 2,
+      "address": "Libušino údolí, Brno",
+      "zone": "Libušino údolí"
+    },
+    {
+      "id": "sr_2331439180",
+      "price": 22900,
+      "lat": 49.220764804905656,
+      "lng": 16.58751776521492,
+      "sqm": 74,
+      "rooms": 2,
+      "address": "Svatopluka Čecha, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_1644138572",
+      "price": 19000,
+      "lat": 49.1805249,
+      "lng": 16.6197395,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Komárovská, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_3645407308",
+      "price": 15000,
+      "lat": 49.1910479924382,
+      "lng": 16.6459103781945,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Nezamyslova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3971711052",
+      "price": 24900,
+      "lat": 49.1902,
+      "lng": 16.6158,
+      "sqm": 76,
+      "rooms": 3,
+      "address": "Spálená, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_3807674444",
+      "price": 28000,
+      "lat": 49.1912296344627,
+      "lng": 16.5775193302528,
+      "sqm": 66,
+      "rooms": 3,
+      "address": "Hlinky, Pisárky, Brno",
+      "zone": "Pisárky"
+    },
+    {
+      "id": "sr_1073627980",
+      "price": 18000,
+      "lat": 49.1692132147208,
+      "lng": 16.5639277007126,
+      "sqm": 47,
+      "rooms": 2,
+      "address": "Vltavská, Starý Lískovec, Brno",
+      "zone": "Starý Lískovec"
+    },
+    {
+      "id": "sr_1304526924",
+      "price": 29500,
+      "lat": 49.1662078373,
+      "lng": 16.6213015746,
+      "sqm": 73,
+      "rooms": 3,
+      "address": "Sokolova, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_1209462860",
+      "price": 12000,
+      "lat": 49.20575730911184,
+      "lng": 16.70499470953461,
+      "sqm": 19,
+      "rooms": 1,
+      "address": "Ondráčkova, Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_859369548",
+      "price": 14700,
+      "lat": 49.2400333303527,
+      "lng": 16.587084369555907,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Žitná, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_1350496332",
+      "price": 14000,
+      "lat": 49.231834380196524,
+      "lng": 16.628242731203983,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Ježkova, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_2183831628",
+      "price": 20500,
+      "lat": 49.1946199775826,
+      "lng": 16.6109122360726,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Jánská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_8228940",
+      "price": 18000,
+      "lat": 49.2086858425075,
+      "lng": 16.6769453275727,
+      "sqm": 70,
+      "rooms": 3,
+      "address": "Zikova, Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_1658884172",
+      "price": 18500,
+      "lat": 49.1919189857109,
+      "lng": 16.5795738440008,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Vinařská, Pisárky, Brno",
+      "zone": "Pisárky"
+    },
+    {
+      "id": "sr_2885845068",
+      "price": 28000,
+      "lat": 49.2001391583793,
+      "lng": 16.6379560555281,
+      "sqm": 97,
+      "rooms": 3,
+      "address": "Gebauerova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3018977356",
+      "price": 17000,
+      "lat": 49.1973166268973,
+      "lng": 16.5894643212249,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Jiříkovského, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_3763044428",
+      "price": 21000,
+      "lat": 49.1858527526456,
+      "lng": 16.6436498750807,
+      "sqm": 74,
+      "rooms": 3,
+      "address": "Kneslova, Černovice, Brno",
+      "zone": "Černovice"
+    },
+    {
+      "id": "sr_1057419340",
+      "price": 8500,
+      "lat": 49.19860466593454,
+      "lng": 16.61684433049051,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1419767884",
+      "price": 29500,
+      "lat": 49.1906208039228,
+      "lng": 16.6109376819595,
+      "sqm": 100,
+      "rooms": 4,
+      "address": "Nádražní, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2437083212",
+      "price": 20000,
+      "lat": 49.2144341786,
+      "lng": 16.5644821544,
+      "sqm": 42,
+      "rooms": 1,
+      "address": "Podveská, Komín, Brno",
+      "zone": "Komín"
+    },
+    {
+      "id": "sr_1971355724",
+      "price": 32000,
+      "lat": 49.1659233329374,
+      "lng": 16.6213263478906,
+      "sqm": 59,
+      "rooms": 2,
+      "address": "Jižní, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_238481484",
+      "price": 32000,
+      "lat": 49.1637077180636,
+      "lng": 16.5612891176465,
+      "sqm": 100,
+      "rooms": 3,
+      "address": "Malostranská, Starý Lískovec, Brno",
+      "zone": "Starý Lískovec"
+    },
+    {
+      "id": "sr_1580658764",
+      "price": 22000,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 39,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_808906828",
+      "price": 10000,
+      "lat": 49.207947696622476,
+      "lng": 16.628758147431967,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Svitavská, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_1757901644",
+      "price": 24900,
+      "lat": 49.1802214815,
+      "lng": 16.6192313044,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Komárovská, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_1050996812",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1168437324",
+      "price": 25500,
+      "lat": 49.1970673127,
+      "lng": 16.6334562281,
+      "sqm": 72,
+      "rooms": 3,
+      "address": "Šámalova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3695738956",
+      "price": 21000,
+      "lat": 49.2391399876503,
+      "lng": 16.6062065977076,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Kociánka, Sadová, Brno",
+      "zone": "Sadová"
+    },
+    {
+      "id": "sr_1146789964",
+      "price": 10990,
+      "lat": 49.200228,
+      "lng": 16.625776,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3524309068",
+      "price": 6000,
+      "lat": 49.208637,
+      "lng": 16.659149,
+      "sqm": 8,
+      "rooms": null,
+      "address": "Prušánecká, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_1445282636",
+      "price": 19000,
+      "lat": 49.19045,
+      "lng": 16.626697,
+      "sqm": 49,
+      "rooms": 2,
+      "address": "Zderadova, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_3243085900",
+      "price": 22900,
+      "lat": 49.191794,
+      "lng": 16.617735,
+      "sqm": 72,
+      "rooms": 2,
+      "address": "Křenová, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2315382860",
+      "price": 16000,
+      "lat": 49.167194,
+      "lng": 16.611199,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Řepova, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_899919948",
+      "price": 25000,
+      "lat": 49.21835481465671,
+      "lng": 16.599741272523296,
+      "sqm": 69,
+      "rooms": 2,
+      "address": "Poděbradova, Brno",
+      "zone": "Poděbradova"
+    },
+    {
+      "id": "sr_136835148",
+      "price": 19900,
+      "lat": 49.1842231118346,
+      "lng": 16.6338186875612,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Řehořova, Černovice, Brno",
+      "zone": "Černovice"
+    },
+    {
+      "id": "sr_3294031948",
+      "price": 15000,
+      "lat": 49.202585,
+      "lng": 16.483212,
+      "sqm": 49,
+      "rooms": 1,
+      "address": "Keřová, Žebětín, Brno",
+      "zone": "Žebětín"
+    },
+    {
+      "id": "sr_2818801740",
+      "price": 20000,
+      "lat": 49.1805564545982,
+      "lng": 16.6385677861837,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Charbulova, Černovice, Brno",
+      "zone": "Černovice"
+    },
+    {
+      "id": "sr_2140438604",
+      "price": 24000,
+      "lat": 49.1994622358815,
+      "lng": 16.5961294846446,
+      "sqm": 100,
+      "rooms": 2,
+      "address": "Gorkého, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1581707340",
+      "price": 12000,
+      "lat": 49.172012,
+      "lng": 16.616242,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Pěšina, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_2974216268",
+      "price": 23000,
+      "lat": 49.177292,
+      "lng": 16.686658,
+      "sqm": 80,
+      "rooms": 3,
+      "address": "Přemyslovo náměstí, Slatina, Brno",
+      "zone": "Slatina"
+    },
+    {
+      "id": "sr_3034615884",
+      "price": 29500,
+      "lat": 49.2032330403,
+      "lng": 16.6066548955,
+      "sqm": 124,
+      "rooms": 4,
+      "address": "Lidická, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2230906956",
+      "price": 14500,
+      "lat": 49.1907008613,
+      "lng": 16.6092118599,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Bašty, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3865964620",
+      "price": 27500,
+      "lat": 49.1944617580186,
+      "lng": 16.6180512451794,
+      "sqm": 74,
+      "rooms": 2,
+      "address": "Vlhká, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3312906316",
+      "price": 22500,
+      "lat": 49.2084086950022,
+      "lng": 16.5781411583309,
+      "sqm": 68,
+      "rooms": 3,
+      "address": "Zeleného, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_2607214668",
+      "price": 25000,
+      "lat": 49.2123847301658,
+      "lng": 16.6016021684346,
+      "sqm": 100,
+      "rooms": 2,
+      "address": "Štefánikova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3949391948",
+      "price": 24000,
+      "lat": 49.2123847301658,
+      "lng": 16.6016021684346,
+      "sqm": 76,
+      "rooms": 2,
+      "address": "Štefánikova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3295080524",
+      "price": 29000,
+      "lat": 49.21837984308131,
+      "lng": 16.61715890029512,
+      "sqm": 75,
+      "rooms": 2,
+      "address": "třída Generála Píky, Brno",
+      "zone": "třída Generála Píky"
+    },
+    {
+      "id": "sr_3827429452",
+      "price": 4750,
+      "lat": 49.169271145552294,
+      "lng": 16.581848023878592,
+      "sqm": 17,
+      "rooms": null,
+      "address": "Běloruská, Bohunice, Brno",
+      "zone": "Bohunice"
+    },
+    {
+      "id": "sr_2614161484",
+      "price": 16000,
+      "lat": 49.220565,
+      "lng": 16.596743,
+      "sqm": 39,
+      "rooms": 1,
+      "address": "Palackého třída, Brno",
+      "zone": "Palackého třída"
+    },
+    {
+      "id": "sr_2526539852",
+      "price": 16000,
+      "lat": 49.220565,
+      "lng": 16.596743,
+      "sqm": 39,
+      "rooms": 2,
+      "address": "Palackého třída, Brno",
+      "zone": "Palackého třída"
+    },
+    {
+      "id": "sr_4260884556",
+      "price": 21000,
+      "lat": 49.1449034,
+      "lng": 16.6192973,
+      "sqm": 52,
+      "rooms": 2,
+      "address": "Moravanská, Přízřenice, Brno",
+      "zone": "Přízřenice"
+    },
+    {
+      "id": "sr_4264788044",
+      "price": 14400,
+      "lat": 49.2011893346465,
+      "lng": 16.6143908713831,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Milady Horákové, Brno",
+      "zone": "Milady Horákové"
+    },
+    {
+      "id": "sr_1645380428",
+      "price": 23000,
+      "lat": 49.1953636605,
+      "lng": 16.6107141987,
+      "sqm": 35,
+      "rooms": 2,
+      "address": "Kobližná, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1774592844",
+      "price": 36500,
+      "lat": 49.196758,
+      "lng": 16.613623,
+      "sqm": 94,
+      "rooms": 4,
+      "address": "Za Divadlem, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_312038220",
+      "price": 22000,
+      "lat": 49.1953636605,
+      "lng": 16.6107141987,
+      "sqm": 54,
+      "rooms": 1,
+      "address": "Kobližná, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_252203852",
+      "price": 36000,
+      "lat": 49.1909753647357,
+      "lng": 16.6040129280014,
+      "sqm": 93,
+      "rooms": 3,
+      "address": "Kopečná, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_937078860",
+      "price": 38000,
+      "lat": 49.2076419399123,
+      "lng": 16.6132996208114,
+      "sqm": 143,
+      "rooms": 3,
+      "address": "Schodová, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_934654028",
+      "price": 21380,
+      "lat": 49.2194558111724,
+      "lng": 16.5768045828564,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_699773004",
+      "price": 21920,
+      "lat": 49.2194558111724,
+      "lng": 16.5768045828564,
+      "sqm": 42,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_1874178124",
+      "price": 20750,
+      "lat": 49.2194558111724,
+      "lng": 16.5768045828564,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_3150684236",
+      "price": 26500,
+      "lat": 49.1909753647357,
+      "lng": 16.6040129280014,
+      "sqm": 87,
+      "rooms": 2,
+      "address": "Kopečná, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_716550220",
+      "price": 21920,
+      "lat": 49.2194558111724,
+      "lng": 16.5768045828564,
+      "sqm": 43,
+      "rooms": 2,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_1191354444",
+      "price": 19500,
+      "lat": 49.1957711807264,
+      "lng": 16.5769440556813,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Neumannova, Brno-střed, Brno",
+      "zone": "Brno-střed"
+    },
+    {
+      "id": "sr_2974388300",
+      "price": 28000,
+      "lat": 49.1953636605,
+      "lng": 16.6107141987,
+      "sqm": 53,
+      "rooms": 1,
+      "address": "Kobližná, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3226046540",
+      "price": 20000,
+      "lat": 49.1946199775826,
+      "lng": 16.6109122360726,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Jánská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_578719820",
+      "price": 18700,
+      "lat": 49.2160361148471,
+      "lng": 16.6020928256553,
+      "sqm": 36,
+      "rooms": 1,
+      "address": "Reissigova, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_2565505100",
+      "price": 32720,
+      "lat": 49.2194558111724,
+      "lng": 16.5768045828564,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_1223327820",
+      "price": 31640,
+      "lat": 49.2194558111724,
+      "lng": 16.5768045828564,
+      "sqm": 43,
+      "rooms": 2,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_2035974220",
+      "price": 14500,
+      "lat": 49.2125477386288,
+      "lng": 16.6310311765807,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Elgartova, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_2395574348",
+      "price": 16000,
+      "lat": 49.1805564545982,
+      "lng": 16.6385677861837,
+      "sqm": 33,
+      "rooms": 2,
+      "address": "Charbulova, Černovice, Brno",
+      "zone": "Černovice"
+    },
+    {
+      "id": "sr_3704680524",
+      "price": 14800,
+      "lat": 49.24208083378806,
+      "lng": 16.580654914626574,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Sibiřská, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_2429612108",
+      "price": 6695,
+      "lat": 49.19645607265792,
+      "lng": 16.609072183364237,
+      "sqm": 13,
+      "rooms": null,
+      "address": "Běhounská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3227153228",
+      "price": 7595,
+      "lat": 49.19391058179043,
+      "lng": 16.606284550262618,
+      "sqm": 15,
+      "rooms": null,
+      "address": "Dominikánské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2163273804",
+      "price": 23900,
+      "lat": 49.206015,
+      "lng": 16.5968861111,
+      "sqm": 63,
+      "rooms": 2,
+      "address": "Kounicova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2592686924",
+      "price": 23540,
+      "lat": 49.2210024,
+      "lng": 16.5815594,
+      "sqm": 43,
+      "rooms": 2,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_3000582988",
+      "price": 20300,
+      "lat": 49.2210024988,
+      "lng": 16.5815594415,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_3161239628",
+      "price": 20570,
+      "lat": 49.2210024,
+      "lng": 16.5815594,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_1561391180",
+      "price": 13990,
+      "lat": 49.19963888838149,
+      "lng": 16.62000735754481,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Bratislavská, Brno",
+      "zone": "Bratislavská"
+    },
+    {
+      "id": "sr_151056460",
+      "price": 12900,
+      "lat": 49.1872636502325,
+      "lng": 16.597978116354,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Zahradnická, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_503377996",
+      "price": 26500,
+      "lat": 49.16937443807752,
+      "lng": 16.557974082080133,
+      "sqm": 62,
+      "rooms": 3,
+      "address": "Dunajská, Starý Lískovec, Brno",
+      "zone": "Starý Lískovec"
+    },
+    {
+      "id": "sr_3187732556",
+      "price": 23900,
+      "lat": 49.206015,
+      "lng": 16.5968861111,
+      "sqm": 63,
+      "rooms": 2,
+      "address": "Kounicova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3400221516",
+      "price": 16000,
+      "lat": 49.194393059833146,
+      "lng": 16.617492493445795,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Koliště, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2082635852",
+      "price": 16700,
+      "lat": 49.1901083313506,
+      "lng": 16.6201570794641,
+      "sqm": 19,
+      "rooms": 1,
+      "address": "Cyrilská, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_3216240716",
+      "price": 33000,
+      "lat": 49.2241036111,
+      "lng": 16.6427275,
+      "sqm": 89,
+      "rooms": 3,
+      "address": "Wágnerova, Brno",
+      "zone": "Wágnerova"
+    },
+    {
+      "id": "sr_2118185036",
+      "price": 35000,
+      "lat": 49.1919189857109,
+      "lng": 16.5795738440008,
+      "sqm": 70,
+      "rooms": 3,
+      "address": "Vinařská, Pisárky, Brno",
+      "zone": "Pisárky"
+    },
+    {
+      "id": "sr_2811315020",
+      "price": 17000,
+      "lat": 49.197443742946,
+      "lng": 16.6406353115996,
+      "sqm": 56,
+      "rooms": 2,
+      "address": "Karáskovo náměstí, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3346067532",
+      "price": 16900,
+      "lat": 49.2000140033,
+      "lng": 16.6145929061,
+      "sqm": 39,
+      "rooms": 1,
+      "address": "Příkop, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2484203596",
+      "price": 16800,
+      "lat": 49.1672275595,
+      "lng": 16.6111295734,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Řepova, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_4116770892",
+      "price": 13500,
+      "lat": 49.1634716225746,
+      "lng": 16.6128498450549,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Bednářova, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_730984524",
+      "price": 24000,
+      "lat": 49.2087220978113,
+      "lng": 16.6123549528257,
+      "sqm": 77,
+      "rooms": 3,
+      "address": "Fišova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_4069650508",
+      "price": 15000,
+      "lat": 49.1904805556,
+      "lng": 16.6266472222,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Křenová, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_813822028",
+      "price": 25000,
+      "lat": 49.2357494,
+      "lng": 16.6261016,
+      "sqm": 87,
+      "rooms": 3,
+      "address": "Dusíkova, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_3199332428",
+      "price": 27000,
+      "lat": 49.213095612189356,
+      "lng": 16.584573217318397,
+      "sqm": 80,
+      "rooms": 3,
+      "address": "Klímova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_3258224716",
+      "price": 17990,
+      "lat": 49.1868960414,
+      "lng": 16.5866760798,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Křížkovského, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_582086732",
+      "price": 26000,
+      "lat": 49.2009919260861,
+      "lng": 16.6328105259462,
+      "sqm": 75,
+      "rooms": 3,
+      "address": "Šámalova, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1188163660",
+      "price": 16900,
+      "lat": 49.19929988564558,
+      "lng": 16.624067946252282,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3374444620",
+      "price": 22000,
+      "lat": 49.1972976488,
+      "lng": 16.5997184848,
+      "sqm": 85,
+      "rooms": 3,
+      "address": "Údolní, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_884863052",
+      "price": 20900,
+      "lat": 49.17191,
+      "lng": 16.56217,
+      "sqm": 64,
+      "rooms": 3,
+      "address": "Labská, Starý Lískovec, Brno",
+      "zone": "Starý Lískovec"
+    },
+    {
+      "id": "sr_3098406988",
+      "price": 12900,
+      "lat": 49.18594,
+      "lng": 16.59493,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Vídeňská, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_2526707788",
+      "price": 27000,
+      "lat": 49.1892,
+      "lng": 16.60211,
+      "sqm": 70,
+      "rooms": 3,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_4265734220",
+      "price": 15900,
+      "lat": 49.189504,
+      "lng": 16.595575,
+      "sqm": 19,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2906779724",
+      "price": 15900,
+      "lat": 49.1880615931422,
+      "lng": 16.5992946539284,
+      "sqm": 20,
+      "rooms": 1,
+      "address": "Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_4248957004",
+      "price": 26000,
+      "lat": 49.1985059436311,
+      "lng": 16.6007032053799,
+      "sqm": 68,
+      "rooms": 3,
+      "address": "Jaselská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3561091148",
+      "price": 25900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 26,
+      "rooms": 2,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_577892428",
+      "price": 22500,
+      "lat": 49.1901083313506,
+      "lng": 16.6201570794641,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Cyrilská, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_967082060",
+      "price": 14900,
+      "lat": 49.2005112206857,
+      "lng": 16.6245550174673,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1534623820",
+      "price": 17500,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 41,
+      "rooms": 2,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2317123660",
+      "price": 14500,
+      "lat": 49.2013422378312,
+      "lng": 16.6430646573563,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Gajdošova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3294752844",
+      "price": 17500,
+      "lat": 49.1957509236444,
+      "lng": 16.6118205619164,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Vachova, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3214078028",
+      "price": 21000,
+      "lat": 49.1903492158701,
+      "lng": 16.6533981911417,
+      "sqm": 46,
+      "rooms": 2,
+      "address": "Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_2090004556",
+      "price": 22000,
+      "lat": 49.1996,
+      "lng": 16.619606,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2912088140",
+      "price": 19000,
+      "lat": 49.20175625712958,
+      "lng": 16.612237770460265,
+      "sqm": 60,
+      "rooms": 2,
+      "address": "Kudelova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_3223429196",
+      "price": 7000,
+      "lat": 49.258528,
+      "lng": 16.626253,
+      "sqm": 20,
+      "rooms": null,
+      "address": "Soběšice, Brno",
+      "zone": "Soběšice"
+    },
+    {
+      "id": "sr_2108485708",
+      "price": 25000,
+      "lat": 49.23005077662955,
+      "lng": 16.605567795132703,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Kumpoštova, Sadová, Brno",
+      "zone": "Sadová"
+    },
+    {
+      "id": "sr_3545407564",
+      "price": 20000,
+      "lat": 49.2011290702,
+      "lng": 16.6008538807,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Smetanova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1132691532",
+      "price": 14000,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2858852428",
+      "price": 19500,
+      "lat": 49.2046671439236,
+      "lng": 16.6219051167394,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Ryšánkova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_752529484",
+      "price": 12500,
+      "lat": 49.2395189425873,
+      "lng": 16.5306143469975,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Ondrova, Kníničky, Brno",
+      "zone": "Kníničky"
+    },
+    {
+      "id": "sr_182644812",
+      "price": 15400,
+      "lat": 49.271607276715,
+      "lng": 16.5924029537193,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Kleštínek, Jehnice, Brno",
+      "zone": "Jehnice"
+    },
+    {
+      "id": "sr_2565009484",
+      "price": 18000,
+      "lat": 49.176555918308495,
+      "lng": 16.55471089445273,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Oblá, Nový Lískovec, Brno",
+      "zone": "Nový Lískovec"
+    },
+    {
+      "id": "sr_117633100",
+      "price": 17951,
+      "lat": 49.2091683994937,
+      "lng": 16.6308302985785,
+      "sqm": 41,
+      "rooms": 2,
+      "address": "Dačického, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_3492999244",
+      "price": 16500,
+      "lat": 49.2037494706,
+      "lng": 16.5969901043,
+      "sqm": 57,
+      "rooms": 1,
+      "address": "Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_409530444",
+      "price": 16700,
+      "lat": 49.2134,
+      "lng": 16.6652,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Pod Hády, Brno",
+      "zone": "Pod Hády"
+    },
+    {
+      "id": "sr_2782785612",
+      "price": 5995,
+      "lat": 49.19645607265792,
+      "lng": 16.609072183364237,
+      "sqm": 75,
+      "rooms": null,
+      "address": "Běhounská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2907893836",
+      "price": 39000,
+      "lat": 49.1988165681745,
+      "lng": 16.5835703763985,
+      "sqm": 132,
+      "rooms": 3,
+      "address": "Lerchova, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_2178842700",
+      "price": 32000,
+      "lat": 49.2011919324555,
+      "lng": 16.622232469052,
+      "sqm": 92,
+      "rooms": 4,
+      "address": "Hvězdová, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2103803980",
+      "price": 17500,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2026799180",
+      "price": 12900,
+      "lat": 49.2233425391994,
+      "lng": 16.5130496794417,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Nad Přehradou, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_3671556172",
+      "price": 17000,
+      "lat": 49.1979615,
+      "lng": 16.6435716,
+      "sqm": 62,
+      "rooms": 2,
+      "address": "Brno-Židenice, Brno",
+      "zone": "Brno-Židenice"
+    },
+    {
+      "id": "sr_3548020812",
+      "price": 14490,
+      "lat": 49.194393059833146,
+      "lng": 16.617492493445795,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Koliště, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_509050956",
+      "price": 13990,
+      "lat": 49.1989378630622,
+      "lng": 16.61224091648296,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Koliště, Brno",
+      "zone": "Koliště"
+    },
+    {
+      "id": "sr_1607725132",
+      "price": 21900,
+      "lat": 49.2029988645,
+      "lng": 16.6070015281,
+      "sqm": 43,
+      "rooms": 2,
+      "address": "Lidická, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3786440780",
+      "price": 26000,
+      "lat": 49.2194672,
+      "lng": 16.5050623,
+      "sqm": 76,
+      "rooms": 3,
+      "address": "Kuršova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_2750672972",
+      "price": 15000,
+      "lat": 49.2153717107,
+      "lng": 16.6276621985,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "Provazníkova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_3337875532",
+      "price": 16000,
+      "lat": 49.20552565630132,
+      "lng": 16.63835863869828,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Kosmákova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3252940876",
+      "price": 16500,
+      "lat": 49.2126014112,
+      "lng": 16.6050952513,
+      "sqm": 34,
+      "rooms": 2,
+      "address": "Střední, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_2031349836",
+      "price": 25000,
+      "lat": 49.19186432206642,
+      "lng": 16.61108725871739,
+      "sqm": 56,
+      "rooms": 2,
+      "address": "Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1728311372",
+      "price": 12500,
+      "lat": 49.1886917636466,
+      "lng": 16.5903857539816,
+      "sqm": 18,
+      "rooms": 1,
+      "address": "Veletržní, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_693130060",
+      "price": 15100,
+      "lat": 49.1802214815,
+      "lng": 16.6192313044,
+      "sqm": 33,
+      "rooms": 1,
+      "address": "Komárovská, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_2673078348",
+      "price": 15500,
+      "lat": 49.2172478144283,
+      "lng": 16.620597691969,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "náměstí SNP, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_1096020044",
+      "price": 18000,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_725872716",
+      "price": 16000,
+      "lat": 49.2179759805829,
+      "lng": 16.5047409039323,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Lýskova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_712241228",
+      "price": 16200,
+      "lat": 49.1708771943,
+      "lng": 16.5977500861,
+      "sqm": 43,
+      "rooms": 2,
+      "address": "Vídeňská, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_291259212",
+      "price": 27000,
+      "lat": 49.222435,
+      "lng": 16.5137327778,
+      "sqm": 65,
+      "rooms": 2,
+      "address": "Markůvky, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_3448565836",
+      "price": 17000,
+      "lat": 49.2219410365019,
+      "lng": 16.5550283460444,
+      "sqm": 64,
+      "rooms": 1,
+      "address": "Kristenova, Komín, Brno",
+      "zone": "Komín"
+    },
+    {
+      "id": "sr_2983428172",
+      "price": 85000,
+      "lat": 49.1988131115029,
+      "lng": 16.6005237663423,
+      "sqm": 120,
+      "rooms": 4,
+      "address": "Jaselská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_62713932",
+      "price": 16500,
+      "lat": 49.164392,
+      "lng": 16.594367,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Bohunická, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_2098966604",
+      "price": 12000,
+      "lat": 49.212387,
+      "lng": 16.6284905,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Rotalova, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_2630479948",
+      "price": 16000,
+      "lat": 49.2300648830711,
+      "lng": 16.5937926067021,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Božetěchova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_2590408780",
+      "price": 35000,
+      "lat": 49.1916839,
+      "lng": 16.5989471,
+      "sqm": 126,
+      "rooms": 3,
+      "address": "Pekařská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3638358092",
+      "price": 14000,
+      "lat": 49.1985440914696,
+      "lng": 16.6185567755691,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Körnerova, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1744273484",
+      "price": 13900,
+      "lat": 49.1878355545543,
+      "lng": 16.6176102868398,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Dornych, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_730050636",
+      "price": 13500,
+      "lat": 49.2366654270981,
+      "lng": 16.624456124663855,
+      "sqm": 41,
+      "rooms": 1,
+      "address": "Dusíkova, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_317030476",
+      "price": 28800,
+      "lat": 49.2260284,
+      "lng": 16.6261311,
+      "sqm": 78,
+      "rooms": 3,
+      "address": "Šrámkova, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_2532110412",
+      "price": 6000,
+      "lat": 49.21162529231457,
+      "lng": 16.548365512401546,
+      "sqm": 90,
+      "rooms": null,
+      "address": "Březová, Jundrov, Brno",
+      "zone": "Jundrov"
+    },
+    {
+      "id": "sr_4140142668",
+      "price": 26800,
+      "lat": 49.1982562774606,
+      "lng": 16.5931376459635,
+      "sqm": 49,
+      "rooms": 2,
+      "address": "Údolní, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_566595660",
+      "price": 29800,
+      "lat": 49.1982562774606,
+      "lng": 16.5931376459635,
+      "sqm": 66,
+      "rooms": 3,
+      "address": "Údolní, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_778760268",
+      "price": 27000,
+      "lat": 49.1997471598,
+      "lng": 16.6044107662,
+      "sqm": 86,
+      "rooms": 3,
+      "address": "Kounicova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1184428108",
+      "price": 36800,
+      "lat": 49.2071622771092,
+      "lng": 16.5797321006773,
+      "sqm": 89,
+      "rooms": 4,
+      "address": "Šmídkova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_696877132",
+      "price": 25000,
+      "lat": 49.1957711807264,
+      "lng": 16.5769440556813,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Neumannova, Pisárky, Brno",
+      "zone": "Pisárky"
+    },
+    {
+      "id": "sr_3279462476",
+      "price": 26500,
+      "lat": 49.1914811737,
+      "lng": 16.6017126102,
+      "sqm": 87,
+      "rooms": 2,
+      "address": "Kopečná, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2043977804",
+      "price": 21000,
+      "lat": 49.207072967,
+      "lng": 16.5972804616,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Zahradníkova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1262780492",
+      "price": 15000,
+      "lat": 49.204907035801,
+      "lng": 16.605718472588,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Lidická, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1612509260",
+      "price": 12000,
+      "lat": 49.17415594241984,
+      "lng": 16.625430781996545,
+      "sqm": 72,
+      "rooms": 3,
+      "address": "Pompova, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_1763160140",
+      "price": 14500,
+      "lat": 49.2005112206857,
+      "lng": 16.6245550174673,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1681715276",
+      "price": 28000,
+      "lat": 49.1676002590069,
+      "lng": 16.6055530257019,
+      "sqm": 76,
+      "rooms": 2,
+      "address": "Výpravní, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_1280110668",
+      "price": 25000,
+      "lat": 49.225814,
+      "lng": 16.53173,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Jakuba Obrovského, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_2588748",
+      "price": 25000,
+      "lat": 49.1731668861,
+      "lng": 16.6865244875,
+      "sqm": 65,
+      "rooms": 3,
+      "address": "Šmahova, Slatina, Brno",
+      "zone": "Slatina"
+    },
+    {
+      "id": "sr_2096533580",
+      "price": 17000,
+      "lat": 49.1809137337,
+      "lng": 16.6692459756,
+      "sqm": 42,
+      "rooms": 1,
+      "address": "Kigginsova, Slatina, Brno",
+      "zone": "Slatina"
+    },
+    {
+      "id": "sr_2889977932",
+      "price": 13300,
+      "lat": 49.2011919324555,
+      "lng": 16.622232469052,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Hvězdová, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_4086468684",
+      "price": 15000,
+      "lat": 49.2017087068,
+      "lng": 16.605640405,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Mezírka, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3811504204",
+      "price": 20000,
+      "lat": 49.219708213732,
+      "lng": 16.5044334102932,
+      "sqm": 74,
+      "rooms": 3,
+      "address": "Kuršova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_3114266700",
+      "price": 21000,
+      "lat": 49.1883589807443,
+      "lng": 16.6073739736668,
+      "sqm": 43,
+      "rooms": 1,
+      "address": "Ghegova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3092557900",
+      "price": 15900,
+      "lat": 49.190192,
+      "lng": 16.599557,
+      "sqm": 17,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3175059532",
+      "price": 15900,
+      "lat": 49.189042,
+      "lng": 16.595577,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1767473228",
+      "price": 15900,
+      "lat": 49.18919937706493,
+      "lng": 16.6043899898101,
+      "sqm": 16,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1167061068",
+      "price": 16500,
+      "lat": 49.1927923968649,
+      "lng": 16.650255501911,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Škroupova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3722874956",
+      "price": 18900,
+      "lat": 49.206015,
+      "lng": 16.5968861111,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Kounicova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_200273996",
+      "price": 17200,
+      "lat": 49.18883859148907,
+      "lng": 16.65947787224453,
+      "sqm": 53,
+      "rooms": 3,
+      "address": "Marie Kudeříkové, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3658477644",
+      "price": 22000,
+      "lat": 49.2123847301658,
+      "lng": 16.6016021684346,
+      "sqm": 62,
+      "rooms": 2,
+      "address": "Štefánikova, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_2330099788",
+      "price": 23000,
+      "lat": 49.2003837127737,
+      "lng": 16.5937349126231,
+      "sqm": 68,
+      "rooms": 2,
+      "address": "Grohova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2943348812",
+      "price": 13900,
+      "lat": 49.1920575211328,
+      "lng": 16.6346735584981,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Porhajmova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_718635084",
+      "price": 15000,
+      "lat": 49.219592,
+      "lng": 16.546838,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Branka, Komín, Brno",
+      "zone": "Komín"
+    },
+    {
+      "id": "sr_1684439116",
+      "price": 25000,
+      "lat": 49.198860456904406,
+      "lng": 16.622532043887425,
+      "sqm": 159,
+      "rooms": 3,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2692976716",
+      "price": 13900,
+      "lat": 49.19447159848402,
+      "lng": 16.61780732376833,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Vlhká, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1595469900",
+      "price": 17000,
+      "lat": 49.1894740631,
+      "lng": 16.625960674,
+      "sqm": 41,
+      "rooms": 2,
+      "address": "Mlýnská, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2584277068",
+      "price": 25900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 33,
+      "rooms": 2,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_285798476",
+      "price": 22000,
+      "lat": 49.209863601,
+      "lng": 16.628881959,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Musilova, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_1980297292",
+      "price": 26490,
+      "lat": 49.1845131,
+      "lng": 16.6230957,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_272166988",
+      "price": 25900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_841543756",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2418602060",
+      "price": 12000,
+      "lat": 49.213866019775516,
+      "lng": 16.57404992181388,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Horova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_2703814732",
+      "price": 12000,
+      "lat": 49.2232636,
+      "lng": 16.6256062,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Halasovo náměstí, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_2250829900",
+      "price": 20000,
+      "lat": 49.1988141579715,
+      "lng": 16.5754788528248,
+      "sqm": 50,
+      "rooms": 1,
+      "address": "Bohuslava Martinů, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_4096323660",
+      "price": 20000,
+      "lat": 49.1988141579715,
+      "lng": 16.5754788528248,
+      "sqm": 50,
+      "rooms": 1,
+      "address": "Bohuslava Martinů, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_1011413068",
+      "price": 22500,
+      "lat": 49.219708213732,
+      "lng": 16.5044334102932,
+      "sqm": 79,
+      "rooms": 3,
+      "address": "Kuršova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_4031311948",
+      "price": 16500,
+      "lat": 49.2021624099271,
+      "lng": 16.6248134356056,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Přadlácká, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1414066252",
+      "price": 20000,
+      "lat": 49.2126014112,
+      "lng": 16.6050952513,
+      "sqm": 60,
+      "rooms": 2,
+      "address": "Střední, Ponava, Brno",
+      "zone": "Ponava"
+    },
+    {
+      "id": "sr_981004364",
+      "price": 43000,
+      "lat": 49.1988141579715,
+      "lng": 16.5754788528248,
+      "sqm": 121,
+      "rooms": 3,
+      "address": "Bohuslava Martinů, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_4033409100",
+      "price": 14000,
+      "lat": 49.2005112206857,
+      "lng": 16.6245550174673,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1402597452",
+      "price": 15900,
+      "lat": 49.2317989245058,
+      "lng": 16.6074234527972,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Kyselkova, Sadová, Brno",
+      "zone": "Sadová"
+    },
+    {
+      "id": "sr_3364483148",
+      "price": 16500,
+      "lat": 49.1845131,
+      "lng": 16.6230957,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_780791884",
+      "price": 16000,
+      "lat": 49.184513,
+      "lng": 16.6230957,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2542399564",
+      "price": 17500,
+      "lat": 49.2123847301658,
+      "lng": 16.6016021684346,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Štefánikova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_502980684",
+      "price": 25900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3282694220",
+      "price": 25000,
+      "lat": 49.1755935887778,
+      "lng": 16.5278116688263,
+      "sqm": 65,
+      "rooms": 3,
+      "address": "Vzhledná, Bosonohy, Brno",
+      "zone": "Bosonohy"
+    },
+    {
+      "id": "sr_4213829708",
+      "price": 26500,
+      "lat": 49.21132422704741,
+      "lng": 16.62148385983398,
+      "sqm": 69,
+      "rooms": 3,
+      "address": "Zemědělská, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_4165595212",
+      "price": 15500,
+      "lat": 49.21797598058291,
+      "lng": 16.504740903932298,
+      "sqm": 61,
+      "rooms": 2,
+      "address": "Lýskova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_1911849036",
+      "price": 20500,
+      "lat": 49.1940346,
+      "lng": 16.6092267,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Jánská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2791960652",
+      "price": 18000,
+      "lat": 49.208151215958075,
+      "lng": 16.556380550113044,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Veslařská, Jundrov, Brno",
+      "zone": "Jundrov"
+    },
+    {
+      "id": "sr_1672147020",
+      "price": 14700,
+      "lat": 49.2196386774737,
+      "lng": 16.5261224329066,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Filipova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_3390349388",
+      "price": 20000,
+      "lat": 49.2019962502676,
+      "lng": 16.5960483680706,
+      "sqm": 60,
+      "rooms": 2,
+      "address": "Jiráskova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1873182796",
+      "price": 18500,
+      "lat": 49.165645810922044,
+      "lng": 16.620659707634548,
+      "sqm": 43,
+      "rooms": 1,
+      "address": "Jižní, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_1658515532",
+      "price": 25000,
+      "lat": 49.2207648049057,
+      "lng": 16.5875177652149,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Svatopluka Čecha, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_4188504140",
+      "price": 16500,
+      "lat": 49.16722654861649,
+      "lng": 16.611131328340935,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Řepova, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_3313168460",
+      "price": 18000,
+      "lat": 49.1925758478738,
+      "lng": 16.5988108062181,
+      "sqm": 18,
+      "rooms": 1,
+      "address": "Pellicova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_951840844",
+      "price": 17500,
+      "lat": 49.1657505388521,
+      "lng": 16.6213341927165,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Jižní, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_2243686476",
+      "price": 22000,
+      "lat": 49.165647379348,
+      "lng": 16.6202523903773,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Jižní, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_2465955916",
+      "price": 12800,
+      "lat": 49.1968875919281,
+      "lng": 16.6059160970792,
+      "sqm": 16,
+      "rooms": null,
+      "address": "Solniční, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1543667788",
+      "price": 39000,
+      "lat": 49.2003837127737,
+      "lng": 16.5937349126231,
+      "sqm": 95,
+      "rooms": 3,
+      "address": "Grohova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2065789772",
+      "price": 36000,
+      "lat": 49.1868784055748,
+      "lng": 16.6051502860928,
+      "sqm": 54,
+      "rooms": 1,
+      "address": "Nové sady, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3720581196",
+      "price": 29000,
+      "lat": 49.1982357259,
+      "lng": 16.5812333841,
+      "sqm": 85,
+      "rooms": 2,
+      "address": "Františky Stránecké, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_1970008140",
+      "price": 11900,
+      "lat": 49.221975,
+      "lng": 16.5956611,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Palackého třída, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_3518267468",
+      "price": 8090,
+      "lat": 49.1708771943,
+      "lng": 16.5977500861,
+      "sqm": 30,
+      "rooms": null,
+      "address": "Vídeňská, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_632586316",
+      "price": 25000,
+      "lat": 49.1953402698224,
+      "lng": 16.6549428751265,
+      "sqm": 106,
+      "rooms": 3,
+      "address": "Došlíkova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_2398388300",
+      "price": 29500,
+      "lat": 49.192514,
+      "lng": 16.6101968,
+      "sqm": 80,
+      "rooms": 3,
+      "address": "Masarykova, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1458864204",
+      "price": 15000,
+      "lat": 49.1988604569044,
+      "lng": 16.6225320438874,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1306820684",
+      "price": 16500,
+      "lat": 49.2305120129318,
+      "lng": 16.582670486969,
+      "sqm": 33,
+      "rooms": 2,
+      "address": "Herčíkova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_3524558924",
+      "price": 15900,
+      "lat": 49.2066362288,
+      "lng": 16.6291327138,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Husovická, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_2402652236",
+      "price": 16900,
+      "lat": 49.230187049462,
+      "lng": 16.6048037611685,
+      "sqm": 42,
+      "rooms": 1,
+      "address": "Kociánka, Sadová, Brno",
+      "zone": "Sadová"
+    },
+    {
+      "id": "sr_1788182604",
+      "price": 27000,
+      "lat": 49.1904876893028,
+      "lng": 16.617329547609,
+      "sqm": 83,
+      "rooms": 3,
+      "address": "Mlýnská, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_1758822476",
+      "price": 17000,
+      "lat": 49.2004960900935,
+      "lng": 16.6363775871577,
+      "sqm": 47,
+      "rooms": 2,
+      "address": "Václavkova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_868581452",
+      "price": 17500,
+      "lat": 49.2063261754,
+      "lng": 16.6284286556,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Husovická, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_3578826828",
+      "price": 15500,
+      "lat": 49.2089007785,
+      "lng": 16.6032579711,
+      "sqm": 31,
+      "rooms": 2,
+      "address": "Štefánikova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1057325132",
+      "price": 30000,
+      "lat": 49.2027242679,
+      "lng": 16.4844949717,
+      "sqm": 82,
+      "rooms": 3,
+      "address": "Bešůvka, Žebětín, Brno",
+      "zone": "Žebětín"
+    },
+    {
+      "id": "sr_1984266316",
+      "price": 20000,
+      "lat": 49.216776,
+      "lng": 16.499889,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Říčanská, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_3379593292",
+      "price": 29000,
+      "lat": 49.19561023029168,
+      "lng": 16.609498351393217,
+      "sqm": 65,
+      "rooms": 3,
+      "address": "Kobližná, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2321907788",
+      "price": 5000,
+      "lat": 49.2324645542325,
+      "lng": 16.6516041205005,
+      "sqm": 13,
+      "rooms": null,
+      "address": "Liští, Obřany, Brno",
+      "zone": "Obřany"
+    },
+    {
+      "id": "sr_3980308556",
+      "price": 19220,
+      "lat": 49.2207365,
+      "lng": 16.581459,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_9863244",
+      "price": 13900,
+      "lat": 49.1904876893028,
+      "lng": 16.617329547609,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Mlýnská, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2424054604",
+      "price": 10495,
+      "lat": 49.20136371963568,
+      "lng": 16.623077998008817,
+      "sqm": 75,
+      "rooms": null,
+      "address": "Spolková, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3823607884",
+      "price": 54000,
+      "lat": 49.199463,
+      "lng": 16.614285,
+      "sqm": 230,
+      "rooms": null,
+      "address": "Příkop, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3715334220",
+      "price": 25000,
+      "lat": 49.1799042154,
+      "lng": 16.6197315005,
+      "sqm": 71,
+      "rooms": 3,
+      "address": "Komárovská, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_23298124",
+      "price": 23000,
+      "lat": 49.180262,
+      "lng": 16.670226,
+      "sqm": 52,
+      "rooms": 2,
+      "address": "Kigginsova, Slatina, Brno",
+      "zone": "Slatina"
+    },
+    {
+      "id": "sr_965509196",
+      "price": 22000,
+      "lat": 49.2020920867268,
+      "lng": 16.6917236436922,
+      "sqm": 72,
+      "rooms": 3,
+      "address": "Bačovského, Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_2663153740",
+      "price": 18000,
+      "lat": 49.1924205826241,
+      "lng": 16.6500543271574,
+      "sqm": 56,
+      "rooms": 2,
+      "address": "Škroupova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_2260500556",
+      "price": 26000,
+      "lat": 49.1988165681745,
+      "lng": 16.5835703763985,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Lerchova, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_1236041804",
+      "price": 8395,
+      "lat": 49.19121074367397,
+      "lng": 16.617088903031167,
+      "sqm": 75,
+      "rooms": null,
+      "address": "Rumiště, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_3738992716",
+      "price": 30000,
+      "lat": 49.196302302243,
+      "lng": 16.6475222298116,
+      "sqm": 40,
+      "rooms": 3,
+      "address": "Brno-Židenice, Brno",
+      "zone": "Brno-Židenice"
+    },
+    {
+      "id": "sr_618430540",
+      "price": 25000,
+      "lat": 49.196302302243,
+      "lng": 16.6475222298116,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Brno-Židenice, Brno",
+      "zone": "Brno-Židenice"
+    },
+    {
+      "id": "sr_3763642444",
+      "price": 20990,
+      "lat": 49.2058233302,
+      "lng": 16.6726516385,
+      "sqm": 61,
+      "rooms": 2,
+      "address": "Houbalova, Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_260931660",
+      "price": 12500,
+      "lat": 49.1985440914696,
+      "lng": 16.6185567755691,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Körnerova, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3599597644",
+      "price": 17900,
+      "lat": 49.2284979070737,
+      "lng": 16.6014660967232,
+      "sqm": 62,
+      "rooms": 1,
+      "address": "Mojžíšova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_148734028",
+      "price": 12595,
+      "lat": 49.210548097352536,
+      "lng": 16.582902793973457,
+      "sqm": 15,
+      "rooms": null,
+      "address": "Králova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_3547963468",
+      "price": 21110,
+      "lat": 49.2210024,
+      "lng": 16.5815594,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_4264394828",
+      "price": 19000,
+      "lat": 49.2260439483675,
+      "lng": 16.5515471471651,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Ulrychova, Komín, Brno",
+      "zone": "Komín"
+    },
+    {
+      "id": "sr_2768142412",
+      "price": 39000,
+      "lat": 49.1988165681745,
+      "lng": 16.5835703763985,
+      "sqm": 132,
+      "rooms": 3,
+      "address": "Lerchova, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_3305013324",
+      "price": 26000,
+      "lat": 49.1988165681745,
+      "lng": 16.5835703763985,
+      "sqm": 68,
+      "rooms": 2,
+      "address": "Lerchova, Stránice, Brno",
+      "zone": "Stránice"
+    },
+    {
+      "id": "sr_959348812",
+      "price": 11000,
+      "lat": 49.1456444129728,
+      "lng": 16.6564054115087,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Rolencova, Tuřany, Brno",
+      "zone": "Tuřany"
+    },
+    {
+      "id": "sr_2893971532",
+      "price": 12900,
+      "lat": 49.2228323875335,
+      "lng": 16.6266586539499,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Halasovo náměstí, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_2211533644",
+      "price": 14500,
+      "lat": 49.1890306237,
+      "lng": 16.5936960177,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Křížová, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3547234380",
+      "price": 14500,
+      "lat": 49.2020864584833,
+      "lng": 16.6209502382757,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Francouzská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1366196300",
+      "price": 12500,
+      "lat": 49.2148992214662,
+      "lng": 16.4938063165672,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Hostislavova, Žebětín, Brno",
+      "zone": "Žebětín"
+    },
+    {
+      "id": "sr_4081861452",
+      "price": 25900,
+      "lat": 49.1880615931422,
+      "lng": 16.5992946539284,
+      "sqm": 31,
+      "rooms": 2,
+      "address": "Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3942166604",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1465471820",
+      "price": 17900,
+      "lat": 49.1901083313506,
+      "lng": 16.6201570794641,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Cyrilská, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_544858188",
+      "price": 14500,
+      "lat": 49.191983,
+      "lng": 16.615599,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Koliště, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_3055517772",
+      "price": 28500,
+      "lat": 49.1985059436311,
+      "lng": 16.6007032053799,
+      "sqm": 87,
+      "rooms": 3,
+      "address": "Jaselská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_306806860",
+      "price": 9500,
+      "lat": 49.2022774664,
+      "lng": 16.5951236805,
+      "sqm": 72,
+      "rooms": null,
+      "address": "Jana Uhra, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2365038668",
+      "price": 19000,
+      "lat": 49.19325618921508,
+      "lng": 16.643308809733526,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Skorkovského, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3895173196",
+      "price": 25900,
+      "lat": 49.1880615931422,
+      "lng": 16.5992946539284,
+      "sqm": 33,
+      "rooms": 2,
+      "address": "Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1962442828",
+      "price": 20500,
+      "lat": 49.213077,
+      "lng": 16.576315,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Horova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_1680076876",
+      "price": 17000,
+      "lat": 49.1904876893028,
+      "lng": 16.617329547609,
+      "sqm": 60,
+      "rooms": 2,
+      "address": "Mlýnská, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_3047784524",
+      "price": 24000,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1392083020",
+      "price": 17500,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 44,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1653780556",
+      "price": 28000,
+      "lat": 49.1944617580186,
+      "lng": 16.6180512451794,
+      "sqm": 67,
+      "rooms": 3,
+      "address": "Vlhká, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1264156748",
+      "price": 32900,
+      "lat": 49.189042,
+      "lng": 16.595577,
+      "sqm": 95,
+      "rooms": 3,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1807196236",
+      "price": 20300,
+      "lat": 49.2210024,
+      "lng": 16.5815594,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_88449100",
+      "price": 20570,
+      "lat": 49.2210024,
+      "lng": 16.5815594,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Královopolská, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_3414941772",
+      "price": 10900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 17,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2173427788",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 17,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3978985548",
+      "price": 17900,
+      "lat": 49.191455362882756,
+      "lng": 16.62141879004346,
+      "sqm": 74,
+      "rooms": 2,
+      "address": "Křenová, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_371884108",
+      "price": 15900,
+      "lat": 49.2191704987948,
+      "lng": 16.4970868588754,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Říčanská, Žebětín, Brno",
+      "zone": "Žebětín"
+    },
+    {
+      "id": "sr_1532657740",
+      "price": 17000,
+      "lat": 49.219708213732,
+      "lng": 16.5044334102932,
+      "sqm": 74,
+      "rooms": 3,
+      "address": "Kuršova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_2294452300",
+      "price": 25900,
+      "lat": 49.1866472462,
+      "lng": 16.6142910816,
+      "sqm": 70,
+      "rooms": 3,
+      "address": "Trnitá, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2365755468",
+      "price": 23000,
+      "lat": 49.2022774664,
+      "lng": 16.5951236805,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Jana Uhra, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3327299660",
+      "price": 15500,
+      "lat": 49.2123847301658,
+      "lng": 16.6016021684346,
+      "sqm": 31,
+      "rooms": 2,
+      "address": "Štefánikova, Brno",
+      "zone": "Štefánikova"
+    },
+    {
+      "id": "sr_2741145676",
+      "price": 10900,
+      "lat": 49.173494099118,
+      "lng": 16.5955781398418,
+      "sqm": 32,
+      "rooms": null,
+      "address": "Pšeník, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_4185920076",
+      "price": 30000,
+      "lat": 49.1800231999874,
+      "lng": 16.5890962530653,
+      "sqm": 250,
+      "rooms": null,
+      "address": "Stráň, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_4081688652",
+      "price": 22500,
+      "lat": 49.1814930146379,
+      "lng": 16.5998037038492,
+      "sqm": 68,
+      "rooms": 3,
+      "address": "Renneská třída, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_1865064524",
+      "price": 20500,
+      "lat": 49.2270094921669,
+      "lng": 16.523225351772,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Píškova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_3901526092",
+      "price": 20500,
+      "lat": 49.2080261344983,
+      "lng": 16.6238145302926,
+      "sqm": 62,
+      "rooms": 2,
+      "address": "Merhautova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_2195149644",
+      "price": 20000,
+      "lat": 49.1735681710335,
+      "lng": 16.5948474686975,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Sovinec, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_1335726156",
+      "price": 21000,
+      "lat": 49.1946199775826,
+      "lng": 16.6109122360726,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Jánská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1831768140",
+      "price": 14000,
+      "lat": 49.2328133342263,
+      "lng": 16.6255530153462,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Haškova, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_2859557708",
+      "price": 25000,
+      "lat": 49.2065607038458,
+      "lng": 16.5996006101615,
+      "sqm": 89,
+      "rooms": 2,
+      "address": "Kotlářská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3286208588",
+      "price": 19000,
+      "lat": 49.1915123853674,
+      "lng": 16.6177417456809,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_871121740",
+      "price": 15900,
+      "lat": 49.188781369690744,
+      "lng": 16.596339321648447,
+      "sqm": 20,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2764615756",
+      "price": 26900,
+      "lat": 49.18919937706493,
+      "lng": 16.6043899898101,
+      "sqm": 49,
+      "rooms": 3,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1892200524",
+      "price": 15900,
+      "lat": 49.18919937706493,
+      "lng": 16.6043899898101,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2919206988",
+      "price": 22000,
+      "lat": 49.2030196137777,
+      "lng": 16.6103346911232,
+      "sqm": 36,
+      "rooms": 2,
+      "address": "třída Kpt. Jaroše, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_1626088268",
+      "price": 15000,
+      "lat": 49.17386777471705,
+      "lng": 16.53276169668451,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Pražská, Bosonohy, Brno",
+      "zone": "Bosonohy"
+    },
+    {
+      "id": "sr_730927948",
+      "price": 11990,
+      "lat": 49.19151988656228,
+      "lng": 16.636273346081207,
+      "sqm": 85,
+      "rooms": null,
+      "address": "Jeronýmova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_3965685836",
+      "price": 25900,
+      "lat": 49.190192,
+      "lng": 16.599554,
+      "sqm": 35,
+      "rooms": 2,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2173276236",
+      "price": 13600,
+      "lat": 49.2091683994937,
+      "lng": 16.6308302985785,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Dačického, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_2201785164",
+      "price": 16990,
+      "lat": 49.19391058179043,
+      "lng": 16.606284550262618,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Dominikánské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2474152012",
+      "price": 15000,
+      "lat": 49.1966159736462,
+      "lng": 16.6062655480874,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Česká, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1340765004",
+      "price": 23000,
+      "lat": 49.18919937706493,
+      "lng": 16.6043899898101,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1096396876",
+      "price": 18000,
+      "lat": 49.1992796975,
+      "lng": 16.6181974103,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_944545868",
+      "price": 13500,
+      "lat": 49.1833176112,
+      "lng": 16.621015499,
+      "sqm": 20,
+      "rooms": 1,
+      "address": "Dornych, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_1080488012",
+      "price": 14200,
+      "lat": 49.191210743674,
+      "lng": 16.6170889030312,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Rumiště, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_477794380",
+      "price": 19000,
+      "lat": 49.1981475011602,
+      "lng": 16.5937758299115,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Úvoz, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_4092637260",
+      "price": 16500,
+      "lat": 49.17532603367654,
+      "lng": 16.555534430606567,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Svážná, Nový Lískovec, Brno",
+      "zone": "Nový Lískovec"
+    },
+    {
+      "id": "sr_844406860",
+      "price": 20000,
+      "lat": 49.1693631404,
+      "lng": 16.5841582797,
+      "sqm": 99,
+      "rooms": 3,
+      "address": "Moldavská, Bohunice, Brno",
+      "zone": "Bohunice"
+    },
+    {
+      "id": "sr_1733051212",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_978076492",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 31,
+      "rooms": 2,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1653973068",
+      "price": 30000,
+      "lat": 49.228425552076,
+      "lng": 16.5939897705227,
+      "sqm": 76,
+      "rooms": 3,
+      "address": "Kosmova, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_1257611340",
+      "price": 10000,
+      "lat": 49.21162529231457,
+      "lng": 16.548365512401546,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Březová, Jundrov, Brno",
+      "zone": "Jundrov"
+    },
+    {
+      "id": "sr_445481804",
+      "price": 18000,
+      "lat": 49.20150846847565,
+      "lng": 16.62351354516798,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Spolková, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2342166604",
+      "price": 20500,
+      "lat": 49.1946199775826,
+      "lng": 16.6109122360726,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Jánská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2235998284",
+      "price": 25500,
+      "lat": 49.2367187377919,
+      "lng": 16.5865294650584,
+      "sqm": 62,
+      "rooms": 3,
+      "address": "Kuřimská, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_3816202316",
+      "price": 18000,
+      "lat": 49.2367187377919,
+      "lng": 16.5865294650584,
+      "sqm": 38,
+      "rooms": 2,
+      "address": "Kuřimská, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_3968901196",
+      "price": 14500,
+      "lat": 49.2228323875335,
+      "lng": 16.6266586539499,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Halasovo náměstí, Lesná, Brno",
+      "zone": "Lesná"
+    },
+    {
+      "id": "sr_2593657676",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1832169548",
+      "price": 25900,
+      "lat": 49.18919937706493,
+      "lng": 16.6043899898101,
+      "sqm": 39,
+      "rooms": 3,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3036431180",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1340883788",
+      "price": 25900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_948896588",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 17,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3804405836",
+      "price": 30000,
+      "lat": 49.19121074367397,
+      "lng": 16.617088903031167,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Rumiště, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2264047692",
+      "price": 20500,
+      "lat": 49.2021624099271,
+      "lng": 16.6248134356056,
+      "sqm": 56,
+      "rooms": 2,
+      "address": "Přadlácká, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2012389452",
+      "price": 14500,
+      "lat": 49.2435978308825,
+      "lng": 16.5802312423475,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Sibiřská, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_2316813644",
+      "price": 13450,
+      "lat": 49.199646,
+      "lng": 16.620424,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3960279884",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_508314444",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3456963404",
+      "price": 15900,
+      "lat": 49.188781369690744,
+      "lng": 16.596339321648447,
+      "sqm": 19,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_870208332",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3259855692",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 19,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2156667724",
+      "price": 15900,
+      "lat": 49.189042,
+      "lng": 16.595577,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1313698636",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2464043852",
+      "price": 25900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 30,
+      "rooms": 2,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1833869388",
+      "price": 28000,
+      "lat": 49.2044547318977,
+      "lng": 16.5953947208274,
+      "sqm": 68,
+      "rooms": 3,
+      "address": "Veveří, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3433013324",
+      "price": 32300,
+      "lat": 49.2056624237211,
+      "lng": 16.6229260209858,
+      "sqm": 90,
+      "rooms": 3,
+      "address": "Sýpka, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_3199180876",
+      "price": 11000,
+      "lat": 49.2188394338261,
+      "lng": 16.6410865115628,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Maloměřice, Brno",
+      "zone": "Maloměřice"
+    },
+    {
+      "id": "sr_434085964",
+      "price": 14500,
+      "lat": 49.206462935607,
+      "lng": 16.6977679968806,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Líšeň, Brno",
+      "zone": "Líšeň"
+    },
+    {
+      "id": "sr_3508510796",
+      "price": 15000,
+      "lat": 49.2459290522896,
+      "lng": 16.5758633955894,
+      "sqm": 45,
+      "rooms": 1,
+      "address": "Renčova, Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_3131613260",
+      "price": 11900,
+      "lat": 49.2220662781171,
+      "lng": 16.5905349277853,
+      "sqm": 20,
+      "rooms": 1,
+      "address": "Ruská, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_3746132812",
+      "price": 16490,
+      "lat": 49.1845131703,
+      "lng": 16.6230957419,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2902106188",
+      "price": 28000,
+      "lat": 49.168598,
+      "lng": 16.606101,
+      "sqm": 76,
+      "rooms": 2,
+      "address": "Výpravní, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice"
+    },
+    {
+      "id": "sr_966280012",
+      "price": 25000,
+      "lat": 49.1903781748161,
+      "lng": 16.6304818492719,
+      "sqm": 60,
+      "rooms": null,
+      "address": "Tržní, Černovice, Brno",
+      "zone": "Černovice"
+    },
+    {
+      "id": "sr_3300192332",
+      "price": 25900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 39,
+      "rooms": 3,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_313897036",
+      "price": 26000,
+      "lat": 49.2203090996167,
+      "lng": 16.5853752579381,
+      "sqm": 74,
+      "rooms": 3,
+      "address": "Svatopluka Čecha, Královo Pole, Brno",
+      "zone": "Královo Pole"
+    },
+    {
+      "id": "sr_2275782732",
+      "price": 17990,
+      "lat": 49.191377784063675,
+      "lng": 16.634318387352252,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Jeronýmova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_372617292",
+      "price": 18000,
+      "lat": 49.2188394338261,
+      "lng": 16.6410865115628,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Maloměřice, Brno",
+      "zone": "Maloměřice"
+    },
+    {
+      "id": "sr_2310869836",
+      "price": 20500,
+      "lat": 49.2021624099271,
+      "lng": 16.6248134356056,
+      "sqm": 56,
+      "rooms": 2,
+      "address": "Přadlácká, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2464657484",
+      "price": 20500,
+      "lat": 49.221632,
+      "lng": 16.53219,
+      "sqm": 62,
+      "rooms": 2,
+      "address": "Opálkova, Bystrc, Brno",
+      "zone": "Bystrc"
+    },
+    {
+      "id": "sr_1043166028",
+      "price": 9990,
+      "lat": 49.1845131,
+      "lng": 16.6230957,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_4123607884",
+      "price": 14990,
+      "lat": 49.1845131703,
+      "lng": 16.6230957419,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_4057638220",
+      "price": 21000,
+      "lat": 49.199742,
+      "lng": 16.620366,
+      "sqm": 46,
+      "rooms": 2,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_383427916",
+      "price": 15250,
+      "lat": 49.199742,
+      "lng": 16.620366,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3302663500",
+      "price": 36050,
+      "lat": 49.199742,
+      "lng": 16.620366,
+      "sqm": 141,
+      "rooms": 3,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2630526284",
+      "price": 43900,
+      "lat": 49.199742,
+      "lng": 16.620366,
+      "sqm": 162,
+      "rooms": 3,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3206590540",
+      "price": 23900,
+      "lat": 49.2207719065131,
+      "lng": 16.6336560907517,
+      "sqm": 80,
+      "rooms": 3,
+      "address": "Soběšická, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_1553113932",
+      "price": 15000,
+      "lat": 49.2514599387947,
+      "lng": 16.5793055326098,
+      "sqm": 41,
+      "rooms": 1,
+      "address": "Řečkovice, Brno",
+      "zone": "Řečkovice"
+    },
+    {
+      "id": "sr_2597433420",
+      "price": 13000,
+      "lat": 49.1984967919033,
+      "lng": 16.6281884763765,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Tkalcovská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_602673996",
+      "price": 14000,
+      "lat": 49.1969048252,
+      "lng": 16.6153288829,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Koliště, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3737956428",
+      "price": 20000,
+      "lat": 49.2172478144283,
+      "lng": 16.620597691969,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "náměstí SNP, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_2407629388",
+      "price": 22050,
+      "lat": 49.199742,
+      "lng": 16.620366,
+      "sqm": 66,
+      "rooms": 2,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1506435916",
+      "price": 15990,
+      "lat": 49.1845131703,
+      "lng": 16.6230957419,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2504618828",
+      "price": 16990,
+      "lat": 49.1845131,
+      "lng": 16.6230957,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_1093759820",
+      "price": 9000,
+      "lat": 49.1874297733,
+      "lng": 16.6016536107,
+      "sqm": 20,
+      "rooms": null,
+      "address": "Bezručova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_315285580",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_4014752588",
+      "price": 25900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 32,
+      "rooms": 2,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1470714700",
+      "price": 17000,
+      "lat": 49.20150846847565,
+      "lng": 16.62351354516798,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Spolková, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_3186917452",
+      "price": 24000,
+      "lat": 49.1925639936559,
+      "lng": 16.6103332115341,
+      "sqm": 62,
+      "rooms": 2,
+      "address": "Masarykova, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1945396044",
+      "price": 12000,
+      "lat": 49.2188394338261,
+      "lng": 16.6410865115628,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Maloměřice, Brno",
+      "zone": "Maloměřice"
+    },
+    {
+      "id": "sr_222716748",
+      "price": 7000,
+      "lat": 49.2079512130135,
+      "lng": 16.5744660380608,
+      "sqm": 136,
+      "rooms": null,
+      "address": "Elišky Machové, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_586285644",
+      "price": 21990,
+      "lat": 49.191377784063675,
+      "lng": 16.634318387352252,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Jeronýmova, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_997102412",
+      "price": 8495,
+      "lat": 49.19391058179043,
+      "lng": 16.606284550262618,
+      "sqm": 45,
+      "rooms": null,
+      "address": "Dominikánské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_952795980",
+      "price": 16000,
+      "lat": 49.198860456904406,
+      "lng": 16.622532043887425,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Cejl, Brno",
+      "zone": "Cejl"
+    },
+    {
+      "id": "sr_1259496268",
+      "price": 12800,
+      "lat": 49.17907901552702,
+      "lng": 16.62125548025804,
+      "sqm": 42,
+      "rooms": 2,
+      "address": "Svatopetrská, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_61039436",
+      "price": 23000,
+      "lat": 49.1910415212107,
+      "lng": 16.6193548436191,
+      "sqm": 90,
+      "rooms": 3,
+      "address": "Štěpánská, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_1591501644",
+      "price": 15500,
+      "lat": 49.1984967919033,
+      "lng": 16.6281884763765,
+      "sqm": 42,
+      "rooms": 2,
+      "address": "Tkalcovská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1827234636",
+      "price": 13900,
+      "lat": 49.191228123831,
+      "lng": 16.6570506802549,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Souběžná, Židenice, Brno",
+      "zone": "Židenice"
+    },
+    {
+      "id": "sr_78447436",
+      "price": 17000,
+      "lat": 49.1992999,
+      "lng": 16.6240658,
+      "sqm": 46,
+      "rooms": 1,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2563080268",
+      "price": 14990,
+      "lat": 49.1845131703,
+      "lng": 16.6230957419,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_1945068364",
+      "price": 24900,
+      "lat": 49.1802214815,
+      "lng": 16.6192313044,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Komárovská, Komárov, Brno",
+      "zone": "Komárov"
+    },
+    {
+      "id": "sr_3247129420",
+      "price": 19701,
+      "lat": 49.1918643220664,
+      "lng": 16.6110872587174,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1450861388",
+      "price": 20927,
+      "lat": 49.1918643220664,
+      "lng": 16.6110872587174,
+      "sqm": 33,
+      "rooms": 1,
+      "address": "Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_465851212",
+      "price": 17990,
+      "lat": 49.1845131,
+      "lng": 16.6230957,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_3460280396",
+      "price": 13000,
+      "lat": 49.1928732827679,
+      "lng": 16.6223595600628,
+      "sqm": 49,
+      "rooms": 2,
+      "address": "Špitálka, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_1509613644",
+      "price": 27900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 51,
+      "rooms": 3,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3951669324",
+      "price": 15900,
+      "lat": 49.1898315745925,
+      "lng": 16.6045252254398,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Vodní, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2433331276",
+      "price": 8000,
+      "lat": 49.1947442125675,
+      "lng": 16.6226061531538,
+      "sqm": 150,
+      "rooms": null,
+      "address": "Špitálka, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_354189388",
+      "price": 13000,
+      "lat": 49.1947442125675,
+      "lng": 16.6226061531538,
+      "sqm": 150,
+      "rooms": null,
+      "address": "Špitálka, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_2366222412",
+      "price": 6000,
+      "lat": 49.1947442125675,
+      "lng": 16.6226061531538,
+      "sqm": 150,
+      "rooms": null,
+      "address": "Špitálka, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_1933919052",
+      "price": 29500,
+      "lat": 49.209034817633,
+      "lng": 16.6010914453711,
+      "sqm": 76,
+      "rooms": 3,
+      "address": "Dřevařská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3201712972",
+      "price": 24500,
+      "lat": 49.1765559183085,
+      "lng": 16.5547108944527,
+      "sqm": 83,
+      "rooms": 4,
+      "address": "Oblá, Nový Lískovec, Brno",
+      "zone": "Nový Lískovec"
+    },
+    {
+      "id": "sr_16139084",
+      "price": 16000,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_4074415436",
+      "price": 19950,
+      "lat": 49.19998,
+      "lng": 16.620512,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_481488972",
+      "price": 20580,
+      "lat": 49.1964560726579,
+      "lng": 16.6090721833642,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Běhounská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2102608716",
+      "price": 8000,
+      "lat": 49.2113457,
+      "lng": 16.6353667,
+      "sqm": 132,
+      "rooms": null,
+      "address": "Dukelská třída, Husovice, Brno",
+      "zone": "Husovice"
+    },
+    {
+      "id": "sr_3538121548",
+      "price": 13645,
+      "lat": 49.19239991915427,
+      "lng": 16.60665187809825,
+      "sqm": 22,
+      "rooms": null,
+      "address": "Starobrněnská, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_402486092",
+      "price": 21000,
+      "lat": 49.1845131703,
+      "lng": 16.6230957419,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Dornych, Trnitá, Brno",
+      "zone": "Trnitá"
+    },
+    {
+      "id": "sr_3662959436",
+      "price": 14200,
+      "lat": 49.2020864584833,
+      "lng": 16.6209502382757,
+      "sqm": 53,
+      "rooms": 1,
+      "address": "Francouzská, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_4091433804",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 19,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2225173324",
+      "price": 20483,
+      "lat": 49.1918643220664,
+      "lng": 16.6110872587174,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3402724172",
+      "price": 23782,
+      "lat": 49.1918643220664,
+      "lng": 16.6110872587174,
+      "sqm": 46,
+      "rooms": 2,
+      "address": "Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2601230412",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2152481612",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3531436876",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2051789644",
+      "price": 9900,
+      "lat": 49.193707918171846,
+      "lng": 16.565606803501034,
+      "sqm": 80,
+      "rooms": null,
+      "address": "Veslařská, Pisárky, Brno",
+      "zone": "Pisárky"
+    },
+    {
+      "id": "sr_2106253388",
+      "price": 6500,
+      "lat": 49.1668761160818,
+      "lng": 16.5761917728046,
+      "sqm": 67,
+      "rooms": null,
+      "address": "Spodní, Bohunice, Brno",
+      "zone": "Bohunice"
+    },
+    {
+      "id": "sr_1214169932",
+      "price": 45000,
+      "lat": 49.1987763096,
+      "lng": 16.6009628893,
+      "sqm": 121,
+      "rooms": 3,
+      "address": "Jaselská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_892322636",
+      "price": 70000,
+      "lat": 49.1987763096,
+      "lng": 16.6009628893,
+      "sqm": 300,
+      "rooms": 5,
+      "address": "Jaselská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_3658384204",
+      "price": 7495,
+      "lat": 49.20150846847565,
+      "lng": 16.62351354516798,
+      "sqm": 48,
+      "rooms": null,
+      "address": "Spolková, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_190550860",
+      "price": 19000,
+      "lat": 49.18404795279515,
+      "lng": 16.62057549213643,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Kovářská, Brno",
+      "zone": "Kovářská"
+    },
+    {
+      "id": "sr_542241612",
+      "price": 8395,
+      "lat": 49.17268656408459,
+      "lng": 16.58144293897871,
+      "sqm": 69,
+      "rooms": null,
+      "address": "Uzbecká, Bohunice, Brno",
+      "zone": "Bohunice"
+    },
+    {
+      "id": "sr_1465545548",
+      "price": 9000,
+      "lat": 49.21233118820934,
+      "lng": 16.585845640329207,
+      "sqm": 13,
+      "rooms": null,
+      "address": "Chládkova, Žabovřesky, Brno",
+      "zone": "Žabovřesky"
+    },
+    {
+      "id": "sr_3768484684",
+      "price": 5995,
+      "lat": 49.20405406122078,
+      "lng": 16.616026782351998,
+      "sqm": 95,
+      "rooms": null,
+      "address": "Kunzova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_2634974028",
+      "price": 8595,
+      "lat": 49.19391058179043,
+      "lng": 16.606284550262618,
+      "sqm": 48,
+      "rooms": null,
+      "address": "Dominikánské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_4046947148",
+      "price": 8595,
+      "lat": 49.19391058179043,
+      "lng": 16.606284550262618,
+      "sqm": 45,
+      "rooms": null,
+      "address": "Dominikánské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3079308108",
+      "price": 10000,
+      "lat": 49.175663842136636,
+      "lng": 16.557574140538517,
+      "sqm": 85,
+      "rooms": null,
+      "address": "Oblá, Nový Lískovec, Brno",
+      "zone": "Nový Lískovec"
+    },
+    {
+      "id": "sr_593400652",
+      "price": 7695,
+      "lat": 49.19391058179043,
+      "lng": 16.606284550262618,
+      "sqm": 48,
+      "rooms": null,
+      "address": "Dominikánské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_2904527692",
+      "price": 12990,
+      "lat": 49.204049667477975,
+      "lng": 16.615711090192203,
+      "sqm": 72,
+      "rooms": null,
+      "address": "Kunzova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_839320396",
+      "price": 11540,
+      "lat": 49.19990199079939,
+      "lng": 16.605555847968635,
+      "sqm": 75,
+      "rooms": null,
+      "address": "Kounicova, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_1534042956",
+      "price": 25000,
+      "lat": 49.192563993655945,
+      "lng": 16.610333211534094,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Masarykova, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_787788620",
+      "price": 15000,
+      "lat": 49.20150846847565,
+      "lng": 16.62351354516798,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Spolková, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2872942668",
+      "price": 16000,
+      "lat": 49.20890765975632,
+      "lng": 16.62094454006015,
+      "sqm": 48,
+      "rooms": 1,
+      "address": "Demlova, Černá Pole, Brno",
+      "zone": "Černá Pole"
+    },
+    {
+      "id": "sr_700743756",
+      "price": 16900,
+      "lat": 49.1989378630622,
+      "lng": 16.612240916483,
+      "sqm": 58,
+      "rooms": 1,
+      "address": "Koliště, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_1640267852",
+      "price": 18900,
+      "lat": 49.1989378630622,
+      "lng": 16.612240916483,
+      "sqm": 62,
+      "rooms": 2,
+      "address": "Koliště, Zábrdovice, Brno",
+      "zone": "Zábrdovice"
+    },
+    {
+      "id": "sr_2263121996",
+      "price": 22900,
+      "lat": 49.1969631597,
+      "lng": 16.605896998,
+      "sqm": 66,
+      "rooms": 3,
+      "address": "Solniční, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_3405439052",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_896196684",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_4055167052",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 18,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3167268940",
+      "price": 15900,
+      "lat": 49.188781369690744,
+      "lng": 16.596339321648447,
+      "sqm": 18,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1245922124",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 18,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3225633612",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2608612172",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_4214846284",
+      "price": 9900,
+      "lat": 49.1543468643,
+      "lng": 16.6247708777,
+      "sqm": 11,
+      "rooms": null,
+      "address": "Bernáčkova, Dolní Heršpice, Brno",
+      "zone": "Dolní Heršpice"
+    },
+    {
+      "id": "sr_3905160012",
+      "price": 100000,
+      "lat": 49.175763,
+      "lng": 16.605822,
+      "sqm": 332,
+      "rooms": null,
+      "address": "Pražákova, Štýřice, Brno",
+      "zone": "Štýřice"
+    },
+    {
+      "id": "sr_1837429580",
+      "price": 15000,
+      "lat": 49.192563993655945,
+      "lng": 16.610333211534094,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Masarykova, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_269722444",
+      "price": 18000,
+      "lat": 49.204022938326894,
+      "lng": 16.60468951114262,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Cihlářská, Veveří, Brno",
+      "zone": "Veveří"
+    },
+    {
+      "id": "sr_2951676748",
+      "price": 30000,
+      "lat": 49.1871240637712,
+      "lng": 16.6364670022042,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Štolcova, Černovice, Brno",
+      "zone": "Černovice"
+    },
+    {
+      "id": "sr_2547703884",
+      "price": 15900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3583762508",
+      "price": 10900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 19,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_3615813708",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_130412620",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1651896396",
+      "price": 15900,
+      "lat": 49.190192,
+      "lng": 16.599557,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_2188767308",
+      "price": 15900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno"
+    },
+    {
+      "id": "sr_1633001548",
+      "price": 18500,
+      "lat": 49.18743904340642,
+      "lng": 16.665611525818136,
+      "sqm": 65,
+      "rooms": 2,
+      "address": "Bělohorská, Brno",
+      "zone": "Bělohorská"
+    },
+    {
+      "id": "sr_2786095692",
+      "price": 8595,
+      "lat": 49.19391058179043,
+      "lng": 16.606284550262618,
+      "sqm": 85,
+      "rooms": null,
+      "address": "Dominikánské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_678457932",
+      "price": 9495,
+      "lat": 49.19391058179043,
+      "lng": 16.606284550262618,
+      "sqm": 85,
+      "rooms": null,
+      "address": "Dominikánské náměstí, Brno-město, Brno",
+      "zone": "Brno-město"
+    },
+    {
+      "id": "sr_1600352844",
+      "price": 5490,
+      "lat": 49.1543468643,
+      "lng": 16.6247708777,
+      "sqm": 16,
+      "rooms": null,
+      "address": "Bernáčkova, Dolní Heršpice, Brno",
+      "zone": "Dolní Heršpice"
+    },
+    {
+      "id": "sr_2092888908",
+      "price": 5490,
+      "lat": 49.1543468643,
+      "lng": 16.6247708777,
+      "sqm": 16,
+      "rooms": null,
+      "address": "Bernáčkova, Dolní Heršpice, Brno",
+      "zone": "Dolní Heršpice"
+    },
+    {
+      "id": "sr_815117132",
+      "price": 5490,
+      "lat": 49.1543468643,
+      "lng": 16.6247708777,
+      "sqm": 16,
+      "rooms": null,
+      "address": "Bernáčkova, Dolní Heršpice, Brno",
+      "zone": "Dolní Heršpice"
+    },
+    {
+      "id": "sr_1063481932",
+      "price": 5490,
+      "lat": 49.1543468643,
+      "lng": 16.6247708777,
+      "sqm": 16,
+      "rooms": null,
+      "address": "Bernáčkova, Dolní Heršpice, Brno",
+      "zone": "Dolní Heršpice"
+    }
+  ]
+}

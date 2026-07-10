@@ -15,6 +15,8 @@ import type {
   OccupancyListingsPreview,
   OccupancyListingChangeStatus,
   OccupancyMapListing,
+  OccupancySegmentGroupId,
+  OccupancySegmentMetrics,
   OccupancySnapshotDiff,
   OccupancySnapshotListing,
   OccupancySnapshotSummary,
@@ -67,6 +69,56 @@ function formatTurnover(value: number | null): string {
   return `${value.toFixed(2)}×`;
 }
 
+function metricsPeriodTableLabel(
+  period: OccupancyMetricsPeriod,
+  days: number,
+  t: (key: string, vars?: Record<string, string | number>) => string,
+): string {
+  switch (period) {
+    case "daily":
+      return t("occupancy.table.periodLabelDaily");
+    case "weekly":
+      return t("occupancy.table.periodLabelWeekly", { days });
+    case "monthly":
+      return t("occupancy.table.periodLabelMonthly", { days });
+    case "longest":
+      return t("occupancy.table.periodLabelLongest", { days });
+  }
+}
+
+type MetricTone = "good" | "mid" | "bad" | "neutral";
+
+function occupancyTone(value: number | null): MetricTone {
+  if (value == null) return "neutral";
+  if (value >= 75) return "good";
+  if (value >= 55) return "mid";
+  return "bad";
+}
+
+function turnoverTone(value: number | null): MetricTone {
+  if (value == null) return "neutral";
+  if (value >= 1.2) return "good";
+  if (value >= 0.7) return "mid";
+  return "bad";
+}
+
+const METRIC_TONE_CLASS: Record<MetricTone, string> = {
+  good: "rounded-md bg-green-50 px-2 py-0.5 font-semibold text-green-700",
+  mid: "rounded-md bg-amber-50 px-2 py-0.5 font-medium text-amber-800",
+  bad: "rounded-md bg-rose-50 px-2 py-0.5 font-semibold text-rose-700",
+  neutral: "text-neutral-500",
+};
+
+function MetricValue({
+  value,
+  tone,
+}: {
+  value: string;
+  tone: MetricTone;
+}) {
+  return <span className={METRIC_TONE_CLASS[tone]}>{value}</span>;
+}
+
 import type { OccupancyPortal } from "@/lib/occupancy/portals";
 import {
   OCCUPANCY_CITY_SLUGS,
@@ -76,8 +128,27 @@ import {
   type OccupancyCitySlug,
 } from "@/lib/occupancy/cities";
 import { defaultPortalForCity, portalsForCity } from "@/lib/occupancy/portals";
+import {
+  resolveOccupancyMetricsPeriod,
+  type OccupancyMetricsPeriod,
+} from "@/lib/occupancy/metrics-period";
 
 const OCCUPANCY_PORTAL_STORAGE_KEY = "occupancy-portal";
+const OCCUPANCY_METRICS_PERIOD_STORAGE_KEY = "occupancy-metrics-period";
+
+const METRICS_PERIOD_OPTIONS: Array<{
+  id: OccupancyMetricsPeriod;
+  labelKey:
+    | "metricsPeriodDaily"
+    | "metricsPeriodWeekly"
+    | "metricsPeriodMonthly"
+    | "metricsPeriodLongest";
+}> = [
+  { id: "daily", labelKey: "metricsPeriodDaily" },
+  { id: "weekly", labelKey: "metricsPeriodWeekly" },
+  { id: "monthly", labelKey: "metricsPeriodMonthly" },
+  { id: "longest", labelKey: "metricsPeriodLongest" },
+];
 
 const OCCUPANCY_PORTAL_OPTIONS: Array<{
   id: OccupancyPortal;
@@ -103,6 +174,13 @@ function readStoredPortal(citySlug: OccupancyCitySlug): OccupancyPortal {
   return defaultPortalForCity(citySlug);
 }
 
+function readStoredMetricsPeriod(): OccupancyMetricsPeriod {
+  if (typeof window === "undefined") return resolveOccupancyMetricsPeriod(null);
+  return resolveOccupancyMetricsPeriod(
+    window.localStorage.getItem(OCCUPANCY_METRICS_PERIOD_STORAGE_KEY),
+  );
+}
+
 function formatProviderLabel(provider: string | null | undefined): string | null {
   if (!provider) return null;
   if (provider === "reggio_rentals") return "reggio-rentals (scraper)";
@@ -124,13 +202,16 @@ interface KpiProps {
   label: string;
   value: string;
   hint?: string;
+  valueTone?: MetricTone;
 }
 
-function KpiCard({ label, value, hint }: KpiProps) {
+function KpiCard({ label, value, hint, valueTone }: KpiProps) {
   return (
     <div className="rounded-xl border border-surface-border/60 bg-neutral-50 p-4">
       <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">{label}</p>
-      <p className="mt-1 text-2xl font-bold text-neutral-900">{value}</p>
+      <p className="mt-1 text-2xl font-bold text-neutral-900">
+        {valueTone ? <MetricValue value={value} tone={valueTone} /> : value}
+      </p>
       {hint ? <p className="mt-1 text-xs text-neutral-500">{hint}</p> : null}
     </div>
   );
@@ -194,6 +275,84 @@ const STATUS_STYLES: Record<
 
 type DiffFilter = "all" | OccupancyListingChangeStatus;
 
+type BreakdownGroupId = "zone" | OccupancySegmentGroupId;
+
+interface BreakdownRow {
+  rowKey: string;
+  rowLabel: string;
+  areaFilterKey?: string;
+  active_count: number;
+  rented_in_window: number;
+  avg_price: number | null;
+  avg_price_per_sqm: number | null;
+  avg_days_on_market: number | null;
+  median_days_on_market: number | null;
+  avg_waiting_days: number | null;
+  turnover_30d: number | null;
+  turnover_rented_30d: number;
+  turnover_inventory_basis: number | null;
+  estimated_occupancy_pct: number | null;
+}
+
+const BREAKDOWN_GROUPS: Array<{
+  id: BreakdownGroupId;
+  labelKey: "breakdownGroupZone" | "segmentsGroupPrice" | "segmentsGroupRooms" | "segmentsGroupSize";
+}> = [
+  { id: "zone", labelKey: "breakdownGroupZone" },
+  { id: "price", labelKey: "segmentsGroupPrice" },
+  { id: "rooms", labelKey: "segmentsGroupRooms" },
+  { id: "size", labelKey: "segmentsGroupSize" },
+];
+
+function areaToBreakdownRow(area: OccupancyAreaMetrics): BreakdownRow {
+  return {
+    rowKey: area.zone,
+    rowLabel: area.zone,
+    areaFilterKey: area.zone,
+    active_count: area.active_count,
+    rented_in_window: area.rented_in_window,
+    avg_price: area.avg_price,
+    avg_price_per_sqm: area.avg_price_per_sqm,
+    avg_days_on_market: area.avg_days_on_market,
+    median_days_on_market: area.median_days_on_market,
+    avg_waiting_days: area.avg_waiting_days,
+    turnover_30d: area.turnover_30d,
+    turnover_rented_30d: area.turnover_rented_30d,
+    turnover_inventory_basis: area.turnover_inventory_basis,
+    estimated_occupancy_pct: area.estimated_occupancy_pct,
+  };
+}
+
+function segmentToBreakdownRow(
+  segment: OccupancySegmentMetrics,
+  group: OccupancySegmentGroupId,
+  t: (key: string) => string,
+): BreakdownRow {
+  return {
+    rowKey: segment.segment_id,
+    rowLabel: segmentLabel(t, group, segment.segment_id),
+    active_count: segment.active_count,
+    rented_in_window: segment.rented_in_window,
+    avg_price: segment.avg_price,
+    avg_price_per_sqm: segment.avg_price_per_sqm,
+    avg_days_on_market: segment.avg_days_on_market,
+    median_days_on_market: segment.median_days_on_market,
+    avg_waiting_days: segment.avg_waiting_days,
+    turnover_30d: segment.turnover_30d,
+    turnover_rented_30d: segment.turnover_rented_30d,
+    turnover_inventory_basis: segment.turnover_inventory_basis,
+    estimated_occupancy_pct: segment.estimated_occupancy_pct,
+  };
+}
+
+function segmentLabel(
+  t: (key: string) => string,
+  group: OccupancySegmentGroupId,
+  segmentId: string,
+): string {
+  return t(`occupancy.segments.${group}.${segmentId}`);
+}
+
 function ListingStatusBadge({
   status,
   label,
@@ -223,8 +382,10 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const [mapListings, setMapListings] = useState<OccupancyMapListing[]>([]);
   const [diffFilter, setDiffFilter] = useState<DiffFilter>("all");
   const [diffPage, setDiffPage] = useState(0);
-  const [areasPage, setAreasPage] = useState(0);
+  const [breakdownGroup, setBreakdownGroup] = useState<BreakdownGroupId>("zone");
+  const [breakdownPage, setBreakdownPage] = useState(0);
   const [metricsAreaFilter, setMetricsAreaFilter] = useState<"all" | string>("all");
+  const [metricsPeriod, setMetricsPeriod] = useState<OccupancyMetricsPeriod>(readStoredMetricsPeriod);
   const [citySlug, setCitySlug] = useState<OccupancyCitySlug>(readStoredCity);
   const cityConfig = getOccupancyCityConfig(citySlug);
   const occupancyMarket = cityConfig.market;
@@ -237,13 +398,14 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const [error, setError] = useState<string | null>(null);
   const [lastRefreshSummary, setLastRefreshSummary] = useState<string | null>(null);
 
-  const load = useCallback(async (asOf?: string | null, portalArg?: OccupancyPortal, cityArg?: OccupancyCitySlug) => {
+  const load = useCallback(async (asOf?: string | null, portalArg?: OccupancyPortal, cityArg?: OccupancyCitySlug, periodArg?: OccupancyMetricsPeriod) => {
     const activePortal = portalArg ?? portal;
     const activeCity = cityArg ?? citySlug;
+    const activePeriod = periodArg ?? metricsPeriod;
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchOccupancyMetrics(asOf, activePortal, activeCity);
+      const data = await fetchOccupancyMetrics(asOf, activePortal, activeCity, activePeriod);
       setMetrics(data.metrics);
       setListingsPreview(data.listings_preview);
       setSnapshotDiff(data.snapshot_diff);
@@ -252,29 +414,34 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
       setSelectedSnapshotAt(data.selected_snapshot_at);
       setPortal(data.selected_portal);
       setCitySlug(data.selected_city);
+      setMetricsPeriod(data.selected_metrics_period);
       setDiffFilter("all");
     } catch (err) {
       setError(err instanceof Error ? err.message : t("occupancy.loadError"));
     } finally {
       setLoading(false);
     }
-  }, [portal, citySlug, t]);
+  }, [portal, citySlug, metricsPeriod, t]);
 
   useEffect(() => {
-    void load(selectedSnapshotAt, portal, citySlug);
-  }, [load, selectedSnapshotAt, portal, citySlug]);
+    void load(selectedSnapshotAt, portal, citySlug, metricsPeriod);
+  }, [load, selectedSnapshotAt, portal, citySlug, metricsPeriod]);
 
   useEffect(() => {
     setDiffPage(0);
   }, [diffFilter, selectedSnapshotAt, snapshotDiff?.current_fetched_at]);
 
   useEffect(() => {
-    setAreasPage(0);
-  }, [citySlug, portal, selectedSnapshotAt, metrics?.updated_at]);
+    setBreakdownPage(0);
+  }, [citySlug, portal, selectedSnapshotAt, metricsPeriod, metrics?.updated_at]);
 
   useEffect(() => {
     setMetricsAreaFilter("all");
   }, [citySlug, portal, selectedSnapshotAt, metrics?.updated_at]);
+
+  useEffect(() => {
+    setBreakdownPage(0);
+  }, [breakdownGroup, citySlug, portal, selectedSnapshotAt, metrics?.updated_at]);
 
   const handleRefresh = async () => {
     setRefreshing(true);
@@ -286,10 +453,10 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
         city: citySlug,
         onProgress: (progress) => setRefreshProgress(progress),
       });
-      setMetrics(result.metrics);
-      setListingsPreview(result.listings_preview);
       setSelectedSnapshotAt(null);
-      const latest = await fetchOccupancyMetrics(null, portal, citySlug);
+      const latest = await fetchOccupancyMetrics(null, portal, citySlug, metricsPeriod);
+      setMetrics(latest.metrics);
+      setListingsPreview(latest.listings_preview);
       setSnapshotDiff(latest.snapshot_diff);
       setMapListings(latest.map_listings);
       setAvailableSnapshots(latest.available_snapshots);
@@ -340,6 +507,13 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
     setDiffPage(0);
   };
 
+  const handleMetricsPeriodChange = (next: OccupancyMetricsPeriod) => {
+    if (next === metricsPeriod) return;
+    window.localStorage.setItem(OCCUPANCY_METRICS_PERIOD_STORAGE_KEY, next);
+    setMetricsPeriod(next);
+    setBreakdownPage(0);
+  };
+
   const handlePortalChange = (next: OccupancyPortal) => {
     if (next === portal) return;
     window.localStorage.setItem(OCCUPANCY_PORTAL_STORAGE_KEY, next);
@@ -357,7 +531,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
     snapshotDiff?.listings.filter((l) => diffFilter === "all" || l.change_status === diffFilter) ??
     [];
 
-  const diffPageSize = 10;
+  const diffPageSize = 5;
   const diffPageCount = Math.ceil(filteredDiffListings.length / diffPageSize) || 1;
   const pagedDiffListings = filteredDiffListings.slice(
     diffPage * diffPageSize,
@@ -365,24 +539,42 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   );
 
   const areas = metrics?.areas ?? [];
+  const breakdownRows = useMemo((): BreakdownRow[] => {
+    if (!metrics) return [];
+    if (breakdownGroup === "zone") {
+      return areas.map(areaToBreakdownRow);
+    }
+    return (metrics.segments?.[breakdownGroup] ?? []).map((segment) =>
+      segmentToBreakdownRow(segment, breakdownGroup, t),
+    );
+  }, [areas, breakdownGroup, metrics, t]);
+
+  const breakdownPageSize = 5;
+  const breakdownPageCount = Math.ceil(breakdownRows.length / breakdownPageSize) || 1;
+  const pagedBreakdownRows = breakdownRows.slice(
+    breakdownPage * breakdownPageSize,
+    breakdownPage * breakdownPageSize + breakdownPageSize,
+  );
+
+  useEffect(() => {
+    setBreakdownPage((current) => Math.min(current, Math.max(0, breakdownPageCount - 1)));
+  }, [breakdownPageCount]);
+
   const kpiMetrics = useMemo((): OccupancyKpiSlice | null => {
     if (!metrics) return null;
     if (metricsAreaFilter === "all") return kpiSliceFromCity(metrics);
     const area = areas.find((entry) => entry.zone === metricsAreaFilter);
     return area ? kpiSliceFromArea(area, metrics.occupancy_window_days) : kpiSliceFromCity(metrics);
   }, [areas, metrics, metricsAreaFilter]);
-  const areasPageSize = 10;
-  const areasPageCount = Math.ceil(areas.length / areasPageSize) || 1;
-  const pagedAreas = areas.slice(
-    areasPage * areasPageSize,
-    areasPage * areasPageSize + areasPageSize,
-  );
 
-  useEffect(() => {
-    setAreasPage((current) => Math.min(current, Math.max(0, areasPageCount - 1)));
-  }, [areasPageCount]);
+  const occupancyPeriodLabel = metrics
+    ? metricsPeriodTableLabel(metricsPeriod, metrics.occupancy_window_days, t)
+    : "";
+  const turnoverPeriodLabel = metrics
+    ? metricsPeriodTableLabel(metricsPeriod, metrics.turnover_window_days, t)
+    : "";
 
-  const diffFilters: Array<{ id: DiffFilter; label: string; count?: number }> = snapshotDiff
+  const diffFilters: Array<{ id: DiffFilter; label: string; count: number }> = snapshotDiff
     ? [
         { id: "all", label: t("occupancy.diff.filterAll"), count: snapshotDiff.listings.length },
         {
@@ -887,25 +1079,91 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                 ? t("occupancy.kpi.allCity")
                 : metricsAreaFilter}
             </p>
-            {areas.length > 0 ? (
-              <label className="inline-flex items-center gap-2 text-sm text-neutral-600" htmlFor="occupancy-metrics-area">
-                <span>{t("occupancy.kpi.areaFilter")}</span>
-                <select
-                  id="occupancy-metrics-area"
-                  value={metricsAreaFilter}
-                  onChange={(e) => setMetricsAreaFilter(e.target.value)}
-                  className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
-                >
-                  <option value="all">{t("occupancy.kpi.allCity")}</option>
-                  {areas.map((area) => (
-                    <option key={area.zone} value={area.zone}>
-                      {area.zone}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            ) : null}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-sm text-neutral-600">{t("occupancy.kpi.metricsPeriod")}</span>
+                {METRICS_PERIOD_OPTIONS.map(({ id, labelKey }) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => handleMetricsPeriodChange(id)}
+                    className={cn(
+                      "rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
+                      metricsPeriod === id
+                        ? "border-neutral-900 bg-neutral-900 text-white"
+                        : "border-surface-border/60 bg-neutral-50 text-neutral-600 hover:text-neutral-800",
+                    )}
+                  >
+                    {t(`occupancy.kpi.${labelKey}`)}
+                  </button>
+                ))}
+              </div>
+              {areas.length > 0 ? (
+                <label className="inline-flex items-center gap-2 text-sm text-neutral-600" htmlFor="occupancy-metrics-area">
+                  <span>{t("occupancy.kpi.areaFilter")}</span>
+                  <select
+                    id="occupancy-metrics-area"
+                    value={metricsAreaFilter}
+                    onChange={(e) => setMetricsAreaFilter(e.target.value)}
+                    className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                  >
+                    <option value="all">{t("occupancy.kpi.allCity")}</option>
+                    {areas.map((area) => (
+                      <option key={area.zone} value={area.zone}>
+                        {area.zone}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ) : null}
+            </div>
           </div>
+
+          {!metrics.flow_metrics_ready ? (
+            <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+              {viewingHistorical
+                ? t("occupancy.needsSnapshotsHistorical")
+                : t("occupancy.needsSnapshots")}
+            </div>
+          ) : metricsPeriod === "longest" ? (
+            <div className="rounded-xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-950">
+              <p>
+                {t("occupancy.kpi.longestPeriodBanner", {
+                  from: metrics.tracking_started_at
+                    ? formatWhen(metrics.tracking_started_at, dateLocale)
+                    : "—",
+                  to: metrics.tracking_ended_at
+                    ? formatWhen(metrics.tracking_ended_at, dateLocale)
+                    : "—",
+                  days: metrics.tracking_days,
+                  snapshotDays: metrics.tracking_snapshot_days,
+                })}
+              </p>
+              <p className="mt-2 font-mono text-xs">
+                {t("occupancy.kpi.longestPeriodMathOccupancy", {
+                  rented: kpiMetrics.turnover_rented_30d,
+                  inventory: kpiMetrics.turnover_inventory_basis ?? kpiMetrics.active_count,
+                  pct: formatPct(kpiMetrics.estimated_occupancy_pct),
+                })}
+              </p>
+              <p className="mt-1 font-mono text-xs">
+                {t("occupancy.kpi.longestPeriodMathTurnover", {
+                  rented: kpiMetrics.turnover_rented_30d,
+                  inventory: kpiMetrics.turnover_inventory_basis ?? kpiMetrics.active_count,
+                  turnover: formatTurnover(kpiMetrics.turnover_30d),
+                })}
+              </p>
+            </div>
+          ) : metrics.tracking_days < metrics.occupancy_target_days ? (
+            <div className="rounded-xl border border-amber-200/80 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+              {t("occupancy.earlyTrackingBanner", {
+                tracking: metrics.tracking_days,
+                snapshotDays: metrics.tracking_snapshot_days,
+                occupancy: metrics.occupancy_window_days,
+                target: metrics.occupancy_target_days,
+              })}
+            </div>
+          ) : null}
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <KpiCard
@@ -918,111 +1176,187 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
               hint={t("occupancy.kpi.domHint")}
             />
             <KpiCard
-              label={t("occupancy.kpi.turnover")}
+              label={t("occupancy.kpi.turnover", { period: turnoverPeriodLabel })}
               value={formatTurnover(kpiMetrics.turnover_30d)}
+              valueTone={turnoverTone(kpiMetrics.turnover_30d)}
               hint={t("occupancy.kpi.turnoverHint", {
                 rented: kpiMetrics.turnover_rented_30d,
                 inventory: kpiMetrics.turnover_inventory_basis ?? kpiMetrics.active_count,
+                days: metrics.turnover_window_days,
               })}
             />
             <KpiCard
-              label={t("occupancy.kpi.occupancy", { days: kpiMetrics.occupancy_window_days })}
+              label={t("occupancy.kpi.occupancy", { period: occupancyPeriodLabel })}
               value={formatPct(kpiMetrics.estimated_occupancy_pct)}
-              hint={t("occupancy.kpi.occupancyHint")}
+              valueTone={occupancyTone(kpiMetrics.estimated_occupancy_pct)}
+              hint={t("occupancy.kpi.occupancyHint", {
+                period: occupancyPeriodLabel,
+              })}
             />
           </div>
 
           <div className="card overflow-hidden">
             <div className="border-b border-surface-border/60 px-6 py-4">
-              <div className="flex flex-wrap items-start justify-between gap-2">
+              <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-base font-semibold text-neutral-900">{t("occupancy.areasTitle")}</h3>
-                  <p className="text-sm text-neutral-600">{t("occupancy.areasSubtitle")}</p>
+                  <h3 className="text-base font-semibold text-neutral-900">{t("occupancy.breakdownTitle")}</h3>
+                  <p className="text-sm text-neutral-600">{t("occupancy.breakdownSubtitle")}</p>
+                  {breakdownRows.length > 0 ? (
+                    <p className="mt-1 text-xs text-neutral-500">
+                      {t("occupancy.breakdownRowCount", { count: breakdownRows.length })}
+                      {" · "}
+                      {t("occupancy.metricLegend")}
+                    </p>
+                  ) : null}
                 </div>
-                {areas.length > 0 ? (
-                  <p className="text-xs text-neutral-500">
-                    {t("occupancy.removals.total", { count: areas.length })}
-                  </p>
-                ) : null}
+                <div className="flex flex-wrap gap-2">
+                  {BREAKDOWN_GROUPS.map(({ id, labelKey }) => (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setBreakdownGroup(id)}
+                      className={cn(
+                        "rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
+                        breakdownGroup === id
+                          ? "border-neutral-900 bg-neutral-900 text-white"
+                          : "border-surface-border/60 bg-neutral-50 text-neutral-600 hover:text-neutral-800",
+                      )}
+                    >
+                      {t(`occupancy.${labelKey}`)}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm">
                 <thead>
                   <tr className="border-b border-surface-border/40 text-left text-xs uppercase tracking-wide text-neutral-500">
-                    <th className="px-6 py-3">{t("occupancy.table.zone")}</th>
+                    <th className="px-6 py-3">
+                      {breakdownGroup === "zone"
+                        ? t("occupancy.table.zone")
+                        : t("occupancy.table.segment")}
+                    </th>
                     <th className="px-4 py-3">{t("occupancy.table.active")}</th>
                     <th className="px-4 py-3">
-                      {t("occupancy.table.rented", { days: metrics.occupancy_window_days })}
+                      {t("occupancy.table.rented", { period: occupancyPeriodLabel })}
                     </th>
                     <th className="px-4 py-3">{t("occupancy.table.avgRent")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.avgRentPerSqm")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.avgDom")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.medianDom")}</th>
-                    <th className="px-4 py-3" title={t("occupancy.kpi.turnoverHint", {
-                      rented: metrics.turnover_rented_30d,
-                      inventory: metrics.turnover_inventory_basis ?? metrics.active_count,
-                    })}>
-                      {t("occupancy.table.turnover")}
+                    <th
+                      className="px-4 py-3 cursor-help"
+                      title={t("occupancy.table.turnoverHint", {
+                        days: metrics.turnover_window_days,
+                        period: turnoverPeriodLabel,
+                      })}
+                    >
+                      {t("occupancy.table.turnover", { period: turnoverPeriodLabel })}
                     </th>
-                    <th className="px-6 py-3">{t("occupancy.table.occupancy")}</th>
+                    <th
+                      className="px-4 py-3 cursor-help"
+                      title={t("occupancy.table.avgWaitingDaysHint", {
+                        period: occupancyPeriodLabel,
+                      })}
+                    >
+                      {t("occupancy.table.avgWaitingDays", { period: occupancyPeriodLabel })}
+                    </th>
+                    <th
+                      className="px-6 py-3 cursor-help"
+                      title={t("occupancy.table.occupancyHint", {
+                        period: occupancyPeriodLabel,
+                      })}
+                    >
+                      {t("occupancy.table.occupancy")} · {occupancyPeriodLabel}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {areas.length === 0 ? (
+                  {breakdownRows.length === 0 ? (
                     <tr>
-                      <td colSpan={9} className="px-6 py-8 text-center text-neutral-500">
-                        {t("occupancy.noAreas")}
+                      <td colSpan={10} className="px-6 py-8 text-center text-neutral-500">
+                        {breakdownGroup === "zone" ? t("occupancy.noAreas") : t("occupancy.noSegments")}
                       </td>
                     </tr>
                   ) : (
-                    pagedAreas.map((area) => (
+                    pagedBreakdownRows.map((row) => (
                       <tr
-                        key={area.zone}
-                        onClick={() => setMetricsAreaFilter(area.zone)}
+                        key={row.rowKey}
+                        onClick={
+                          row.areaFilterKey
+                            ? () => setMetricsAreaFilter(row.areaFilterKey!)
+                            : undefined
+                        }
                         className={cn(
-                          "cursor-pointer border-b border-surface-border/20 text-neutral-700 last:border-0 hover:bg-neutral-50/80",
-                          metricsAreaFilter === area.zone && "bg-sky-50",
+                          "border-b border-surface-border/20 text-neutral-700 last:border-0",
+                          row.areaFilterKey && "cursor-pointer hover:bg-neutral-50/80",
+                          row.areaFilterKey &&
+                            metricsAreaFilter === row.areaFilterKey &&
+                            "bg-sky-50",
                         )}
                       >
-                        <td className="px-6 py-3 font-medium text-neutral-800">{area.zone}</td>
-                        <td className="px-4 py-3">{area.active_count}</td>
-                        <td className="px-4 py-3">{area.rented_in_window}</td>
+                        <td className="px-6 py-3 font-medium text-neutral-800">{row.rowLabel}</td>
+                        <td className="px-4 py-3">{row.active_count}</td>
+                        <td className="px-4 py-3">{row.rented_in_window}</td>
                         <td className="px-4 py-3">
-                          {area.avg_price != null ? fmtMoney(area.avg_price, occupancyMarket) : "—"}
+                          {row.avg_price != null ? fmtMoney(row.avg_price, occupancyMarket) : "—"}
                         </td>
                         <td className="px-4 py-3 text-neutral-700">
-                          {area.avg_price_per_sqm != null
-                            ? `${fmtMoney(area.avg_price_per_sqm, occupancyMarket)}${perSqmLabel}`
+                          {row.avg_price_per_sqm != null
+                            ? `${fmtMoney(row.avg_price_per_sqm, occupancyMarket)}${perSqmLabel}`
                             : "—"}
                         </td>
-                        <td className="px-4 py-3">{formatDays(area.avg_days_on_market)}</td>
-                        <td className="px-4 py-3">{formatDays(area.median_days_on_market)}</td>
+                        <td className="px-4 py-3">{formatDays(row.avg_days_on_market)}</td>
+                        <td className="px-4 py-3">{formatDays(row.median_days_on_market)}</td>
                         <td
                           className="px-4 py-3"
-                          title={t("occupancy.kpi.turnoverHint", {
-                            rented: area.turnover_rented_30d,
-                            inventory: area.turnover_inventory_basis ?? area.active_count,
+                          title={t("occupancy.table.turnoverHint", {
+                            rented: row.turnover_rented_30d,
+                            inventory: row.turnover_inventory_basis ?? row.active_count,
+                            days: metrics.turnover_window_days,
+                            period: turnoverPeriodLabel,
                           })}
                         >
-                          {formatTurnover(area.turnover_30d)}
+                          <MetricValue
+                            value={formatTurnover(row.turnover_30d)}
+                            tone={turnoverTone(row.turnover_30d)}
+                          />
                         </td>
-                        <td className="px-6 py-3">{formatPct(area.estimated_occupancy_pct)}</td>
+                        <td
+                          className="px-4 py-3"
+                          title={t("occupancy.table.avgWaitingDaysHint", {
+                            period: occupancyPeriodLabel,
+                          })}
+                        >
+                          {formatDays(row.avg_waiting_days)}
+                        </td>
+                        <td
+                          className="px-6 py-3"
+                          title={t("occupancy.table.occupancyHint", {
+                            period: occupancyPeriodLabel,
+                          })}
+                        >
+                          <MetricValue
+                            value={formatPct(row.estimated_occupancy_pct)}
+                            tone={occupancyTone(row.estimated_occupancy_pct)}
+                          />
+                        </td>
                       </tr>
                     ))
                   )}
                 </tbody>
               </table>
             </div>
-            {areas.length > areasPageSize ? (
+            {breakdownRows.length > breakdownPageSize ? (
               <div className="flex items-center justify-between border-t border-surface-border/40 px-6 py-3 text-xs text-neutral-500">
                 <button
                   type="button"
-                  onClick={() => setAreasPage((p) => Math.max(0, p - 1))}
-                  disabled={areasPage <= 0}
+                  onClick={() => setBreakdownPage((p) => Math.max(0, p - 1))}
+                  disabled={breakdownPage <= 0}
                   className={cn(
                     "rounded-lg border px-3 py-1.5",
-                    areasPage <= 0
+                    breakdownPage <= 0
                       ? "border-surface-border/60 bg-neutral-50 text-neutral-400"
                       : "border-surface-border/60 bg-neutral-50 hover:text-neutral-800",
                   )}
@@ -1031,23 +1365,23 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                 </button>
                 <span>
                   {t("occupancy.diff.paginationPage", {
-                    current: areasPage + 1,
-                    total: areasPageCount,
+                    current: breakdownPage + 1,
+                    total: breakdownPageCount,
                   })}
                   {" · "}
                   {t("occupancy.removals.showing", {
-                    from: areasPage * areasPageSize + 1,
-                    to: Math.min((areasPage + 1) * areasPageSize, areas.length),
-                    total: areas.length,
+                    from: breakdownPage * breakdownPageSize + 1,
+                    to: Math.min((breakdownPage + 1) * breakdownPageSize, breakdownRows.length),
+                    total: breakdownRows.length,
                   })}
                 </span>
                 <button
                   type="button"
-                  onClick={() => setAreasPage((p) => Math.min(areasPageCount - 1, p + 1))}
-                  disabled={areasPage >= areasPageCount - 1}
+                  onClick={() => setBreakdownPage((p) => Math.min(breakdownPageCount - 1, p + 1))}
+                  disabled={breakdownPage >= breakdownPageCount - 1}
                   className={cn(
                     "rounded-lg border px-3 py-1.5",
-                    areasPage >= areasPageCount - 1
+                    breakdownPage >= breakdownPageCount - 1
                       ? "border-surface-border/60 bg-neutral-50 text-neutral-400"
                       : "border-surface-border/60 bg-neutral-50 hover:text-neutral-800",
                   )}

@@ -84,13 +84,12 @@ function updateTrackedFields(
   };
 }
 
-function markRented(tracked: TrackedRentalListing): TrackedRentalListing {
-  const rentedAt = tracked.last_seen_at;
+function markRented(tracked: TrackedRentalListing, removedAt: string): TrackedRentalListing {
   return {
     ...tracked,
     status: "presumed_rented",
-    rented_at: rentedAt,
-    days_on_market: daysBetween(tracked.first_seen_at, rentedAt),
+    rented_at: removedAt,
+    days_on_market: daysBetween(tracked.first_seen_at, removedAt),
   };
 }
 
@@ -131,7 +130,7 @@ export function rebuildRegistryFromSnapshots(
     for (const [id, tracked] of Object.entries(listings)) {
       if (tracked.status !== "active") continue;
       if (currentIds.has(id)) continue;
-      listings[id] = markRented(tracked);
+      listings[id] = markRented(tracked, fetchedAt);
     }
   }
 
@@ -307,7 +306,7 @@ export async function runOccupancySnapshot(
   for (const [id, tracked] of Object.entries(listings)) {
     if (tracked.status !== "active") continue;
     if (currentIds.has(id)) continue;
-    const rented = markRented(tracked);
+    const rented = markRented(tracked, fetchedAt);
     listings[id] = rented;
     rentedCount++;
     await logPresumedRentalRemoval(rented, fetchedAt, portal, citySlug, currency);

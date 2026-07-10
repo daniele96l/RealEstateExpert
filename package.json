@@ -18,6 +18,8 @@
     "occupancy:poll:brno": "tsx scripts/poll-occupancy.ts --city=brno",
     "occupancy:seed:brno": "tsx scripts/seed-occupancy-brno.ts",
     "data:sync-immobiliare": "tsx scripts/sync-prod-immobiliare.ts",
+    "data:sync-brno": "tsx scripts/sync-prod-brno.ts",
+    "data:sync-occupancy": "npm run data:sync-immobiliare && npm run data:sync-brno",
     "build:reggio-zones": "tsx scripts/build-reggio-zone-polygons.ts",
     "listings:test-providers": "tsx scripts/test-listing-providers.ts"
   },

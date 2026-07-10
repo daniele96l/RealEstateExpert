@@ -11,11 +11,44 @@ import {
   type OccupancyPortal,
 } from "./constants";
 import { getOccupancyCityConfig, type OccupancyCitySlug } from "./cities";
-import { loadSnapshotsInWindow } from "./registry";
+import { loadAllSnapshots, loadSnapshotsInWindow } from "./registry";
+import { computeSegmentGroups } from "./segment-metrics";
 import { resolveListingZone } from "./zone";
+import { aggregateOccupancyListings, averageMetricValues } from "./aggregate";
+import {
+  resolveOccupancyMetricsContext,
+  zoneInventoryBasis,
+  type OccupancyMetricsContext,
+} from "./tracking-window";
+import {
+  occupancyMetricsPeriodDays,
+  type OccupancyMetricsPeriod,
+} from "./metrics-period";
 
 export interface ComputeOccupancyMetricsOptions {
   asOf?: string;
+  period?: OccupancyMetricsPeriod;
+}
+
+function applyMetricsPeriod(
+  ctx: OccupancyMetricsContext,
+  period?: OccupancyMetricsPeriod,
+): OccupancyMetricsContext {
+  if (!ctx.flow_metrics_ready) return ctx;
+  if (!period) return ctx;
+  if (period === "longest") {
+    return {
+      ...ctx,
+      occupancy_window_days: ctx.tracking_days,
+      turnover_window_days: ctx.tracking_days,
+    };
+  }
+  const windowDays = Math.min(occupancyMetricsPeriodDays(period), ctx.tracking_days);
+  return {
+    ...ctx,
+    occupancy_window_days: windowDays,
+    turnover_window_days: windowDays,
+  };
 }
 
 function resolveAsOfMs(asOf?: string): number {
@@ -24,93 +57,35 @@ function resolveAsOfMs(asOf?: string): number {
   return Number.isFinite(ms) ? ms : Date.now();
 }
 
-function median(values: number[]): number | null {
-  if (!values.length) return null;
-  const sorted = [...values].sort((a, b) => a - b);
-  const mid = Math.floor(sorted.length / 2);
-  if (sorted.length % 2 === 0) {
-    return Math.round((sorted[mid - 1]! + sorted[mid]!) / 2);
-  }
-  return sorted[mid]!;
-}
-
-function average(values: number[]): number | null {
-  if (!values.length) return null;
-  return Math.round(values.reduce((sum, v) => sum + v, 0) / values.length);
-}
-
-function withinDays(iso: string | null, days: number, now = Date.now()): boolean {
-  if (!iso) return false;
-  const cutoff = now - days * 24 * 60 * 60 * 1000;
-  return new Date(iso).getTime() >= cutoff;
-}
-
-function rentedInWindow(listing: TrackedRentalListing, windowDays: number, now = Date.now()): boolean {
-  return (
-    listing.status === "presumed_rented" &&
-    listing.rented_at != null &&
-    withinDays(listing.rented_at, windowDays, now)
-  );
-}
-
-function aggregateListings(
-  items: TrackedRentalListing[],
-  windowDays: number,
-  turnoverDays: number,
-  avgActiveInventory: number | null,
-  now = Date.now(),
-): Omit<OccupancyAreaMetrics, "zone"> {
-  const active = items.filter((l) => l.status === "active");
-  const rentedWindow = items.filter((l) => rentedInWindow(l, windowDays, now));
-  const domValues = rentedWindow
-    .map((l) => l.days_on_market)
-    .filter((d): d is number => d != null);
-
-  const priceValues = rentedWindow.map((l) => l.price).filter((p) => p > 0);
-  const pricePerSqmValues = rentedWindow
-    .map((l) => (l.sqm != null && l.sqm > 0 ? l.price / l.sqm : null))
-    .filter((v): v is number => v != null && v > 0);
-
-  const rentedTurnover = items.filter((l) => rentedInWindow(l, turnoverDays, now)).length;
-  const inventoryBasis =
-    avgActiveInventory != null && avgActiveInventory > 0
-      ? avgActiveInventory
-      : active.length > 0
-        ? active.length
-        : null;
-  const turnover =
-    inventoryBasis != null && inventoryBasis > 0
-      ? Math.round((rentedTurnover / inventoryBasis) * 100) / 100
-      : null;
-
-  const denominator = active.length + rentedWindow.length;
-  const occupancy =
-    denominator > 0 ? Math.round((rentedWindow.length / denominator) * 1000) / 10 : null;
-
-  return {
-    active_count: active.length,
-    rented_in_window: rentedWindow.length,
-    avg_price: average(priceValues),
-    avg_price_per_sqm: average(pricePerSqmValues),
-    avg_days_on_market: average(domValues),
-    median_days_on_market: median(domValues),
-    turnover_30d: turnover,
-    turnover_rented_30d: rentedTurnover,
-    turnover_inventory_basis: inventoryBasis,
-    estimated_occupancy_pct: occupancy,
-  };
-}
-
 async function avgActiveInventoryLastDays(
   days: number,
   asOfMs: number,
   citySlug: Parameters<typeof loadSnapshotsInWindow>[2],
   portal: OccupancyPortal,
 ): Promise<number | null> {
+  if (days <= 0) return null;
   const snapshots = await loadSnapshotsInWindow(days, asOfMs, citySlug, portal);
   if (!snapshots.length) return null;
   const counts = snapshots.map((s) => s.active_count);
-  return average(counts);
+  return averageMetricValues(counts);
+}
+
+function aggregateOptions(
+  ctx: OccupancyMetricsContext,
+  occupancyInventoryBasis: number | null,
+  turnoverInventoryBasis: number | null,
+  period?: OccupancyMetricsPeriod,
+) {
+  const windowStartMs =
+    period === "longest" && ctx.tracking_started_at
+      ? new Date(ctx.tracking_started_at).getTime()
+      : null;
+  return {
+    flowMetricsReady: ctx.flow_metrics_ready,
+    occupancyInventoryBasis,
+    turnoverInventoryBasis,
+    windowStartMs,
+  };
 }
 
 export async function computeOccupancyMetrics(
@@ -126,18 +101,46 @@ export async function computeOccupancyMetrics(
         ? "brno"
         : "reggio_calabria");
   const cityConfig = getOccupancyCityConfig(citySlug);
-  const asOfMs = resolveAsOfMs(options?.asOf ?? registry.updated_at);
+  const allSnapshots = await loadAllSnapshots(citySlug, portal);
+  const asOfMs = resolveAsOfMs(
+    options?.asOf ?? allSnapshots[allSnapshots.length - 1]?.fetched_at ?? registry.updated_at,
+  );
+  const ctx = applyMetricsPeriod(
+    resolveOccupancyMetricsContext(allSnapshots, asOfMs),
+    options?.period,
+  );
+
   const all = Object.values(registry.listings).map((listing) => ({
     ...listing,
     zone: resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
   }));
-  const avgActive = await avgActiveInventoryLastDays(OCCUPANCY_TURNOVER_DAYS, asOfMs, citySlug, portal);
-  const cityTotals = aggregateListings(
-    all,
-    OCCUPANCY_WINDOW_DAYS,
-    OCCUPANCY_TURNOVER_DAYS,
-    avgActive,
+
+  const avgActiveOccupancy = await avgActiveInventoryLastDays(
+    ctx.occupancy_window_days,
     asOfMs,
+    citySlug,
+    portal,
+  );
+  const avgActiveTurnover = await avgActiveInventoryLastDays(
+    ctx.turnover_window_days,
+    asOfMs,
+    citySlug,
+    portal,
+  );
+
+  const cityAggregateOptions = aggregateOptions(
+    ctx,
+    avgActiveOccupancy,
+    avgActiveTurnover,
+    options?.period,
+  );
+  const cityTotals = aggregateOccupancyListings(
+    all,
+    ctx.occupancy_window_days,
+    ctx.turnover_window_days,
+    avgActiveTurnover,
+    asOfMs,
+    cityAggregateOptions,
   );
 
   const byZone = new Map<string, TrackedRentalListing[]>();
@@ -149,11 +152,49 @@ export async function computeOccupancyMetrics(
   }
 
   const areas: OccupancyAreaMetrics[] = [...byZone.entries()]
-    .map(([zone, items]) => ({
-      zone,
-      ...aggregateListings(items, OCCUPANCY_WINDOW_DAYS, OCCUPANCY_TURNOVER_DAYS, null, asOfMs),
-    }))
+    .map(([zone, items]) => {
+      const zoneActive = items.filter((l) => l.status === "active").length;
+      const zoneTurnoverBasis = zoneInventoryBasis(
+        avgActiveTurnover,
+        cityTotals.active_count,
+        zoneActive,
+      );
+      const zoneOccupancyBasis = zoneInventoryBasis(
+        avgActiveOccupancy,
+        cityTotals.active_count,
+        zoneActive,
+      );
+      return {
+        zone,
+        ...aggregateOccupancyListings(
+          items,
+          ctx.occupancy_window_days,
+          ctx.turnover_window_days,
+          zoneTurnoverBasis,
+          asOfMs,
+          {
+            ...cityAggregateOptions,
+            occupancyInventoryBasis: zoneOccupancyBasis,
+            turnoverInventoryBasis: zoneTurnoverBasis,
+          },
+        ),
+      };
+    })
     .sort((a, b) => b.active_count - a.active_count || a.zone.localeCompare(b.zone, "it"));
+
+  const segments = computeSegmentGroups(
+    all,
+    cityConfig.market,
+    ctx.occupancy_window_days,
+    ctx.turnover_window_days,
+    asOfMs,
+    {
+      ...cityAggregateOptions,
+      cityActive: cityTotals.active_count,
+      avgActiveOccupancy,
+      avgActiveTurnover,
+    },
+  );
 
   return {
     city: cityConfig.city,
@@ -162,8 +203,17 @@ export async function computeOccupancyMetrics(
     updated_at: registry.updated_at,
     snapshot_count: registry.snapshot_count,
     last_provider: registry.last_provider ?? null,
-    occupancy_window_days: OCCUPANCY_WINDOW_DAYS,
+    tracking_days: ctx.tracking_days,
+    tracking_snapshot_days: ctx.tracking_snapshot_days,
+    tracking_started_at: ctx.tracking_started_at,
+    tracking_ended_at: ctx.tracking_ended_at,
+    flow_metrics_ready: ctx.flow_metrics_ready,
+    occupancy_target_days: ctx.occupancy_target_days,
+    turnover_target_days: ctx.turnover_target_days,
+    turnover_window_days: ctx.turnover_window_days,
+    occupancy_window_days: ctx.occupancy_window_days,
     areas,
+    segments,
     ...cityTotals,
   };
 }
@@ -176,3 +226,6 @@ export async function loadOccupancyMetrics(
   const registry = await loadRegistry(citySlug, portal);
   return computeOccupancyMetrics(registry, { citySlug });
 }
+
+// Re-export constants for callers/tests that referenced them from metrics.
+export { OCCUPANCY_WINDOW_DAYS, OCCUPANCY_TURNOVER_DAYS };

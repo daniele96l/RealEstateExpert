@@ -305,11 +305,13 @@ export async function fetchOccupancyMetrics(
   asOf?: string | null,
   portal?: OccupancyPortal | null,
   city?: string | null,
+  period?: string | null,
 ): Promise<OccupancyDashboardData> {
   const params = new URLSearchParams();
   if (asOf) params.set("asOf", asOf);
   if (portal) params.set("portal", portal);
   if (city) params.set("city", city);
+  if (period) params.set("period", period);
   const query = params.toString();
   const res = await fetch(`/api/occupancy/metrics${query ? `?${query}` : ""}`);
   if (!res.ok) throw new Error(await parseError(res, "Lettura metriche occupancy non riuscita"));

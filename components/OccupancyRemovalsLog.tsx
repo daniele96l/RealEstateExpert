@@ -17,7 +17,7 @@ import { ClipboardList } from "lucide-react";
 
 const OCCUPANCY_PORTAL_STORAGE_KEY = "occupancy-portal";
 const REMOVALS_FETCH_LIMIT = 500;
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 5;
 
 function readStoredPortal(citySlug: OccupancyCitySlug): OccupancyPortal {
   if (typeof window === "undefined") return defaultPortalForCity(citySlug);
