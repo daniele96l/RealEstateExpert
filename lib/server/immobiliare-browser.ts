@@ -125,6 +125,9 @@ export async function withImmobiliareBrowser<T>(
       return await fn(immobiliareSession);
     } catch (err) {
       lastError = err;
+      if (err instanceof ImmobiliareBrowserError && /datadome|captcha/i.test(err.message)) {
+        break;
+      }
       continue;
     } finally {
       await closeBrowserSession({ page, context, browser });

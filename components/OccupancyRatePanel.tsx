@@ -24,15 +24,23 @@ import type {
 import { fmtMoney } from "@/lib/utils";
 import { Activity, CalendarDays, MapPin, RefreshCw } from "lucide-react";
 import OccupancyAreaPriceChart from "@/components/OccupancyAreaPriceChart";
+import { importWithChunkRetry } from "@/lib/chunk-retry-import";
 
-const OccupancyMinimap = dynamic(() => import("@/components/OccupancyMinimap"), {
+const OccupancyMinimap = dynamic(
+  () =>
+    importWithChunkRetry(
+      () => import("./OccupancyMinimap"),
+      "occupancy-minimap-chunk-retry",
+    ),
+  {
   ssr: false,
   loading: () => (
     <div className="flex h-52 items-center justify-center rounded-xl border border-surface-border/60 bg-neutral-50 text-sm text-neutral-500 sm:h-56">
       …
     </div>
   ),
-});
+},
+);
 
 function formatWhen(iso: string | null, locale: string): string {
   if (!iso) return "—";

@@ -136,15 +136,22 @@ export async function fetchMarketHistoryViaScrape(city: string): Promise<{
   let html: string | null = null;
   let lastError: unknown;
 
-  for (const url of urls) {
-    try {
-      html = await withImmobiliareBrowser((session) =>
-        session.fetchHtml(url),
-      );
-      if (html.includes("Prezzo medio")) break;
-    } catch (err) {
-      lastError = err;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    if (attempt > 0) {
+      await new Promise((r) => setTimeout(r, 20_000));
     }
+
+    for (const url of urls) {
+      try {
+        html = await withImmobiliareBrowser((session) => session.fetchHtml(url));
+        if (html.includes("Prezzo medio")) break;
+      } catch (err) {
+        lastError = err;
+      }
+    }
+
+    if (html?.includes("Prezzo medio")) break;
+    html = null;
   }
 
   if (!html || !html.includes("Prezzo medio")) {
