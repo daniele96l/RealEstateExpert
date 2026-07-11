@@ -52,6 +52,7 @@ export async function POST(request: Request) {
                     new_count: result.new_count,
                     rented_count: result.rented_count,
                     snapshot_count: result.registry.snapshot_count,
+                    portal_dates_warning: result.portal_dates_warning ?? null,
                   },
                 })}\n`,
               ),
@@ -88,6 +89,7 @@ export async function POST(request: Request) {
       new_count: result.new_count,
       rented_count: result.rented_count,
       snapshot_count: result.registry.snapshot_count,
+      portal_dates_warning: result.portal_dates_warning ?? null,
     });
   } catch (err) {
     return snapshotErrorResponse(err);

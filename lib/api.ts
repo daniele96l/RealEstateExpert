@@ -314,6 +314,7 @@ export async function refreshOccupancySnapshot(
   new_count: number;
   rented_count: number;
   snapshot_count: number;
+  portal_dates_warning?: string | null;
 }> {
   if (opts?.onProgress) {
     return refreshOccupancySnapshotStream(portal, opts.city, opts.onProgress);
@@ -342,6 +343,7 @@ export async function refreshOccupancySnapshotStream(
   new_count: number;
   rented_count: number;
   snapshot_count: number;
+  portal_dates_warning?: string | null;
 }> {
   const res = await fetch("/api/occupancy/snapshot", {
     method: "POST",
@@ -366,6 +368,7 @@ export async function refreshOccupancySnapshotStream(
     new_count: number;
     rented_count: number;
     snapshot_count: number;
+    portal_dates_warning?: string | null;
   } | null = null;
   const STREAM_IDLE_MS = 120_000;
   let idleTimer: ReturnType<typeof setTimeout> | null = null;

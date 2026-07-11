@@ -112,6 +112,7 @@ def run(pages: int, db_path: Path) -> RunSummary:
                     time.sleep(config.PAGE_DELAY_SECONDS)
 
             if all_listings:
+                enrich_stats: dict[str, int] = {}
                 enriched = enrich_listings_from_details(
                     page,
                     all_listings,
@@ -123,6 +124,7 @@ def run(pages: int, db_path: Path) -> RunSummary:
                         enrich_done=done,
                         enrich_total=total,
                     ),
+                    stats=enrich_stats,
                 )
                 dates_changed = any(
                     enriched_row.listing_published_at != original.listing_published_at

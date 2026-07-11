@@ -193,7 +193,29 @@ def _find_real_estate_by_id(node: Any, listing_id: int) -> dict[str, Any] | None
     return None
 
 
-def _detail_html_from_page(page, detail_url: str) -> str | None:
+def _detail_html_from_page(page, detail_url: str, *, fast: bool = False) -> str | None:
+    from reggio_rentals.browser import is_blocked_page
+
+    context = page.context
+    search_referer = f"{config.BASE_URL}{config.SEARCH_PATH}"
+    try:
+        response = context.request.get(
+            detail_url,
+            headers={
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Referer": search_referer,
+            },
+        )
+        if response.status == 200:
+            html = response.text()
+            if "__NEXT_DATA__" in html and not is_blocked_page(html):
+                return html
+    except Exception as exc:
+        logger.debug("Context detail request failed for %s: %s", detail_url, exc)
+
+    if fast:
+        return None
+
     try:
         in_page = page.evaluate(
             """async (targetUrl) => {
@@ -233,11 +255,14 @@ def enrich_listings_from_details(
     page,
     listings: list[Listing],
     on_progress=None,
+    stats: dict[str, int] | None = None,
 ) -> list[Listing]:
     from dataclasses import replace
     from collections.abc import Callable
 
     dates_by_id: dict[int, tuple[str | None, str | None]] = {}
+    detail_ok = 0
+    consecutive_failures = 0
     listing_ids = sorted({listing.id for listing in listings})
     pending_ids = [
         listing_id
@@ -261,12 +286,23 @@ def enrich_listings_from_details(
             continue
 
         detail_url = f"{config.BASE_URL}/annunci/{listing_id}/"
-        html = _detail_html_from_page(page, detail_url)
+        html = _detail_html_from_page(page, detail_url, fast=True)
         enrich_done += 1
         if progress_cb:
             progress_cb(enrich_done, enrich_total)
         if not html:
+            consecutive_failures += 1
+            if consecutive_failures >= config.DETAIL_ENRICH_MAX_CONSECUTIVE_FAILURES:
+                if stats is not None:
+                    stats["aborted"] = 1
+                logger.warning(
+                    "Stopping detail enrichment after %s consecutive blocked detail pages",
+                    consecutive_failures,
+                )
+                break
             continue
+        consecutive_failures = 0
+        detail_ok += 1
 
         next_data = extract_next_data(html)
         if not next_data:
@@ -280,6 +316,15 @@ def enrich_listings_from_details(
         property_row = _as_dict(properties[0]) if properties else {}
         dates_by_id[listing_id] = extract_listing_dates(real_estate, property_row)
         time.sleep(config.PAGE_DELAY_SECONDS)
+
+    if stats is not None:
+        stats.update(
+            {
+                "pending": enrich_total,
+                "detail_ok": detail_ok,
+                "dates_found": len(dates_by_id),
+            }
+        )
 
     if not dates_by_id:
         return listings

@@ -26,6 +26,7 @@ export interface OccupancySnapshotStreamDoneEvent {
     new_count: number;
     rented_count: number;
     snapshot_count: number;
+    portal_dates_warning?: string | null;
   };
 }
 

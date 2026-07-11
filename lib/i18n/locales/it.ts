@@ -444,6 +444,8 @@ const it = {
       "Metriche dalla data di pubblicazione del portale sugli annunci attualmente visibili. In questa modalità non sono mostrati turnover e occupazione.",
     needsPostedDates:
       "Nessuna data di pubblicazione del portale sugli annunci attivi. Aggiorna i dati o usa un portale che espone le date (es. Sreality).",
+    portalDatesBlockedImmobiliare:
+      "Immobiliare non espone più le date nei risultati di ricerca e blocca le pagine dettaglio (DataDome). Imposta SCRAPER_PROXY_SERVER o APIFY_API_TOKEN in .env.local (fallback Apify: memo23 → crawlerbros → loykos) e riesegui Aggiorna dati.",
     loadError: "Impossibile caricare le metriche",
     refreshError: "Aggiornamento non riuscito",
     refreshSummary: "Caricati {fetched} annunci · {newCount} nuovi · {rented} presumibilmente affittati",

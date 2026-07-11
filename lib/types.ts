@@ -197,6 +197,7 @@ export type ListingsProvider =
   | "direct"
   | "sreality"
   | "reggio_rentals"
+  | "apify_immobiliare"
   | "idealista_scraper"
   | "casa_scraper"
   | "subito_scraper";

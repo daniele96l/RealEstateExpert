@@ -30,6 +30,7 @@
     "@turf/bbox": "^7.3.5",
     "@turf/intersect": "^7.3.5",
     "@turf/voronoi": "^7.3.5",
+    "apify-client": "^2.23.4",
     "cheerio": "^1.2.0",
     "leaflet": "^1.9.4",
     "leaflet-draw": "^1.0.4",

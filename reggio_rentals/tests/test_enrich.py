@@ -31,15 +31,18 @@ def _listing() -> Listing:
     )
 
 
-def test_enrich_listings_from_details_uses_in_page_fetch() -> None:
+def test_enrich_listings_from_details_uses_context_request() -> None:
     detail_json = DETAIL_FIXTURE.read_text(encoding="utf-8")
     detail_html = f'<html><script id="__NEXT_DATA__" type="application/json">{detail_json}</script></html>'
 
+    response = MagicMock()
+    response.status = 200
+    response.text.return_value = detail_html
+
     page = MagicMock()
-    page.evaluate.return_value = {"status": 200, "html": detail_html}
-    page.content.return_value = detail_html
+    page.context.request.get.return_value = response
 
     enriched = enrich_listings_from_details(page, [_listing()])
     assert enriched[0].listing_published_at == "2025-04-22"
     assert enriched[0].listing_updated_at == "2025-08-05"
-    page.goto.assert_not_called()
+    page.context.request.get.assert_called_once()

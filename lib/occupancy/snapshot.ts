@@ -106,6 +106,7 @@ export interface OccupancySnapshotResult {
   fetched_count: number;
   new_count: number;
   rented_count: number;
+  portal_dates_warning?: string | null;
 }
 
 export function rebuildRegistryFromSnapshots(
@@ -392,11 +393,20 @@ export async function runOccupancySnapshot(
 
   reportProgress(totalSteps, maxPages, basics.length, "Completato");
 
+  const portalDatesCount = basics.filter(
+    (listing) => listing.listing_published_at || listing.listing_updated_at,
+  ).length;
+  const portal_dates_warning =
+    portal === "immobiliare_scraper" && basics.length > 0 && portalDatesCount === 0
+      ? "immobiliare_portal_dates_blocked"
+      : null;
+
   return {
     registry: updatedRegistry,
     metrics,
     fetched_count: basics.length,
     new_count: newCount,
     rented_count: rentedCount,
+    portal_dates_warning,
   };
 }

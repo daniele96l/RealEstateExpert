@@ -3,9 +3,18 @@ import path from "path";
 import { promisify } from "util";
 import { execFile } from "child_process";
 import { resolveItalyListingMaxPages } from "@/lib/batch-fetch-pages";
+import {
+  ApifyImmobiliareError,
+  fetchApifyImmobiliareListings,
+  hasApifyToken,
+  publishedDateRatio,
+} from "@/lib/server/apify-immobiliare";
 import { geocodeCity } from "@/lib/server/geocode";
+import { enrichImmobiliareListingDates } from "@/lib/server/immobiliare-listing-dates-fetch";
 import type { CityListingsCache, MapListing } from "@/lib/types";
 import { OCCUPANCY_CITY, OCCUPANCY_MARKET } from "@/lib/occupancy/constants";
+
+const MIN_PUBLISHED_DATE_RATIO = 0.2;
 
 const execFileAsync = promisify(execFile);
 
@@ -206,25 +215,11 @@ async function runScraperWithProgress(
   });
 }
 
-export async function fetchReggioRentalsListings(
-  maxPages?: number,
-  onProgress?: (progress: ReggioRentalsFetchProgress) => void,
+async function buildReggioCache(
+  listings: MapListing[],
+  fetchedAt: string,
+  provider: CityListingsCache["provider"],
 ): Promise<CityListingsCache> {
-  const pages = Math.min(resolveItalyListingMaxPages(maxPages ?? 10), 10);
-  const dbPath = scraperDbPath();
-
-  await runScraperWithProgress(pages, dbPath, onProgress);
-
-  const stdout = await runPythonModule("reggio_rentals.export_db", ["--db", dbPath]);
-  const exported = JSON.parse(stdout) as ReggioRentalsExport;
-  const listings = exported.listings
-    .map(mapRow)
-    .filter((listing): listing is MapListing => listing != null);
-
-  if (!listings.length) {
-    throw new ReggioRentalsScraperError("Scraper returned no rental listings");
-  }
-
   const centerData = await geocodeCity(OCCUPANCY_CITY, OCCUPANCY_MARKET);
   const withCoords = listings.filter((l) => l.lat !== 0 || l.lng !== 0);
   const avgLat =
@@ -239,13 +234,95 @@ export async function fetchReggioRentalsListings(
   return {
     city: "reggio_calabria",
     operation: "rent",
-    fetched_at: exported.fetched_at || new Date().toISOString(),
+    fetched_at: fetchedAt,
     center: {
       lat: centerData.lat || avgLat,
       lng: centerData.lng || avgLng,
       display_name: centerData.display_name ?? OCCUPANCY_CITY,
     },
     listings,
-    provider: "reggio_rentals",
+    provider,
   };
+}
+
+async function fetchReggioRentalsViaPython(
+  pages: number,
+  onProgress?: (progress: ReggioRentalsFetchProgress) => void,
+): Promise<CityListingsCache> {
+  const dbPath = scraperDbPath();
+
+  await runScraperWithProgress(pages, dbPath, onProgress);
+
+  const stdout = await runPythonModule("reggio_rentals.export_db", ["--db", dbPath]);
+  const exported = JSON.parse(stdout) as ReggioRentalsExport;
+  const listings = exported.listings
+    .map(mapRow)
+    .filter((listing): listing is MapListing => listing != null);
+
+  if (!listings.length) {
+    throw new ReggioRentalsScraperError("Scraper returned no rental listings");
+  }
+
+  return buildReggioCache(
+    listings,
+    exported.fetched_at || new Date().toISOString(),
+    "reggio_rentals",
+  );
+}
+
+function needsApifyFallback(listings: MapListing[]): boolean {
+  return publishedDateRatio(listings) < MIN_PUBLISHED_DATE_RATIO;
+}
+
+export async function fetchReggioRentalsListings(
+  maxPages?: number,
+  onProgress?: (progress: ReggioRentalsFetchProgress) => void,
+): Promise<CityListingsCache> {
+  const pages = Math.min(resolveItalyListingMaxPages(maxPages ?? 10), 10);
+  let cache: CityListingsCache | null = null;
+  let scraperError: ReggioRentalsScraperError | null = null;
+
+  try {
+    cache = await fetchReggioRentalsViaPython(pages, onProgress);
+  } catch (err) {
+    if (err instanceof ReggioRentalsScraperError) {
+      scraperError = err;
+    } else {
+      throw err;
+    }
+  }
+
+  const shouldUseApify =
+    (scraperError != null || (cache != null && needsApifyFallback(cache.listings))) &&
+    hasApifyToken();
+
+  if (shouldUseApify) {
+    try {
+      const { cache: apifyCache, actorId } = await fetchApifyImmobiliareListings(pages, onProgress);
+      process.stderr.write(`[reggio-rentals-fetch] Apify fallback via ${actorId}\n`);
+      cache = apifyCache;
+    } catch (err) {
+      if (scraperError && !(err instanceof ApifyImmobiliareError)) throw err;
+      if (scraperError && err instanceof ApifyImmobiliareError) {
+        throw scraperError;
+      }
+      if (!cache) {
+        throw err instanceof ApifyImmobiliareError
+          ? new ReggioRentalsScraperError(err.message)
+          : err;
+      }
+      process.stderr.write(
+        `[reggio-rentals-fetch] Apify fallback failed, keeping Playwright listings: ${err instanceof Error ? err.message : String(err)}\n`,
+      );
+    }
+  } else if (scraperError) {
+    throw scraperError;
+  }
+
+  if (!cache) {
+    throw new ReggioRentalsScraperError("No rental listings available");
+  }
+
+  const enrichedListings = await enrichImmobiliareListingDates(cache.listings, onProgress);
+  return { ...cache, listings: enrichedListings };
 }

@@ -2,8 +2,8 @@
   "city": "Reggio Calabria",
   "market": "it",
   "portal": "immobiliare_scraper",
-  "updated_at": "2026-07-10T10:27:47Z",
-  "snapshot_count": 5,
+  "updated_at": "2026-07-11T10:42:45Z",
+  "snapshot_count": 7,
   "last_provider": "reggio_rentals",
   "listings": {
     "im_60357824": {
@@ -16,7 +16,7 @@
       "address": "Trilocale buono stato, terzo piano, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -25,7 +25,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_78894637": {
       "id": "im_78894637",
@@ -37,7 +39,7 @@
       "address": "Attico via Feudo 35, Catona - Villa San Giuseppe, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -46,7 +48,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 470
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_86728980": {
       "id": "im_86728980",
@@ -58,7 +62,7 @@
       "address": "Quadrilocale via salita Zerbi traversa 1 4, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -67,7 +71,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 600
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_94562640": {
       "id": "im_94562640",
@@ -79,7 +85,7 @@
       "address": "Monolocale viale della Libertà, Pineta Zerbi, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -88,7 +94,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_97747342": {
       "id": "im_97747342",
@@ -100,7 +108,7 @@
       "address": "Monolocale via Cardinale Gennaro Portanova 128, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -109,7 +117,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 400
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_109374749": {
       "id": "im_109374749",
@@ -121,7 +131,7 @@
       "address": "Terratetto unifamiliare via Anita Garibaldi 70, Gallico - Sambatello, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -130,7 +140,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 490
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_109938953": {
       "id": "im_109938953",
@@ -142,7 +154,7 @@
       "address": "Villa unifamiliare via Nazionale Occhio di Pellaro 157, San Gregorio, Reggio Calabria",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -151,7 +163,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_109971267": {
       "id": "im_109971267",
@@ -163,7 +177,7 @@
       "address": "Appartamento via Santa Caterina d'Alessandria 1, Santa Caterina - San Brunello, Reggio Calabria",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -172,7 +186,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_110843515": {
       "id": "im_110843515",
@@ -184,7 +200,7 @@
       "address": "Quadrilocale via Tommaso Gulli 24, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -193,7 +209,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_110940589": {
       "id": "im_110940589",
@@ -205,7 +223,7 @@
       "address": "Villa unifamiliare via Mattatoio 130, Pellaro, Reggio Calabria",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -214,7 +232,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 2000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_112215613": {
       "id": "im_112215613",
@@ -226,7 +246,7 @@
       "address": "Monolocale via Sant'Anna II Tronco 121, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -235,7 +255,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 400
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_113935425": {
       "id": "im_113935425",
@@ -247,7 +269,7 @@
       "address": "Monolocale via Antonino Lupoi, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -256,7 +278,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 300
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_114316089": {
       "id": "im_114316089",
@@ -268,7 +292,7 @@
       "address": "Appartamento via Giuseppe Melacrino, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -277,7 +301,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 600
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_115350817": {
       "id": "im_115350817",
@@ -289,7 +315,7 @@
       "address": "Villa unifamiliare Vico Francia 3, Catona - Villa San Giuseppe, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -298,7 +324,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1050
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_116189527": {
       "id": "im_116189527",
@@ -310,7 +338,7 @@
       "address": "Trilocale via Spirito Santo 291A, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -319,7 +347,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 600
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_116788667": {
       "id": "im_116788667",
@@ -331,7 +361,7 @@
       "address": "Appartamento via Sbarre Superiori di Marconi 11, Sbarre, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -340,7 +370,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 550
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_116852959": {
       "id": "im_116852959",
@@ -352,7 +384,7 @@
       "address": "Quadrilocale via Rausei 1, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -361,7 +393,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 650
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_117727317": {
       "id": "im_117727317",
@@ -373,7 +407,7 @@
       "address": "Bilocale traversa Lungomare, Catona - Villa San Giuseppe, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -382,7 +416,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 2000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_118009681": {
       "id": "im_118009681",
@@ -394,7 +430,7 @@
       "address": "Quadrilocale via degli Ottimati, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -403,7 +439,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_120883186": {
       "id": "im_120883186",
@@ -415,7 +453,7 @@
       "address": "Trilocale via Gaeta 7, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -424,7 +462,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 650
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_121202144": {
       "id": "im_121202144",
@@ -436,7 +476,7 @@
       "address": "Trilocale viale Giovanni Amendola 2N, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -445,7 +485,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 550
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_121212916": {
       "id": "im_121212916",
@@ -457,7 +499,7 @@
       "address": "Attico via Santa Caterina d'Alessandria 2, Santa Caterina - San Brunello, Reggio Calabria",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -466,7 +508,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 2000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_121213236": {
       "id": "im_121213236",
@@ -478,7 +522,7 @@
       "address": "Trilocale via Nazionale Pentimele 87, Archi, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -487,7 +531,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 650
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_121485084": {
       "id": "im_121485084",
@@ -499,7 +545,7 @@
       "address": "Trilocale via Petrara 10, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -508,7 +554,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_121513576": {
       "id": "im_121513576",
@@ -520,7 +568,7 @@
       "address": "Bilocale via Antonio Pacinotti 44, Ferrovieri - Stadio, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -529,7 +577,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 700
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_121632084": {
       "id": "im_121632084",
@@ -541,7 +591,7 @@
       "address": "Appartamento via Fiume 20, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -550,7 +600,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 800
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_121840474": {
       "id": "im_121840474",
@@ -562,7 +614,7 @@
       "address": "Villa a schiera via Quarnaro 24, Gallico - Sambatello, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -571,7 +623,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1200
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_122129486": {
       "id": "im_122129486",
@@ -583,7 +637,7 @@
       "address": "Appartamento Strada Vecchia San Sperato 87A, San Sperato, Reggio Calabria",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -592,7 +646,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 440
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_122472158": {
       "id": "im_122472158",
@@ -604,7 +660,7 @@
       "address": "Monolocale via Italia 77d, Santa Caterina - San Brunello, Reggio Calabria",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -613,7 +669,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 300
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_122525596": {
       "id": "im_122525596",
@@ -625,7 +683,7 @@
       "address": "Bilocale via Antonino Lupoi, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -634,7 +692,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 400
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_122553782": {
       "id": "im_122553782",
@@ -646,7 +706,7 @@
       "address": "Bilocale via Fratelli Cairoli, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -655,7 +715,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 750
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_122724752": {
       "id": "im_122724752",
@@ -667,7 +729,7 @@
       "address": "Appartamento in villa via Francesco Petrarca 19A, Gallico - Sambatello, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -676,7 +738,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1200
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_122774598": {
       "id": "im_122774598",
@@ -688,7 +752,7 @@
       "address": "Villa unifamiliare via Armo Gallina 102, Gallina - Armo, Reggio Calabria",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -697,7 +761,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 2200
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_124083629": {
       "id": "im_124083629",
@@ -709,7 +775,7 @@
       "address": "Bilocale via Zara, Santa Caterina - San Brunello, Reggio Calabria",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -718,7 +784,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 790
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_124137611": {
       "id": "im_124137611",
@@ -730,7 +798,7 @@
       "address": "Trilocale via Trabocchetto 2, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -739,7 +807,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 550
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_124365585": {
       "id": "im_124365585",
@@ -751,7 +821,7 @@
       "address": "Trilocale via 25 Luglio 1943, Pineta Zerbi, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -760,7 +830,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_124400853": {
       "id": "im_124400853",
@@ -772,7 +844,7 @@
       "address": "Appartamento Vico Ferruccio, 113, Modena - San Giorgio Extra, Reggio Calabria",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -781,7 +853,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 690
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_124609435": {
       "id": "im_124609435",
@@ -793,7 +867,7 @@
       "address": "Appartamento via Mantova, Sbarre, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -802,7 +876,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 600
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_124703031": {
       "id": "im_124703031",
@@ -814,7 +890,7 @@
       "address": "Bilocale Strada Statale 106 121, Pellaro, Reggio Calabria",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -823,7 +899,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 200
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_125046079": {
       "id": "im_125046079",
@@ -835,7 +913,7 @@
       "address": "Monolocale via Tito Minniti 8, Pineta Zerbi, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -844,7 +922,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_125806441": {
       "id": "im_125806441",
@@ -856,7 +936,7 @@
       "address": "Trilocale Tangenziale di Reggio Calabria, Gallico - Sambatello, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -865,7 +945,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 460
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_125889403": {
       "id": "im_125889403",
@@ -877,7 +959,7 @@
       "address": "Bilocale Tangenziale di Reggio Calabria 45, Gallico - Sambatello, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -886,7 +968,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_125901407": {
       "id": "im_125901407",
@@ -898,7 +982,7 @@
       "address": "Trilocale Contrada Sant'Elia di Ravagnese, Ravagnese, Reggio Calabria",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -907,7 +991,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_126246661": {
       "id": "im_126246661",
@@ -919,7 +1005,7 @@
       "address": "Trilocale via Amerigo Vespucci, Pineta Zerbi, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -928,7 +1014,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 600
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_126420789": {
       "id": "im_126420789",
@@ -940,7 +1028,7 @@
       "address": "Bilocale via Marsala 25, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -949,7 +1037,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 630
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_126463611": {
       "id": "im_126463611",
@@ -961,7 +1051,7 @@
       "address": "Quadrilocale via Santa Lucia al Parco 25, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -970,7 +1060,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_126843697": {
       "id": "im_126843697",
@@ -982,7 +1074,7 @@
       "address": "Trilocale via Gebbione 12, Sbarre, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -991,7 +1083,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_127196251": {
       "id": "im_127196251",
@@ -1003,7 +1097,7 @@
       "address": "Appartamento via Campoli, Pellaro, Reggio Calabria",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1012,7 +1106,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 899
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_127319251": {
       "id": "im_127319251",
@@ -1024,7 +1120,7 @@
       "address": "Quadrilocale via Cardinale Gennaro Portanova 45, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1033,7 +1129,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_127372275": {
       "id": "im_127372275",
@@ -1045,7 +1143,7 @@
       "address": "Bilocale via Pasquale Andiloro snc, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1054,7 +1152,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 550
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_127699486": {
       "id": "im_127699486",
@@ -1066,7 +1166,7 @@
       "address": "Appartamento via Giuseppe Melacrino, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1075,7 +1175,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 800
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_127800514": {
       "id": "im_127800514",
@@ -1087,7 +1189,7 @@
       "address": "Quadrilocale via Roma, Pineta Zerbi, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1096,7 +1198,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_127919224": {
       "id": "im_127919224",
@@ -1108,7 +1212,7 @@
       "address": "Villa bifamiliare viale Calabria 357b, Sbarre, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1117,7 +1221,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 550
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_127949808": {
       "id": "im_127949808",
@@ -1129,7 +1235,7 @@
       "address": "Appartamento via Sbarre Centrali, Modena - San Giorgio Extra, Reggio Calabria",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1138,7 +1244,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128067144": {
       "id": "im_128067144",
@@ -1150,7 +1258,7 @@
       "address": "Trilocale via Giuseppe Mercalli 22, Ferrovieri - Stadio, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1159,7 +1267,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128083956": {
       "id": "im_128083956",
@@ -1171,7 +1281,7 @@
       "address": "Quadrilocale via Privata Nervesa 31, Santa Caterina - San Brunello, Reggio Calabria",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1180,7 +1290,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 700
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128107322": {
       "id": "im_128107322",
@@ -1192,7 +1304,7 @@
       "address": "Quadrilocale via della giudecca , 47, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1201,7 +1313,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128276172": {
       "id": "im_128276172",
@@ -1213,7 +1327,7 @@
       "address": "Quadrilocale via Sbarre Superiori, Modena - San Giorgio Extra, Reggio Calabria",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1222,7 +1336,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128296168": {
       "id": "im_128296168",
@@ -1234,7 +1350,7 @@
       "address": "Quadrilocale V. Gebbione a Mare,, Ferrovieri - Stadio, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1243,7 +1359,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 4000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128325526": {
       "id": "im_128325526",
@@ -1255,7 +1373,7 @@
       "address": "Bilocale via Galileo Galilei 20, Ferrovieri - Stadio, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1264,7 +1382,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 410
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128398032": {
       "id": "im_128398032",
@@ -1276,7 +1396,7 @@
       "address": "Trilocale ottimo stato, piano rialzato, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1285,7 +1405,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1200
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128615324": {
       "id": "im_128615324",
@@ -1297,7 +1419,7 @@
       "address": "Appartamento via fra Gesualdo Melacrino 53, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1306,7 +1428,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 700
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128621920": {
       "id": "im_128621920",
@@ -1318,7 +1442,7 @@
       "address": "Villa a schiera viale Calabria, Sbarre, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1327,7 +1451,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 550
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128635632": {
       "id": "im_128635632",
@@ -1339,7 +1465,7 @@
       "address": "Appartamento via Risorgimento 18, Catona - Villa San Giuseppe, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1348,7 +1474,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 600
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128748978": {
       "id": "im_128748978",
@@ -1360,7 +1488,7 @@
       "address": "Appartamento via Vecchia Pentimele 20/A, Santa Caterina - San Brunello, Reggio Calabria",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1369,7 +1497,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 550
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128755152": {
       "id": "im_128755152",
@@ -1381,7 +1511,7 @@
       "address": "Attico via Tommaso Gulli 24, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1390,7 +1520,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1200
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128829948": {
       "id": "im_128829948",
@@ -1402,7 +1534,7 @@
       "address": "Bilocale vicolo Casalotto 39, Santa Caterina - San Brunello, Reggio Calabria",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1411,7 +1543,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 350
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128836328": {
       "id": "im_128836328",
@@ -1423,7 +1557,7 @@
       "address": "Trilocale via della Rimembranza, Gallina - Armo, Reggio Calabria",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1432,7 +1566,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 380
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_128967368": {
       "id": "im_128967368",
@@ -1444,7 +1580,7 @@
       "address": "Bilocale via Sbarre Superiori 95, Modena - San Giorgio Extra, Reggio Calabria",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1453,7 +1589,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 400
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129015602": {
       "id": "im_129015602",
@@ -1465,7 +1603,7 @@
       "address": "Bilocale via Demetrio Tripepi 65, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1474,7 +1612,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 550
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129015608": {
       "id": "im_129015608",
@@ -1486,7 +1626,7 @@
       "address": "Appartamento via Demetrio Tripepi 65, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1495,7 +1635,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 110
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129015638": {
       "id": "im_129015638",
@@ -1507,7 +1649,7 @@
       "address": "Villa unifamiliare Agriturismo Sant'Anna 89126, Reggio Calabria Reggi, Ortì, Reggio Calabria",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1516,7 +1658,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 400
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129015642": {
       "id": "im_129015642",
@@ -1528,7 +1672,7 @@
       "address": "Villa a schiera Ortì Contrada Sant'Anna, Ortì, Reggio Calabria",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1537,7 +1681,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129015646": {
       "id": "im_129015646",
@@ -1549,7 +1695,7 @@
       "address": "Attico via Cappuccinelli Diramazione Zagarella 40, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1558,7 +1704,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 545
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129015648": {
       "id": "im_129015648",
@@ -1570,7 +1718,7 @@
       "address": "Quadrilocale via Demetrio Tripepi 65, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1579,7 +1727,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1200
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129022956": {
       "id": "im_129022956",
@@ -1591,7 +1741,7 @@
       "address": "Bilocale via 25 Luglio 1943 3, Pineta Zerbi, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1600,7 +1750,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 570
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129026092": {
       "id": "im_129026092",
@@ -1612,7 +1764,7 @@
       "address": "Appartamento via Nicola Furnari, Ferrovieri - Stadio, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1621,7 +1773,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129056132": {
       "id": "im_129056132",
@@ -1633,7 +1787,7 @@
       "address": "Appartamento via Modena traversa A, Modena - San Giorgio Extra, Reggio Calabria",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1642,7 +1796,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129133436": {
       "id": "im_129133436",
@@ -1654,7 +1810,7 @@
       "address": "Trilocale via Guglielmo Marconi, Sbarre, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1663,7 +1819,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 400
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129244466": {
       "id": "im_129244466",
@@ -1675,7 +1833,7 @@
       "address": "Bilocale via Anita Garibaldi, Gallico - Sambatello, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1684,7 +1842,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129272118": {
       "id": "im_129272118",
@@ -1696,7 +1856,7 @@
       "address": "Trilocale via Bosco, 20, Pellaro, Reggio Calabria",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1705,7 +1865,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 900
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129484956": {
       "id": "im_129484956",
@@ -1717,7 +1879,7 @@
       "address": "Appartamento via salita Stazione Santa Caterina 1, Santa Caterina - San Brunello, Reggio Calabria",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1726,7 +1888,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129505842": {
       "id": "im_129505842",
@@ -1738,7 +1902,7 @@
       "address": "Attico via Santo Sperato 69, San Sperato, Reggio Calabria",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1747,7 +1911,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 280
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129670684": {
       "id": "im_129670684",
@@ -1759,7 +1925,7 @@
       "address": "Bilocale Vico Ciccarello 46, Modena - San Giorgio Extra, Reggio Calabria",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1768,7 +1934,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 430
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129724638": {
       "id": "im_129724638",
@@ -1780,7 +1948,7 @@
       "address": "Quadrilocale via Santa Lucia, 37/O, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1789,7 +1957,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129765112": {
       "id": "im_129765112",
@@ -1801,7 +1971,7 @@
       "address": "Monolocale via Luigi Galvani 5, Ferrovieri - Stadio, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1810,7 +1980,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 100
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129792080": {
       "id": "im_129792080",
@@ -1822,7 +1994,7 @@
       "address": "Bilocale via Vito Inferiore 52, Vito, Reggio Calabria",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1831,7 +2003,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 370
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129878944": {
       "id": "im_129878944",
@@ -1843,7 +2017,7 @@
       "address": "Quadrilocale via del Salvatore 46, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1852,7 +2026,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 600
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129878974": {
       "id": "im_129878974",
@@ -1864,7 +2040,7 @@
       "address": "Trilocale via Cardinale Portanova diramazione Rausei 14, Tremulini - Eremo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1873,7 +2049,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 380
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129956468": {
       "id": "im_129956468",
@@ -1885,7 +2063,7 @@
       "address": "Trilocale via Abate Sant'Elia Diramazione Privata 12, Ravagnese, Reggio Calabria",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1894,7 +2072,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 350
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129957600": {
       "id": "im_129957600",
@@ -1906,7 +2086,7 @@
       "address": "Bilocale via Demetrio Tripepi 65, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1915,7 +2095,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 600
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129972734": {
       "id": "im_129972734",
@@ -1927,7 +2109,7 @@
       "address": "Appartamento via Sbarre Superiori 95M, Modena - San Giorgio Extra, Reggio Calabria",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1936,7 +2118,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129975654": {
       "id": "im_129975654",
@@ -1948,7 +2132,7 @@
       "address": "Bilocale via Demetrio Tripepi 65, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1957,7 +2141,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 600
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_129978024": {
       "id": "im_129978024",
@@ -1969,7 +2155,7 @@
       "address": "Bilocale via Crocevia, 30, Pellaro, Reggio Calabria",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1978,7 +2164,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 450
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130040994": {
       "id": "im_130040994",
@@ -1990,7 +2178,7 @@
       "address": "Attico via dei Monti traversa 1 15, Catona - Villa San Giuseppe, Reggio Calabria",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1999,7 +2187,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 380
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130054658": {
       "id": "im_130054658",
@@ -2011,7 +2201,7 @@
       "address": "Appartamento via delle vittorie 7, Sbarre, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2020,7 +2210,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130081744": {
       "id": "im_130081744",
@@ -2032,7 +2224,7 @@
       "address": "Quadrilocale viale Pio XI 1, Sbarre, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2041,7 +2233,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1000
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130109684": {
       "id": "im_130109684",
@@ -2053,7 +2247,7 @@
       "address": "Quadrilocale via Argine Destro Calopinace 25, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2062,7 +2256,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 750
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130122504": {
       "id": "im_130122504",
@@ -2074,7 +2270,7 @@
       "address": "Trilocale via Emilio Cuzzocrea, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2083,7 +2279,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 550
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130152748": {
       "id": "im_130152748",
@@ -2095,7 +2293,7 @@
       "address": "Trilocale via Trento 1, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2104,7 +2302,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 750
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130346420": {
       "id": "im_130346420",
@@ -2116,7 +2316,7 @@
       "address": "Bilocale via Cortese 20, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2125,7 +2325,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 300
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130610918": {
       "id": "im_130610918",
@@ -2137,7 +2339,7 @@
       "address": "Trilocale via 24 Maggio, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2146,7 +2348,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 600
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130624882": {
       "id": "im_130624882",
@@ -2158,7 +2362,7 @@
       "address": "Trilocale corso Giuseppe Garibaldi 100, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2167,7 +2371,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1300
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130667618": {
       "id": "im_130667618",
@@ -2179,7 +2385,7 @@
       "address": "Monolocale via Niccolò da Reggio, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2188,7 +2394,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 1500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130709348": {
       "id": "im_130709348",
@@ -2200,7 +2408,7 @@
       "address": "Monolocale via Strada Provinciale Spirito Santo 6, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2209,7 +2417,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 520
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130713246": {
       "id": "im_130713246",
@@ -2221,7 +2431,7 @@
       "address": "Monolocale via San Francesco di Paola 118, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2230,7 +2440,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 490
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130713520": {
       "id": "im_130713520",
@@ -2242,7 +2454,7 @@
       "address": "Trilocale via San Francesco di Paola 118, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2251,7 +2463,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 590
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130759116": {
       "id": "im_130759116",
@@ -2263,7 +2477,7 @@
       "address": "Bilocale Contrada Mariannazzo, Snc, Trabocchetto - Spirito Santo, Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2272,7 +2486,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 500
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130761342": {
       "id": "im_130761342",
@@ -2284,7 +2500,7 @@
       "address": "Bilocale via dei Filippini 38, Centro Storico, Reggio Calabria",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2293,7 +2509,9 @@
           "at": "2026-07-08T15:25:48Z",
           "price": 700
         }
-      ]
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     "im_130813882": {
       "id": "im_130813882",
@@ -2305,7 +2523,7 @@
       "address": "Trilocale via Mantova, 29, Sbarre, Reggio Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-10T10:27:47Z",
-      "last_seen_at": "2026-07-10T10:27:47Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2313,6 +2531,31 @@
         {
           "at": "2026-07-10T10:27:47Z",
           "price": 500
+        }
+      ],
+      "listing_published_at": null,
+      "listing_updated_at": null
+    },
+    "im_130870058": {
+      "id": "im_130870058",
+      "price": 550,
+      "lat": 38.1168,
+      "lng": 15.6569,
+      "sqm": 126,
+      "rooms": null,
+      "address": "Quadrilocale via Cardinale Gennaro Portanova 1, Tremulini - Eremo, Reggio Calabria",
+      "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
+      "listing_published_at": null,
+      "listing_updated_at": null,
+      "first_seen_at": "2026-07-11T10:06:45Z",
+      "last_seen_at": "2026-07-11T10:42:45Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-11T10:06:45Z",
+          "price": 550
         }
       ]
     }

@@ -452,6 +452,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const [refreshProgress, setRefreshProgress] = useState<OccupancySnapshotProgressState | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [lastRefreshSummary, setLastRefreshSummary] = useState<string | null>(null);
+  const [lastRefreshWarning, setLastRefreshWarning] = useState<string | null>(null);
 
   const load = useCallback(async (asOf?: string | null, portalArg?: OccupancyPortal, cityArg?: OccupancyCitySlug, periodArg?: OccupancyMetricsPeriod, basisArg?: OccupancyMetricsBasis) => {
     const activePortal = portalArg ?? portal;
@@ -505,6 +506,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
     setRefreshProgress(null);
     setError(null);
     setLastRefreshSummary(null);
+    setLastRefreshWarning(null);
     try {
       const result = await refreshOccupancySnapshot(portal, {
         city: citySlug,
@@ -524,6 +526,9 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
           rented: result.rented_count,
         }),
       );
+      if (result.portal_dates_warning === "immobiliare_portal_dates_blocked") {
+        setLastRefreshWarning(t("occupancy.portalDatesBlockedImmobiliare"));
+      }
       onDataMutated?.();
     } catch (err) {
       setError(err instanceof Error ? err.message : t("occupancy.refreshError"));
@@ -542,6 +547,14 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   );
 
   const isPostedBasis = metricsBasis === "posted";
+  const portalListingSample =
+    snapshotDiff?.listings ?? listingsPreview?.sample ?? [];
+  const portalDatesMissing =
+    portal === "immobiliare_scraper" &&
+    portalListingSample.length > 0 &&
+    !portalListingSample.some(
+      (listing) => listing.listing_published_at || listing.listing_updated_at,
+    );
   const needsMoreSnapshots = !isPostedBasis && (metrics?.snapshot_count ?? 0) < 2;
   const viewingHistorical = selectedSnapshotAt != null;
   const previewFromSnapshot = listingsPreview?.source === "occupancy_snapshot";
@@ -586,6 +599,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
     setSelectedSnapshotAt(null);
     setDiffPage(0);
     setLastRefreshSummary(null);
+    setLastRefreshWarning(null);
     onDataMutated?.();
   };
 
@@ -845,6 +859,9 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
         {lastRefreshSummary ? (
           <p className="mt-4 text-sm text-green-600">{lastRefreshSummary}</p>
         ) : null}
+        {lastRefreshWarning ? (
+          <p className="mt-4 text-sm text-amber-700">{lastRefreshWarning}</p>
+        ) : null}
 
         <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-neutral-500">
           <span>
@@ -908,6 +925,12 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
         {needsMoreSnapshots ? (
           <div className="mt-4 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
             {t("occupancy.needsSnapshots")}
+          </div>
+        ) : null}
+
+        {portalDatesMissing ? (
+          <div className="mt-4 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+            {t("occupancy.portalDatesBlockedImmobiliare")}
           </div>
         ) : null}
 

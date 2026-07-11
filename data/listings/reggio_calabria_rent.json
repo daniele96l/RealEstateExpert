@@ -1,10 +1,10 @@
 {
   "city": "reggio_calabria",
   "operation": "rent",
-  "fetched_at": "2026-07-10T10:27:47Z",
+  "fetched_at": "2026-07-11T10:02:02.845Z",
   "center": {
-    "lat": 38.1035389,
-    "lng": 15.6397556,
+    "lat": 38.1093,
+    "lng": 15.6439,
     "display_name": "Reggio di Calabria, Reggio Calabria, Calabria, Italia"
   },
   "listings": [
@@ -85,13 +85,15 @@
       "lat": 38.11563873,
       "lng": 15.66064739,
       "sqm": 30,
-      "rooms": null,
-      "address": "Monolocale via Cardinale Gennaro Portanova 128, Tremulini - Eremo, Reggio Calabria",
+      "rooms": 1,
+      "address": "Via Cardinale Gennaro Portanova",
       "property_type": "Appartamento",
       "property_type_label": "Appartamento",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_109374749",
@@ -527,13 +529,15 @@
       "lat": 38.1035,
       "lng": 15.6404,
       "sqm": 56,
-      "rooms": null,
-      "address": "Bilocale via Fratelli Cairoli, Centro Storico, Reggio Calabria",
+      "rooms": 2,
+      "address": "Via Fratelli Cairoli",
       "property_type": "Bilocale",
       "property_type_label": "Bilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_122724752",
@@ -595,13 +599,15 @@
       "lat": 38.1087,
       "lng": 15.6512,
       "sqm": 55,
-      "rooms": null,
-      "address": "Trilocale via Trabocchetto 2, Trabocchetto - Spirito Santo, Reggio Calabria",
+      "rooms": 3,
+      "address": "Via Trabocchetto 2",
       "property_type": "Trilocale",
       "property_type_label": "Trilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_124365585",
@@ -748,13 +754,15 @@
       "lat": 38.1199,
       "lng": 15.6549,
       "sqm": 130,
-      "rooms": null,
-      "address": "Trilocale via Amerigo Vespucci, Pineta Zerbi, Reggio Calabria",
+      "rooms": 3,
+      "address": "Via Amerigo Vespucci",
       "property_type": "Trilocale",
       "property_type_label": "Trilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_126420789",
@@ -816,13 +824,15 @@
       "lat": 37.9944,
       "lng": 15.6492,
       "sqm": 175,
-      "rooms": null,
-      "address": "Appartamento via Campoli, Pellaro, Reggio Calabria",
+      "rooms": 5,
+      "address": "Via Campoli",
       "property_type": "Appartamento",
       "property_type_label": "Appartamento",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_127319251",
@@ -969,13 +979,15 @@
       "lat": 38.1085,
       "lng": 15.6478,
       "sqm": 173,
-      "rooms": null,
-      "address": "Quadrilocale via della giudecca , 47, Centro Storico, Reggio Calabria",
+      "rooms": 4,
+      "address": "Via della giudecca , 47",
       "property_type": "Quadrilocale",
       "property_type_label": "Quadrilocale",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null
+      "condition_status": "toRestore",
+      "condition": "Da ristrutturare",
+      "needs_renovation": true,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_128276172",
@@ -986,13 +998,15 @@
       "lat": 38.0856,
       "lng": 15.6481,
       "sqm": 110,
-      "rooms": null,
-      "address": "Quadrilocale via Sbarre Superiori, Modena - San Giorgio Extra, Reggio Calabria",
+      "rooms": 4,
+      "address": "Via Sbarre Superiori",
       "property_type": "Quadrilocale",
       "property_type_label": "Quadrilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_128296168",
@@ -1020,13 +1034,15 @@
       "lat": 38.0985,
       "lng": 15.6353,
       "sqm": 61,
-      "rooms": null,
-      "address": "Bilocale via Galileo Galilei 20, Ferrovieri - Stadio, Reggio Calabria",
+      "rooms": 2,
+      "address": "Via Galileo Galilei",
       "property_type": "Bilocale",
       "property_type_label": "Bilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_128398032",
@@ -1054,13 +1070,15 @@
       "lat": 38.1027,
       "lng": 15.6425,
       "sqm": 150,
-      "rooms": null,
-      "address": "Appartamento via fra Gesualdo Melacrino 53, Centro Storico, Reggio Calabria",
+      "rooms": 5,
+      "address": "Via fra Gesualdo Melacrino",
       "property_type": "Appartamento",
       "property_type_label": "Appartamento",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_128621920",
@@ -1088,13 +1106,15 @@
       "lat": 38.1858,
       "lng": 15.6433,
       "sqm": 203,
-      "rooms": null,
-      "address": "Appartamento via Risorgimento 18, Catona - Villa San Giuseppe, Reggio Calabria",
+      "rooms": 5,
+      "address": "Via Risorgimento",
       "property_type": "Appartamento",
       "property_type_label": "Appartamento",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_128748978",
@@ -1139,13 +1159,15 @@
       "lat": 38.1257,
       "lng": 15.6588,
       "sqm": 87,
-      "rooms": null,
-      "address": "Bilocale vicolo Casalotto 39, Santa Caterina - San Brunello, Reggio Calabria",
+      "rooms": 2,
+      "address": "Vicolo Casalotto",
       "property_type": "Bilocale",
       "property_type_label": "Bilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_128836328",
@@ -1309,13 +1331,15 @@
       "lat": 38.0987,
       "lng": 15.6385,
       "sqm": 160,
-      "rooms": null,
-      "address": "Appartamento via Nicola Furnari, Ferrovieri - Stadio, Reggio Calabria",
+      "rooms": 5,
+      "address": "Via Nicola Furnari",
       "property_type": "Appartamento",
       "property_type_label": "Appartamento",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_129056132",
@@ -1326,13 +1350,15 @@
       "lat": 38.0923,
       "lng": 15.656,
       "sqm": 135,
-      "rooms": null,
-      "address": "Appartamento via Modena traversa A, Modena - San Giorgio Extra, Reggio Calabria",
+      "rooms": 5,
+      "address": "Via Modena Traversa A",
       "property_type": "Appartamento",
       "property_type_label": "Appartamento",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_129133436",
@@ -1343,13 +1369,15 @@
       "lat": 38.0978,
       "lng": 15.6468,
       "sqm": 141,
-      "rooms": null,
-      "address": "Trilocale via Guglielmo Marconi, Sbarre, Reggio Calabria",
+      "rooms": 3,
+      "address": "Via Guglielmo Marconi",
       "property_type": "Trilocale",
       "property_type_label": "Trilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_129244466",
@@ -1496,13 +1524,15 @@
       "lat": 38.1067,
       "lng": 15.6493,
       "sqm": 122,
-      "rooms": null,
-      "address": "Quadrilocale via del Salvatore 46, Centro Storico, Reggio Calabria",
+      "rooms": 4,
+      "address": "Via del Salvatore",
       "property_type": "Quadrilocale",
       "property_type_label": "Quadrilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_129878974",
@@ -1530,13 +1560,15 @@
       "lat": 38.0752,
       "lng": 15.6617,
       "sqm": 130,
-      "rooms": null,
-      "address": "Trilocale via Abate Sant'Elia Diramazione Privata 12, Ravagnese, Reggio Calabria",
+      "rooms": 3,
+      "address": "Via Abate Sant'Elia Diramazione Privata",
       "property_type": "Trilocale",
       "property_type_label": "Trilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_129957600",
@@ -1547,13 +1579,15 @@
       "lat": 38.1115,
       "lng": 15.6486,
       "sqm": 45,
-      "rooms": null,
-      "address": "Bilocale via Demetrio Tripepi 65, Centro Storico, Reggio Calabria",
+      "rooms": 2,
+      "address": "Via Demetrio Tripepi",
       "property_type": "Bilocale",
       "property_type_label": "Bilocale",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_129972734",
@@ -1581,13 +1615,15 @@
       "lat": 38.1115,
       "lng": 15.6486,
       "sqm": 41,
-      "rooms": null,
-      "address": "Bilocale via Demetrio Tripepi 65, Centro Storico, Reggio Calabria",
+      "rooms": 2,
+      "address": "Via Demetrio Tripepi",
       "property_type": "Bilocale",
       "property_type_label": "Bilocale",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null
+      "condition_status": "good",
+      "condition": "Buono stato",
+      "needs_renovation": false,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_129978024",
@@ -1598,13 +1634,15 @@
       "lat": 38.0256,
       "lng": 15.6559,
       "sqm": 71,
-      "rooms": null,
-      "address": "Bilocale via Crocevia, 30, Pellaro, Reggio Calabria",
+      "rooms": 2,
+      "address": "Via Crocevia, 30",
       "property_type": "Bilocale",
       "property_type_label": "Bilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_130040994",
@@ -1666,13 +1704,15 @@
       "lat": 38.1016,
       "lng": 15.6414,
       "sqm": 111,
-      "rooms": null,
-      "address": "Quadrilocale via Argine Destro Calopinace 25, Centro Storico, Reggio Calabria",
+      "rooms": 4,
+      "address": "Via Argine Destro Calopinace",
       "property_type": "Quadrilocale",
       "property_type_label": "Quadrilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_130122504",
@@ -1717,13 +1757,15 @@
       "lat": 38.1053,
       "lng": 15.6512,
       "sqm": 90,
-      "rooms": null,
-      "address": "Bilocale via Cortese 20, Trabocchetto - Spirito Santo, Reggio Calabria",
+      "rooms": 2,
+      "address": "Via Cortese",
       "property_type": "Bilocale",
       "property_type_label": "Bilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_130610918",
@@ -1785,13 +1827,15 @@
       "lat": 38.1041,
       "lng": 15.6654,
       "sqm": 63,
-      "rooms": null,
-      "address": "Monolocale via Strada Provinciale Spirito Santo 6, Trabocchetto - Spirito Santo, Reggio Calabria",
+      "rooms": 1,
+      "address": "Via Strada Provinciale Spirito Santo",
       "property_type": "Monolocale",
       "property_type_label": "Monolocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_130713246",
@@ -1853,13 +1897,15 @@
       "lat": 38.1087,
       "lng": 15.6476,
       "sqm": 98,
-      "rooms": null,
-      "address": "Bilocale via dei Filippini 38, Centro Storico, Reggio Calabria",
+      "rooms": 2,
+      "address": "Via dei Filippini",
       "property_type": "Bilocale",
       "property_type_label": "Bilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     },
     {
       "id": "im_130813882",
@@ -1870,14 +1916,35 @@
       "lat": 38.0958,
       "lng": 15.6411,
       "sqm": 102,
-      "rooms": null,
-      "address": "Trilocale via Mantova, 29, Sbarre, Reggio Calabria",
+      "rooms": 3,
+      "address": "Via Mantova, 29",
       "property_type": "Trilocale",
       "property_type_label": "Trilocale",
       "condition_status": null,
       "condition": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
+    },
+    {
+      "id": "im_130870058",
+      "title": "Quadrilocale via Cardinale Gennaro Portanova 1, Tremulini - Eremo, Reggio Calabria",
+      "price": 550,
+      "operation": "rent",
+      "url": "https://www.immobiliare.it/annunci/130870058/",
+      "lat": 38.1168,
+      "lng": 15.6569,
+      "sqm": 126,
+      "rooms": 4,
+      "address": "Via Cardinale Gennaro Portanova",
+      "property_type": "Quadrilocale",
+      "property_type_label": "Quadrilocale",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": null,
+      "listing_updated_at": null
     }
   ],
-  "provider": "reggio_rentals"
+  "provider": "direct"
 }

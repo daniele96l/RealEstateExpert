@@ -442,6 +442,8 @@ const en: Translations = {
       "Metrics from portal publish dates on currently visible listings only. Turnover and occupancy are not shown in this mode.",
     needsPostedDates:
       "No portal publish dates on active listings. Refresh data or use a portal that exposes publish dates (e.g. Sreality).",
+    portalDatesBlockedImmobiliare:
+      "Immobiliare no longer exposes dates on search results and blocks detail pages (DataDome). Set SCRAPER_PROXY_SERVER or APIFY_API_TOKEN in .env.local (Apify fallback chain: memo23 → crawlerbros → loykos) and refresh.",
     loadError: "Could not load metrics",
     refreshError: "Refresh failed",
     refreshSummary: "Fetched {fetched} listings · {newCount} new · {rented} presumed rented",
