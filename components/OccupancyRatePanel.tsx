@@ -1394,7 +1394,6 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                     </th>
                     <th className="px-4 py-3">{t("occupancy.table.avgRent")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.avgRentPerSqm")}</th>
-                    <th className="px-4 py-3">{t("occupancy.table.avgDom")}</th>
                     <th className="px-4 py-3">{t("occupancy.table.medianDom")}</th>
                     {!isPostedBasis ? (
                       <>
@@ -1430,7 +1429,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                 <tbody>
                   {breakdownRows.length === 0 ? (
                     <tr>
-                      <td colSpan={isPostedBasis ? 7 : 10} className="px-6 py-8 text-center text-neutral-500">
+                      <td colSpan={isPostedBasis ? 6 : 9} className="px-6 py-8 text-center text-neutral-500">
                         {breakdownGroup === "zone" ? t("occupancy.noAreas") : t("occupancy.noSegments")}
                       </td>
                     </tr>
@@ -1462,7 +1461,6 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                             ? `${fmtMoney(row.avg_price_per_sqm, occupancyMarket)}${perSqmLabel}`
                             : "—"}
                         </td>
-                        <td className="px-4 py-3">{formatDays(row.avg_days_on_market)}</td>
                         <td className="px-4 py-3">{formatDays(row.median_days_on_market)}</td>
                         {!isPostedBasis ? (
                           <>

@@ -428,6 +428,7 @@ function MapCanvas({
       )}
     >
       <MapContainer
+        key={heightClass}
         center={mapCenter}
         zoom={12}
         className="h-full w-full"
@@ -546,11 +547,6 @@ export default function OccupancyMinimap({
     () => new Set(["zones"]),
   );
 
-  const points = useMemo(
-    () => listings.map((listing) => [listing.lat, listing.lng] as [number, number]),
-    [listings],
-  );
-
   const zoneStats = useMemo(() => buildZoneOverlayStats(listings, citySlug), [listings, citySlug]);
 
   const priceRange = useMemo(() => {
@@ -589,10 +585,39 @@ export default function OccupancyMinimap({
     );
   }
 
+  if (!mounted) {
+    return (
+      <div className="space-y-2">
+        {legend.length > 0 ? <Legend legend={legend} /> : null}
+        <div className="flex h-52 items-center justify-center rounded-xl border border-surface-border/60 bg-neutral-50 text-sm text-neutral-500 sm:h-56">
+          …
+        </div>
+      </div>
+    );
+  }
+
+  const mapListings = listings.filter(
+    (listing) =>
+      Number.isFinite(listing.lat) &&
+      Number.isFinite(listing.lng) &&
+      (listing.lat !== 0 || listing.lng !== 0),
+  );
+  const mapPoints = mapListings.map(
+    (listing) => [listing.lat, listing.lng] as [number, number],
+  );
+
+  if (!mapListings.length) {
+    return (
+      <div className="flex h-52 items-center justify-center rounded-xl border border-surface-border/60 bg-neutral-50 text-sm text-neutral-500">
+        {emptyLabel}
+      </div>
+    );
+  }
+
   const mapContent = (heightClass: string, scrollWheelZoom: boolean, invalidateSize = false) => (
     <MapCanvas
-      listings={listings}
-      points={points}
+      listings={mapListings}
+      points={mapPoints}
       statusLabels={statusLabels}
       heightClass={heightClass}
       scrollWheelZoom={scrollWheelZoom}

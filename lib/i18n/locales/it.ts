@@ -546,7 +546,7 @@ const it = {
       avgRent: "Affitto medio",
       avgRentPerSqm: "€/m²",
       avgDom: "Media giorni sul mercato",
-      medianDom: "DOM mediano",
+      medianDom: "Giorni sul mercato mediano",
       avgWaitingDays: "Attesa media · {period}",
       avgWaitingDaysHint:
         "Media giorni online degli annunci attivi durante il periodo {period}.",

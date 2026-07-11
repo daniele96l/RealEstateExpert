@@ -544,7 +544,7 @@ const en: Translations = {
       avgRent: "Avg rent",
       avgRentPerSqm: "€/m²",
       avgDom: "Avg days on market",
-      medianDom: "Median DOM",
+      medianDom: "Median days on market",
       avgWaitingDays: "Avg waiting · {period}",
       avgWaitingDaysHint:
         "Average days active listings have been online during the {period} window.",
