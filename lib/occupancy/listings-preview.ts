@@ -81,6 +81,19 @@ function listingSourceForPortal(portal: OccupancyPortal): string | null {
   return null;
 }
 
+export async function listingUrlMapFromRentCache(
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+): Promise<Map<string, string>> {
+  const cache = await loadMergedRentCache(citySlug, portal);
+  const map = new Map<string, string>();
+  for (const listing of cache?.listings ?? []) {
+    const url = listing.url?.trim();
+    if (url) map.set(listing.id, url);
+  }
+  return map;
+}
+
 async function loadMergedRentCache(
   citySlug: OccupancyCitySlug,
   portal: OccupancyPortal,

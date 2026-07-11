@@ -354,3 +354,80 @@ export async function fetchSrealityCityListings(
     provider: "sreality",
   };
 }
+
+interface SrealityApiLocality {
+  city_seo_name?: string | null;
+  citypart_seo_name?: string | null;
+  street_seo_name?: string | null;
+}
+
+interface SrealityApiCategory {
+  name?: string | null;
+}
+
+interface SrealityApiEstateDetail {
+  category_type_cb?: SrealityApiCategory | null;
+  category_sub_cb?: SrealityApiCategory | null;
+  locality?: SrealityApiLocality | null;
+}
+
+function srealityDetailSlugFromApiLocality(locality: SrealityApiLocality | undefined): string {
+  if (!locality?.city_seo_name) return "brno";
+  const parts = [locality.city_seo_name, locality.citypart_seo_name, locality.street_seo_name].filter(
+    Boolean,
+  );
+  return parts.join("-") || locality.city_seo_name;
+}
+
+function srealityDetailUrlFromApiEstate(estateId: number, estate: SrealityApiEstateDetail): string | null {
+  const operation = estate.category_type_cb?.name === "Pronájem" ? "pronajem" : "prodej";
+  const rooms = encodeURIComponent(estate.category_sub_cb?.name ?? "byt").replace(/%2B/g, "+");
+  const slug = srealityDetailSlugFromApiLocality(estate.locality ?? undefined);
+  return `https://www.sreality.cz/detail/${operation}/byt/${rooms}/${slug}/${estateId}`;
+}
+
+export async function fetchSrealityListingDetailUrl(listingId: string): Promise<string | null> {
+  const estateId = srealityEstateIdFromListingId(listingId);
+  if (!estateId) return null;
+
+  const response = await fetch(`https://www.sreality.cz/api/v1/estates/${estateId}`, {
+    headers: {
+      Accept: "application/json",
+      "User-Agent": USER_AGENT,
+      Referer: "https://www.sreality.cz/",
+      "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8",
+    },
+    signal: AbortSignal.timeout(15_000),
+  });
+
+  if (!response.ok) return null;
+
+  const payload = (await response.json()) as { result?: SrealityApiEstateDetail };
+  if (!payload.result) return null;
+  return srealityDetailUrlFromApiEstate(estateId, payload.result);
+}
+
+export async function fetchSrealityListingDetailUrls(listingIds: string[]): Promise<Map<string, string>> {
+  const map = new Map<string, string>();
+  const batchSize = 8;
+
+  for (let i = 0; i < listingIds.length; i += batchSize) {
+    const batch = listingIds.slice(i, i + batchSize);
+    const resolved = await Promise.all(
+      batch.map(async (id) => {
+        try {
+          const url = await fetchSrealityListingDetailUrl(id);
+          return url ? ([id, url] as const) : null;
+        } catch {
+          return null;
+        }
+      }),
+    );
+    for (const entry of resolved) {
+      if (entry) map.set(entry[0], entry[1]);
+    }
+  }
+
+  return map;
+}
+

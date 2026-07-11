@@ -1,5 +1,5 @@
 import { computeOccupancyMetrics } from "./metrics";
-import { registryBreakdownListings } from "./breakdown-listings";
+import { buildBreakdownListings } from "./breakdown-listings-server";
 import { buildMapListings } from "./map-listings";
 import { buildPreviewFromSnapshot, resolveListingsPreview } from "./listings-preview";
 import { listSnapshotSummaries, loadAllSnapshots, loadRegistry } from "./registry";
@@ -110,7 +110,7 @@ export async function loadOccupancyDashboard(
 
   const snapshot_diff = resolveSnapshotDiff(allSnapshots, selected);
   const map_listings = buildMapListings(snapshot_diff, allSnapshots, selected);
-  const breakdown_listings = registryBreakdownListings(registry.listings, citySlug);
+  const breakdown_listings = await buildBreakdownListings(registry.listings, citySlug, portal);
 
   return {
     metrics,

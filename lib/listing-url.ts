@@ -123,8 +123,7 @@ export function resolveOccupancyListingUrl(
   }
   if (/^\d+$/.test(id)) return `https://www.idealista.it/immobile/${id}/`;
   if (id.startsWith("sr_")) {
-    const numericId = id.slice(3);
-    if (/^\d+$/.test(numericId)) return `https://www.sreality.cz/detail/pronajem/byt/-/-/${numericId}`;
+    return null;
   }
   if (id.startsWith("ca_")) {
     const numericId = id.slice(3);

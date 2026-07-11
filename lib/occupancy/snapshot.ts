@@ -10,6 +10,7 @@ import type {
 } from "@/lib/types";
 import { fetchBrnoRentalsListings } from "@/lib/server/brno-rentals-fetch";
 import { fetchReggioRentalsListings } from "@/lib/server/reggio-rentals-fetch";
+import { getCache, mergeListingCache, saveCache } from "@/lib/server/listings-cache";
 import { fetchIdealistaScraperListings } from "@/lib/server/idealista-rentals-fetch";
 import { fetchCasaScraperListings } from "@/lib/server/casa-rentals-fetch";
 import { fetchSubitoScraperListings } from "@/lib/server/subito-rentals-fetch";
@@ -326,6 +327,11 @@ export async function runOccupancySnapshot(
     reportProgress,
     options,
   );
+
+  if (citySlug === "brno" && portal === "sreality") {
+    const existing = await getCache(cityConfig.market, cityConfig.city, "rent");
+    await saveCache(mergeListingCache(existing, data), cityConfig.market);
+  }
 
   reportProgress(maxPages, maxPages, data.listings.length, "Salvataggio snapshot…");
 
