@@ -177,7 +177,53 @@ function isBlockedSentinel(item: Record<string, unknown>): boolean {
   return item.type === "immobiliare_blocked";
 }
 
-function mapItemToListing(item: Record<string, unknown>): MapListing | null {
+function flattenApifyItem(item: Record<string, unknown>): Record<string, unknown> {
+  const enhanced = asRecord(item._enhanced) ?? {};
+  const geography = asRecord(item.geography);
+  const geolocation = asRecord(geography?.geolocation);
+  const priceObj = asRecord(item.price);
+  const topology = asRecord(item.topology);
+  const surfaceObj = asRecord(topology?.surface);
+  const analytics = asRecord(item.analytics);
+  const basicInfo = asRecord(item.basicInfo);
+
+  const id = item.id ?? enhanced.id ?? item.listing_id ?? item.listingId;
+  const url =
+    String(item.url ?? item.listingUrl ?? enhanced.listingUrl ?? "").trim() ||
+    (id != null ? `https://www.immobiliare.it/annunci/${id}/` : "");
+
+  return {
+    ...enhanced,
+    ...item,
+    id,
+    url,
+    listingUrl: url,
+    priceAmount:
+      item.priceAmount ??
+      enhanced.priceAmount ??
+      priceObj?.raw ??
+      analytics?.price,
+    latitude: item.latitude ?? enhanced.latitude ?? geolocation?.latitude,
+    longitude: item.longitude ?? enhanced.longitude ?? geolocation?.longitude,
+    surfaceSqm: item.surfaceSqm ?? enhanced.surfaceSqm ?? surfaceObj?.size,
+    rooms: item.rooms ?? enhanced.rooms ?? topology?.rooms,
+    creationDate:
+      item.creationDate ?? enhanced.creationDate ?? basicInfo?.creationDate,
+    creationDateIso: item.creationDateIso ?? enhanced.creationDateIso,
+    lastModified: item.lastModified ?? enhanced.lastModified ?? basicInfo?.lastModified,
+    lastModifiedIso: item.lastModifiedIso ?? enhanced.lastModifiedIso,
+    propertyType:
+      item.propertyType ??
+      enhanced.propertyType ??
+      item.propertySubtype ??
+      analytics?.typology ??
+      asRecord(topology?.typology)?.name,
+    title: item.title ?? enhanced.title ?? analytics?.typology,
+  };
+}
+
+function mapItemToListing(raw: Record<string, unknown>): MapListing | null {
+  const item = flattenApifyItem(raw);
   if (isBlockedSentinel(item)) return null;
 
   const listingId = listingIdFromItem(item);
@@ -234,9 +280,14 @@ function mapItemToListing(item: Record<string, unknown>): MapListing | null {
 }
 
 function mapItems(items: unknown[]): MapListing[] {
-  return items
+  const listings = items
     .map((item) => mapItemToListing(asRecord(item) ?? {}))
     .filter((listing): listing is MapListing => listing != null);
+  const byId = new Map<string, MapListing>();
+  for (const listing of listings) {
+    byId.set(listing.id, listing);
+  }
+  return [...byId.values()];
 }
 
 function dateCoverage(listings: MapListing[]): number {
@@ -249,6 +300,7 @@ function actorInput(actorId: string, maxPages: number): Record<string, unknown> 
   if (actorId === "memo23/immobiliare-scraper") {
     return {
       startUrls: [REGGIO_IMMOBILIARE_RENT_URL],
+      maxItems: maxItems,
       proxyConfiguration: { useApifyProxy: true },
     };
   }
@@ -287,7 +339,7 @@ function actorInput(actorId: string, maxPages: number): Record<string, unknown> 
 function isUsableResult(listings: MapListing[], items: unknown[]): boolean {
   if (!listings.length) return false;
   if (items.some((item) => isBlockedSentinel(asRecord(item) ?? {}))) return false;
-  return dateCoverage(listings) >= MIN_DATE_COVERAGE || listings.length >= 5;
+  return dateCoverage(listings) >= MIN_DATE_COVERAGE;
 }
 
 async function runActor(

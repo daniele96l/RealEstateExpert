@@ -545,7 +545,7 @@ const it = {
       posted: "Pubblicati · {period}",
       avgRent: "Affitto medio",
       avgRentPerSqm: "€/m²",
-      avgDom: "DOM medio",
+      avgDom: "Media giorni sul mercato",
       medianDom: "DOM mediano",
       avgWaitingDays: "Attesa media · {period}",
       avgWaitingDaysHint:
@@ -574,7 +574,7 @@ const it = {
         zone: "Zona",
         rent: "Canone",
         rentPerSqm: "€/m²",
-        dom: "DOM",
+        dom: "Giorni sul mercato",
         priceHistory: "Storico prezzi",
         address: "Indirizzo",
       },

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "im_130667618",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-11T11:16:41.589Z",
+    "presumed_rented_at": "2026-07-11T11:16:41.589Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-11T10:42:45Z",
+    "days_on_market": 3,
+    "price": 1500,
+    "sqm": 45,
+    "rooms": null,
+    "address": "Monolocale via Niccolò da Reggio, Centro Storico, Reggio Calabria",
+    "zone": "Centro Storico, Pineta Zerbi",
+    "lat": 38.1032,
+    "lng": 15.6445,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 1500
+      }
+    ]
+  },
+  {
+    "id": "im_128755152",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-11T11:16:41.589Z",
+    "presumed_rented_at": "2026-07-11T11:16:41.589Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-11T10:42:45Z",
+    "days_on_market": 3,
+    "price": 1200,
+    "sqm": 85,
+    "rooms": null,
+    "address": "Attico via Tommaso Gulli 24, Centro Storico, Reggio Calabria",
+    "zone": "Centro Storico, Pineta Zerbi",
+    "lat": 38.10607147,
+    "lng": 15.64101982,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 1200
+      }
+    ]
+  },
+  {
+    "id": "im_122129486",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-11T11:16:41.589Z",
+    "presumed_rented_at": "2026-07-11T11:16:41.589Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-11T10:42:45Z",
+    "days_on_market": 3,
+    "price": 440,
+    "sqm": 145,
+    "rooms": null,
+    "address": "Appartamento Strada Vecchia San Sperato 87A, San Sperato, Reggio Calabria",
+    "zone": "Modena, San Giorgio Extra, San Sperato",
+    "lat": 38.0977,
+    "lng": 15.6731,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 440
+      }
+    ]
+  }
+]

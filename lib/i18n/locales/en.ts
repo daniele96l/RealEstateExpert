@@ -543,7 +543,7 @@ const en: Translations = {
       posted: "Posted · {period}",
       avgRent: "Avg rent",
       avgRentPerSqm: "€/m²",
-      avgDom: "Avg DOM",
+      avgDom: "Avg days on market",
       medianDom: "Median DOM",
       avgWaitingDays: "Avg waiting · {period}",
       avgWaitingDaysHint:
@@ -572,7 +572,7 @@ const en: Translations = {
         zone: "Zone",
         rent: "Rent",
         rentPerSqm: "€/m²",
-        dom: "DOM",
+        dom: "Days on market",
         priceHistory: "Price history",
         address: "Address",
       },
