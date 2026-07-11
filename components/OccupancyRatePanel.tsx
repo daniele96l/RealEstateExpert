@@ -57,19 +57,6 @@ function formatWhen(iso: string | null, locale: string): string {
   }
 }
 
-function formatListingDate(iso: string | null | undefined, locale: string): string {
-  if (!iso) return "—";
-  try {
-    return new Date(iso).toLocaleDateString(locale, {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    });
-  } catch {
-    return iso;
-  }
-}
-
 function formatSnapshotOption(snapshot: OccupancySnapshotSummary, locale: string): string {
   const when = formatWhen(snapshot.fetched_at, locale);
   return `${when} · ${snapshot.active_count}`;
@@ -998,8 +985,6 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                     <th className="px-4 py-3">{t("occupancy.preview.table.rooms")}</th>
                     <th className="px-4 py-3">{t("occupancy.preview.table.sqm")}</th>
                     <th className="px-4 py-3">{t("occupancy.preview.table.rent")}</th>
-                    <th className="px-4 py-3">{t("occupancy.preview.table.published")}</th>
-                    <th className="px-4 py-3">{t("occupancy.preview.table.updated")}</th>
                     <th className="px-6 py-3">{t("occupancy.preview.table.rentPerSqm")}</th>
                   </tr>
                 </thead>
@@ -1016,12 +1001,6 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                       <td className="px-4 py-3">{listing.rooms ?? "—"}</td>
                       <td className="px-4 py-3">{listing.sqm ?? "—"}</td>
                       <td className="px-4 py-3 font-medium text-neutral-900">{fmtMoney(listing.price, occupancyMarket)}</td>
-                      <td className="px-4 py-3 text-neutral-600">
-                        {formatListingDate(listing.listing_published_at, dateLocale)}
-                      </td>
-                      <td className="px-4 py-3 text-neutral-600">
-                        {formatListingDate(listing.listing_updated_at, dateLocale)}
-                      </td>
                       <td className="px-6 py-3 text-neutral-700">
                         {formatPricePerSqm(listing.price, listing.sqm, perSqmLabel, occupancyMarket)}
                       </td>
@@ -1091,15 +1070,13 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                   <th className="px-4 py-3">{t("occupancy.preview.table.rooms")}</th>
                   <th className="px-4 py-3">{t("occupancy.preview.table.sqm")}</th>
                   <th className="px-4 py-3">{t("occupancy.preview.table.rent")}</th>
-                  <th className="px-4 py-3">{t("occupancy.preview.table.published")}</th>
-                  <th className="px-4 py-3">{t("occupancy.preview.table.updated")}</th>
                   <th className="px-6 py-3">{t("occupancy.preview.table.rentPerSqm")}</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredDiffListings.length === 0 ? (
                   <tr>
-                    <td colSpan={8} className="px-6 py-8 text-center text-neutral-500">
+                    <td colSpan={6} className="px-6 py-8 text-center text-neutral-500">
                       {t("occupancy.diff.noListings")}
                     </td>
                   </tr>
@@ -1126,12 +1103,6 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                       <td className="px-4 py-3">{listing.rooms ?? "—"}</td>
                       <td className="px-4 py-3">{listing.sqm ?? "—"}</td>
                       <td className="px-4 py-3 font-medium text-neutral-900">{fmtMoney(listing.price, occupancyMarket)}</td>
-                      <td className="px-4 py-3 text-neutral-600">
-                        {formatListingDate(listing.listing_published_at, dateLocale)}
-                      </td>
-                      <td className="px-4 py-3 text-neutral-600">
-                        {formatListingDate(listing.listing_updated_at, dateLocale)}
-                      </td>
                       <td className="px-6 py-3 text-neutral-700">
                         {formatPricePerSqm(listing.price, listing.sqm, perSqmLabel, occupancyMarket)}
                       </td>
@@ -1252,13 +1223,11 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
             </div>
           </div>
 
-          {!metrics.flow_metrics_ready ? (
+          {!metrics.flow_metrics_ready && !isPostedBasis ? (
             <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-              {isPostedBasis
-                ? t("occupancy.needsPostedDates")
-                : viewingHistorical
-                  ? t("occupancy.needsSnapshotsHistorical")
-                  : t("occupancy.needsSnapshots")}
+              {viewingHistorical
+                ? t("occupancy.needsSnapshotsHistorical")
+                : t("occupancy.needsSnapshots")}
             </div>
           ) : !isPostedBasis && metricsPeriod === "longest" ? (
             <div className="rounded-xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-950">
