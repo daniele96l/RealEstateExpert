@@ -451,6 +451,14 @@ const en: Translations = {
     breakdownSubtitle: "Zones or metrics by rent band, room count, and floor area",
     breakdownGroupZone: "Zones",
     breakdownRowCount: "{count} rows",
+    breakdownDrilldownHint: "Click to view active listings",
+    breakdownDrilldown: {
+      title: "{label} · {count} active listings",
+      empty: "No listings in this segment.",
+      close: "Close",
+      daysOnMarket: "Days on market",
+      daysSincePublished: "Days since published",
+    },
     areasTitle: "Areas",
     areasSubtitle: "Zones inferred from listing addresses",
     areaChart: {

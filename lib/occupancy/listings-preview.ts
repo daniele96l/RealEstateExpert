@@ -59,6 +59,7 @@ function toBasic(listing: MapListing, citySlug: OccupancyCitySlug): OccupancyBas
     rooms: listing.rooms,
     address: listing.address,
     zone: resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
+    url: listing.url,
     listing_published_at: listing.listing_published_at ?? null,
     listing_updated_at: listing.listing_updated_at ?? null,
   };

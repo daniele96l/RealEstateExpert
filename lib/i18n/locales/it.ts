@@ -453,6 +453,14 @@ const it = {
     breakdownSubtitle: "Quartieri o metriche per fascia di prezzo, locali e metratura",
     breakdownGroupZone: "Quartieri",
     breakdownRowCount: "{count} righe",
+    breakdownDrilldownHint: "Clicca per vedere gli annunci attivi",
+    breakdownDrilldown: {
+      title: "{label} · {count} annunci attivi",
+      empty: "Nessun annuncio in questo segmento.",
+      close: "Chiudi",
+      daysOnMarket: "Giorni sul mercato",
+      daysSincePublished: "Giorni dalla pubblicazione",
+    },
     areasTitle: "Aree",
     areasSubtitle: "Quartieri Immobiliare.it (da indirizzo e coordinate)",
     areaChart: {

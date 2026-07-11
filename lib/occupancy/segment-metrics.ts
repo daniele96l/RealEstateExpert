@@ -2,6 +2,7 @@ import type { MarketId } from "@/lib/markets";
 import type {
   OccupancyBasicListing,
   OccupancySegmentGroups,
+  OccupancySegmentGroupId,
   OccupancySegmentMetrics,
   OccupancySnapshot,
   TrackedRentalListing,
@@ -118,6 +119,17 @@ function buildGroup(
       };
     })
     .filter((row): row is OccupancySegmentMetrics => row != null);
+}
+
+export function getSegmentMatcher(
+  group: OccupancySegmentGroupId,
+  segmentId: string,
+  market: MarketId,
+): (listing: OccupancyBasicListing) => boolean {
+  const buckets =
+    group === "price" ? priceBuckets(market) : group === "rooms" ? ROOM_BUCKETS : SIZE_BUCKETS;
+  const bucket = buckets.find((entry) => entry.id === segmentId);
+  return bucket?.match ?? (() => false);
 }
 
 export function computeSegmentGroups(

@@ -10,6 +10,7 @@ import type {
   OccupancyCityMetrics,
   OccupancyDashboardData,
   OccupancyRemovalEvent,
+  VerifyListingDatesResult,
 } from "./types";
 import type { ListingsExportBundle } from "./listings-export";
 import type { BatchFetchProgressState, BatchFetchStreamEvent } from "./batch-fetch-progress";
@@ -298,6 +299,23 @@ export async function fetchOccupancyMetrics(
   const query = params.toString();
   const res = await fetch(`/api/occupancy/metrics${query ? `?${query}` : ""}`);
   if (!res.ok) throw new Error(await parseError(res, "Lettura metriche occupancy non riuscita"));
+  return res.json();
+}
+
+export async function verifyOccupancyListingDates(
+  id: string,
+  opts?: {
+    city?: string | null;
+    portal?: OccupancyPortal | null;
+    asOf?: string | null;
+  },
+): Promise<VerifyListingDatesResult> {
+  const params = new URLSearchParams({ id });
+  if (opts?.city) params.set("city", opts.city);
+  if (opts?.portal) params.set("portal", opts.portal);
+  if (opts?.asOf) params.set("asOf", opts.asOf);
+  const res = await fetch(`/api/occupancy/verify-listing?${params.toString()}`);
+  if (!res.ok) throw new Error(await parseError(res, "Verifica date annuncio non riuscita"));
   return res.json();
 }
 

@@ -103,6 +103,40 @@ export function extractListingCacheId(url: string): string | null {
   return null;
 }
 
+/** Best-effort portal URL from occupancy listing id (and optional stored url). */
+export function resolveOccupancyListingUrl(
+  listing: { id: string; url?: string | null },
+): string | null {
+  const stored = listing.url?.trim();
+  if (stored) {
+    try {
+      return new URL(stored.startsWith("http") ? stored : `https://${stored}`).toString();
+    } catch {
+      // fall through to id-based resolution
+    }
+  }
+
+  const id = listing.id.trim();
+  if (id.startsWith("im_")) {
+    const numericId = id.slice(3);
+    if (/^\d+$/.test(numericId)) return `https://www.immobiliare.it/annunci/${numericId}/`;
+  }
+  if (/^\d+$/.test(id)) return `https://www.idealista.it/immobile/${id}/`;
+  if (id.startsWith("sr_")) {
+    const numericId = id.slice(3);
+    if (/^\d+$/.test(numericId)) return `https://www.sreality.cz/detail/pronajem/byt/-/-/${numericId}`;
+  }
+  if (id.startsWith("ca_")) {
+    const numericId = id.slice(3);
+    if (/^\d+$/.test(numericId)) return `https://www.casa.it/immobili/${numericId}/`;
+  }
+  if (id.startsWith("sb_")) {
+    const numericId = id.slice(3);
+    if (/^\d+$/.test(numericId)) return `https://www.subito.it/annunci-${numericId}.htm`;
+  }
+  return null;
+}
+
 export function normalizeIdealistaListingUrl(raw: string): string {
   const trimmed = raw.trim();
   if (!trimmed) throw new Error("URL obbligatorio");

@@ -2,7 +2,10 @@
 
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { fetchOccupancyMetrics, refreshOccupancySnapshot } from "@/lib/api";
+import { filterActiveBreakdownListings, type BreakdownGroupId } from "@/lib/occupancy/breakdown-listings";
+import { resolveOccupancyListingUrl } from "@/lib/listing-url";
 import {
   occupancySnapshotProgressPercent,
   type OccupancySnapshotProgressState,
@@ -20,9 +23,10 @@ import type {
   OccupancySnapshotDiff,
   OccupancySnapshotListing,
   OccupancySnapshotSummary,
+  TrackedRentalListing,
 } from "@/lib/types";
 import { fmtMoney } from "@/lib/utils";
-import { Activity, CalendarDays, MapPin, RefreshCw } from "lucide-react";
+import { Activity, CalendarDays, MapPin, RefreshCw, X } from "lucide-react";
 import OccupancyAreaPriceChart from "@/components/OccupancyAreaPriceChart";
 import { importWithChunkRetry } from "@/lib/chunk-retry-import";
 
@@ -67,6 +71,16 @@ function formatDays(value: number | null): string {
   return `${value}`;
 }
 
+function daysSincePublished(
+  listing: TrackedRentalListing,
+  asOfMs = Date.now(),
+): number | null {
+  if (!listing.listing_published_at) return null;
+  const publishedMs = new Date(listing.listing_published_at).getTime();
+  if (!Number.isFinite(publishedMs)) return null;
+  return Math.max(0, Math.round((asOfMs - publishedMs) / (24 * 60 * 60 * 1000)));
+}
+
 function formatPct(value: number | null): string {
   if (value == null) return "—";
   return `${value.toFixed(1)}%`;
@@ -109,6 +123,20 @@ function turnoverTone(value: number | null): MetricTone {
   if (value >= 0.7) return "mid";
   return "bad";
 }
+
+function daysOnMarketTone(days: number | null): MetricTone {
+  if (days == null) return "neutral";
+  if (days <= 30) return "good";
+  if (days <= 60) return "mid";
+  return "bad";
+}
+
+const ROW_TONE_CLASS: Record<MetricTone, string> = {
+  good: "bg-green-50/60",
+  mid: "bg-amber-50/60",
+  bad: "bg-rose-50/60",
+  neutral: "",
+};
 
 const METRIC_TONE_CLASS: Record<MetricTone, string> = {
   good: "rounded-md bg-green-50 px-2 py-0.5 font-semibold text-green-700",
@@ -316,7 +344,11 @@ const STATUS_STYLES: Record<
 
 type DiffFilter = "all" | OccupancyListingChangeStatus;
 
-type BreakdownGroupId = "zone" | OccupancySegmentGroupId;
+interface BreakdownDrillDown {
+  group: BreakdownGroupId;
+  rowKey: string;
+  rowLabel: string;
+}
 
 interface BreakdownRow {
   rowKey: string;
@@ -394,6 +426,168 @@ function segmentLabel(
   return t(`occupancy.segments.${group}.${segmentId}`);
 }
 
+function BreakdownListingsModal({
+  drillDown,
+  listings,
+  onClose,
+  t,
+  perSqmLabel,
+  occupancyMarket,
+  showDom,
+  asOfMs,
+}: {
+  drillDown: BreakdownDrillDown;
+  listings: TrackedRentalListing[];
+  onClose: () => void;
+  t: (key: string, params?: Record<string, string | number>) => string;
+  perSqmLabel: string;
+  occupancyMarket: import("@/lib/markets").MarketId;
+  showDom: boolean;
+  asOfMs: number;
+}) {
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose]);
+
+  const sorted = useMemo(
+    () => [...listings].sort((a, b) => b.price - a.price || (a.zone ?? "").localeCompare(b.zone ?? "", "it")),
+    [listings],
+  );
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-900/40 p-3"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={t("occupancy.breakdownDrilldown.title", {
+        label: drillDown.rowLabel,
+        count: sorted.length,
+      })}
+    >
+      <div
+        className="card flex max-h-[min(70vh,32rem)] w-full max-w-2xl flex-col overflow-hidden shadow-xl"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="flex shrink-0 items-center justify-between gap-3 border-b border-surface-border px-3 py-2">
+          <h3 className="truncate text-sm font-semibold text-neutral-900">
+            {t("occupancy.breakdownDrilldown.title", {
+              label: drillDown.rowLabel,
+              count: sorted.length,
+            })}
+          </h3>
+          <button
+            type="button"
+            onClick={onClose}
+            className="shrink-0 rounded-md p-1 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800"
+            aria-label={t("occupancy.breakdownDrilldown.close")}
+          >
+            <X size={16} />
+          </button>
+        </div>
+        <div className="overflow-y-auto">
+          {sorted.length === 0 ? (
+            <p className="px-3 py-6 text-center text-xs text-neutral-500">
+              {t("occupancy.breakdownDrilldown.empty")}
+            </p>
+          ) : (
+            <table className="min-w-full text-xs">
+              <thead>
+                <tr className="border-b border-surface-border/40 text-left text-[10px] uppercase tracking-wide text-neutral-500">
+                  <th className="px-3 py-2">{t("occupancy.preview.table.zone")}</th>
+                  <th className="px-2 py-2">{t("occupancy.preview.table.rooms")}</th>
+                  <th className="px-2 py-2">{t("occupancy.preview.table.sqm")}</th>
+                  <th className="px-2 py-2">{t("occupancy.preview.table.rent")}</th>
+                  {showDom ? (
+                    <th className="px-2 py-2">{t("occupancy.breakdownDrilldown.daysOnMarket")}</th>
+                  ) : null}
+                  <th className="px-2 py-2">{t("occupancy.breakdownDrilldown.daysSincePublished")}</th>
+                  <th className="px-3 py-2">{t("occupancy.preview.table.rentPerSqm")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sorted.map((listing) => {
+                  const publishedDays = daysSincePublished(listing, asOfMs);
+                  const rowTone = daysOnMarketTone(
+                    publishedDays ?? (showDom ? listing.days_on_market : null),
+                  );
+                  const listingUrl = resolveOccupancyListingUrl(listing);
+                  return (
+                    <tr
+                      key={listing.id}
+                      className={cn(
+                        "border-b border-surface-border/20 text-neutral-700 last:border-0",
+                        ROW_TONE_CLASS[rowTone],
+                      )}
+                    >
+                    <td className="max-w-[9rem] px-3 py-2">
+                      {listingUrl ? (
+                        <a
+                          href={listingUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block truncate font-medium text-sky-700 hover:text-sky-900 hover:underline"
+                          title={listing.address ?? listing.zone ?? undefined}
+                        >
+                          {listing.zone ?? "—"}
+                        </a>
+                      ) : (
+                        <p className="truncate font-medium text-neutral-800">{listing.zone ?? "—"}</p>
+                      )}
+                      {listing.address ? (
+                        listingUrl ? (
+                          <a
+                            href={listingUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block truncate text-[10px] text-neutral-500 hover:text-sky-800 hover:underline"
+                          >
+                            {listing.address}
+                          </a>
+                        ) : (
+                          <p className="truncate text-[10px] text-neutral-500">{listing.address}</p>
+                        )
+                      ) : null}
+                    </td>
+                    <td className="px-2 py-2">{listing.rooms ?? "—"}</td>
+                    <td className="px-2 py-2">{listing.sqm ?? "—"}</td>
+                    <td className="whitespace-nowrap px-2 py-2 font-medium text-neutral-900">
+                      {fmtMoney(listing.price, occupancyMarket)}
+                    </td>
+                    {showDom ? (
+                      <td className="px-2 py-2">
+                        <MetricValue
+                          value={formatDays(listing.days_on_market)}
+                          tone={daysOnMarketTone(listing.days_on_market)}
+                        />
+                      </td>
+                    ) : null}
+                    <td className="px-2 py-2">
+                      <MetricValue
+                        value={formatDays(publishedDays)}
+                        tone={daysOnMarketTone(publishedDays)}
+                      />
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-2 text-neutral-700">
+                      {formatPricePerSqm(listing.price, listing.sqm, perSqmLabel, occupancyMarket)}
+                    </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
 function ListingStatusBadge({
   status,
   label,
@@ -440,6 +634,9 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const [error, setError] = useState<string | null>(null);
   const [lastRefreshSummary, setLastRefreshSummary] = useState<string | null>(null);
   const [lastRefreshWarning, setLastRefreshWarning] = useState<string | null>(null);
+  const [breakdownListings, setBreakdownListings] = useState<TrackedRentalListing[]>([]);
+  const [breakdownDrillDown, setBreakdownDrillDown] = useState<BreakdownDrillDown | null>(null);
+  const [drillDownMounted, setDrillDownMounted] = useState(false);
 
   const load = useCallback(async (asOf?: string | null, portalArg?: OccupancyPortal, cityArg?: OccupancyCitySlug, periodArg?: OccupancyMetricsPeriod, basisArg?: OccupancyMetricsBasis) => {
     const activePortal = portalArg ?? portal;
@@ -454,6 +651,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
       setListingsPreview(data.listings_preview);
       setSnapshotDiff(data.snapshot_diff);
       setMapListings(data.map_listings);
+      setBreakdownListings(data.breakdown_listings ?? []);
       setAvailableSnapshots(data.available_snapshots);
       setSelectedSnapshotAt(data.selected_snapshot_at);
       setPortal(data.selected_portal);
@@ -488,6 +686,12 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
     setBreakdownPage(0);
   }, [breakdownGroup, citySlug, portal, selectedSnapshotAt, metrics?.updated_at]);
 
+  useEffect(() => {
+    setBreakdownDrillDown(null);
+  }, [breakdownGroup, citySlug, portal, selectedSnapshotAt, metricsPeriod, metricsBasis]);
+
+  useEffect(() => setDrillDownMounted(true), []);
+
   const handleRefresh = async () => {
     setRefreshing(true);
     setRefreshProgress(null);
@@ -505,6 +709,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
       setListingsPreview(latest.listings_preview);
       setSnapshotDiff(latest.snapshot_diff);
       setMapListings(latest.map_listings);
+      setBreakdownListings(latest.breakdown_listings ?? []);
       setAvailableSnapshots(latest.available_snapshots);
       setLastRefreshSummary(
         t("occupancy.refreshSummary", {
@@ -621,6 +826,17 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
     breakdownPage * breakdownPageSize,
     breakdownPage * breakdownPageSize + breakdownPageSize,
   );
+
+  const drillDownListings = useMemo(() => {
+    if (!breakdownDrillDown) return [];
+    return filterActiveBreakdownListings(
+      breakdownListings,
+      breakdownDrillDown.group,
+      breakdownDrillDown.rowKey,
+      citySlug,
+      occupancyMarket,
+    );
+  }, [breakdownDrillDown, breakdownListings, citySlug, occupancyMarket]);
 
   useEffect(() => {
     setBreakdownPage((current) => Math.min(current, Math.max(0, breakdownPageCount - 1)));
@@ -1420,7 +1636,21 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                         )}
                       >
                         <td className="px-6 py-3 font-medium text-neutral-800">{row.rowLabel}</td>
-                        <td className="px-4 py-3">{row.active_count}</td>
+                        <td
+                          className="px-4 py-3 text-sky-700 underline decoration-dotted underline-offset-2 hover:text-sky-900 cursor-pointer"
+                          title={t("occupancy.breakdownDrilldownHint")}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            if (row.active_count <= 0) return;
+                            setBreakdownDrillDown({
+                              group: breakdownGroup,
+                              rowKey: row.rowKey,
+                              rowLabel: row.rowLabel,
+                            });
+                          }}
+                        >
+                          {row.active_count}
+                        </td>
                         <td className="px-4 py-3">{row.rented_in_window}</td>
                         <td className="px-4 py-3">
                           {row.avg_price != null ? fmtMoney(row.avg_price, occupancyMarket) : "—"}
@@ -1530,6 +1760,23 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
             cityAvgPerSqm={listingsPreview?.avg_price_per_sqm}
           />
         </div>
+      ) : null}
+
+      {drillDownMounted && breakdownDrillDown ? (
+        <BreakdownListingsModal
+          drillDown={breakdownDrillDown}
+          listings={drillDownListings}
+          onClose={() => setBreakdownDrillDown(null)}
+          t={t}
+          perSqmLabel={perSqmLabel}
+          occupancyMarket={occupancyMarket}
+          showDom={!isPostedBasis}
+          asOfMs={
+            metrics?.updated_at
+              ? new Date(metrics.updated_at).getTime()
+              : Date.now()
+          }
+        />
       ) : null}
     </div>
   );

@@ -270,6 +270,7 @@ export interface OccupancyBasicListing {
   rooms: number | null;
   address: string | null;
   zone: string | null;
+  url?: string | null;
   listing_published_at?: string | null;
   listing_updated_at?: string | null;
 }
@@ -433,12 +434,43 @@ export interface OccupancyListingsPreview {
   sample: OccupancyBasicListing[];
 }
 
+export interface VerifyListingDatesLive {
+  listing_published_at: string | null;
+  listing_updated_at: string | null;
+  creationDate: number | string | null;
+  title: string | null;
+  price: number | null;
+}
+
+export interface VerifyListingDatesStored {
+  listing_published_at: string | null;
+  listing_updated_at: string | null;
+  zone: string | null;
+  address: string | null;
+  price: number | null;
+}
+
+export interface VerifyListingDatesResult {
+  id: string;
+  numeric_id: string;
+  url: string;
+  method: "playwright" | "apify/memo23" | null;
+  blocked: boolean;
+  live: VerifyListingDatesLive | null;
+  stored: VerifyListingDatesStored | null;
+  match_published: boolean | null;
+  match_updated: boolean | null;
+  days_since_published: number | null;
+  verified_at: string;
+}
+
 
 export interface OccupancyDashboardData {
   metrics: OccupancyCityMetrics;
   listings_preview: OccupancyListingsPreview | null;
   snapshot_diff: OccupancySnapshotDiff | null;
   map_listings: OccupancyMapListing[];
+  breakdown_listings: TrackedRentalListing[];
   available_snapshots: OccupancySnapshotSummary[];
   selected_snapshot_at: string | null;
   selected_portal: OccupancyPortal;
