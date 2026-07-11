@@ -302,6 +302,44 @@ export async function fetchOccupancyMetrics(
   return res.json();
 }
 
+export async function fetchOccupancySnapshotDetail(
+  fetchedAt: string,
+  opts?: { city?: string | null; portal?: OccupancyPortal | null },
+): Promise<{
+  snapshot: import("./types").OccupancySnapshot;
+  meta: import("./types").OccupancySnapshotMetaEntry;
+}> {
+  const params = new URLSearchParams({ fetched_at: fetchedAt });
+  if (opts?.city) params.set("city", opts.city);
+  if (opts?.portal) params.set("portal", opts.portal);
+  const res = await fetch(`/api/occupancy/snapshot/manage?${params.toString()}`);
+  if (!res.ok) throw new Error(await parseError(res, "Lettura snapshot non riuscita"));
+  return res.json();
+}
+
+export async function patchOccupancySnapshot(
+  body: {
+    fetched_at: string;
+    city?: string | null;
+    portal?: OccupancyPortal | null;
+    excluded?: boolean;
+    exclude_reason?: string | null;
+    remove_listing_ids?: string[];
+    edit_note?: string | null;
+    asOf?: string | null;
+    period?: string | null;
+    basis?: string | null;
+  },
+): Promise<OccupancyDashboardData> {
+  const res = await fetch("/api/occupancy/snapshot/manage", {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) throw new Error(await parseError(res, "Aggiornamento snapshot non riuscito"));
+  return res.json();
+}
+
 export async function verifyOccupancyListingDates(
   id: string,
   opts?: {

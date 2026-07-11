@@ -82,3 +82,10 @@ export function occupancyRemovalsLogPath(
 ): string {
   return path.join(occupancyDataDir(citySlug, portal), "removals.json");
 }
+
+export function occupancySnapshotsMetaPath(
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+): string {
+  return path.join(occupancyDataDir(citySlug, portal), "snapshots-meta.json");
+}

@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import type {
   OccupancyAreaMetrics,
   OccupancyCityMetrics,
+  OccupancyDashboardData,
   OccupancyListingsPreview,
   OccupancyListingChangeStatus,
   OccupancyMapListing,
@@ -28,6 +29,7 @@ import type {
 import { fmtMoney } from "@/lib/utils";
 import { Activity, CalendarDays, MapPin, RefreshCw, X } from "lucide-react";
 import OccupancyAreaPriceChart from "@/components/OccupancyAreaPriceChart";
+import OccupancySnapshotManagePanel from "@/components/OccupancySnapshotManagePanel";
 import { importWithChunkRetry } from "@/lib/chunk-retry-import";
 
 const OccupancyMinimap = dynamic(
@@ -638,6 +640,26 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const [breakdownDrillDown, setBreakdownDrillDown] = useState<BreakdownDrillDown | null>(null);
   const [drillDownMounted, setDrillDownMounted] = useState(false);
 
+  const applyDashboardData = useCallback((data: OccupancyDashboardData) => {
+    setMetrics(data.metrics);
+    setListingsPreview(data.listings_preview);
+    setSnapshotDiff(data.snapshot_diff);
+    setMapListings(data.map_listings);
+    setBreakdownListings(data.breakdown_listings ?? []);
+    setAvailableSnapshots(data.available_snapshots);
+    setSelectedSnapshotAt(data.selected_snapshot_at);
+    setPortal(data.selected_portal);
+    setCitySlug(data.selected_city);
+    setMetricsPeriod(data.selected_metrics_period);
+    setMetricsBasis(data.selected_metrics_basis);
+    setDiffFilter("all");
+  }, []);
+
+  const selectableSnapshots = useMemo(
+    () => availableSnapshots.filter((snapshot) => !snapshot.excluded),
+    [availableSnapshots],
+  );
+
   const load = useCallback(async (asOf?: string | null, portalArg?: OccupancyPortal, cityArg?: OccupancyCitySlug, periodArg?: OccupancyMetricsPeriod, basisArg?: OccupancyMetricsBasis) => {
     const activePortal = portalArg ?? portal;
     const activeCity = cityArg ?? citySlug;
@@ -647,24 +669,19 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
     setError(null);
     try {
       const data = await fetchOccupancyMetrics(asOf, activePortal, activeCity, activePeriod, activeBasis);
-      setMetrics(data.metrics);
-      setListingsPreview(data.listings_preview);
-      setSnapshotDiff(data.snapshot_diff);
-      setMapListings(data.map_listings);
-      setBreakdownListings(data.breakdown_listings ?? []);
-      setAvailableSnapshots(data.available_snapshots);
-      setSelectedSnapshotAt(data.selected_snapshot_at);
-      setPortal(data.selected_portal);
-      setCitySlug(data.selected_city);
-      setMetricsPeriod(data.selected_metrics_period);
-      setMetricsBasis(data.selected_metrics_basis);
-      setDiffFilter("all");
+      applyDashboardData(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : t("occupancy.loadError"));
     } finally {
       setLoading(false);
     }
-  }, [portal, citySlug, metricsPeriod, metricsBasis, t]);
+  }, [portal, citySlug, metricsPeriod, metricsBasis, t, applyDashboardData]);
+
+  useEffect(() => {
+    if (!selectedSnapshotAt) return;
+    const snap = availableSnapshots.find((s) => s.fetched_at === selectedSnapshotAt);
+    if (snap?.excluded) setSelectedSnapshotAt(null);
+  }, [availableSnapshots, selectedSnapshotAt]);
 
   useEffect(() => {
     void load(selectedSnapshotAt, portal, citySlug, metricsPeriod, metricsBasis);
@@ -1080,7 +1097,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
           ) : null}
         </div>
 
-        {availableSnapshots.length > 0 ? (
+        {selectableSnapshots.length > 0 ? (
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <label className="inline-flex items-center gap-2 text-sm text-neutral-600" htmlFor="occupancy-snapshot">
               <CalendarDays size={16} className="text-neutral-900" />
@@ -1094,13 +1111,27 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
               className="rounded-lg border border-surface-border bg-white px-3 py-2 text-sm text-neutral-800 outline-none focus:border-neutral-400/60"
             >
               <option value="">{t("occupancy.snapshotLatest")}</option>
-              {availableSnapshots.map((snapshot) => (
+              {selectableSnapshots.map((snapshot) => (
                 <option key={snapshot.fetched_at} value={snapshot.fetched_at}>
                   {formatSnapshotOption(snapshot, dateLocale)}
                 </option>
               ))}
             </select>
           </div>
+        ) : null}
+
+        {availableSnapshots.length > 0 ? (
+          <OccupancySnapshotManagePanel
+            snapshots={availableSnapshots}
+            citySlug={citySlug}
+            portal={portal}
+            selectedSnapshotAt={selectedSnapshotAt}
+            metricsPeriod={metricsPeriod}
+            metricsBasis={metricsBasis}
+            dateLocale={dateLocale}
+            disabled={loading || refreshing}
+            onDashboardUpdate={applyDashboardData}
+          />
         ) : null}
 
         {viewingHistorical ? (

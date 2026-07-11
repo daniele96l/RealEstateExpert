@@ -1,6 +1,6 @@
 import { readdir } from "fs/promises";
 import path from "path";
-import type { OccupancyRegistry, OccupancySnapshot, OccupancySnapshotSummary } from "@/lib/types";
+import type { OccupancyBasicListing, OccupancyRegistry, OccupancySnapshot, OccupancySnapshotSummary } from "@/lib/types";
 import { readJsonFile, writeJsonFile } from "@/lib/server/fs-cache-io";
 import {
   DEFAULT_OCCUPANCY_PORTAL,
@@ -14,6 +14,7 @@ import {
   getOccupancyCityConfig,
   type OccupancyCitySlug,
 } from "./cities";
+import { isSnapshotExcluded, loadSnapshotMeta, markSnapshotEdited } from "./snapshot-meta";
 
 export function emptyRegistry(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
@@ -56,7 +57,7 @@ export async function saveSnapshot(
   await writeJsonFile(occupancySnapshotPath(snapshot.fetched_at, citySlug, portal), snapshot);
 }
 
-export async function loadAllSnapshots(
+export async function loadAllSnapshotFilesRaw(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
 ): Promise<OccupancySnapshot[]> {
@@ -80,13 +81,61 @@ export async function loadAllSnapshots(
   );
 }
 
+export async function loadSnapshotByFetchedAt(
+  fetchedAt: string,
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+): Promise<OccupancySnapshot | null> {
+  return readJsonFile<OccupancySnapshot>(occupancySnapshotPath(fetchedAt, citySlug, portal));
+}
+
+export async function updateSnapshotListings(
+  fetchedAt: string,
+  listings: OccupancyBasicListing[],
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  editNote?: string | null,
+): Promise<OccupancySnapshot> {
+  const existing = await loadSnapshotByFetchedAt(fetchedAt, citySlug, portal);
+  if (!existing) throw new Error("Snapshot not found");
+
+  const snapshot: OccupancySnapshot = {
+    ...existing,
+    fetched_at: fetchedAt,
+    listings,
+    active_count: listings.length,
+  };
+  await saveSnapshot(snapshot, citySlug, portal);
+  await markSnapshotEdited(fetchedAt, citySlug, portal, editNote ?? null);
+  return snapshot;
+}
+
+export async function loadAllSnapshots(
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+): Promise<OccupancySnapshot[]> {
+  const [raw, meta] = await Promise.all([
+    loadAllSnapshotFilesRaw(citySlug, portal),
+    loadSnapshotMeta(citySlug, portal),
+  ]);
+  return raw.filter((snapshot) => !isSnapshotExcluded(meta, snapshot.fetched_at));
+}
+
 export async function listSnapshotSummaries(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
 ): Promise<OccupancySnapshotSummary[]> {
-  const snapshots = await loadAllSnapshots(citySlug, portal);
+  const [snapshots, meta] = await Promise.all([
+    loadAllSnapshotFilesRaw(citySlug, portal),
+    loadSnapshotMeta(citySlug, portal),
+  ]);
   return [...snapshots]
-    .map((s) => ({ fetched_at: s.fetched_at, active_count: s.active_count }))
+    .map((snapshot) => ({
+      fetched_at: snapshot.fetched_at,
+      active_count: snapshot.active_count,
+      excluded: isSnapshotExcluded(meta, snapshot.fetched_at),
+      exclude_reason: meta.entries[snapshot.fetched_at]?.exclude_reason ?? null,
+    }))
     .reverse();
 }
 

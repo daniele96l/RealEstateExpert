@@ -373,6 +373,20 @@ export interface OccupancyAreaPreview {
 export interface OccupancySnapshotSummary {
   fetched_at: string;
   active_count: number;
+  excluded?: boolean;
+  exclude_reason?: string | null;
+}
+
+export interface OccupancySnapshotMetaEntry {
+  excluded?: boolean;
+  exclude_reason?: string | null;
+  excluded_at?: string | null;
+  edited_at?: string | null;
+  edit_note?: string | null;
+}
+
+export interface OccupancySnapshotMetaFile {
+  entries: Record<string, OccupancySnapshotMetaEntry>;
 }
 
 export type OccupancyListingChangeStatus = "still_active" | "new" | "removed";
