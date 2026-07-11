@@ -1,18 +1,26 @@
 import { loadEnvLocal } from "../lib/server/load-env";
-import { fetchReggioRentalsListings } from "../lib/server/reggio-rentals-fetch";
+import { fetchReggioRentalsListings, type ReggioRentalsFetchProgress } from "../lib/server/reggio-rentals-fetch";
 import { saveCache } from "../lib/server/listings-cache";
 import { runOccupancySnapshot } from "../lib/occupancy/snapshot";
 import { OCCUPANCY_MARKET } from "../lib/occupancy/constants";
+
+function logScraperProgress(progress: ReggioRentalsFetchProgress): void {
+  if (progress.phase === "fetch") {
+    console.log(`  loading page ${progress.page}/${progress.maxPages}…`);
+    return;
+  }
+  if (progress.phase === "enrich" && progress.enrichTotal) {
+    console.log(`  enriching dates ${progress.enrichDone ?? 0}/${progress.enrichTotal}`);
+    return;
+  }
+  console.log(`  page ${progress.page}/${progress.maxPages} · ${progress.listingsTotal} listings`);
+}
 
 async function main() {
   loadEnvLocal();
   console.log("Scraping Immobiliare.it rentals (Reggio Calabria)…");
 
-  const cache = await fetchReggioRentalsListings(10, (progress) => {
-    console.log(
-      `  page ${progress.page}/${progress.maxPages} · ${progress.listingsTotal} listings`,
-    );
-  });
+  const cache = await fetchReggioRentalsListings(10, logScraperProgress);
 
   await saveCache(cache, OCCUPANCY_MARKET);
   console.log(`Saved listings cache: ${cache.listings.length} rentals`);

@@ -15,6 +15,9 @@ export interface ReggioRentalsFetchProgress {
   page: number;
   maxPages: number;
   listingsTotal: number;
+  phase?: "page" | "fetch" | "enrich";
+  enrichDone?: number;
+  enrichTotal?: number;
 }
 
 interface ReggioRentalsRow {
@@ -167,12 +170,23 @@ async function runScraperWithProgress(
             page?: number;
             total?: number;
             listings?: number;
+            phase?: string;
+            enrich_done?: number;
+            enrich_total?: number;
           };
           if (event.type === "progress" && event.page && event.total) {
             onProgress?.({
               page: event.page,
               maxPages: event.total,
               listingsTotal: event.listings ?? 0,
+              phase:
+                event.phase === "enrich"
+                  ? "enrich"
+                  : event.phase === "fetch"
+                    ? "fetch"
+                    : "page",
+              enrichDone: event.enrich_done,
+              enrichTotal: event.enrich_total,
             });
           }
         } catch {

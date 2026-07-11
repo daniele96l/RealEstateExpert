@@ -212,11 +212,17 @@ async function fetchOccupancyListings(
       };
     }
     const data = await fetchReggioRentalsListings(maxPages, (progress) => {
+      let label = `Scraper · pag. ${progress.page}/${progress.maxPages}`;
+      if (progress.phase === "fetch") {
+        label = `Scraper · caricamento pag. ${progress.page}/${progress.maxPages}`;
+      } else if (progress.phase === "enrich" && progress.enrichTotal) {
+        label = `Scraper · date annunci · ${progress.enrichDone ?? 0}/${progress.enrichTotal}`;
+      }
       reportProgress(
         progress.page,
         progress.page,
         progress.listingsTotal,
-        `Scraper · pag. ${progress.page}/${progress.maxPages}`,
+        label,
       );
     });
     return { data, provider: "reggio_rentals" };

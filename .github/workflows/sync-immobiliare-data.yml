@@ -11,7 +11,7 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
@@ -33,6 +33,8 @@ jobs:
           playwright install chromium
 
       - name: Scrape and export Reggio Calabria prod seed data
+        env:
+          SCRAPER_PROXY_SERVER: ${{ secrets.SCRAPER_PROXY_SERVER }}
         run: npm run data:sync-immobiliare
 
       - name: Scrape and export Brno prod seed data

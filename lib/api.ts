@@ -367,32 +367,50 @@ export async function refreshOccupancySnapshotStream(
     rented_count: number;
     snapshot_count: number;
   } | null = null;
+  const STREAM_IDLE_MS = 120_000;
+  let idleTimer: ReturnType<typeof setTimeout> | null = null;
 
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    buffer += decoder.decode(value, { stream: true });
-    const lines = buffer.split("\n");
-    buffer = lines.pop() ?? "";
+  const touchIdleTimer = () => {
+    if (idleTimer) clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      void reader.cancel("stream idle timeout");
+    }, STREAM_IDLE_MS);
+  };
 
-    for (const line of lines) {
-      if (!line.trim()) continue;
-      const event = JSON.parse(line) as OccupancySnapshotStreamEvent;
-      if (event.type === "progress") {
-        onProgress({
-          current: event.current,
-          total: event.total,
-          page: event.page,
-          maxPages: event.maxPages,
-          listingsTotal: event.listingsTotal,
-          label: event.label,
-        });
-      } else if (event.type === "done") {
-        result = event.result;
-      } else if (event.type === "error") {
-        throw new Error(event.message);
+  touchIdleTimer();
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) {
+        break;
+      }
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() ?? "";
+
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        const event = JSON.parse(line) as OccupancySnapshotStreamEvent;
+        if (event.type === "progress") {
+          touchIdleTimer();
+          onProgress({
+            current: event.current,
+            total: event.total,
+            page: event.page,
+            maxPages: event.maxPages,
+            listingsTotal: event.listingsTotal,
+            label: event.label,
+          });
+        } else if (event.type === "done") {
+          result = event.result;
+        } else if (event.type === "error") {
+          throw new Error(event.message);
+        }
       }
     }
+  } finally {
+    if (idleTimer) clearTimeout(idleTimer);
   }
 
   if (!result) throw new Error("Aggiornamento occupancy incompleto");

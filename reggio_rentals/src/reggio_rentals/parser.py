@@ -229,11 +229,31 @@ def _detail_html_from_page(page, detail_url: str) -> str | None:
     return html if "__NEXT_DATA__" in html else None
 
 
-def enrich_listings_from_details(page, listings: list[Listing]) -> list[Listing]:
+def enrich_listings_from_details(
+    page,
+    listings: list[Listing],
+    on_progress=None,
+) -> list[Listing]:
     from dataclasses import replace
+    from collections.abc import Callable
 
     dates_by_id: dict[int, tuple[str | None, str | None]] = {}
     listing_ids = sorted({listing.id for listing in listings})
+    pending_ids = [
+        listing_id
+        for listing_id in listing_ids
+        if not all(
+            row.listing_updated_at and row.listing_published_at
+            for row in listings
+            if row.id == listing_id
+        )
+    ]
+    enrich_total = len(pending_ids)
+    enrich_done = 0
+    progress_cb: Callable[[int, int], None] | None = on_progress
+
+    if progress_cb and enrich_total > 0:
+        progress_cb(0, enrich_total)
 
     for listing_id in listing_ids:
         rows = [listing for listing in listings if listing.id == listing_id]
@@ -242,6 +262,9 @@ def enrich_listings_from_details(page, listings: list[Listing]) -> list[Listing]
 
         detail_url = f"{config.BASE_URL}/annunci/{listing_id}/"
         html = _detail_html_from_page(page, detail_url)
+        enrich_done += 1
+        if progress_cb:
+            progress_cb(enrich_done, enrich_total)
         if not html:
             continue
 

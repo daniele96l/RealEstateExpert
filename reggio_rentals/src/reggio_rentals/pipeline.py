@@ -33,8 +33,25 @@ class RunSummary:
     db_path: Path
 
 
-def _emit_progress(page: int, total: int, listings: int) -> None:
-    payload = {"type": "progress", "page": page, "total": total, "listings": listings}
+def _emit_progress(
+    page: int,
+    total: int,
+    listings: int,
+    *,
+    phase: str = "page",
+    enrich_done: int = 0,
+    enrich_total: int = 0,
+) -> None:
+    payload: dict[str, int | str] = {
+        "type": "progress",
+        "page": page,
+        "total": total,
+        "listings": listings,
+        "phase": phase,
+    }
+    if phase == "enrich":
+        payload["enrich_done"] = enrich_done
+        payload["enrich_total"] = enrich_total
     print(json.dumps(payload), file=sys.stderr, flush=True)
 
 
@@ -58,6 +75,7 @@ def run(pages: int, db_path: Path) -> RunSummary:
             for page_num in range(1, pages + 1):
                 url = config.search_url(page_num)
                 logger.info("Fetching page %s/%s: %s", page_num, pages, url)
+                _emit_progress(page_num, pages, total_parsed, phase="fetch")
                 try:
                     retrying_goto(page, url)
                 except ScrapeError as exc:
@@ -94,7 +112,18 @@ def run(pages: int, db_path: Path) -> RunSummary:
                     time.sleep(config.PAGE_DELAY_SECONDS)
 
             if all_listings:
-                enriched = enrich_listings_from_details(page, all_listings)
+                enriched = enrich_listings_from_details(
+                    page,
+                    all_listings,
+                    on_progress=lambda done, total: _emit_progress(
+                        pages,
+                        pages,
+                        total_parsed,
+                        phase="enrich",
+                        enrich_done=done,
+                        enrich_total=total,
+                    ),
+                )
                 dates_changed = any(
                     enriched_row.listing_published_at != original.listing_published_at
                     or enriched_row.listing_updated_at != original.listing_updated_at
