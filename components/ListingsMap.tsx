@@ -882,7 +882,7 @@ export default function ListingsMap({
             {mapBounds && visibleListings.length < profitFilteredListings.length && (
               <p className="mb-2 text-[11px] text-neutral-500">
                 {ui.inView(visibleListings.length, profitFilteredListings.length)}
-                {profitFiltersActive ? (market === "cz" ? " (filtry zisku)" : " (filtri utile)") : ""}
+                {profitFiltersActive ? t("listings.profitFiltersActive") : ""}
               </p>
             )}
             {!mapBounds && profitFiltersActive && profitFilteredListings.length < displayListings.length && (

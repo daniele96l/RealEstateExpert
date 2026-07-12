@@ -55,17 +55,6 @@ export function listingsUiLabels(market: MarketId, t: TFunction): ListingsUiLabe
   };
 }
 
-const CONDITION_CZ: Record<string, string> = {
-  "Buono stato": "Dobrý stav",
-  "Quasi nuovo": "Téměř nový",
-  "Di recente costruzione": "Nedávno postavený",
-  "Nuova costruzione": "Novostavba",
-  "Da ristrutturare": "K rekonstrukci",
-  "Da demolire/ricostruire": "K demolici/rekonstrukci",
-  "Non specificato": "Neuvedeno",
-};
-
-export function conditionLabelForMarket(label: string | null, market: MarketId): string | null {
-  if (!label || market !== "cz") return label;
-  return CONDITION_CZ[label] ?? label;
+export function conditionLabelForMarket(label: string | null, _market: MarketId): string | null {
+  return label;
 }

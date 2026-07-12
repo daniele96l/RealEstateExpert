@@ -15,7 +15,6 @@ import type { AnalysisResult, MonthlyCashFlowPoint } from "@/lib/types";
 import { cn, fmtMoney } from "@/lib/utils";
 import { getMarket, type MarketId } from "@/lib/markets";
 import { useI18n, type TFunction } from "@/lib/i18n/context";
-import itLocale from "@/lib/i18n/locales/it";
 import { CHART_THEME } from "@/lib/chart-theme";
 
 interface Props {
@@ -49,54 +48,7 @@ const OPEX_BAR_DEFS = [
 type OpexKey = (typeof OPEX_BAR_DEFS)[number]["key"];
 
 function monthlyLabels(market: MarketId, t: TFunction) {
-  const it = itLocale;
-  if (market === "cz") {
-    return {
-      rent: "Nájemné",
-      rentIt: it.common.rent,
-      mortgage: "Hypotéka",
-      mortgageIt: it.common.mortgage,
-      net: "Čistý výsledek",
-      netIt: it.common.net,
-      perMonth: "/měs.",
-      perYear: "/rok",
-      title: "Měsíční přehled příjmů a výdajů",
-      titleIt: it.monthly.title,
-      subtitle: "Nájemné vs hypotéka, daň z příjmu a každá položka nákladů",
-      subtitleIt: it.monthly.subtitleIt,
-      tax: "Daň z příjmu",
-      taxIt: "Imposta sul reddito",
-      mortgageOn: (amount: string) => `Hypotéka vypočtena na celkovou částku ${amount}`,
-      mortgageOnIt: (amount: string) =>
-        it.monthly.mortgageOn.replace("{amount}", amount),
-      yearTotal: (year: number, months: number) =>
-        `Celkem rok ${year} — měsíční hodnoty = průměr za ${months} měsíců`,
-      yearTotalIt: (year: number, months: number) =>
-        it.monthly.yearTotal.replace("{year}", String(year)).replace("{months}", String(months)),
-      tooltipMonth: (month: number, year: number) => `Měsíc ${month} (rok ${year})`,
-      yearButton: (y: number) => `R${y}`,
-      opexNames: {
-        imu: "IMU",
-        tari: "Daň z nemovitosti",
-        condominio: "Společenství vlastníků",
-        agency_fee: "Správce nemovitosti",
-        insurance: "Pojištění",
-        maintenance: "Údržba",
-        utilities: "Energie",
-        platform_fee: "Platforma",
-      } satisfies Record<OpexKey, string>,
-      opexIt: {
-        imu: it.monthly.opex.imu,
-        tari: "Imposta immobiliare",
-        condominio: it.monthly.opex.condominio,
-        agency_fee: it.monthly.opex.agencyFee,
-        insurance: it.monthly.opex.insurance,
-        maintenance: it.monthly.opex.maintenance,
-        utilities: it.monthly.opex.utilities,
-        platform_fee: it.monthly.opex.platform,
-      } satisfies Record<OpexKey, string>,
-    };
-  }
+  const isCz = market === "cz";
   return {
     rent: t("common.rent"),
     rentIt: undefined as string | undefined,
@@ -108,27 +60,27 @@ function monthlyLabels(market: MarketId, t: TFunction) {
     perYear: t("common.perYear"),
     title: t("monthly.title"),
     titleIt: undefined as string | undefined,
-    subtitle: t("monthly.subtitleIt"),
+    subtitle: isCz ? t("monthly.subtitleCz") : t("monthly.subtitleIt"),
     subtitleIt: undefined as string | undefined,
-    tax: t("monthly.flatTax"),
+    tax: isCz ? t("monthly.incomeTaxCz") : t("monthly.flatTax"),
     taxIt: undefined as string | undefined,
     mortgageOn: (amount: string) => t("monthly.mortgageOn", { amount }),
     mortgageOnIt: undefined as ((amount: string) => string) | undefined,
     yearTotal: (year: number, months: number) => t("monthly.yearTotal", { year, months }),
     yearTotalIt: undefined as ((year: number, months: number) => string) | undefined,
     tooltipMonth: (month: number, year: number) => t("monthly.tooltipMonth", { month, year }),
+    yearButton: (y: number) => t("monthly.yearButton", { year: y }),
     opexNames: {
       imu: t("monthly.opex.imu"),
-      tari: t("monthly.opex.tari"),
-      condominio: t("monthly.opex.condominio"),
-      agency_fee: t("monthly.opex.agencyFee"),
-      insurance: t("monthly.opex.insurance"),
-      maintenance: t("monthly.opex.maintenance"),
-      utilities: t("monthly.opex.utilities"),
-      platform_fee: t("monthly.opex.platform"),
+      tari: t(isCz ? "monthly.opex.tariCz" : "monthly.opex.tari"),
+      condominio: t(isCz ? "monthly.opex.condominioCz" : "monthly.opex.condominio"),
+      agency_fee: t(isCz ? "monthly.opex.agencyFeeCz" : "monthly.opex.agencyFee"),
+      insurance: t(isCz ? "monthly.opex.insuranceCz" : "monthly.opex.insurance"),
+      maintenance: t(isCz ? "monthly.opex.maintenanceCz" : "monthly.opex.maintenance"),
+      utilities: t(isCz ? "monthly.opex.utilitiesCz" : "monthly.opex.utilities"),
+      platform_fee: t(isCz ? "monthly.opex.platformCz" : "monthly.opex.platform"),
     } satisfies Record<OpexKey, string>,
     opexIt: undefined as Record<OpexKey, string> | undefined,
-    yearButton: (y: number) => `A${y}`,
   };
 }
 

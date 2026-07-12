@@ -5,6 +5,7 @@ import {
   type OccupancyCitySlug,
 } from "./cities";
 import { resolveBrnoZone } from "./brno-zones";
+import { resolveCzechZone } from "./cz-zones";
 import { resolveReggioCalabriaZone } from "./reggio-zones";
 
 export function resolveListingZone(
@@ -13,9 +14,12 @@ export function resolveListingZone(
   lng?: number | null,
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
 ): string {
-  const { zoneResolver } = getOccupancyCityConfig(citySlug);
+  const { zoneResolver, city } = getOccupancyCityConfig(citySlug);
   if (zoneResolver === "brno") {
     return resolveBrnoZone(address, lat, lng);
+  }
+  if (zoneResolver === "cz") {
+    return resolveCzechZone(address, city);
   }
   return resolveReggioCalabriaZone(address, lat, lng);
 }

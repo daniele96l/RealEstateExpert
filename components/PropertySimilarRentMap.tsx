@@ -45,18 +45,17 @@ function formatRent(price: number, market: MarketId, perMonthSuffix: string) {
 
 function PopupListingLink({
   listing,
-  market,
   children,
 }: {
   listing: MapListing | ListingDetail;
-  market: MarketId;
   children: ReactNode;
 }) {
+  const { t } = useI18n();
   if (!listing.url) return <>{children}</>;
 
   const source =
     formatListingsWebsiteSource(inferListingWebsiteSource(listing)) ??
-    (market === "cz" ? "Otevřít inzerát" : "Apri annuncio");
+    t("similarRentMap.openListing");
 
   return (
     <a
@@ -130,7 +129,7 @@ export default function PropertySimilarRentMap({
   if (!canShowMap) {
     return (
       <div className="rounded-xl border border-surface-border/60 bg-white px-4 py-8 text-center text-sm text-neutral-500">
-        {market === "cz" ? "Poloha není k dispozici." : "Posizione non disponibile per la mappa."}
+        {t("similarRentMap.noLocation")}
       </div>
     );
   }
@@ -139,7 +138,7 @@ export default function PropertySimilarRentMap({
     <div className="space-y-2">
       <div className="flex items-center justify-between gap-2">
         <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">
-          {market === "cz" ? "Mapa okolí" : "Mappa zona"}
+          {t("similarRentMap.areaMap")}
         </p>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-neutral-500">
           <span className="inline-flex items-center gap-1">
@@ -168,7 +167,7 @@ export default function PropertySimilarRentMap({
               />
               <Marker position={saleCoords} icon={saleIcon()} zIndexOffset={2000}>
                 <Popup closeOnClick={false}>
-                  <PopupListingLink listing={saleProperty} market={market}>
+                  <PopupListingLink listing={saleProperty}>
                     <div className="text-sm">
                       <p className="font-medium text-green-700">{ui.sale}</p>
                       <p className="line-clamp-2">{saleProperty.title}</p>
@@ -196,10 +195,10 @@ export default function PropertySimilarRentMap({
               zIndexOffset={1000}
             >
               <Popup closeOnClick={false}>
-                <PopupListingLink listing={rent} market={market}>
+                <PopupListingLink listing={rent}>
                   <div className="text-sm">
                     <p className="font-medium text-blue-700">
-                      {market === "cz" ? "Podobný pronájem" : "Affitto simile"}
+                      {t("similarRentMap.similarRent")}
                     </p>
                     <p className="line-clamp-2">{rent.title}</p>
                     {(rent.sqm != null ||
@@ -233,7 +232,7 @@ export default function PropertySimilarRentMap({
         {loading && (
           <div className="pointer-events-none absolute inset-0 flex items-end justify-center bg-black/10 pb-3">
             <span className="rounded-full border border-surface-border bg-white px-3 py-1 text-xs text-neutral-600">
-              {market === "cz" ? "Načítání podobných pronájmů…" : "Caricamento affitti simili…"}
+              {t("similarRentMap.loading")}
             </span>
           </div>
         )}

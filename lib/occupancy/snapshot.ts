@@ -8,7 +8,7 @@ import type {
   OccupancySnapshot,
   TrackedRentalListing,
 } from "@/lib/types";
-import { fetchBrnoRentalsListings } from "@/lib/server/brno-rentals-fetch";
+import { fetchSrealityRentalsListings } from "@/lib/server/brno-rentals-fetch";
 import { fetchReggioRentalsListings } from "@/lib/server/reggio-rentals-fetch";
 import { getCache, mergeListingCache, saveCache } from "@/lib/server/listings-cache";
 import { fetchIdealistaScraperListings } from "@/lib/server/idealista-rentals-fetch";
@@ -190,19 +190,19 @@ async function fetchOccupancyListings(
 ): Promise<{ data: CityListingsCache; provider: ListingsProvider }> {
   const cityConfig = getOccupancyCityConfig(citySlug);
 
-  if (citySlug === "brno" && portal === "sreality") {
+  if (cityConfig.market === "cz" && portal === "sreality") {
     if (options?.prefetched) {
       return {
         data: options.prefetched,
         provider: options.provider ?? "sreality",
       };
     }
-    const data = await fetchBrnoRentalsListings(maxPages, (progress) => {
+    const data = await fetchSrealityRentalsListings(citySlug, maxPages, (progress) => {
       reportProgress(
         progress.page,
         progress.page,
         progress.listingsTotal,
-        `Sreality · str. ${progress.page}/${progress.maxPages}`,
+        `Sreality · page ${progress.page}/${progress.maxPages}`,
       );
     });
     return { data, provider: "sreality" };

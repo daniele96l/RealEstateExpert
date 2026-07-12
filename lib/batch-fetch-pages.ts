@@ -39,9 +39,9 @@ export function resolveBatchFetchPageLimit(
   return Math.min(Math.max(maxPages ?? defaultVal, 1), cap);
 }
 
-export function formatBatchFetchPagesLabel(maxPages: number, market: MarketId = "it"): string {
+export function formatBatchFetchPagesLabel(maxPages: number, _market: MarketId = "it"): string {
   if (isBatchFetchAllPages(maxPages)) {
-    return market === "cz" ? "vše" : "tutte";
+    return "all";
   }
   return `${maxPages} pag.`;
 }

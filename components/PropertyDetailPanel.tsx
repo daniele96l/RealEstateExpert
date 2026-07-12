@@ -58,7 +58,7 @@ const PropertySimilarRentMap = dynamic(() => import("./PropertySimilarRentMap"),
   ssr: false,
   loading: () => (
     <div className="flex h-[360px] items-center justify-center rounded-xl border border-surface-border/60 text-sm text-neutral-500">
-      Caricamento mappa…
+      Loading map…
     </div>
   ),
 });
@@ -102,7 +102,12 @@ function Spec({
   );
 }
 
-function boolLabel(v: boolean | null, yes = "Sì", no = "No", unknown = "—") {
+function boolLabel(
+  v: boolean | null,
+  yes: string,
+  no: string,
+  unknown = "—",
+) {
   if (v === true) return yes;
   if (v === false) return no;
   return unknown;
@@ -170,21 +175,21 @@ export default function PropertyDetailPanel({
     try {
       const criteria = criteriaFromDetail(detail, mapCity);
       if (!criteria.zone && (criteria.lat == null || criteria.lng == null)) {
-        setSimilarError("Zona o posizione non disponibili — impossibile cercare affitti nella stessa area.");
+        setSimilarError(t("propertyDetail.noZoneError"));
         return;
       }
       const { data: cache } = await loadCityListingsCacheFirst(market, criteria.city, "rent", false, provider);
       if (!cache.listings.length) {
-        setSimilarError(`Nessun affitto in cache per ${criteria.city}. Aggiorna gli annunci affitto in mappa.`);
+        setSimilarError(t("propertyDetail.noRentCache", { city: criteria.city }));
         return;
       }
       setRentPool(cache.listings);
     } catch (e) {
-      setSimilarError(e instanceof Error ? e.message : "Ricerca affitti non riuscita");
+      setSimilarError(e instanceof Error ? e.message : t("propertyDetail.searchFailed"));
     } finally {
       setSimilarLoading(false);
     }
-  }, [detail, mapCity, market, provider]);
+  }, [detail, mapCity, market, provider, t]);
 
   const similarRentals = useMemo(() => {
     if (!detail || !rentPool.length) return null;
@@ -221,7 +226,10 @@ export default function PropertyDetailPanel({
   const ui = listingsUiLabels(market, t);
   const fmt = (n: number) => fmtMoney(n, market);
   const marketDefaults = market === "cz" ? CZECH_DEFAULTS : ITALY_DEFAULTS;
-  const pricePerSqmLabel = market === "cz" ? "Kč/m²" : "€/m²";
+  const currencyUnit = market === "cz" ? "Kč" : "€";
+  const pricePerSqmLabel = `${currencyUnit}/m²`;
+  const yesLabel = t("propertyDetail.yes");
+  const noLabel = t("propertyDetail.no");
 
   const priceLabel =
     detail?.operation === "rent"
@@ -278,7 +286,7 @@ export default function PropertyDetailPanel({
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label="Dettaglio immobile"
+      aria-label={t("propertyDetail.ariaModal")}
     >
       <div
         className={cn(
@@ -293,20 +301,21 @@ export default function PropertyDetailPanel({
               {loading ? (
                 <div className="flex items-center gap-2 text-sm text-neutral-600">
                   <Loader2 size={16} className="animate-spin text-neutral-900" />
-                  Caricamento scheda immobile…
+                  {t("propertyDetail.loadingPanel")}
                 </div>
               ) : error ? (
                 <p className="text-sm text-red-400">{error}</p>
               ) : detail ? (
                 <>
-                  <p className="text-xs font-medium uppercase tracking-wide text-neutral-900">Scheda immobile</p>
+                  <p className="text-xs font-medium uppercase tracking-wide text-neutral-900">{t("propertyDetail.sheetTitle")}</p>
                   <h3 className="mt-1 text-base font-semibold text-neutral-900">{detail.title}</h3>
                   <p className="mt-1 text-lg font-bold text-neutral-900">{priceLabel}</p>
                   {quickMortgageMonthly != null && quickMortgageMonthly > 0 && (
                     <p className="mt-0.5 text-xs text-neutral-600">
-                      {market === "cz"
-                        ? `Odhad hypotéky na ${marketDefaults.default_loan_years} let při ${marketDefaults.mortgage_rate_pct}%: `
-                        : `Stima mutuo mensile su ${marketDefaults.default_loan_years} anni con tassi al ${marketDefaults.mortgage_rate_pct}%: `}
+                      {t("propertyDetail.mortgageEstimate", {
+                        years: marketDefaults.default_loan_years,
+                        rate: marketDefaults.mortgage_rate_pct,
+                      })}
                       <span className="font-medium text-neutral-700">
                         {fmt(quickMortgageMonthly)}{ui.perMonth}
                       </span>
@@ -333,14 +342,14 @@ export default function PropertyDetailPanel({
                   )}
                 >
                   <ExternalLink size={14} />
-                  {formatListingsWebsiteSource(inferListingWebsiteSource(detail)) ?? "Annuncio"}
+                  {formatListingsWebsiteSource(inferListingWebsiteSource(detail)) ?? t("propertyDetail.listing")}
                 </a>
               )}
               <button
                 type="button"
                 onClick={onClose}
                 className="rounded-lg border border-surface-border p-1.5 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800"
-                aria-label="Chiudi"
+                aria-label={t("propertyDetail.close")}
               >
                 <X size={16} />
               </button>
@@ -363,20 +372,20 @@ export default function PropertyDetailPanel({
             )}
 
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-              <Spec icon={Ruler} label="Superficie" value={detail.sqm != null ? `${detail.sqm} m²` : "—"} />
-              <Spec icon={Building2} label="Locali" value={detail.rooms != null ? String(detail.rooms) : "—"} />
+              <Spec icon={Ruler} label={t("propertyDetail.surface")} value={detail.sqm != null ? `${detail.sqm} m²` : "—"} />
+              <Spec icon={Building2} label={t("propertyDetail.rooms")} value={detail.rooms != null ? String(detail.rooms) : "—"} />
               {rentableRooms != null && detail.rooms != null && detail.rooms > 2 && (
                 <Spec
                   icon={Building2}
-                  label="Stanze affittabili (stima)"
+                  label={t("propertyDetail.rentableRooms")}
                   value={String(rentableRooms)}
                 />
               )}
-              <Spec icon={Bath} label="Bagni" value={detail.bathrooms != null ? String(detail.bathrooms) : "—"} />
-              <Spec icon={Layers} label="Piano" value={detail.floor ?? "—"} />
+              <Spec icon={Bath} label={t("propertyDetail.bathrooms")} value={detail.bathrooms != null ? String(detail.bathrooms) : "—"} />
+              <Spec icon={Layers} label={t("propertyDetail.floor")} value={detail.floor ?? "—"} />
               <Spec
                 icon={Zap}
-                label="Classe energetica"
+                label={t("propertyDetail.energyClass")}
                 value={
                   detail.energy_class
                     ? `${detail.energy_class}${detail.energy_kwh_sqm ? ` (${detail.energy_kwh_sqm} kWh/m²)` : ""}`
@@ -385,20 +394,20 @@ export default function PropertyDetailPanel({
               />
               <Spec
                 icon={Sparkles}
-                label="Stato / ristrutturazione"
+                label={t("propertyDetail.condition")}
                 value={
                   detail.condition ??
                   (detail.needs_renovation === true
-                    ? "Da ristrutturare"
+                    ? t("propertyDetail.needsRenovation")
                     : detail.needs_renovation === false
-                      ? "Buono stato"
+                      ? t("propertyDetail.goodCondition")
                       : "—")
                 }
               />
               {estimatedRenovation != null && (
                 <Spec
                   icon={Hammer}
-                  label="Stima ristrutturazione"
+                  label={t("propertyDetail.renovationEstimate")}
                   value={`${fmt(estimatedRenovation.min)} – ${fmt(estimatedRenovation.max)} (${RENOVATION_EUR_PER_SQM.min}–${RENOVATION_EUR_PER_SQM.max} ${pricePerSqmLabel})`}
                 />
               )}
@@ -409,21 +418,21 @@ export default function PropertyDetailPanel({
               />
               <Spec
                 icon={Building2}
-                label="Condominio"
+                label={t("propertyDetail.hoa")}
                 value={detail.condominio_monthly != null ? `${fmt(detail.condominio_monthly)}${ui.perMonth}` : "—"}
               />
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
               {[
-                { label: "Tipologia", value: detail.property_type_label ?? "—" },
-                { label: "Ascensore", value: boolLabel(detail.lift) },
-                { label: "Giardino", value: boolLabel(detail.garden) },
-                { label: "Terrazzo", value: boolLabel(detail.terrace) },
-                { label: "Garage", value: boolLabel(detail.garage) },
-                { label: "Arredato", value: detail.furnished ?? "—" },
-                { label: "Anno costruzione", value: detail.built_year != null ? String(detail.built_year) : "—" },
-                { label: "Zona", value: detail.zone ?? "—" },
+                { label: t("propertyDetail.propertyType"), value: detail.property_type_label ?? "—" },
+                { label: t("propertyDetail.lift"), value: boolLabel(detail.lift, yesLabel, noLabel) },
+                { label: t("propertyDetail.garden"), value: boolLabel(detail.garden, yesLabel, noLabel) },
+                { label: t("propertyDetail.terrace"), value: boolLabel(detail.terrace, yesLabel, noLabel) },
+                { label: t("propertyDetail.garage"), value: boolLabel(detail.garage, yesLabel, noLabel) },
+                { label: t("propertyDetail.furnished"), value: detail.furnished ?? "—" },
+                { label: t("propertyDetail.builtYear"), value: detail.built_year != null ? String(detail.built_year) : "—" },
+                { label: t("propertyDetail.zone"), value: detail.zone ?? "—" },
               ].map((row) => (
                 <div key={row.label} className="rounded-lg bg-surface-border/20 px-3 py-2">
                   <p className="text-neutral-500">{row.label}</p>
@@ -445,14 +454,14 @@ export default function PropertyDetailPanel({
             {detail.description && (
               <div className="rounded-xl border border-surface-border/60 bg-white p-3">
                 <div className="mb-1.5 flex items-center justify-between gap-2">
-                  <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Descrizione</p>
+                  <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">{t("propertyDetail.description")}</p>
                   {detail.description.length > 120 && (
                     <button
                       type="button"
                       onClick={() => setDescriptionExpanded((v) => !v)}
                       className="shrink-0 text-xs font-medium text-neutral-900 hover:text-neutral-900/80"
                     >
-                      {descriptionExpanded ? "Mostra meno" : "Mostra tutto"}
+                      {descriptionExpanded ? t("propertyDetail.showLess") : t("propertyDetail.showMore")}
                     </button>
                   )}
                 </div>
@@ -485,8 +494,8 @@ export default function PropertyDetailPanel({
             {cacheSource && detail.fetched_at && (
               <p className="text-xs text-neutral-500">
                 {cacheSource === "server"
-                  ? `Da cache ${propertyDetailCacheFileLabel(detail.id)}`
-                  : "Da cache browser"}
+                  ? t("propertyDetail.fromCacheServer", { file: propertyDetailCacheFileLabel(detail.id) })
+                  : t("propertyDetail.fromCacheBrowser")}
                 {" · "}
                 {new Date(detail.fetched_at).toLocaleString("it-IT")}
               </p>
@@ -497,7 +506,7 @@ export default function PropertyDetailPanel({
           {error && !loading && (
             <div className="px-5 pb-5">
               <button type="button" onClick={onClose} className="btn-primary !w-auto px-5">
-                Chiudi
+                {t("propertyDetail.close")}
               </button>
             </div>
           )}
@@ -507,16 +516,17 @@ export default function PropertyDetailPanel({
           <aside className="flex min-h-0 w-80 shrink-0 flex-col border-l border-surface-border bg-neutral-50 xl:w-96">
               <div className="flex shrink-0 items-start justify-between gap-2 border-b border-neutral-200 px-4 py-3">
                 <div className="min-w-0">
-                  <p className="text-xs font-medium uppercase tracking-wide text-neutral-900">Affitti simili</p>
+                  <p className="text-xs font-medium uppercase tracking-wide text-neutral-900">{t("propertyDetail.similarTitle")}</p>
                   <p className="mt-0.5 text-xs text-neutral-500">
-                    Stessa zona{detail.zone ? `: ${detail.zone}` : ""}
+                    {t("propertyDetail.sameZone")}
+                    {detail.zone ? `: ${detail.zone}` : ""}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={closeSimilarColumn}
                   className="rounded-lg border border-surface-border p-1 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800"
-                  aria-label="Chiudi affitti simili"
+                  aria-label={t("propertyDetail.closeSimilar")}
                 >
                   <X size={14} />
                 </button>
@@ -526,7 +536,7 @@ export default function PropertyDetailPanel({
                 {similarLoading && (
                   <div className="flex items-center justify-center gap-2 py-12 text-sm text-neutral-600">
                     <Loader2 size={16} className="animate-spin text-neutral-900" />
-                    Ricerca in corso…
+                    {t("propertyDetail.searching")}
                   </div>
                 )}
 
@@ -536,18 +546,17 @@ export default function PropertyDetailPanel({
 
                 {similarFilteredEmpty && !similarLoading && !similarError && (
                   <p className="text-sm text-amber-400">
-                    Nessun affitto con i filtri attuali. Prova ad allargare il raggio o a ridurre i vincoli su
-                    locali e metratura.
+                    {t("propertyDetail.noFilterMatches")}
                   </p>
                 )}
 
                 {!similarLoading && rentPool.length > 0 && (
                   <div className="mb-3 space-y-2 rounded-lg border border-surface-border/60 bg-white p-3">
                     <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-500">
-                      Filtri comparabili
+                      {t("propertyDetail.comparableFilters")}
                     </p>
                     <label className="block text-xs text-neutral-600">
-                      {market === "cz" ? "Metoda odhadu nájmu" : "Metodo stima affitto"}
+                      {t("propertyDetail.rentEstimateMethod")}
                       <select
                         value={similarFilters.rentEstimateMethod}
                         onChange={(e) =>
@@ -559,15 +568,15 @@ export default function PropertyDetailPanel({
                         className="mt-1 w-full rounded-lg border border-surface-border bg-white px-2 py-1.5 text-sm text-neutral-800"
                       >
                         <option value="per_sqm">
-                          {market === "cz" ? `Průměr ${pricePerSqmLabel} v okolí` : `Media ${pricePerSqmLabel} in zona`}
+                          {t("propertyDetail.avgPerSqmInArea", { unit: pricePerSqmLabel })}
                         </option>
                         <option value="per_room">
-                          {market === "cz" ? `Průměr ${ui.perRoom} v okolí` : `Media ${ui.perRoom} in zona`}
+                          {t("propertyDetail.avgPerRoomInArea", { unit: ui.perRoom })}
                         </option>
                       </select>
                     </label>
                     <label className="block text-xs text-neutral-600">
-                      {market === "cz" ? "Poloměr" : "Raggio"}
+                      {t("propertyDetail.radius")}
                       <select
                         value={similarFilters.radiusPresetId}
                         onChange={(e) =>
@@ -586,7 +595,7 @@ export default function PropertyDetailPanel({
                       </select>
                     </label>
                     <label className="block text-xs text-neutral-600">
-                      Locali
+                      {t("propertyDetail.rooms")}
                       <select
                         value={similarFilters.roomsFilter}
                         onChange={(e) =>
@@ -597,17 +606,21 @@ export default function PropertyDetailPanel({
                         }
                         className="mt-1 w-full rounded-lg border border-surface-border bg-white px-2 py-1.5 text-sm text-neutral-800"
                       >
-                        <option value="any">Qualsiasi</option>
+                        <option value="any">{t("propertyDetail.any")}</option>
                         <option value="similar">
-                          Simili{detail.rooms != null ? ` (±1 da ${detail.rooms})` : " (±1)"}
+                          {t("propertyDetail.similarRooms", {
+                            suffix: detail.rooms != null ? ` (±1 from ${detail.rooms})` : " (±1)",
+                          })}
                         </option>
                         <option value="match">
-                          Uguali{detail.rooms != null ? ` (${detail.rooms})` : ""}
+                          {t("propertyDetail.matchRooms", {
+                            suffix: detail.rooms != null ? ` (${detail.rooms})` : "",
+                          })}
                         </option>
                       </select>
                     </label>
                     <label className="block text-xs text-neutral-600">
-                      Metratura
+                      {t("propertyDetail.sqmLabel")}
                       <select
                         value={similarFilters.sqmFilter}
                         onChange={(e) =>
@@ -618,16 +631,17 @@ export default function PropertyDetailPanel({
                         }
                         className="mt-1 w-full rounded-lg border border-surface-border bg-white px-2 py-1.5 text-sm text-neutral-800"
                       >
-                        <option value="any">Qualsiasi</option>
+                        <option value="any">{t("propertyDetail.any")}</option>
                         <option value="similar">
-                          Simile ±25%
-                          {detail.sqm != null && detail.sqm > 0 ? ` (da ${detail.sqm} m²)` : ""}
+                          {t("propertyDetail.similarSqm", {
+                            suffix: detail.sqm != null && detail.sqm > 0 ? ` (from ${detail.sqm} m²)` : "",
+                          })}
                         </option>
                       </select>
                     </label>
                     {detail.property_type && (
                       <label className="block text-xs text-neutral-600">
-                        Tipo
+                        {t("propertyDetail.typeLabel")}
                         <select
                           value={similarFilters.propertyTypeFilter}
                           onChange={(e) =>
@@ -638,13 +652,13 @@ export default function PropertyDetailPanel({
                           }
                           className="mt-1 w-full rounded-lg border border-surface-border bg-white px-2 py-1.5 text-sm text-neutral-800"
                         >
-                          <option value="any">Qualsiasi</option>
-                          <option value="match">Stesso tipo ({detail.property_type})</option>
+                          <option value="any">{t("propertyDetail.any")}</option>
+                          <option value="match">{t("propertyDetail.sameType", { type: detail.property_type })}</option>
                         </select>
                       </label>
                     )}
                     <label className="block text-xs text-neutral-600">
-                      Max comparabili
+                      {t("propertyDetail.maxComparables")}
                       <select
                         value={similarRentLimitSelectValue(similarFilters.limit)}
                         onChange={(e) =>
@@ -660,7 +674,7 @@ export default function PropertyDetailPanel({
                             key={opt.value == null ? "all" : opt.value}
                             value={opt.value == null ? "all" : String(opt.value)}
                           >
-                            {opt.label}
+                            {opt.value == null ? t("propertyDetail.any") : opt.label}
                           </option>
                         ))}
                       </select>
@@ -674,25 +688,24 @@ export default function PropertyDetailPanel({
                       <div className="mb-3 rounded-lg border border-neutral-300 bg-neutral-50 px-3 py-2.5">
                         <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-900">
                           {rentEstimateMethod === "per_sqm"
-                            ? market === "cz"
-                              ? `Odhad nájmu (${pricePerSqmLabel})`
-                              : `Stima affitto (${pricePerSqmLabel})`
-                            : market === "cz"
-                              ? `Odhad nájmu (${ui.perRoom})`
-                              : `Stima affitto (${ui.perRoom})`}
+                            ? t("propertyDetail.rentEstimateSqm", { unit: pricePerSqmLabel })
+                            : t("propertyDetail.rentEstimateRoom", { unit: ui.perRoom })}
                         </p>
                         <p className="mt-0.5 text-lg font-bold text-neutral-900">
                           {fmt(avgWholeMonthly!)}
                           <span className="text-sm font-normal text-neutral-600">{ui.perMonth}</span>
                         </p>
                         <p className="mt-0.5 text-xs text-neutral-500">
-                          {market === "cz"
-                            ? estimateSampleCount === comparableCount
-                              ? `Průměr z ${estimateSampleCount} pronájmů · ${similarRadiusLabel}`
-                              : `Průměr z ${estimateSampleCount} pronájmů (${comparableCount} ve filtru) · ${similarRadiusLabel}`
-                            : estimateSampleCount === comparableCount
-                              ? `Media su ${estimateSampleCount} comparabili · ${similarRadiusLabel}`
-                              : `Media su ${estimateSampleCount} comparabili (${comparableCount} nel filtro) · ${similarRadiusLabel}`}
+                          {estimateSampleCount === comparableCount
+                            ? t("propertyDetail.avgFromCount", {
+                                count: estimateSampleCount,
+                                radius: similarRadiusLabel,
+                              })
+                            : t("propertyDetail.avgFromCountFiltered", {
+                                count: estimateSampleCount,
+                                filtered: comparableCount,
+                                radius: similarRadiusLabel,
+                              })}
                           {rentEstimateMethod === "per_sqm" ? (
                             <>
                               {" · "}
@@ -712,23 +725,23 @@ export default function PropertyDetailPanel({
                               {" · "}
                               {fmt(avgRentPerRoom!)}
                               {ui.perRoom} × {rentableRooms ?? "?"}{" "}
-                              {market === "cz" ? "pok." : "stanze"} = {fmt(avgWholeMonthly!)}
+                              {t("propertyDetail.roomsUnit")} = {fmt(avgWholeMonthly!)}
                               {ui.perMonth}
                             </>
                           )}
                         </p>
                         <p className="mt-2 text-[11px] leading-relaxed text-neutral-500">
                           {rentEstimateMethod === "per_sqm"
-                            ? market === "cz"
-                              ? `Průměrný měsíční nájem ${pricePerSqmLabel} z porovnatelných inzerátů s uvedenou plochou, aplikovaný na ${detail.sqm} m² prodávané nemovitosti.`
-                              : `Media mensile ${pricePerSqmLabel} sugli affitti comparabili con metratura nota, applicata ai m² dell'immobile in vendita.`
+                            ? t("propertyDetail.hintPerSqm", {
+                                unit: pricePerSqmLabel,
+                                sqm: detail.sqm ?? 0,
+                              })
                             : wholeEstimateMode === "under_two_locali"
-                              ? market === "cz"
-                                ? `Do 2 pokojů: průměr ${ui.perRoom} v okolí +${Math.round((SINGLE_RENTABLE_ROOM_PREMIUM - 1) * 100)} % za exkluzivní užívání celého bytu.`
-                                : `Fino a 2 locali: media ${ui.perRoom} in zona +${Math.round((SINGLE_RENTABLE_ROOM_PREMIUM - 1) * 100)}% per uso esclusivo dell'intero immobile.`
-                              : market === "cz"
-                                ? `Průměrný měsíční nájem ${ui.perRoom} z porovnatelných inzerátů, vynásobený odhadovaným počtem pronajímatelných pokojů.`
-                                : `Media mensile ${ui.perRoom} sugli affitti comparabili, moltiplicata per le stanze affittabili stimate.`}
+                              ? t("propertyDetail.hintUnderTwoRooms", {
+                                  perRoom: ui.perRoom,
+                                  pct: Math.round((SINGLE_RENTABLE_ROOM_PREMIUM - 1) * 100),
+                                })
+                              : t("propertyDetail.hintPerRoom", { perRoom: ui.perRoom })}
                         </p>
                         {onUseAverageRent && (
                           <button
@@ -744,7 +757,7 @@ export default function PropertyDetailPanel({
                             )}
                           >
                             <LayoutDashboard size={12} />
-                            {market === "cz" ? "Použít průměr v analýze" : "Usa medie nell'analisi"}
+                            {t("propertyDetail.useAverageInAnalysis")}
                           </button>
                         )}
                       </div>
@@ -752,12 +765,8 @@ export default function PropertyDetailPanel({
                     {!canUseRentEstimate && (
                       <p className="mb-3 text-xs text-amber-400">
                         {rentEstimateMethod === "per_sqm"
-                          ? market === "cz"
-                            ? "Odhad Kč/m² vyžaduje známou plochu prodávané nemovitosti a alespoň jeden srovnatelný pronájem s m²."
-                            : "La stima €/m² richiede metratura dell'immobile in vendita e almeno un comparabile con m² nota."
-                          : market === "cz"
-                            ? "Odhad Kč/pokoj vyžaduje alespoň jeden srovnatelný pronájem s odhadnutelnou cenou za pokoj."
-                            : "La stima €/stanza richiede almeno un comparabile con prezzo per stanza stimabile."}
+                          ? t("propertyDetail.needSqmEstimate", { unit: pricePerSqmLabel })
+                          : t("propertyDetail.needRoomEstimate", { unit: `${currencyUnit}${ui.perRoom}` })}
                       </p>
                     )}
                     <div className="space-y-2">
@@ -775,15 +784,16 @@ export default function PropertyDetailPanel({
                               <div className="mt-1 flex flex-wrap items-center gap-2">
                                 <p className="text-xs text-neutral-500">
                                   {wholeFlat
-                                    ? [
-                                        `${fmt(wholeFlat.pricePerRoom)}${ui.perMonth}/stanza`,
-                                        `${wholeFlat.roomCount} locali`,
-                                        `→ ${fmt(wholeFlat.totalMonthly)}${ui.perMonth} intero stimato`,
-                                      ].join(" · ")
+                                    ? t("propertyDetail.perRoomLine", {
+                                        price: fmt(wholeFlat.pricePerRoom),
+                                        perMonth: ui.perMonth,
+                                        rooms: wholeFlat.roomCount,
+                                        total: fmt(wholeFlat.totalMonthly),
+                                      })
                                     : [
                                         `${fmt(rent.price)}${ui.perMonth}`,
                                         rent.sqm != null && `${rent.sqm} m²`,
-                                        rent.rooms != null && `${rent.rooms} locali`,
+                                        rent.rooms != null && `${rent.rooms} ${t("propertyDetail.roomsUnit")}`,
                                         rent.sqm != null &&
                                           rent.sqm > 0 &&
                                           `${fmt(Math.round(rent.price / rent.sqm))}${ui.perSqm}`,
@@ -812,7 +822,7 @@ export default function PropertyDetailPanel({
                                 )}
                               >
                                 <ExternalLink size={12} />
-                                {formatListingsWebsiteSource(inferListingWebsiteSource(rent)) ?? "Annuncio"}
+                                {formatListingsWebsiteSource(inferListingWebsiteSource(rent)) ?? t("propertyDetail.listing")}
                               </a>
                               <button
                                 type="button"
@@ -823,7 +833,7 @@ export default function PropertyDetailPanel({
                                 )}
                               >
                                 <LayoutDashboard size={12} />
-                                Apri in dashboard
+                                {t("propertyDetail.openInDashboard")}
                               </button>
                             </div>
                           </div>

@@ -27,6 +27,7 @@ import {
 import { batchFetchProgressPercent, type BatchFetchProgressState } from "@/lib/batch-fetch-progress";
 import type { MarketId } from "@/lib/markets";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n/context";
 import { CheckSquare, Loader2, MapPin, Square, X } from "lucide-react";
 import dynamic from "next/dynamic";
 
@@ -83,6 +84,7 @@ export default function BatchFetchPanel({
   onClose,
   onSaved,
 }: Props) {
+  const { t } = useI18n();
   const [mounted, setMounted] = useState(false);
   const [city, setCity] = useState(initialCity);
   const [zone, setZone] = useState("");
@@ -607,9 +609,7 @@ export default function BatchFetchPanel({
               )}
               <span className="text-xs text-neutral-500">
                 {isBatchFetchAllPages(maxPages)
-                  ? market === "cz"
-                    ? "Stáhnout všechny dostupné stránky (v prodej a pronájem zvlášť)"
-                    : "Scarica tutte le pagine disponibili (vendita e affitto separati)"
+                  ? t("listings.batchPagesAllHint")
                   : "Più pagine = più annunci (vendita e affitto separati)"}
               </span>
             </div>

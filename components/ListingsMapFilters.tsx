@@ -18,6 +18,7 @@ import { CZ_ROOM_LAYOUT_OPTIONS } from "@/lib/czech-room-layout";
 import type { MarketId } from "@/lib/markets";
 import { formatDistance } from "@/lib/geo-filter";
 import { cn, fmtMoney } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n/context";
 
 type ViewMode = "sale" | "rent" | "both";
 
@@ -142,6 +143,8 @@ function MinMaxRow({
 
 export default function ListingsMapFilters({ market, viewMode, filters, onChange, onReset }: Props) {
   const sourceOptions = listingSourceOptionsForMarket(market);
+  const { t } = useI18n();
+  const currency = market === "cz" ? "Kč" : "€";
   const showSalePrice = viewMode === "sale" || viewMode === "both";
   const showRentPrice = viewMode === "rent" || viewMode === "both";
   const showRenovationFilter = viewMode === "sale" || viewMode === "both";
@@ -189,7 +192,7 @@ export default function ListingsMapFilters({ market, viewMode, filters, onChange
             <div className="grid gap-3 lg:grid-cols-2">
               {showSalePrice && (
                 <MinMaxRow
-                  label={market === "cz" ? "Vendita Kč" : "Vendita €"}
+                  label={t("listings.salePriceCz", { currency })}
                   min={filters.salePriceMin}
                   max={filters.salePriceMax}
                   options={salePricePresetsForMarket(market)}
@@ -200,7 +203,7 @@ export default function ListingsMapFilters({ market, viewMode, filters, onChange
               )}
               {showRentPrice && (
                 <MinMaxRow
-                  label={market === "cz" ? "Affitto Kč/mese" : "Affitto €/mese"}
+                  label={t("listings.rentPriceCz", { currency })}
                   min={filters.rentPriceMin}
                   max={filters.rentPriceMax}
                   options={rentPricePresetsForMarket(market)}
@@ -247,7 +250,7 @@ export default function ListingsMapFilters({ market, viewMode, filters, onChange
                   )
                 }
               >
-                <option value="">{market === "cz" ? "Vše" : "Tutti"}</option>
+                <option value="">{t("listings.allOption")}</option>
                 {(market === "cz" ? CZ_ROOM_LAYOUT_OPTIONS : ROOMS_OPTIONS).map(({ value, label }) => (
                   <option key={value} value={value}>
                     {label}

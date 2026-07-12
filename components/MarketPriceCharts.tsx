@@ -17,6 +17,7 @@ import { fmtMoney, cn } from "@/lib/utils";
 import { marketCacheFileLabel } from "@/lib/market-cache-client";
 import type { MarketPriceHistory, PriceHistoryPoint } from "@/lib/types";
 import { ExternalLink, Loader2, RefreshCw, TrendingUp } from "lucide-react";
+import { useI18n } from "@/lib/i18n/context";
 import { CHART_THEME } from "@/lib/chart-theme";
 
 interface Props {
@@ -47,11 +48,21 @@ function PriceChart({
   contract,
   points,
   market = "it",
+  avgPriceLabel,
+  avgGrowthLabel,
+  perYearLabel,
+  rentHistoryNote,
+  noDataLabel,
 }: {
   title: string;
   contract: "sale" | "rent";
   points: PriceHistoryPoint[];
   market?: MarketId;
+  avgPriceLabel: string;
+  avgGrowthLabel: string;
+  perYearLabel: string;
+  rentHistoryNote: (price: string) => string;
+  noDataLabel: string;
 }) {
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
   const data = downsample(points).map((p) => ({
@@ -68,7 +79,7 @@ function PriceChart({
         <div>
           <p className="text-xs uppercase tracking-wide text-neutral-500">{title}</p>
           <h3 className="text-sm font-semibold text-neutral-900">
-            {market === "cz" ? `Průměrná cena (${currencySymbol}/m²)` : "Prezzo medio (€/m²)"}
+            {avgPriceLabel}
           </h3>
         </div>
         {data.length > 0 && (
@@ -78,10 +89,10 @@ function PriceChart({
         )}
       </div>
       {data.length === 0 ? (
-        <p className="py-12 text-center text-sm text-neutral-500">Nessun dato disponibile</p>
+        <p className="py-12 text-center text-sm text-neutral-500">{noDataLabel}</p>
       ) : data.length < 2 && market === "cz" && contract === "rent" ? (
         <p className="py-12 text-center text-sm text-neutral-500">
-          Storico affitto: si accumula ad ogni aggiornamento annunci ({fmtMoney(data[0].price, market)}/m²)
+          {rentHistoryNote(fmtMoney(data[0].price, market))}
         </p>
       ) : (
         <ResponsiveContainer width="100%" height={260}>
@@ -126,10 +137,10 @@ function PriceChart({
       )}
       {cagrPct != null && (
         <div className="mt-3 border-t border-surface-border/40 pt-3 text-xs text-neutral-600">
-          <span>{market === "cz" ? "Průměrný roční růst" : "Crescita media annua"}: </span>
+          <span>{avgGrowthLabel}: </span>
           <span className={cn("font-semibold", cagrPct >= 0 ? "text-green-600" : "text-red-400")}>
             {formatGrowthPct(cagrPct)}
-            {market === "cz" ? "/rok" : "/anno"}
+            {perYearLabel}
           </span>
           {periodLabel ? <span className="text-neutral-500"> · {periodLabel}</span> : null}
         </div>
@@ -139,6 +150,8 @@ function PriceChart({
 }
 
 export default function MarketPriceCharts({ city, market = "it" }: Props) {
+  const { t } = useI18n();
+  const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
   const [data, setData] = useState<MarketPriceHistory | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -193,7 +206,14 @@ export default function MarketPriceCharts({ city, market = "it" }: Props) {
     void load(false);
   }, [city, market, load]);
 
-  const regionLabel = market === "cz" ? "Jihomoravský kraj" : (data?.city ?? city);
+  const regionLabel = data?.city ?? city;
+  const chartLabels = {
+    avgPriceLabel: t("marketCharts.avgPrice", { currency: currencySymbol }),
+    avgGrowthLabel: t("marketCharts.avgAnnualGrowth"),
+    perYearLabel: t("marketCharts.perYear"),
+    rentHistoryNote: (price: string) => t("marketCharts.rentHistoryNote", { price }),
+    noDataLabel: t("marketCharts.noData"),
+  };
 
   return (
     <div className="card p-5">
@@ -206,8 +226,8 @@ export default function MarketPriceCharts({ city, market = "it" }: Props) {
             <h2 className="text-base font-semibold text-neutral-900">Andamento prezzi di mercato</h2>
             <p className="text-sm text-neutral-500">
               {market === "cz"
-                ? `Storico prezzo medio Kč/m² — ${regionLabel} (Sreality)`
-                : `Storico prezzo medio €/m² — ${regionLabel || "seleziona una città"}`}
+                ? t("marketCharts.historySaleCz", { currency: currencySymbol, region: regionLabel })
+                : t("marketCharts.historySaleIt", { region: regionLabel || city })}
             </p>
           </div>
         </div>
@@ -257,31 +277,35 @@ export default function MarketPriceCharts({ city, market = "it" }: Props) {
       {loading && !data ? (
         <div className="flex h-48 items-center justify-center text-sm text-neutral-500">
           <Loader2 size={20} className="mr-2 animate-spin" />
-          Caricamento dati mercato…
+          {t("marketCharts.loading")}
         </div>
       ) : data ? (
         <div className="grid gap-4 lg:grid-cols-2">
-          <PriceChart title="Vendita" contract="sale" points={data.sale ?? []} market={market} />
-          <PriceChart title="Affitto" contract="rent" points={data.rent ?? []} market={market} />
+          <PriceChart
+            title={t("marketCharts.sale")}
+            contract="sale"
+            points={data.sale ?? []}
+            market={market}
+            {...chartLabels}
+          />
+          <PriceChart
+            title={t("marketCharts.rent")}
+            contract="rent"
+            points={data.rent ?? []}
+            market={market}
+            {...chartLabels}
+          />
         </div>
       ) : null}
 
       {data && (
         <p className="mt-4 text-xs text-neutral-500">
-          {market === "cz" ? (
-            <>
-              Dati mercato — Sreality.cz (Jihomoravský kraj)
-              {fromCache && cacheSource === "server" && ` · cache ${marketCacheFileLabel(city, market)}`}
-              {fromCache && cacheSource === "local" && " · cache browser"}
-            </>
-          ) : (
-            <>
-              Dati mercato — immobiliare.it
-              {data.provider === "scrape" ? " (scraper)" : data.provider === "sreality" ? " (Sreality)" : ""}
-              {fromCache && cacheSource === "server" && ` · cache ${marketCacheFileLabel(city, market)}`}
-              {fromCache && cacheSource === "local" && " · cache browser"}
-            </>
-          )}
+          {market === "cz"
+            ? t("marketCharts.footerCz", { region: regionLabel })
+            : t("marketCharts.footerIt")}
+          {data.provider === "scrape" ? " (scraper)" : data.provider === "sreality" ? " (Sreality)" : ""}
+          {fromCache && cacheSource === "server" && ` · cache ${marketCacheFileLabel(city, market)}`}
+          {fromCache && cacheSource === "local" && " · cache browser"}
           {data.fetched_at && ` · ${new Date(data.fetched_at).toLocaleString("it-IT")}`}
         </p>
       )}

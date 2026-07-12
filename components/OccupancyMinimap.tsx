@@ -640,18 +640,29 @@ export default function OccupancyMinimap({
     <div className="space-y-2">
       <Legend legend={legend} />
       <div className="relative">
-        {mapContent("h-52 sm:h-56", false)}
-        {expandable ? (
-          <button
-            type="button"
-            onClick={() => setExpanded(true)}
-            className="absolute right-2 top-2 z-[1000] inline-flex items-center gap-1.5 rounded-lg border border-surface-border bg-white px-2.5 py-1.5 text-xs font-medium text-neutral-800 shadow-lg  transition-colors hover:border-neutral-900 hover:text-white"
-            aria-label={expandLabel}
+        {!expanded ? (
+          <>
+            {mapContent("h-52 sm:h-56", false)}
+            {expandable ? (
+              <button
+                type="button"
+                onClick={() => setExpanded(true)}
+                className="absolute right-2 top-2 z-[1000] inline-flex items-center gap-1.5 rounded-lg border border-surface-border bg-white px-2.5 py-1.5 text-xs font-medium text-neutral-800 shadow-lg  transition-colors hover:border-neutral-900 hover:text-white"
+                aria-label={expandLabel}
+              >
+                <Maximize2 size={14} />
+                <span className="hidden sm:inline">{expandLabel}</span>
+              </button>
+            ) : null}
+          </>
+        ) : (
+          <div
+            className="flex h-52 items-center justify-center rounded-xl border border-surface-border/60 bg-neutral-50 text-sm text-neutral-500 sm:h-56"
+            aria-hidden
           >
-            <Maximize2 size={14} />
-            <span className="hidden sm:inline">{expandLabel}</span>
-          </button>
-        ) : null}
+            …
+          </div>
+        )}
       </div>
 
       {expanded && mounted

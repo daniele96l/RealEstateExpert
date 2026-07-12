@@ -2,7 +2,11 @@ import type { GeoPolygon } from "@/lib/geo-filter";
 import type { OccupancyMapListing } from "@/lib/types";
 import { allReggioZonePolygonFeatures } from "./reggio-zone-polygons";
 import { GEO_ZONES } from "./reggio-zones";
-import { defaultOccupancyCitySlug, type OccupancyCitySlug } from "./cities";
+import {
+  defaultOccupancyCitySlug,
+  getOccupancyCityConfig,
+  type OccupancyCitySlug,
+} from "./cities";
 
 const ZONE_PALETTE = [
   "#38bdf8",
@@ -18,7 +22,10 @@ const ZONE_PALETTE = [
 
 export function zonePaletteColor(zone: string): string {
   const idx = GEO_ZONES.findIndex((entry) => entry.zone === zone);
-  return ZONE_PALETTE[idx >= 0 ? idx % ZONE_PALETTE.length : 0]!;
+  if (idx >= 0) return ZONE_PALETTE[idx % ZONE_PALETTE.length]!;
+  let hash = 0;
+  for (const ch of zone) hash = (hash * 31 + ch.charCodeAt(0)) | 0;
+  return ZONE_PALETTE[Math.abs(hash) % ZONE_PALETTE.length]!;
 }
 
 export type OccupancyMapOverlayId = "zones" | "density" | "price" | "darkMap";
@@ -57,7 +64,8 @@ export function buildZoneOverlayStats(
     listingsByZone.set(listing.zone, bucket);
   }
 
-  if (citySlug === "brno") {
+  const { zoneResolver } = getOccupancyCityConfig(citySlug);
+  if (zoneResolver !== "reggio") {
     return [...listingsByZone.entries()]
       .map(([zone, zoneListings]) => {
         const count = zoneListings.length;

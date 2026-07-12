@@ -1,7 +1,13 @@
 import type { MarketId } from "@/lib/markets";
 import type { OccupancyPortal } from "./portals";
 
-export type OccupancyCitySlug = "reggio_calabria" | "brno";
+export type OccupancyCitySlug =
+  | "reggio_calabria"
+  | "brno"
+  | "tabor"
+  | "rosice"
+  | "prague"
+  | "ostrava";
 
 export const OCCUPANCY_CITY_STORAGE_KEY = "occupancy-city";
 
@@ -12,7 +18,7 @@ export interface OccupancyCityConfig {
   portals: OccupancyPortal[];
   defaultPortal: OccupancyPortal;
   mapCenter: [number, number];
-  zoneResolver: "reggio" | "brno";
+  zoneResolver: "reggio" | "brno" | "cz";
 }
 
 const OCCUPANCY_CITIES: Record<OccupancyCitySlug, OccupancyCityConfig> = {
@@ -34,6 +40,42 @@ const OCCUPANCY_CITIES: Record<OccupancyCitySlug, OccupancyCityConfig> = {
     mapCenter: [49.195, 16.608],
     zoneResolver: "brno",
   },
+  tabor: {
+    slug: "tabor",
+    city: "Tábor",
+    market: "cz",
+    portals: ["sreality"],
+    defaultPortal: "sreality",
+    mapCenter: [49.4144, 14.6578],
+    zoneResolver: "cz",
+  },
+  rosice: {
+    slug: "rosice",
+    city: "Rosice",
+    market: "cz",
+    portals: ["sreality"],
+    defaultPortal: "sreality",
+    mapCenter: [49.1723, 16.3879],
+    zoneResolver: "cz",
+  },
+  prague: {
+    slug: "prague",
+    city: "Prague",
+    market: "cz",
+    portals: ["sreality"],
+    defaultPortal: "sreality",
+    mapCenter: [50.0875, 14.4213],
+    zoneResolver: "cz",
+  },
+  ostrava: {
+    slug: "ostrava",
+    city: "Ostrava",
+    market: "cz",
+    portals: ["sreality"],
+    defaultPortal: "sreality",
+    mapCenter: [49.8209, 18.2625],
+    zoneResolver: "cz",
+  },
 };
 
 export const OCCUPANCY_CITY_SLUGS = Object.keys(OCCUPANCY_CITIES) as OccupancyCitySlug[];
@@ -43,7 +85,7 @@ export function defaultOccupancyCitySlug(): OccupancyCitySlug {
 }
 
 export function isOccupancyCitySlug(value: string | null | undefined): value is OccupancyCitySlug {
-  return value === "reggio_calabria" || value === "brno";
+  return value != null && value in OCCUPANCY_CITIES;
 }
 
 export function resolveOccupancyCitySlug(value: string | null | undefined): OccupancyCitySlug {

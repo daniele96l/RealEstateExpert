@@ -205,12 +205,13 @@ function ScatterTooltip({
   ui: ListingsUiLabels;
   includeRenovationCost?: boolean;
 }) {
+  const { t } = useI18n();
   if (!active || !payload?.length) return null;
   const point = payload[0].payload;
   const fmt = (n: number) => fmtMoney(n, market);
   const conditionLabel = conditionLabelForMarket(listingConditionLabel(point.listing), market);
   const needsRenovation = point.listing.needs_renovation === true;
-  const priceLabel = market === "cz" ? "Cena" : "Prezzo";
+  const priceLabel = t("scatter.price");
   return (
     <div className="rounded-lg border border-surface-border bg-white px-3 py-2 text-xs shadow-lg">
       <p className="mb-1 max-w-[220px] font-medium text-neutral-800 line-clamp-2">{point.title}</p>
@@ -269,7 +270,7 @@ export default function ListingPriceRentScatter({
   const [localHoveredId, setLocalHoveredId] = useState<string | null>(null);
   const ui = listingsUiLabels(market, t);
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
-  const rentAxisLabel = market === "cz" ? "Odhad nájmu" : "Affitto stimato";
+  const rentAxisLabel = t("scatter.estimatedRent");
   const priceAxisLabel = ui.pricePlusRenovation;
   const formatAxis = useCallback(
     (v: number) => axisCompact(v, currencySymbol),
