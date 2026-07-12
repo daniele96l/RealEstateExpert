@@ -15,6 +15,14 @@ data/listings/*.json
 !data/listings/.gitkeep
 !data/listings/cz_brno_sale.json
 !data/listings/cz_brno_rent.json
+!data/listings/cz_tabor_sale.json
+!data/listings/cz_tabor_rent.json
+!data/listings/cz_rosice_sale.json
+!data/listings/cz_rosice_rent.json
+!data/listings/cz_prague_sale.json
+!data/listings/cz_prague_rent.json
+!data/listings/cz_ostrava_sale.json
+!data/listings/cz_ostrava_rent.json
 !data/listings/reggio_calabria_rent.json
 !data/listings/reggio_calabria_sale.json
 data/listings/details/

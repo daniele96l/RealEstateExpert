@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-import { getCachedListings, importFromIdealista } from "@/lib/api";
+import { getCachedListings, importFromIdealista, listCachedCities } from "@/lib/api";
 import {
   loadCityListingsCacheOnly,
   loadPropertyDetailCacheFirst,
@@ -83,6 +83,15 @@ import { useI18n } from "@/lib/i18n/context";
 import { czechRoomLayoutFromListing } from "@/lib/czech-room-layout";
 import { Layers, Link2, MapPin } from "lucide-react";
 import type { CombinedListingsData } from "@/lib/types";
+import {
+  cityLabelFromSlug,
+  isDuplicateCacheSlug,
+  listLocalCachedCitySlugs,
+  listingsCacheSlugForQuery,
+  mergeCachedCityOptions,
+  slugToQuery,
+  type CachedCityOption,
+} from "@/lib/cached-cities";
 
 const ListingsMapView = dynamic(() => import("./ListingsMapView"), {
   ssr: false,
@@ -244,6 +253,52 @@ export default function ListingsMap({
   const [profitFilters, setProfitFilters] = useState<ListingProfitFilters>(EMPTY_LISTING_PROFIT_FILTERS);
   const [profitFiltersReady, setProfitFiltersReady] = useState(false);
   const [savedPolygons, setSavedPolygons] = useState<SavedMapPolygon[]>([]);
+  const [availableCities, setAvailableCities] = useState<CachedCityOption[]>([]);
+
+  useEffect(() => {
+    setCity(defaultCity);
+  }, [defaultCity]);
+
+  useEffect(() => {
+    if (market !== "cz") {
+      setAvailableCities([]);
+      return;
+    }
+
+    let cancelled = false;
+    void (async () => {
+      try {
+        const server = await listCachedCities(market);
+        const localOptions = listLocalCachedCitySlugs(market)
+          .filter((slug) => !isDuplicateCacheSlug(slug, market))
+          .filter((slug) => !server.some((entry) => entry.slug === slug))
+          .map((slug) => {
+            const label = cityLabelFromSlug(slug, market);
+            return { slug, label, query: slugToQuery(slug, market, label) };
+          });
+        if (!cancelled) setAvailableCities(mergeCachedCityOptions(server, localOptions));
+      } catch {
+        if (!cancelled) setAvailableCities([]);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [market, cacheRefreshToken, batchOpen]);
+
+  useEffect(() => {
+    if (market !== "cz" || !availableCities.length) return;
+    setCity((current) => {
+      const match = availableCities.find(
+        (entry) =>
+          entry.query.toLowerCase() === current.trim().toLowerCase() ||
+          entry.slug === listingsCacheSlugForQuery(market, current),
+      );
+      if (match) return match.query;
+      return availableCities[0].query;
+    });
+  }, [market, availableCities]);
 
   useEffect(() => {
     if (!city.trim()) {
@@ -643,14 +698,33 @@ export default function ListingsMap({
         </div>
         <p className="mb-3 text-xs font-medium uppercase tracking-wide text-neutral-500">{ui.searchCity}</p>
         <div className="flex flex-wrap gap-2">
-          <input
-            type="text"
-            className="input-field min-w-[140px] flex-1"
-            placeholder={market === "cz" ? t("listings.cityPlaceholderCz") : t("listings.cityPlaceholderIt")}
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            readOnly={market === "cz"}
-          />
+          {market === "cz" ? (
+            <select
+              className="input-field min-w-[140px] flex-1"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              disabled={!availableCities.length}
+              aria-label={ui.searchCity}
+            >
+              {availableCities.length === 0 ? (
+                <option value={city}>{city}</option>
+              ) : (
+                availableCities.map((option) => (
+                  <option key={option.slug} value={option.query}>
+                    {option.label}
+                  </option>
+                ))
+              )}
+            </select>
+          ) : (
+            <input
+              type="text"
+              className="input-field min-w-[140px] flex-1"
+              placeholder={t("listings.cityPlaceholderIt")}
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+          )}
           <div className="flex rounded-lg border border-surface-border overflow-hidden">
             {(
               [

@@ -66,8 +66,37 @@ function parseSqmFromName(name: string): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
-function searchPageUrl(citySeo: string, operation: "sale" | "rent", page: number): string {
+interface SrealityRegionSearch {
+  region: string;
+  regionId: number;
+  regionTyp: string;
+}
+
+/** Municipalities searched via ?region=… (no /byty/{slug} path on Sreality). */
+const SREALITY_REGION_CITIES: Record<string, SrealityRegionSearch> = {
+  rosice: { region: "Rosice", regionId: 6240, regionTyp: "municipality" },
+};
+
+function resolveSrealityRegion(city: string): SrealityRegionSearch | null {
+  return SREALITY_REGION_CITIES[citySeoName(city)] ?? null;
+}
+
+function searchPageUrl(
+  citySeo: string,
+  operation: "sale" | "rent",
+  page: number,
+  region?: SrealityRegionSearch | null,
+): string {
   const kind = operation === "sale" ? "prodej" : "pronajem";
+  if (region) {
+    const params = new URLSearchParams({
+      region: region.region,
+      "region-id": String(region.regionId),
+      "region-typ": region.regionTyp,
+    });
+    if (page > 1) params.set("strana", String(page));
+    return `https://www.sreality.cz/hledani/${kind}/byty?${params}`;
+  }
   const base = `https://www.sreality.cz/hledani/${kind}/byty/${citySeo}`;
   return page > 1 ? `${base}?strana=${page}` : base;
 }
@@ -75,6 +104,7 @@ function searchPageUrl(citySeo: string, operation: "sale" | "rent", page: number
 /** Known Sreality slugs that differ from our normalized city input. */
 const CITY_SEO_ALIASES: Record<string, string> = {
   "brno-mesto": "brno",
+  prague: "praha",
 };
 
 function citySeoName(city: string): string {
@@ -242,8 +272,9 @@ async function fetchSrealityPage(
   citySeo: string,
   operation: "sale" | "rent",
   page: number,
+  region?: SrealityRegionSearch | null,
 ): Promise<SrealitySearchPayload | null> {
-  const response = await fetch(searchPageUrl(citySeo, operation, page), {
+  const response = await fetch(searchPageUrl(citySeo, operation, page, region), {
     headers: {
       Accept: "text/html,application/xhtml+xml",
       "User-Agent": USER_AGENT,
@@ -272,11 +303,21 @@ async function fetchSrealityPage(
 async function openSrealityCitySearch(
   city: string,
   operation: "sale" | "rent",
-): Promise<{ seo: string; firstPage: SrealitySearchPayload }> {
+): Promise<{ seo: string; region: SrealityRegionSearch | null; firstPage: SrealitySearchPayload }> {
+  const region = resolveSrealityRegion(city);
+  if (region) {
+    const seo = citySeoName(city);
+    const firstPage = await fetchSrealityPage(seo, operation, 1, region);
+    if (firstPage) return { seo, region, firstPage };
+    throw new SrealitySearchError(
+      `Località non trovata su Sreality per «${city.trim()}».`,
+    );
+  }
+
   let last404 = false;
   for (const slug of srealityCitySlugCandidates(city)) {
     const firstPage = await fetchSrealityPage(slug, operation, 1);
-    if (firstPage) return { seo: slug, firstPage };
+    if (firstPage) return { seo: slug, region: null, firstPage };
     last404 = true;
   }
 
@@ -304,11 +345,12 @@ export async function fetchSrealityCityListings(
 
   const maxPages = Math.max(1, opts?.maxPages ?? 3);
   const byId = new Map<string, MapListing>();
-  const { seo, firstPage } = await openSrealityCitySearch(city, operation);
+  const { seo, region, firstPage } = await openSrealityCitySearch(city, operation);
   let prevPageIds: string[] = [];
 
   for (let page = 1; page <= maxPages; page++) {
-    const data = page === 1 ? firstPage : await fetchSrealityPage(seo, operation, page);
+    const data =
+      page === 1 ? firstPage : await fetchSrealityPage(seo, operation, page, region);
     if (!data) break;
     const estates = data.results ?? [];
     if (!estates.length) break;

@@ -16,6 +16,7 @@ import type { ListingsExportBundle } from "./listings-export";
 import type { BatchFetchProgressState, BatchFetchStreamEvent } from "./batch-fetch-progress";
 
 import type { MarketId } from "./markets";
+import type { CachedCityOption } from "./cached-cities";
 import type { OccupancyPortal } from "./occupancy/portals";
 import type {
   OccupancySnapshotProgressState,
@@ -93,6 +94,14 @@ export async function getCachedListings(
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(await parseError(res, "Errore lettura cache"));
   return res.json();
+}
+
+export async function listCachedCities(market: MarketId = "it"): Promise<CachedCityOption[]> {
+  const params = new URLSearchParams({ market });
+  const res = await fetch(`/api/listings/cities?${params}`);
+  if (!res.ok) throw new Error(await parseError(res, "Errore lettura città"));
+  const body = (await res.json()) as { cities?: CachedCityOption[] };
+  return body.cities ?? [];
 }
 
 export async function fetchMarketHistory(
