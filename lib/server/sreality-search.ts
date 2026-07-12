@@ -6,6 +6,7 @@ import {
   extractSrealityListingDates,
   srealityEstateIdFromListingId,
 } from "./sreality-dates";
+import { CITY_SEO_ALIASES, citySeoName } from "./sreality-locality";
 
 export class SrealitySearchError extends Error {}
 
@@ -101,23 +102,6 @@ function searchPageUrl(
   return page > 1 ? `${base}?strana=${page}` : base;
 }
 
-/** Known Sreality slugs that differ from our normalized city input. */
-const CITY_SEO_ALIASES: Record<string, string> = {
-  "brno-mesto": "brno",
-  prague: "praha",
-};
-
-function citySeoName(city: string): string {
-  return (
-    city
-      .trim()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "") || "brno"
-  );
-}
 
 function srealityCitySlugCandidates(city: string): string[] {
   const primary = citySeoName(city);

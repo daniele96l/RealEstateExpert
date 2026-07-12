@@ -1,7 +1,8 @@
 import type { MarketPriceHistory, PriceHistoryPoint } from "@/lib/types";
-import { getMarket, listingsCacheSlug, type MarketId } from "@/lib/markets";
+import { listingsCacheSlug, type MarketId } from "@/lib/markets";
 import { getCache } from "./listings-cache";
 import { getMarketCache } from "./market-cache";
+import { resolveSrealityMunicipality, SrealityLocalityError } from "./sreality-locality";
 
 const USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
@@ -34,7 +35,7 @@ function toHistoryPoint(p: GraphPoint): PriceHistoryPoint {
 }
 
 async function fetchPriceMapGraph(
-  regionId: number,
+  locality: string,
   dateFrom: string,
   dateTo: string,
 ): Promise<PriceHistoryPoint[]> {
@@ -43,7 +44,7 @@ async function fetchPriceMapGraph(
     category_type_cb: "1",
     date_from: dateFrom,
     date_to: dateTo,
-    locality: `region,${regionId}`,
+    locality,
   });
 
   const res = await fetch(`https://www.sreality.cz/api/v1/price_map/graph?${params}`, {
@@ -108,22 +109,26 @@ export async function fetchSrealityMarketHistory(
   city: string,
   market: MarketId = "cz",
 ): Promise<MarketPriceHistory> {
-  const cfg = getMarket(market);
-  const regionId = cfg.srealityRegionId;
-  if (regionId == null) {
-    throw new SrealityMarketError(`No Sreality region configured for ${city}`);
+  let municipality;
+  try {
+    municipality = await resolveSrealityMunicipality(city);
+  } catch (err) {
+    if (err instanceof SrealityLocalityError) {
+      throw new SrealityMarketError(err.message);
+    }
+    throw err;
   }
 
   const { from, to } = monthRange(48);
-  const sale = await fetchPriceMapGraph(regionId, from, to);
+  const sale = await fetchPriceMapGraph(municipality.locality, from, to);
 
   const slug = listingsCacheSlug(market, city);
   const previous = await getMarketCache(city, market);
   const rent = await rentHistoryFromListings(city, market, previous?.rent ?? []);
 
   return {
-    city,
-    region: cfg.label,
+    city: municipality.label,
+    region: municipality.label,
     region_slug: slug,
     city_slug: slug,
     mercato_url: "https://www.sreality.cz/cenova-mapa",
