@@ -2,8 +2,8 @@
   "city": "Reggio Calabria",
   "market": "it",
   "portal": "immobiliare_scraper",
-  "updated_at": "2026-07-11T11:16:41.589Z",
-  "snapshot_count": 8,
+  "updated_at": "2026-07-12T09:22:39.110Z",
+  "snapshot_count": 11,
   "last_provider": "reggio_rentals",
   "listings": {
     "im_60357824": {
@@ -16,7 +16,7 @@
       "address": "Appartamento",
       "zone": "Altro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -27,7 +27,8 @@
         }
       ],
       "listing_published_at": "2017-02-22",
-      "listing_updated_at": "2026-05-28"
+      "listing_updated_at": "2026-05-28",
+      "url": "https://www.immobiliare.it/annunci/60357824/"
     },
     "im_78894637": {
       "id": "im_78894637",
@@ -39,7 +40,7 @@
       "address": "Via Feudo, 35",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -50,7 +51,8 @@
         }
       ],
       "listing_published_at": "2023-04-12",
-      "listing_updated_at": "2026-05-28"
+      "listing_updated_at": "2026-05-28",
+      "url": "https://www.immobiliare.it/annunci/78894637/"
     },
     "im_86728980": {
       "id": "im_86728980",
@@ -62,7 +64,7 @@
       "address": "Via Salita Zerbi Traversa 1, 4",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -73,7 +75,8 @@
         }
       ],
       "listing_published_at": "2021-03-23",
-      "listing_updated_at": "2026-04-04"
+      "listing_updated_at": "2026-04-04",
+      "url": "https://www.immobiliare.it/annunci/86728980/"
     },
     "im_94562640": {
       "id": "im_94562640",
@@ -85,7 +88,7 @@
       "address": "Viale della Libertà",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -96,7 +99,8 @@
         }
       ],
       "listing_published_at": "2022-03-21",
-      "listing_updated_at": "2026-07-07"
+      "listing_updated_at": "2026-07-07",
+      "url": "https://www.immobiliare.it/annunci/94562640/"
     },
     "im_97747342": {
       "id": "im_97747342",
@@ -108,7 +112,7 @@
       "address": "Via Cardinale Gennaro Portanova, 128",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -119,7 +123,8 @@
         }
       ],
       "listing_published_at": "2022-08-10",
-      "listing_updated_at": "2026-04-15"
+      "listing_updated_at": "2026-04-15",
+      "url": "https://www.immobiliare.it/annunci/97747342/"
     },
     "im_109374749": {
       "id": "im_109374749",
@@ -131,7 +136,7 @@
       "address": "Via Anita Garibaldi, 70",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -142,7 +147,8 @@
         }
       ],
       "listing_published_at": "2024-02-12",
-      "listing_updated_at": "2026-06-09"
+      "listing_updated_at": "2026-06-09",
+      "url": "https://www.immobiliare.it/annunci/109374749/"
     },
     "im_109938953": {
       "id": "im_109938953",
@@ -154,7 +160,7 @@
       "address": "Via Nazionale Occhio di Pellaro, 157",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -165,7 +171,8 @@
         }
       ],
       "listing_published_at": "2024-03-06",
-      "listing_updated_at": "2026-05-09"
+      "listing_updated_at": "2026-05-09",
+      "url": "https://www.immobiliare.it/annunci/109938953/"
     },
     "im_109971267": {
       "id": "im_109971267",
@@ -177,7 +184,7 @@
       "address": "Via Santa Caterina d'Alessandria, 1",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -188,7 +195,8 @@
         }
       ],
       "listing_published_at": "2024-03-07",
-      "listing_updated_at": "2026-06-25"
+      "listing_updated_at": "2026-06-25",
+      "url": "https://www.immobiliare.it/annunci/109971267/"
     },
     "im_110843515": {
       "id": "im_110843515",
@@ -201,9 +209,9 @@
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
       "last_seen_at": "2026-07-11T11:16:41.589Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-12T09:20:08.558Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-08T15:25:48Z",
@@ -223,7 +231,7 @@
       "address": "Via Mattatoio, 130",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -234,7 +242,8 @@
         }
       ],
       "listing_published_at": "2024-04-15",
-      "listing_updated_at": "2026-04-15"
+      "listing_updated_at": "2026-04-15",
+      "url": "https://www.immobiliare.it/annunci/110940589/"
     },
     "im_112215613": {
       "id": "im_112215613",
@@ -246,7 +255,7 @@
       "address": "Via Sant'Anna II Tronco, 121",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -257,7 +266,8 @@
         }
       ],
       "listing_published_at": "2024-06-02",
-      "listing_updated_at": "2026-03-02"
+      "listing_updated_at": "2026-03-02",
+      "url": "https://www.immobiliare.it/annunci/112215613/"
     },
     "im_113935425": {
       "id": "im_113935425",
@@ -269,7 +279,7 @@
       "address": "Via Antonino Lupoi",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -280,7 +290,8 @@
         }
       ],
       "listing_published_at": "2024-08-13",
-      "listing_updated_at": "2026-06-13"
+      "listing_updated_at": "2026-06-13",
+      "url": "https://www.immobiliare.it/annunci/113935425/"
     },
     "im_114316089": {
       "id": "im_114316089",
@@ -292,7 +303,7 @@
       "address": "Via Giuseppe Melacrino",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -303,7 +314,8 @@
         }
       ],
       "listing_published_at": "2024-09-05",
-      "listing_updated_at": "2026-02-25"
+      "listing_updated_at": "2026-02-25",
+      "url": "https://www.immobiliare.it/annunci/114316089/"
     },
     "im_115350817": {
       "id": "im_115350817",
@@ -315,7 +327,7 @@
       "address": "Vico Francia, 3",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -326,7 +338,8 @@
         }
       ],
       "listing_published_at": "2024-10-15",
-      "listing_updated_at": "2025-03-20"
+      "listing_updated_at": "2025-03-20",
+      "url": "https://www.immobiliare.it/annunci/115350817/"
     },
     "im_116189527": {
       "id": "im_116189527",
@@ -338,7 +351,7 @@
       "address": "Via Spirito Santo, 291A",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -349,7 +362,8 @@
         }
       ],
       "listing_published_at": "2024-11-16",
-      "listing_updated_at": "2026-02-16"
+      "listing_updated_at": "2026-02-16",
+      "url": "https://www.immobiliare.it/annunci/116189527/"
     },
     "im_116788667": {
       "id": "im_116788667",
@@ -361,7 +375,7 @@
       "address": "Via Sbarre Superiori di Marconi, 11",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -372,7 +386,8 @@
         }
       ],
       "listing_published_at": "2024-12-07",
-      "listing_updated_at": "2026-07-08"
+      "listing_updated_at": "2026-07-08",
+      "url": "https://www.immobiliare.it/annunci/116788667/"
     },
     "im_116852959": {
       "id": "im_116852959",
@@ -384,7 +399,7 @@
       "address": "Via Rausei, 1",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -395,7 +410,8 @@
         }
       ],
       "listing_published_at": "2024-12-10",
-      "listing_updated_at": "2026-03-10"
+      "listing_updated_at": "2026-03-10",
+      "url": "https://www.immobiliare.it/annunci/116852959/"
     },
     "im_117727317": {
       "id": "im_117727317",
@@ -407,7 +423,7 @@
       "address": "Traversa Lungomare",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -418,7 +434,8 @@
         }
       ],
       "listing_published_at": "2025-01-23",
-      "listing_updated_at": "2026-05-18"
+      "listing_updated_at": "2026-05-18",
+      "url": "https://www.immobiliare.it/annunci/117727317/"
     },
     "im_118009681": {
       "id": "im_118009681",
@@ -430,7 +447,7 @@
       "address": "Via degli Ottimati",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -441,7 +458,8 @@
         }
       ],
       "listing_published_at": "2025-02-02",
-      "listing_updated_at": "2026-03-02"
+      "listing_updated_at": "2026-03-02",
+      "url": "https://www.immobiliare.it/annunci/118009681/"
     },
     "im_120883186": {
       "id": "im_120883186",
@@ -453,7 +471,7 @@
       "address": "Via Gaeta, 7",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -464,7 +482,8 @@
         }
       ],
       "listing_published_at": "2025-05-27",
-      "listing_updated_at": "2026-02-27"
+      "listing_updated_at": "2026-02-27",
+      "url": "https://www.immobiliare.it/annunci/120883186/"
     },
     "im_121202144": {
       "id": "im_121202144",
@@ -476,7 +495,7 @@
       "address": "Viale Giovanni Amendola, 2N",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -487,7 +506,8 @@
         }
       ],
       "listing_published_at": "2025-06-07",
-      "listing_updated_at": "2026-03-07"
+      "listing_updated_at": "2026-03-07",
+      "url": "https://www.immobiliare.it/annunci/121202144/"
     },
     "im_121212916": {
       "id": "im_121212916",
@@ -499,7 +519,7 @@
       "address": "Via Santa Caterina d'Alessandria, 2",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -510,7 +530,8 @@
         }
       ],
       "listing_published_at": "2025-06-08",
-      "listing_updated_at": "2026-03-08"
+      "listing_updated_at": "2026-03-08",
+      "url": "https://www.immobiliare.it/annunci/121212916/"
     },
     "im_121213236": {
       "id": "im_121213236",
@@ -522,7 +543,7 @@
       "address": "Via Nazionale Pentimele, 87",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -533,7 +554,8 @@
         }
       ],
       "listing_published_at": "2025-06-08",
-      "listing_updated_at": "2026-03-08"
+      "listing_updated_at": "2026-03-08",
+      "url": "https://www.immobiliare.it/annunci/121213236/"
     },
     "im_121485084": {
       "id": "im_121485084",
@@ -545,7 +567,7 @@
       "address": "Via Petrara, 10",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -556,7 +578,8 @@
         }
       ],
       "listing_published_at": "2025-06-19",
-      "listing_updated_at": "2026-03-19"
+      "listing_updated_at": "2026-03-19",
+      "url": "https://www.immobiliare.it/annunci/121485084/"
     },
     "im_121513576": {
       "id": "im_121513576",
@@ -568,7 +591,7 @@
       "address": "Via Antonio Pacinotti, 44",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -579,7 +602,8 @@
         }
       ],
       "listing_published_at": "2025-06-20",
-      "listing_updated_at": "2026-03-20"
+      "listing_updated_at": "2026-03-20",
+      "url": "https://www.immobiliare.it/annunci/121513576/"
     },
     "im_121632084": {
       "id": "im_121632084",
@@ -591,7 +615,7 @@
       "address": "Via Fiume, 20",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -602,7 +626,8 @@
         }
       ],
       "listing_published_at": "2025-06-26",
-      "listing_updated_at": "2026-05-22"
+      "listing_updated_at": "2026-05-22",
+      "url": "https://www.immobiliare.it/annunci/121632084/"
     },
     "im_121840474": {
       "id": "im_121840474",
@@ -614,7 +639,7 @@
       "address": "Via Quarnaro, 24",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -625,7 +650,8 @@
         }
       ],
       "listing_published_at": "2025-07-05",
-      "listing_updated_at": "2026-04-05"
+      "listing_updated_at": "2026-04-05",
+      "url": "https://www.immobiliare.it/annunci/121840474/"
     },
     "im_122129486": {
       "id": "im_122129486",
@@ -660,7 +686,7 @@
       "address": "Via Italia, 77d",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -671,7 +697,8 @@
         }
       ],
       "listing_published_at": "2025-08-05",
-      "listing_updated_at": "2026-06-27"
+      "listing_updated_at": "2026-06-27",
+      "url": "https://www.immobiliare.it/annunci/122472158/"
     },
     "im_122525596": {
       "id": "im_122525596",
@@ -683,7 +710,7 @@
       "address": "Via Antonino Lupoi",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -694,7 +721,8 @@
         }
       ],
       "listing_published_at": "2025-08-08",
-      "listing_updated_at": "2026-05-08"
+      "listing_updated_at": "2026-05-08",
+      "url": "https://www.immobiliare.it/annunci/122525596/"
     },
     "im_122553782": {
       "id": "im_122553782",
@@ -706,7 +734,7 @@
       "address": "Via Fratelli Cairoli",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -717,7 +745,8 @@
         }
       ],
       "listing_published_at": "2025-08-11",
-      "listing_updated_at": "2025-12-01"
+      "listing_updated_at": "2025-12-01",
+      "url": "https://www.immobiliare.it/annunci/122553782/"
     },
     "im_122724752": {
       "id": "im_122724752",
@@ -729,7 +758,7 @@
       "address": "Via Francesco Petrarca, 19A",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -740,7 +769,8 @@
         }
       ],
       "listing_published_at": "2025-08-27",
-      "listing_updated_at": "2026-03-01"
+      "listing_updated_at": "2026-03-01",
+      "url": "https://www.immobiliare.it/annunci/122724752/"
     },
     "im_122774598": {
       "id": "im_122774598",
@@ -752,7 +782,7 @@
       "address": "Via Armo Gallina, 102",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -763,7 +793,8 @@
         }
       ],
       "listing_published_at": "2025-08-29",
-      "listing_updated_at": "2025-11-04"
+      "listing_updated_at": "2025-11-04",
+      "url": "https://www.immobiliare.it/annunci/122774598/"
     },
     "im_124083629": {
       "id": "im_124083629",
@@ -775,7 +806,7 @@
       "address": "Via Zara",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -786,7 +817,8 @@
         }
       ],
       "listing_published_at": "2025-10-23",
-      "listing_updated_at": "2026-04-23"
+      "listing_updated_at": "2026-04-23",
+      "url": "https://www.immobiliare.it/annunci/124083629/"
     },
     "im_124137611": {
       "id": "im_124137611",
@@ -798,7 +830,7 @@
       "address": "Via Trabocchetto 2",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -809,7 +841,8 @@
         }
       ],
       "listing_published_at": "2025-10-26",
-      "listing_updated_at": "2025-11-02"
+      "listing_updated_at": "2025-11-02",
+      "url": "https://www.immobiliare.it/annunci/124137611/"
     },
     "im_124365585": {
       "id": "im_124365585",
@@ -821,7 +854,7 @@
       "address": "Via 25 Luglio 1943",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -832,7 +865,8 @@
         }
       ],
       "listing_published_at": "2025-11-04",
-      "listing_updated_at": "2025-11-04"
+      "listing_updated_at": "2025-11-04",
+      "url": "https://www.immobiliare.it/annunci/124365585/"
     },
     "im_124400853": {
       "id": "im_124400853",
@@ -844,7 +878,7 @@
       "address": "Vico Ferruccio, 113",
       "zone": "Altro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -855,7 +889,8 @@
         }
       ],
       "listing_published_at": "2025-11-05",
-      "listing_updated_at": "2025-11-05"
+      "listing_updated_at": "2025-11-05",
+      "url": "https://www.immobiliare.it/annunci/124400853/"
     },
     "im_124609435": {
       "id": "im_124609435",
@@ -867,7 +902,7 @@
       "address": "Via Mantova",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -878,7 +913,8 @@
         }
       ],
       "listing_published_at": "2025-11-13",
-      "listing_updated_at": "2026-01-23"
+      "listing_updated_at": "2026-01-23",
+      "url": "https://www.immobiliare.it/annunci/124609435/"
     },
     "im_124703031": {
       "id": "im_124703031",
@@ -890,7 +926,7 @@
       "address": "Strada Statale 106, 121",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -901,7 +937,8 @@
         }
       ],
       "listing_published_at": "2025-11-17",
-      "listing_updated_at": "2026-02-17"
+      "listing_updated_at": "2026-02-17",
+      "url": "https://www.immobiliare.it/annunci/124703031/"
     },
     "im_125046079": {
       "id": "im_125046079",
@@ -913,7 +950,7 @@
       "address": "Via Tito Minniti, 8",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -924,7 +961,8 @@
         }
       ],
       "listing_published_at": "2025-11-29",
-      "listing_updated_at": "2026-02-28"
+      "listing_updated_at": "2026-02-28",
+      "url": "https://www.immobiliare.it/annunci/125046079/"
     },
     "im_125806441": {
       "id": "im_125806441",
@@ -936,7 +974,7 @@
       "address": "Tangenziale di Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -947,7 +985,8 @@
         }
       ],
       "listing_published_at": "2026-01-10",
-      "listing_updated_at": "2026-06-26"
+      "listing_updated_at": "2026-06-26",
+      "url": "https://www.immobiliare.it/annunci/125806441/"
     },
     "im_125889403": {
       "id": "im_125889403",
@@ -959,7 +998,7 @@
       "address": "Tangenziale di Reggio Calabria, 45",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -970,7 +1009,8 @@
         }
       ],
       "listing_published_at": "2026-01-14",
-      "listing_updated_at": "2026-04-14"
+      "listing_updated_at": "2026-04-14",
+      "url": "https://www.immobiliare.it/annunci/125889403/"
     },
     "im_125901407": {
       "id": "im_125901407",
@@ -982,7 +1022,7 @@
       "address": "Contrada Sant'Elia di Ravagnese",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -993,7 +1033,8 @@
         }
       ],
       "listing_published_at": "2026-01-14",
-      "listing_updated_at": "2026-06-10"
+      "listing_updated_at": "2026-06-10",
+      "url": "https://www.immobiliare.it/annunci/125901407/"
     },
     "im_126246661": {
       "id": "im_126246661",
@@ -1005,7 +1046,7 @@
       "address": "Via Amerigo Vespucci",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1016,7 +1057,8 @@
         }
       ],
       "listing_published_at": "2026-01-27",
-      "listing_updated_at": "2026-05-20"
+      "listing_updated_at": "2026-05-20",
+      "url": "https://www.immobiliare.it/annunci/126246661/"
     },
     "im_126420789": {
       "id": "im_126420789",
@@ -1028,7 +1070,7 @@
       "address": "Via Marsala, 25",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1039,7 +1081,8 @@
         }
       ],
       "listing_published_at": "2026-02-03",
-      "listing_updated_at": "2026-02-03"
+      "listing_updated_at": "2026-02-03",
+      "url": "https://www.immobiliare.it/annunci/126420789/"
     },
     "im_126463611": {
       "id": "im_126463611",
@@ -1051,7 +1094,7 @@
       "address": "Via Santa Lucia al Parco, 25",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1062,7 +1105,8 @@
         }
       ],
       "listing_published_at": "2026-02-04",
-      "listing_updated_at": "2026-05-04"
+      "listing_updated_at": "2026-05-04",
+      "url": "https://www.immobiliare.it/annunci/126463611/"
     },
     "im_126843697": {
       "id": "im_126843697",
@@ -1074,7 +1118,7 @@
       "address": "Via Gebbione, 12",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1085,7 +1129,8 @@
         }
       ],
       "listing_published_at": "2026-02-18",
-      "listing_updated_at": "2026-06-26"
+      "listing_updated_at": "2026-06-26",
+      "url": "https://www.immobiliare.it/annunci/126843697/"
     },
     "im_127196251": {
       "id": "im_127196251",
@@ -1097,7 +1142,7 @@
       "address": "Via Campoli",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1108,7 +1153,8 @@
         }
       ],
       "listing_published_at": "2026-03-03",
-      "listing_updated_at": "2026-03-03"
+      "listing_updated_at": "2026-03-03",
+      "url": "https://www.immobiliare.it/annunci/127196251/"
     },
     "im_127319251": {
       "id": "im_127319251",
@@ -1120,7 +1166,7 @@
       "address": "Via Cardinale Gennaro Portanova, 45",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1131,7 +1177,8 @@
         }
       ],
       "listing_published_at": "2026-03-08",
-      "listing_updated_at": "2026-03-08"
+      "listing_updated_at": "2026-03-08",
+      "url": "https://www.immobiliare.it/annunci/127319251/"
     },
     "im_127372275": {
       "id": "im_127372275",
@@ -1143,7 +1190,7 @@
       "address": "Via Pasquale Andiloro, snc",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1154,7 +1201,8 @@
         }
       ],
       "listing_published_at": "2026-03-10",
-      "listing_updated_at": "2026-07-08"
+      "listing_updated_at": "2026-07-08",
+      "url": "https://www.immobiliare.it/annunci/127372275/"
     },
     "im_127699486": {
       "id": "im_127699486",
@@ -1166,7 +1214,7 @@
       "address": "Via Giuseppe Melacrino",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1177,7 +1225,8 @@
         }
       ],
       "listing_published_at": "2026-03-23",
-      "listing_updated_at": "2026-03-23"
+      "listing_updated_at": "2026-03-23",
+      "url": "https://www.immobiliare.it/annunci/127699486/"
     },
     "im_127800514": {
       "id": "im_127800514",
@@ -1189,7 +1238,7 @@
       "address": "Via Roma",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1200,7 +1249,8 @@
         }
       ],
       "listing_published_at": "2026-03-26",
-      "listing_updated_at": "2026-03-26"
+      "listing_updated_at": "2026-03-26",
+      "url": "https://www.immobiliare.it/annunci/127800514/"
     },
     "im_127919224": {
       "id": "im_127919224",
@@ -1212,7 +1262,7 @@
       "address": "Viale Calabria, 357b",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1223,7 +1273,8 @@
         }
       ],
       "listing_published_at": "2026-03-31",
-      "listing_updated_at": "2026-07-01"
+      "listing_updated_at": "2026-07-01",
+      "url": "https://www.immobiliare.it/annunci/127919224/"
     },
     "im_127949808": {
       "id": "im_127949808",
@@ -1235,7 +1286,7 @@
       "address": "Via Sbarre Centrali",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1246,7 +1297,8 @@
         }
       ],
       "listing_published_at": "2026-04-01",
-      "listing_updated_at": "2026-04-01"
+      "listing_updated_at": "2026-04-01",
+      "url": "https://www.immobiliare.it/annunci/127949808/"
     },
     "im_128067144": {
       "id": "im_128067144",
@@ -1258,7 +1310,7 @@
       "address": "Via Giuseppe Mercalli, 22",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1269,7 +1321,8 @@
         }
       ],
       "listing_published_at": "2026-04-06",
-      "listing_updated_at": "2026-05-15"
+      "listing_updated_at": "2026-05-15",
+      "url": "https://www.immobiliare.it/annunci/128067144/"
     },
     "im_128083956": {
       "id": "im_128083956",
@@ -1281,7 +1334,7 @@
       "address": "Via Privata Nervesa, 31",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1292,7 +1345,8 @@
         }
       ],
       "listing_published_at": "2026-04-07",
-      "listing_updated_at": "2026-04-08"
+      "listing_updated_at": "2026-04-08",
+      "url": "https://www.immobiliare.it/annunci/128083956/"
     },
     "im_128107322": {
       "id": "im_128107322",
@@ -1304,7 +1358,7 @@
       "address": "Via della giudecca , 47",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1315,7 +1369,8 @@
         }
       ],
       "listing_published_at": "2026-04-08",
-      "listing_updated_at": "2026-04-08"
+      "listing_updated_at": "2026-04-08",
+      "url": "https://www.immobiliare.it/annunci/128107322/"
     },
     "im_128276172": {
       "id": "im_128276172",
@@ -1327,7 +1382,7 @@
       "address": "Via Sbarre Superiori",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1338,7 +1393,8 @@
         }
       ],
       "listing_published_at": "2026-04-14",
-      "listing_updated_at": "2026-05-13"
+      "listing_updated_at": "2026-05-13",
+      "url": "https://www.immobiliare.it/annunci/128276172/"
     },
     "im_128296168": {
       "id": "im_128296168",
@@ -1350,7 +1406,7 @@
       "address": "V. Gebbione a Mare,",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1361,7 +1417,8 @@
         }
       ],
       "listing_published_at": "2026-04-15",
-      "listing_updated_at": "2026-04-15"
+      "listing_updated_at": "2026-04-15",
+      "url": "https://www.immobiliare.it/annunci/128296168/"
     },
     "im_128325526": {
       "id": "im_128325526",
@@ -1373,7 +1430,7 @@
       "address": "Via Galileo Galilei, 20",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1384,7 +1441,8 @@
         }
       ],
       "listing_published_at": "2026-04-16",
-      "listing_updated_at": "2026-06-11"
+      "listing_updated_at": "2026-06-11",
+      "url": "https://www.immobiliare.it/annunci/128325526/"
     },
     "im_128398032": {
       "id": "im_128398032",
@@ -1396,7 +1454,7 @@
       "address": "Appartamento",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1407,7 +1465,8 @@
         }
       ],
       "listing_published_at": "2026-04-18",
-      "listing_updated_at": "2026-04-18"
+      "listing_updated_at": "2026-04-18",
+      "url": "https://www.immobiliare.it/annunci/128398032/"
     },
     "im_128615324": {
       "id": "im_128615324",
@@ -1419,7 +1478,7 @@
       "address": "Via fra Gesualdo Melacrino, 53",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1430,7 +1489,8 @@
         }
       ],
       "listing_published_at": "2026-04-27",
-      "listing_updated_at": "2026-06-09"
+      "listing_updated_at": "2026-06-09",
+      "url": "https://www.immobiliare.it/annunci/128615324/"
     },
     "im_128621920": {
       "id": "im_128621920",
@@ -1442,7 +1502,7 @@
       "address": "Viale Calabria",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1453,7 +1513,8 @@
         }
       ],
       "listing_published_at": "2026-04-27",
-      "listing_updated_at": "2026-05-05"
+      "listing_updated_at": "2026-05-05",
+      "url": "https://www.immobiliare.it/annunci/128621920/"
     },
     "im_128635632": {
       "id": "im_128635632",
@@ -1465,7 +1526,7 @@
       "address": "Via Risorgimento, 18",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1476,7 +1537,8 @@
         }
       ],
       "listing_published_at": "2026-04-28",
-      "listing_updated_at": "2026-04-28"
+      "listing_updated_at": "2026-04-28",
+      "url": "https://www.immobiliare.it/annunci/128635632/"
     },
     "im_128748978": {
       "id": "im_128748978",
@@ -1488,7 +1550,7 @@
       "address": "Via Vecchia Pentimele, 20/A",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1499,7 +1561,8 @@
         }
       ],
       "listing_published_at": "2026-05-02",
-      "listing_updated_at": "2026-05-02"
+      "listing_updated_at": "2026-05-02",
+      "url": "https://www.immobiliare.it/annunci/128748978/"
     },
     "im_128755152": {
       "id": "im_128755152",
@@ -1534,7 +1597,7 @@
       "address": "Vicolo Casalotto, 39",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1545,7 +1608,8 @@
         }
       ],
       "listing_published_at": "2026-05-06",
-      "listing_updated_at": "2026-05-06"
+      "listing_updated_at": "2026-05-06",
+      "url": "https://www.immobiliare.it/annunci/128829948/"
     },
     "im_128836328": {
       "id": "im_128836328",
@@ -1557,7 +1621,7 @@
       "address": "Via della Rimembranza",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1568,7 +1632,8 @@
         }
       ],
       "listing_published_at": "2026-05-06",
-      "listing_updated_at": "2026-05-06"
+      "listing_updated_at": "2026-05-06",
+      "url": "https://www.immobiliare.it/annunci/128836328/"
     },
     "im_128967368": {
       "id": "im_128967368",
@@ -1580,7 +1645,7 @@
       "address": "Via Sbarre Superiori, 95",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1591,7 +1656,8 @@
         }
       ],
       "listing_published_at": "2026-05-10",
-      "listing_updated_at": "2026-05-17"
+      "listing_updated_at": "2026-05-17",
+      "url": "https://www.immobiliare.it/annunci/128967368/"
     },
     "im_129015602": {
       "id": "im_129015602",
@@ -1603,7 +1669,7 @@
       "address": "Via Demetrio Tripepi 65",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1614,7 +1680,8 @@
         }
       ],
       "listing_published_at": "2025-12-04",
-      "listing_updated_at": "2026-06-04"
+      "listing_updated_at": "2026-06-04",
+      "url": "https://www.immobiliare.it/annunci/129015602/"
     },
     "im_129015608": {
       "id": "im_129015608",
@@ -1626,7 +1693,7 @@
       "address": "Via Demetrio Tripepi 65",
       "zone": "Altro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1637,7 +1704,8 @@
         }
       ],
       "listing_published_at": "2025-12-04",
-      "listing_updated_at": "2026-05-12"
+      "listing_updated_at": "2026-05-12",
+      "url": "https://www.immobiliare.it/annunci/129015608/"
     },
     "im_129015638": {
       "id": "im_129015638",
@@ -1649,7 +1717,7 @@
       "address": "Agriturismo Sant'Anna 89126, Reggio Calabria Reggi",
       "zone": "Altro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1660,7 +1728,8 @@
         }
       ],
       "listing_published_at": "2025-12-04",
-      "listing_updated_at": "2026-05-12"
+      "listing_updated_at": "2026-05-12",
+      "url": "https://www.immobiliare.it/annunci/129015638/"
     },
     "im_129015642": {
       "id": "im_129015642",
@@ -1672,7 +1741,7 @@
       "address": "Ortì Contrada Sant'Anna",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1683,7 +1752,8 @@
         }
       ],
       "listing_published_at": "2025-12-04",
-      "listing_updated_at": "2026-05-12"
+      "listing_updated_at": "2026-05-12",
+      "url": "https://www.immobiliare.it/annunci/129015642/"
     },
     "im_129015646": {
       "id": "im_129015646",
@@ -1695,7 +1765,7 @@
       "address": "Via Cappuccinelli Diramazione Zagarella 40",
       "zone": "Altro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1706,7 +1776,8 @@
         }
       ],
       "listing_published_at": "2025-12-04",
-      "listing_updated_at": "2026-05-12"
+      "listing_updated_at": "2026-05-12",
+      "url": "https://www.immobiliare.it/annunci/129015646/"
     },
     "im_129015648": {
       "id": "im_129015648",
@@ -1718,7 +1789,7 @@
       "address": "Via Demetrio Tripepi 65",
       "zone": "Altro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1729,7 +1800,8 @@
         }
       ],
       "listing_published_at": "2026-05-12",
-      "listing_updated_at": "2026-05-12"
+      "listing_updated_at": "2026-05-12",
+      "url": "https://www.immobiliare.it/annunci/129015648/"
     },
     "im_129022956": {
       "id": "im_129022956",
@@ -1741,7 +1813,7 @@
       "address": "Via 25 Luglio 1943, 3",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1752,7 +1824,8 @@
         }
       ],
       "listing_published_at": "2026-05-12",
-      "listing_updated_at": "2026-07-05"
+      "listing_updated_at": "2026-07-05",
+      "url": "https://www.immobiliare.it/annunci/129022956/"
     },
     "im_129026092": {
       "id": "im_129026092",
@@ -1764,7 +1837,7 @@
       "address": "Via Nicola Furnari",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1775,7 +1848,8 @@
         }
       ],
       "listing_published_at": "2026-05-12",
-      "listing_updated_at": "2026-06-29"
+      "listing_updated_at": "2026-06-29",
+      "url": "https://www.immobiliare.it/annunci/129026092/"
     },
     "im_129056132": {
       "id": "im_129056132",
@@ -1787,7 +1861,7 @@
       "address": "Via Modena Traversa A",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1798,7 +1872,8 @@
         }
       ],
       "listing_published_at": "2026-05-13",
-      "listing_updated_at": "2026-07-08"
+      "listing_updated_at": "2026-07-08",
+      "url": "https://www.immobiliare.it/annunci/129056132/"
     },
     "im_129133436": {
       "id": "im_129133436",
@@ -1810,7 +1885,7 @@
       "address": "Via Guglielmo Marconi",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1821,7 +1896,8 @@
         }
       ],
       "listing_published_at": "2026-05-15",
-      "listing_updated_at": "2026-05-18"
+      "listing_updated_at": "2026-05-18",
+      "url": "https://www.immobiliare.it/annunci/129133436/"
     },
     "im_129244466": {
       "id": "im_129244466",
@@ -1833,7 +1909,7 @@
       "address": "Via Anita Garibaldi",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1844,7 +1920,8 @@
         }
       ],
       "listing_published_at": "2026-05-20",
-      "listing_updated_at": "2026-05-20"
+      "listing_updated_at": "2026-05-20",
+      "url": "https://www.immobiliare.it/annunci/129244466/"
     },
     "im_129272118": {
       "id": "im_129272118",
@@ -1856,7 +1933,7 @@
       "address": "Via Bosco, 20",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1867,7 +1944,8 @@
         }
       ],
       "listing_published_at": "2026-05-21",
-      "listing_updated_at": "2026-05-21"
+      "listing_updated_at": "2026-05-21",
+      "url": "https://www.immobiliare.it/annunci/129272118/"
     },
     "im_129484956": {
       "id": "im_129484956",
@@ -1879,7 +1957,7 @@
       "address": "Via Salita Stazione Santa Caterina, 1",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1890,7 +1968,8 @@
         }
       ],
       "listing_published_at": "2026-05-29",
-      "listing_updated_at": "2026-06-02"
+      "listing_updated_at": "2026-06-02",
+      "url": "https://www.immobiliare.it/annunci/129484956/"
     },
     "im_129505842": {
       "id": "im_129505842",
@@ -1902,7 +1981,7 @@
       "address": "Via Santo Sperato, 69",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1913,7 +1992,8 @@
         }
       ],
       "listing_published_at": "2026-05-29",
-      "listing_updated_at": "2026-05-30"
+      "listing_updated_at": "2026-05-30",
+      "url": "https://www.immobiliare.it/annunci/129505842/"
     },
     "im_129670684": {
       "id": "im_129670684",
@@ -1925,7 +2005,7 @@
       "address": "Vico Ciccarello, 46",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1936,7 +2016,8 @@
         }
       ],
       "listing_published_at": "2026-06-05",
-      "listing_updated_at": "2026-06-05"
+      "listing_updated_at": "2026-06-05",
+      "url": "https://www.immobiliare.it/annunci/129670684/"
     },
     "im_129724638": {
       "id": "im_129724638",
@@ -1948,7 +2029,7 @@
       "address": "Via Santa Lucia, 37/O",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1959,7 +2040,8 @@
         }
       ],
       "listing_published_at": "2026-04-15",
-      "listing_updated_at": "2026-06-08"
+      "listing_updated_at": "2026-06-08",
+      "url": "https://www.immobiliare.it/annunci/129724638/"
     },
     "im_129765112": {
       "id": "im_129765112",
@@ -1971,7 +2053,7 @@
       "address": "Via Luigi Galvani, 5",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1982,7 +2064,8 @@
         }
       ],
       "listing_published_at": "2026-06-10",
-      "listing_updated_at": "2026-06-10"
+      "listing_updated_at": "2026-06-10",
+      "url": "https://www.immobiliare.it/annunci/129765112/"
     },
     "im_129792080": {
       "id": "im_129792080",
@@ -1994,7 +2077,7 @@
       "address": "Via Vito Inferiore, 52",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2005,7 +2088,8 @@
         }
       ],
       "listing_published_at": "2026-06-10",
-      "listing_updated_at": "2026-07-09"
+      "listing_updated_at": "2026-07-09",
+      "url": "https://www.immobiliare.it/annunci/129792080/"
     },
     "im_129878944": {
       "id": "im_129878944",
@@ -2017,7 +2101,7 @@
       "address": "Via del Salvatore, 46",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2028,7 +2112,8 @@
         }
       ],
       "listing_published_at": "2026-01-30",
-      "listing_updated_at": "2026-06-13"
+      "listing_updated_at": "2026-06-13",
+      "url": "https://www.immobiliare.it/annunci/129878944/"
     },
     "im_129878974": {
       "id": "im_129878974",
@@ -2040,7 +2125,7 @@
       "address": "Via Cardinale Portanova diramazione Rausei, 14",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2051,7 +2136,8 @@
         }
       ],
       "listing_published_at": "2026-06-13",
-      "listing_updated_at": "2026-06-26"
+      "listing_updated_at": "2026-06-26",
+      "url": "https://www.immobiliare.it/annunci/129878974/"
     },
     "im_129956468": {
       "id": "im_129956468",
@@ -2063,7 +2149,7 @@
       "address": "Via Abate Sant'Elia Diramazione Privata, 12",
       "zone": "Archi, Gallico, Catona",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2074,7 +2160,8 @@
         }
       ],
       "listing_published_at": "2026-06-16",
-      "listing_updated_at": "2026-06-16"
+      "listing_updated_at": "2026-06-16",
+      "url": "https://www.immobiliare.it/annunci/129956468/"
     },
     "im_129957600": {
       "id": "im_129957600",
@@ -2086,7 +2173,7 @@
       "address": "Via Demetrio Tripepi, 65",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2097,7 +2184,8 @@
         }
       ],
       "listing_published_at": "2026-06-16",
-      "listing_updated_at": "2026-06-17"
+      "listing_updated_at": "2026-06-17",
+      "url": "https://www.immobiliare.it/annunci/129957600/"
     },
     "im_129972734": {
       "id": "im_129972734",
@@ -2109,7 +2197,7 @@
       "address": "Via Sbarre Superiori, 95M",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2120,7 +2208,8 @@
         }
       ],
       "listing_published_at": "2026-06-17",
-      "listing_updated_at": "2026-06-17"
+      "listing_updated_at": "2026-06-17",
+      "url": "https://www.immobiliare.it/annunci/129972734/"
     },
     "im_129975654": {
       "id": "im_129975654",
@@ -2132,7 +2221,7 @@
       "address": "Via Demetrio Tripepi, 65",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2143,7 +2232,8 @@
         }
       ],
       "listing_published_at": "2026-06-17",
-      "listing_updated_at": "2026-06-17"
+      "listing_updated_at": "2026-06-17",
+      "url": "https://www.immobiliare.it/annunci/129975654/"
     },
     "im_129978024": {
       "id": "im_129978024",
@@ -2155,7 +2245,7 @@
       "address": "Via Crocevia, 30",
       "zone": "San Gregorio, Pellaro",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2166,7 +2256,8 @@
         }
       ],
       "listing_published_at": "2025-06-18",
-      "listing_updated_at": "2026-06-17"
+      "listing_updated_at": "2026-06-17",
+      "url": "https://www.immobiliare.it/annunci/129978024/"
     },
     "im_130040994": {
       "id": "im_130040994",
@@ -2178,7 +2269,7 @@
       "address": "Via dei Monti Traversa 1, 15",
       "zone": "Ravagnese, Gallina, Armo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2189,7 +2280,8 @@
         }
       ],
       "listing_published_at": "2026-06-19",
-      "listing_updated_at": "2026-06-19"
+      "listing_updated_at": "2026-06-19",
+      "url": "https://www.immobiliare.it/annunci/130040994/"
     },
     "im_130054658": {
       "id": "im_130054658",
@@ -2201,7 +2293,7 @@
       "address": "Via delle vittorie 7",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2212,7 +2304,8 @@
         }
       ],
       "listing_published_at": "2026-06-19",
-      "listing_updated_at": "2026-06-24"
+      "listing_updated_at": "2026-06-24",
+      "url": "https://www.immobiliare.it/annunci/130054658/"
     },
     "im_130081744": {
       "id": "im_130081744",
@@ -2224,7 +2317,7 @@
       "address": "Viale Pio XI, 1",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2235,7 +2328,8 @@
         }
       ],
       "listing_published_at": "2026-06-20",
-      "listing_updated_at": "2026-07-08"
+      "listing_updated_at": "2026-07-08",
+      "url": "https://www.immobiliare.it/annunci/130081744/"
     },
     "im_130109684": {
       "id": "im_130109684",
@@ -2247,7 +2341,7 @@
       "address": "Via Argine Destro Calopinace, 25",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2258,7 +2352,8 @@
         }
       ],
       "listing_published_at": "2026-06-22",
-      "listing_updated_at": "2026-06-22"
+      "listing_updated_at": "2026-06-22",
+      "url": "https://www.immobiliare.it/annunci/130109684/"
     },
     "im_130122504": {
       "id": "im_130122504",
@@ -2270,7 +2365,7 @@
       "address": "Via Emilio Cuzzocrea",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2281,7 +2376,8 @@
         }
       ],
       "listing_published_at": "2026-06-22",
-      "listing_updated_at": "2026-06-22"
+      "listing_updated_at": "2026-06-22",
+      "url": "https://www.immobiliare.it/annunci/130122504/"
     },
     "im_130152748": {
       "id": "im_130152748",
@@ -2293,7 +2389,7 @@
       "address": "Via Trento, 1",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2304,7 +2400,8 @@
         }
       ],
       "listing_published_at": "2026-06-23",
-      "listing_updated_at": "2026-06-23"
+      "listing_updated_at": "2026-06-23",
+      "url": "https://www.immobiliare.it/annunci/130152748/"
     },
     "im_130346420": {
       "id": "im_130346420",
@@ -2316,7 +2413,7 @@
       "address": "Via Cortese, 20",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2327,7 +2424,8 @@
         }
       ],
       "listing_published_at": "2026-06-26",
-      "listing_updated_at": "2026-06-26"
+      "listing_updated_at": "2026-06-26",
+      "url": "https://www.immobiliare.it/annunci/130346420/"
     },
     "im_130610918": {
       "id": "im_130610918",
@@ -2339,7 +2437,7 @@
       "address": "Via 24 Maggio",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2350,7 +2448,8 @@
         }
       ],
       "listing_published_at": "2026-07-03",
-      "listing_updated_at": "2026-07-03"
+      "listing_updated_at": "2026-07-03",
+      "url": "https://www.immobiliare.it/annunci/130610918/"
     },
     "im_130624882": {
       "id": "im_130624882",
@@ -2362,7 +2461,7 @@
       "address": "Corso Giuseppe Garibaldi, 100",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2373,7 +2472,8 @@
         }
       ],
       "listing_published_at": "2026-07-03",
-      "listing_updated_at": "2026-07-06"
+      "listing_updated_at": "2026-07-06",
+      "url": "https://www.immobiliare.it/annunci/130624882/"
     },
     "im_130667618": {
       "id": "im_130667618",
@@ -2408,7 +2508,7 @@
       "address": "Via Strada Provinciale Spirito Santo, 6",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2419,7 +2519,8 @@
         }
       ],
       "listing_published_at": "2026-07-07",
-      "listing_updated_at": "2026-07-07"
+      "listing_updated_at": "2026-07-07",
+      "url": "https://www.immobiliare.it/annunci/130709348/"
     },
     "im_130713246": {
       "id": "im_130713246",
@@ -2431,7 +2532,7 @@
       "address": "Via San Francesco di Paola, 118",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2442,7 +2543,8 @@
         }
       ],
       "listing_published_at": "2026-07-07",
-      "listing_updated_at": "2026-07-08"
+      "listing_updated_at": "2026-07-08",
+      "url": "https://www.immobiliare.it/annunci/130713246/"
     },
     "im_130713520": {
       "id": "im_130713520",
@@ -2454,7 +2556,7 @@
       "address": "Via San Francesco di Paola, 118",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2465,7 +2567,8 @@
         }
       ],
       "listing_published_at": "2026-07-07",
-      "listing_updated_at": "2026-07-07"
+      "listing_updated_at": "2026-07-07",
+      "url": "https://www.immobiliare.it/annunci/130713520/"
     },
     "im_130759116": {
       "id": "im_130759116",
@@ -2477,7 +2580,7 @@
       "address": "CONTRADA MARIANNAZZO, SNC",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2488,7 +2591,8 @@
         }
       ],
       "listing_published_at": "2026-07-08",
-      "listing_updated_at": "2026-07-08"
+      "listing_updated_at": "2026-07-08",
+      "url": "https://www.immobiliare.it/annunci/130759116/"
     },
     "im_130761342": {
       "id": "im_130761342",
@@ -2500,7 +2604,7 @@
       "address": "Via dei Filippini, 38",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2511,7 +2615,8 @@
         }
       ],
       "listing_published_at": "2026-07-08",
-      "listing_updated_at": "2026-07-08"
+      "listing_updated_at": "2026-07-08",
+      "url": "https://www.immobiliare.it/annunci/130761342/"
     },
     "im_130813882": {
       "id": "im_130813882",
@@ -2523,7 +2628,7 @@
       "address": "Via Mantova, 29",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "first_seen_at": "2026-07-10T10:27:47Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2534,7 +2639,8 @@
         }
       ],
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-09"
+      "listing_updated_at": "2026-07-09",
+      "url": "https://www.immobiliare.it/annunci/130813882/"
     },
     "im_130870058": {
       "id": "im_130870058",
@@ -2548,7 +2654,7 @@
       "listing_published_at": "2026-07-11",
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-11T10:06:45Z",
-      "last_seen_at": "2026-07-11T11:16:41.589Z",
+      "last_seen_at": "2026-07-12T09:22:39.110Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2557,7 +2663,8 @@
           "at": "2026-07-11T10:06:45Z",
           "price": 550
         }
-      ]
+      ],
+      "url": "https://www.immobiliare.it/annunci/130870058/"
     }
   }
 }

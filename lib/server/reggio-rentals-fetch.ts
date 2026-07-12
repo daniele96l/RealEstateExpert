@@ -279,16 +279,33 @@ export async function fetchReggioRentalsListings(
   onProgress?: (progress: ReggioRentalsFetchProgress) => void,
 ): Promise<CityListingsCache> {
   const pages = Math.min(resolveItalyListingMaxPages(maxPages ?? 10), 10);
+  const ciHost = process.env.GITHUB_ACTIONS === "true" || process.env.CI === "true";
   let cache: CityListingsCache | null = null;
   let scraperError: ReggioRentalsScraperError | null = null;
 
-  try {
-    cache = await fetchReggioRentalsViaPython(pages, onProgress);
-  } catch (err) {
-    if (err instanceof ReggioRentalsScraperError) {
-      scraperError = err;
-    } else {
-      throw err;
+  if (hasApifyToken() && ciHost) {
+    try {
+      const { cache: apifyCache, actorId } = await fetchApifyImmobiliareListings(pages, onProgress);
+      process.stderr.write(`[reggio-rentals-fetch] Apify primary on CI via ${actorId}\n`);
+      cache = apifyCache;
+    } catch (err) {
+      process.stderr.write(
+        `[reggio-rentals-fetch] Apify primary failed on CI, trying Playwright scraper: ${
+          err instanceof Error ? err.message : String(err)
+        }\n`,
+      );
+    }
+  }
+
+  if (!cache) {
+    try {
+      cache = await fetchReggioRentalsViaPython(pages, onProgress);
+    } catch (err) {
+      if (err instanceof ReggioRentalsScraperError) {
+        scraperError = err;
+      } else {
+        throw err;
+      }
     }
   }
 
@@ -296,7 +313,7 @@ export async function fetchReggioRentalsListings(
     (scraperError != null || (cache != null && needsApifyFallback(cache.listings))) &&
     hasApifyToken();
 
-  if (shouldUseApify) {
+  if (shouldUseApify && cache == null) {
     try {
       const { cache: apifyCache, actorId } = await fetchApifyImmobiliareListings(pages, onProgress);
       process.stderr.write(`[reggio-rentals-fetch] Apify fallback via ${actorId}\n`);
@@ -315,8 +332,21 @@ export async function fetchReggioRentalsListings(
         `[reggio-rentals-fetch] Apify fallback failed, keeping Playwright listings: ${err instanceof Error ? err.message : String(err)}\n`,
       );
     }
+  } else if (shouldUseApify && cache != null && needsApifyFallback(cache.listings)) {
+    try {
+      const { cache: apifyCache, actorId } = await fetchApifyImmobiliareListings(pages, onProgress);
+      process.stderr.write(`[reggio-rentals-fetch] Apify fallback via ${actorId}\n`);
+      cache = apifyCache;
+    } catch (err) {
+      process.stderr.write(
+        `[reggio-rentals-fetch] Apify fallback failed, keeping Playwright listings: ${err instanceof Error ? err.message : String(err)}\n`,
+      );
+    }
   } else if (scraperError) {
-    throw scraperError;
+    const hint = hasApifyToken()
+      ? ""
+      : " Set APIFY_API_TOKEN in GitHub Actions secrets for CI fallback.";
+    throw new ReggioRentalsScraperError(`${scraperError.message}.${hint}`.trim());
   }
 
   if (!cache) {

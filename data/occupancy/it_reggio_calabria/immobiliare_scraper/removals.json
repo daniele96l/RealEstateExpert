@@ -1,5 +1,27 @@
 [
   {
+    "id": "im_110843515",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-12T09:20:08.558Z",
+    "presumed_rented_at": "2026-07-12T09:20:08.558Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-11T11:16:41.589Z",
+    "days_on_market": 4,
+    "price": 1000,
+    "sqm": 140,
+    "rooms": 4,
+    "address": "Via Tommaso Gulli, 24",
+    "zone": "Terreti, Ortì",
+    "lat": 38.10607147,
+    "lng": 15.64101982,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 1000
+      }
+    ]
+  },
+  {
     "id": "im_130667618",
     "portal": "immobiliare_scraper",
     "detected_at": "2026-07-11T11:16:41.589Z",

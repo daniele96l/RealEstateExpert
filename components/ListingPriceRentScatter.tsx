@@ -264,22 +264,13 @@ export default function ListingPriceRentScatter({
 }: Props) {
   const { t } = useI18n();
   const [logScale, setLogScale] = useState(true);
-  const [expanded, setExpanded] = useState(false);
   const [showAllPoints, setShowAllPoints] = useState(false);
-  const [includeRenovationCost, setIncludeRenovationCost] = useState(false);
+  const includeRenovationCost = true;
   const [localHoveredId, setLocalHoveredId] = useState<string | null>(null);
   const ui = listingsUiLabels(market, t);
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
   const rentAxisLabel = market === "cz" ? "Odhad nájmu" : "Affitto stimato";
-  const priceAxisLabel =
-    includeRenovationCost
-      ? ui.pricePlusRenovation
-      : market === "cz"
-        ? "Cena"
-        : "Prezzo";
-  const renovationToggleLabel = includeRenovationCost
-    ? t("listings.includeRenovationCost")
-    : t("listings.includeRenovationCostOff");
+  const priceAxisLabel = ui.pricePlusRenovation;
   const formatAxis = useCallback(
     (v: number) => axisCompact(v, currencySymbol),
     [currencySymbol],
@@ -371,75 +362,44 @@ export default function ListingPriceRentScatter({
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          {expanded && (
-            <button
-              type="button"
-              onClick={() => setShowAllPoints((v) => !v)}
-              className={cn(
-                "rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors",
-                showAllPoints
-                  ? "border-neutral-900 bg-neutral-100 text-neutral-900"
-                  : "border-surface-border text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800",
-              )}
-              aria-pressed={showAllPoints}
-              title="Mostra ogni annuncio — può rallentare il browser"
-            >
-              Tutti i punti
-            </button>
-          )}
-          {expanded && (
-            <button
-              type="button"
-              onClick={() => setLogScale((v) => !v)}
-              className={cn(
-                "rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors",
-                logScale
-                  ? "border-neutral-900 bg-neutral-100 text-neutral-900"
-                  : "border-surface-border text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800",
-              )}
-              aria-pressed={logScale}
-            >
-              Asse log
-            </button>
-          )}
-          {expanded && (
-            <button
-              type="button"
-              onClick={() => setIncludeRenovationCost((v) => !v)}
-              className={cn(
-                "rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors",
-                includeRenovationCost
-                  ? "border-neutral-900 bg-neutral-100 text-neutral-900"
-                  : "border-surface-border text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800",
-              )}
-              aria-pressed={includeRenovationCost}
-              title={renovationToggleLabel}
-            >
-              {includeRenovationCost ? ui.pricePlusRenovation : t("listings.includeRenovationCostOff")}
-            </button>
-          )}
           <button
             type="button"
-            onClick={() => setExpanded((v) => !v)}
-            className="rounded-lg border border-surface-border px-2.5 py-1 text-[11px] font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900"
-            aria-expanded={expanded}
+            onClick={() => setShowAllPoints((v) => !v)}
+            className={cn(
+              "rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors",
+              showAllPoints
+                ? "border-neutral-900 bg-neutral-100 text-neutral-900"
+                : "border-surface-border text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800",
+            )}
+            aria-pressed={showAllPoints}
+            title="Mostra ogni annuncio — può rallentare il browser"
           >
-            {expanded ? "Nascondi grafico" : "Mostra grafico"}
+            Tutti i punti
           </button>
-          {expanded && (
-            <div className="flex items-center gap-1 text-[10px] text-neutral-500">
-              <span
-                className="h-2 w-8 rounded-full"
-                style={{
-                  background: "linear-gradient(90deg, rgb(248 113 113), rgb(251 191 36), rgb(52 211 153))",
-                }}
-              />
-              <span>peggiore → migliore</span>
-            </div>
-          )}
+          <button
+            type="button"
+            onClick={() => setLogScale((v) => !v)}
+            className={cn(
+              "rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors",
+              logScale
+                ? "border-neutral-900 bg-neutral-100 text-neutral-900"
+                : "border-surface-border text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800",
+            )}
+            aria-pressed={logScale}
+          >
+            Asse log
+          </button>
+          <div className="flex items-center gap-1 text-[10px] text-neutral-500">
+            <span
+              className="h-2 w-8 rounded-full"
+              style={{
+                background: "linear-gradient(90deg, rgb(248 113 113), rgb(251 191 36), rgb(52 211 153))",
+              }}
+            />
+            <span>peggiore → migliore</span>
+          </div>
         </div>
       </div>
-      {expanded && (
       <div className="h-[280px] min-h-[280px] w-full min-w-0">
         <ResponsiveContainer width="100%" height={280} debounce={150}>
           <ScatterChart margin={{ top: 8, right: 12, bottom: 28, left: 8 }}>
@@ -504,7 +464,6 @@ export default function ListingPriceRentScatter({
           </ScatterChart>
         </ResponsiveContainer>
       </div>
-      )}
     </div>
   );
 }
