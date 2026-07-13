@@ -1510,20 +1510,18 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
             </div>
           ) : null}
 
-          <div className={cn("grid gap-4", isPostedBasis ? "sm:grid-cols-3" : "sm:grid-cols-2 xl:grid-cols-4")}>
+          <div className="grid gap-4 sm:grid-cols-3">
             <KpiCard
               label={t("occupancy.kpi.active")}
               value={String(kpiMetrics.active_count)}
             />
-            <KpiCard
-              label={t("occupancy.kpi.avgDom")}
-              value={formatDays(kpiMetrics.avg_days_on_market)}
-              hint={
-                isPostedBasis
-                  ? t("occupancy.kpi.postedDomHint")
-                  : t("occupancy.kpi.domHint", { period: occupancyPeriodLabel })
-              }
-            />
+            {isPostedBasis ? (
+              <KpiCard
+                label={t("occupancy.kpi.avgDom")}
+                value={formatDays(kpiMetrics.avg_days_on_market)}
+                hint={t("occupancy.kpi.postedDomHint")}
+              />
+            ) : null}
             {isPostedBasis ? (
               <KpiCard
                 label={t("occupancy.kpi.postedInWindow", { period: occupancyPeriodLabel })}
@@ -1617,14 +1615,6 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                           {t("occupancy.table.turnover", { period: turnoverPeriodLabel })}
                         </th>
                         <th
-                          className="px-4 py-3 cursor-help"
-                          title={t("occupancy.table.avgWaitingDaysHint", {
-                            period: occupancyPeriodLabel,
-                          })}
-                        >
-                          {t("occupancy.table.avgWaitingDays", { period: occupancyPeriodLabel })}
-                        </th>
-                        <th
                           className="px-6 py-3 cursor-help"
                           title={t("occupancy.table.occupancyHint", {
                             period: occupancyPeriodLabel,
@@ -1639,7 +1629,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                 <tbody>
                   {breakdownRows.length === 0 ? (
                     <tr>
-                      <td colSpan={isPostedBasis ? 6 : 9} className="px-6 py-8 text-center text-neutral-500">
+                      <td colSpan={isPostedBasis ? 6 : 8} className="px-6 py-8 text-center text-neutral-500">
                         {breakdownGroup === "zone" ? t("occupancy.noAreas") : t("occupancy.noSegments")}
                       </td>
                     </tr>
@@ -1701,14 +1691,6 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                                 value={formatTurnover(row.turnover_30d)}
                                 tone={turnoverTone(row.turnover_30d)}
                               />
-                            </td>
-                            <td
-                              className="px-4 py-3"
-                              title={t("occupancy.table.avgWaitingDaysHint", {
-                                period: occupancyPeriodLabel,
-                              })}
-                            >
-                              {formatDays(row.avg_waiting_days)}
                             </td>
                             <td
                               className="px-6 py-3"
