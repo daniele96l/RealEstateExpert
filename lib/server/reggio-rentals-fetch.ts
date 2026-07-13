@@ -280,22 +280,27 @@ export async function fetchReggioRentalsListings(
 ): Promise<CityListingsCache> {
   const pages = Math.min(resolveItalyListingMaxPages(maxPages ?? 10), 10);
   const ciHost = process.env.GITHUB_ACTIONS === "true" || process.env.CI === "true";
-  let cache: CityListingsCache | null = null;
-  let scraperError: ReggioRentalsScraperError | null = null;
+
+  if (ciHost && !hasApifyToken()) {
+    throw new ReggioRentalsScraperError(
+      "APIFY_API_TOKEN is required on CI to scrape Immobiliare rentals. Add it to GitHub Actions secrets.",
+    );
+  }
 
   if (hasApifyToken() && ciHost) {
     try {
       const { cache: apifyCache, actorId } = await fetchApifyImmobiliareListings(pages, onProgress);
       process.stderr.write(`[reggio-rentals-fetch] Apify primary on CI via ${actorId}\n`);
-      cache = apifyCache;
+      return apifyCache;
     } catch (err) {
-      process.stderr.write(
-        `[reggio-rentals-fetch] Apify primary failed on CI, trying Playwright scraper: ${
-          err instanceof Error ? err.message : String(err)
-        }\n`,
+      throw new ReggioRentalsScraperError(
+        `Apify scraper failed on CI: ${err instanceof Error ? err.message : String(err)}`,
       );
     }
   }
+
+  let cache: CityListingsCache | null = null;
+  let scraperError: ReggioRentalsScraperError | null = null;
 
   if (!cache) {
     try {

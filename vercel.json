@@ -1,24 +1,28 @@
 {
   "crons": [
     {
-      "path": "/api/cron/occupancy?portal=idealista_scraper&city=reggio_calabria",
+      "path": "/api/cron/occupancy?portal=immobiliare_scraper&city=reggio_calabria",
       "schedule": "0 6 * * *"
     },
     {
-      "path": "/api/cron/occupancy?portal=immobiliare_scraper&city=reggio_calabria",
+      "path": "/api/cron/occupancy?portal=sreality&city=brno",
       "schedule": "20 6 * * *"
     },
     {
-      "path": "/api/cron/occupancy?portal=casa_scraper&city=reggio_calabria",
+      "path": "/api/cron/occupancy?portal=sreality&city=tabor",
       "schedule": "40 6 * * *"
     },
     {
-      "path": "/api/cron/occupancy?portal=subito_scraper&city=reggio_calabria",
+      "path": "/api/cron/occupancy?portal=sreality&city=prague",
       "schedule": "0 7 * * *"
     },
     {
-      "path": "/api/cron/occupancy?portal=sreality&city=brno",
+      "path": "/api/cron/occupancy?portal=sreality&city=ostrava",
       "schedule": "20 7 * * *"
+    },
+    {
+      "path": "/api/cron/occupancy?portal=sreality&city=rosice",
+      "schedule": "40 7 * * *"
     }
   ]
 }

@@ -1,5 +1,49 @@
 [
   {
+    "id": "im_129505842",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-13T16:44:31.180Z",
+    "presumed_rented_at": "2026-07-13T16:44:31.180Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-12T09:22:39.110Z",
+    "days_on_market": 5,
+    "price": 280,
+    "sqm": 120,
+    "rooms": 3,
+    "address": "Via Santo Sperato, 69",
+    "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
+    "lat": 38.09706116,
+    "lng": 15.67039013,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 280
+      }
+    ]
+  },
+  {
+    "id": "im_60357824",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-13T16:44:31.180Z",
+    "presumed_rented_at": "2026-07-13T16:44:31.180Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-12T09:22:39.110Z",
+    "days_on_market": 5,
+    "price": 500,
+    "sqm": 60,
+    "rooms": 3,
+    "address": "Appartamento",
+    "zone": "Altro",
+    "lat": 0,
+    "lng": 0,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 500
+      }
+    ]
+  },
+  {
     "id": "im_110843515",
     "portal": "immobiliare_scraper",
     "detected_at": "2026-07-12T09:20:08.558Z",

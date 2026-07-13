@@ -30,7 +30,7 @@ export function isOccupancyScraperPortal(portal: OccupancyPortal): boolean {
   return OCCUPANCY_SCRAPER_PORTALS.includes(portal);
 }
 
-export const DEFAULT_OCCUPANCY_PORTAL: OccupancyPortal = "idealista_scraper";
+export const DEFAULT_OCCUPANCY_PORTAL: OccupancyPortal = "immobiliare_scraper";
 
 export function isOccupancyPortal(value: string | null | undefined): value is OccupancyPortal {
   return OCCUPANCY_PORTALS.includes(value as OccupancyPortal);

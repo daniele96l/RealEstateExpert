@@ -2,7 +2,7 @@ name: Sync occupancy seed data
 
 on:
   schedule:
-    - cron: "0 7 * * *"
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -20,66 +20,57 @@ jobs:
           node-version: "22"
           cache: npm
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
       - name: Install Node dependencies
         run: npm ci
-
-      - name: Install Python scraper
-        run: |
-          pip install -e "./reggio_rentals[dev]"
-          playwright install chromium
 
       - name: Check CI secrets
         env:
           APIFY_API_TOKEN: ${{ secrets.APIFY_API_TOKEN }}
         run: |
           if [ -z "${APIFY_API_TOKEN}" ]; then
-            echo "::warning::APIFY_API_TOKEN is not configured. Reggio sync will fail if the Playwright scraper is blocked on CI."
+            echo "::error::APIFY_API_TOKEN is not configured. Reggio Immobiliare sync cannot run on CI."
+            exit 1
           fi
 
       - name: Scrape and export Reggio Calabria prod seed data
         id: reggio
         continue-on-error: true
         env:
-          SCRAPER_PROXY_SERVER: ${{ secrets.SCRAPER_PROXY_SERVER }}
           APIFY_API_TOKEN: ${{ secrets.APIFY_API_TOKEN }}
         run: npm run data:sync-immobiliare
 
-      - name: Scrape and export Brno prod seed data
-        id: brno
+      - name: Refresh Czech occupancy snapshots
+        id: cz
         continue-on-error: true
-        run: npm run data:sync-brno
+        run: npm run data:sync-occupancy:cz
 
       - name: Commit and push if changed
         env:
           REGGIO_OUTCOME: ${{ steps.reggio.outcome }}
-          BRNO_OUTCOME: ${{ steps.brno.outcome }}
+          CZ_OUTCOME: ${{ steps.cz.outcome }}
         run: |
-          if [ "${REGGIO_OUTCOME}" = "failure" ] && [ "${BRNO_OUTCOME}" = "failure" ]; then
-            echo "Both Reggio and Brno sync failed"
+          if [ "${REGGIO_OUTCOME}" = "failure" ] && [ "${CZ_OUTCOME}" = "failure" ]; then
+            echo "Both Reggio and Czech sync failed"
             exit 1
           fi
           if [ "${REGGIO_OUTCOME}" = "failure" ]; then
-            echo "::warning::Reggio sync failed; committing Brno changes only"
+            echo "::warning::Reggio sync failed; committing Czech changes only"
           fi
-          if [ "${BRNO_OUTCOME}" = "failure" ]; then
-            echo "::warning::Brno sync failed; committing Reggio changes only"
+          if [ "${CZ_OUTCOME}" = "failure" ]; then
+            echo "::warning::Czech sync failed; committing Reggio changes only"
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add \
             data/listings/reggio_calabria_rent.json \
             data/occupancy/it_reggio_calabria/immobiliare_scraper/ \
-            data/listings/cz_brno_rent.json \
-            data/occupancy/cz_brno/sreality/
+            data/listings/cz_*_rent.json \
+            data/occupancy/cz_*/
           if git diff --staged --quiet; then
             echo "No data changes to commit"
             exit 0
           fi
           git commit \
             -m "chore(data): refresh occupancy seed data for prod" \
-            -m "Automated sync of Reggio Calabria (Immobiliare scraper) and Brno (Sreality) rental listings and occupancy snapshots."
+            -m "Automated sync of Reggio Calabria (Immobiliare) and Czech Sreality occupancy snapshots."
           git push

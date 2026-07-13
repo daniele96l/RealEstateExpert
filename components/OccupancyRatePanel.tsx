@@ -200,15 +200,9 @@ const OCCUPANCY_PORTAL_OPTIONS: Array<{
     | "portalIdealista"
     | "portalImmobiliare"
     | "portalImmobiliareScraper"
-    | "portalIdealistaScraper"
-    | "portalCasaScraper"
-    | "portalSubitoScraper"
     | "portalSreality";
 }> = [
   { id: "immobiliare_scraper", labelKey: "portalImmobiliareScraper" },
-  { id: "idealista_scraper", labelKey: "portalIdealistaScraper" },
-  { id: "casa_scraper", labelKey: "portalCasaScraper" },
-  { id: "subito_scraper", labelKey: "portalSubitoScraper" },
   { id: "sreality", labelKey: "portalSreality" },
 ];
 
