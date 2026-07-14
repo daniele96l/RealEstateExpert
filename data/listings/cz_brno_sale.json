@@ -599,7 +599,7 @@
       "address": "Bořetická, Židenice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -7569,7 +7569,7 @@
       "address": "Zábrdovice, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
@@ -12618,7 +12618,7 @@
       "address": "Jaselská, Veveří, Brno",
       "property_type": "flat",
       "property_type_label": "Byt",
-      "condition_status": null,
+      "condition_status": "Velmi dobrý",
       "condition": null,
       "needs_renovation": null
     },
