@@ -1,5 +1,49 @@
 [
   {
+    "id": "im_129026092",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-14T16:22:28.856Z",
+    "presumed_rented_at": "2026-07-14T16:22:28.856Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-13T16:44:31.180Z",
+    "days_on_market": 6,
+    "price": 500,
+    "sqm": 160,
+    "rooms": 5,
+    "address": "Via Nicola Furnari",
+    "zone": "Ferrovieri, Stadio, Sbarre",
+    "lat": 38.0987,
+    "lng": 15.6385,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 500
+      }
+    ]
+  },
+  {
+    "id": "im_128836328",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-14T16:22:28.856Z",
+    "presumed_rented_at": "2026-07-14T16:22:28.856Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-13T16:44:31.180Z",
+    "days_on_market": 6,
+    "price": 380,
+    "sqm": 75,
+    "rooms": 3,
+    "address": "Via della Rimembranza",
+    "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
+    "lat": 38.0861,
+    "lng": 15.6786,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 380
+      }
+    ]
+  },
+  {
     "id": "im_129505842",
     "portal": "immobiliare_scraper",
     "detected_at": "2026-07-13T16:44:31.180Z",

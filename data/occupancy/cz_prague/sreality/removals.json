@@ -1,0 +1,4732 @@
+[
+  {
+    "id": "sr_3790139468",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 36000,
+    "sqm": 69,
+    "rooms": 3,
+    "address": "Krakovská, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0787196267833,
+    "lng": 14.4282414095429,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 36000
+      }
+    ]
+  },
+  {
+    "id": "sr_286322764",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20000,
+    "sqm": 30,
+    "rooms": 1,
+    "address": "Roháčova, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.086562,
+    "lng": 14.454745,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20000
+      }
+    ]
+  },
+  {
+    "id": "sr_2518343756",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17000,
+    "sqm": 35,
+    "rooms": 1,
+    "address": "Kovanecká, Libeň, Praha",
+    "zone": "Libeň",
+    "lat": 50.1083603,
+    "lng": 14.4861994,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_3619365452",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 26000,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "U milosrdných, Staré Město, Praha",
+    "zone": "Staré Město",
+    "lat": 50.091732,
+    "lng": 14.421404,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 26000
+      }
+    ]
+  },
+  {
+    "id": "sr_1607689036",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 28000,
+    "sqm": 33,
+    "rooms": 2,
+    "address": "Opletalova, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0850639,
+    "lng": 14.4332361,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 28000
+      }
+    ]
+  },
+  {
+    "id": "sr_2895987532",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 27000,
+    "sqm": 30,
+    "rooms": 1,
+    "address": "Opletalova, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.082293827481,
+    "lng": 14.43117012012,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 27000
+      }
+    ]
+  },
+  {
+    "id": "sr_3977834572",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 29500,
+    "sqm": 44,
+    "rooms": 2,
+    "address": "Krakovská, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0787196267833,
+    "lng": 14.4282414095429,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 29500
+      }
+    ]
+  },
+  {
+    "id": "sr_4148621388",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19000,
+    "sqm": 23,
+    "rooms": 1,
+    "address": "Hálkova, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0763855,
+    "lng": 14.4278612,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19000
+      }
+    ]
+  },
+  {
+    "id": "sr_1243406412",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 31500,
+    "sqm": 79,
+    "rooms": 3,
+    "address": "Ocelářská, Vysočany, Praha",
+    "zone": "Vysočany",
+    "lat": 50.10635355496838,
+    "lng": 14.494827044608089,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 31500
+      }
+    ]
+  },
+  {
+    "id": "sr_2048712780",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 24000,
+    "sqm": 69,
+    "rooms": 3,
+    "address": "Hakenova, Čakovice, Praha",
+    "zone": "Čakovice",
+    "lat": 50.15672489164099,
+    "lng": 14.519934254318832,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 24000
+      }
+    ]
+  },
+  {
+    "id": "sr_1246289996",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 25000,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Moldavská, Vršovice, Praha",
+    "zone": "Vršovice",
+    "lat": 50.0694487142945,
+    "lng": 14.4621820071562,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "id": "sr_563011660",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 24950,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Mojmírova, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.062909632287294,
+    "lng": 14.444632472968062,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 24950
+      }
+    ]
+  },
+  {
+    "id": "sr_3330007116",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 42000,
+    "sqm": 83,
+    "rooms": 3,
+    "address": "Janáčkovo nábřeží, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.077986603815,
+    "lng": 14.4081574123675,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 42000
+      }
+    ]
+  },
+  {
+    "id": "sr_426500172",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 41000,
+    "sqm": 81,
+    "rooms": 3,
+    "address": "Odborů, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0775996487556,
+    "lng": 14.418645679859,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 41000
+      }
+    ]
+  },
+  {
+    "id": "sr_2865291340",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 86600,
+    "sqm": 138,
+    "rooms": 3,
+    "address": "Pařížská, Staré Město, Praha",
+    "zone": "Staré Město",
+    "lat": 50.0896964866356,
+    "lng": 14.4192367025335,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 86600
+      }
+    ]
+  },
+  {
+    "id": "sr_379617356",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 55000,
+    "sqm": 120,
+    "rooms": 4,
+    "address": "Hradešínská, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.073367,
+    "lng": 14.454597,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 55000
+      }
+    ]
+  },
+  {
+    "id": "sr_460779596",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 21900,
+    "sqm": 48,
+    "rooms": 2,
+    "address": "Vrchlického, Košíře, Praha",
+    "zone": "Košíře",
+    "lat": 50.0696479682202,
+    "lng": 14.3824016257832,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 21900
+      }
+    ]
+  },
+  {
+    "id": "sr_1931645004",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 45000,
+    "sqm": 120,
+    "rooms": 4,
+    "address": "Voskovcova, Hlubočepy, Praha",
+    "zone": "Hlubočepy",
+    "lat": 50.0297426804908,
+    "lng": 14.3689858475461,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 45000
+      }
+    ]
+  },
+  {
+    "id": "sr_2634195020",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19500,
+    "sqm": 20,
+    "rooms": 1,
+    "address": "Lisabonská, Vysočany, Praha",
+    "zone": "Vysočany",
+    "lat": 50.1059988911532,
+    "lng": 14.4969887555025,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19500
+      }
+    ]
+  },
+  {
+    "id": "sr_4174114892",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 26500,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Bořivojova, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.081864,
+    "lng": 14.453722,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 26500
+      }
+    ]
+  },
+  {
+    "id": "sr_54952012",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 29500,
+    "sqm": 58,
+    "rooms": 2,
+    "address": "Milevská, Podolí, Praha",
+    "zone": "Podolí",
+    "lat": 50.048662,
+    "lng": 14.433209,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 29500
+      }
+    ]
+  },
+  {
+    "id": "sr_2869006412",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 58000,
+    "sqm": 108,
+    "rooms": 3,
+    "address": "Dřevná, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.07162700378,
+    "lng": 14.4146645131061,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 58000
+      }
+    ]
+  },
+  {
+    "id": "sr_2375050060",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19000,
+    "sqm": 33,
+    "rooms": 1,
+    "address": "Jaromírova, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.06491942538304,
+    "lng": 14.428226440125215,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19000
+      }
+    ]
+  },
+  {
+    "id": "sr_3494527820",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23500,
+    "sqm": 45,
+    "rooms": 2,
+    "address": "Grafická, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.07278546529155,
+    "lng": 14.393012557895005,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23500
+      }
+    ]
+  },
+  {
+    "id": "sr_1793934156",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 24000,
+    "sqm": 37,
+    "rooms": 2,
+    "address": "Jaromírova, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.06491942538304,
+    "lng": 14.428226440125215,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 24000
+      }
+    ]
+  },
+  {
+    "id": "sr_282435660",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 47000,
+    "sqm": 90,
+    "rooms": 4,
+    "address": "Roháčova, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.08674371791503,
+    "lng": 14.453357483293766,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 47000
+      }
+    ]
+  },
+  {
+    "id": "sr_2844651596",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 24500,
+    "sqm": 46,
+    "rooms": 2,
+    "address": "Grafická, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.07278546529155,
+    "lng": 14.393012557895005,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 24500
+      }
+    ]
+  },
+  {
+    "id": "sr_1502474316",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19000,
+    "sqm": 29,
+    "rooms": 1,
+    "address": "Jaromírova, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.06491942538304,
+    "lng": 14.428226440125215,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19000
+      }
+    ]
+  },
+  {
+    "id": "sr_965603404",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20000,
+    "sqm": 26,
+    "rooms": 1,
+    "address": "Jaromírova, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.06491942538304,
+    "lng": 14.428226440125215,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20000
+      }
+    ]
+  },
+  {
+    "id": "sr_2559438924",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 25000,
+    "sqm": 43,
+    "rooms": 2,
+    "address": "Jaromírova, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.06491942538304,
+    "lng": 14.428226440125215,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "id": "sr_3388244044",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 54000,
+    "sqm": 112,
+    "rooms": 3,
+    "address": "Štěpánská, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0806113,
+    "lng": 14.4264435,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 54000
+      }
+    ]
+  },
+  {
+    "id": "sr_4072534092",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 22000,
+    "sqm": 39,
+    "rooms": 1,
+    "address": "Mezi Vodami, Modřany, Praha",
+    "zone": "Modřany",
+    "lat": 50.017110054394,
+    "lng": 14.4013081688738,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 22000
+      }
+    ]
+  },
+  {
+    "id": "sr_289443916",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 85000,
+    "sqm": 240,
+    "rooms": 5,
+    "address": "Na baště sv. Ludmily, Hradčany, Praha",
+    "zone": "Hradčany",
+    "lat": 50.0962666015259,
+    "lng": 14.4075220647143,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 85000
+      }
+    ]
+  },
+  {
+    "id": "sr_2997198924",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 21000,
+    "sqm": 43,
+    "rooms": 2,
+    "address": "Zenklova, Kobylisy, Praha",
+    "zone": "Kobylisy",
+    "lat": 50.1197747,
+    "lng": 14.460712,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 21000
+      }
+    ]
+  },
+  {
+    "id": "sr_4226904908",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 60000,
+    "sqm": 105,
+    "rooms": 3,
+    "address": "Rašínovo nábřeží, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0715324995159,
+    "lng": 14.4141494350454,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 60000
+      }
+    ]
+  },
+  {
+    "id": "sr_2034233420",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 29000,
+    "sqm": 28,
+    "rooms": 1,
+    "address": "Havelská, Staré Město, Praha",
+    "zone": "Staré Město",
+    "lat": 50.0847315751231,
+    "lng": 14.4211161703642,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 29000
+      }
+    ]
+  },
+  {
+    "id": "sr_1231597644",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 10000,
+    "sqm": 14,
+    "rooms": 1,
+    "address": "Podnikatelská, Běchovice, Praha",
+    "zone": "Běchovice",
+    "lat": 50.0898791,
+    "lng": 14.6102798,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 10000
+      }
+    ]
+  },
+  {
+    "id": "sr_1336087372",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 50000,
+    "sqm": 135,
+    "rooms": 4,
+    "address": "Senovážné náměstí, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0860624120387,
+    "lng": 14.4325943463367,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 50000
+      }
+    ]
+  },
+  {
+    "id": "sr_1771954252",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 29900,
+    "sqm": 49,
+    "rooms": 2,
+    "address": "U Komína, Radlice, Praha",
+    "zone": "Radlice",
+    "lat": 50.0554249180659,
+    "lng": 14.381661553138,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 29900
+      }
+    ]
+  },
+  {
+    "id": "sr_428859468",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 45000,
+    "sqm": 100,
+    "rooms": 3,
+    "address": "Jungmannova, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0810584476935,
+    "lng": 14.4224205032109,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 45000
+      }
+    ]
+  },
+  {
+    "id": "sr_733868108",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 40000,
+    "sqm": 85,
+    "rooms": 3,
+    "address": "Sněmovní, Malá Strana, Praha",
+    "zone": "Malá Strana",
+    "lat": 50.0894577187,
+    "lng": 14.4033478765866,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 40000
+      }
+    ]
+  },
+  {
+    "id": "sr_2878436172",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 29385,
+    "sqm": 71,
+    "rooms": 2,
+    "address": "Štěpánská, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0787329973142,
+    "lng": 14.4253690800295,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 29385
+      }
+    ]
+  },
+  {
+    "id": "sr_3818824268",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 79000,
+    "sqm": 170,
+    "rooms": 4,
+    "address": "Vlašská, Malá Strana, Praha",
+    "zone": "Malá Strana",
+    "lat": 50.0872492549852,
+    "lng": 14.4002659712691,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 79000
+      }
+    ]
+  },
+  {
+    "id": "sr_2840760396",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 50000,
+    "sqm": 114,
+    "rooms": 3,
+    "address": "Masarykovo nábřeží, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0782708357338,
+    "lng": 14.4143868835604,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 50000
+      }
+    ]
+  },
+  {
+    "id": "sr_837607500",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18000,
+    "sqm": 52,
+    "rooms": 2,
+    "address": "Londýnská, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.071099,
+    "lng": 14.435683,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18000
+      }
+    ]
+  },
+  {
+    "id": "sr_842482508",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18490,
+    "sqm": 32,
+    "rooms": 1,
+    "address": "Poděbradská, Hloubětín, Praha",
+    "zone": "Hloubětín",
+    "lat": 50.1041313330879,
+    "lng": 14.5282466457973,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18490
+      }
+    ]
+  },
+  {
+    "id": "sr_1842004812",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 36000,
+    "sqm": 82,
+    "rooms": 3,
+    "address": "Černokostelecká, Strašnice, Praha",
+    "zone": "Strašnice",
+    "lat": 50.0777423961,
+    "lng": 14.5053247188,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 36000
+      }
+    ]
+  },
+  {
+    "id": "sr_322835276",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20900,
+    "sqm": 43,
+    "rooms": 1,
+    "address": "Poděbradská, Hloubětín, Praha",
+    "zone": "Hloubětín",
+    "lat": 50.1042166903,
+    "lng": 14.5250451823,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20900
+      }
+    ]
+  },
+  {
+    "id": "sr_3018645580",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 26000,
+    "sqm": 67,
+    "rooms": 3,
+    "address": "Na Petřinách, Břevnov, Praha",
+    "zone": "Břevnov",
+    "lat": 50.0891512391157,
+    "lng": 14.3510258436169,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 26000
+      }
+    ]
+  },
+  {
+    "id": "sr_3427721292",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 35000,
+    "sqm": 83,
+    "rooms": 2,
+    "address": "Senovážné náměstí, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.08594,
+    "lng": 14.429825,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 35000
+      }
+    ]
+  },
+  {
+    "id": "sr_4138963020",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 86500,
+    "sqm": 170,
+    "rooms": 5,
+    "address": "Ibsenova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0764301567,
+    "lng": 14.4366095133,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 86500
+      }
+    ]
+  },
+  {
+    "id": "sr_2101407820",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 36000,
+    "sqm": 93,
+    "rooms": 3,
+    "address": "U Stírky, Libeň, Praha",
+    "zone": "Libeň",
+    "lat": 50.1199033332,
+    "lng": 14.462407188,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 36000
+      }
+    ]
+  },
+  {
+    "id": "sr_2986078284",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 39000,
+    "sqm": 86,
+    "rooms": 3,
+    "address": "Nademlejnská, Hloubětín, Praha",
+    "zone": "Hloubětín",
+    "lat": 50.1016793103812,
+    "lng": 14.5294400556338,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 39000
+      }
+    ]
+  },
+  {
+    "id": "sr_2649546828",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18500,
+    "sqm": 35,
+    "rooms": 1,
+    "address": "Gerstelova, Vysočany, Praha",
+    "zone": "Vysočany",
+    "lat": 50.10316813702375,
+    "lng": 14.507174749625962,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18500
+      }
+    ]
+  },
+  {
+    "id": "sr_1307369548",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 39000,
+    "sqm": 86,
+    "rooms": 3,
+    "address": "Hrašeho, Čimice, Praha",
+    "zone": "Čimice",
+    "lat": 50.1380306767052,
+    "lng": 14.4281466473121,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 39000
+      }
+    ]
+  },
+  {
+    "id": "sr_3902165836",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 30000,
+    "sqm": 60,
+    "rooms": 2,
+    "address": "Zvěřinova, Strašnice, Praha",
+    "zone": "Strašnice",
+    "lat": 50.084686,
+    "lng": 14.485044,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 30000
+      }
+    ]
+  },
+  {
+    "id": "sr_485285964",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 26900,
+    "sqm": 73,
+    "rooms": 3,
+    "address": "Křivenická, Čimice, Praha",
+    "zone": "Čimice",
+    "lat": 50.141627823048346,
+    "lng": 14.431794499796002,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 26900
+      }
+    ]
+  },
+  {
+    "id": "sr_2344742988",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19990,
+    "sqm": 32,
+    "rooms": 1,
+    "address": "U Hostavického potoka, Hostavice, Praha",
+    "zone": "Hostavice",
+    "lat": 50.0837816667,
+    "lng": 14.5625361111,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19990
+      }
+    ]
+  },
+  {
+    "id": "sr_1324146764",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 50000,
+    "sqm": 111,
+    "rooms": 3,
+    "address": "Baarova, Michle, Praha",
+    "zone": "Michle",
+    "lat": 50.050057374092916,
+    "lng": 14.455852928721399,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 50000
+      }
+    ]
+  },
+  {
+    "id": "sr_2001723468",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 15000,
+    "sqm": 35,
+    "rooms": 1,
+    "address": "Čajkovského, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.08218425326775,
+    "lng": 14.45229764420428,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 15000
+      }
+    ]
+  },
+  {
+    "id": "sr_954916940",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 24900,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Poděbradská, Hloubětín, Praha",
+    "zone": "Hloubětín",
+    "lat": 50.1042166903,
+    "lng": 14.5250451823,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 24900
+      }
+    ]
+  },
+  {
+    "id": "sr_242610252",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 37000,
+    "sqm": 82,
+    "rooms": 2,
+    "address": "Sámova, Vršovice, Praha",
+    "zone": "Vršovice",
+    "lat": 50.066992,
+    "lng": 14.449761,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 37000
+      }
+    ]
+  },
+  {
+    "id": "sr_2666889292",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17800,
+    "sqm": 31,
+    "rooms": 1,
+    "address": "U Svobodárny, Libeň, Praha",
+    "zone": "Libeň",
+    "lat": 50.105737,
+    "lng": 14.488793,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17800
+      }
+    ]
+  },
+  {
+    "id": "sr_3144192076",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18000,
+    "sqm": 32,
+    "rooms": 1,
+    "address": "Střížkovská, Střížkov, Praha",
+    "zone": "Střížkov",
+    "lat": 50.123581,
+    "lng": 14.483103,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18000
+      }
+    ]
+  },
+  {
+    "id": "sr_1558507596",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18500,
+    "sqm": 41,
+    "rooms": 1,
+    "address": "Mládeže, Břevnov, Praha",
+    "zone": "Břevnov",
+    "lat": 50.085543,
+    "lng": 14.372989,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18500
+      }
+    ]
+  },
+  {
+    "id": "sr_3405099084",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 25000,
+    "sqm": 58,
+    "rooms": 2,
+    "address": "Trojská, Troja, Praha",
+    "zone": "Troja",
+    "lat": 50.1202823591365,
+    "lng": 14.4410500536835,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "id": "sr_1442635852",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19000,
+    "sqm": 38,
+    "rooms": 1,
+    "address": "Hanusova, Michle, Praha",
+    "zone": "Michle",
+    "lat": 50.0488064,
+    "lng": 14.4445177,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19000
+      }
+    ]
+  },
+  {
+    "id": "sr_100458572",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17000,
+    "sqm": 36,
+    "rooms": 1,
+    "address": "Křeslice, Praha",
+    "zone": "Křeslice",
+    "lat": 50.022947488442924,
+    "lng": 14.56334547153017,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_3841777740",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 27900,
+    "sqm": 64,
+    "rooms": 2,
+    "address": "Poděbradská, Hloubětín, Praha",
+    "zone": "Hloubětín",
+    "lat": 50.10347428359085,
+    "lng": 14.523462646348827,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 27900
+      }
+    ]
+  },
+  {
+    "id": "sr_1830481996",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 16500,
+    "sqm": 35,
+    "rooms": 1,
+    "address": "Kodymova, Stodůlky, Praha",
+    "zone": "Stodůlky",
+    "lat": 50.051983,
+    "lng": 14.337444,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 16500
+      }
+    ]
+  },
+  {
+    "id": "sr_3623673932",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18000,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Bydžovského, Malešice, Praha",
+    "zone": "Malešice",
+    "lat": 50.08439818718963,
+    "lng": 14.502981537589553,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18000
+      }
+    ]
+  },
+  {
+    "id": "sr_2714480716",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 16900,
+    "sqm": 48,
+    "rooms": null,
+    "address": "Na úlehli, Michle, Praha",
+    "zone": "Michle",
+    "lat": 50.046899,
+    "lng": 14.463115,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 16900
+      }
+    ]
+  },
+  {
+    "id": "sr_1744625740",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 35000,
+    "sqm": 59,
+    "rooms": 2,
+    "address": "Sokolovská, Karlín, Praha",
+    "zone": "Karlín",
+    "lat": 50.094793106286446,
+    "lng": 14.454208826173087,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 35000
+      }
+    ]
+  },
+  {
+    "id": "sr_515760204",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20500,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Za Vokovickou vozovnou, Praha",
+    "zone": "Za Vokovickou vozovnou",
+    "lat": 50.091737,
+    "lng": 14.328695,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20500
+      }
+    ]
+  },
+  {
+    "id": "sr_1813180492",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 89000,
+    "sqm": 120,
+    "rooms": 4,
+    "address": "Šafaříkova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0707554596788,
+    "lng": 14.4343138454783,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 89000
+      }
+    ]
+  },
+  {
+    "id": "sr_1441525836",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 22000,
+    "sqm": 35,
+    "rooms": 1,
+    "address": "Pavla Švandy ze Semčic, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.0769320024,
+    "lng": 14.4056741079,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 22000
+      }
+    ]
+  },
+  {
+    "id": "sr_3473928268",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 35000,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Šafaříkova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0707554596788,
+    "lng": 14.4343138454783,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 35000
+      }
+    ]
+  },
+  {
+    "id": "sr_3561136204",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 64850,
+    "sqm": 115,
+    "rooms": 4,
+    "address": "Strašnice, Praha",
+    "zone": "Strašnice",
+    "lat": 50.0646273088772,
+    "lng": 14.5108609927858,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 64850
+      }
+    ]
+  },
+  {
+    "id": "sr_1706270796",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 24600,
+    "sqm": 32,
+    "rooms": 1,
+    "address": "Strašnice, Praha",
+    "zone": "Strašnice",
+    "lat": 50.0646273088772,
+    "lng": 14.5108609927858,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 24600
+      }
+    ]
+  },
+  {
+    "id": "sr_503595852",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17500,
+    "sqm": 51,
+    "rooms": 2,
+    "address": "Zvonková, Záběhlice, Praha",
+    "zone": "Záběhlice",
+    "lat": 50.0553196760548,
+    "lng": 14.5054009891558,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17500
+      }
+    ]
+  },
+  {
+    "id": "sr_1095570252",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20500,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "V Osikách, Dolní Měcholupy, Praha",
+    "zone": "Dolní Měcholupy",
+    "lat": 50.057518,
+    "lng": 14.554397,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20500
+      }
+    ]
+  },
+  {
+    "id": "sr_151274316",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17490,
+    "sqm": 28,
+    "rooms": 1,
+    "address": "Jemnická, Michle, Praha",
+    "zone": "Michle",
+    "lat": 50.0489713631177,
+    "lng": 14.4577097669082,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17490
+      }
+    ]
+  },
+  {
+    "id": "sr_482914380",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23700,
+    "sqm": 51,
+    "rooms": 2,
+    "address": "Do zahrádek I, Třebonice, Praha",
+    "zone": "Třebonice",
+    "lat": 50.0562804104107,
+    "lng": 14.2917647603551,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23700
+      }
+    ]
+  },
+  {
+    "id": "sr_2955915340",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 27000,
+    "sqm": 70,
+    "rooms": 3,
+    "address": "Lamačova, Hlubočepy, Praha",
+    "zone": "Hlubočepy",
+    "lat": 50.0364683883507,
+    "lng": 14.3695429785478,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 27000
+      }
+    ]
+  },
+  {
+    "id": "sr_2888806476",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 22500,
+    "sqm": 51,
+    "rooms": 2,
+    "address": "U Radosti, Třebonice, Praha",
+    "zone": "Třebonice",
+    "lat": 50.0577763734842,
+    "lng": 14.2918119731691,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 22500
+      }
+    ]
+  },
+  {
+    "id": "sr_393130060",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 21500,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Družstevní ochoz, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.0562512968259,
+    "lng": 14.4476143275615,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 21500
+      }
+    ]
+  },
+  {
+    "id": "sr_802336844",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 24900,
+    "sqm": 82,
+    "rooms": 3,
+    "address": "Milánská, Horní Měcholupy, Praha",
+    "zone": "Horní Měcholupy",
+    "lat": 50.0430394545336,
+    "lng": 14.5560760727255,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 24900
+      }
+    ]
+  },
+  {
+    "id": "sr_896180300",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 31900,
+    "sqm": 43,
+    "rooms": 1,
+    "address": "V Háji, Holešovice, Praha",
+    "zone": "Holešovice",
+    "lat": 50.1032951084513,
+    "lng": 14.4541487911805,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 31900
+      }
+    ]
+  },
+  {
+    "id": "sr_1699389516",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18900,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Novákových, Libeň, Praha",
+    "zone": "Libeň",
+    "lat": 50.10448,
+    "lng": 14.478716,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18900
+      }
+    ]
+  },
+  {
+    "id": "sr_1414176844",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 14990,
+    "sqm": 25,
+    "rooms": 1,
+    "address": "Adamovská, Michle, Praha",
+    "zone": "Michle",
+    "lat": 50.0587031778886,
+    "lng": 14.4513870182385,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 14990
+      }
+    ]
+  },
+  {
+    "id": "sr_1776984140",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17000,
+    "sqm": 37,
+    "rooms": 1,
+    "address": "Hořejší nábřeží, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.071123104509,
+    "lng": 14.4104580050611,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_866820172",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 25900,
+    "sqm": 72,
+    "rooms": 3,
+    "address": "Hlivická, Bohnice, Praha",
+    "zone": "Bohnice",
+    "lat": 50.1320857011882,
+    "lng": 14.4223128289848,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 25900
+      }
+    ]
+  },
+  {
+    "id": "sr_3132403788",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23700,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Podolská, Podolí, Praha",
+    "zone": "Podolí",
+    "lat": 50.0541093048342,
+    "lng": 14.419070698077,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23700
+      }
+    ]
+  },
+  {
+    "id": "sr_342794316",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20000,
+    "sqm": 32,
+    "rooms": 1,
+    "address": "Poděbradská, Hloubětín, Praha",
+    "zone": "Hloubětín",
+    "lat": 50.1041313330824,
+    "lng": 14.5282466457732,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20000
+      }
+    ]
+  },
+  {
+    "id": "sr_3533611084",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 31900,
+    "sqm": 71,
+    "rooms": 3,
+    "address": "Zimova, Kamýk, Praha",
+    "zone": "Kamýk",
+    "lat": 50.006672816361,
+    "lng": 14.4533104275833,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 31900
+      }
+    ]
+  },
+  {
+    "id": "sr_178036812",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20000,
+    "sqm": 32,
+    "rooms": 1,
+    "address": "Olgy Havlové, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.0886958242266,
+    "lng": 14.4828411954616,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20000
+      }
+    ]
+  },
+  {
+    "id": "sr_3473055820",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 16900,
+    "sqm": 30,
+    "rooms": 1,
+    "address": "Podkovářská, Vysočany, Praha",
+    "zone": "Vysočany",
+    "lat": 50.1041499659145,
+    "lng": 14.5129307632437,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 16900
+      }
+    ]
+  },
+  {
+    "id": "sr_1138925644",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17500,
+    "sqm": 22,
+    "rooms": 1,
+    "address": "Biskupcova, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.090731937087,
+    "lng": 14.476322447081,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17500
+      }
+    ]
+  },
+  {
+    "id": "sr_2375131212",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 22900,
+    "sqm": 54,
+    "rooms": 2,
+    "address": "Nad úžlabinou, Malešice, Praha",
+    "zone": "Malešice",
+    "lat": 50.080628,
+    "lng": 14.496477,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 22900
+      }
+    ]
+  },
+  {
+    "id": "sr_1717870668",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 16900,
+    "sqm": 24,
+    "rooms": 1,
+    "address": "Salačova, Uhříněves, Praha",
+    "zone": "Uhříněves",
+    "lat": 50.0289809056467,
+    "lng": 14.6003064350066,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 16900
+      }
+    ]
+  },
+  {
+    "id": "sr_1823379532",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 10900,
+    "sqm": 10,
+    "rooms": 1,
+    "address": "Cimburkova, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.085710763185,
+    "lng": 14.4502951508619,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 10900
+      }
+    ]
+  },
+  {
+    "id": "sr_3686699084",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 16900,
+    "sqm": 29,
+    "rooms": 1,
+    "address": "Šalounova, Chodov, Praha",
+    "zone": "Chodov",
+    "lat": 50.0255237202607,
+    "lng": 14.5117230335547,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 16900
+      }
+    ]
+  },
+  {
+    "id": "sr_4151087180",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23700,
+    "sqm": 51,
+    "rooms": 3,
+    "address": "Pivovarnická, Libeň, Praha",
+    "zone": "Libeň",
+    "lat": 50.109680765763,
+    "lng": 14.47679605646,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23700
+      }
+    ]
+  },
+  {
+    "id": "sr_2668859468",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17990,
+    "sqm": 34,
+    "rooms": 1,
+    "address": "Baškirská, Vršovice, Praha",
+    "zone": "Vršovice",
+    "lat": 50.0658419938982,
+    "lng": 14.4637430155239,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17990
+      }
+    ]
+  },
+  {
+    "id": "sr_4063400012",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23900,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Kouřimská, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.077423085965,
+    "lng": 14.4703570764382,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23900
+      }
+    ]
+  },
+  {
+    "id": "sr_3775041612",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18900,
+    "sqm": 37,
+    "rooms": 1,
+    "address": "Poděbradská, Hloubětín, Praha",
+    "zone": "Hloubětín",
+    "lat": 50.1041313330879,
+    "lng": 14.5282466457973,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18900
+      }
+    ]
+  },
+  {
+    "id": "sr_1012745036",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 24900,
+    "sqm": 74,
+    "rooms": 2,
+    "address": "Věštínská, Radotín, Praha",
+    "zone": "Radotín",
+    "lat": 49.9851742435094,
+    "lng": 14.3661707339099,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 24900
+      }
+    ]
+  },
+  {
+    "id": "sr_3123089484",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 21500,
+    "sqm": 48,
+    "rooms": 2,
+    "address": "Písecká, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0768930204613,
+    "lng": 14.4649289485697,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 21500
+      }
+    ]
+  },
+  {
+    "id": "sr_1363447884",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18600,
+    "sqm": 43,
+    "rooms": 2,
+    "address": "Na Hubálce, Střešovice, Praha",
+    "zone": "Střešovice",
+    "lat": 50.0895343013349,
+    "lng": 14.3847602410593,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18600
+      }
+    ]
+  },
+  {
+    "id": "sr_843354188",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 26990,
+    "sqm": 78,
+    "rooms": 3,
+    "address": "Láskova, Chodov, Praha",
+    "zone": "Chodov",
+    "lat": 50.0244791459251,
+    "lng": 14.4945891887672,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 26990
+      }
+    ]
+  },
+  {
+    "id": "sr_3650392140",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18000,
+    "sqm": 36,
+    "rooms": 2,
+    "address": "Želivecká, Záběhlice, Praha",
+    "zone": "Záběhlice",
+    "lat": 50.0603759152644,
+    "lng": 14.4969659757118,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18000
+      }
+    ]
+  },
+  {
+    "id": "sr_818643020",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 32900,
+    "sqm": 82,
+    "rooms": 3,
+    "address": "Gerstelova, Vysočany, Praha",
+    "zone": "Vysočany",
+    "lat": 50.1031681370238,
+    "lng": 14.507174749626,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 32900
+      }
+    ]
+  },
+  {
+    "id": "sr_2459664460",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 30000,
+    "sqm": 77,
+    "rooms": 3,
+    "address": "Dědinská, Ruzyně, Praha",
+    "zone": "Ruzyně",
+    "lat": 50.0914113472042,
+    "lng": 14.3023614171172,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 30000
+      }
+    ]
+  },
+  {
+    "id": "sr_977961036",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 22400,
+    "sqm": 48,
+    "rooms": 2,
+    "address": "Kudrnova, Motol, Praha",
+    "zone": "Motol",
+    "lat": 50.0713321743818,
+    "lng": 14.3461257333278,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 22400
+      }
+    ]
+  },
+  {
+    "id": "sr_990543948",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19500,
+    "sqm": 54,
+    "rooms": 2,
+    "address": "Poděbradská, Hloubětín, Praha",
+    "zone": "Hloubětín",
+    "lat": 50.1041313330879,
+    "lng": 14.5282466457973,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19500
+      }
+    ]
+  },
+  {
+    "id": "sr_2350547020",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23900,
+    "sqm": 70,
+    "rooms": 2,
+    "address": "Doudlebská, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.0517807854053,
+    "lng": 14.442018876479,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23900
+      }
+    ]
+  },
+  {
+    "id": "sr_3505356876",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 26990,
+    "sqm": 62,
+    "rooms": 3,
+    "address": "Jílovská, Braník, Praha",
+    "zone": "Braník",
+    "lat": 50.0243472717577,
+    "lng": 14.4330270335741,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 26990
+      }
+    ]
+  },
+  {
+    "id": "sr_3287253068",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 21900,
+    "sqm": 54,
+    "rooms": 2,
+    "address": "U Slavie, Vršovice, Praha",
+    "zone": "Vršovice",
+    "lat": 50.0665530945484,
+    "lng": 14.4695164610315,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 21900
+      }
+    ]
+  },
+  {
+    "id": "sr_1999381324",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 30900,
+    "sqm": 68,
+    "rooms": 3,
+    "address": "Zárubova, Kamýk, Praha",
+    "zone": "Kamýk",
+    "lat": 50.0147015863274,
+    "lng": 14.4340579637693,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 30900
+      }
+    ]
+  },
+  {
+    "id": "sr_556695628",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17000,
+    "sqm": 26,
+    "rooms": 1,
+    "address": "Bílinská, Prosek, Praha",
+    "zone": "Prosek",
+    "lat": 50.1224099462637,
+    "lng": 14.488966474135,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_2360562508",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 26900,
+    "sqm": 73,
+    "rooms": 3,
+    "address": "Arménská, Vršovice, Praha",
+    "zone": "Vršovice",
+    "lat": 50.0692986107848,
+    "lng": 14.4613200052374,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 26900
+      }
+    ]
+  },
+  {
+    "id": "sr_807395404",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 28100,
+    "sqm": 65,
+    "rooms": 3,
+    "address": "Brixiho, Břevnov, Praha",
+    "zone": "Břevnov",
+    "lat": 50.0900460862665,
+    "lng": 14.3564527942245,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 28100
+      }
+    ]
+  },
+  {
+    "id": "sr_3424645196",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19300,
+    "sqm": 55,
+    "rooms": 2,
+    "address": "Čílova, Veleslavín, Praha",
+    "zone": "Veleslavín",
+    "lat": 50.0896846677658,
+    "lng": 14.3464775927046,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19300
+      }
+    ]
+  },
+  {
+    "id": "sr_3726635084",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 24800,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Čiklova, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.0638260355945,
+    "lng": 14.4311591874371,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 24800
+      }
+    ]
+  },
+  {
+    "id": "sr_870793804",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 98000,
+    "sqm": 300,
+    "rooms": 5,
+    "address": "Slunná, Střešovice, Praha",
+    "zone": "Střešovice",
+    "lat": 50.097492954,
+    "lng": 14.3866969565,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 98000
+      }
+    ]
+  },
+  {
+    "id": "sr_470806604",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 30000,
+    "sqm": 44,
+    "rooms": 2,
+    "address": "Šafaříkova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0707554596788,
+    "lng": 14.4343138454783,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 30000
+      }
+    ]
+  },
+  {
+    "id": "sr_605254476",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 29385,
+    "sqm": 71,
+    "rooms": 2,
+    "address": "Štěpánská, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0787329973142,
+    "lng": 14.4253690800295,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 29385
+      }
+    ]
+  },
+  {
+    "id": "sr_4132737100",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 145000,
+    "sqm": 204,
+    "rooms": null,
+    "address": "Chopinova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0800136535028,
+    "lng": 14.4445137683261,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 145000
+      }
+    ]
+  },
+  {
+    "id": "sr_2471596108",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 65000,
+    "sqm": 155,
+    "rooms": 4,
+    "address": "Vězeňská, Staré Město, Praha",
+    "zone": "Staré Město",
+    "lat": 50.0903980660932,
+    "lng": 14.4217582511138,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 65000
+      }
+    ]
+  },
+  {
+    "id": "sr_1536159820",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17500,
+    "sqm": 45,
+    "rooms": 2,
+    "address": "Jana Želivského, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.0876515550666,
+    "lng": 14.4695609999871,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17500
+      }
+    ]
+  },
+  {
+    "id": "sr_903147596",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 21000,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Krkonošská, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0798172282795,
+    "lng": 14.4459752657828,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 21000
+      }
+    ]
+  },
+  {
+    "id": "sr_973574220",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 26500,
+    "sqm": 58,
+    "rooms": 2,
+    "address": "U Plynárny, Michle, Praha",
+    "zone": "Michle",
+    "lat": 50.056345,
+    "lng": 14.463106,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 26500
+      }
+    ]
+  },
+  {
+    "id": "sr_2667360332",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 29386,
+    "sqm": 71,
+    "rooms": 2,
+    "address": "Štěpánská, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0776750320007,
+    "lng": 14.4250735318759,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 29386
+      }
+    ]
+  },
+  {
+    "id": "sr_1764679756",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 34990,
+    "sqm": 49,
+    "rooms": 2,
+    "address": "Kunešova, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.0939937129,
+    "lng": 14.4781293376,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 34990
+      }
+    ]
+  },
+  {
+    "id": "sr_124842060",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 22000,
+    "sqm": 37,
+    "rooms": 2,
+    "address": "Na Bělidle, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.0716189,
+    "lng": 14.4055759,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 22000
+      }
+    ]
+  },
+  {
+    "id": "sr_4222349388",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 26000,
+    "sqm": 55,
+    "rooms": 3,
+    "address": "Konzumní, Hloubětín, Praha",
+    "zone": "Hloubětín",
+    "lat": 50.1059821373,
+    "lng": 14.5300497521,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 26000
+      }
+    ]
+  },
+  {
+    "id": "sr_379445324",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 29990,
+    "sqm": 79,
+    "rooms": 3,
+    "address": "Mozartova, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.071223,
+    "lng": 14.395683,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 29990
+      }
+    ]
+  },
+  {
+    "id": "sr_199090252",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 46500,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Sokolovská, Karlín, Praha",
+    "zone": "Karlín",
+    "lat": 50.0992821048,
+    "lng": 14.4688838805,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 46500
+      }
+    ]
+  },
+  {
+    "id": "sr_2684149836",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 30000,
+    "sqm": 57,
+    "rooms": 2,
+    "address": "Veleslavínská, Veleslavín, Praha",
+    "zone": "Veleslavín",
+    "lat": 50.09178,
+    "lng": 14.351484,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 30000
+      }
+    ]
+  },
+  {
+    "id": "sr_2147278924",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 34400,
+    "sqm": 84,
+    "rooms": 2,
+    "address": "Nad Petruskou, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.069876778315,
+    "lng": 14.4398824611405,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 34400
+      }
+    ]
+  },
+  {
+    "id": "sr_3741114444",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 30000,
+    "sqm": 69,
+    "rooms": 3,
+    "address": "Zdiměřická, Chodov, Praha",
+    "zone": "Chodov",
+    "lat": 50.02406720431993,
+    "lng": 14.514448822495394,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 30000
+      }
+    ]
+  },
+  {
+    "id": "sr_729407564",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 80000,
+    "sqm": 120,
+    "rooms": 4,
+    "address": "Radimova, Břevnov, Praha",
+    "zone": "Břevnov",
+    "lat": 50.0873588390046,
+    "lng": 14.3646723981905,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 80000
+      }
+    ]
+  },
+  {
+    "id": "sr_1993375820",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 37000,
+    "sqm": 79,
+    "rooms": 3,
+    "address": "Rixdorfská, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.0895151471,
+    "lng": 14.482969126,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 37000
+      }
+    ]
+  },
+  {
+    "id": "sr_2539040844",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 38000,
+    "sqm": 90,
+    "rooms": 3,
+    "address": "Na černé strouze, Vysočany, Praha",
+    "zone": "Vysočany",
+    "lat": 50.10993,
+    "lng": 14.516328,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 38000
+      }
+    ]
+  },
+  {
+    "id": "sr_1811734604",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19000,
+    "sqm": 38,
+    "rooms": 1,
+    "address": "Hanusova, Michle, Praha",
+    "zone": "Michle",
+    "lat": 50.0488873395611,
+    "lng": 14.4455985069705,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19000
+      }
+    ]
+  },
+  {
+    "id": "sr_2223935564",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23500,
+    "sqm": 37,
+    "rooms": 2,
+    "address": "Na Zlíchově, Praha",
+    "zone": "Na Zlíchově",
+    "lat": 50.04634184548567,
+    "lng": 14.407957932466717,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23500
+      }
+    ]
+  },
+  {
+    "id": "sr_184344652",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20000,
+    "sqm": 67,
+    "rooms": 2,
+    "address": "Olbramovická, Kamýk, Praha",
+    "zone": "Kamýk",
+    "lat": 50.0167662220263,
+    "lng": 14.4365948922498,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20000
+      }
+    ]
+  },
+  {
+    "id": "sr_953647180",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 29500,
+    "sqm": 45,
+    "rooms": 2,
+    "address": "5. května, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.05398,
+    "lng": 14.440317,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 29500
+      }
+    ]
+  },
+  {
+    "id": "sr_3205448524",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20000,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Petra Rezka, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.061463,
+    "lng": 14.436268,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20000
+      }
+    ]
+  },
+  {
+    "id": "sr_3481198668",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 32000,
+    "sqm": 68,
+    "rooms": 2,
+    "address": "Dělnická, Holešovice, Praha",
+    "zone": "Holešovice",
+    "lat": 50.1032584,
+    "lng": 14.4507664,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 32000
+      }
+    ]
+  },
+  {
+    "id": "sr_2315161676",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 28000,
+    "sqm": 68,
+    "rooms": 3,
+    "address": "Na vrcholu, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.093838,
+    "lng": 14.488695,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 28000
+      }
+    ]
+  },
+  {
+    "id": "sr_2513231948",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 15500,
+    "sqm": 45,
+    "rooms": 2,
+    "address": "Na stráži, Libeň, Praha",
+    "zone": "Libeň",
+    "lat": 50.1174596432633,
+    "lng": 14.4750663090748,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 15500
+      }
+    ]
+  },
+  {
+    "id": "sr_1685774412",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 35000,
+    "sqm": 61,
+    "rooms": 2,
+    "address": "Mužíkova, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.0662001794,
+    "lng": 14.4373865023,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 35000
+      }
+    ]
+  },
+  {
+    "id": "sr_158462028",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 33756,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Laubova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0786971798,
+    "lng": 14.4504778488,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 33756
+      }
+    ]
+  },
+  {
+    "id": "sr_57798732",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 62856,
+    "sqm": 95,
+    "rooms": 3,
+    "address": "Laubova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0786971798,
+    "lng": 14.4504778488,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 62856
+      }
+    ]
+  },
+  {
+    "id": "sr_2198859852",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 46075,
+    "sqm": 114,
+    "rooms": 2,
+    "address": "Holečkova, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.0737228576,
+    "lng": 14.3934823171,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 46075
+      }
+    ]
+  },
+  {
+    "id": "sr_994046028",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 43650,
+    "sqm": 72,
+    "rooms": 2,
+    "address": "Holečkova, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.0737228576,
+    "lng": 14.3934823171,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 43650
+      }
+    ]
+  },
+  {
+    "id": "sr_3615158348",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 53000,
+    "sqm": 294,
+    "rooms": 4,
+    "address": "Slavníkova, Břevnov, Praha",
+    "zone": "Břevnov",
+    "lat": 50.0851100647,
+    "lng": 14.3649174472,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 53000
+      }
+    ]
+  },
+  {
+    "id": "sr_3611664460",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 98770.25,
+    "sqm": 107,
+    "rooms": 4,
+    "address": "náměstí Jiřího z Poděbrad, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0785829174,
+    "lng": 14.4499742023,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 98770.25
+      }
+    ]
+  },
+  {
+    "id": "sr_1769316428",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 64800,
+    "sqm": 92,
+    "rooms": 3,
+    "address": "náměstí Jiřího z Poděbrad, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0785829174,
+    "lng": 14.4499742023,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 64800
+      }
+    ]
+  },
+  {
+    "id": "sr_246768460",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18700,
+    "sqm": 28,
+    "rooms": 1,
+    "address": "Záhřebská, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0716261135368,
+    "lng": 14.4360938490476,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18700
+      }
+    ]
+  },
+  {
+    "id": "sr_2118557772",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 134800,
+    "sqm": 167,
+    "rooms": 4,
+    "address": "Laubova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0790619704,
+    "lng": 14.4497548554,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 134800
+      }
+    ]
+  },
+  {
+    "id": "sr_2481102924",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 21500,
+    "sqm": 63,
+    "rooms": 2,
+    "address": "Jeseniova, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.0898163194996,
+    "lng": 14.4766881654164,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 21500
+      }
+    ]
+  },
+  {
+    "id": "sr_2372420428",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 104800,
+    "sqm": 137,
+    "rooms": 4,
+    "address": "Laubova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0786971798,
+    "lng": 14.4504778488,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 104800
+      }
+    ]
+  },
+  {
+    "id": "sr_3497128012",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 49300.25,
+    "sqm": 60,
+    "rooms": 2,
+    "address": "náměstí Jiřího z Poděbrad, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0785829174,
+    "lng": 14.4499742023,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 49300.25
+      }
+    ]
+  },
+  {
+    "id": "sr_1550336844",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 103741.5,
+    "sqm": 118,
+    "rooms": 4,
+    "address": "náměstí Jiřího z Poděbrad, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0785829174,
+    "lng": 14.4499742023,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 103741.5
+      }
+    ]
+  },
+  {
+    "id": "sr_2303230028",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 25990,
+    "sqm": 85,
+    "rooms": 3,
+    "address": "Lucemburská, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.07904,
+    "lng": 14.45338,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 25990
+      }
+    ]
+  },
+  {
+    "id": "sr_2126835788",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23990,
+    "sqm": 64,
+    "rooms": 2,
+    "address": "Spojovací, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.0931911,
+    "lng": 14.4966678,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23990
+      }
+    ]
+  },
+  {
+    "id": "sr_2031018060",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 38990,
+    "sqm": 119,
+    "rooms": 3,
+    "address": "Pštrossova, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.08,
+    "lng": 14.41504,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 38990
+      }
+    ]
+  },
+  {
+    "id": "sr_1293869132",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19990,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "U milosrdných, Staré Město, Praha",
+    "zone": "Staré Město",
+    "lat": 50.09166,
+    "lng": 14.42114,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19990
+      }
+    ]
+  },
+  {
+    "id": "sr_1858986060",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 39990,
+    "sqm": 116,
+    "rooms": 3,
+    "address": "Ondříčkova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.08015,
+    "lng": 14.45223,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 39990
+      }
+    ]
+  },
+  {
+    "id": "sr_372412492",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 22900,
+    "sqm": 63,
+    "rooms": 2,
+    "address": "Malešická, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.0866724003302,
+    "lng": 14.4687397657657,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 22900
+      }
+    ]
+  },
+  {
+    "id": "sr_2318680908",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 40000,
+    "sqm": 100,
+    "rooms": 2,
+    "address": "Maiselova, Josefov, Praha",
+    "zone": "Josefov",
+    "lat": 50.08862971007924,
+    "lng": 14.418396245143716,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 40000
+      }
+    ]
+  },
+  {
+    "id": "sr_2481762380",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 48000,
+    "sqm": 102,
+    "rooms": 3,
+    "address": "K Sídlišti, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.04884123536371,
+    "lng": 14.429164614139198,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 48000
+      }
+    ]
+  },
+  {
+    "id": "sr_3926044748",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 51000,
+    "sqm": 117,
+    "rooms": 4,
+    "address": "Zvěřinova, Strašnice, Praha",
+    "zone": "Strašnice",
+    "lat": 50.084499840333656,
+    "lng": 14.485480322713652,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 51000
+      }
+    ]
+  },
+  {
+    "id": "sr_1241690188",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 190000,
+    "sqm": 260,
+    "rooms": 4,
+    "address": "Laubova, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.079061196454155,
+    "lng": 14.449753304380039,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 190000
+      }
+    ]
+  },
+  {
+    "id": "sr_417443916",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 50000,
+    "sqm": 162,
+    "rooms": 4,
+    "address": "Hudečkova, Krč, Praha",
+    "zone": "Krč",
+    "lat": 50.04061110566879,
+    "lng": 14.434897469846915,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 50000
+      }
+    ]
+  },
+  {
+    "id": "sr_2592190540",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 65000,
+    "sqm": 170,
+    "rooms": 4,
+    "address": "Havlíčkovy sady, Praha",
+    "zone": "Havlíčkovy sady",
+    "lat": 50.0692555556,
+    "lng": 14.4449527778,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 65000
+      }
+    ]
+  },
+  {
+    "id": "sr_3945373772",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 36000,
+    "sqm": 74,
+    "rooms": 3,
+    "address": "Maiselova, Josefov, Praha",
+    "zone": "Josefov",
+    "lat": 50.088791262264316,
+    "lng": 14.418346023413958,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 36000
+      }
+    ]
+  },
+  {
+    "id": "sr_3428683852",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 39000,
+    "sqm": 55,
+    "rooms": 2,
+    "address": "Československého exilu, Modřany, Praha",
+    "zone": "Modřany",
+    "lat": 50.01653519484284,
+    "lng": 14.402670463560465,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 39000
+      }
+    ]
+  },
+  {
+    "id": "sr_3836579916",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 14000,
+    "sqm": 30,
+    "rooms": 1,
+    "address": "Biskupcova, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.09164788775791,
+    "lng": 14.482250740315175,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
+    "id": "sr_1389137996",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 50000,
+    "sqm": 172,
+    "rooms": null,
+    "address": "Gabrielská, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.074046114811615,
+    "lng": 14.39665272869671,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 50000
+      }
+    ]
+  },
+  {
+    "id": "sr_2225991756",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 90000,
+    "sqm": 202,
+    "rooms": 5,
+    "address": "U Dívčích hradů, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.053445219236465,
+    "lng": 14.402690481355497,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 90000
+      }
+    ]
+  },
+  {
+    "id": "sr_48947276",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 30000,
+    "sqm": 130,
+    "rooms": 4,
+    "address": "Medkova, Chodov, Praha",
+    "zone": "Chodov",
+    "lat": 50.032109523522344,
+    "lng": 14.496846291874999,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 30000
+      }
+    ]
+  },
+  {
+    "id": "sr_2752372812",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 15000,
+    "sqm": 30,
+    "rooms": 1,
+    "address": "Na Maninách, Holešovice, Praha",
+    "zone": "Holešovice",
+    "lat": 50.10156436791645,
+    "lng": 14.452735584462197,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 15000
+      }
+    ]
+  },
+  {
+    "id": "sr_1600471884",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 25000,
+    "sqm": 51,
+    "rooms": 2,
+    "address": "Arnošta Valenty, Černý Most, Praha",
+    "zone": "Černý Most",
+    "lat": 50.10167970939961,
+    "lng": 14.573659449037638,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "id": "sr_2033299532",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19000,
+    "sqm": 30,
+    "rooms": 1,
+    "address": "Biskupcova, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.09155598306719,
+    "lng": 14.481268333641323,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19000
+      }
+    ]
+  },
+  {
+    "id": "sr_2618990668",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 32000,
+    "sqm": 100,
+    "rooms": 3,
+    "address": "Michelská, Michle, Praha",
+    "zone": "Michle",
+    "lat": 50.05329628782621,
+    "lng": 14.454318049200138,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 32000
+      }
+    ]
+  },
+  {
+    "id": "sr_2803142732",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 50000,
+    "sqm": 195,
+    "rooms": 4,
+    "address": "Nad hradním vodojemem, Střešovice, Praha",
+    "zone": "Střešovice",
+    "lat": 50.0925452778,
+    "lng": 14.3717497222,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 50000
+      }
+    ]
+  },
+  {
+    "id": "sr_24805452",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 30000,
+    "sqm": 70,
+    "rooms": 3,
+    "address": "Kozmíkova, Hostivař, Praha",
+    "zone": "Hostivař",
+    "lat": 50.05385256587475,
+    "lng": 14.534137129455019,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 30000
+      }
+    ]
+  },
+  {
+    "id": "sr_28409932",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17000,
+    "sqm": 33,
+    "rooms": 1,
+    "address": "Na Maninách, Holešovice, Praha",
+    "zone": "Holešovice",
+    "lat": 50.10171875964037,
+    "lng": 14.452728617857128,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_2305130572",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 35000,
+    "sqm": 92,
+    "rooms": 2,
+    "address": "Korunní, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0750722222,
+    "lng": 14.458775,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 35000
+      }
+    ]
+  },
+  {
+    "id": "sr_2273505356",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 39900,
+    "sqm": 65,
+    "rooms": 2,
+    "address": "K Sídlišti, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.04884123536371,
+    "lng": 14.429164614139198,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 39900
+      }
+    ]
+  },
+  {
+    "id": "sr_258404428",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 30000,
+    "sqm": 57,
+    "rooms": 2,
+    "address": "Bieblova, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.06633162577613,
+    "lng": 14.399522358667644,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 30000
+      }
+    ]
+  },
+  {
+    "id": "sr_1362944076",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 19000,
+    "sqm": 27,
+    "rooms": 1,
+    "address": "Poděbradská, Praha",
+    "zone": "Poděbradská",
+    "lat": 50.104131333087885,
+    "lng": 14.528246645797323,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 19000
+      }
+    ]
+  },
+  {
+    "id": "sr_1739620428",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 30900,
+    "sqm": 77,
+    "rooms": 3,
+    "address": "Olgy Havlové, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.0880846523,
+    "lng": 14.4783806811,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 30900
+      }
+    ]
+  },
+  {
+    "id": "sr_2371870796",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 34000,
+    "sqm": 51,
+    "rooms": 2,
+    "address": "U Rajské zahrady, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.082989,
+    "lng": 14.443993,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 34000
+      }
+    ]
+  },
+  {
+    "id": "sr_3973181516",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 17900,
+    "sqm": 31,
+    "rooms": 1,
+    "address": "Pod Nouzovem, Kbely, Praha",
+    "zone": "Kbely",
+    "lat": 50.13882313865247,
+    "lng": 14.54895309619507,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 17900
+      }
+    ]
+  },
+  {
+    "id": "sr_1640816716",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 100,
+    "sqm": 16,
+    "rooms": null,
+    "address": "Lipence, Praha",
+    "zone": "Lipence",
+    "lat": 49.96023776848668,
+    "lng": 14.35021623849692,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 100
+      }
+    ]
+  },
+  {
+    "id": "sr_13426764",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23900,
+    "sqm": 55,
+    "rooms": 2,
+    "address": "Soukalova, Modřany, Praha",
+    "zone": "Modřany",
+    "lat": 50.00599718883519,
+    "lng": 14.415066003572443,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23900
+      }
+    ]
+  },
+  {
+    "id": "sr_713023564",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20900,
+    "sqm": 34,
+    "rooms": 1,
+    "address": "V závětří, Holešovice, Praha",
+    "zone": "Holešovice",
+    "lat": 50.110580285144025,
+    "lng": 14.44382370173904,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20900
+      }
+    ]
+  },
+  {
+    "id": "sr_525238348",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 21900,
+    "sqm": 55,
+    "rooms": 2,
+    "address": "Jaurisova, Nusle, Praha",
+    "zone": "Nusle",
+    "lat": 50.0596610462,
+    "lng": 14.4491961243,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 21900
+      }
+    ]
+  },
+  {
+    "id": "sr_1741860940",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 18000,
+    "sqm": 37,
+    "rooms": 1,
+    "address": "Bolevecká, Horní Měcholupy, Praha",
+    "zone": "Horní Měcholupy",
+    "lat": 50.0424523470866,
+    "lng": 14.5571225861562,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 18000
+      }
+    ]
+  },
+  {
+    "id": "sr_2596204620",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 26900,
+    "sqm": 79,
+    "rooms": 3,
+    "address": "Budějovická, Krč, Praha",
+    "zone": "Krč",
+    "lat": 50.0426655818228,
+    "lng": 14.4575442194375,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 26900
+      }
+    ]
+  },
+  {
+    "id": "sr_2063827020",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 120000,
+    "sqm": 115,
+    "rooms": 3,
+    "address": "Římská, Vinohrady, Praha",
+    "zone": "Vinohrady",
+    "lat": 50.0771876278416,
+    "lng": 14.4353739844093,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 120000
+      }
+    ]
+  },
+  {
+    "id": "sr_533520460",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23000,
+    "sqm": 48,
+    "rooms": 2,
+    "address": "Štěpánská, Nové Město, Praha",
+    "zone": "Nové Město",
+    "lat": 50.0793938775,
+    "lng": 14.4255204528,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23000
+      }
+    ]
+  },
+  {
+    "id": "sr_378527820",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 25000,
+    "sqm": 47,
+    "rooms": 1,
+    "address": "Zvěřinova, Strašnice, Praha",
+    "zone": "Strašnice",
+    "lat": 50.0844998403337,
+    "lng": 14.4854803227137,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "id": "sr_884924492",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 28000,
+    "sqm": 62,
+    "rooms": 3,
+    "address": "Klausova, Stodůlky, Praha",
+    "zone": "Stodůlky",
+    "lat": 50.0354993473476,
+    "lng": 14.3428509078355,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 28000
+      }
+    ]
+  },
+  {
+    "id": "sr_3635802188",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 23000,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Rečkova, Žižkov, Praha",
+    "zone": "Žižkov",
+    "lat": 50.0903736071977,
+    "lng": 14.4708560344498,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 23000
+      }
+    ]
+  },
+  {
+    "id": "sr_821461068",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 25000,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "V Dolině, Michle, Praha",
+    "zone": "Michle",
+    "lat": 50.0575899,
+    "lng": 14.4682048,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "id": "sr_2443285324",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 110000,
+    "sqm": 288,
+    "rooms": 3,
+    "address": "Křížová, Smíchov, Praha",
+    "zone": "Smíchov",
+    "lat": 50.0508741809,
+    "lng": 14.4070939862,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 110000
+      }
+    ]
+  },
+  {
+    "id": "sr_1570148428",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 22000,
+    "sqm": 43,
+    "rooms": 2,
+    "address": "K rovinám, Jinonice, Praha",
+    "zone": "Jinonice",
+    "lat": 50.0523391131208,
+    "lng": 14.3642866434671,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 22000
+      }
+    ]
+  },
+  {
+    "id": "sr_1081238348",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 21000,
+    "sqm": 55,
+    "rooms": 2,
+    "address": "Liborova, Břevnov, Praha",
+    "zone": "Břevnov",
+    "lat": 50.083798898403664,
+    "lng": 14.376297954767457,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 21000
+      }
+    ]
+  },
+  {
+    "id": "sr_1460138060",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 34000,
+    "sqm": 113,
+    "rooms": 3,
+    "address": "Čs. armády, Bubeneč, Praha",
+    "zone": "Bubeneč",
+    "lat": 50.10044,
+    "lng": 14.401221,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 34000
+      }
+    ]
+  },
+  {
+    "id": "sr_3939295308",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:25:04.505Z",
+    "presumed_rented_at": "2026-07-14T16:25:04.505Z",
+    "first_seen_at": "2026-07-12T19:39:17.541Z",
+    "last_seen_at": "2026-07-12T19:39:17.541Z",
+    "days_on_market": 2,
+    "price": 20000,
+    "sqm": 45,
+    "rooms": 2,
+    "address": "Závěrka, Břevnov, Praha",
+    "zone": "Břevnov",
+    "lat": 50.083271,
+    "lng": 14.378563,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:39:17.541Z",
+        "price": 20000
+      }
+    ]
+  }
+]

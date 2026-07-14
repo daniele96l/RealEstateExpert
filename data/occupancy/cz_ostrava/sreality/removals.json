@@ -1,0 +1,3214 @@
+[
+  {
+    "id": "sr_3774935116",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11350,
+    "sqm": 55,
+    "rooms": 2,
+    "address": "Mojmírovců, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "lat": 49.829089184114856,
+    "lng": 18.25269076790921,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11350
+      }
+    ]
+  },
+  {
+    "id": "sr_1645277260",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13000,
+    "sqm": 60,
+    "rooms": 2,
+    "address": "Josefa Brabce, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8413816791299,
+    "lng": 18.2673812494594,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13000
+      }
+    ]
+  },
+  {
+    "id": "sr_1116794956",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14100,
+    "sqm": 59,
+    "rooms": 2,
+    "address": "Jasmínová, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8427132,
+    "lng": 18.1790401,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14100
+      }
+    ]
+  },
+  {
+    "id": "sr_3381719116",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13900,
+    "sqm": 55,
+    "rooms": 2,
+    "address": "Výškovická, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.7907384,
+    "lng": 18.2287213,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13900
+      }
+    ]
+  },
+  {
+    "id": "sr_342356044",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10600,
+    "sqm": 44,
+    "rooms": 2,
+    "address": "Norberta Frýda, Dubina, Ostrava",
+    "zone": "Dubina",
+    "lat": 49.7738885,
+    "lng": 18.2530407,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10600
+      }
+    ]
+  },
+  {
+    "id": "sr_1936191564",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12500,
+    "sqm": 60,
+    "rooms": 2,
+    "address": "Jugoslávská, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.8009411,
+    "lng": 18.2376902,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12500
+      }
+    ]
+  },
+  {
+    "id": "sr_2405953612",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12800,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Josefa Kotase, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "lat": 49.783003,
+    "lng": 18.2562512,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12800
+      }
+    ]
+  },
+  {
+    "id": "sr_556986444",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13000,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Krylovova, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.7924544809442,
+    "lng": 18.2312981657502,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13000
+      }
+    ]
+  },
+  {
+    "id": "sr_3201298508",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12000,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Na Spojce, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8445058302983,
+    "lng": 18.2815018070203,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12000
+      }
+    ]
+  },
+  {
+    "id": "sr_1100202828",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 8500,
+    "sqm": 54,
+    "rooms": 2,
+    "address": "Křišťanova, Přívoz, Ostrava",
+    "zone": "Přívoz",
+    "lat": 49.8588350884,
+    "lng": 18.2732807874,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 8500
+      }
+    ]
+  },
+  {
+    "id": "sr_2810097740",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14990,
+    "sqm": 65,
+    "rooms": 3,
+    "address": "Bohumínská, Slezská Ostrava, Ostrava",
+    "zone": "Slezská Ostrava",
+    "lat": 49.8658584671839,
+    "lng": 18.2891415409906,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14990
+      }
+    ]
+  },
+  {
+    "id": "sr_3485986892",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10350,
+    "sqm": 41,
+    "rooms": 2,
+    "address": "Pavelská, Michálkovice, Ostrava",
+    "zone": "Michálkovice",
+    "lat": 49.8438052778,
+    "lng": 18.3366522222,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10350
+      }
+    ]
+  },
+  {
+    "id": "sr_4006080588",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10350,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Porubská, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8254597222,
+    "lng": 18.1734227778,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10350
+      }
+    ]
+  },
+  {
+    "id": "sr_1321726028",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11150,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Výhradní, Kunčičky, Ostrava",
+    "zone": "Kunčičky",
+    "lat": 49.8121047222,
+    "lng": 18.3030566667,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11150
+      }
+    ]
+  },
+  {
+    "id": "sr_2127032396",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11300,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Opavská, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.83252,
+    "lng": 18.1749308333,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11300
+      }
+    ]
+  },
+  {
+    "id": "sr_2311581772",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10350,
+    "sqm": 48,
+    "rooms": 2,
+    "address": "Boháčova, Michálkovice, Ostrava",
+    "zone": "Michálkovice",
+    "lat": 49.8440738889,
+    "lng": 18.3379661111,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10350
+      }
+    ]
+  },
+  {
+    "id": "sr_432533580",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13800,
+    "sqm": 73,
+    "rooms": 3,
+    "address": "Výstavní, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "lat": 49.8240531,
+    "lng": 18.2661814,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13800
+      }
+    ]
+  },
+  {
+    "id": "sr_3955748940",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14150,
+    "sqm": 65,
+    "rooms": 3,
+    "address": "Štítného, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "lat": 49.8299022222,
+    "lng": 18.2531458333,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14150
+      }
+    ]
+  },
+  {
+    "id": "sr_2613571660",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12750,
+    "sqm": 54,
+    "rooms": 2,
+    "address": "Verdunská, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8441977778,
+    "lng": 18.2833908333,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12750
+      }
+    ]
+  },
+  {
+    "id": "sr_1271394380",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13850,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Ostrčilova, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8418258333,
+    "lng": 18.2874011111,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13850
+      }
+    ]
+  },
+  {
+    "id": "sr_2076700748",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13450,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Nádražní, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8438094444,
+    "lng": 18.28184,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13450
+      }
+    ]
+  },
+  {
+    "id": "sr_3670536268",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 9250,
+    "sqm": 27,
+    "rooms": 1,
+    "address": "Bohuslava Martinů, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8307280556,
+    "lng": 18.171745,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 9250
+      }
+    ]
+  },
+  {
+    "id": "sr_2328358988",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11850,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Nálepkova, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8281269444,
+    "lng": 18.1803133333,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11850
+      }
+    ]
+  },
+  {
+    "id": "sr_1320677452",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13000,
+    "sqm": 52,
+    "rooms": 2,
+    "address": "Slavíkova, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.836226660879,
+    "lng": 18.1762116365204,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13000
+      }
+    ]
+  },
+  {
+    "id": "sr_86483020",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10000,
+    "sqm": 37,
+    "rooms": 2,
+    "address": "Výškovická, Ostrava",
+    "zone": "Výškovická",
+    "lat": 49.80506081747424,
+    "lng": 18.242751468295097,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10000
+      }
+    ]
+  },
+  {
+    "id": "sr_4202098764",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 23000,
+    "sqm": 79,
+    "rooms": 3,
+    "address": "Zárubecká, Slezská Ostrava, Ostrava",
+    "zone": "Slezská Ostrava",
+    "lat": 49.8216408928636,
+    "lng": 18.310161355631,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 23000
+      }
+    ]
+  },
+  {
+    "id": "sr_1986916428",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 8900,
+    "sqm": 42,
+    "rooms": 1,
+    "address": "Šeříková, Výškovice, Ostrava",
+    "zone": "Výškovice",
+    "lat": 49.7838610948286,
+    "lng": 18.2211399238043,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 8900
+      }
+    ]
+  },
+  {
+    "id": "sr_2587291724",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 9000,
+    "sqm": 29,
+    "rooms": 1,
+    "address": "Nádražní, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8500184702978,
+    "lng": 18.2752352913562,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 9000
+      }
+    ]
+  },
+  {
+    "id": "sr_2701586508",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12500,
+    "sqm": 52,
+    "rooms": 2,
+    "address": "Jugoslávská, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.8014677910438,
+    "lng": 18.2424226993018,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12500
+      }
+    ]
+  },
+  {
+    "id": "sr_4089901132",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12500,
+    "sqm": 62,
+    "rooms": 3,
+    "address": "Urxova, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.82579,
+    "lng": 18.17099,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12500
+      }
+    ]
+  },
+  {
+    "id": "sr_868675660",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12000,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Kpt. Jaroše, Třebovice, Ostrava",
+    "zone": "Třebovice",
+    "lat": 49.83040505876032,
+    "lng": 18.19866623511764,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12000
+      }
+    ]
+  },
+  {
+    "id": "sr_3435589708",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14500,
+    "sqm": 62,
+    "rooms": 2,
+    "address": "Jana Maluchy, Dubina, Ostrava",
+    "zone": "Dubina",
+    "lat": 49.7788726080753,
+    "lng": 18.2578149216215,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14500
+      }
+    ]
+  },
+  {
+    "id": "sr_299298892",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 9000,
+    "sqm": 35,
+    "rooms": 1,
+    "address": "Strelkovova, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.7927846868656,
+    "lng": 18.2431256310654,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 9000
+      }
+    ]
+  },
+  {
+    "id": "sr_2810638412",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10000,
+    "sqm": 37,
+    "rooms": 2,
+    "address": "Cottonové, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "lat": 49.825406397771,
+    "lng": 18.2589202397482,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10000
+      }
+    ]
+  },
+  {
+    "id": "sr_850763852",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 16000,
+    "sqm": 59,
+    "rooms": 2,
+    "address": "Gustava Klimenta, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.82438333319,
+    "lng": 18.1720034995088,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 16000
+      }
+    ]
+  },
+  {
+    "id": "sr_1496100940",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 5900,
+    "sqm": 45,
+    "rooms": 1,
+    "address": "Palackého, Přívoz, Ostrava",
+    "zone": "Přívoz",
+    "lat": 49.8535483661,
+    "lng": 18.2618755823,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 5900
+      }
+    ]
+  },
+  {
+    "id": "sr_387715916",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10900,
+    "sqm": 51,
+    "rooms": 2,
+    "address": "Palackého, Přívoz, Ostrava",
+    "zone": "Přívoz",
+    "lat": 49.8540882815,
+    "lng": 18.2616377712,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10900
+      }
+    ]
+  },
+  {
+    "id": "sr_648708172",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14500,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Jiřího Herolda, Bělský Les, Ostrava",
+    "zone": "Bělský Les",
+    "lat": 49.7826032377971,
+    "lng": 18.253324262061,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14500
+      }
+    ]
+  },
+  {
+    "id": "sr_1107685452",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10900,
+    "sqm": 36,
+    "rooms": 1,
+    "address": "Ostrava",
+    "zone": "Ostrava",
+    "lat": 49.8346452,
+    "lng": 18.2820440792,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10900
+      }
+    ]
+  },
+  {
+    "id": "sr_1695936588",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 7000,
+    "sqm": 37,
+    "rooms": 1,
+    "address": "Krasnoarmejců, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.7879502942211,
+    "lng": 18.2332727574017,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 7000
+      }
+    ]
+  },
+  {
+    "id": "sr_1942351948",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 15800,
+    "sqm": 41,
+    "rooms": 2,
+    "address": "Průběžná, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.847112999,
+    "lng": 18.165759837,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 15800
+      }
+    ]
+  },
+  {
+    "id": "sr_3452301388",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 5900,
+    "sqm": 45,
+    "rooms": 1,
+    "address": "Škrétova, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8497169816248,
+    "lng": 18.2778479673376,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 5900
+      }
+    ]
+  },
+  {
+    "id": "sr_1786048588",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13950,
+    "sqm": 51,
+    "rooms": 2,
+    "address": "Vietnamská, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8222400093563,
+    "lng": 18.1938797185254,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13950
+      }
+    ]
+  },
+  {
+    "id": "sr_272953420",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 9900,
+    "sqm": 37,
+    "rooms": 1,
+    "address": "Výškovická, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.794157,
+    "lng": 18.232824,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 9900
+      }
+    ]
+  },
+  {
+    "id": "sr_2317676620",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 8600,
+    "sqm": 41,
+    "rooms": 1,
+    "address": "Josefa Brabce, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8413816791299,
+    "lng": 18.2673812494594,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 8600
+      }
+    ]
+  },
+  {
+    "id": "sr_1832185932",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12000,
+    "sqm": 57,
+    "rooms": 2,
+    "address": "Dvorní, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.833320749514705,
+    "lng": 18.1672081754098,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12000
+      }
+    ]
+  },
+  {
+    "id": "sr_3859083340",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11100,
+    "sqm": 33,
+    "rooms": 1,
+    "address": "Sokolská třída, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8443816667,
+    "lng": 18.2871927778,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11100
+      }
+    ]
+  },
+  {
+    "id": "sr_2516906060",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13150,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Srbská, Výškovice, Ostrava",
+    "zone": "Výškovice",
+    "lat": 49.7760941667,
+    "lng": 18.2235933333,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13150
+      }
+    ]
+  },
+  {
+    "id": "sr_1174728780",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 15250,
+    "sqm": 66,
+    "rooms": 3,
+    "address": "Petruškova, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.7942469444,
+    "lng": 18.2242377778,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 15250
+      }
+    ]
+  },
+  {
+    "id": "sr_1980035148",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14050,
+    "sqm": 59,
+    "rooms": 2,
+    "address": "Horní, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "lat": 49.7862027778,
+    "lng": 18.25535,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14050
+      }
+    ]
+  },
+  {
+    "id": "sr_3506761804",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11850,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Hornických učňů, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8246655556,
+    "lng": 18.271795,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11850
+      }
+    ]
+  },
+  {
+    "id": "sr_2969890892",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10600,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Výhradní, Kunčičky, Ostrava",
+    "zone": "Kunčičky",
+    "lat": 49.8124311111,
+    "lng": 18.3036036111,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10600
+      }
+    ]
+  },
+  {
+    "id": "sr_2684678220",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11750,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Čs. exilu, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8275402778,
+    "lng": 18.1698391667,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11750
+      }
+    ]
+  },
+  {
+    "id": "sr_323660",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 9800,
+    "sqm": 31,
+    "rooms": 1,
+    "address": "náměstí Jana Nerudy, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8286097222,
+    "lng": 18.16665,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 9800
+      }
+    ]
+  },
+  {
+    "id": "sr_805630028",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12650,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "náměstí Jana Nerudy, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8284944444,
+    "lng": 18.1666555556,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12650
+      }
+    ]
+  },
+  {
+    "id": "sr_2316628044",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12500,
+    "sqm": 45,
+    "rooms": 1,
+    "address": "Erbenova, Vítkovice, Ostrava",
+    "zone": "Vítkovice",
+    "lat": 49.811619259377,
+    "lng": 18.2734686774845,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12500
+      }
+    ]
+  },
+  {
+    "id": "sr_115118156",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 21000,
+    "sqm": 82,
+    "rooms": 3,
+    "address": "Solná, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.83652,
+    "lng": 18.29222,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 21000
+      }
+    ]
+  },
+  {
+    "id": "sr_2523443276",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 50000,
+    "sqm": 111,
+    "rooms": 4,
+    "address": "Na Prádle, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.830743233,
+    "lng": 18.2879164329,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 50000
+      }
+    ]
+  },
+  {
+    "id": "sr_3634688076",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 15900,
+    "sqm": 109,
+    "rooms": 3,
+    "address": "Mlýnská, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8375944784744,
+    "lng": 18.2866784485631,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 15900
+      }
+    ]
+  },
+  {
+    "id": "sr_1989472332",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13000,
+    "sqm": 55,
+    "rooms": 3,
+    "address": "Patrice Lumumby, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.7857594113283,
+    "lng": 18.2332402382996,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13000
+      }
+    ]
+  },
+  {
+    "id": "sr_1351938124",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11000,
+    "sqm": 45,
+    "rooms": 2,
+    "address": "Pavlovova, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.7954559,
+    "lng": 18.2455807,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11000
+      }
+    ]
+  },
+  {
+    "id": "sr_1075179596",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13490,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Výškovická, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.8050608174742,
+    "lng": 18.2427514682951,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13490
+      }
+    ]
+  },
+  {
+    "id": "sr_748278604",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 7000,
+    "sqm": 21,
+    "rooms": 1,
+    "address": "Vítězná, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.84833224987914,
+    "lng": 18.288151306632642,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 7000
+      }
+    ]
+  },
+  {
+    "id": "sr_386491212",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10500,
+    "sqm": 38,
+    "rooms": 1,
+    "address": "Bělský Les, Ostrava",
+    "zone": "Bělský Les",
+    "lat": 49.7795056165077,
+    "lng": 18.2494958652556,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10500
+      }
+    ]
+  },
+  {
+    "id": "sr_140238924",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 8788,
+    "sqm": 54,
+    "rooms": 2,
+    "address": "Mjr. Nováka, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "lat": 49.78310215336825,
+    "lng": 18.266373399677818,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 8788
+      }
+    ]
+  },
+  {
+    "id": "sr_1391296588",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 27000,
+    "sqm": 63,
+    "rooms": 3,
+    "address": "U Lesa, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "lat": 49.7861468,
+    "lng": 18.2494361,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 27000
+      }
+    ]
+  },
+  {
+    "id": "sr_673964108",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14000,
+    "sqm": 45,
+    "rooms": 2,
+    "address": "Ostrava",
+    "zone": "Ostrava",
+    "lat": 49.8346452,
+    "lng": 18.2820440792,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
+    "id": "sr_17555532",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12500,
+    "sqm": 40,
+    "rooms": 1,
+    "address": "Evžena Rošického, Svinov, Ostrava",
+    "zone": "Svinov",
+    "lat": 49.8204554468,
+    "lng": 18.1866163495,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12500
+      }
+    ]
+  },
+  {
+    "id": "sr_3306938444",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 9900,
+    "sqm": 41,
+    "rooms": 1,
+    "address": "Hrabákova, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8392847745288,
+    "lng": 18.2932881462657,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 9900
+      }
+    ]
+  },
+  {
+    "id": "sr_2365317196",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 8900,
+    "sqm": 39,
+    "rooms": 1,
+    "address": "Na Obecní, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "lat": 49.7846482,
+    "lng": 18.2683523,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 8900
+      }
+    ]
+  },
+  {
+    "id": "sr_1260580940",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 17000,
+    "sqm": 73,
+    "rooms": 3,
+    "address": "Hasičská, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "lat": 49.792366480115945,
+    "lng": 18.259954356965878,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_239853644",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12000,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Jugoslávská, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.802367702143755,
+    "lng": 18.24235843831097,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12000
+      }
+    ]
+  },
+  {
+    "id": "sr_758833228",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 9500,
+    "sqm": 38,
+    "rooms": 1,
+    "address": "Senovážná, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.83293,
+    "lng": 18.27983,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 9500
+      }
+    ]
+  },
+  {
+    "id": "sr_2939871308",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12900,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Čujkovova, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.7905990149546,
+    "lng": 18.2440086810274,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12900
+      }
+    ]
+  },
+  {
+    "id": "sr_4127846476",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13000,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Výškovická, Ostrava-Jih, Ostrava",
+    "zone": "Ostrava-Jih",
+    "lat": 49.8050608174742,
+    "lng": 18.2427514682951,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13000
+      }
+    ]
+  },
+  {
+    "id": "sr_3656048716",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13850,
+    "sqm": 78,
+    "rooms": 2,
+    "address": "Sokolská třída, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8433369444,
+    "lng": 18.2881836111,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13850
+      }
+    ]
+  },
+  {
+    "id": "sr_2313871436",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13200,
+    "sqm": 69,
+    "rooms": 2,
+    "address": "Slavíčkova, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8453488889,
+    "lng": 18.2845205556,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13200
+      }
+    ]
+  },
+  {
+    "id": "sr_3119177804",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12600,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Zborovská, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8439486111,
+    "lng": 18.28583,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12600
+      }
+    ]
+  },
+  {
+    "id": "sr_434823244",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10650,
+    "sqm": 32,
+    "rooms": 1,
+    "address": "Myslbekova, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8499819,
+    "lng": 18.2798594,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10650
+      }
+    ]
+  },
+  {
+    "id": "sr_3370836044",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11650,
+    "sqm": 52,
+    "rooms": 2,
+    "address": "Zborovská, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8435997222,
+    "lng": 18.2821438889,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11650
+      }
+    ]
+  },
+  {
+    "id": "sr_4176142412",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11750,
+    "sqm": 39,
+    "rooms": 1,
+    "address": "Tylova, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.8011516667,
+    "lng": 18.2444702778,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11750
+      }
+    ]
+  },
+  {
+    "id": "sr_2833965132",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13250,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Zelená, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "lat": 49.8252419444,
+    "lng": 18.2619075,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13250
+      }
+    ]
+  },
+  {
+    "id": "sr_2330648652",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10150,
+    "sqm": 38,
+    "rooms": 1,
+    "address": "Matěje Kopeckého, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8285402778,
+    "lng": 18.1637213889,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10150
+      }
+    ]
+  },
+  {
+    "id": "sr_100327500",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13300,
+    "sqm": 58,
+    "rooms": 2,
+    "address": "Jana Ziky, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8438158333,
+    "lng": 18.1605330556,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13300
+      }
+    ]
+  },
+  {
+    "id": "sr_2751127628",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14100,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Zahradní, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8371194444,
+    "lng": 18.2881991667,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14100
+      }
+    ]
+  },
+  {
+    "id": "sr_3808092236",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 18900,
+    "sqm": 74,
+    "rooms": 2,
+    "address": "Nádražní, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8364019054577,
+    "lng": 18.28640991533,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 18900
+      }
+    ]
+  },
+  {
+    "id": "sr_1341841484",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 15000,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Vršovců, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "lat": 49.832109489,
+    "lng": 18.249353081,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 15000
+      }
+    ]
+  },
+  {
+    "id": "sr_2363154508",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 8600,
+    "sqm": 40,
+    "rooms": 1,
+    "address": "Lumírova, Výškovice, Ostrava",
+    "zone": "Výškovice",
+    "lat": 49.7781404404,
+    "lng": 18.2178388854,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 8600
+      }
+    ]
+  },
+  {
+    "id": "sr_2649453388",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 74900,
+    "sqm": 203,
+    "rooms": 4,
+    "address": "F. X. Riepla, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8305225,
+    "lng": 18.2888622222,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 74900
+      }
+    ]
+  },
+  {
+    "id": "sr_3384894284",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 27900,
+    "sqm": 72,
+    "rooms": 2,
+    "address": "F. X. Riepla, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8305225,
+    "lng": 18.2888622222,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 27900
+      }
+    ]
+  },
+  {
+    "id": "sr_2946404428",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 24900,
+    "sqm": 61,
+    "rooms": 2,
+    "address": "Důlní, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8304985213991,
+    "lng": 18.2881363499493,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 24900
+      }
+    ]
+  },
+  {
+    "id": "sr_1484558412",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 31900,
+    "sqm": 161,
+    "rooms": 2,
+    "address": "F. X. Riepla, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8305225,
+    "lng": 18.2888622222,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 31900
+      }
+    ]
+  },
+  {
+    "id": "sr_3049526092",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 124900,
+    "sqm": 268,
+    "rooms": 5,
+    "address": "F. X. Riepla, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8305225,
+    "lng": 18.2888622222,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 124900
+      }
+    ]
+  },
+  {
+    "id": "sr_3475939404",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 22500,
+    "sqm": 64,
+    "rooms": 2,
+    "address": "F. X. Riepla, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8305225,
+    "lng": 18.2888622222,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 22500
+      }
+    ]
+  },
+  {
+    "id": "sr_227909708",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 19900,
+    "sqm": 68,
+    "rooms": 3,
+    "address": "Svazácká, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.7876314126448,
+    "lng": 18.2357699550265,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 19900
+      }
+    ]
+  },
+  {
+    "id": "sr_1526825036",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 13500,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Vrázova, Vítkovice, Ostrava",
+    "zone": "Vítkovice",
+    "lat": 49.811644,
+    "lng": 18.253594,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 13500
+      }
+    ]
+  },
+  {
+    "id": "sr_564846668",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12500,
+    "sqm": 51,
+    "rooms": 2,
+    "address": "Výstavní, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.828642,
+    "lng": 18.264235,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12500
+      }
+    ]
+  },
+  {
+    "id": "sr_831184972",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10800,
+    "sqm": 36,
+    "rooms": 1,
+    "address": "Volgogradská, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.7901722,
+    "lng": 18.2230235,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10800
+      }
+    ]
+  },
+  {
+    "id": "sr_2309091404",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 40000,
+    "sqm": 111,
+    "rooms": 4,
+    "address": "U Hrůbků, Ostrava",
+    "zone": "U Hrůbků",
+    "lat": 49.8134189442664,
+    "lng": 18.2268479525715,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 40000
+      }
+    ]
+  },
+  {
+    "id": "sr_1282007116",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14900,
+    "sqm": 52,
+    "rooms": 3,
+    "address": "Josefa Kotase, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "lat": 49.782848242674156,
+    "lng": 18.256085689315917,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14900
+      }
+    ]
+  },
+  {
+    "id": "sr_1751769164",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 9714,
+    "sqm": 37,
+    "rooms": 2,
+    "address": "Moyzesova, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8369331492362,
+    "lng": 18.1767532098945,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 9714
+      }
+    ]
+  },
+  {
+    "id": "sr_1832509516",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14000,
+    "sqm": 44,
+    "rooms": 2,
+    "address": "Jana Maluchy, Dubina, Ostrava",
+    "zone": "Dubina",
+    "lat": 49.7788726080753,
+    "lng": 18.2578149216215,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
+    "id": "sr_1496965196",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11500,
+    "sqm": 58,
+    "rooms": 2,
+    "address": "Kašparova, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "lat": 49.7846598931219,
+    "lng": 18.2637724257532,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11500
+      }
+    ]
+  },
+  {
+    "id": "sr_4192854092",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10000,
+    "sqm": 58,
+    "rooms": 2,
+    "address": "Špálova, Přívoz, Ostrava",
+    "zone": "Přívoz",
+    "lat": 49.8518263633352,
+    "lng": 18.2749320255984,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10000
+      }
+    ]
+  },
+  {
+    "id": "sr_2009718860",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14800,
+    "sqm": 75,
+    "rooms": 3,
+    "address": "Jindřichova, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.844081062,
+    "lng": 18.283329712,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14800
+      }
+    ]
+  },
+  {
+    "id": "sr_1231618892",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10000,
+    "sqm": 36,
+    "rooms": 1,
+    "address": "Heleny Salichové, Polanka nad Odrou, Ostrava",
+    "zone": "Polanka nad Odrou",
+    "lat": 49.790261,
+    "lng": 18.169437,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10000
+      }
+    ]
+  },
+  {
+    "id": "sr_2613698636",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 16800,
+    "sqm": 90,
+    "rooms": 3,
+    "address": "Mariánské Hory a Hulváky, Ostrava",
+    "zone": "Mariánské Hory a Hulváky",
+    "lat": 49.8322,
+    "lng": 18.2575361111,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 16800
+      }
+    ]
+  },
+  {
+    "id": "sr_1926881356",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 18000,
+    "sqm": 72,
+    "rooms": 2,
+    "address": "U Mostu, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.80162903623891,
+    "lng": 18.257055774573267,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 18000
+      }
+    ]
+  },
+  {
+    "id": "sr_1398633292",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14000,
+    "sqm": 70,
+    "rooms": 2,
+    "address": "Stodolní, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.835336,
+    "lng": 18.283618,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
+    "id": "sr_3703169100",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14500,
+    "sqm": 57,
+    "rooms": 2,
+    "address": "U Mateřské školy, Vratimov, Vratimov",
+    "zone": "Vratimov",
+    "lat": 49.76820371091624,
+    "lng": 18.314310015347125,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14500
+      }
+    ]
+  },
+  {
+    "id": "sr_2305351756",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14000,
+    "sqm": 64,
+    "rooms": 2,
+    "address": "Dolní, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.8080612754392,
+    "lng": 18.2405084591633,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
+    "id": "sr_946397260",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12000,
+    "sqm": 60,
+    "rooms": 2,
+    "address": "Hornopolní, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.83420336571477,
+    "lng": 18.277581377770744,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12000
+      }
+    ]
+  },
+  {
+    "id": "sr_3949518924",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11650,
+    "sqm": 46,
+    "rooms": 2,
+    "address": "Tarnavova, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.80850365146726,
+    "lng": 18.234982309185483,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11650
+      }
+    ]
+  },
+  {
+    "id": "sr_1162403916",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 15000,
+    "sqm": 59,
+    "rooms": 3,
+    "address": "Živičná, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8455108747553,
+    "lng": 18.2816047006653,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 15000
+      }
+    ]
+  },
+  {
+    "id": "sr_524869708",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 9300,
+    "sqm": 54,
+    "rooms": 2,
+    "address": "Lechowiczova, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.841998590234894,
+    "lng": 18.264978559688792,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 9300
+      }
+    ]
+  },
+  {
+    "id": "sr_3121143884",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 20000,
+    "sqm": 125,
+    "rooms": 3,
+    "address": "Mlýnská, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.837916965095,
+    "lng": 18.2869670880197,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 20000
+      }
+    ]
+  },
+  {
+    "id": "sr_4001472588",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 17000,
+    "sqm": 118,
+    "rooms": 3,
+    "address": "28. října, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "lat": 49.8293426386,
+    "lng": 18.2659317673,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_1947787340",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 7000,
+    "sqm": 27,
+    "rooms": 1,
+    "address": "Václavská, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "lat": 49.8315522,
+    "lng": 18.2505198,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 7000
+      }
+    ]
+  },
+  {
+    "id": "sr_3726172236",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 8900,
+    "sqm": 28,
+    "rooms": 1,
+    "address": "Hornopolní, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.841080338,
+    "lng": 18.262407347,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 8900
+      }
+    ]
+  },
+  {
+    "id": "sr_3304644684",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 10500,
+    "sqm": 44,
+    "rooms": 1,
+    "address": "Mariánské náměstí, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "lat": 49.82848,
+    "lng": 18.25913,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 10500
+      }
+    ]
+  },
+  {
+    "id": "sr_2463101004",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 16500,
+    "sqm": 63,
+    "rooms": 2,
+    "address": "Veleslavínova, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.839884,
+    "lng": 18.28718,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 16500
+      }
+    ]
+  },
+  {
+    "id": "sr_63496268",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 16000,
+    "sqm": 54,
+    "rooms": 2,
+    "address": "Nerudova, Klimkovice, Klimkovice",
+    "zone": "Klimkovice",
+    "lat": 49.7860430770742,
+    "lng": 18.1229726097408,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 16000
+      }
+    ]
+  },
+  {
+    "id": "sr_3438055500",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 7750,
+    "sqm": 31,
+    "rooms": 1,
+    "address": "29. dubna, Výškovice, Ostrava",
+    "zone": "Výškovice",
+    "lat": 49.780526156116,
+    "lng": 18.2255256671006,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 7750
+      }
+    ]
+  },
+  {
+    "id": "sr_1425862732",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12500,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Balcarova, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8407050399785,
+    "lng": 18.2862420763994,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12500
+      }
+    ]
+  },
+  {
+    "id": "sr_262725708",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 8000,
+    "sqm": 36,
+    "rooms": 1,
+    "address": "Výškovická, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.790743742,
+    "lng": 18.229082822,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 8000
+      }
+    ]
+  },
+  {
+    "id": "sr_867754060",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11500,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Tlapákova, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "lat": 49.78375733409109,
+    "lng": 18.25895450018049,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11500
+      }
+    ]
+  },
+  {
+    "id": "sr_1840832588",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12900,
+    "sqm": 59,
+    "rooms": 2,
+    "address": "Fojtská, Muglinov, Ostrava",
+    "zone": "Muglinov",
+    "lat": 49.8496250832714,
+    "lng": 18.3043945210206,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12900
+      }
+    ]
+  },
+  {
+    "id": "sr_2761482316",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14200,
+    "sqm": 102,
+    "rooms": 3,
+    "address": "Palackého, Přívoz, Ostrava",
+    "zone": "Přívoz",
+    "lat": 49.8547910650242,
+    "lng": 18.2636263019604,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14200
+      }
+    ]
+  },
+  {
+    "id": "sr_3550011468",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 19500,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Jantarová, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.830471310655,
+    "lng": 18.286815579364117,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 19500
+      }
+    ]
+  },
+  {
+    "id": "sr_3264798796",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14200,
+    "sqm": 63,
+    "rooms": 3,
+    "address": "Mojmírovců, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "lat": 49.82859,
+    "lng": 18.251193,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14200
+      }
+    ]
+  },
+  {
+    "id": "sr_1318641740",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 15000,
+    "sqm": 68,
+    "rooms": 2,
+    "address": "Lidická, Vítkovice, Ostrava",
+    "zone": "Vítkovice",
+    "lat": 49.8101672052409,
+    "lng": 18.2685515659554,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 15000
+      }
+    ]
+  },
+  {
+    "id": "sr_3735642956",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 6500,
+    "sqm": 15,
+    "rooms": null,
+    "address": "Nádražní, Ostrava",
+    "zone": "Nádražní",
+    "lat": 49.85001847029776,
+    "lng": 18.27523529135617,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 6500
+      }
+    ]
+  },
+  {
+    "id": "sr_3130581068",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 15000,
+    "sqm": 70,
+    "rooms": 2,
+    "address": "Lidická, Vítkovice, Ostrava",
+    "zone": "Vítkovice",
+    "lat": 49.8101672052409,
+    "lng": 18.2685515659554,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 15000
+      }
+    ]
+  },
+  {
+    "id": "sr_1517281356",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 29500,
+    "sqm": 93,
+    "rooms": 3,
+    "address": "Na Prádle, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8312042980014,
+    "lng": 18.287929731592563,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 29500
+      }
+    ]
+  },
+  {
+    "id": "sr_1652547660",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 7000,
+    "sqm": 38,
+    "rooms": 1,
+    "address": "Tavičská, Vítkovice, Ostrava",
+    "zone": "Vítkovice",
+    "lat": 49.8066588834847,
+    "lng": 18.2627784903227,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 7000
+      }
+    ]
+  },
+  {
+    "id": "sr_3917471820",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14000,
+    "sqm": 82,
+    "rooms": 3,
+    "address": "30. dubna, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.840236350842204,
+    "lng": 18.285884500119284,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
+    "id": "sr_3390038092",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14000,
+    "sqm": 72,
+    "rooms": 3,
+    "address": "Dvorní, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8317153,
+    "lng": 18.1664628,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
+    "id": "sr_4046618700",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14000,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Opavská, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.830227189193586,
+    "lng": 18.183979828017744,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
+    "id": "sr_1292210252",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11000,
+    "sqm": 44,
+    "rooms": 2,
+    "address": "Karolínská, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8276101277274,
+    "lng": 18.2720857504531,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11000
+      }
+    ]
+  },
+  {
+    "id": "sr_206868556",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 9500,
+    "sqm": 40,
+    "rooms": 2,
+    "address": "Nádražní, Přívoz, Ostrava",
+    "zone": "Přívoz",
+    "lat": 49.8500184702978,
+    "lng": 18.2752352913562,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 9500
+      }
+    ]
+  },
+  {
+    "id": "sr_3955331148",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 16000,
+    "sqm": 58,
+    "rooms": 2,
+    "address": "1. československého armádního sboru, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8390446906291,
+    "lng": 18.1848886853102,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 16000
+      }
+    ]
+  },
+  {
+    "id": "sr_3152994380",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 14000,
+    "sqm": 52,
+    "rooms": 2,
+    "address": "Josefa Skupy, Poruba, Ostrava",
+    "zone": "Poruba",
+    "lat": 49.8469797305156,
+    "lng": 18.1778605842001,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
+    "id": "sr_3748823116",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 35000,
+    "sqm": 102,
+    "rooms": 4,
+    "address": "Třebovická, Třebovice, Ostrava",
+    "zone": "Třebovice",
+    "lat": 49.8330616574866,
+    "lng": 18.1956188298251,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 35000
+      }
+    ]
+  },
+  {
+    "id": "sr_322756684",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 12000,
+    "sqm": 48,
+    "rooms": 2,
+    "address": "Horymírova, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "lat": 49.806183593175454,
+    "lng": 18.236836235950133,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 12000
+      }
+    ]
+  },
+  {
+    "id": "sr_2988236876",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 8500,
+    "sqm": 41,
+    "rooms": 1,
+    "address": "Evžena Rošického, Svinov, Ostrava",
+    "zone": "Svinov",
+    "lat": 49.8195010868573,
+    "lng": 18.1888165159489,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 8500
+      }
+    ]
+  },
+  {
+    "id": "sr_3381239884",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:26:09.647Z",
+    "presumed_rented_at": "2026-07-14T16:26:09.647Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-12T19:43:47.895Z",
+    "days_on_market": 2,
+    "price": 11200,
+    "sqm": 81,
+    "rooms": 2,
+    "address": "Verdunská, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "lat": 49.8446445,
+    "lng": 18.2846884,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11200
+      }
+    ]
+  }
+]

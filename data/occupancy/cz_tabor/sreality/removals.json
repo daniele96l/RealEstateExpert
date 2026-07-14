@@ -1,0 +1,46 @@
+[
+  {
+    "id": "sr_146059340",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:23:55.552Z",
+    "presumed_rented_at": "2026-07-14T16:23:55.552Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-12T19:34:49.198Z",
+    "days_on_market": 2,
+    "price": 12500,
+    "sqm": 79,
+    "rooms": 3,
+    "address": "Dědice, Nemyšl",
+    "zone": "Dědice",
+    "lat": 49.5105011941256,
+    "lng": 14.7117219674281,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 12500
+      }
+    ]
+  },
+  {
+    "id": "sr_2276450380",
+    "portal": "sreality",
+    "detected_at": "2026-07-14T16:23:55.552Z",
+    "presumed_rented_at": "2026-07-14T16:23:55.552Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-12T19:34:49.198Z",
+    "days_on_market": 2,
+    "price": 10500,
+    "sqm": 42,
+    "rooms": 1,
+    "address": "Jesenského, Tábor, Tábor",
+    "zone": "Tábor",
+    "lat": 49.4158066042497,
+    "lng": 14.6815334626564,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 10500
+      }
+    ]
+  }
+]

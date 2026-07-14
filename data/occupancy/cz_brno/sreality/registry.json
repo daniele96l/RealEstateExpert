@@ -2,8 +2,8 @@
   "city": "Brno",
   "market": "cz",
   "portal": "sreality",
-  "updated_at": "2026-07-13T10:35:12.497Z",
-  "snapshot_count": 4,
+  "updated_at": "2026-07-14T16:23:38.437Z",
+  "snapshot_count": 5,
   "last_provider": "sreality",
   "listings": {
     "sr_3822968908": {
@@ -15,20 +15,20 @@
       "rooms": 1,
       "address": "Staré Brno, Brno",
       "zone": "Staré Brno",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-stare-brno/3822968908",
+      "listing_published_at": "2026-07-10",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 15900
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-07-10",
-      "listing_updated_at": "2026-07-10"
+      ]
     },
     "sr_2531123276": {
       "id": "sr_2531123276",
@@ -183,20 +183,20 @@
       "rooms": 3,
       "address": "Jeřábkova, Černá Pole, Brno",
       "zone": "Černá Pole",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-12T09:19:12.089Z",
-      "rented_at": "2026-07-13T10:35:12.497Z",
-      "status": "presumed_rented",
-      "days_on_market": 3,
-      "price_history": [
-        {
-          "at": "2026-07-10T11:04:17.212Z",
-          "price": 25000
-        }
-      ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/brno-cerna-pole-jerabkova/452845644",
       "listing_published_at": "2026-07-10",
-      "listing_updated_at": "2026-07-10"
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 25000
+        }
+      ]
     },
     "sr_2617106508": {
       "id": "sr_2617106508",
@@ -303,20 +303,20 @@
       "rooms": 2,
       "address": "Hubrova, Líšeň, Brno",
       "zone": "Líšeň",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-12T09:19:12.089Z",
-      "rented_at": "2026-07-13T10:35:12.497Z",
-      "status": "presumed_rented",
-      "days_on_market": 3,
-      "price_history": [
-        {
-          "at": "2026-07-10T11:04:17.212Z",
-          "price": 21000
-        }
-      ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-lisen-hubrova/2029383756",
       "listing_published_at": "2026-06-30",
-      "listing_updated_at": "2026-07-10"
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 21000
+        }
+      ]
     },
     "sr_1640685644": {
       "id": "sr_1640685644",
@@ -328,7 +328,7 @@
       "address": "Kigginsova, Slatina, Brno",
       "zone": "Slatina",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -340,7 +340,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-slatina-kigginsova/1640685644",
       "listing_published_at": "2026-07-03",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_703455308": {
       "id": "sr_703455308",
@@ -544,7 +544,7 @@
       "address": "Palackého třída, Královo Pole, Brno",
       "zone": "Královo Pole",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -665,9 +665,9 @@
       "zone": "Královo Pole",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -689,9 +689,9 @@
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -711,20 +711,20 @@
       "rooms": 1,
       "address": "Kozí, Brno-město, Brno",
       "zone": "Brno-město",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-12T09:19:12.089Z",
-      "rented_at": "2026-07-13T10:35:12.497Z",
-      "status": "presumed_rented",
-      "days_on_market": 3,
-      "price_history": [
-        {
-          "at": "2026-07-10T11:04:17.212Z",
-          "price": 17500
-        }
-      ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-brno-mesto-kozi/907927628",
       "listing_published_at": "2026-07-10",
-      "listing_updated_at": "2026-07-10"
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 17500
+        }
+      ]
     },
     "sr_3556302924": {
       "id": "sr_3556302924",
@@ -737,9 +737,9 @@
       "zone": "Štýřice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -785,9 +785,9 @@
       "zone": "Žebětín",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -808,7 +808,7 @@
       "address": "Mlýnská, Trnitá, Brno",
       "zone": "Trnitá",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -820,7 +820,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-trnita-mlynska/2032132172",
       "listing_published_at": "2026-07-08",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_908845132": {
       "id": "sr_908845132",
@@ -833,9 +833,9 @@
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -905,9 +905,9 @@
       "zone": "Štýřice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -953,9 +953,9 @@
       "zone": "Žebětín",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -1025,9 +1025,9 @@
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -1071,20 +1071,20 @@
       "rooms": 1,
       "address": "Bohunická, Horní Heršpice, Brno",
       "zone": "Horní Heršpice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-12T09:19:12.089Z",
-      "rented_at": "2026-07-13T10:35:12.497Z",
-      "status": "presumed_rented",
-      "days_on_market": 3,
-      "price_history": [
-        {
-          "at": "2026-07-10T11:04:17.212Z",
-          "price": 14500
-        }
-      ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-horni-herspice-bohunicka/3412885580",
       "listing_published_at": "2026-06-02",
-      "listing_updated_at": "2026-07-10"
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 14500
+        }
+      ]
     },
     "sr_3669553228": {
       "id": "sr_3669553228",
@@ -1095,20 +1095,20 @@
       "rooms": 1,
       "address": "Řepova, Horní Heršpice, Brno",
       "zone": "Horní Heršpice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-12T09:19:12.089Z",
-      "rented_at": "2026-07-13T10:35:12.497Z",
-      "status": "presumed_rented",
-      "days_on_market": 3,
-      "price_history": [
-        {
-          "at": "2026-07-10T11:04:17.212Z",
-          "price": 16500
-        }
-      ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-horni-herspice-repova/3669553228",
       "listing_published_at": "2026-06-16",
-      "listing_updated_at": "2026-07-10"
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 16500
+        }
+      ]
     },
     "sr_3260932172": {
       "id": "sr_3260932172",
@@ -1119,20 +1119,20 @@
       "rooms": 1,
       "address": "Střední, Ponava, Brno",
       "zone": "Ponava",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-12T09:19:12.089Z",
-      "rented_at": "2026-07-13T10:35:12.497Z",
-      "status": "presumed_rented",
-      "days_on_market": 3,
-      "price_history": [
-        {
-          "at": "2026-07-10T11:04:17.212Z",
-          "price": 15000
-        }
-      ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-ponava-stredni/3260932172",
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-09"
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 15000
+        }
+      ]
     },
     "sr_1667096652": {
       "id": "sr_1667096652",
@@ -1288,7 +1288,7 @@
       "address": "Spodní, Bohunice, Brno",
       "zone": "Bohunice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1300,7 +1300,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/brno-bohunice-spodni/1546379340",
       "listing_published_at": "2026-07-01",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_2488983628": {
       "id": "sr_2488983628",
@@ -1313,9 +1313,9 @@
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -1407,20 +1407,20 @@
       "rooms": 3,
       "address": "Strž, Štýřice, Brno",
       "zone": "Štýřice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/brno-styrice-strz/2021515340",
+      "listing_published_at": "2026-07-09",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 25000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-09"
+      ]
     },
     "sr_2843598924": {
       "id": "sr_2843598924",
@@ -1457,9 +1457,9 @@
       "zone": "Starý Lískovec",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -1480,7 +1480,7 @@
       "address": "Schovaná, Staré Brno, Brno",
       "zone": "Staré Brno",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1492,7 +1492,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-stare-brno-schovana/1540194380",
       "listing_published_at": "2026-06-02",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_624853068": {
       "id": "sr_624853068",
@@ -1504,7 +1504,7 @@
       "address": "Košinova, Královo Pole, Brno",
       "zone": "Královo Pole",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1516,7 +1516,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-kralovo-pole-kosinova/624853068",
       "listing_published_at": "2026-06-01",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_1518239820": {
       "id": "sr_1518239820",
@@ -1528,7 +1528,7 @@
       "address": "Božetěchova, Královo Pole, Brno",
       "zone": "Královo Pole",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1540,7 +1540,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-kralovo-pole-bozetechova/1518239820",
       "listing_published_at": "2026-06-01",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_535228492": {
       "id": "sr_535228492",
@@ -1552,7 +1552,7 @@
       "address": "Slovinská, Královo Pole, Brno",
       "zone": "Královo Pole",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1564,7 +1564,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-kralovo-pole-slovinska/535228492",
       "listing_published_at": "2026-06-29",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_1919873100": {
       "id": "sr_1919873100",
@@ -1576,7 +1576,7 @@
       "address": "Bělohorská, Židenice, Brno",
       "zone": "Židenice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1588,7 +1588,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-zidenice-belohorska/1919873100",
       "listing_published_at": "2026-06-18",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_3191599180": {
       "id": "sr_3191599180",
@@ -1601,9 +1601,9 @@
       "zone": "Řečkovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -1624,7 +1624,7 @@
       "address": "Mášova, Veveří, Brno",
       "zone": "Veveří",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1636,7 +1636,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-veveri-masova/2877222988",
       "listing_published_at": "2026-06-18",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_1115258956": {
       "id": "sr_1115258956",
@@ -1648,7 +1648,7 @@
       "address": "Slovinská, Královo Pole, Brno",
       "zone": "Královo Pole",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1660,7 +1660,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-kralovo-pole-slovinska/1115258956",
       "listing_published_at": "2026-05-28",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_4255809612": {
       "id": "sr_4255809612",
@@ -1672,7 +1672,7 @@
       "address": "Kigginsova, Slatina, Brno",
       "zone": "Slatina",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1684,7 +1684,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-slatina-kigginsova/4255809612",
       "listing_published_at": "2026-05-27",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_310878284": {
       "id": "sr_310878284",
@@ -1696,7 +1696,7 @@
       "address": "Fillova, Lesná, Brno",
       "zone": "Lesná",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1708,7 +1708,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-lesna-fillova/310878284",
       "listing_published_at": "2026-05-05",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_568238156": {
       "id": "sr_568238156",
@@ -1720,7 +1720,7 @@
       "address": "Svitavská, Brno-sever, Brno",
       "zone": "Brno-sever",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1732,7 +1732,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-brno-sever-svitavska/568238156",
       "listing_published_at": "2026-04-27",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_3637157964": {
       "id": "sr_3637157964",
@@ -1744,7 +1744,7 @@
       "address": "Milady Horákové, Zábrdovice, Brno",
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1756,7 +1756,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/brno-zabrdovice-milady-horakove/3637157964",
       "listing_published_at": "2026-04-23",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_1622909004": {
       "id": "sr_1622909004",
@@ -1768,7 +1768,7 @@
       "address": "Dunajská, Starý Lískovec, Brno",
       "zone": "Starý Lískovec",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1780,7 +1780,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/brno-stary-liskovec-dunajska/1622909004",
       "listing_published_at": "2026-04-22",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_3772203852": {
       "id": "sr_3772203852",
@@ -1792,7 +1792,7 @@
       "address": "Novoměstská, Řečkovice, Brno",
       "zone": "Řečkovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1804,7 +1804,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-reckovice-novomestska/3772203852",
       "listing_published_at": "2026-03-31",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_2835276": {
       "id": "sr_2835276",
@@ -1816,7 +1816,7 @@
       "address": "Bratislavská, Zábrdovice, Brno",
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1828,7 +1828,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabrdovice-bratislavska/2835276",
       "listing_published_at": "2026-03-18",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_4152255308": {
       "id": "sr_4152255308",
@@ -1864,7 +1864,7 @@
       "address": "Gajdošova, Židenice, Brno",
       "zone": "Židenice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1876,7 +1876,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zidenice-gajdosova/641855564",
       "listing_published_at": "2026-06-24",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_923660364": {
       "id": "sr_923660364",
@@ -1889,9 +1889,9 @@
       "zone": "Trnitá",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -1984,7 +1984,7 @@
       "address": "Jakubská, Brno-město, Brno",
       "zone": "Brno-město",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1996,7 +1996,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-brno-mesto-jakubska/1668145228",
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-10"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_879616076": {
       "id": "sr_879616076",
@@ -2008,7 +2008,7 @@
       "address": "Vídeňská, Štýřice, Brno",
       "zone": "Štýřice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2020,7 +2020,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-styrice-videnska/879616076",
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-11"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_3466518604": {
       "id": "sr_3466518604",
@@ -2032,7 +2032,7 @@
       "address": "Jakubská, Brno-město, Brno",
       "zone": "Brno-město",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2044,7 +2044,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-brno-mesto-jakubska/3466518604",
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-10"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_1654579276": {
       "id": "sr_1654579276",
@@ -2129,9 +2129,9 @@
       "zone": "Královo Pole",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -2176,7 +2176,7 @@
       "address": "Vídeňská, Štýřice, Brno",
       "zone": "Štýřice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2188,7 +2188,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-styrice-videnska/1260253260",
       "listing_published_at": "2026-06-19",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_1928196172": {
       "id": "sr_1928196172",
@@ -2201,9 +2201,9 @@
       "zone": "Husovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -2224,7 +2224,7 @@
       "address": "Vychodilova, Žabovřesky, Brno",
       "zone": "Žabovřesky",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2236,7 +2236,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabovresky-vychodilova/1540022348",
       "listing_published_at": "2026-07-03",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_1873731660": {
       "id": "sr_1873731660",
@@ -2272,7 +2272,7 @@
       "address": "Bratislavská, Zábrdovice, Brno",
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2288,7 +2288,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-zabrdovice-bratislavska/1730442828",
       "listing_published_at": "2022-08-06",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_2440163404": {
       "id": "sr_2440163404",
@@ -2300,7 +2300,7 @@
       "address": "Hrázka, Medlánky, Brno",
       "zone": "Medlánky",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2312,7 +2312,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-medlanky-hrazka/2440163404",
       "listing_published_at": "2026-06-24",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_3919900748": {
       "id": "sr_3919900748",
@@ -2324,7 +2324,7 @@
       "address": "Trýbova, Staré Brno, Brno",
       "zone": "Staré Brno",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2336,7 +2336,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-stare-brno-trybova/3919900748",
       "listing_published_at": "2026-07-01",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_581951564": {
       "id": "sr_581951564",
@@ -2348,7 +2348,7 @@
       "address": "Lučiny, Slatina, Brno",
       "zone": "Slatina",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2360,7 +2360,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-slatina-luciny/581951564",
       "listing_published_at": "2026-07-08",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_3135234124": {
       "id": "sr_3135234124",
@@ -2373,9 +2373,9 @@
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -2493,9 +2493,9 @@
       "zone": "Komín",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -2664,9 +2664,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -2777,7 +2777,7 @@
       "address": "Mírová, Černovice, Brno",
       "zone": "Černovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2789,7 +2789,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-cernovice-mirova/2800672844",
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-11"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_3400221516": {
       "id": "sr_3400221516",
@@ -2804,7 +2804,7 @@
       "listing_published_at": "2026-03-18",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2922,9 +2922,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -2946,9 +2946,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -2967,9 +2967,9 @@
       "zone": "Černovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3015,9 +3015,9 @@
       "zone": "Husovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3273,9 +3273,9 @@
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3419,7 +3419,7 @@
       "listing_published_at": "2026-07-08",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -3439,20 +3439,20 @@
       "rooms": 3,
       "address": "Spálená, Trnitá, Brno",
       "zone": "Trnitá",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-trnita-spalena/3971711052",
+      "listing_published_at": "2026-05-27",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 24900
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-05-27",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_4216954956": {
       "id": "sr_4216954956",
@@ -3465,9 +3465,9 @@
       "zone": "Komín",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3489,9 +3489,9 @@
       "zone": "Ponava",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3513,9 +3513,9 @@
       "zone": "Sadová",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3537,9 +3537,9 @@
       "zone": "Brno-město",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3561,9 +3561,9 @@
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3585,9 +3585,9 @@
       "zone": "Bohunice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3609,9 +3609,9 @@
       "zone": "Veveří",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3657,9 +3657,9 @@
       "zone": "Černá Pole",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3775,20 +3775,20 @@
       "rooms": 1,
       "address": "Horníkova, Líšeň, Brno",
       "zone": "Líšeň",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-lisen-hornikova/463462476",
+      "listing_published_at": "2026-07-08",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 15400
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-07-08",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_813822028": {
       "id": "sr_813822028",
@@ -3849,9 +3849,9 @@
       "zone": "Staré Brno",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3921,9 +3921,9 @@
       "zone": "Brněnské Ivanovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -3947,7 +3947,7 @@
       "listing_published_at": "2026-06-08",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -4092,9 +4092,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -4183,20 +4183,20 @@
       "rooms": 3,
       "address": "Kollárova, Královo Pole, Brno",
       "zone": "Královo Pole",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-kralovo-pole-kollarova/4251447372",
+      "listing_published_at": "2026-06-26",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 30000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-06-26",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_3303309388": {
       "id": "sr_3303309388",
@@ -4207,20 +4207,20 @@
       "rooms": 3,
       "address": "Panská, Brno-město, Brno",
       "zone": "Brno-město",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-brno-mesto-panska/3303309388",
+      "listing_published_at": "2026-06-11",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 29000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-06-11",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_3621552204": {
       "id": "sr_3621552204",
@@ -4231,20 +4231,20 @@
       "rooms": 1,
       "address": "Viniční, Židenice, Brno",
       "zone": "Židenice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-zidenice-vinicni/3621552204",
+      "listing_published_at": "2026-06-03",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 18000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-06-03",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_8618060": {
       "id": "sr_8618060",
@@ -4255,20 +4255,20 @@
       "rooms": 2,
       "address": "Došlíkova, Židenice, Brno",
       "zone": "Židenice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-zidenice-doslikova/8618060",
+      "listing_published_at": "2026-06-04",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 22000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-06-04",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_221856588": {
       "id": "sr_221856588",
@@ -4279,20 +4279,20 @@
       "rooms": null,
       "address": "Hybešova, Staré Brno, Brno",
       "zone": "Staré Brno",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/Atypick%C3%BD/brno-stare-brno-hybesova/221856588",
+      "listing_published_at": "2026-03-20",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 31000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-03-20",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_3186393164": {
       "id": "sr_3186393164",
@@ -4303,20 +4303,20 @@
       "rooms": 2,
       "address": "Došlíkova, Židenice, Brno",
       "zone": "Židenice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-zidenice-doslikova/3186393164",
+      "listing_published_at": "2026-06-03",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 25000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-06-03",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_2638475340": {
       "id": "sr_2638475340",
@@ -4327,20 +4327,20 @@
       "rooms": 2,
       "address": "Prokofjevova, Kohoutovice, Brno",
       "zone": "Kohoutovice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-kohoutovice-prokofjevova/2638475340",
+      "listing_published_at": "2026-06-22",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 21000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-06-22",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_1885573196": {
       "id": "sr_1885573196",
@@ -4351,20 +4351,20 @@
       "rooms": 1,
       "address": "Šmejkalova, Žabovřesky, Brno",
       "zone": "Žabovřesky",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-zabovresky-smejkalova/1885573196",
+      "listing_published_at": "2026-05-17",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 16500
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-05-17",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_3585273932": {
       "id": "sr_3585273932",
@@ -4375,20 +4375,20 @@
       "rooms": 3,
       "address": "Opuštěná, Trnitá, Brno",
       "zone": "Trnitá",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-trnita-opustena/3585273932",
+      "listing_published_at": "2026-06-24",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 31000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-06-24",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_2731311180": {
       "id": "sr_2731311180",
@@ -4399,20 +4399,20 @@
       "rooms": 2,
       "address": "Viniční, Židenice, Brno",
       "zone": "Židenice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-zidenice-vinicni/2731311180",
+      "listing_published_at": "2026-06-03",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 23000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-06-03",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_2574688332": {
       "id": "sr_2574688332",
@@ -4423,20 +4423,20 @@
       "rooms": 3,
       "address": "Dukelská třída, Husovice, Brno",
       "zone": "Husovice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-husovice-dukelska-trida/2574688332",
+      "listing_published_at": "2026-05-05",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 25000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-05-05",
-      "listing_updated_at": "2026-07-08"
+      ]
     },
     "sr_1147134028": {
       "id": "sr_1147134028",
@@ -4469,7 +4469,7 @@
       "address": "Dunajská, Starý Lískovec, Brno",
       "zone": "Starý Lískovec",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -4481,7 +4481,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-stary-liskovec-dunajska/2716852300",
       "listing_published_at": "2026-07-08",
-      "listing_updated_at": "2026-07-10"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_8228940": {
       "id": "sr_8228940",
@@ -4541,7 +4541,7 @@
       "address": "Hlinky, Staré Brno, Brno",
       "zone": "Staré Brno",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -4553,7 +4553,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-stare-brno-hlinky/3158868044",
       "listing_published_at": "2026-05-29",
-      "listing_updated_at": "2026-07-10"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_1611653196": {
       "id": "sr_1611653196",
@@ -4569,9 +4569,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -4713,9 +4713,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -4804,20 +4804,20 @@
       "rooms": 1,
       "address": "Svatopetrská, Komárov, Brno",
       "zone": "Komárov",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-komarov-svatopetrska/3708633932",
+      "listing_published_at": "2026-03-24",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 17000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-03-24",
-      "listing_updated_at": "2026-07-07"
+      ]
     },
     "sr_2546266188": {
       "id": "sr_2546266188",
@@ -4828,20 +4828,20 @@
       "rooms": 3,
       "address": "Francouzská, Zábrdovice, Brno",
       "zone": "Zábrdovice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-zabrdovice-francouzska/2546266188",
+      "listing_published_at": "2026-07-01",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 29000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-07-01",
-      "listing_updated_at": "2026-07-07"
+      ]
     },
     "sr_931127372": {
       "id": "sr_931127372",
@@ -4924,20 +4924,20 @@
       "rooms": 3,
       "address": "Horácké náměstí, Řečkovice, Brno",
       "zone": "Řečkovice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-11T10:25:42.446Z",
-      "rented_at": "2026-07-12T09:19:12.089Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/brno-reckovice-horacke-namesti/92270668",
+      "listing_published_at": "2026-06-17",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 23000
         }
-      ],
-      "url": null,
-      "listing_published_at": "2026-06-17",
-      "listing_updated_at": "2026-07-07"
+      ]
     },
     "sr_913301580": {
       "id": "sr_913301580",
@@ -5093,7 +5093,7 @@
       "address": "Švermova, Bohunice, Brno",
       "zone": "Bohunice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -5105,7 +5105,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/brno-bohunice-svermova/4024074316",
       "listing_published_at": "2026-05-27",
-      "listing_updated_at": "2026-07-11"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_2644041804": {
       "id": "sr_2644041804",
@@ -5402,7 +5402,7 @@
       "address": "Bratislavská, Zábrdovice, Brno",
       "zone": "Zábrdovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -5414,7 +5414,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-zabrdovice-bratislavska/2090004556",
       "listing_published_at": "2026-06-24",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_3904430156": {
       "id": "sr_3904430156",
@@ -5540,7 +5540,7 @@
       "listing_published_at": "2026-07-07",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -5691,9 +5691,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -5715,9 +5715,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -5802,9 +5802,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -5843,7 +5843,7 @@
       "address": "Vranovská, Husovice, Brno",
       "zone": "Husovice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -5855,7 +5855,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-husovice-vranovska/2982445132",
       "listing_published_at": "2026-06-11",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_3974684748": {
       "id": "sr_3974684748",
@@ -5931,9 +5931,9 @@
       "zone": "Staré Brno",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -5954,7 +5954,7 @@
       "address": "Černého, Bystrc, Brno",
       "zone": "Bystrc",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -5966,7 +5966,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-bystrc-cerneho/2950987852",
       "listing_published_at": "2026-06-11",
-      "listing_updated_at": "2026-07-12"
+      "listing_updated_at": "2026-07-14"
     },
     "sr_2983428172": {
       "id": "sr_2983428172",
@@ -5981,7 +5981,7 @@
       "listing_published_at": "2026-06-04",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6005,7 +6005,7 @@
       "listing_published_at": "2026-06-04",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6029,7 +6029,7 @@
       "listing_published_at": "2026-06-04",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6053,7 +6053,7 @@
       "listing_published_at": "2026-06-04",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6078,9 +6078,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -6102,9 +6102,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -6121,14 +6121,17 @@
       "rooms": 3,
       "address": "Jílkova, Židenice, Brno",
       "zone": "Židenice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-10T11:04:17.212Z",
-      "rented_at": "2026-07-11T10:25:42.446Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-zidenice-jilkova/3444150348",
+      "listing_published_at": "2026-05-11",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 27000
         }
       ]
@@ -6165,9 +6168,9 @@
       "zone": "Stránice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -6208,14 +6211,17 @@
       "rooms": 1,
       "address": "Potácelova, Židenice, Brno",
       "zone": "Židenice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-10T11:04:17.212Z",
-      "rented_at": "2026-07-11T10:25:42.446Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zidenice-potacelova/3465076812",
+      "listing_published_at": "2026-07-07",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 14900
         }
       ]
@@ -6399,9 +6405,9 @@
       "zone": "Horní Heršpice",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -6490,9 +6496,9 @@
       "zone": "Brno-Maloměřice a Obřany",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-brno-malomerice-a-obrany/3357274188",
       "listing_published_at": "2026-06-12",
-      "listing_updated_at": "2026-07-12",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6596,14 +6602,17 @@
       "rooms": null,
       "address": "Vídeňská, Přízřenice, Brno",
       "zone": "Přízřenice",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-10T11:04:17.212Z",
-      "rented_at": "2026-07-11T10:25:42.446Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/Pokoj/brno-prizrenice-videnska/356520780",
+      "listing_published_at": "2025-12-18",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 8500
         }
       ]
@@ -6872,14 +6881,17 @@
       "rooms": 3,
       "address": "Kosmova, Královo Pole, Brno",
       "zone": "Královo Pole",
-      "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-10T11:04:17.212Z",
-      "rented_at": "2026-07-11T10:25:42.446Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-kralovo-pole-kosmova/510320716",
+      "listing_published_at": "2026-07-02",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-10T11:04:17.212Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 40000
         }
       ]
@@ -6916,9 +6928,9 @@
       "zone": "Komárov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-komarov-komarovska/1644138572",
       "listing_published_at": "2026-05-13",
-      "listing_updated_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6939,7 +6951,7 @@
       "address": "Točná, Starý Lískovec, Brno",
       "zone": "Starý Lískovec",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6963,7 +6975,7 @@
       "address": "Jakubská, Brno-město, Brno",
       "zone": "Brno-město",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6975,7 +6987,7 @@
       ],
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-brno-mesto-jakubska/1404497996",
       "listing_published_at": "2026-06-29",
-      "listing_updated_at": "2026-07-11"
+      "listing_updated_at": "2026-07-13"
     },
     "sr_2996428876": {
       "id": "sr_2996428876",
@@ -6988,9 +7000,9 @@
       "zone": "Nový Lískovec",
       "first_seen_at": "2026-07-10T11:04:17.212Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-10T11:04:17.212Z",
@@ -7014,9 +7026,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7035,9 +7047,9 @@
       "address": "Hudcova, Brno",
       "zone": "Hudcova",
       "listing_published_at": "2026-07-11",
-      "listing_updated_at": "2026-07-11",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7062,9 +7074,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7109,9 +7121,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7133,9 +7145,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7157,9 +7169,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7181,9 +7193,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7204,7 +7216,7 @@
       "listing_published_at": "2026-07-10",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7229,9 +7241,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7253,9 +7265,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7277,9 +7289,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7301,9 +7313,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7322,9 +7334,9 @@
       "address": "Kobližná, Brno-město, Brno",
       "zone": "Brno-město",
       "listing_published_at": "2025-08-01",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7346,9 +7358,9 @@
       "address": "Za Divadlem, Brno-město, Brno",
       "zone": "Brno-město",
       "listing_published_at": "2025-11-28",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7370,9 +7382,9 @@
       "address": "Kopečná, Staré Brno, Brno",
       "zone": "Staré Brno",
       "listing_published_at": "2026-03-04",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7394,9 +7406,9 @@
       "address": "Kobližná, Brno-město, Brno",
       "zone": "Brno-město",
       "listing_published_at": "2026-03-04",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7418,9 +7430,9 @@
       "address": "Schodová, Černá Pole, Brno",
       "zone": "Černá Pole",
       "listing_published_at": "2026-04-07",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7442,9 +7454,9 @@
       "address": "Královopolská, Žabovřesky, Brno",
       "zone": "Žabovřesky",
       "listing_published_at": "2026-04-20",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7466,9 +7478,9 @@
       "address": "Královopolská, Žabovřesky, Brno",
       "zone": "Žabovřesky",
       "listing_published_at": "2026-04-20",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7490,9 +7502,9 @@
       "address": "Královopolská, Žabovřesky, Brno",
       "zone": "Žabovřesky",
       "listing_published_at": "2026-04-20",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7514,9 +7526,9 @@
       "address": "Královopolská, Žabovřesky, Brno",
       "zone": "Žabovřesky",
       "listing_published_at": "2026-04-20",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7538,9 +7550,9 @@
       "address": "Kopečná, Staré Brno, Brno",
       "zone": "Staré Brno",
       "listing_published_at": "2026-04-22",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7562,9 +7574,9 @@
       "address": "Neumannova, Brno-střed, Brno",
       "zone": "Brno-střed",
       "listing_published_at": "2026-04-30",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7586,9 +7598,9 @@
       "address": "Kobližná, Brno-město, Brno",
       "zone": "Brno-město",
       "listing_published_at": "2026-05-11",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7610,9 +7622,9 @@
       "address": "Jánská, Brno-město, Brno",
       "zone": "Brno-město",
       "listing_published_at": "2026-05-11",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7634,9 +7646,9 @@
       "address": "Reissigova, Ponava, Brno",
       "zone": "Ponava",
       "listing_published_at": "2026-05-13",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7658,9 +7670,9 @@
       "address": "Královopolská, Žabovřesky, Brno",
       "zone": "Žabovřesky",
       "listing_published_at": "2026-05-27",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7682,9 +7694,9 @@
       "address": "Královopolská, Žabovřesky, Brno",
       "zone": "Žabovřesky",
       "listing_published_at": "2026-05-27",
-      "listing_updated_at": "2026-07-10",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7733,9 +7745,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7757,9 +7769,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7781,9 +7793,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7805,9 +7817,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7829,9 +7841,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7853,9 +7865,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7877,9 +7889,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7901,9 +7913,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7925,9 +7937,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7949,9 +7961,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7973,9 +7985,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -7997,9 +8009,9 @@
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -8378,9 +8390,9 @@
       "address": "Okrouhlá, Bohunice, Brno",
       "zone": "Bohunice",
       "listing_published_at": "2026-05-28",
-      "listing_updated_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -8405,9 +8417,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-11T10:25:42.446Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 3,
       "price_history": [
         {
           "at": "2026-07-11T10:25:42.446Z",
@@ -8545,20 +8557,20 @@
       "rooms": 2,
       "address": "Březová, Jundrov, Brno",
       "zone": "Jundrov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-jundrov-brezova/1705893964",
       "listing_published_at": "2026-07-10",
-      "listing_updated_at": "2026-07-10",
-      "first_seen_at": "2026-07-11T10:25:42.446Z",
-      "last_seen_at": "2026-07-12T09:19:12.089Z",
-      "rented_at": "2026-07-13T10:35:12.497Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-11T10:25:42.446Z",
+          "at": "2026-07-14T16:23:38.437Z",
           "price": 22400
         }
-      ],
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-jundrov-brezova/1705893964"
+      ]
     },
     "sr_719183948": {
       "id": "sr_719183948",
@@ -8669,9 +8681,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8693,9 +8705,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8717,9 +8729,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8741,9 +8753,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8765,9 +8777,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8786,9 +8798,9 @@
       "zone": "Žabovřesky",
       "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/brno-zabovresky-brezinova/4185096268",
       "listing_published_at": "2026-06-03",
-      "listing_updated_at": "2026-07-11",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -8813,9 +8825,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8834,9 +8846,9 @@
       "zone": "Kohoutovice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-kohoutovice-chalabalova/3359432780",
       "listing_published_at": "2026-07-11",
-      "listing_updated_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -8861,9 +8873,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8885,9 +8897,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8909,9 +8921,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8933,9 +8945,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8957,9 +8969,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -8978,9 +8990,9 @@
       "zone": "Židenice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-zidenice-skrochova/1576378444",
       "listing_published_at": "2026-05-06",
-      "listing_updated_at": "2026-07-11",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9002,9 +9014,9 @@
       "zone": "Zábrdovice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabrdovice-bratislavska/3051917388",
       "listing_published_at": "2026-05-12",
-      "listing_updated_at": "2026-07-11",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9026,9 +9038,9 @@
       "zone": "Černá Pole",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-cerna-pole-trida-generala-piky/2627465292",
       "listing_published_at": "2026-06-13",
-      "listing_updated_at": "2026-07-11",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9050,9 +9062,9 @@
       "zone": "Zábrdovice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-zabrdovice-bratislavska/2806939724",
       "listing_published_at": "2026-06-01",
-      "listing_updated_at": "2026-07-11",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9077,9 +9089,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -9101,9 +9113,9 @@
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T09:19:12.089Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-12T09:19:12.089Z",
@@ -9124,7 +9136,7 @@
       "listing_published_at": "2026-07-13",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9146,9 +9158,9 @@
       "zone": "Trnitá",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-trnita-krenova/1707405388",
       "listing_published_at": "2026-07-01",
-      "listing_updated_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9170,9 +9182,9 @@
       "zone": "Staré Brno",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-stare-brno-vaclavska/1280565324",
       "listing_published_at": "2026-07-13",
-      "listing_updated_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9196,7 +9208,7 @@
       "listing_published_at": "2026-07-13",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9220,7 +9232,7 @@
       "listing_published_at": "2026-06-10",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9244,7 +9256,7 @@
       "listing_published_at": "2026-05-26",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9268,7 +9280,7 @@
       "listing_published_at": "2026-06-23",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9292,7 +9304,7 @@
       "listing_published_at": "2026-07-03",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9316,7 +9328,7 @@
       "listing_published_at": "2026-07-13",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9340,7 +9352,7 @@
       "listing_published_at": "2026-07-13",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9364,7 +9376,7 @@
       "listing_published_at": "2026-07-13",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9388,7 +9400,7 @@
       "listing_published_at": "2026-07-13",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9412,7 +9424,7 @@
       "listing_published_at": "2024-10-09",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9436,7 +9448,7 @@
       "listing_published_at": "2026-02-06",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9461,9 +9473,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9484,7 +9496,7 @@
       "listing_published_at": "2026-05-11",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9508,7 +9520,7 @@
       "listing_published_at": "2026-05-19",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9530,9 +9542,9 @@
       "zone": "Brno-střed",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-brno-stred-vlhka/80605260",
       "listing_published_at": "2026-06-19",
-      "listing_updated_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9556,7 +9568,7 @@
       "listing_published_at": "2026-06-19",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9580,7 +9592,7 @@
       "listing_published_at": "2026-06-19",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9604,7 +9616,7 @@
       "listing_published_at": "2026-06-19",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9628,7 +9640,7 @@
       "listing_published_at": "2026-06-19",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9652,7 +9664,7 @@
       "listing_published_at": "2026-07-13",
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9677,9 +9689,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9701,9 +9713,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9725,9 +9737,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9749,9 +9761,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9773,9 +9785,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9797,9 +9809,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9821,9 +9833,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9845,9 +9857,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9866,9 +9878,9 @@
       "zone": "Bystrc",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-bystrc-ondrouskova/3522490444",
       "listing_published_at": "2026-07-01",
-      "listing_updated_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9893,9 +9905,9 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9917,9 +9929,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9941,9 +9953,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -9962,9 +9974,9 @@
       "zone": "Žabovřesky",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-zabovresky-kralovopolska/3051151436",
       "listing_published_at": "2026-07-12",
-      "listing_updated_at": "2026-07-12",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9986,9 +9998,9 @@
       "zone": "Židenice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-zidenice-eimova/197976140",
       "listing_published_at": "2026-07-12",
-      "listing_updated_at": "2026-07-12",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10010,9 +10022,9 @@
       "zone": "Zábrdovice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabrdovice-koliste/694394956",
       "listing_published_at": "2026-04-29",
-      "listing_updated_at": "2026-07-12",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10034,9 +10046,9 @@
       "zone": "Žabovřesky",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabovresky-kralovopolska/3419201612",
       "listing_published_at": "2026-07-12",
-      "listing_updated_at": "2026-07-12",
+      "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10061,9 +10073,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -10085,9 +10097,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -10109,9 +10121,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -10133,9 +10145,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -10157,9 +10169,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -10181,9 +10193,9 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-13T10:35:12.497Z",
@@ -10202,9 +10214,9 @@
       "zone": "Řečkovice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-reckovice-medlanecka/2716655692",
       "listing_published_at": "2026-07-12",
-      "listing_updated_at": "2026-07-12",
+      "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
-      "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10229,13 +10241,1645 @@
       "listing_updated_at": "2026-07-12",
       "first_seen_at": "2026-07-13T10:35:12.497Z",
       "last_seen_at": "2026-07-13T10:35:12.497Z",
+      "rented_at": "2026-07-14T16:23:38.437Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
+      "price_history": [
+        {
+          "at": "2026-07-13T10:35:12.497Z",
+          "price": 29900
+        }
+      ]
+    },
+    "sr_3701661772": {
+      "id": "sr_3701661772",
+      "price": 29000,
+      "lat": 49.244659500268,
+      "lng": 16.579195857526,
+      "sqm": 96,
+      "rooms": 3,
+      "address": "Koláčkova, Řečkovice, Brno",
+      "zone": "Řečkovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-reckovice-kolackova/3701661772",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-13T10:35:12.497Z",
-          "price": 29900
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 29000
+        }
+      ]
+    },
+    "sr_710178380": {
+      "id": "sr_710178380",
+      "price": 16000,
+      "lat": 49.19948280258434,
+      "lng": 16.618840613040234,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-zabrdovice-bratislavska/710178380",
+      "listing_published_at": "2022-08-06",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 16000
+        }
+      ]
+    },
+    "sr_1054007372": {
+      "id": "sr_1054007372",
+      "price": 16900,
+      "lat": 49.1659301,
+      "lng": 16.6213202,
+      "sqm": 38,
+      "rooms": 1,
+      "address": "Jižní, Horní Heršpice, Brno",
+      "zone": "Horní Heršpice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-horni-herspice-jizni/1054007372",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 16900
+        }
+      ]
+    },
+    "sr_2631065676": {
+      "id": "sr_2631065676",
+      "price": 28500,
+      "lat": 49.2063857479124,
+      "lng": 16.6223170128152,
+      "sqm": 91,
+      "rooms": 3,
+      "address": "Jugoslávská, Černá Pole, Brno",
+      "zone": "Černá Pole",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-cerna-pole-jugoslavska/2631065676",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 28500
+        }
+      ]
+    },
+    "sr_1556275276": {
+      "id": "sr_1556275276",
+      "price": 18500,
+      "lat": 49.20802613449828,
+      "lng": 16.62381453029264,
+      "sqm": 63,
+      "rooms": 2,
+      "address": "Merhautova, Brno",
+      "zone": "Merhautova",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-merhautova/1556275276",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 18500
+        }
+      ]
+    },
+    "sr_4089634892": {
+      "id": "sr_4089634892",
+      "price": 16500,
+      "lat": 49.2481495202514,
+      "lng": 16.5715673916488,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Nachová, Řečkovice, Brno",
+      "zone": "Řečkovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-reckovice-nachova/4089634892",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 16500
+        }
+      ]
+    },
+    "sr_4203802700": {
+      "id": "sr_4203802700",
+      "price": 22500,
+      "lat": 49.2165812353,
+      "lng": 16.614619792,
+      "sqm": 47,
+      "rooms": 2,
+      "address": "třída Generála Píky, Černá Pole, Brno",
+      "zone": "Černá Pole",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-cerna-pole-trida-generala-piky/4203802700",
+      "listing_published_at": "2026-06-26",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 22500
+        }
+      ]
+    },
+    "sr_435347532": {
+      "id": "sr_435347532",
+      "price": 18500,
+      "lat": 49.1868784055748,
+      "lng": 16.6051502860928,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Nové sady, Staré Brno, Brno",
+      "zone": "Staré Brno",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-stare-brno-nove-sady/435347532",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 18500
+        }
+      ]
+    },
+    "sr_2314395724": {
+      "id": "sr_2314395724",
+      "price": 21000,
+      "lat": 49.15521282688457,
+      "lng": 16.624104189403138,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Vomáčkova, Dolní Heršpice, Brno",
+      "zone": "Dolní Heršpice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-dolni-herspice-vomackova/2314395724",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 21000
+        }
+      ]
+    },
+    "sr_2178842700": {
+      "id": "sr_2178842700",
+      "price": 32000,
+      "lat": 49.2011919324555,
+      "lng": 16.622232469052,
+      "sqm": 92,
+      "rooms": 4,
+      "address": "Hvězdová, Zábrdovice, Brno",
+      "zone": "Zábrdovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/brno-zabrdovice-hvezdova/2178842700",
+      "listing_published_at": "2026-06-01",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 32000
+        }
+      ]
+    },
+    "sr_2044911692": {
+      "id": "sr_2044911692",
+      "price": 14900,
+      "lat": 49.2354951,
+      "lng": 16.626807,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Dusíkova, Lesná, Brno",
+      "zone": "Lesná",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-lesna-dusikova/2044911692",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 14900
+        }
+      ]
+    },
+    "sr_1575149644": {
+      "id": "sr_1575149644",
+      "price": 25900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-stare-brno-vaclavska/1575149644",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 25900
+        }
+      ]
+    },
+    "sr_1189273676": {
+      "id": "sr_1189273676",
+      "price": 25900,
+      "lat": 49.1891993770649,
+      "lng": 16.6043899898101,
+      "sqm": 44,
+      "rooms": 2,
+      "address": "Hybešova, Staré Brno, Brno",
+      "zone": "Staré Brno",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-stare-brno-hybesova/1189273676",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 25900
+        }
+      ]
+    },
+    "sr_3034767436": {
+      "id": "sr_3034767436",
+      "price": 29000,
+      "lat": 49.2123847301658,
+      "lng": 16.6016021684346,
+      "sqm": 73,
+      "rooms": 3,
+      "address": "Štefánikova, Ponava, Brno",
+      "zone": "Ponava",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/brno-ponava-stefanikova/3034767436",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 29000
+        }
+      ]
+    },
+    "sr_1258479692": {
+      "id": "sr_1258479692",
+      "price": 23100,
+      "lat": 49.1967878654066,
+      "lng": 16.608378845051,
+      "sqm": 36,
+      "rooms": 2,
+      "address": "Jakubské náměstí, Brno-město, Brno",
+      "zone": "Brno-město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-brno-mesto-jakubske-namesti/1258479692",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 23100
+        }
+      ]
+    },
+    "sr_3993165900": {
+      "id": "sr_3993165900",
+      "price": 18284,
+      "lat": 49.1967878654066,
+      "lng": 16.608378845051,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Jakubské náměstí, Brno-město, Brno",
+      "zone": "Brno-město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-brno-mesto-jakubske-namesti/3993165900",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 18284
+        }
+      ]
+    },
+    "sr_4093829196": {
+      "id": "sr_4093829196",
+      "price": 13800,
+      "lat": 49.1878355545543,
+      "lng": 16.6176102868398,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Dornych, Brno",
+      "zone": "Dornych",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-dornych/4093829196",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 13800
+        }
+      ]
+    },
+    "sr_4086468684": {
+      "id": "sr_4086468684",
+      "price": 15000,
+      "lat": 49.2017087068,
+      "lng": 16.605640405,
+      "sqm": 40,
+      "rooms": 1,
+      "address": "Mezírka, Veveří, Brno",
+      "zone": "Veveří",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-veveri-mezirka/4086468684",
+      "listing_published_at": "2026-05-19",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 15000
+        }
+      ]
+    },
+    "sr_238215244": {
+      "id": "sr_238215244",
+      "price": 25900,
+      "lat": 49.1887813696907,
+      "lng": 16.5963393216484,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Václavská, Staré Brno, Brno",
+      "zone": "Staré Brno",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-stare-brno-vaclavska/238215244",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 25900
+        }
+      ]
+    },
+    "sr_3207782476": {
+      "id": "sr_3207782476",
+      "price": 15990,
+      "lat": 49.200316136,
+      "lng": 16.6082252796,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Koliště, Černá Pole, Brno",
+      "zone": "Černá Pole",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-cerna-pole-koliste/3207782476",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 15990
+        }
+      ]
+    },
+    "sr_1563615308": {
+      "id": "sr_1563615308",
+      "price": 20900,
+      "lat": 49.2123847301658,
+      "lng": 16.6016021684346,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Štefánikova, Veveří, Brno",
+      "zone": "Veveří",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-veveri-stefanikova/1563615308",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 20900
+        }
+      ]
+    },
+    "sr_939389004": {
+      "id": "sr_939389004",
+      "price": 19900,
+      "lat": 49.2161073825868,
+      "lng": 16.625253376028,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Hansmannova, Černá Pole, Brno",
+      "zone": "Černá Pole",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-cerna-pole-hansmannova/939389004",
+      "listing_published_at": "2026-06-19",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 19900
+        }
+      ]
+    },
+    "sr_1143136332": {
+      "id": "sr_1143136332",
+      "price": 11900,
+      "lat": 49.1983038978,
+      "lng": 16.6193511194,
+      "sqm": 26,
+      "rooms": 1,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabrdovice-cejl/1143136332",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 11900
+        }
+      ]
+    },
+    "sr_675471436": {
+      "id": "sr_675471436",
+      "price": 25200,
+      "lat": 49.22551858,
+      "lng": 16.5916461271,
+      "sqm": 70,
+      "rooms": 3,
+      "address": "Bulharská, Královo Pole, Brno",
+      "zone": "Královo Pole",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/brno-kralovo-pole-bulharska/675471436",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 25200
+        }
+      ]
+    },
+    "sr_1657139276": {
+      "id": "sr_1657139276",
+      "price": 21900,
+      "lat": 49.2123850022,
+      "lng": 16.5755645313,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Bráfova, Žabovřesky, Brno",
+      "zone": "Žabovřesky",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-zabovresky-brafova/1657139276",
+      "listing_published_at": "2026-06-30",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 21900
+        }
+      ]
+    },
+    "sr_2893628236": {
+      "id": "sr_2893628236",
+      "price": 24900,
+      "lat": 49.2096017647327,
+      "lng": 16.605061579182,
+      "sqm": 91,
+      "rooms": 2,
+      "address": "Skřivanova, Ponava, Brno",
+      "zone": "Ponava",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-ponava-skrivanova/2893628236",
+      "listing_published_at": "2026-03-19",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 24900
+        }
+      ]
+    },
+    "sr_3763642444": {
+      "id": "sr_3763642444",
+      "price": 20990,
+      "lat": 49.2058233302,
+      "lng": 16.6726516385,
+      "sqm": 61,
+      "rooms": 2,
+      "address": "Houbalova, Líšeň, Brno",
+      "zone": "Líšeň",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-lisen-houbalova/3763642444",
+      "listing_published_at": "2026-05-07",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 20990
+        }
+      ]
+    },
+    "sr_3807674444": {
+      "id": "sr_3807674444",
+      "price": 28000,
+      "lat": 49.1912296344627,
+      "lng": 16.5775193302528,
+      "sqm": 66,
+      "rooms": 3,
+      "address": "Hlinky, Pisárky, Brno",
+      "zone": "Pisárky",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-pisarky-hlinky/3807674444",
+      "listing_published_at": "2026-06-11",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 28000
+        }
+      ]
+    },
+    "sr_1332928588": {
+      "id": "sr_1332928588",
+      "price": 29000,
+      "lat": 49.1924205826241,
+      "lng": 16.650054327157417,
+      "sqm": 90,
+      "rooms": 3,
+      "address": "Škroupova, Židenice, Brno",
+      "zone": "Židenice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-zidenice-skroupova/1332928588",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 29000
+        }
+      ]
+    },
+    "sr_1482874956": {
+      "id": "sr_1482874956",
+      "price": 23000,
+      "lat": 49.193598,
+      "lng": 16.608153,
+      "sqm": 69,
+      "rooms": 2,
+      "address": "Panská, Brno-město, Brno",
+      "zone": "Brno-město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-brno-mesto-panska/1482874956",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 23000
+        }
+      ]
+    },
+    "sr_4167229516": {
+      "id": "sr_4167229516",
+      "price": 15490,
+      "lat": 49.1996388883815,
+      "lng": 16.6200073575448,
+      "sqm": 37,
+      "rooms": 1,
+      "address": "Bratislavská, Zábrdovice, Brno",
+      "zone": "Zábrdovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabrdovice-bratislavska/4167229516",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 15490
+        }
+      ]
+    },
+    "sr_778231884": {
+      "id": "sr_778231884",
+      "price": 16500,
+      "lat": 49.212227,
+      "lng": 16.634899,
+      "sqm": 36,
+      "rooms": 1,
+      "address": "Dukelská třída, Husovice, Brno",
+      "zone": "Husovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-husovice-dukelska-trida/778231884",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 16500
+        }
+      ]
+    },
+    "sr_3580026956": {
+      "id": "sr_3580026956",
+      "price": 14000,
+      "lat": 49.20450071234355,
+      "lng": 16.67392770908243,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Houbalova, Líšeň, Brno",
+      "zone": "Líšeň",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-lisen-houbalova/3580026956",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 14000
+        }
+      ]
+    },
+    "sr_1882906700": {
+      "id": "sr_1882906700",
+      "price": 9900,
+      "lat": 49.1902418708485,
+      "lng": 16.5361396400622,
+      "sqm": 20,
+      "rooms": 1,
+      "address": "Řadová, Kohoutovice, Brno",
+      "zone": "Kohoutovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-kohoutovice-radova/1882906700",
+      "listing_published_at": "2026-07-03",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 9900
+        }
+      ]
+    },
+    "sr_540729420": {
+      "id": "sr_540729420",
+      "price": 22500,
+      "lat": 49.2109704392917,
+      "lng": 16.587750259121,
+      "sqm": 75,
+      "rooms": 2,
+      "address": "Tábor, Žabovřesky, Brno",
+      "zone": "Žabovřesky",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-zabovresky-tabor/540729420",
+      "listing_published_at": "2026-07-03",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 22500
+        }
+      ]
+    },
+    "sr_1469309004": {
+      "id": "sr_1469309004",
+      "price": 17000,
+      "lat": 49.1963,
+      "lng": 16.6018,
+      "sqm": 45,
+      "rooms": 1,
+      "address": "Údolní, Brno-město, Brno",
+      "zone": "Brno-město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-brno-mesto-udolni/1469309004",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 17000
+        }
+      ]
+    },
+    "sr_3900956748": {
+      "id": "sr_3900956748",
+      "price": 24100,
+      "lat": 49.2002000053941,
+      "lng": 16.6160565846595,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Příční, Zábrdovice, Brno",
+      "zone": "Zábrdovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-zabrdovice-pricni/3900956748",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 24100
+        }
+      ]
+    },
+    "sr_778760268": {
+      "id": "sr_778760268",
+      "price": 27000,
+      "lat": 49.1997471598,
+      "lng": 16.6044107662,
+      "sqm": 86,
+      "rooms": 3,
+      "address": "Kounicova, Veveří, Brno",
+      "zone": "Veveří",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/brno-veveri-kounicova/778760268",
+      "listing_published_at": "2026-06-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 27000
+        }
+      ]
+    },
+    "sr_2441338956": {
+      "id": "sr_2441338956",
+      "price": 16990,
+      "lat": 49.19929988564558,
+      "lng": 16.624067946252282,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabrdovice-cejl/2441338956",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 16990
+        }
+      ]
+    },
+    "sr_3783516236": {
+      "id": "sr_3783516236",
+      "price": 27000,
+      "lat": 49.270479948826,
+      "lng": 16.5941168382103,
+      "sqm": 74,
+      "rooms": 3,
+      "address": "Kleštínek, Jehnice, Brno",
+      "zone": "Jehnice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-jehnice-klestinek/3783516236",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 27000
+        }
+      ]
+    },
+    "sr_92528716": {
+      "id": "sr_92528716",
+      "price": 8295,
+      "lat": 49.19119685576783,
+      "lng": 16.616953863129666,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Rumiště, Trnitá, Brno",
+      "zone": "Trnitá",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-trnita-rumiste/92528716",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 8295
+        }
+      ]
+    },
+    "sr_3987988556": {
+      "id": "sr_3987988556",
+      "price": 18500,
+      "lat": 49.1878355545543,
+      "lng": 16.6176102868398,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Dornych, Brno",
+      "zone": "Dornych",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-dornych/3987988556",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 18500
+        }
+      ]
+    },
+    "sr_4221821004": {
+      "id": "sr_4221821004",
+      "price": 11000,
+      "lat": 49.1903420793,
+      "lng": 16.629179693,
+      "sqm": 13,
+      "rooms": 1,
+      "address": "Zvěřinova, Černovice, Brno",
+      "zone": "Černovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-cernovice-zverinova/4221821004",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 11000
+        }
+      ]
+    },
+    "sr_3097747532": {
+      "id": "sr_3097747532",
+      "price": 7500,
+      "lat": 49.1755002116513,
+      "lng": 16.5252230626289,
+      "sqm": 148,
+      "rooms": null,
+      "address": "Bosonohy, Brno",
+      "zone": "Bosonohy",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/Pokoj/brno-bosonohy/3097747532",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 7500
+        }
+      ]
+    },
+    "sr_10739788": {
+      "id": "sr_10739788",
+      "price": 17000,
+      "lat": 49.2054510175,
+      "lng": 16.6172096531,
+      "sqm": 43,
+      "rooms": 1,
+      "address": "Helfertova, Černá Pole, Brno",
+      "zone": "Černá Pole",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-cerna-pole-helfertova/10739788",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 17000
+        }
+      ]
+    },
+    "sr_2980307020": {
+      "id": "sr_2980307020",
+      "price": 10900,
+      "lat": 49.2162154827011,
+      "lng": 16.4978572533102,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Chudčická, Žebětín, Brno",
+      "zone": "Žebětín",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zebetin-chudcicka/2980307020",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 10900
+        }
+      ]
+    },
+    "sr_1990451276": {
+      "id": "sr_1990451276",
+      "price": 34000,
+      "lat": 49.21837984308131,
+      "lng": 16.61715890029512,
+      "sqm": 68,
+      "rooms": 2,
+      "address": "třída Generála Píky, Brno",
+      "zone": "třída Generála Píky",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-trida-generala-piky/1990451276",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 34000
+        }
+      ]
+    },
+    "sr_1020518476": {
+      "id": "sr_1020518476",
+      "price": 17500,
+      "lat": 49.2228173516396,
+      "lng": 16.5979607475829,
+      "sqm": 38,
+      "rooms": 2,
+      "address": "Rostislavovo náměstí, Královo Pole, Brno",
+      "zone": "Královo Pole",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-kralovo-pole-rostislavovo-namesti/1020518476",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 17500
+        }
+      ]
+    },
+    "sr_3084116044": {
+      "id": "sr_3084116044",
+      "price": 14500,
+      "lat": 49.1700482434565,
+      "lng": 16.5724899892622,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Okrouhlá, Bohunice, Brno",
+      "zone": "Bohunice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-bohunice-okrouhla/3084116044",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 14500
+        }
+      ]
+    },
+    "sr_2210652236": {
+      "id": "sr_2210652236",
+      "price": 31900,
+      "lat": 49.1962951776602,
+      "lng": 16.6070934536301,
+      "sqm": 82,
+      "rooms": 3,
+      "address": "Jakubská, Brno-město, Brno",
+      "zone": "Brno-město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/brno-brno-mesto-jakubska/2210652236",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 31900
+        }
+      ]
+    },
+    "sr_4056145996": {
+      "id": "sr_4056145996",
+      "price": 28000,
+      "lat": 49.1962951776602,
+      "lng": 16.6070934536301,
+      "sqm": 69,
+      "rooms": 2,
+      "address": "Jakubská, Brno-město, Brno",
+      "zone": "Brno-město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-brno-mesto-jakubska/4056145996",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 28000
+        }
+      ]
+    },
+    "sr_2009325644": {
+      "id": "sr_2009325644",
+      "price": 28000,
+      "lat": 49.1962951776602,
+      "lng": 16.6070934536301,
+      "sqm": 67,
+      "rooms": 2,
+      "address": "Jakubská, Brno-město, Brno",
+      "zone": "Brno-město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-brno-mesto-jakubska/2009325644",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 28000
+        }
+      ]
+    },
+    "sr_3572752460": {
+      "id": "sr_3572752460",
+      "price": 13500,
+      "lat": 49.199,
+      "lng": 16.6237,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabrdovice-cejl/3572752460",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 13500
+        }
+      ]
+    },
+    "sr_636739660": {
+      "id": "sr_636739660",
+      "price": 15000,
+      "lat": 49.22981595879164,
+      "lng": 16.5799535387371,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Purkyňova, Brno",
+      "zone": "Purkyňova",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-purkynova/636739660",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 15000
+        }
+      ]
+    },
+    "sr_3689144396": {
+      "id": "sr_3689144396",
+      "price": 15869.31,
+      "lat": 49.1942253,
+      "lng": 16.6180256,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Vlhká, Zábrdovice, Brno",
+      "zone": "Zábrdovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabrdovice-vlhka/3689144396",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 15869.31
+        }
+      ]
+    },
+    "sr_1021567052": {
+      "id": "sr_1021567052",
+      "price": 26900,
+      "lat": 49.206673252781,
+      "lng": 16.6169537390682,
+      "sqm": 78,
+      "rooms": 2,
+      "address": "Černopolní, Černá Pole, Brno",
+      "zone": "Černá Pole",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-cerna-pole-cernopolni/1021567052",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 26900
+        }
+      ]
+    },
+    "sr_2967724108": {
+      "id": "sr_2967724108",
+      "price": 20000,
+      "lat": 49.1726528830676,
+      "lng": 16.6909435540787,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Bučkova, Brno",
+      "zone": "Bučkova",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-buckova/2967724108",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 20000
+        }
+      ]
+    },
+    "sr_2447630412": {
+      "id": "sr_2447630412",
+      "price": 20500,
+      "lat": 49.2260551737068,
+      "lng": 16.6285012459634,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Arbesova, Lesná, Brno",
+      "zone": "Lesná",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-lesna-arbesova/2447630412",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 20500
+        }
+      ]
+    },
+    "sr_1634328652": {
+      "id": "sr_1634328652",
+      "price": 12500,
+      "lat": 49.22283238753345,
+      "lng": 16.62665865394994,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Halasovo náměstí, Lesná, Brno",
+      "zone": "Lesná",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-lesna-halasovo-namesti/1634328652",
+      "listing_published_at": "2026-07-03",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 12500
+        }
+      ]
+    },
+    "sr_1293148236": {
+      "id": "sr_1293148236",
+      "price": 22000,
+      "lat": 49.2158165734732,
+      "lng": 16.6029440650344,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "U Červeného mlýna, Ponava, Brno",
+      "zone": "Ponava",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-ponava-u-cerveneho-mlyna/1293148236",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 22000
+        }
+      ]
+    },
+    "sr_370401356": {
+      "id": "sr_370401356",
+      "price": 23000,
+      "lat": 49.1972757582543,
+      "lng": 16.6633201585571,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Líšeňská, Brno",
+      "zone": "Líšeňská",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-lisenska/370401356",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 23000
+        }
+      ]
+    },
+    "sr_2399395916": {
+      "id": "sr_2399395916",
+      "price": 17500,
+      "lat": 49.2059107864,
+      "lng": 16.6593501268,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Pálavské náměstí, Židenice, Brno",
+      "zone": "Židenice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/brno-zidenice-palavske-namesti/2399395916",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 17500
+        }
+      ]
+    },
+    "sr_3808682060": {
+      "id": "sr_3808682060",
+      "price": 26900,
+      "lat": 49.206673252781,
+      "lng": 16.6169537390682,
+      "sqm": 78,
+      "rooms": 2,
+      "address": "Černopolní, Černá Pole, Brno",
+      "zone": "Černá Pole",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/brno-cerna-pole-cernopolni/3808682060",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 26900
+        }
+      ]
+    },
+    "sr_2763690060": {
+      "id": "sr_2763690060",
+      "price": 16500,
+      "lat": 49.1866463363184,
+      "lng": 16.6142929485257,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Trnitá, Trnitá, Brno",
+      "zone": "Trnitá",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-trnita-trnita/2763690060",
+      "listing_published_at": "2026-05-11",
+      "listing_updated_at": "2026-07-14",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 16500
+        }
+      ]
+    },
+    "sr_466415692": {
+      "id": "sr_466415692",
+      "price": 15000,
+      "lat": 49.2087220978,
+      "lng": 16.6123549528,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Fišova, Černá Pole, Brno",
+      "zone": "Černá Pole",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-cerna-pole-fisova/466415692",
+      "listing_published_at": "2026-06-22",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 15000
+        }
+      ]
+    },
+    "sr_157544524": {
+      "id": "sr_157544524",
+      "price": 14000,
+      "lat": 49.2015084684757,
+      "lng": 16.623513545168,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Spolková, Zábrdovice, Brno",
+      "zone": "Zábrdovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabrdovice-spolkova/157544524",
+      "listing_published_at": "2026-06-22",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 14000
+        }
+      ]
+    },
+    "sr_2889080908": {
+      "id": "sr_2889080908",
+      "price": 12990,
+      "lat": 49.19929988564558,
+      "lng": 16.624067946252282,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Cejl, Zábrdovice, Brno",
+      "zone": "Zábrdovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/brno-zabrdovice-cejl/2889080908",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 12990
+        }
+      ]
+    },
+    "sr_3274956876": {
+      "id": "sr_3274956876",
+      "price": 12990,
+      "lat": 49.19102535143862,
+      "lng": 16.60185219510983,
+      "sqm": 43,
+      "rooms": 1,
+      "address": "Anenská, Staré Brno, Brno",
+      "zone": "Staré Brno",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/brno-stare-brno-anenska/3274956876",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-13",
+      "first_seen_at": "2026-07-14T16:23:38.437Z",
+      "last_seen_at": "2026-07-14T16:23:38.437Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-14T16:23:38.437Z",
+          "price": 12990
         }
       ]
     }
