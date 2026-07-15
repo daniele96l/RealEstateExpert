@@ -1,5 +1,27 @@
 [
   {
+    "id": "sr_1464762444",
+    "portal": "sreality",
+    "detected_at": "2026-07-15T08:26:40.332Z",
+    "presumed_rented_at": "2026-07-15T08:26:40.332Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-14T16:23:55.552Z",
+    "days_on_market": 3,
+    "price": 13000,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Veselí nad Lužnicí",
+    "zone": "Veselí nad Lužnicí",
+    "lat": 49.18429539666279,
+    "lng": 14.69733561608593,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 13000
+      }
+    ]
+  },
+  {
     "id": "sr_146059340",
     "portal": "sreality",
     "detected_at": "2026-07-14T16:23:55.552Z",

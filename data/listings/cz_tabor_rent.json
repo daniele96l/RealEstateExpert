@@ -1,13 +1,32 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-07-14T16:23:55.552Z",
+  "fetched_at": "2026-07-15T08:26:40.332Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_576839756",
+      "title": "Pronájem bytu 1+1 36 m²",
+      "price": 8800,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/tabor-tabor-nachodska/576839756",
+      "lat": 49.424789008804,
+      "lng": 14.6561642394795,
+      "sqm": 36,
+      "rooms": 1,
+      "address": "Náchodská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-15"
+    },
     {
       "id": "sr_2364727372",
       "title": "Pronájem bytu 1+1 42 m²",
@@ -215,7 +234,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-08",
-      "listing_updated_at": "2026-07-08"
+      "listing_updated_at": "2026-07-15"
     },
     {
       "id": "sr_1845485644",
@@ -519,7 +538,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-06-18",
-      "listing_updated_at": "2026-06-26"
+      "listing_updated_at": "2026-07-14"
     },
     {
       "id": "sr_2819616844",
@@ -690,7 +709,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-06-01",
-      "listing_updated_at": "2026-06-05"
+      "listing_updated_at": "2026-07-14"
     },
     {
       "id": "sr_4288864332",
@@ -748,25 +767,6 @@
       "needs_renovation": null,
       "listing_published_at": "2026-06-01",
       "listing_updated_at": "2026-06-15"
-    },
-    {
-      "id": "sr_1464762444",
-      "title": "Pronájem bytu 2+1 56 m²",
-      "price": 13000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/veseli-nad-luznici/1464762444",
-      "lat": 49.18429539666279,
-      "lng": 14.69733561608593,
-      "sqm": 56,
-      "rooms": 2,
-      "address": "Veselí nad Lužnicí",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-01",
-      "listing_updated_at": "2026-06-26"
     },
     {
       "id": "sr_4113137740",
