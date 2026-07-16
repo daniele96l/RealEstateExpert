@@ -1,13 +1,108 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-07-15T08:26:40.332Z",
+  "fetched_at": "2026-07-16T08:26:47.738Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3780608076",
+      "title": "Pronájem bytu 3+1 64 m²",
+      "price": 13500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/tabor-tabor-brigadniku/3780608076",
+      "lat": 49.4191110117954,
+      "lng": 14.6789719830554,
+      "sqm": 64,
+      "rooms": 3,
+      "address": "Brigádníků, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-06-08",
+      "listing_updated_at": "2026-07-16"
+    },
+    {
+      "id": "sr_1444839500",
+      "title": "Pronájem bytu 2+1 57 m²",
+      "price": 11500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/tabor-tabor-jesenskeho/1444839500",
+      "lat": 49.4163911,
+      "lng": 14.6809281,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Jesenského, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-06-01",
+      "listing_updated_at": "2026-07-16"
+    },
+    {
+      "id": "sr_1508175948",
+      "title": "Pronájem bytu 1+kk 23 m²",
+      "price": 9000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/tabor-tabor-csl-armady/1508175948",
+      "lat": 49.4214512483114,
+      "lng": 14.6599935132356,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Čsl. armády, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-01",
+      "listing_updated_at": "2026-07-16"
+    },
+    {
+      "id": "sr_2943213644",
+      "title": "Pronájem bytu 3+kk 51 m²",
+      "price": 12000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/tabor-tabor-belehradska/2943213644",
+      "lat": 49.3886370883576,
+      "lng": 14.6863547008224,
+      "sqm": 51,
+      "rooms": 3,
+      "address": "Bělehradská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-09",
+      "listing_updated_at": "2026-07-16"
+    },
+    {
+      "id": "sr_3216105548",
+      "title": "Pronájem bytu 1+1 46 m²",
+      "price": 11000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/bechyne-bechyne-na-libusi/3216105548",
+      "lat": 49.30008231,
+      "lng": 14.480724185,
+      "sqm": 46,
+      "rooms": 1,
+      "address": "Na Libuši, Bechyně, Bechyně",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-15"
+    },
     {
       "id": "sr_576839756",
       "title": "Pronájem bytu 1+1 36 m²",
@@ -63,7 +158,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-14",
-      "listing_updated_at": "2026-07-14"
+      "listing_updated_at": "2026-07-15"
     },
     {
       "id": "sr_1192484940",
@@ -133,25 +228,6 @@
       "sqm": 20,
       "rooms": 1,
       "address": "Šafaříkova, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-09"
-    },
-    {
-      "id": "sr_2943213644",
-      "title": "Pronájem bytu 3+kk 51 m²",
-      "price": 12000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/tabor-tabor-belehradska/2943213644",
-      "lat": 49.3886370883576,
-      "lng": 14.6863547008224,
-      "sqm": 51,
-      "rooms": 3,
-      "address": "Bělehradská, Tábor, Tábor",
       "property_type": "flat",
       "property_type_label": "Byt",
       "condition_status": null,
@@ -275,6 +351,25 @@
       "listing_updated_at": "2026-07-10"
     },
     {
+      "id": "sr_1055449164",
+      "title": "Pronájem bytu 2+1 54 m²",
+      "price": 10900,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/veseli-nad-luznici-veseli-nad-luznici-ii-nadrazni/1055449164",
+      "lat": 49.1924352,
+      "lng": 14.7159197,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Nádražní, Veselí nad Lužnicí II, Veselí nad Lužnicí",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-07",
+      "listing_updated_at": "2026-07-07"
+    },
+    {
       "id": "sr_1915281484",
       "title": "Pronájem bytu 2+kk 42 m²",
       "price": 11000,
@@ -310,7 +405,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-06",
-      "listing_updated_at": "2026-07-07"
+      "listing_updated_at": "2026-07-15"
     },
     {
       "id": "sr_299622476",
@@ -367,7 +462,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-02",
-      "listing_updated_at": "2026-07-02"
+      "listing_updated_at": "2026-07-16"
     },
     {
       "id": "sr_1228660812",
@@ -425,25 +520,6 @@
       "needs_renovation": null,
       "listing_published_at": "2026-07-01",
       "listing_updated_at": "2026-07-01"
-    },
-    {
-      "id": "sr_1508175948",
-      "title": "Pronájem bytu 1+kk 23 m²",
-      "price": 9000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/tabor-tabor-csl-armady/1508175948",
-      "lat": 49.4214512483114,
-      "lng": 14.6599935132356,
-      "sqm": 23,
-      "rooms": 1,
-      "address": "Čsl. armády, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-01",
-      "listing_updated_at": "2026-07-04"
     },
     {
       "id": "sr_551940172",
@@ -617,25 +693,6 @@
       "listing_updated_at": "2026-06-13"
     },
     {
-      "id": "sr_1675919436",
-      "title": "Pronájem bytu 1+kk 22 m²",
-      "price": 7300,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/tabor-tabor-jaselska/1675919436",
-      "lat": 49.421696520601,
-      "lng": 14.650361130438,
-      "sqm": 22,
-      "rooms": 1,
-      "address": "Jaselská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-11",
-      "listing_updated_at": "2026-07-09"
-    },
-    {
       "id": "sr_1306898508",
       "title": "Pronájem bytu 2+kk 90 m²",
       "price": 15000,
@@ -674,25 +731,6 @@
       "listing_updated_at": "2026-07-07"
     },
     {
-      "id": "sr_3780608076",
-      "title": "Pronájem bytu 3+1 64 m²",
-      "price": 13500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/tabor-tabor-brigadniku/3780608076",
-      "lat": 49.4191110117954,
-      "lng": 14.6789719830554,
-      "sqm": 64,
-      "rooms": 3,
-      "address": "Brigádníků, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-08",
-      "listing_updated_at": "2026-06-08"
-    },
-    {
       "id": "sr_2070839372",
       "title": "Pronájem bytu 2+1 80 m²",
       "price": 14000,
@@ -728,7 +766,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-14",
-      "listing_updated_at": "2026-07-14"
+      "listing_updated_at": "2026-07-15"
     },
     {
       "id": "sr_3251404876",
@@ -748,25 +786,6 @@
       "needs_renovation": null,
       "listing_published_at": "2026-06-03",
       "listing_updated_at": "2026-06-03"
-    },
-    {
-      "id": "sr_1444839500",
-      "title": "Pronájem bytu 2+1 57 m²",
-      "price": 11500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/tabor-tabor-jesenskeho/1444839500",
-      "lat": 49.4163911,
-      "lng": 14.6809281,
-      "sqm": 57,
-      "rooms": 2,
-      "address": "Jesenského, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-01",
-      "listing_updated_at": "2026-06-15"
     },
     {
       "id": "sr_4113137740",

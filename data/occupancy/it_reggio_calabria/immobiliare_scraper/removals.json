@@ -1,5 +1,115 @@
 [
   {
+    "id": "im_130713520",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-16T08:25:04.151Z",
+    "presumed_rented_at": "2026-07-16T08:25:04.151Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-15T08:24:48.139Z",
+    "days_on_market": 8,
+    "price": 590,
+    "sqm": 72,
+    "rooms": 3,
+    "address": "Via San Francesco di Paola, 118",
+    "zone": "Terreti, Ortì",
+    "lat": 38.10152817,
+    "lng": 15.63679028,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 590
+      }
+    ]
+  },
+  {
+    "id": "im_130346420",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-16T08:25:04.151Z",
+    "presumed_rented_at": "2026-07-16T08:25:04.151Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-15T08:24:48.139Z",
+    "days_on_market": 8,
+    "price": 300,
+    "sqm": 90,
+    "rooms": 2,
+    "address": "Via Cortese, 20",
+    "zone": "Centro Storico, Pineta Zerbi",
+    "lat": 38.1053,
+    "lng": 15.6512,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 300
+      }
+    ]
+  },
+  {
+    "id": "im_130152748",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-16T08:25:04.151Z",
+    "presumed_rented_at": "2026-07-16T08:25:04.151Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-15T08:24:48.139Z",
+    "days_on_market": 8,
+    "price": 750,
+    "sqm": 91,
+    "rooms": 3,
+    "address": "Via Trento, 1",
+    "zone": "Centro Storico, Pineta Zerbi",
+    "lat": 38.1122,
+    "lng": 15.6514,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 750
+      }
+    ]
+  },
+  {
+    "id": "im_130040994",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-16T08:25:04.151Z",
+    "presumed_rented_at": "2026-07-16T08:25:04.151Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-15T08:24:48.139Z",
+    "days_on_market": 8,
+    "price": 380,
+    "sqm": 60,
+    "rooms": 2,
+    "address": "Via dei Monti Traversa 1, 15",
+    "zone": "Ravagnese, Gallina, Armo",
+    "lat": 38.17520142,
+    "lng": 15.6515398,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 380
+      }
+    ]
+  },
+  {
+    "id": "im_110940589",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-16T08:25:04.151Z",
+    "presumed_rented_at": "2026-07-16T08:25:04.151Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-15T08:24:48.139Z",
+    "days_on_market": 8,
+    "price": 2000,
+    "sqm": 220,
+    "rooms": 5,
+    "address": "Via Mattatoio, 130",
+    "zone": "San Gregorio, Pellaro",
+    "lat": 38.02381134,
+    "lng": 15.64525986,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 2000
+      }
+    ]
+  },
+  {
     "id": "im_129026092",
     "portal": "immobiliare_scraper",
     "detected_at": "2026-07-14T16:22:28.856Z",

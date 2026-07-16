@@ -2,8 +2,8 @@
   "city": "Prague",
   "market": "cz",
   "portal": "sreality",
-  "updated_at": "2026-07-15T08:28:03.541Z",
-  "snapshot_count": 3,
+  "updated_at": "2026-07-16T08:28:09.639Z",
+  "snapshot_count": 4,
   "last_provider": "sreality",
   "listings": {
     "sr_3939295308": {
@@ -257,15 +257,15 @@
       "zone": "Vinohrady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-vinohrady-rimska/2063827020",
       "listing_published_at": "2026-06-03",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 120000
         }
       ]
@@ -329,15 +329,15 @@
       "zone": "Horní Měcholupy",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-horni-mecholupy-bolevecka/1741860940",
       "listing_published_at": "2026-04-15",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 18000
         }
       ]
@@ -356,9 +356,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-12T19:39:17.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-12T19:39:17.541Z",
@@ -545,9 +545,9 @@
       "zone": "Poděbradská",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-podebradska/1362944076",
       "listing_published_at": "2026-07-11",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -569,9 +569,9 @@
       "zone": "Smíchov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-smichov-bieblova/258404428",
       "listing_published_at": "2026-06-28",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -593,9 +593,9 @@
       "zone": "Nusle",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-nusle-k-sidlisti/2273505356",
       "listing_published_at": "2026-06-24",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -617,9 +617,9 @@
       "zone": "Vinohrady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vinohrady-korunni/2305130572",
       "listing_published_at": "2026-06-10",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -644,9 +644,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -665,9 +665,9 @@
       "zone": "Hostivař",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-hostivar-kozmikova/24805452",
       "listing_published_at": "2026-05-27",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -689,9 +689,9 @@
       "zone": "Střešovice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-stresovice-nad-hradnim-vodojemem/2803142732",
       "listing_published_at": "2026-05-25",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -713,9 +713,9 @@
       "zone": "Michle",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-michle-michelska/2618990668",
       "listing_published_at": "2026-04-23",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -737,9 +737,9 @@
       "zone": "Žižkov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-zizkov-biskupcova/2033299532",
       "listing_published_at": "2026-04-15",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -761,9 +761,9 @@
       "zone": "Černý Most",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-cerny-most-arnosta-valenty/1600471884",
       "listing_published_at": "2026-04-01",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -809,9 +809,9 @@
       "zone": "Chodov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-chodov-medkova/48947276",
       "listing_published_at": "2026-07-03",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -833,9 +833,9 @@
       "zone": "Smíchov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/5+kk/praha-smichov-u-divcich-hradu/2225991756",
       "listing_published_at": "2026-06-19",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -857,9 +857,9 @@
       "zone": "Smíchov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/Atypick%C3%BD/praha-smichov-gabrielska/1389137996",
       "listing_published_at": "2026-05-16",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -881,9 +881,9 @@
       "zone": "Žižkov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-zizkov-biskupcova/3836579916",
       "listing_published_at": "2026-05-15",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -905,9 +905,9 @@
       "zone": "Modřany",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-modrany-ceskoslovenskeho-exilu/3428683852",
       "listing_published_at": "2026-05-14",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -929,9 +929,9 @@
       "zone": "Josefov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-josefov-maiselova/3945373772",
       "listing_published_at": "2026-04-23",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -953,9 +953,9 @@
       "zone": "Havlíčkovy sady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-havlickovy-sady/2592190540",
       "listing_published_at": "2026-04-16",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -977,9 +977,9 @@
       "zone": "Krč",
       "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-krc-hudeckova/417443916",
       "listing_published_at": "2026-04-16",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1001,9 +1001,9 @@
       "zone": "Vinohrady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-vinohrady-laubova/1241690188",
       "listing_published_at": "2026-04-15",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1025,9 +1025,9 @@
       "zone": "Strašnice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-strasnice-zverinova/3926044748",
       "listing_published_at": "2026-04-15",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1049,9 +1049,9 @@
       "zone": "Nusle",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-nusle-k-sidlisti/2481762380",
       "listing_published_at": "2026-04-13",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1073,9 +1073,9 @@
       "zone": "Josefov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-josefov-maiselova/2318680908",
       "listing_published_at": "2026-04-03",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1316,9 +1316,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-12T19:39:17.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-12T19:39:17.541Z",
@@ -1916,9 +1916,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-12T19:39:17.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-12T19:39:17.541Z",
@@ -2009,15 +2009,15 @@
       "zone": "Břevnov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-brevnov-radimova/729407564",
       "listing_published_at": "2026-07-03",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 80000
         }
       ]
@@ -2324,9 +2324,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -2708,9 +2708,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -4508,9 +4508,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -5273,15 +5273,15 @@
       "zone": "Libeň",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-liben-u-stirky/2101407820",
       "listing_published_at": "2026-06-25",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 36000
         }
       ]
@@ -5345,9 +5345,9 @@
       "zone": "Košíře",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-kosire-vrchlickeho/1296883788",
       "listing_published_at": "2026-07-10",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -5369,9 +5369,9 @@
       "zone": "Vinohrady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/Pokoj/praha-vinohrady-americka/1865781324",
       "listing_published_at": "2026-05-25",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -5393,9 +5393,9 @@
       "zone": "Vinohrady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vinohrady-rumunska/2989854796",
       "listing_published_at": "2026-05-24",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -5564,9 +5564,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-12T19:39:17.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-12T19:39:17.541Z",
@@ -5612,9 +5612,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -5849,15 +5849,15 @@
       "zone": "Hradčany",
       "url": "https://www.sreality.cz/detail/pronajem/byt/5+1/praha-hradcany-na-baste-sv-ludmily/289443916",
       "listing_published_at": "2026-05-20",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 85000
         }
       ]
@@ -5945,15 +5945,15 @@
       "zone": "Nusle",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-nusle-jaromirova/2559438924",
       "listing_published_at": "2026-06-20",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 25000
         }
       ]
@@ -5969,15 +5969,15 @@
       "zone": "Nusle",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-nusle-jaromirova/965603404",
       "listing_published_at": "2026-06-20",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 20000
         }
       ]
@@ -5993,15 +5993,15 @@
       "zone": "Nusle",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-nusle-jaromirova/1502474316",
       "listing_published_at": "2026-06-20",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 19000
         }
       ]
@@ -6017,15 +6017,15 @@
       "zone": "Smíchov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-smichov-graficka/2844651596",
       "listing_published_at": "2026-06-20",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 24500
         }
       ]
@@ -6065,15 +6065,15 @@
       "zone": "Nusle",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-nusle-jaromirova/1793934156",
       "listing_published_at": "2026-03-24",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 24000
         }
       ]
@@ -6089,15 +6089,15 @@
       "zone": "Smíchov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-smichov-graficka/3494527820",
       "listing_published_at": "2026-03-18",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 23500
         }
       ]
@@ -6164,9 +6164,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -6308,9 +6308,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-12T19:39:17.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 4,
       "price_history": [
         {
           "at": "2026-07-12T19:39:17.541Z",
@@ -6449,9 +6449,9 @@
       "zone": "Malá Strana",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-mala-strana-snemovni/2052255820",
       "listing_published_at": "2026-06-23",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6521,15 +6521,15 @@
       "zone": "Nové Město",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-nove-mesto-halkova/4148621388",
       "listing_published_at": "2026-06-28",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 19000
         }
       ]
@@ -6545,15 +6545,15 @@
       "zone": "Nové Město",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-nove-mesto-krakovska/3977834572",
       "listing_published_at": "2026-06-16",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 29500
         }
       ]
@@ -6569,15 +6569,15 @@
       "zone": "Nové Město",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-nove-mesto-opletalova/2895987532",
       "listing_published_at": "2026-03-25",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 27000
         }
       ]
@@ -6617,15 +6617,15 @@
       "zone": "Staré Město",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-stare-mesto-u-milosrdnych/3619365452",
       "listing_published_at": "2025-01-16",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 26000
         }
       ]
@@ -6641,15 +6641,15 @@
       "zone": "Libeň",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-liben-kovanecka/2518343756",
       "listing_published_at": "2026-07-03",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 17000
         }
       ]
@@ -6665,15 +6665,15 @@
       "zone": "Žižkov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/praha-zizkov-rohacova/286322764",
       "listing_published_at": "2026-06-25",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 20000
         }
       ]
@@ -6689,15 +6689,15 @@
       "zone": "Nové Město",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-nove-mesto-krakovska/3790139468",
       "listing_published_at": "2026-06-16",
-      "listing_updated_at": "2026-07-12",
-      "first_seen_at": "2026-07-12T19:39:17.541Z",
-      "last_seen_at": "2026-07-12T19:39:17.541Z",
-      "rented_at": "2026-07-14T16:25:04.505Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-12T19:39:17.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 36000
         }
       ]
@@ -6809,9 +6809,9 @@
       "zone": "Střešovice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/praha-stresovice-na-orechovce/2327044172",
       "listing_published_at": "2026-07-13",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-14T16:25:04.505Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6953,9 +6953,9 @@
       "zone": "Smíchov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-smichov-graficka/1604509772",
       "listing_published_at": "2026-07-14",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-14T16:25:04.505Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -8873,15 +8873,15 @@
       "zone": "Karlín",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-karlin-rohanske-nabrezi/444891212",
       "listing_published_at": "2026-06-11",
-      "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:25:04.505Z",
-      "last_seen_at": "2026-07-14T16:25:04.505Z",
-      "rented_at": "2026-07-15T08:28:03.541Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-14T16:25:04.505Z",
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 29000
         }
       ]
@@ -9332,9 +9332,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-14T16:25:04.505Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 2,
       "price_history": [
         {
           "at": "2026-07-14T16:25:04.505Z",
@@ -9860,9 +9860,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -9884,9 +9884,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -9908,9 +9908,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -9932,9 +9932,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -9953,9 +9953,9 @@
       "zone": "Vinohrady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-vinohrady-havlickovy-sady/3267334220",
       "listing_published_at": "2026-05-13",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9980,9 +9980,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10004,9 +10004,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10025,9 +10025,9 @@
       "zone": "Modřany",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-modrany-kolmanova/4263899212",
       "listing_published_at": "2026-06-30",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10049,9 +10049,9 @@
       "zone": "Hlubočepy",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-hlubocepy-kurandove/430497868",
       "listing_published_at": "2026-07-07",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10076,9 +10076,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10100,9 +10100,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10124,9 +10124,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10148,9 +10148,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10172,9 +10172,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10196,9 +10196,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10220,9 +10220,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10244,9 +10244,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10268,9 +10268,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10292,9 +10292,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10316,9 +10316,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10340,9 +10340,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10361,9 +10361,9 @@
       "zone": "Smíchov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-smichov-siklove/3220430924",
       "listing_published_at": "2026-07-13",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10385,9 +10385,9 @@
       "zone": "Břevnov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-brevnov-belohorska/3595231308",
       "listing_published_at": "2026-07-02",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10409,9 +10409,9 @@
       "zone": "Karlín",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-karlin-prvniho-pluku/4252037196",
       "listing_published_at": "2026-06-25",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10433,9 +10433,9 @@
       "zone": "Žižkov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-zizkov-jeseniova/4174307404",
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10460,9 +10460,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10484,9 +10484,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10508,9 +10508,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10532,9 +10532,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10556,9 +10556,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10580,9 +10580,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10604,9 +10604,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10628,9 +10628,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10652,9 +10652,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10676,9 +10676,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10700,9 +10700,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10724,9 +10724,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10748,9 +10748,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10772,9 +10772,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10796,9 +10796,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10820,9 +10820,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10844,9 +10844,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10865,9 +10865,9 @@
       "zone": "Hlubočepy",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-hlubocepy-filmarska/1979965516",
       "listing_published_at": "2026-07-13",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10892,9 +10892,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10916,9 +10916,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10940,9 +10940,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -10961,9 +10961,9 @@
       "zone": "Břevnov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-brevnov-belohorska/4157112396",
       "listing_published_at": "2026-05-29",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10985,9 +10985,9 @@
       "zone": "Vinohrady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vinohrady-perucka/2583883852",
       "listing_published_at": "2026-06-23",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11012,9 +11012,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11036,9 +11036,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11060,9 +11060,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11084,9 +11084,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11108,9 +11108,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11132,9 +11132,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11156,9 +11156,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11180,9 +11180,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11204,9 +11204,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11225,9 +11225,9 @@
       "zone": "Záběhlice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-zabehlice-bramborikova/1428349004",
       "listing_published_at": "2026-07-14",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11252,9 +11252,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11276,9 +11276,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11300,9 +11300,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11321,9 +11321,9 @@
       "zone": "Smíchov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/5+1/praha-smichov/515039308",
       "listing_published_at": "2026-07-14",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11345,9 +11345,9 @@
       "zone": "Vinohrady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vinohrady-manesova/1267658828",
       "listing_published_at": "2026-06-18",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11372,9 +11372,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11393,9 +11393,9 @@
       "zone": "Smíchov",
       "url": "https://www.sreality.cz/detail/pronajem/byt/5+1/praha-smichov/3383943244",
       "listing_published_at": "2026-07-14",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11420,9 +11420,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11441,9 +11441,9 @@
       "zone": "Vinohrady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-vinohrady-namesti-jiriho-z-podebrad/3508969548",
       "listing_published_at": "2026-05-05",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11468,9 +11468,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11489,9 +11489,9 @@
       "zone": "Nové Město",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-nove-mesto-na-hrobci/1437287244",
       "listing_published_at": "2026-03-18",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11516,9 +11516,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11540,9 +11540,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11564,9 +11564,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11588,9 +11588,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11609,9 +11609,9 @@
       "zone": "Prosek",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-prosek-nad-kundratkou/665575500",
       "listing_published_at": "2026-07-02",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11636,9 +11636,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11660,9 +11660,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11684,9 +11684,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11705,9 +11705,9 @@
       "zone": "Vinohrady",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vinohrady-namesti-jiriho-z-podebrad/979911500",
       "listing_published_at": "2026-03-20",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11732,9 +11732,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11756,9 +11756,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11780,9 +11780,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11801,9 +11801,9 @@
       "zone": "Modřany",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-modrany-mezi-vodami/78504012",
       "listing_published_at": "2026-07-10",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11828,9 +11828,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11852,9 +11852,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11876,9 +11876,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11900,9 +11900,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11921,9 +11921,9 @@
       "zone": "Košíře",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-kosire-vrchlickeho/329969740",
       "listing_published_at": "2026-06-15",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -11948,9 +11948,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11972,9 +11972,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -11996,9 +11996,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12020,9 +12020,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12044,9 +12044,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12068,9 +12068,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12092,9 +12092,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12113,9 +12113,9 @@
       "zone": "Nusle",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/praha-nusle/962584652",
       "listing_published_at": "2026-07-07",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -12140,9 +12140,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12164,9 +12164,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12188,9 +12188,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12212,9 +12212,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12236,9 +12236,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12260,9 +12260,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12284,9 +12284,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12305,9 +12305,9 @@
       "zone": "Modřany",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-modrany-mezi-vodami/3326054476",
       "listing_published_at": "2026-05-13",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -12329,9 +12329,9 @@
       "zone": "Nové Město",
       "url": "https://www.sreality.cz/detail/pronajem/byt/5+kk/praha-nove-mesto-drevna/2949022540",
       "listing_published_at": "2025-08-07",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -12353,9 +12353,9 @@
       "zone": "Nové Město",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-nove-mesto-drevna/109482060",
       "listing_published_at": "2026-05-23",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -12380,9 +12380,9 @@
       "listing_updated_at": null,
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12401,9 +12401,9 @@
       "zone": "Strašnice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-strasnice-cernokostelecka/3801972812",
       "listing_published_at": "2026-06-02",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -12425,9 +12425,9 @@
       "zone": "Karlín",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-karlin-sokolovska/542105676",
       "listing_published_at": "2026-07-07",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -12449,9 +12449,9 @@
       "zone": "Vokovice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vokovice-ke-dvoru/2441773132",
       "listing_published_at": "2026-05-27",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -12476,9 +12476,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12500,9 +12500,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12524,9 +12524,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12548,9 +12548,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12572,9 +12572,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12596,9 +12596,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12620,9 +12620,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12644,9 +12644,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12665,9 +12665,9 @@
       "zone": "Radlice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-radlice-pechlatova/2742976588",
       "listing_published_at": "2026-06-01",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
-      "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -12692,9 +12692,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12716,9 +12716,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12740,9 +12740,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12764,9 +12764,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12788,9 +12788,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12812,9 +12812,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12836,9 +12836,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12860,9 +12860,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12884,9 +12884,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12908,9 +12908,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12932,9 +12932,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12956,9 +12956,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -12980,9 +12980,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13004,9 +13004,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13028,9 +13028,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13052,9 +13052,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13076,9 +13076,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13100,9 +13100,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13124,9 +13124,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13148,9 +13148,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13172,9 +13172,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13196,9 +13196,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13220,9 +13220,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13244,9 +13244,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13268,9 +13268,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13292,9 +13292,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13316,9 +13316,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13340,9 +13340,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13364,9 +13364,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13388,9 +13388,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13412,9 +13412,9 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
       "price_history": [
         {
           "at": "2026-07-15T08:28:03.541Z",
@@ -13436,13 +13436,2749 @@
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-15T08:28:03.541Z",
       "last_seen_at": "2026-07-15T08:28:03.541Z",
+      "rented_at": "2026-07-16T08:28:09.639Z",
+      "status": "presumed_rented",
+      "days_on_market": 1,
+      "price_history": [
+        {
+          "at": "2026-07-15T08:28:03.541Z",
+          "price": 27000
+        }
+      ]
+    },
+    "sr_3549225036": {
+      "id": "sr_3549225036",
+      "price": 22500,
+      "lat": 49.9601668381,
+      "lng": 14.3491429466,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Oddechová, Lipence, Praha",
+      "zone": "Lipence",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-lipence-oddechova/3549225036",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-15T08:28:03.541Z",
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 22500
+        }
+      ]
+    },
+    "sr_3870261324": {
+      "id": "sr_3870261324",
+      "price": 18500,
+      "lat": 50.048979,
+      "lng": 14.482641,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Na Chodovci, Záběhlice, Praha",
+      "zone": "Záběhlice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/praha-zabehlice-na-chodovci/3870261324",
+      "listing_published_at": "2026-05-31",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 18500
+        }
+      ]
+    },
+    "sr_877170764": {
+      "id": "sr_877170764",
+      "price": 45000,
+      "lat": 50.09377,
+      "lng": 14.374413,
+      "sqm": 82,
+      "rooms": 3,
+      "address": "Na Dračkách, Veleslavín, Praha",
+      "zone": "Veleslavín",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-veleslavin-na-drackach/877170764",
+      "listing_published_at": "2026-05-12",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 45000
+        }
+      ]
+    },
+    "sr_4032688204": {
+      "id": "sr_4032688204",
+      "price": 18000,
+      "lat": 50.08513,
+      "lng": 14.364675,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Patočkova, Břevnov, Praha",
+      "zone": "Břevnov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-brevnov-patockova/4032688204",
+      "listing_published_at": "2026-06-19",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 18000
+        }
+      ]
+    },
+    "sr_1960026188": {
+      "id": "sr_1960026188",
+      "price": 60000,
+      "lat": 50.08675304070156,
+      "lng": 14.462128266650554,
+      "sqm": 135,
+      "rooms": 2,
+      "address": "V kapslovně, Žižkov, Praha",
+      "zone": "Žižkov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-zizkov-v-kapslovne/1960026188",
+      "listing_published_at": "2026-04-30",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 60000
+        }
+      ]
+    },
+    "sr_2652954700": {
+      "id": "sr_2652954700",
+      "price": 17500,
+      "lat": 50.040306,
+      "lng": 14.4587194,
+      "sqm": 25,
+      "rooms": 1,
+      "address": "Budějovická, Krč, Praha",
+      "zone": "Krč",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-krc-budejovicka/2652954700",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 17500
+        }
+      ]
+    },
+    "sr_1059119180": {
+      "id": "sr_1059119180",
+      "price": 39000,
+      "lat": 50.1333327743457,
+      "lng": 14.503418443638,
+      "sqm": 76,
+      "rooms": 3,
+      "address": "Vyletalova, Letňany, Praha",
+      "zone": "Letňany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-letnany-vyletalova/1059119180",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 39000
+        }
+      ]
+    },
+    "sr_4280344652": {
+      "id": "sr_4280344652",
+      "price": 45000,
+      "lat": 50.0638890298362,
+      "lng": 14.3828982523542,
+      "sqm": 93,
+      "rooms": 3,
+      "address": "Česká, Košíře, Praha",
+      "zone": "Košíře",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-kosire-ceska/4280344652",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 45000
+        }
+      ]
+    },
+    "sr_2085716044": {
+      "id": "sr_2085716044",
+      "price": 105000,
+      "lat": 50.103225,
+      "lng": 14.44998,
+      "sqm": 129,
+      "rooms": 4,
+      "address": "Komunardů, Holešovice, Praha",
+      "zone": "Holešovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-holesovice-komunardu/2085716044",
+      "listing_published_at": "2026-06-05",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 105000
+        }
+      ]
+    },
+    "sr_2709160012": {
+      "id": "sr_2709160012",
+      "price": 21500,
+      "lat": 50.0695226613179,
+      "lng": 14.4848335903023,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "U Hranic, Strašnice, Praha",
+      "zone": "Strašnice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-strasnice-u-hranic/2709160012",
+      "listing_published_at": "2026-05-27",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 21500
+        }
+      ]
+    },
+    "sr_35709004": {
+      "id": "sr_35709004",
+      "price": 32000,
+      "lat": 50.0058601916931,
+      "lng": 14.4654195777234,
+      "sqm": 116,
+      "rooms": 3,
+      "address": "Betáňská, Libuš, Praha",
+      "zone": "Libuš",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-libus-betanska/35709004",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 32000
+        }
+      ]
+    },
+    "sr_2000982092": {
+      "id": "sr_2000982092",
+      "price": 75000,
+      "lat": 50.0784970034736,
+      "lng": 14.4501973953258,
+      "sqm": 150,
+      "rooms": 4,
+      "address": "náměstí Jiřího z Poděbrad, Vinohrady, Praha",
+      "zone": "Vinohrady",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-vinohrady-namesti-jiriho-z-podebrad/2000982092",
+      "listing_published_at": "2026-05-25",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 75000
+        }
+      ]
+    },
+    "sr_572825676": {
+      "id": "sr_572825676",
+      "price": 19900,
+      "lat": 50.0638223,
+      "lng": 14.4441698,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Mečislavova, Nusle, Praha",
+      "zone": "Nusle",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-nusle-mecislavova/572825676",
+      "listing_published_at": "2026-05-07",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 19900
+        }
+      ]
+    },
+    "sr_3654258764": {
+      "id": "sr_3654258764",
+      "price": 20500,
+      "lat": 50.1154047,
+      "lng": 14.4731569,
+      "sqm": 70,
+      "rooms": 1,
+      "address": "V zahradách, Libeň, Praha",
+      "zone": "Libeň",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/praha-liben-v-zahradach/3654258764",
+      "listing_published_at": "2026-05-13",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 20500
+        }
+      ]
+    },
+    "sr_2256007244": {
+      "id": "sr_2256007244",
+      "price": 135000,
+      "lat": 50.1012165,
+      "lng": 14.4501167,
+      "sqm": 144,
+      "rooms": 4,
+      "address": "Komunardů, Holešovice, Praha",
+      "zone": "Holešovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-holesovice-komunardu/2256007244",
+      "listing_published_at": "2026-06-26",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 135000
+        }
+      ]
+    },
+    "sr_3903688780": {
+      "id": "sr_3903688780",
+      "price": 20990,
+      "lat": 50.0932633822036,
+      "lng": 14.5143465619316,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "U Smetanky, Hrdlořezy, Praha",
+      "zone": "Hrdlořezy",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-hrdlorezy-u-smetanky/3903688780",
+      "listing_published_at": "2026-05-15",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 20990
+        }
+      ]
+    },
+    "sr_375103564": {
+      "id": "sr_375103564",
+      "price": 60000,
+      "lat": 50.0753707886367,
+      "lng": 14.4039404534471,
+      "sqm": 168,
+      "rooms": 5,
+      "address": "Štefánikova, Smíchov, Praha",
+      "zone": "Smíchov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/5+1/praha-smichov-stefanikova/375103564",
+      "listing_published_at": "2026-04-21",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 60000
+        }
+      ]
+    },
+    "sr_2442256460": {
+      "id": "sr_2442256460",
+      "price": 30000,
+      "lat": 50.0841944009487,
+      "lng": 14.4571370952232,
+      "sqm": 72,
+      "rooms": 2,
+      "address": "Prokopova, Žižkov, Praha",
+      "zone": "Žižkov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-zizkov-prokopova/2442256460",
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 30000
+        }
+      ]
+    },
+    "sr_143319116": {
+      "id": "sr_143319116",
+      "price": 28000,
+      "lat": 50.00782308551539,
+      "lng": 14.45536856303421,
+      "sqm": 71,
+      "rooms": 3,
+      "address": "Kramperova, Kamýk, Praha",
+      "zone": "Kamýk",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-kamyk-kramperova/143319116",
+      "listing_published_at": "2026-07-03",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 28000
+        }
+      ]
+    },
+    "sr_2868244556": {
+      "id": "sr_2868244556",
+      "price": 33000,
+      "lat": 50.0582738727,
+      "lng": 14.3750584183,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Nyklíčkova, Jinonice, Praha",
+      "zone": "Jinonice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-jinonice-nyklickova/2868244556",
+      "listing_published_at": "2026-06-30",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 33000
+        }
+      ]
+    },
+    "sr_2250301516": {
+      "id": "sr_2250301516",
+      "price": 15500,
+      "lat": 50.101594294861734,
+      "lng": 14.425624394774532,
+      "sqm": 50,
+      "rooms": 1,
+      "address": "Malířská, Bubeneč, Praha",
+      "zone": "Bubeneč",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/praha-bubenec-malirska/2250301516",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 15500
+        }
+      ]
+    },
+    "sr_3877691468": {
+      "id": "sr_3877691468",
+      "price": 15500,
+      "lat": 50.130011145598,
+      "lng": 14.4313298355895,
+      "sqm": 44,
+      "rooms": 2,
+      "address": "Čimická, Bohnice, Praha",
+      "zone": "Bohnice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-bohnice-cimicka/3877691468",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 15500
+        }
+      ]
+    },
+    "sr_3553747020": {
+      "id": "sr_3553747020",
+      "price": 20000,
+      "lat": 50.072521,
+      "lng": 14.394203,
+      "sqm": 45,
+      "rooms": 1,
+      "address": "Plzeňská, Smíchov, Praha",
+      "zone": "Smíchov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/praha-smichov-plzenska/3553747020",
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 20000
+        }
+      ]
+    },
+    "sr_184803404": {
+      "id": "sr_184803404",
+      "price": 21000,
+      "lat": 50.066284,
+      "lng": 14.4278892,
+      "sqm": 35,
+      "rooms": 1,
+      "address": "Sekaninova, Nusle, Praha",
+      "zone": "Nusle",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-nusle-sekaninova/184803404",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 21000
+        }
+      ]
+    },
+    "sr_447471692": {
+      "id": "sr_447471692",
+      "price": 24000,
+      "lat": 50.077257,
+      "lng": 14.423463,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Žitná, Nové Město, Praha",
+      "zone": "Nové Město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-nove-mesto-zitna/447471692",
+      "listing_published_at": "2026-07-02",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 24000
+        }
+      ]
+    },
+    "sr_3059740748": {
+      "id": "sr_3059740748",
+      "price": 22400,
+      "lat": 50.021378,
+      "lng": 14.41349,
+      "sqm": 41,
+      "rooms": 2,
+      "address": "Pod Lysinami, Hodkovičky, Praha",
+      "zone": "Hodkovičky",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-hodkovicky-pod-lysinami/3059740748",
+      "listing_published_at": "2026-06-17",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 22400
+        }
+      ]
+    },
+    "sr_909701196": {
+      "id": "sr_909701196",
+      "price": 30700,
+      "lat": 50.069554,
+      "lng": 14.484071,
+      "sqm": 72,
+      "rooms": 3,
+      "address": "U Hranic, Strašnice, Praha",
+      "zone": "Strašnice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-strasnice-u-hranic/909701196",
+      "listing_published_at": "2026-06-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 30700
+        }
+      ]
+    },
+    "sr_4095795276": {
+      "id": "sr_4095795276",
+      "price": 23500,
+      "lat": 50.0559488889,
+      "lng": 14.350065,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Pod stolovou horou, Jinonice, Praha",
+      "zone": "Jinonice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-jinonice-pod-stolovou-horou/4095795276",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 23500
+        }
+      ]
+    },
+    "sr_1696653388": {
+      "id": "sr_1696653388",
+      "price": 18500,
+      "lat": 50.00616621602,
+      "lng": 14.437598115911,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Vazovova, Modřany, Praha",
+      "zone": "Modřany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-modrany-vazovova/1696653388",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 18500
+        }
+      ]
+    },
+    "sr_3077365836": {
+      "id": "sr_3077365836",
+      "price": 17000,
+      "lat": 50.085229,
+      "lng": 14.449415,
+      "sqm": 37,
+      "rooms": 2,
+      "address": "Cimburkova, Žižkov, Praha",
+      "zone": "Žižkov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-zizkov-cimburkova/3077365836",
+      "listing_published_at": "2026-07-10",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 17000
+        }
+      ]
+    },
+    "sr_2052120652": {
+      "id": "sr_2052120652",
+      "price": 20000,
+      "lat": 50.141134,
+      "lng": 14.449454,
+      "sqm": 36,
+      "rooms": 1,
+      "address": "Za Pískovnou, Dolní Chabry, Praha",
+      "zone": "Dolní Chabry",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-dolni-chabry-za-piskovnou/2052120652",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 20000
+        }
+      ]
+    },
+    "sr_2287001676": {
+      "id": "sr_2287001676",
+      "price": 32500,
+      "lat": 50.0592148318908,
+      "lng": 14.3879526388365,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Radlice, Praha",
+      "zone": "Radlice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-radlice/2287001676",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 32500
+        }
+      ]
+    },
+    "sr_3212177484": {
+      "id": "sr_3212177484",
+      "price": 13000,
+      "lat": 50.0550170378808,
+      "lng": 14.4049801802088,
+      "sqm": 18,
+      "rooms": 1,
+      "address": "Křížová, Smíchov, Praha",
+      "zone": "Smíchov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-smichov-krizova/3212177484",
+      "listing_published_at": "2026-06-29",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 13000
+        }
+      ]
+    },
+    "sr_3377389644": {
+      "id": "sr_3377389644",
+      "price": 20000,
+      "lat": 50.1055629221185,
+      "lng": 14.502656011427,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Freyova, Vysočany, Praha",
+      "zone": "Vysočany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-vysocany-freyova/3377389644",
+      "listing_published_at": "2026-07-08",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 20000
+        }
+      ]
+    },
+    "sr_3422478412": {
+      "id": "sr_3422478412",
+      "price": 27000,
+      "lat": 50.1055629221185,
+      "lng": 14.502656011427,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Freyova, Vysočany, Praha",
+      "zone": "Vysočany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vysocany-freyova/3422478412",
+      "listing_published_at": "2026-07-09",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
           "price": 27000
+        }
+      ]
+    },
+    "sr_2924535884": {
+      "id": "sr_2924535884",
+      "price": 18000,
+      "lat": 50.103084,
+      "lng": 14.433757,
+      "sqm": 50,
+      "rooms": 1,
+      "address": "Šimáčkova, Holešovice, Praha",
+      "zone": "Holešovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-holesovice-simackova/2924535884",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 18000
+        }
+      ]
+    },
+    "sr_1078124620": {
+      "id": "sr_1078124620",
+      "price": 35000,
+      "lat": 50.08818574490206,
+      "lng": 14.458437079731793,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Hartigova, Žižkov, Praha",
+      "zone": "Žižkov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-zizkov-hartigova/1078124620",
+      "listing_published_at": "2026-07-14",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 35000
+        }
+      ]
+    },
+    "sr_3746619468": {
+      "id": "sr_3746619468",
+      "price": 75000,
+      "lat": 50.0809418,
+      "lng": 14.4069331,
+      "sqm": 154,
+      "rooms": 4,
+      "address": "Zborovská, Malá Strana, Praha",
+      "zone": "Malá Strana",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+1/praha-mala-strana-zborovska/3746619468",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 75000
+        }
+      ]
+    },
+    "sr_3915309132": {
+      "id": "sr_3915309132",
+      "price": 24000,
+      "lat": 50.1395070293326,
+      "lng": 14.5146677457071,
+      "sqm": 70,
+      "rooms": 3,
+      "address": "Kopřivnická, Letňany, Praha",
+      "zone": "Letňany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-letnany-koprivnicka/3915309132",
+      "listing_published_at": "2026-07-08",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 24000
+        }
+      ]
+    },
+    "sr_1843720268": {
+      "id": "sr_1843720268",
+      "price": 38500,
+      "lat": 50.0753206072,
+      "lng": 14.4566248303,
+      "sqm": 61,
+      "rooms": 2,
+      "address": "Korunní, Vinohrady, Praha",
+      "zone": "Vinohrady",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vinohrady-korunni/1843720268",
+      "listing_published_at": "2026-07-01",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 38500
+        }
+      ]
+    },
+    "sr_3444629580": {
+      "id": "sr_3444629580",
+      "price": 22000,
+      "lat": 50.08561089098463,
+      "lng": 14.370866702358674,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Mládeže, Břevnov, Praha",
+      "zone": "Břevnov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-brevnov-mladeze/3444629580",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 22000
+        }
+      ]
+    },
+    "sr_3439149900": {
+      "id": "sr_3439149900",
+      "price": 22000,
+      "lat": 50.08602288986637,
+      "lng": 14.450561243538786,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Cimburkova, Žižkov, Praha",
+      "zone": "Žižkov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-zizkov-cimburkova/3439149900",
+      "listing_published_at": "2026-03-24",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 22000
+        }
+      ]
+    },
+    "sr_4186828876": {
+      "id": "sr_4186828876",
+      "price": 21000,
+      "lat": 50.08602288986637,
+      "lng": 14.450561243538786,
+      "sqm": 29,
+      "rooms": 1,
+      "address": "Cimburkova, Žižkov, Praha",
+      "zone": "Žižkov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-zizkov-cimburkova/4186828876",
+      "listing_published_at": "2026-06-20",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 21000
+        }
+      ]
+    },
+    "sr_140308556": {
+      "id": "sr_140308556",
+      "price": 33000,
+      "lat": 50.07449823769508,
+      "lng": 14.55126386197722,
+      "sqm": 139,
+      "rooms": 3,
+      "address": "Laudonova, Štěrboholy, Praha",
+      "zone": "Štěrboholy",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-sterboholy-laudonova/140308556",
+      "listing_published_at": "2026-06-21",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 33000
+        }
+      ]
+    },
+    "sr_3813728332": {
+      "id": "sr_3813728332",
+      "price": 22000,
+      "lat": 50.077124069888136,
+      "lng": 14.427274173158862,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Žitná, Nové Město, Praha",
+      "zone": "Nové Město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/praha-nove-mesto-zitna/3813728332",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 22000
+        }
+      ]
+    },
+    "sr_1061744716": {
+      "id": "sr_1061744716",
+      "price": 19500,
+      "lat": 50.074928,
+      "lng": 14.456047,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Korunní, Vinohrady, Praha",
+      "zone": "Vinohrady",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-vinohrady-korunni/1061744716",
+      "listing_published_at": "2026-06-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 19500
+        }
+      ]
+    },
+    "sr_1914601548": {
+      "id": "sr_1914601548",
+      "price": 29500,
+      "lat": 50.1175752,
+      "lng": 14.4558191,
+      "sqm": 93,
+      "rooms": 3,
+      "address": "V Holešovičkách, Libeň, Praha",
+      "zone": "Libeň",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-liben-v-holesovickach/1914601548",
+      "listing_published_at": "2026-06-01",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 29500
+        }
+      ]
+    },
+    "sr_629862476": {
+      "id": "sr_629862476",
+      "price": 35000,
+      "lat": 50.1098210723,
+      "lng": 14.3865312078,
+      "sqm": 123,
+      "rooms": 3,
+      "address": "Na Šťáhlavce, Dejvice, Praha",
+      "zone": "Dejvice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-dejvice-na-stahlavce/629862476",
+      "listing_published_at": "2026-06-15",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 35000
+        }
+      ]
+    },
+    "sr_3025199180": {
+      "id": "sr_3025199180",
+      "price": 18000,
+      "lat": 50.039686,
+      "lng": 14.458758,
+      "sqm": 33,
+      "rooms": 1,
+      "address": "Budějovická, Krč, Praha",
+      "zone": "Krč",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-krc-budejovicka/3025199180",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 18000
+        }
+      ]
+    },
+    "sr_527822924": {
+      "id": "sr_527822924",
+      "price": 14000,
+      "lat": 50.0547192181,
+      "lng": 14.405244614,
+      "sqm": 27,
+      "rooms": 1,
+      "address": "Křížová, Smíchov, Praha",
+      "zone": "Smíchov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-smichov-krizova/527822924",
+      "listing_published_at": "2026-06-29",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 14000
+        }
+      ]
+    },
+    "sr_2851004492": {
+      "id": "sr_2851004492",
+      "price": 13000,
+      "lat": 50.0547192181,
+      "lng": 14.405244614,
+      "sqm": 22,
+      "rooms": 1,
+      "address": "Křížová, Smíchov, Praha",
+      "zone": "Smíchov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-smichov-krizova/2851004492",
+      "listing_published_at": "2026-07-09",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 13000
+        }
+      ]
+    },
+    "sr_887690060": {
+      "id": "sr_887690060",
+      "price": 42000,
+      "lat": 50.077186,
+      "lng": 14.4276344,
+      "sqm": 102,
+      "rooms": 3,
+      "address": "Žitná, Nové Město, Praha",
+      "zone": "Nové Město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-nove-mesto-zitna/887690060",
+      "listing_published_at": "2025-12-05",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 42000
+        }
+      ]
+    },
+    "sr_266174540": {
+      "id": "sr_266174540",
+      "price": 17000,
+      "lat": 50.0669126382867,
+      "lng": 14.4569479093643,
+      "sqm": 41,
+      "rooms": 1,
+      "address": "Minská, Vršovice, Praha",
+      "zone": "Vršovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/praha-vrsovice-minska/266174540",
+      "listing_published_at": "2026-06-02",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 17000
+        }
+      ]
+    },
+    "sr_4232110156": {
+      "id": "sr_4232110156",
+      "price": 18000,
+      "lat": 50.0723819444,
+      "lng": 14.4752566667,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Jakutská, Vršovice, Praha",
+      "zone": "Vršovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-vrsovice-jakutska/4232110156",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 18000
+        }
+      ]
+    },
+    "sr_2843992140": {
+      "id": "sr_2843992140",
+      "price": 14500,
+      "lat": 50.02541,
+      "lng": 14.438305,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Nad lesním divadlem, Braník, Praha",
+      "zone": "Braník",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-branik-nad-lesnim-divadlem/2843992140",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 14500
+        }
+      ]
+    },
+    "sr_2801045580": {
+      "id": "sr_2801045580",
+      "price": 30000,
+      "lat": 50.0841944009487,
+      "lng": 14.4571370952232,
+      "sqm": 73,
+      "rooms": 2,
+      "address": "Prokopova, Žižkov, Praha",
+      "zone": "Žižkov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-zizkov-prokopova/2801045580",
+      "listing_published_at": "2026-05-26",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 30000
+        }
+      ]
+    },
+    "sr_2453725260": {
+      "id": "sr_2453725260",
+      "price": 30000,
+      "lat": 50.0323920926333,
+      "lng": 14.3795866341768,
+      "sqm": 42,
+      "rooms": 2,
+      "address": "Kurandové, Hlubočepy, Praha",
+      "zone": "Hlubočepy",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-hlubocepy-kurandove/2453725260",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 30000
+        }
+      ]
+    },
+    "sr_3492118604": {
+      "id": "sr_3492118604",
+      "price": 38000,
+      "lat": 50.1035423674072,
+      "lng": 14.5074613390914,
+      "sqm": 70,
+      "rooms": 2,
+      "address": "Gerstelova, Vysočany, Praha",
+      "zone": "Vysočany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vysocany-gerstelova/3492118604",
+      "listing_published_at": "2026-06-10",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 38000
+        }
+      ]
+    },
+    "sr_272687180": {
+      "id": "sr_272687180",
+      "price": 32000,
+      "lat": 50.094587,
+      "lng": 14.487507,
+      "sqm": 99,
+      "rooms": 3,
+      "address": "K vrcholu, Žižkov, Praha",
+      "zone": "Žižkov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-zizkov-k-vrcholu/272687180",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 32000
+        }
+      ]
+    },
+    "sr_54124620": {
+      "id": "sr_54124620",
+      "price": 16000,
+      "lat": 50.067177,
+      "lng": 14.448734,
+      "sqm": 43,
+      "rooms": 1,
+      "address": "U Vršovického nádraží, Vršovice, Praha",
+      "zone": "Vršovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-vrsovice-u-vrsovickeho-nadrazi/54124620",
+      "listing_published_at": "2026-07-04",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 16000
+        }
+      ]
+    },
+    "sr_128512076": {
+      "id": "sr_128512076",
+      "price": 26000,
+      "lat": 49.9880327778,
+      "lng": 14.4118633333,
+      "sqm": 72,
+      "rooms": 3,
+      "address": "Za sídlištěm, Komořany, Praha",
+      "zone": "Komořany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-komorany-za-sidlistem/128512076",
+      "listing_published_at": "2026-06-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 26000
+        }
+      ]
+    },
+    "sr_4211667020": {
+      "id": "sr_4211667020",
+      "price": 20000,
+      "lat": 50.0026833333,
+      "lng": 14.4114822222,
+      "sqm": 46,
+      "rooms": 1,
+      "address": "K dolům, Modřany, Praha",
+      "zone": "Modřany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/praha-modrany-k-dolum/4211667020",
+      "listing_published_at": "2026-06-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 20000
+        }
+      ]
+    },
+    "sr_2226421836": {
+      "id": "sr_2226421836",
+      "price": 75000,
+      "lat": 50.100421,
+      "lng": 14.403307,
+      "sqm": 192,
+      "rooms": 5,
+      "address": "Čs. armády, Bubeneč, Praha",
+      "zone": "Bubeneč",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/5+kk/praha-bubenec-cs-armady/2226421836",
+      "listing_published_at": "2026-06-11",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 75000
+        }
+      ]
+    },
+    "sr_368083020": {
+      "id": "sr_368083020",
+      "price": 16000,
+      "lat": 50.05432,
+      "lng": 14.354862,
+      "sqm": 54,
+      "rooms": 1,
+      "address": "Za Zámečkem, Jinonice, Praha",
+      "zone": "Jinonice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-jinonice-za-zameckem/368083020",
+      "listing_published_at": "2026-06-08",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 16000
+        }
+      ]
+    },
+    "sr_4244889676": {
+      "id": "sr_4244889676",
+      "price": 24000,
+      "lat": 50.101452304821954,
+      "lng": 14.435196698951808,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Šternberkova, Holešovice, Praha",
+      "zone": "Holešovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-holesovice-sternberkova/4244889676",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 24000
+        }
+      ]
+    },
+    "sr_1961484364": {
+      "id": "sr_1961484364",
+      "price": 23000,
+      "lat": 50.034484751586106,
+      "lng": 14.52034862807259,
+      "sqm": 42,
+      "rooms": 2,
+      "address": "Hněvkovského, Chodov, Praha",
+      "zone": "Chodov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-chodov-hnevkovskeho/1961484364",
+      "listing_published_at": "2026-07-04",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 23000
+        }
+      ]
+    },
+    "sr_3495202892": {
+      "id": "sr_3495202892",
+      "price": 22000,
+      "lat": 50.1315742547451,
+      "lng": 14.4291397729646,
+      "sqm": 64,
+      "rooms": 2,
+      "address": "Toruňská, Bohnice, Praha",
+      "zone": "Bohnice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/praha-bohnice-torunska/3495202892",
+      "listing_published_at": "2026-05-25",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 22000
+        }
+      ]
+    },
+    "sr_2747502668": {
+      "id": "sr_2747502668",
+      "price": 23500,
+      "lat": 50.060571,
+      "lng": 14.398862,
+      "sqm": 57,
+      "rooms": 2,
+      "address": "Na Neklance, Smíchov, Praha",
+      "zone": "Smíchov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-smichov-na-neklance/2747502668",
+      "listing_published_at": "2026-05-18",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 23500
+        }
+      ]
+    },
+    "sr_1417449548": {
+      "id": "sr_1417449548",
+      "price": 14900,
+      "lat": 50.0992821048,
+      "lng": 14.4688838805,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Sokolovská, Libeň, Praha",
+      "zone": "Libeň",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-liben-sokolovska/1417449548",
+      "listing_published_at": "2026-05-15",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 14900
+        }
+      ]
+    },
+    "sr_3472855116": {
+      "id": "sr_3472855116",
+      "price": 75000,
+      "lat": 50.1032503,
+      "lng": 14.4499747,
+      "sqm": 96,
+      "rooms": 3,
+      "address": "Komunardů, Holešovice, Praha",
+      "zone": "Holešovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-holesovice-komunardu/3472855116",
+      "listing_published_at": "2026-05-13",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 75000
+        }
+      ]
+    },
+    "sr_1800962124": {
+      "id": "sr_1800962124",
+      "price": 30000,
+      "lat": 50.0782807,
+      "lng": 14.4445109,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Polská, Vinohrady, Praha",
+      "zone": "Vinohrady",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vinohrady-polska/1800962124",
+      "listing_published_at": "2026-05-29",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 30000
+        }
+      ]
+    },
+    "sr_608231500": {
+      "id": "sr_608231500",
+      "price": 14999,
+      "lat": 50.0545093197452,
+      "lng": 14.5123403434909,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Jasmínová, Záběhlice, Praha",
+      "zone": "Záběhlice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-zabehlice-jasminova/608231500",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 14999
+        }
+      ]
+    },
+    "sr_2871558220": {
+      "id": "sr_2871558220",
+      "price": 27000,
+      "lat": 50.0310042811892,
+      "lng": 14.52211819091,
+      "sqm": 85,
+      "rooms": 3,
+      "address": "Michnova, Chodov, Praha",
+      "zone": "Chodov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-chodov-michnova/2871558220",
+      "listing_published_at": "2026-05-29",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 27000
+        }
+      ]
+    },
+    "sr_3697492812": {
+      "id": "sr_3697492812",
+      "price": 38000,
+      "lat": 50.0857161,
+      "lng": 14.4163101,
+      "sqm": 91,
+      "rooms": 3,
+      "address": "Liliová, Staré Město, Praha",
+      "zone": "Staré Město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-stare-mesto-liliova/3697492812",
+      "listing_published_at": "2026-03-26",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 38000
+        }
+      ]
+    },
+    "sr_1668341836": {
+      "id": "sr_1668341836",
+      "price": 25000,
+      "lat": 50.1198131676064,
+      "lng": 14.4545989490222,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "S. K. Neumanna, Libeň, Praha",
+      "zone": "Libeň",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-liben-s-k-neumanna/1668341836",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 25000
+        }
+      ]
+    },
+    "sr_708411468": {
+      "id": "sr_708411468",
+      "price": 40000,
+      "lat": 50.0305073451,
+      "lng": 14.3950135847,
+      "sqm": 103,
+      "rooms": 3,
+      "address": "Pod Ateliéry, Hlubočepy, Praha",
+      "zone": "Hlubočepy",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-hlubocepy-pod-ateliery/708411468",
+      "listing_published_at": "2026-05-28",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 40000
+        }
+      ]
+    },
+    "sr_796913740": {
+      "id": "sr_796913740",
+      "price": 34900,
+      "lat": 50.0660477,
+      "lng": 14.4363731,
+      "sqm": 53,
+      "rooms": 2,
+      "address": "Závišova, Nusle, Praha",
+      "zone": "Nusle",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-nusle-zavisova/796913740",
+      "listing_published_at": "2026-06-17",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 34900
+        }
+      ]
+    },
+    "sr_516943948": {
+      "id": "sr_516943948",
+      "price": 18500,
+      "lat": 50.0990396943576,
+      "lng": 14.3551134421452,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Tibetská, Vokovice, Praha",
+      "zone": "Vokovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-vokovice-tibetska/516943948",
+      "listing_published_at": "2026-06-17",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 18500
+        }
+      ]
+    },
+    "sr_3735679052": {
+      "id": "sr_3735679052",
+      "price": 20000,
+      "lat": 50.0691218458423,
+      "lng": 14.5102321600493,
+      "sqm": 39,
+      "rooms": 2,
+      "address": "Dürerova, Strašnice, Praha",
+      "zone": "Strašnice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-strasnice-durerova/3735679052",
+      "listing_published_at": "2026-06-15",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 20000
+        }
+      ]
+    },
+    "sr_2400354380": {
+      "id": "sr_2400354380",
+      "price": 21000,
+      "lat": 49.9997281520148,
+      "lng": 14.4081048625552,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "K Vystrkovu, Modřany, Praha",
+      "zone": "Modřany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-modrany-k-vystrkovu/2400354380",
+      "listing_published_at": "2026-06-04",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 21000
+        }
+      ]
+    },
+    "sr_902623308": {
+      "id": "sr_902623308",
+      "price": 37000,
+      "lat": 50.085984,
+      "lng": 14.421624,
+      "sqm": 84,
+      "rooms": 2,
+      "address": "Havelská, Staré Město, Praha",
+      "zone": "Staré Město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/praha-stare-mesto-havelska/902623308",
+      "listing_published_at": "2026-06-22",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 37000
+        }
+      ]
+    },
+    "sr_661708876": {
+      "id": "sr_661708876",
+      "price": 21500,
+      "lat": 50.0861005155117,
+      "lng": 14.4825156796707,
+      "sqm": 39,
+      "rooms": 1,
+      "address": "Na Viktorce, Žižkov, Praha",
+      "zone": "Žižkov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-zizkov-na-viktorce/661708876",
+      "listing_published_at": "2026-07-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 21500
+        }
+      ]
+    },
+    "sr_4181647436": {
+      "id": "sr_4181647436",
+      "price": 21900,
+      "lat": 50.10347428359085,
+      "lng": 14.523462646348827,
+      "sqm": 36,
+      "rooms": 1,
+      "address": "Poděbradská, Hloubětín, Praha",
+      "zone": "Hloubětín",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-hloubetin-podebradska/4181647436",
+      "listing_published_at": "2026-07-09",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 21900
+        }
+      ]
+    },
+    "sr_911138892": {
+      "id": "sr_911138892",
+      "price": 17500,
+      "lat": 50.032196880245,
+      "lng": 14.3728527577789,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Werichova, Hlubočepy, Praha",
+      "zone": "Hlubočepy",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-hlubocepy-werichova/911138892",
+      "listing_published_at": "2026-07-08",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 17500
+        }
+      ]
+    },
+    "sr_154787916": {
+      "id": "sr_154787916",
+      "price": 45000,
+      "lat": 50.107817,
+      "lng": 14.455368,
+      "sqm": 98,
+      "rooms": 3,
+      "address": "V Přístavu, Holešovice, Praha",
+      "zone": "Holešovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-holesovice-v-pristavu/154787916",
+      "listing_published_at": "2026-07-04",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 45000
+        }
+      ]
+    },
+    "sr_2187386956": {
+      "id": "sr_2187386956",
+      "price": 62000,
+      "lat": 50.0764595285358,
+      "lng": 14.4561200140727,
+      "sqm": 150,
+      "rooms": 4,
+      "address": "Kolínská, Vinohrady, Praha",
+      "zone": "Vinohrady",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-vinohrady-kolinska/2187386956",
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 62000
+        }
+      ]
+    },
+    "sr_593551436": {
+      "id": "sr_593551436",
+      "price": 36000,
+      "lat": 50.0821795669115,
+      "lng": 14.4044812194629,
+      "sqm": 75,
+      "rooms": 2,
+      "address": "Újezd, Malá Strana, Praha",
+      "zone": "Malá Strana",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-mala-strana-ujezd/593551436",
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 36000
+        }
+      ]
+    },
+    "sr_3782205516": {
+      "id": "sr_3782205516",
+      "price": 49000,
+      "lat": 50.0633801599382,
+      "lng": 14.4402328333104,
+      "sqm": 87,
+      "rooms": 4,
+      "address": "Sezimova, Nusle, Praha",
+      "zone": "Nusle",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/praha-nusle-sezimova/3782205516",
+      "listing_published_at": "2026-07-07",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 49000
+        }
+      ]
+    },
+    "sr_3735584844": {
+      "id": "sr_3735584844",
+      "price": 20000,
+      "lat": 50.1039745039,
+      "lng": 14.5081401426,
+      "sqm": 44,
+      "rooms": 2,
+      "address": "Pod Harfou, Vysočany, Praha",
+      "zone": "Vysočany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vysocany-pod-harfou/3735584844",
+      "listing_published_at": "2026-05-29",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 20000
+        }
+      ]
+    },
+    "sr_1803804748": {
+      "id": "sr_1803804748",
+      "price": 23900,
+      "lat": 50.08979504901089,
+      "lng": 14.4702392394294,
+      "sqm": 44,
+      "rooms": 2,
+      "address": "Biskupcova, Žižkov, Praha",
+      "zone": "Žižkov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-zizkov-biskupcova/1803804748",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 23900
+        }
+      ]
+    },
+    "sr_2515112012": {
+      "id": "sr_2515112012",
+      "price": 60000,
+      "lat": 50.0753707886367,
+      "lng": 14.4039404534471,
+      "sqm": 147,
+      "rooms": 5,
+      "address": "Štefánikova, Smíchov, Praha",
+      "zone": "Smíchov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/5+1/praha-smichov-stefanikova/2515112012",
+      "listing_published_at": "2026-05-11",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 60000
+        }
+      ]
+    },
+    "sr_1634656332": {
+      "id": "sr_1634656332",
+      "price": 16000,
+      "lat": 50.0874441788728,
+      "lng": 14.5614848208209,
+      "sqm": 28,
+      "rooms": 1,
+      "address": "Českobrodská, Hostavice, Praha",
+      "zone": "Hostavice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-hostavice-ceskobrodska/1634656332",
+      "listing_published_at": "2026-07-08",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 16000
+        }
+      ]
+    },
+    "sr_2022826060": {
+      "id": "sr_2022826060",
+      "price": 24000,
+      "lat": 50.0822543218494,
+      "lng": 14.4944645185398,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Chotutická, Malešice, Praha",
+      "zone": "Malešice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/praha-malesice-chotuticka/2022826060",
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 24000
+        }
+      ]
+    },
+    "sr_868037452": {
+      "id": "sr_868037452",
+      "price": 68000,
+      "lat": 50.0879499,
+      "lng": 14.4095188,
+      "sqm": 110,
+      "rooms": 3,
+      "address": "U lužického semináře, Malá Strana, Praha",
+      "zone": "Malá Strana",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-mala-strana-u-luzickeho-seminare/868037452",
+      "listing_published_at": "2025-10-31",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 68000
+        }
+      ]
+    },
+    "sr_3765534796": {
+      "id": "sr_3765534796",
+      "price": 26500,
+      "lat": 50.0772151553,
+      "lng": 14.4612781778,
+      "sqm": 85,
+      "rooms": 2,
+      "address": "Jičínská, Vinohrady, Praha",
+      "zone": "Vinohrady",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/praha-vinohrady-jicinska/3765534796",
+      "listing_published_at": "2026-06-05",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 26500
+        }
+      ]
+    },
+    "sr_3286102092": {
+      "id": "sr_3286102092",
+      "price": 28000,
+      "lat": 50.0583269,
+      "lng": 14.4204354,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Vodárenská, Podolí, Praha",
+      "zone": "Podolí",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-podoli-vodarenska/3286102092",
+      "listing_published_at": "2026-06-19",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 28000
+        }
+      ]
+    },
+    "sr_3032870988": {
+      "id": "sr_3032870988",
+      "price": 18100,
+      "lat": 50.0437375,
+      "lng": 14.501631,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Šternovská, Chodov, Praha",
+      "zone": "Chodov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-chodov-sternovska/3032870988",
+      "listing_published_at": "2026-06-30",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 18100
+        }
+      ]
+    },
+    "sr_3318997068": {
+      "id": "sr_3318997068",
+      "price": 27000,
+      "lat": 50.042665581822796,
+      "lng": 14.457544219437507,
+      "sqm": 73,
+      "rooms": 3,
+      "address": "Budějovická, Praha",
+      "zone": "Budějovická",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-budejovicka/3318997068",
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 27000
+        }
+      ]
+    },
+    "sr_4237418572": {
+      "id": "sr_4237418572",
+      "price": 26000,
+      "lat": 50.046361904344,
+      "lng": 14.3105563709592,
+      "sqm": 66,
+      "rooms": 2,
+      "address": "Hábova, Stodůlky, Praha",
+      "zone": "Stodůlky",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-stodulky-habova/4237418572",
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 26000
+        }
+      ]
+    },
+    "sr_1103212620": {
+      "id": "sr_1103212620",
+      "price": 23500,
+      "lat": 50.0723436487,
+      "lng": 14.3870093539,
+      "sqm": 40,
+      "rooms": 2,
+      "address": "Holečkova, Smíchov, Praha",
+      "zone": "Smíchov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-smichov-holeckova/1103212620",
+      "listing_published_at": "2026-04-16",
+      "listing_updated_at": "2026-07-16",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 23500
+        }
+      ]
+    },
+    "sr_199811148": {
+      "id": "sr_199811148",
+      "price": 34000,
+      "lat": 50.0766813318,
+      "lng": 14.3504938042,
+      "sqm": 105,
+      "rooms": 3,
+      "address": "Nad motolskou nemocnicí, Břevnov, Praha",
+      "zone": "Břevnov",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-brevnov-nad-motolskou-nemocnici/199811148",
+      "listing_published_at": "2026-07-07",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 34000
+        }
+      ]
+    },
+    "sr_59891788": {
+      "id": "sr_59891788",
+      "price": 21000,
+      "lat": 50.08223456408211,
+      "lng": 14.41815007393166,
+      "sqm": 52,
+      "rooms": 2,
+      "address": "Národní, Staré Město, Praha",
+      "zone": "Staré Město",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-stare-mesto-narodni/59891788",
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 21000
+        }
+      ]
+    },
+    "sr_1402069068": {
+      "id": "sr_1402069068",
+      "price": 28900,
+      "lat": 50.0816626907,
+      "lng": 14.5059915434,
+      "sqm": 72,
+      "rooms": 3,
+      "address": "Tuchorazská, Malešice, Praha",
+      "zone": "Malešice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-malesice-tuchorazska/1402069068",
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 28900
+        }
+      ]
+    },
+    "sr_4139294796": {
+      "id": "sr_4139294796",
+      "price": 23000,
+      "lat": 50.0556262141553,
+      "lng": 14.3827696619867,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "U Komína, Radlice, Praha",
+      "zone": "Radlice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-radlice-u-komina/4139294796",
+      "listing_published_at": "2026-04-25",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 23000
+        }
+      ]
+    },
+    "sr_1864667212": {
+      "id": "sr_1864667212",
+      "price": 27900,
+      "lat": 50.10583502800843,
+      "lng": 14.396924189113223,
+      "sqm": 63,
+      "rooms": 2,
+      "address": "Terronská, Bubeneč, Praha",
+      "zone": "Bubeneč",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-bubenec-terronska/1864667212",
+      "listing_published_at": "2026-05-25",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 27900
+        }
+      ]
+    },
+    "sr_2357911628": {
+      "id": "sr_2357911628",
+      "price": 31000,
+      "lat": 50.1110962942162,
+      "lng": 14.4970316097249,
+      "sqm": 60,
+      "rooms": 2,
+      "address": "Paříkova, Vysočany, Praha",
+      "zone": "Vysočany",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vysocany-parikova/2357911628",
+      "listing_published_at": "2026-07-03",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 31000
+        }
+      ]
+    },
+    "sr_2578747468": {
+      "id": "sr_2578747468",
+      "price": 20000,
+      "lat": 50.0210494460877,
+      "lng": 14.4109135683779,
+      "sqm": 41,
+      "rooms": 2,
+      "address": "Pod Lysinami, Hodkovičky, Praha",
+      "zone": "Hodkovičky",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-hodkovicky-pod-lysinami/2578747468",
+      "listing_published_at": "2026-05-26",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 20000
+        }
+      ]
+    },
+    "sr_3457998924": {
+      "id": "sr_3457998924",
+      "price": 20000,
+      "lat": 50.044962487966714,
+      "lng": 14.49038052968738,
+      "sqm": 58,
+      "rooms": 2,
+      "address": "Struhařovská, Záběhlice, Praha",
+      "zone": "Záběhlice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/praha-zabehlice-struharovska/3457998924",
+      "listing_published_at": "2026-07-12",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 20000
+        }
+      ]
+    },
+    "sr_1226895436": {
+      "id": "sr_1226895436",
+      "price": 17000,
+      "lat": 50.076604219275936,
+      "lng": 14.43178653717041,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Mikovcova, Vinohrady, Praha",
+      "zone": "Vinohrady",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/praha-vinohrady-mikovcova/1226895436",
+      "listing_published_at": "2026-06-25",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 17000
+        }
+      ]
+    },
+    "sr_1250811980": {
+      "id": "sr_1250811980",
+      "price": 28000,
+      "lat": 50.1245901365326,
+      "lng": 14.47579622268677,
+      "sqm": 80,
+      "rooms": 3,
+      "address": "Společná, Libeň, Praha",
+      "zone": "Libeň",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/praha-liben-spolecna/1250811980",
+      "listing_published_at": "2026-07-10",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 28000
+        }
+      ]
+    },
+    "sr_855498828": {
+      "id": "sr_855498828",
+      "price": 30000,
+      "lat": 50.06184944784983,
+      "lng": 14.440960287511148,
+      "sqm": 86,
+      "rooms": 3,
+      "address": "Svatoslavova, Nusle, Praha",
+      "zone": "Nusle",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-nusle-svatoslavova/855498828",
+      "listing_published_at": "2026-07-10",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 30000
+        }
+      ]
+    },
+    "sr_2415517772": {
+      "id": "sr_2415517772",
+      "price": 15000,
+      "lat": 50.100024241063046,
+      "lng": 14.43721264600754,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Bubenská, Holešovice, Praha",
+      "zone": "Holešovice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/praha-holesovice-bubenska/2415517772",
+      "listing_published_at": "2026-07-05",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 15000
+        }
+      ]
+    },
+    "sr_3954700364": {
+      "id": "sr_3954700364",
+      "price": 30000,
+      "lat": 50.07284810376848,
+      "lng": 14.43606734275818,
+      "sqm": 78,
+      "rooms": 2,
+      "address": "Belgická, Vinohrady, Praha",
+      "zone": "Vinohrady",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/praha-vinohrady-belgicka/3954700364",
+      "listing_published_at": "2026-06-27",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 30000
+        }
+      ]
+    },
+    "sr_1304666188": {
+      "id": "sr_1304666188",
+      "price": 30000,
+      "lat": 50.076569792422234,
+      "lng": 14.457466006278993,
+      "sqm": 85,
+      "rooms": 3,
+      "address": "Slezská, Vinohrady, Praha",
+      "zone": "Vinohrady",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/praha-vinohrady-slezska/1304666188",
+      "listing_published_at": "2026-04-30",
+      "listing_updated_at": "2026-07-15",
+      "first_seen_at": "2026-07-16T08:28:09.639Z",
+      "last_seen_at": "2026-07-16T08:28:09.639Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-16T08:28:09.639Z",
+          "price": 30000
         }
       ]
     }
