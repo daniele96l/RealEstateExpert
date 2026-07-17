@@ -1,13 +1,32 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-07-16T08:26:47.738Z",
+  "fetched_at": "2026-07-17T08:22:15.735Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1557459020",
+      "title": "Pronájem bytu 2+kk 55 m²",
+      "price": 16000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/tabor-klokoty-staroklokotska/1557459020",
+      "lat": 49.4173939121707,
+      "lng": 14.64400497955,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Staroklokotská, Klokoty, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-01",
+      "listing_updated_at": "2026-07-16"
+    },
     {
       "id": "sr_3780608076",
       "title": "Pronájem bytu 3+1 64 m²",
@@ -139,7 +158,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-14",
-      "listing_updated_at": "2026-07-14"
+      "listing_updated_at": "2026-07-16"
     },
     {
       "id": "sr_4225949772",
@@ -177,7 +196,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-13",
-      "listing_updated_at": "2026-07-13"
+      "listing_updated_at": "2026-07-16"
     },
     {
       "id": "sr_1934524492",
@@ -237,25 +256,6 @@
       "listing_updated_at": "2026-07-09"
     },
     {
-      "id": "sr_1557459020",
-      "title": "Pronájem bytu 2+kk 55 m²",
-      "price": 16000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/tabor-klokoty-staroklokotska/1557459020",
-      "lat": 49.4173939121707,
-      "lng": 14.64400497955,
-      "sqm": 55,
-      "rooms": 2,
-      "address": "Staroklokotská, Klokoty, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-01",
-      "listing_updated_at": "2026-07-09"
-    },
-    {
       "id": "sr_2458837068",
       "title": "Pronájem bytu 1+1 40 m²",
       "price": 11500,
@@ -272,7 +272,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-09"
+      "listing_updated_at": "2026-07-16"
     },
     {
       "id": "sr_2783895628",
@@ -330,6 +330,25 @@
       "needs_renovation": null,
       "listing_published_at": "2026-07-08",
       "listing_updated_at": "2026-07-08"
+    },
+    {
+      "id": "sr_4103659596",
+      "title": "Pronájem bytu 1+kk 24 m²",
+      "price": 7500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/tabor-tabor-budejovicka/4103659596",
+      "lat": 49.4113715624938,
+      "lng": 14.6723670094547,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Budějovická, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-07",
+      "listing_updated_at": "2026-07-17"
     },
     {
       "id": "sr_4009287756",
@@ -636,25 +655,6 @@
       "listing_updated_at": "2026-06-22"
     },
     {
-      "id": "sr_3087593548",
-      "title": "Pronájem bytu 2+kk 60 m²",
-      "price": 9500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/tabor-tabor-erbenova/3087593548",
-      "lat": 49.4129893693298,
-      "lng": 14.6722086259515,
-      "sqm": 60,
-      "rooms": 2,
-      "address": "Erbenova, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-16",
-      "listing_updated_at": "2026-06-23"
-    },
-    {
       "id": "sr_1439084620",
       "title": "Pronájem bytu 2+1 61 m²",
       "price": 12000,
@@ -671,25 +671,6 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-04-19",
-      "listing_updated_at": "2026-06-13"
-    },
-    {
-      "id": "sr_579596364",
-      "title": "Pronájem bytu 2+kk 42 m²",
-      "price": 12000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/tabor-tabor-sofijska/579596364",
-      "lat": 49.3904814,
-      "lng": 14.6798406,
-      "sqm": 42,
-      "rooms": 2,
-      "address": "Sofijská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-12",
       "listing_updated_at": "2026-06-13"
     },
     {
