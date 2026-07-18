@@ -278,7 +278,8 @@ const it = {
     cagr: "CAGR equity",
     cagrHint:
       "Da totale versato (anticipo + interessi) a equity finale in {years} anni, con rivalutazione {appreciation}%/anno.",
-    equity: "Equity (valore − mutuo)",
+    equity: "Equity (senza rivalutazione)",
+    propertyValue: "Valore immobile (dopo crescita)",
     bankInterest: "Interessi alla banca",
     totalPaid: "Totale versato",
     chartTitle: "Equity vs interessi nel tempo",

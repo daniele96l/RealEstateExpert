@@ -279,7 +279,8 @@ const en: Translations = {
     cagr: "Equity CAGR",
     cagrHint:
       "From total cash paid (down payment + interest) to final equity over {years} years, with {appreciation}%/yr revaluation.",
-    equity: "Equity (value − mortgage)",
+    equity: "Equity (no revaluation)",
+    propertyValue: "House value (after growth)",
     bankInterest: "Interest to bank",
     totalPaid: "Total cash paid",
     chartTitle: "Equity vs interest over time",

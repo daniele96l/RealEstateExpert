@@ -7,8 +7,10 @@ export interface MortgageSimPoint {
   year: number;
   /** Property value after revaluation at this month. */
   propertyValue: number;
-  /** Equity = property value − remaining mortgage balance. */
+  /** Equity without revaluation: purchase price − remaining balance. */
   equity: number;
+  /** Equity with revaluation: property value − remaining balance. */
+  equityGrown: number;
   cumulativeInterest: number;
   /** Cash paid so far: down payment + principal + interest. */
   totalPaid: number;
@@ -84,13 +86,15 @@ export function buildMortgageSimSeries(params: {
     const propertyValue = round2(
       propertyValueAtMonth(price, month, annualAppreciationPct),
     );
-    const equity = round2(Math.max(0, propertyValue - remainingBalance));
+    const equity = round2(Math.max(0, price - remainingBalance));
+    const equityGrown = round2(Math.max(0, propertyValue - remainingBalance));
     const totalPaid = round2(downPayment + cumulativePrincipal + cumulativeInterest);
     points.push({
       month,
       year,
       propertyValue,
       equity,
+      equityGrown,
       cumulativeInterest: round2(cumulativeInterest),
       totalPaid,
       remainingBalance: round2(remainingBalance),
@@ -148,9 +152,9 @@ export function buildMortgageSimSeries(params: {
     firstMonthPrincipal,
     points,
     totalInterest: round2(cumulativeInterest),
-    finalEquity: round2(last.equity),
+    finalEquity: round2(last.equityGrown),
     finalPropertyValue: last.propertyValue,
     totalCashPaid: last.totalPaid,
-    cagr: mortgageEquityCagr(last.totalPaid, last.equity, years),
+    cagr: mortgageEquityCagr(last.totalPaid, last.equityGrown, years),
   };
 }

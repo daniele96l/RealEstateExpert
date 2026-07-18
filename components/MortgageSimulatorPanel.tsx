@@ -5,7 +5,9 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  ComposedChart,
   Legend,
+  Line,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -27,6 +29,7 @@ interface Props {
 const COLORS = {
   interest: CHART_THEME.negative,
   equity: CHART_THEME.series.blue,
+  property: CHART_THEME.positive,
   grid: CHART_THEME.grid,
   axis: CHART_THEME.axis,
 };
@@ -341,7 +344,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         <div className="card p-5">
           <h3 className="mb-4 text-base font-semibold text-neutral-900">{t("mortgageSim.chartTitle")}</h3>
           <ResponsiveContainer width="100%" height={340}>
-            <BarChart
+            <ComposedChart
               data={sim.points}
               margin={{ top: 10, right: 12, left: 0, bottom: 0 }}
               barCategoryGap="20%"
@@ -375,6 +378,10 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                             })}
                       </p>
                       <p className="text-neutral-600">
+                        {t("mortgageSim.propertyValue")}:{" "}
+                        <span className="text-green-600">{fmtMoney(row.propertyValue, market)}</span>
+                      </p>
+                      <p className="text-neutral-600">
                         {t("mortgageSim.equity")}:{" "}
                         <span className="text-sky-600">{fmtMoney(row.equity, market)}</span>
                       </p>
@@ -405,7 +412,16 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 fill={COLORS.interest}
                 radius={[4, 4, 0, 0]}
               />
-            </BarChart>
+              <Line
+                type="monotone"
+                dataKey="propertyValue"
+                name={t("mortgageSim.propertyValue")}
+                stroke={COLORS.property}
+                strokeWidth={2}
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+            </ComposedChart>
           </ResponsiveContainer>
         </div>
       )}
