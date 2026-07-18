@@ -12,7 +12,7 @@ export interface MortgageSimPoint {
   /** Equity with revaluation: property value − remaining balance. */
   equityGrown: number;
   cumulativeInterest: number;
-  /** Cash paid so far: down payment + principal + interest. */
+  /** Owner cash paid so far: down payment + owner share of mortgage + recurring. */
   totalPaid: number;
   remainingBalance: number;
   /** Interest portion of the installment in this month (0 at purchase). */
@@ -25,6 +25,12 @@ export interface MortgageSimPoint {
 export interface MortgageSimResult {
   loanAmount: number;
   monthlyPayment: number;
+  /** Property tax + maintenance, monthly. */
+  monthlyRecurring: number;
+  /** What you pay each month after tenant coverage + recurring expenses. */
+  ownerMonthlyNet: number;
+  /** Tenant contribution toward the monthly mortgage. */
+  tenantMonthlyCover: number;
   /** First installment: interest to bank. */
   firstMonthInterest: number;
   /** First installment: principal building equity. */
@@ -33,7 +39,7 @@ export interface MortgageSimResult {
   totalInterest: number;
   finalEquity: number;
   finalPropertyValue: number;
-  /** Total cash paid (down payment + principal + interest). */
+  /** Owner cash paid (down payment + owner share of mortgage + recurring). */
   totalCashPaid: number;
   /** CAGR as fraction (e.g. 0.052 = 5.2%), or null if undefined. */
   cagr: number | null;
@@ -55,6 +61,14 @@ export function buildMortgageSimSeries(params: {
   years: number;
   /** Annual house revaluation / inflation %, e.g. 2. */
   annualAppreciationPct?: number;
+  /** When true, tenant covers part of the mortgage payment. */
+  rentEnabled?: boolean;
+  /** % of monthly mortgage covered by tenant (0–100). */
+  tenantCoveragePct?: number;
+  /** Maintenance as fraction of purchase price / year (e.g. 0.01 = 1%). */
+  maintenancePct?: number;
+  /** Annual property tax (€ or CZK). */
+  propertyTaxAnnual?: number;
 }): MortgageSimResult {
   const price = Math.max(0, params.price);
   const downPayment = Math.min(Math.max(0, params.downPayment), price);
@@ -62,7 +76,16 @@ export function buildMortgageSimSeries(params: {
   const annualRate = Math.max(0, params.annualRate);
   const annualAppreciationPct = Number.isFinite(params.annualAppreciationPct)
     ? (params.annualAppreciationPct as number)
-    : 2;
+    : 0;
+  const rentEnabled = params.rentEnabled === true;
+  const tenantCoveragePct = rentEnabled
+    ? Math.min(100, Math.max(0, params.tenantCoveragePct ?? 0))
+    : 0;
+  const ownerShare = 1 - tenantCoveragePct / 100;
+  const maintenancePct = Math.max(0, params.maintenancePct ?? 0);
+  const propertyTaxAnnual = Math.max(0, params.propertyTaxAnnual ?? 0);
+  const annualRecurring = propertyTaxAnnual + price * maintenancePct;
+  const monthlyRecurring = round2(annualRecurring / 12);
   const loanAmount = round2(Math.max(0, price - downPayment));
 
   const schedule = frenchAmortizationSchedule(loanAmount, annualRate, years);
@@ -70,6 +93,8 @@ export function buildMortgageSimSeries(params: {
   const first = schedule[0];
   const firstMonthInterest = round2(first?.interest ?? 0);
   const firstMonthPrincipal = round2(first?.principal ?? 0);
+  const ownerMonthlyNet = round2(monthlyPayment * ownerShare + monthlyRecurring);
+  const tenantMonthlyCover = round2(monthlyPayment * (tenantCoveragePct / 100));
 
   const points: MortgageSimPoint[] = [];
   let cumulativeInterest = 0;
@@ -88,7 +113,9 @@ export function buildMortgageSimSeries(params: {
     );
     const equity = round2(Math.max(0, price - remainingBalance));
     const equityGrown = round2(Math.max(0, propertyValue - remainingBalance));
-    const totalPaid = round2(downPayment + cumulativePrincipal + cumulativeInterest);
+    const mortgageCash = cumulativePrincipal + cumulativeInterest;
+    const recurringCash = (annualRecurring * month) / 12;
+    const totalPaid = round2(downPayment + mortgageCash * ownerShare + recurringCash);
     points.push({
       month,
       year,
@@ -107,16 +134,38 @@ export function buildMortgageSimSeries(params: {
   push(0, 0, loanAmount, 0, 0, 0);
 
   if (schedule.length === 0) {
+    const months = Math.max(years, 1) * 12;
     const finalPropertyValue = round2(
-      propertyValueAtMonth(price, years * 12, annualAppreciationPct),
+      propertyValueAtMonth(price, months, annualAppreciationPct),
     );
-    const cashPaid = round2(downPayment);
+    const cashPaid = round2(downPayment + (annualRecurring * months) / 12);
     return {
       loanAmount: 0,
       monthlyPayment: 0,
+      monthlyRecurring,
+      ownerMonthlyNet: monthlyRecurring,
+      tenantMonthlyCover: 0,
       firstMonthInterest: 0,
       firstMonthPrincipal: 0,
-      points,
+      points: [
+        {
+          ...points[0]!,
+          totalPaid: round2(downPayment),
+        },
+        {
+          month: months,
+          year: Math.max(years, 1),
+          propertyValue: finalPropertyValue,
+          equity: price,
+          equityGrown: finalPropertyValue,
+          cumulativeInterest: 0,
+          totalPaid: cashPaid,
+          remainingBalance: 0,
+          monthInterest: 0,
+          monthPrincipal: 0,
+          monthlyPayment: 0,
+        },
+      ],
       totalInterest: 0,
       finalEquity: finalPropertyValue,
       finalPropertyValue,
@@ -148,6 +197,9 @@ export function buildMortgageSimSeries(params: {
   return {
     loanAmount,
     monthlyPayment: round2(monthlyPayment),
+    monthlyRecurring,
+    ownerMonthlyNet,
+    tenantMonthlyCover,
     firstMonthInterest,
     firstMonthPrincipal,
     points,

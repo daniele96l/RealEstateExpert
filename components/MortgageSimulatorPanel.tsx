@@ -16,6 +16,10 @@ import {
 import { ITALY_DEFAULTS } from "@/lib/constants";
 import { CZECH_DEFAULTS } from "@/lib/constants-cz";
 import { buildMortgageSimSeries, type MortgageSimPoint } from "@/lib/engine/mortgage-sim";
+import {
+  MAINTENANCE_PCT_OPTIONS,
+  monthlyMaintenanceCost,
+} from "@/lib/maintenance-options";
 import { getMarket, type MarketId } from "@/lib/markets";
 import { useI18n } from "@/lib/i18n/context";
 import { CHART_THEME } from "@/lib/chart-theme";
@@ -34,6 +38,15 @@ const COLORS = {
   axis: CHART_THEME.axis,
 };
 
+function estimatePropertyTaxAnnual(price: number, market: MarketId): number {
+  if (market === "cz") {
+    return Math.round(price * CZECH_DEFAULTS.property_tax_rate);
+  }
+  return Math.round(
+    price * ITALY_DEFAULTS.cadastral_ratio * ITALY_DEFAULTS.imu_rate,
+  );
+}
+
 function defaultsForMarket(market: MarketId) {
   if (market === "cz") {
     return {
@@ -41,6 +54,7 @@ function defaultsForMarket(market: MarketId) {
       downPct: CZECH_DEFAULTS.investment_down_payment_pct,
       rate: CZECH_DEFAULTS.mortgage_rate_pct,
       years: CZECH_DEFAULTS.default_loan_years,
+      maintenancePct: CZECH_DEFAULTS.maintenance_pct_medium,
     };
   }
   return {
@@ -48,6 +62,7 @@ function defaultsForMarket(market: MarketId) {
     downPct: ITALY_DEFAULTS.investment_down_payment_pct,
     rate: ITALY_DEFAULTS.mortgage_rate_pct,
     years: ITALY_DEFAULTS.default_loan_years,
+    maintenancePct: ITALY_DEFAULTS.maintenance_pct_medium,
   };
 }
 
@@ -93,14 +108,19 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
 
   const [price, setPrice] = useState(defaults.price);
-  const [downPayment, setDownPayment] = useState(
-    Math.round((defaults.price * defaults.downPct) / 100),
-  );
+  const [downPct, setDownPct] = useState(defaults.downPct);
   const [rate, setRate] = useState(defaults.rate);
   const [years, setYears] = useState(defaults.years);
-  const [appreciation, setAppreciation] = useState(2);
+  const [appreciation, setAppreciation] = useState(0);
+  const [maintenancePct, setMaintenancePct] = useState(defaults.maintenancePct);
+  const [propertyTaxAnnual, setPropertyTaxAnnual] = useState(() =>
+    estimatePropertyTaxAnnual(defaults.price, market),
+  );
+  const [rentEnabled, setRentEnabled] = useState(false);
+  const [tenantCoveragePct, setTenantCoveragePct] = useState(80);
 
-  const downPct = price > 0 ? (downPayment / price) * 100 : 0;
+  const downPayment = Math.round((price * downPct) / 100);
+  const maintenanceMonthly = monthlyMaintenanceCost(price, maintenancePct);
 
   const sim = useMemo(
     () =>
@@ -110,8 +130,22 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         annualRate: rate,
         years,
         annualAppreciationPct: appreciation,
+        rentEnabled,
+        tenantCoveragePct,
+        maintenancePct,
+        propertyTaxAnnual,
       }),
-    [price, downPayment, rate, years, appreciation],
+    [
+      price,
+      downPayment,
+      rate,
+      years,
+      appreciation,
+      rentEnabled,
+      tenantCoveragePct,
+      maintenancePct,
+      propertyTaxAnnual,
+    ],
   );
 
   const paymentSplitPoints = useMemo(
@@ -120,18 +154,6 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
   );
 
   const formatAxis = (value: number) => `${currencySymbol}${(value / 1000).toFixed(0)}k`;
-
-  const setPriceAndKeepPct = (nextPrice: number) => {
-    const safe = Number.isFinite(nextPrice) && nextPrice >= 0 ? nextPrice : 0;
-    const pct = price > 0 ? downPayment / price : defaults.downPct / 100;
-    setPrice(safe);
-    setDownPayment(Math.round(safe * pct));
-  };
-
-  const setDownPct = (pct: number) => {
-    const safe = Number.isFinite(pct) ? Math.min(100, Math.max(0, pct)) : 0;
-    setDownPayment(Math.round((price * safe) / 100));
-  };
 
   return (
     <div className="space-y-6">
@@ -155,20 +177,11 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               step={1000}
               className="input-field"
               value={price}
-              onChange={(e) => setPriceAndKeepPct(Number(e.target.value))}
-            />
-          </label>
-          <label className="block space-y-1.5">
-            <span className="text-xs font-medium text-neutral-600">{t("mortgageSim.downPayment")}</span>
-            <input
-              type="number"
-              min={0}
-              step={1000}
-              className="input-field"
-              value={downPayment}
               onChange={(e) => {
                 const v = Number(e.target.value);
-                setDownPayment(Number.isFinite(v) ? Math.max(0, Math.min(v, price)) : 0);
+                const next = Number.isFinite(v) && v >= 0 ? v : 0;
+                setPrice(next);
+                setPropertyTaxAnnual(estimatePropertyTaxAnnual(next, market));
               }}
             />
           </label>
@@ -180,9 +193,13 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               max={100}
               step={1}
               className="input-field"
-              value={Number(downPct.toFixed(1))}
-              onChange={(e) => setDownPct(Number(e.target.value))}
+              value={downPct}
+              onChange={(e) => {
+                const v = Number(e.target.value);
+                setDownPct(Number.isFinite(v) ? Math.min(100, Math.max(0, v)) : 0);
+              }}
             />
+            <span className="text-[11px] text-neutral-500">{fmtMoney(downPayment, market)}</span>
           </label>
           <label className="block space-y-1.5">
             <span className="text-xs font-medium text-neutral-600">{t("mortgageSim.interestRate")}</span>
@@ -231,6 +248,47 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
             />
             <span className="text-[11px] text-neutral-500">{t("mortgageSim.appreciationHint")}</span>
           </label>
+          <label className="block space-y-1.5">
+            <span className="text-xs font-medium text-neutral-600">
+              {t("mortgageSim.maintenance")}
+            </span>
+            <select
+              className="select-field"
+              value={maintenancePct}
+              onChange={(e) => setMaintenancePct(Number(e.target.value))}
+            >
+              {MAINTENANCE_PCT_OPTIONS.map(({ id, pct }) => (
+                <option key={id} value={pct}>
+                  {t(`scenario.maintenanceOptions.${id}`)}
+                </option>
+              ))}
+            </select>
+            <span className="text-[11px] text-neutral-500">
+              {t("mortgageSim.maintenanceHint", {
+                monthly: fmtMoney(maintenanceMonthly, market),
+                annual: fmtMoney(maintenanceMonthly * 12, market),
+              })}
+            </span>
+          </label>
+          <label className="block space-y-1.5">
+            <span className="text-xs font-medium text-neutral-600">
+              {t("mortgageSim.propertyTax")}
+            </span>
+            <input
+              type="number"
+              min={0}
+              step={50}
+              className="input-field"
+              value={propertyTaxAnnual}
+              onChange={(e) => {
+                const v = Number(e.target.value);
+                setPropertyTaxAnnual(Number.isFinite(v) && v >= 0 ? v : 0);
+              }}
+            />
+            <span className="text-[11px] text-neutral-500">
+              {t("mortgageSim.propertyTaxHint")}
+            </span>
+          </label>
           <div className="flex flex-col justify-end rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-2 sm:col-span-1">
             <p className="text-[10px] uppercase tracking-wide text-neutral-500">
               {t("mortgageSim.loanAmount")}
@@ -239,11 +297,73 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               {fmtMoney(sim.loanAmount, market)}
             </p>
           </div>
+          <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-2.5 sm:col-span-2">
+            <input
+              type="checkbox"
+              className="mt-0.5 h-4 w-4 rounded border-neutral-300"
+              checked={rentEnabled}
+              onChange={(e) => setRentEnabled(e.target.checked)}
+            />
+            <span>
+              <span className="block text-xs font-medium text-neutral-700">
+                {t("mortgageSim.rentToggle")}
+              </span>
+              <span className="mt-0.5 block text-[11px] text-neutral-500">
+                {t("mortgageSim.rentToggleHint")}
+              </span>
+            </span>
+          </label>
+          {rentEnabled ? (
+            <label className="block space-y-1.5 sm:col-span-2">
+              <span className="text-xs font-medium text-neutral-600">
+                {t("mortgageSim.tenantCoverage")}
+              </span>
+              <input
+                type="number"
+                min={0}
+                max={100}
+                step={1}
+                className="input-field"
+                value={tenantCoveragePct}
+                onChange={(e) => {
+                  const v = Number(e.target.value);
+                  setTenantCoveragePct(
+                    Number.isFinite(v) ? Math.min(100, Math.max(0, v)) : 0,
+                  );
+                }}
+              />
+              <span className="text-[11px] text-neutral-500">
+                {t("mortgageSim.tenantCoverageHint")}
+              </span>
+            </label>
+          ) : null}
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Kpi label={t("mortgageSim.monthlyPayment")} value={fmtMoney(sim.monthlyPayment, market)} />
+        <Kpi
+          label={t("mortgageSim.monthlyRecurring")}
+          value={fmtMoney(sim.monthlyRecurring, market)}
+        />
+        {rentEnabled ? (
+          <>
+            <Kpi
+              label={t("mortgageSim.ownerMonthlyNet")}
+              value={fmtMoney(sim.ownerMonthlyNet, market)}
+            />
+            <Kpi
+              label={t("mortgageSim.tenantMonthlyCover")}
+              value={fmtMoney(sim.tenantMonthlyCover, market)}
+              tone="equity"
+            />
+          </>
+        ) : (
+          <Kpi
+            label={t("mortgageSim.ownerMonthlyNet")}
+            value={fmtMoney(sim.ownerMonthlyNet, market)}
+          />
+        )}
         <Kpi
           label={t("mortgageSim.totalInterest")}
           value={fmtMoney(sim.totalInterest, market)}

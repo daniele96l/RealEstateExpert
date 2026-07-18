@@ -39,7 +39,7 @@ export const ITALY_DEFAULTS = {
   /** Rendimento lordo annuo tipico (provincia / piccolo capoluogo) */
   gross_yield_pct: 5.5,
   /** Tasso mutuo indicativo 2025–2026 */
-  mortgage_rate_pct: 3.0,
+  mortgage_rate_pct: 4.0,
   /** Anticipo minimo tipico per investimento */
   investment_down_payment_pct: 20,
   /** Locali predefiniti per calcolo affitto per stanza */
