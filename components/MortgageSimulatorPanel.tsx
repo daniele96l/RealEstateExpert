@@ -8,14 +8,16 @@ import {
   ComposedChart,
   Legend,
   Line,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
+import { scaleSymlog } from "d3-scale";
 import { estimateMonthlyRent, ITALY_DEFAULTS } from "@/lib/constants";
 import { CZECH_DEFAULTS, estimateCzechMonthlyRent } from "@/lib/constants-cz";
-import { buildMortgageSimSeries, type MortgageSimPoint } from "@/lib/engine/mortgage-sim";
+import { buildMortgageSimSeries, MORTGAGE_SIM_ETF_RETURN_PCT, type MortgageSimPoint } from "@/lib/engine/mortgage-sim";
 import {
   MAINTENANCE_PCT_OPTIONS,
   monthlyMaintenanceCost,
@@ -174,6 +176,23 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
     () => sim.points.filter((p) => p.month > 0),
     [sim.points],
   );
+
+  const yearlyCostPoints = useMemo(() => {
+    const pts = sim.points.filter((p) => p.month > 0);
+    return pts.map((p, i) => {
+      const prev = i === 0 ? sim.points[0]! : pts[i - 1]!;
+      const yearOwnCost = Math.round((p.totalPaid - prev.totalPaid) * 100) / 100;
+      const yearRentCost =
+        Math.round((p.cumulativeRentAvoided - prev.cumulativeRentAvoided) * 100) / 100;
+      return {
+        year: p.year,
+        month: p.month,
+        yearOwnCost,
+        yearRentCost,
+        yearDiff: Math.round((yearOwnCost - yearRentCost) * 100) / 100,
+      };
+    });
+  }, [sim.points]);
 
   const formatAxis = (value: number) => `${currencySymbol}${(value / 1000).toFixed(0)}k`;
 
@@ -646,14 +665,6 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                           </span>
                         </p>
                       ) : null}
-                      {liveInEnabled ? (
-                        <p className="text-neutral-600">
-                          {t("mortgageSim.propertyValuePlusRentSaved")}:{" "}
-                          <span className="text-violet-600">
-                            {fmtMoney(row.propertyValuePlusRentSaved, market)}
-                          </span>
-                        </p>
-                      ) : null}
                       <p className="text-neutral-600">
                         {t("mortgageSim.equity")}:{" "}
                         <span className="text-sky-600">{fmtMoney(row.equity, market)}</span>
@@ -726,22 +737,297 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                   activeDot={{ r: 4 }}
                 />
               ) : null}
-              {liveInEnabled ? (
-                <Line
-                  type="monotone"
-                  dataKey="propertyValuePlusRentSaved"
-                  name={t("mortgageSim.propertyValuePlusRentSaved")}
-                  stroke={COLORS.rentSaved}
-                  strokeWidth={2}
-                  strokeDasharray="6 4"
-                  dot={false}
-                  activeDot={{ r: 4 }}
-                />
-              ) : null}
             </ComposedChart>
           </ResponsiveContainer>
         </div>
       )}
+
+      {liveInEnabled ? (
+        <div className="card p-5">
+          <h3 className="mb-1 text-base font-semibold text-neutral-900">
+            {t("mortgageSim.ownVsRentTitle")}
+          </h3>
+          <p className="mb-4 text-sm text-neutral-500">{t("mortgageSim.ownVsRentSubtitle")}</p>
+          <ResponsiveContainer width="100%" height={320}>
+            <ComposedChart
+              data={sim.points}
+              margin={{ top: 10, right: 12, left: 0, bottom: 0 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
+              <XAxis
+                dataKey="month"
+                tick={{ fill: COLORS.axis, fontSize: 11 }}
+                tickFormatter={(m) => (m === 0 ? t("common.start") : `${m / 12}`)}
+                axisLine={{ stroke: COLORS.grid }}
+                tickLine={false}
+              />
+              <YAxis
+                tick={{ fill: COLORS.axis, fontSize: 11 }}
+                tickFormatter={formatAxis}
+                axisLine={false}
+                tickLine={false}
+                domain={["auto", "auto"]}
+              />
+              <ReferenceLine y={0} stroke={COLORS.grid} />
+              <Tooltip
+                content={({ active, payload, label }) => {
+                  if (!active || !payload?.length) return null;
+                  const row = payload[0]?.payload as MortgageSimPoint;
+                  return (
+                    <div className="rounded-xl border border-surface-border bg-white px-3 py-2 text-xs shadow-lg">
+                      <p className="mb-2 font-medium text-neutral-800">
+                        {label === 0
+                          ? t("mortgageSim.purchaseTooltip")
+                          : t("mortgageSim.yearTooltip", {
+                              year: Math.ceil(Number(label) / 12),
+                            })}
+                      </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.costOfOwning")}:{" "}
+                        <span className="text-sky-600">{fmtMoney(row.totalPaid, market)}</span>
+                      </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.costOfRenting")}:{" "}
+                        <span className="text-violet-600">
+                          {fmtMoney(row.cumulativeRentAvoided, market)}
+                        </span>
+                      </p>
+                      <p className="mt-1 font-medium text-neutral-800">
+                        {t("mortgageSim.ownMinusRent")}:{" "}
+                        <span
+                          className={
+                            row.ownMinusRent > 0 ? "text-red-500" : "text-green-600"
+                          }
+                        >
+                          {fmtMoney(row.ownMinusRent, market)}
+                        </span>
+                      </p>
+                    </div>
+                  );
+                }}
+              />
+              <Legend wrapperStyle={{ paddingTop: 16, fontSize: 11 }} />
+              <Line
+                type="monotone"
+                dataKey="totalPaid"
+                name={t("mortgageSim.costOfOwning")}
+                stroke={COLORS.equity}
+                strokeWidth={2}
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="cumulativeRentAvoided"
+                name={t("mortgageSim.costOfRenting")}
+                stroke={COLORS.rentSaved}
+                strokeWidth={2}
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="ownMinusRent"
+                name={t("mortgageSim.ownMinusRent")}
+                stroke={COLORS.interest}
+                strokeWidth={2}
+                strokeDasharray="6 4"
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+            </ComposedChart>
+          </ResponsiveContainer>
+        </div>
+      ) : null}
+
+      {liveInEnabled ? (
+        <div className="card p-5">
+          <h3 className="mb-1 text-base font-semibold text-neutral-900">
+            {t("mortgageSim.moneySavedTitle")}
+          </h3>
+          <p className="mb-4 text-sm text-neutral-500">
+            {t("mortgageSim.moneySavedSubtitle", { pct: MORTGAGE_SIM_ETF_RETURN_PCT })}
+          </p>
+          <ResponsiveContainer width="100%" height={320}>
+            <ComposedChart
+              data={sim.points}
+              margin={{ top: 10, right: 12, left: 0, bottom: 0 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
+              <XAxis
+                dataKey="month"
+                tick={{ fill: COLORS.axis, fontSize: 11 }}
+                tickFormatter={(m) => (m === 0 ? t("common.start") : `${m / 12}`)}
+                axisLine={{ stroke: COLORS.grid }}
+                tickLine={false}
+              />
+              <YAxis
+                tick={{ fill: COLORS.axis, fontSize: 11 }}
+                tickFormatter={formatAxis}
+                axisLine={false}
+                tickLine={false}
+                scale={scaleSymlog().constant(50_000) as never}
+                domain={["auto", "auto"]}
+              />
+              <ReferenceLine y={0} stroke={COLORS.grid} />
+              <Tooltip
+                content={({ active, payload, label }) => {
+                  if (!active || !payload?.length) return null;
+                  const row = payload[0]?.payload as MortgageSimPoint;
+                  return (
+                    <div className="rounded-xl border border-surface-border bg-white px-3 py-2 text-xs shadow-lg">
+                      <p className="mb-2 font-medium text-neutral-800">
+                        {label === 0
+                          ? t("mortgageSim.purchaseTooltip")
+                          : t("mortgageSim.yearTooltip", {
+                              year: Math.ceil(Number(label) / 12),
+                            })}
+                      </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.moneySaved")}:{" "}
+                        <span
+                          className={
+                            row.moneySaved <= 0 ? "text-green-600" : "text-red-500"
+                          }
+                        >
+                          {fmtMoney(row.moneySaved, market)}
+                        </span>
+                      </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.etfFromSaved", { pct: MORTGAGE_SIM_ETF_RETURN_PCT })}
+                        :{" "}
+                        <span className="text-violet-600">
+                          {fmtMoney(row.etfFromSaved, market)}
+                        </span>
+                      </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.propertyValue")}:{" "}
+                        <span className="text-green-600">
+                          {fmtMoney(row.propertyValue, market)}
+                        </span>
+                      </p>
+                    </div>
+                  );
+                }}
+              />
+              <Legend wrapperStyle={{ paddingTop: 16, fontSize: 11 }} />
+              <Line
+                type="monotone"
+                dataKey="moneySaved"
+                name={t("mortgageSim.moneySaved")}
+                stroke={COLORS.equity}
+                strokeWidth={2}
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="etfFromSaved"
+                name={t("mortgageSim.etfFromSaved", { pct: MORTGAGE_SIM_ETF_RETURN_PCT })}
+                stroke={COLORS.rentSaved}
+                strokeWidth={2}
+                strokeDasharray="6 4"
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="propertyValue"
+                name={t("mortgageSim.propertyValue")}
+                stroke={COLORS.property}
+                strokeWidth={2}
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+            </ComposedChart>
+          </ResponsiveContainer>
+        </div>
+      ) : null}
+
+      {liveInEnabled ? (
+        <div className="card p-5">
+          <h3 className="mb-1 text-base font-semibold text-neutral-900">
+            {t("mortgageSim.yearlyCostTitle")}
+          </h3>
+          <p className="mb-4 text-sm text-neutral-500">{t("mortgageSim.yearlyCostSubtitle")}</p>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart
+              data={yearlyCostPoints}
+              margin={{ top: 8, right: 12, left: 0, bottom: 0 }}
+              barCategoryGap="18%"
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
+              <XAxis
+                dataKey="year"
+                tick={{ fill: COLORS.axis, fontSize: 11 }}
+                axisLine={{ stroke: COLORS.grid }}
+                tickLine={false}
+              />
+              <YAxis
+                tick={{ fill: COLORS.axis, fontSize: 11 }}
+                tickFormatter={(v) => fmtMoney(v, market)}
+                width={72}
+                axisLine={false}
+                tickLine={false}
+                domain={["auto", "auto"]}
+              />
+              <ReferenceLine y={0} stroke={COLORS.grid} />
+              <Tooltip
+                content={({ active, payload, label }) => {
+                  if (!active || !payload?.length) return null;
+                  const row = payload[0]?.payload as (typeof yearlyCostPoints)[number];
+                  return (
+                    <div className="rounded-xl border border-surface-border bg-white px-3 py-2 text-xs shadow-lg">
+                      <p className="mb-2 font-medium text-neutral-800">
+                        {t("mortgageSim.yearTooltip", { year: Number(label) })}
+                      </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.yearOwnCost")}:{" "}
+                        <span className="text-sky-600">{fmtMoney(row.yearOwnCost, market)}</span>
+                      </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.yearRentCost")}:{" "}
+                        <span className="text-violet-600">
+                          {fmtMoney(row.yearRentCost, market)}
+                        </span>
+                      </p>
+                      <p className="mt-1 font-medium text-neutral-800">
+                        {t("mortgageSim.yearDiff")}:{" "}
+                        <span
+                          className={
+                            row.yearDiff > 0 ? "text-red-500" : "text-green-600"
+                          }
+                        >
+                          {fmtMoney(row.yearDiff, market)}
+                        </span>
+                      </p>
+                    </div>
+                  );
+                }}
+              />
+              <Legend wrapperStyle={{ paddingTop: 12, fontSize: 11 }} />
+              <Bar
+                dataKey="yearOwnCost"
+                name={t("mortgageSim.yearOwnCost")}
+                fill={COLORS.equity}
+                radius={[3, 3, 0, 0]}
+              />
+              <Bar
+                dataKey="yearRentCost"
+                name={t("mortgageSim.yearRentCost")}
+                fill={COLORS.rentSaved}
+                radius={[3, 3, 0, 0]}
+              />
+              <Bar
+                dataKey="yearDiff"
+                name={t("mortgageSim.yearDiff")}
+                fill={COLORS.interest}
+                radius={[3, 3, 0, 0]}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      ) : null}
     </div>
   );
 }

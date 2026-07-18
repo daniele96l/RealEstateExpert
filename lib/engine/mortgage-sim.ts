@@ -5,6 +5,9 @@ import { propertyValueAtMonth } from "@/lib/market-cagr";
 /** Full simulation horizon in years (independent of mortgage term). */
 export const MORTGAGE_SIM_HORIZON_YEARS = 50;
 
+/** Assumed ETF annual return for “invest the difference” line. */
+export const MORTGAGE_SIM_ETF_RETURN_PCT = 10;
+
 export interface MortgageSimPoint {
   month: number;
   year: number;
@@ -25,6 +28,12 @@ export interface MortgageSimPoint {
   cumulativeTenantCover: number;
   /** Cumulative rent you would have paid as a tenant elsewhere. */
   cumulativeRentAvoided: number;
+  /** Owning cash paid − renting cash paid (positive ⇒ owning costs more). */
+  ownMinusRent: number;
+  /** Money saved chart series: owning − renting (= ownMinusRent). */
+  moneySaved: number;
+  /** moneySaved cashflows invested monthly in an ETF at MORTGAGE_SIM_ETF_RETURN_PCT. */
+  etfFromSaved: number;
   /** Owner cash paid so far: down payment + owner share of mortgage + recurring. */
   totalPaid: number;
   remainingBalance: number;
@@ -160,6 +169,29 @@ export function buildMortgageSimSeries(params: {
   const points: MortgageSimPoint[] = [];
   let cumulativeInterest = 0;
   let cumulativePrincipal = 0;
+  const etfMonthlyFactor = Math.pow(1 + MORTGAGE_SIM_ETF_RETURN_PCT / 100, 1 / 12);
+  let etfFromSaved = 0;
+  let prevOwnCash = downPayment;
+  let prevRentCash = 0;
+
+  const owningCashAt = (month: number) => {
+    const mortgageCash = cumulativePrincipal + cumulativeInterest;
+    const cumulativeCosts = (annualRecurring * month) / 12;
+    return round2(downPayment + mortgageCash * ownerShare + cumulativeCosts);
+  };
+
+  const rentCashAt = (month: number) =>
+    cumulativeRentAvoidedWithGrowth(monthlyRentAvoided, month, rentGrowthPct);
+
+  /** One month of ETF growth + invest this month’s (own − rent) cashflow delta. */
+  const stepEtfMonth = (month: number) => {
+    const own = owningCashAt(month);
+    const rent = rentCashAt(month);
+    const monthlyDiff = own - prevOwnCash - (rent - prevRentCash);
+    etfFromSaved = etfFromSaved * etfMonthlyFactor + monthlyDiff;
+    prevOwnCash = own;
+    prevRentCash = rent;
+  };
 
   const push = (
     month: number,
@@ -179,12 +211,10 @@ export function buildMortgageSimSeries(params: {
     const cumulativeCosts = round2((annualRecurring * month) / 12);
     const loanMonthsActive = Math.min(month, loanMonths);
     const cumulativeTenantCover = round2(tenantMonthlyCover * loanMonthsActive);
-    const cumulativeRentAvoided = cumulativeRentAvoidedWithGrowth(
-      monthlyRentAvoided,
-      month,
-      rentGrowthPct,
-    );
-    const totalPaid = round2(downPayment + mortgageCash * ownerShare + cumulativeCosts);
+    const cumulativeRentAvoided = rentCashAt(month);
+    const totalPaid = owningCashAt(month);
+    const ownMinusRent = round2(totalPaid - cumulativeRentAvoided);
+    const moneySaved = ownMinusRent;
     points.push({
       month,
       year,
@@ -197,6 +227,9 @@ export function buildMortgageSimSeries(params: {
       cumulativeCosts,
       cumulativeTenantCover,
       cumulativeRentAvoided,
+      ownMinusRent,
+      moneySaved,
+      etfFromSaved: round2(etfFromSaved),
       totalPaid,
       remainingBalance: round2(remainingBalance),
       monthInterest: round2(monthInterest),
@@ -232,11 +265,11 @@ export function buildMortgageSimSeries(params: {
   };
 
   if (loanMonths === 0) {
-    for (let month = 12; month <= horizonMonths; month += 12) {
-      push(month, month / 12, 0, 0, 0, 0, 0);
-    }
-    if (horizonMonths % 12 !== 0) {
-      push(horizonMonths, horizonYears, 0, 0, 0, 0, 0);
+    for (let month = 1; month <= horizonMonths; month++) {
+      stepEtfMonth(month);
+      if (month % 12 === 0 || month === horizonMonths) {
+        push(month, Math.ceil(month / 12), 0, 0, 0, 0, 0);
+      }
     }
     return finish();
   }
@@ -247,6 +280,7 @@ export function buildMortgageSimSeries(params: {
     cumulativePrincipal += row.principal;
     const month = i + 1;
     if (month > horizonMonths) break;
+    stepEtfMonth(month);
     const isYearEnd = month % 12 === 0;
     const isLastLoan = month === loanMonths || month === horizonMonths;
     if (isYearEnd || isLastLoan) {
@@ -262,12 +296,10 @@ export function buildMortgageSimSeries(params: {
     }
   }
 
-  // After mortgage: continue to 50y with costs / rent-avoided only.
   const lastLoanMonth = Math.min(loanMonths, horizonMonths);
   for (let month = lastLoanMonth + 1; month <= horizonMonths; month++) {
-    const isYearEnd = month % 12 === 0;
-    const isLast = month === horizonMonths;
-    if (isYearEnd || isLast) {
+    stepEtfMonth(month);
+    if (month % 12 === 0 || month === horizonMonths) {
       push(month, Math.ceil(month / 12), 0, 0, 0, 0, 0);
     }
   }
