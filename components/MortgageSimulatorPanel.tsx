@@ -95,6 +95,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
   );
   const [rate, setRate] = useState(defaults.rate);
   const [years, setYears] = useState(defaults.years);
+  const [appreciation, setAppreciation] = useState(2);
 
   const downPct = price > 0 ? (downPayment / price) * 100 : 0;
 
@@ -105,8 +106,9 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         downPayment,
         annualRate: rate,
         years,
+        annualAppreciationPct: appreciation,
       }),
-    [price, downPayment, rate, years],
+    [price, downPayment, rate, years, appreciation],
   );
 
   const paymentSplitPoints = useMemo(
@@ -208,6 +210,24 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               }}
             />
           </label>
+          <label className="block space-y-1.5">
+            <span className="text-xs font-medium text-neutral-600">
+              {t("mortgageSim.appreciation")}
+            </span>
+            <input
+              type="number"
+              min={-5}
+              max={20}
+              step={0.1}
+              className="input-field"
+              value={appreciation}
+              onChange={(e) => {
+                const v = Number(e.target.value);
+                setAppreciation(Number.isFinite(v) ? v : 0);
+              }}
+            />
+            <span className="text-[11px] text-neutral-500">{t("mortgageSim.appreciationHint")}</span>
+          </label>
           <div className="flex flex-col justify-end rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-2 sm:col-span-1">
             <p className="text-[10px] uppercase tracking-wide text-neutral-500">
               {t("mortgageSim.loanAmount")}
@@ -234,7 +254,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         <Kpi
           label={t("mortgageSim.cagr")}
           value={formatCagr(sim.cagr)}
-          hint={t("mortgageSim.cagrHint", { years })}
+          hint={t("mortgageSim.cagrHint", { years, appreciation })}
         />
       </div>
 

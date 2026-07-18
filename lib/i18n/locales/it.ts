@@ -256,12 +256,14 @@ const it = {
   mortgageSim: {
     title: "Simulatore mutuo",
     subtitle:
-      "Quanto va alla banca (interessi) e quanto costruisce equity (anticipo + capitale). Prezzo immobile fisso — senza plusvalenza.",
+      "Quanto va alla banca (interessi) e quanto costruisce equity (anticipo + capitale + rivalutazione).",
     purchasePrice: "Prezzo immobile",
     downPayment: "Anticipo",
     downPaymentPct: "Anticipo %",
     interestRate: "Tasso annuo %",
     loanYears: "Durata (anni)",
+    appreciation: "Rivalutazione immobile %/anno",
+    appreciationHint: "Crescita annua del prezzo (es. inflazione).",
     loanAmount: "Importo mutuo",
     monthlyPayment: "Rata mensile",
     paymentSplitTitle: "Composizione rata mensile",
@@ -274,8 +276,9 @@ const it = {
     totalInterest: "Interessi alla banca",
     finalEquity: "Equity finale",
     cagr: "CAGR equity",
-    cagrHint: "Da anticipo iniziale a equity finale in {years} anni (prezzo piatto).",
-    equity: "Equity (anticipo + capitale)",
+    cagrHint:
+      "Da totale versato (anticipo + interessi) a equity finale in {years} anni, con rivalutazione {appreciation}%/anno.",
+    equity: "Equity (valore − mutuo)",
     bankInterest: "Interessi alla banca",
     totalPaid: "Totale versato",
     chartTitle: "Equity vs interessi nel tempo",
