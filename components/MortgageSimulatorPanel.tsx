@@ -33,6 +33,8 @@ interface Props {
 const COLORS = {
   interest: CHART_THEME.negative,
   equity: CHART_THEME.series.blue,
+  costs: CHART_THEME.series.amber,
+  tenant: CHART_THEME.series.cyan,
   property: CHART_THEME.positive,
   grid: CHART_THEME.grid,
   axis: CHART_THEME.axis,
@@ -54,7 +56,7 @@ function defaultsForMarket(market: MarketId) {
       downPct: CZECH_DEFAULTS.investment_down_payment_pct,
       rate: CZECH_DEFAULTS.mortgage_rate_pct,
       years: CZECH_DEFAULTS.default_loan_years,
-      maintenancePct: CZECH_DEFAULTS.maintenance_pct_medium,
+      maintenancePct: 0.005,
     };
   }
   return {
@@ -62,7 +64,7 @@ function defaultsForMarket(market: MarketId) {
     downPct: ITALY_DEFAULTS.investment_down_payment_pct,
     rate: ITALY_DEFAULTS.mortgage_rate_pct,
     years: ITALY_DEFAULTS.default_loan_years,
-    maintenancePct: ITALY_DEFAULTS.maintenance_pct_medium,
+    maintenancePct: 0.005,
   };
 }
 
@@ -117,7 +119,9 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
     estimatePropertyTaxAnnual(defaults.price, market),
   );
   const [rentEnabled, setRentEnabled] = useState(false);
-  const [tenantCoveragePct, setTenantCoveragePct] = useState(80);
+  const [tenantMonthlyAmount, setTenantMonthlyAmount] = useState(
+    market === "cz" ? 15_000 : 300,
+  );
 
   const downPayment = Math.round((price * downPct) / 100);
   const maintenanceMonthly = monthlyMaintenanceCost(price, maintenancePct);
@@ -131,7 +135,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         years,
         annualAppreciationPct: appreciation,
         rentEnabled,
-        tenantCoveragePct,
+        tenantMonthlyAmount,
         maintenancePct,
         propertyTaxAnnual,
       }),
@@ -142,7 +146,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
       years,
       appreciation,
       rentEnabled,
-      tenantCoveragePct,
+      tenantMonthlyAmount,
       maintenancePct,
       propertyTaxAnnual,
     ],
@@ -321,19 +325,21 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               <input
                 type="number"
                 min={0}
-                max={100}
-                step={1}
+                step={market === "cz" ? 500 : 10}
                 className="input-field"
-                value={tenantCoveragePct}
+                value={tenantMonthlyAmount}
                 onChange={(e) => {
                   const v = Number(e.target.value);
-                  setTenantCoveragePct(
-                    Number.isFinite(v) ? Math.min(100, Math.max(0, v)) : 0,
-                  );
+                  setTenantMonthlyAmount(Number.isFinite(v) && v >= 0 ? v : 0);
                 }}
               />
               <span className="text-[11px] text-neutral-500">
-                {t("mortgageSim.tenantCoverageHint")}
+                {t("mortgageSim.tenantCoverageHint", {
+                  pct:
+                    sim.monthlyPayment > 0
+                      ? ((sim.tenantMonthlyCover / sim.monthlyPayment) * 100).toFixed(0)
+                      : "0",
+                })}
               </span>
             </label>
           ) : null}
@@ -433,6 +439,18 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                         {t("mortgageSim.monthPrincipal")}:{" "}
                         <span className="text-sky-600">{fmtMoney(row.monthPrincipal, market)}</span>
                       </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.monthCosts")}:{" "}
+                        <span className="text-amber-600">{fmtMoney(row.monthCosts, market)}</span>
+                      </p>
+                      {rentEnabled ? (
+                        <p className="text-neutral-600">
+                          {t("mortgageSim.monthTenantCover")}:{" "}
+                          <span className="text-cyan-600">
+                            {fmtMoney(row.monthTenantCover, market)}
+                          </span>
+                        </p>
+                      ) : null}
                     </div>
                   );
                 }}
@@ -449,8 +467,22 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 dataKey="monthInterest"
                 name={t("mortgageSim.monthInterest")}
                 fill={COLORS.interest}
+              />
+              <Bar
+                stackId="split"
+                dataKey="monthCosts"
+                name={t("mortgageSim.monthCosts")}
+                fill={COLORS.costs}
                 radius={[4, 4, 0, 0]}
               />
+              {rentEnabled ? (
+                <Bar
+                  dataKey="monthTenantCover"
+                  name={t("mortgageSim.monthTenantCover")}
+                  fill={COLORS.tenant}
+                  radius={[4, 4, 0, 0]}
+                />
+              ) : null}
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -501,6 +533,14 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                         {t("mortgageSim.propertyValue")}:{" "}
                         <span className="text-green-600">{fmtMoney(row.propertyValue, market)}</span>
                       </p>
+                      {rentEnabled ? (
+                        <p className="text-neutral-600">
+                          {t("mortgageSim.propertyValuePlusRent")}:{" "}
+                          <span className="text-cyan-600">
+                            {fmtMoney(row.propertyValuePlusRent, market)}
+                          </span>
+                        </p>
+                      ) : null}
                       <p className="text-neutral-600">
                         {t("mortgageSim.equity")}:{" "}
                         <span className="text-sky-600">{fmtMoney(row.equity, market)}</span>
@@ -511,6 +551,20 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                           {fmtMoney(row.cumulativeInterest, market)}
                         </span>
                       </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.cumulativeCosts")}:{" "}
+                        <span className="text-amber-600">
+                          {fmtMoney(row.cumulativeCosts, market)}
+                        </span>
+                      </p>
+                      {rentEnabled && row.cumulativeTenantCover > 0 ? (
+                        <p className="text-neutral-600">
+                          {t("mortgageSim.cumulativeTenantCover")}:{" "}
+                          <span className="text-cyan-600">
+                            {fmtMoney(row.cumulativeTenantCover, market)}
+                          </span>
+                        </p>
+                      ) : null}
                       <p className="mt-1 font-medium text-neutral-800">
                         {t("mortgageSim.totalPaid")}: {fmtMoney(row.totalPaid, market)}
                       </p>
@@ -530,6 +584,12 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 dataKey="cumulativeInterest"
                 name={t("mortgageSim.bankInterest")}
                 fill={COLORS.interest}
+              />
+              <Bar
+                stackId="paid"
+                dataKey="cumulativeCosts"
+                name={t("mortgageSim.cumulativeCosts")}
+                fill={COLORS.costs}
                 radius={[4, 4, 0, 0]}
               />
               <Line
@@ -541,6 +601,18 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 dot={false}
                 activeDot={{ r: 4 }}
               />
+              {rentEnabled ? (
+                <Line
+                  type="monotone"
+                  dataKey="propertyValuePlusRent"
+                  name={t("mortgageSim.propertyValuePlusRent")}
+                  stroke={COLORS.tenant}
+                  strokeWidth={2}
+                  strokeDasharray="6 4"
+                  dot={false}
+                  activeDot={{ r: 4 }}
+                />
+              ) : null}
             </ComposedChart>
           </ResponsiveContainer>
         </div>
