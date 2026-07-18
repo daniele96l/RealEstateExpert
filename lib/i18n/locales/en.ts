@@ -308,8 +308,10 @@ const en: Translations = {
     ownVsRentTitle: "Owning vs renting — cumulative cost",
     ownVsRentSubtitle:
       "Cash spent if you buy (anticipo + rata + costs) versus cash spent if you keep renting.",
-    costOfOwning: "Cost of owning",
-    costOfRenting: "Cost of renting",
+    costOfOwning: "Total cost of owning",
+    costOfRenting: "Total cost of renting",
+    totalCostsTitle: "Total cost of owning vs renting",
+    totalCostsSubtitle: "Cumulative cash spent if you buy versus if you keep renting.",
     ownMinusRent: "Owning − renting",
     moneySavedTitle: "Money saved",
     moneySavedSubtitle:

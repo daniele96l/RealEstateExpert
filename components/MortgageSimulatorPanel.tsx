@@ -852,6 +852,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
             <ComposedChart
               data={sim.points}
               margin={{ top: 10, right: 12, left: 0, bottom: 0 }}
+              barCategoryGap="22%"
             >
               <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
               <XAxis
@@ -911,14 +912,12 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 }}
               />
               <Legend wrapperStyle={{ paddingTop: 16, fontSize: 11 }} />
-              <Line
-                type="monotone"
+              <Bar
                 dataKey="moneySaved"
                 name={t("mortgageSim.moneySaved")}
-                stroke={COLORS.equity}
-                strokeWidth={2}
-                dot={false}
-                activeDot={{ r: 4 }}
+                fill={COLORS.equity}
+                fillOpacity={0.45}
+                radius={[3, 3, 0, 0]}
               />
               <Line
                 type="monotone"
@@ -935,6 +934,83 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 dataKey="propertyValue"
                 name={t("mortgageSim.propertyValue")}
                 stroke={COLORS.property}
+                strokeWidth={2}
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+            </ComposedChart>
+          </ResponsiveContainer>
+        </div>
+      ) : null}
+
+      {liveInEnabled ? (
+        <div className="card p-5">
+          <h3 className="mb-1 text-base font-semibold text-neutral-900">
+            {t("mortgageSim.totalCostsTitle")}
+          </h3>
+          <p className="mb-4 text-sm text-neutral-500">{t("mortgageSim.totalCostsSubtitle")}</p>
+          <ResponsiveContainer width="100%" height={300}>
+            <ComposedChart
+              data={sim.points}
+              margin={{ top: 10, right: 12, left: 0, bottom: 0 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
+              <XAxis
+                dataKey="month"
+                tick={{ fill: COLORS.axis, fontSize: 11 }}
+                tickFormatter={(m) => (m === 0 ? t("common.start") : `${m / 12}`)}
+                axisLine={{ stroke: COLORS.grid }}
+                tickLine={false}
+              />
+              <YAxis
+                tick={{ fill: COLORS.axis, fontSize: 11 }}
+                tickFormatter={formatAxis}
+                axisLine={false}
+                tickLine={false}
+                domain={[0, "auto"]}
+              />
+              <Tooltip
+                content={({ active, payload, label }) => {
+                  if (!active || !payload?.length) return null;
+                  const row = payload[0]?.payload as MortgageSimPoint;
+                  return (
+                    <div className="rounded-xl border border-surface-border bg-white px-3 py-2 text-xs shadow-lg">
+                      <p className="mb-2 font-medium text-neutral-800">
+                        {label === 0
+                          ? t("mortgageSim.purchaseTooltip")
+                          : t("mortgageSim.yearTooltip", {
+                              year: Math.ceil(Number(label) / 12),
+                            })}
+                      </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.costOfOwning")}:{" "}
+                        <span className="text-sky-600">{fmtMoney(row.totalPaid, market)}</span>
+                      </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.costOfRenting")}:{" "}
+                        <span className="text-amber-600">
+                          {fmtMoney(row.cumulativeRentAvoided, market)}
+                        </span>
+                      </p>
+                    </div>
+                  );
+                }}
+              />
+              <Legend wrapperStyle={{ paddingTop: 16, fontSize: 11 }} />
+              <Line
+                type="monotone"
+                dataKey="totalPaid"
+                name={t("mortgageSim.costOfOwning")}
+                stroke={COLORS.equity}
+                strokeWidth={2}
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="cumulativeRentAvoided"
+                name={t("mortgageSim.costOfRenting")}
+                stroke={COLORS.costs}
                 strokeWidth={2}
                 dot={false}
                 activeDot={{ r: 4 }}

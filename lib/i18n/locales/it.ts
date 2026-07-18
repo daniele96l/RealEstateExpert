@@ -307,8 +307,10 @@ const it = {
     ownVsRentTitle: "Comprare vs affittare — costo cumulato",
     ownVsRentSubtitle:
       "Soldi spesi se compri (anticipo + rata + costi) rispetto a restare in affitto.",
-    costOfOwning: "Costo di possedere",
-    costOfRenting: "Costo di affittare",
+    costOfOwning: "Totale costo possedere",
+    costOfRenting: "Totale costo affitto",
+    totalCostsTitle: "Totale costo possedere vs affitto",
+    totalCostsSubtitle: "Cassa cumulata se compri rispetto a se resti in affitto.",
     ownMinusRent: "Possedere − affittare",
     moneySavedTitle: "Soldi risparmiati",
     moneySavedSubtitle:
