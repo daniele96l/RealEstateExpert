@@ -13,8 +13,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { ITALY_DEFAULTS } from "@/lib/constants";
-import { CZECH_DEFAULTS } from "@/lib/constants-cz";
+import { estimateMonthlyRent, ITALY_DEFAULTS } from "@/lib/constants";
+import { CZECH_DEFAULTS, estimateCzechMonthlyRent } from "@/lib/constants-cz";
 import { buildMortgageSimSeries, type MortgageSimPoint } from "@/lib/engine/mortgage-sim";
 import {
   MAINTENANCE_PCT_OPTIONS,
@@ -35,6 +35,7 @@ const COLORS = {
   equity: CHART_THEME.series.blue,
   costs: CHART_THEME.series.amber,
   tenant: CHART_THEME.series.cyan,
+  rentSaved: CHART_THEME.series.violet,
   property: CHART_THEME.positive,
   grid: CHART_THEME.grid,
   axis: CHART_THEME.axis,
@@ -49,6 +50,12 @@ function estimatePropertyTaxAnnual(price: number, market: MarketId): number {
   );
 }
 
+function estimateAvoidedRent(price: number, market: MarketId): number {
+  return market === "cz"
+    ? estimateCzechMonthlyRent(price)
+    : estimateMonthlyRent(price);
+}
+
 function defaultsForMarket(market: MarketId) {
   if (market === "cz") {
     return {
@@ -60,7 +67,7 @@ function defaultsForMarket(market: MarketId) {
     };
   }
   return {
-    price: ITALY_DEFAULTS.default_purchase_price,
+    price: 300_000,
     downPct: ITALY_DEFAULTS.investment_down_payment_pct,
     rate: ITALY_DEFAULTS.mortgage_rate_pct,
     years: ITALY_DEFAULTS.default_loan_years,
@@ -119,9 +126,14 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
     estimatePropertyTaxAnnual(defaults.price, market),
   );
   const [rentEnabled, setRentEnabled] = useState(false);
+  const [liveInEnabled, setLiveInEnabled] = useState(false);
   const [tenantMonthlyAmount, setTenantMonthlyAmount] = useState(
     market === "cz" ? 15_000 : 300,
   );
+  const [monthlyRentAvoided, setMonthlyRentAvoided] = useState(
+    market === "cz" ? estimateAvoidedRent(defaults.price, market) : 1000,
+  );
+  const [rentGrowthPct, setRentGrowthPct] = useState(2);
 
   const downPayment = Math.round((price * downPct) / 100);
   const maintenanceMonthly = monthlyMaintenanceCost(price, maintenancePct);
@@ -136,6 +148,9 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         annualAppreciationPct: appreciation,
         rentEnabled,
         tenantMonthlyAmount,
+        liveInEnabled,
+        monthlyRentAvoided,
+        rentGrowthPct,
         maintenancePct,
         propertyTaxAnnual,
       }),
@@ -147,6 +162,9 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
       appreciation,
       rentEnabled,
       tenantMonthlyAmount,
+      liveInEnabled,
+      monthlyRentAvoided,
+      rentGrowthPct,
       maintenancePct,
       propertyTaxAnnual,
     ],
@@ -306,7 +324,11 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               type="checkbox"
               className="mt-0.5 h-4 w-4 rounded border-neutral-300"
               checked={rentEnabled}
-              onChange={(e) => setRentEnabled(e.target.checked)}
+              onChange={(e) => {
+                const on = e.target.checked;
+                setRentEnabled(on);
+                if (on) setLiveInEnabled(false);
+              }}
             />
             <span>
               <span className="block text-xs font-medium text-neutral-700">
@@ -314,6 +336,26 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               </span>
               <span className="mt-0.5 block text-[11px] text-neutral-500">
                 {t("mortgageSim.rentToggleHint")}
+              </span>
+            </span>
+          </label>
+          <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-2.5 sm:col-span-2">
+            <input
+              type="checkbox"
+              className="mt-0.5 h-4 w-4 rounded border-neutral-300"
+              checked={liveInEnabled}
+              onChange={(e) => {
+                const on = e.target.checked;
+                setLiveInEnabled(on);
+                if (on) setRentEnabled(false);
+              }}
+            />
+            <span>
+              <span className="block text-xs font-medium text-neutral-700">
+                {t("mortgageSim.liveInToggle")}
+              </span>
+              <span className="mt-0.5 block text-[11px] text-neutral-500">
+                {t("mortgageSim.liveInToggleHint")}
               </span>
             </span>
           </label>
@@ -343,6 +385,49 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               </span>
             </label>
           ) : null}
+          {liveInEnabled ? (
+            <>
+              <label className="block space-y-1.5">
+                <span className="text-xs font-medium text-neutral-600">
+                  {t("mortgageSim.rentAvoided")}
+                </span>
+                <input
+                  type="number"
+                  min={0}
+                  step={market === "cz" ? 500 : 10}
+                  className="input-field"
+                  value={monthlyRentAvoided}
+                  onChange={(e) => {
+                    const v = Number(e.target.value);
+                    setMonthlyRentAvoided(Number.isFinite(v) && v >= 0 ? v : 0);
+                  }}
+                />
+                <span className="text-[11px] text-neutral-500">
+                  {t("mortgageSim.rentAvoidedHint")}
+                </span>
+              </label>
+              <label className="block space-y-1.5">
+                <span className="text-xs font-medium text-neutral-600">
+                  {t("mortgageSim.rentGrowth")}
+                </span>
+                <input
+                  type="number"
+                  min={-5}
+                  max={20}
+                  step={0.1}
+                  className="input-field"
+                  value={rentGrowthPct}
+                  onChange={(e) => {
+                    const v = Number(e.target.value);
+                    setRentGrowthPct(Number.isFinite(v) ? v : 0);
+                  }}
+                />
+                <span className="text-[11px] text-neutral-500">
+                  {t("mortgageSim.rentGrowthHint")}
+                </span>
+              </label>
+            </>
+          ) : null}
         </div>
       </div>
 
@@ -361,6 +446,23 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
             <Kpi
               label={t("mortgageSim.tenantMonthlyCover")}
               value={fmtMoney(sim.tenantMonthlyCover, market)}
+              tone="equity"
+            />
+          </>
+        ) : liveInEnabled ? (
+          <>
+            <Kpi
+              label={t("mortgageSim.ownerMonthlyNet")}
+              value={fmtMoney(sim.ownerMonthlyNet, market)}
+            />
+            <Kpi
+              label={t("mortgageSim.monthlyRentAvoided")}
+              value={fmtMoney(sim.monthlyRentAvoided, market)}
+              tone="equity"
+            />
+            <Kpi
+              label={t("mortgageSim.totalRentAvoided")}
+              value={fmtMoney(sim.totalRentAvoided, market)}
               tone="equity"
             />
           </>
@@ -383,7 +485,10 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         <Kpi
           label={t("mortgageSim.cagr")}
           value={formatCagr(sim.cagr)}
-          hint={t("mortgageSim.cagrHint", { years, appreciation })}
+          hint={t("mortgageSim.cagrHint", {
+            years: sim.horizonYears,
+            appreciation,
+          })}
         />
       </div>
 
@@ -541,6 +646,14 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                           </span>
                         </p>
                       ) : null}
+                      {liveInEnabled ? (
+                        <p className="text-neutral-600">
+                          {t("mortgageSim.propertyValuePlusRentSaved")}:{" "}
+                          <span className="text-violet-600">
+                            {fmtMoney(row.propertyValuePlusRentSaved, market)}
+                          </span>
+                        </p>
+                      ) : null}
                       <p className="text-neutral-600">
                         {t("mortgageSim.equity")}:{" "}
                         <span className="text-sky-600">{fmtMoney(row.equity, market)}</span>
@@ -607,6 +720,18 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                   dataKey="propertyValuePlusRent"
                   name={t("mortgageSim.propertyValuePlusRent")}
                   stroke={COLORS.tenant}
+                  strokeWidth={2}
+                  strokeDasharray="6 4"
+                  dot={false}
+                  activeDot={{ r: 4 }}
+                />
+              ) : null}
+              {liveInEnabled ? (
+                <Line
+                  type="monotone"
+                  dataKey="propertyValuePlusRentSaved"
+                  name={t("mortgageSim.propertyValuePlusRentSaved")}
+                  stroke={COLORS.rentSaved}
                   strokeWidth={2}
                   strokeDasharray="6 4"
                   dot={false}
