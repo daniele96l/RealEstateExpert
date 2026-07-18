@@ -2,8 +2,8 @@
   "city": "Rosice",
   "market": "cz",
   "portal": "sreality",
-  "updated_at": "2026-07-17T08:22:19.860Z",
-  "snapshot_count": 5,
+  "updated_at": "2026-07-18T08:03:39.156Z",
+  "snapshot_count": 6,
   "last_provider": "sreality",
   "listings": {
     "sr_3042828364": {
@@ -17,9 +17,9 @@
       "zone": "Rosice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/rosice-rosice-husova-ctvrt/3042828364",
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-18",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-17T08:22:19.860Z",
+      "last_seen_at": "2026-07-18T08:03:39.156Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -43,7 +43,7 @@
       "listing_published_at": "2026-07-11",
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-17T08:22:19.860Z",
+      "last_seen_at": "2026-07-18T08:03:39.156Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -67,7 +67,7 @@
       "listing_published_at": "2026-07-09",
       "listing_updated_at": "2026-07-09",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-17T08:22:19.860Z",
+      "last_seen_at": "2026-07-18T08:03:39.156Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -91,7 +91,7 @@
       "listing_published_at": "2026-06-04",
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-17T08:22:19.860Z",
+      "last_seen_at": "2026-07-18T08:03:39.156Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -115,7 +115,7 @@
       "listing_published_at": "2026-05-12",
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-17T08:22:19.860Z",
+      "last_seen_at": "2026-07-18T08:03:39.156Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -139,7 +139,7 @@
       "listing_published_at": "2026-07-15",
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-16T08:26:52.356Z",
-      "last_seen_at": "2026-07-17T08:22:19.860Z",
+      "last_seen_at": "2026-07-18T08:03:39.156Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -163,7 +163,7 @@
       "listing_published_at": "2026-07-15",
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-16T08:26:52.356Z",
-      "last_seen_at": "2026-07-17T08:22:19.860Z",
+      "last_seen_at": "2026-07-18T08:03:39.156Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -171,6 +171,30 @@
         {
           "at": "2026-07-16T08:26:52.356Z",
           "price": 14900
+        }
+      ]
+    },
+    "sr_646438988": {
+      "id": "sr_646438988",
+      "price": 12000,
+      "lat": 49.182221,
+      "lng": 16.391176,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Komenského náměstí, Rosice, Rosice",
+      "zone": "Rosice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/rosice-rosice-komenskeho-namesti/646438988",
+      "listing_published_at": "2026-07-18",
+      "listing_updated_at": "2026-07-18",
+      "first_seen_at": "2026-07-18T08:03:39.156Z",
+      "last_seen_at": "2026-07-18T08:03:39.156Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-18T08:03:39.156Z",
+          "price": 12000
         }
       ]
     }

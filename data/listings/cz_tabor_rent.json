@@ -1,7 +1,7 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-07-17T08:22:15.735Z",
+  "fetched_at": "2026-07-18T08:03:35.143Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
@@ -389,6 +389,25 @@
       "listing_updated_at": "2026-07-07"
     },
     {
+      "id": "sr_1830346828",
+      "title": "Pronájem bytu 1+1 34 m²",
+      "price": 8500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/tabor-tabor-buzulucka/1830346828",
+      "lat": 49.42228777777,
+      "lng": 14.64833972222,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Buzulucká, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-07",
+      "listing_updated_at": "2026-07-18"
+    },
+    {
       "id": "sr_1915281484",
       "title": "Pronájem bytu 2+kk 42 m²",
       "price": 11000,
@@ -405,7 +424,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-06",
-      "listing_updated_at": "2026-07-06"
+      "listing_updated_at": "2026-07-17"
     },
     {
       "id": "sr_2723733580",

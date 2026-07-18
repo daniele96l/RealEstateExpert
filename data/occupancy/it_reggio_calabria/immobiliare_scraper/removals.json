@@ -1,5 +1,27 @@
 [
   {
+    "id": "im_128621920",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-18T08:02:10.122Z",
+    "presumed_rented_at": "2026-07-18T08:02:10.122Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-17T08:20:46.815Z",
+    "days_on_market": 10,
+    "price": 550,
+    "sqm": 152,
+    "rooms": 3,
+    "address": "Viale Calabria",
+    "zone": "Ferrovieri, Stadio, Sbarre",
+    "lat": 38.0854,
+    "lng": 15.6418,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 550
+      }
+    ]
+  },
+  {
     "id": "im_130713520",
     "portal": "immobiliare_scraper",
     "detected_at": "2026-07-16T08:25:04.151Z",
