@@ -10,7 +10,8 @@ export const ITALY_DEFAULTS = {
   registration_tax_pct_prima_casa: 2,
   registration_tax_pct_investment: 9,
   agency_pct: 3,
-  imu_rate: 0.0086,
+  /** Aliquota IMU ordinaria Reggio Calabria (seconda casa / investimento) */
+  imu_rate: 0.0106,
   maintenance_pct_long: 0.008,
   maintenance_pct_medium: 0.01,
   maintenance_pct_short: 0.012,

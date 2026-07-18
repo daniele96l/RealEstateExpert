@@ -15,6 +15,7 @@ import RoiChart from "@/components/RoiChart";
 import ListingsExportPanel from "@/components/ListingsExportPanel";
 import OccupancyRatePanel from "@/components/OccupancyRatePanel";
 import OccupancyRemovalsLog from "@/components/OccupancyRemovalsLog";
+import MortgageSimulatorPanel from "@/components/MortgageSimulatorPanel";
 import SegmentedControl from "@/components/ui/SegmentedControl";
 import {
   getDefaultSimpleScenario,
@@ -44,7 +45,7 @@ import type { ListingsExportContext } from "@/lib/listings-export";
 import { Building2, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type PageTab = "analysis" | "occupancy";
+type PageTab = "analysis" | "occupancy" | "mortgage";
 
 function initialMarketScenario(): SimpleScenario {
   const stored = typeof window !== "undefined" ? readStoredMarket() : "it";
@@ -274,6 +275,7 @@ export default function HomePageContent() {
               options={[
                 { id: "analysis" as const, label: t("nav.analysis") },
                 { id: "occupancy" as const, label: t("nav.occupancy") },
+                { id: "mortgage" as const, label: t("nav.mortgage") },
               ]}
             />
           </div>
@@ -283,6 +285,8 @@ export default function HomePageContent() {
       <main className="mx-auto max-w-7xl bg-surface px-4 py-8 sm:px-6">
         {pageTab === "occupancy" ? (
           <OccupancyRatePanel onDataMutated={() => setOccupancyLogRefresh((n) => n + 1)} />
+        ) : pageTab === "mortgage" ? (
+          <MortgageSimulatorPanel key={market} market={market} />
         ) : (
         <div className="grid gap-10 lg:grid-cols-[minmax(320px,420px)_1fr]">
           <div
