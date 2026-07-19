@@ -1,13 +1,51 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-07-18T08:03:35.143Z",
+  "fetched_at": "2026-07-19T08:29:26.064Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3731284044",
+      "title": "Pronájem bytu 3+kk 120 m²",
+      "price": 13000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/nadejkov-neprejov/3731284044",
+      "lat": 49.50881,
+      "lng": 14.504759,
+      "sqm": 120,
+      "rooms": 3,
+      "address": "Nepřejov, Nadějkov",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-18",
+      "listing_updated_at": "2026-07-18"
+    },
+    {
+      "id": "sr_927457356",
+      "title": "Pronájem bytu 2+kk 55 m²",
+      "price": 13000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/tabor-cekanice/927457356",
+      "lat": 49.42687276685442,
+      "lng": 14.679909158300074,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Čekanice, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-17",
+      "listing_updated_at": "2026-07-18"
+    },
     {
       "id": "sr_1557459020",
       "title": "Pronájem bytu 2+kk 55 m²",
@@ -729,25 +767,6 @@
       "needs_renovation": null,
       "listing_published_at": "2026-04-20",
       "listing_updated_at": "2026-07-07"
-    },
-    {
-      "id": "sr_2070839372",
-      "title": "Pronájem bytu 2+1 80 m²",
-      "price": 14000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/tabor-tabor-csl-armady/2070839372",
-      "lat": 49.4193071695562,
-      "lng": 14.6618949378078,
-      "sqm": 80,
-      "rooms": 2,
-      "address": "Čsl. armády, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-01",
-      "listing_updated_at": "2026-07-14"
     },
     {
       "id": "sr_4288864332",

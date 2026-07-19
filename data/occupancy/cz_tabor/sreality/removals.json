@@ -1,5 +1,27 @@
 [
   {
+    "id": "sr_2070839372",
+    "portal": "sreality",
+    "detected_at": "2026-07-19T08:29:26.064Z",
+    "presumed_rented_at": "2026-07-19T08:29:26.064Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-18T08:03:35.143Z",
+    "days_on_market": 7,
+    "price": 14000,
+    "sqm": 80,
+    "rooms": 2,
+    "address": "Čsl. armády, Tábor, Tábor",
+    "zone": "Tábor",
+    "lat": 49.4193071695562,
+    "lng": 14.6618949378078,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
     "id": "sr_579596364",
     "portal": "sreality",
     "detected_at": "2026-07-17T08:22:15.735Z",
