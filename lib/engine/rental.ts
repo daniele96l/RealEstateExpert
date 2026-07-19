@@ -70,6 +70,84 @@ export function shortTermNetMonthly(params: {
   return { gross, platform, cleaning, agency, tax, utilities, net };
 }
 
+export type ShortTermSeasonId = "low" | "mid" | "high";
+
+export type ShortTermSeasonInputs = {
+  nightlyRate: number;
+  occupancyPct: number;
+  /** Months of the year in this season (weights; normalized if sum ≠ 12). */
+  months: number;
+};
+
+export type ShortTermSeasonalNet = ReturnType<typeof shortTermNetMonthly> & {
+  bySeason: Record<ShortTermSeasonId, ReturnType<typeof shortTermNetMonthly>>;
+  /** Effective occupancy % after weighting seasons. */
+  weightedOccupancyPct: number;
+};
+
+/** Year-average monthly short-term net from low / mid / high seasons. */
+export function shortTermNetMonthlySeasonal(params: {
+  seasons: Record<ShortTermSeasonId, ShortTermSeasonInputs>;
+  platformFeePct: number;
+  avgStayNights: number;
+  cleaningPerTurnover: number;
+  agencyFeePct?: number;
+  taxPct?: number;
+  utilitiesMonthly?: number;
+}): ShortTermSeasonalNet {
+  const ids: ShortTermSeasonId[] = ["low", "mid", "high"];
+  const monthsSum = ids.reduce((s, id) => s + Math.max(0, params.seasons[id].months), 0);
+  const denom = monthsSum > 0 ? monthsSum : 12;
+
+  const bySeason = {} as Record<ShortTermSeasonId, ReturnType<typeof shortTermNetMonthly>>;
+  let gross = 0;
+  let platform = 0;
+  let cleaning = 0;
+  let agency = 0;
+  let tax = 0;
+  let utilities = 0;
+  let net = 0;
+  let weightedOcc = 0;
+
+  for (const id of ids) {
+    const season = params.seasons[id];
+    const w = Math.max(0, season.months) / denom;
+    const row = shortTermNetMonthly({
+      nightlyRate: season.nightlyRate,
+      occupancyPct: season.occupancyPct,
+      platformFeePct: params.platformFeePct,
+      avgStayNights: params.avgStayNights,
+      cleaningPerTurnover: params.cleaningPerTurnover,
+      agencyFeePct: params.agencyFeePct,
+      taxPct: params.taxPct,
+      utilitiesMonthly: params.utilitiesMonthly,
+    });
+    bySeason[id] = row;
+    gross += row.gross * w;
+    platform += row.platform * w;
+    cleaning += row.cleaning * w;
+    agency += row.agency * w;
+    tax += row.tax * w;
+    utilities += row.utilities * w;
+    net += row.net * w;
+    const occRaw = Math.max(0, season.occupancyPct);
+    weightedOcc += (occRaw > 1 ? occRaw : occRaw * 100) * w;
+  }
+
+  const round2 = (n: number) => Math.round(n * 100) / 100;
+  return {
+    gross: round2(gross),
+    platform: round2(platform),
+    cleaning: round2(cleaning),
+    agency: round2(agency),
+    tax: round2(tax),
+    utilities: round2(utilities),
+    net: round2(net),
+    bySeason,
+    weightedOccupancyPct: round2(weightedOcc),
+  };
+}
+
 /** Commissione gestione immobile: % del canone mensile pieno */
 export function monthlyAgencyFee(scenario: InvestmentScenario): number {
   if (scenario.rental.rental_mode === "short_term_airbnb") return 0;

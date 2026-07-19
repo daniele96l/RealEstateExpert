@@ -29,7 +29,10 @@ import {
   estimateCzechUtilitiesAnnual,
 } from "@/lib/constants-cz";
 import { buildMortgageSimSeries, MORTGAGE_SIM_ETF_RETURN_PCT, type MortgageSimPoint } from "@/lib/engine/mortgage-sim";
-import { shortTermNetMonthly } from "@/lib/engine/rental";
+import {
+  shortTermNetMonthlySeasonal,
+  type ShortTermSeasonId,
+} from "@/lib/engine/rental";
 import {
   MAINTENANCE_PCT_OPTIONS,
   monthlyMaintenanceCost,
@@ -41,6 +44,35 @@ import { cn, fmtMoney } from "@/lib/utils";
 import { Landmark } from "lucide-react";
 
 type RentMode = "long_term" | "short_term_airbnb";
+
+type SeasonRow = {
+  nightlyRate: number;
+  occupancyPct: number;
+  months: number;
+};
+
+type SeasonsState = Record<ShortTermSeasonId, SeasonRow>;
+
+function seasonsFromMidNightly(midNightly: number): SeasonsState {
+  const mid = Math.max(0, Math.round(midNightly));
+  return {
+    low: {
+      nightlyRate: Math.round(mid * 0.7),
+      occupancyPct: 35,
+      months: 4,
+    },
+    mid: {
+      nightlyRate: mid,
+      occupancyPct: 55,
+      months: 5,
+    },
+    high: {
+      nightlyRate: Math.round(mid * 1.4),
+      occupancyPct: 80,
+      months: 3,
+    },
+  };
+}
 
 interface Props {
   market?: MarketId;
@@ -169,12 +201,13 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
     market === "cz" ? 15_000 : 300,
   );
   const marketDefaults = market === "cz" ? CZECH_DEFAULTS : ITALY_DEFAULTS;
-  const [nightlyRate, setNightlyRate] = useState(() =>
-    market === "cz"
-      ? estimateCzechNightlyRate(defaults.price)
-      : estimateNightlyRate(defaults.price),
+  const [seasons, setSeasons] = useState<SeasonsState>(() =>
+    seasonsFromMidNightly(
+      market === "cz"
+        ? estimateCzechNightlyRate(defaults.price)
+        : estimateNightlyRate(defaults.price),
+    ),
   );
-  const [occupancyPct, setOccupancyPct] = useState(65);
   const [platformFeePct, setPlatformFeePct] = useState(
     marketDefaults.platform_fee_pct * 100,
   );
@@ -191,23 +224,34 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
       : ITALY_DEFAULTS.cedolare_short_first_property * 100,
   );
   const [utilitiesAnnual, setUtilitiesAnnual] = useState(() =>
-    estimateAirbnbUtilitiesAnnual(defaults.price, 65, market),
+    estimateAirbnbUtilitiesAnnual(defaults.price, 55, market),
   );
   const [monthlyRentAvoided, setMonthlyRentAvoided] = useState(
     market === "cz" ? estimateAvoidedRent(defaults.price, market) : 1000,
   );
   const [rentGrowthPct, setRentGrowthPct] = useState(2);
   const [showAfterMortgage, setShowAfterMortgage] = useState(true);
+  const [seasonsEnabled, setSeasonsEnabled] = useState(false);
+  const [breakdownView, setBreakdownView] = useState<"year" | ShortTermSeasonId>("year");
 
   const downPayment = Math.round((price * downPct) / 100);
   const maintenanceMonthly = monthlyMaintenanceCost(price, maintenancePct);
   const utilitiesMonthly = Math.round((Math.max(0, utilitiesAnnual) / 12) * 100) / 100;
 
+  const effectiveSeasons = useMemo((): SeasonsState => {
+    if (seasonsEnabled) return seasons;
+    const mid = seasons.mid;
+    return {
+      low: { ...mid, months: 0 },
+      mid: { ...mid, months: 12 },
+      high: { ...mid, months: 0 },
+    };
+  }, [seasons, seasonsEnabled]);
+
   const airbnbNet = useMemo(
     () =>
-      shortTermNetMonthly({
-        nightlyRate,
-        occupancyPct,
+      shortTermNetMonthlySeasonal({
+        seasons: effectiveSeasons,
         platformFeePct,
         avgStayNights,
         cleaningPerTurnover,
@@ -216,8 +260,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         utilitiesMonthly,
       }),
     [
-      nightlyRate,
-      occupancyPct,
+      effectiveSeasons,
       platformFeePct,
       avgStayNights,
       cleaningPerTurnover,
@@ -226,6 +269,17 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
       utilitiesMonthly,
     ],
   );
+
+  const updateSeason = (
+    id: ShortTermSeasonId,
+    field: keyof SeasonRow,
+    value: number,
+  ) => {
+    setSeasons((prev) => ({
+      ...prev,
+      [id]: { ...prev[id], [field]: value },
+    }));
+  };
 
   const effectiveTenantMonthly =
     rentEnabled && rentMode === "short_term_airbnb"
@@ -248,13 +302,18 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
           : ITALY_DEFAULTS.maintenance_pct_short,
       );
     }
-    setNightlyRate(
+    const nextSeasons = seasonsFromMidNightly(
       market === "cz"
         ? estimateCzechNightlyRate(airbnbPrice)
         : estimateNightlyRate(airbnbPrice),
     );
+    setSeasons(nextSeasons);
     setUtilitiesAnnual(
-      estimateAirbnbUtilitiesAnnual(airbnbPrice, occupancyPct, market),
+      estimateAirbnbUtilitiesAnnual(
+        airbnbPrice,
+        nextSeasons.mid.occupancyPct,
+        market,
+      ),
     );
   };
 
@@ -597,39 +656,202 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 </label>
               ) : (
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <label className="block space-y-1.5">
-                    <span className="text-xs font-medium text-neutral-600">
-                      {t("mortgageSim.airbnbNightly")}
-                    </span>
-                    <input
-                      type="number"
-                      min={0}
-                      step={market === "cz" ? 50 : 5}
-                      className="input-field"
-                      value={nightlyRate}
-                      onChange={(e) => {
-                        const v = Number(e.target.value);
-                        setNightlyRate(Number.isFinite(v) && v >= 0 ? v : 0);
-                      }}
-                    />
-                  </label>
-                  <label className="block space-y-1.5">
-                    <span className="text-xs font-medium text-neutral-600">
-                      {t("mortgageSim.airbnbOccupancy")}
-                    </span>
-                    <input
-                      type="number"
-                      min={0}
-                      max={100}
-                      step={1}
-                      className="input-field"
-                      value={occupancyPct}
-                      onChange={(e) => {
-                        const v = Number(e.target.value);
-                        setOccupancyPct(Number.isFinite(v) ? Math.min(100, Math.max(0, v)) : 0);
-                      }}
-                    />
-                  </label>
+                  <div className="space-y-2 sm:col-span-2">
+                    <label className="flex cursor-pointer items-center justify-between gap-3 rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-2">
+                      <span>
+                        <span className="block text-xs font-medium text-neutral-700">
+                          {t("mortgageSim.airbnbSeasonsToggle")}
+                        </span>
+                        <span className="mt-0.5 block text-[11px] text-neutral-500">
+                          {t("mortgageSim.airbnbSeasonsToggleHint")}
+                        </span>
+                      </span>
+                      <input
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-neutral-300"
+                        checked={seasonsEnabled}
+                        onChange={(e) => {
+                          const on = e.target.checked;
+                          setSeasonsEnabled(on);
+                          if (on) {
+                            setSeasons(seasonsFromMidNightly(seasons.mid.nightlyRate));
+                            setBreakdownView("year");
+                          } else {
+                            setBreakdownView("year");
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                  {seasonsEnabled ? (
+                    <div className="space-y-2 sm:col-span-2">
+                      <p className="text-xs font-medium text-neutral-600">
+                        {t("mortgageSim.airbnbSeasonsTitle")}
+                      </p>
+                      <p className="text-[11px] text-neutral-500">
+                        {t("mortgageSim.airbnbSeasonsHint")}
+                      </p>
+                      <div className="overflow-x-auto rounded-lg border border-surface-border">
+                        <table className="w-full min-w-[320px] text-left text-xs">
+                          <thead className="bg-neutral-50 text-[10px] uppercase tracking-wide text-neutral-500">
+                            <tr>
+                              <th className="px-2 py-1.5 font-medium" />
+                              {(["low", "mid", "high"] as const).map((id) => (
+                                <th key={id} className="px-2 py-1.5 font-medium">
+                                  {t(`mortgageSim.airbnbSeason.${id}`)}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody className="text-neutral-700">
+                            <tr className="border-t border-surface-border/60">
+                              <td className="px-2 py-1.5 text-neutral-500">
+                                {t("mortgageSim.airbnbNightly")}
+                              </td>
+                              {(["low", "mid", "high"] as const).map((id) => (
+                                <td key={id} className="px-1 py-1">
+                                  <input
+                                    type="number"
+                                    min={0}
+                                    step={market === "cz" ? 50 : 5}
+                                    className="input-field px-2 py-1.5 text-xs"
+                                    value={seasons[id].nightlyRate}
+                                    onChange={(e) => {
+                                      const v = Number(e.target.value);
+                                      updateSeason(
+                                        id,
+                                        "nightlyRate",
+                                        Number.isFinite(v) && v >= 0 ? v : 0,
+                                      );
+                                    }}
+                                  />
+                                </td>
+                              ))}
+                            </tr>
+                            <tr className="border-t border-surface-border/60">
+                              <td className="px-2 py-1.5 text-neutral-500">
+                                {t("mortgageSim.airbnbOccupancy")}
+                              </td>
+                              {(["low", "mid", "high"] as const).map((id) => (
+                                <td key={id} className="px-1 py-1">
+                                  <input
+                                    type="number"
+                                    min={0}
+                                    max={100}
+                                    step={1}
+                                    className="input-field px-2 py-1.5 text-xs"
+                                    value={seasons[id].occupancyPct}
+                                    onChange={(e) => {
+                                      const v = Number(e.target.value);
+                                      updateSeason(
+                                        id,
+                                        "occupancyPct",
+                                        Number.isFinite(v)
+                                          ? Math.min(100, Math.max(0, v))
+                                          : 0,
+                                      );
+                                    }}
+                                  />
+                                </td>
+                              ))}
+                            </tr>
+                            <tr className="border-t border-surface-border/60">
+                              <td className="px-2 py-1.5 text-neutral-500">
+                                {t("mortgageSim.airbnbSeasonMonths")}
+                              </td>
+                              {(["low", "mid", "high"] as const).map((id) => (
+                                <td key={id} className="px-1 py-1">
+                                  <input
+                                    type="number"
+                                    min={0}
+                                    max={12}
+                                    step={0.5}
+                                    className="input-field px-2 py-1.5 text-xs"
+                                    value={seasons[id].months}
+                                    onChange={(e) => {
+                                      const v = Number(e.target.value);
+                                      updateSeason(
+                                        id,
+                                        "months",
+                                        Number.isFinite(v) && v >= 0 ? v : 0,
+                                      );
+                                    }}
+                                  />
+                                </td>
+                              ))}
+                            </tr>
+                            <tr className="border-t border-surface-border/60 bg-neutral-50/80">
+                              <td className="px-2 py-1.5 text-neutral-500">
+                                {t("mortgageSim.airbnbSeasonNet")}
+                              </td>
+                              {(["low", "mid", "high"] as const).map((id) => (
+                                <td
+                                  key={id}
+                                  className="px-2 py-1.5 font-medium text-neutral-800"
+                                >
+                                  {fmtMoney(airbnbNet.bySeason[id].net, market)}
+                                </td>
+                              ))}
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className="text-[11px] text-neutral-500">
+                        {t("mortgageSim.airbnbSeasonsBlend", {
+                          occ: airbnbNet.weightedOccupancyPct.toFixed(0),
+                          months: (
+                            seasons.low.months +
+                            seasons.mid.months +
+                            seasons.high.months
+                          ).toFixed(1),
+                        })}
+                      </p>
+                    </div>
+                  ) : (
+                    <>
+                      <label className="block space-y-1.5">
+                        <span className="text-xs font-medium text-neutral-600">
+                          {t("mortgageSim.airbnbNightly")}
+                        </span>
+                        <input
+                          type="number"
+                          min={0}
+                          step={market === "cz" ? 50 : 5}
+                          className="input-field"
+                          value={seasons.mid.nightlyRate}
+                          onChange={(e) => {
+                            const v = Number(e.target.value);
+                            updateSeason(
+                              "mid",
+                              "nightlyRate",
+                              Number.isFinite(v) && v >= 0 ? v : 0,
+                            );
+                          }}
+                        />
+                      </label>
+                      <label className="block space-y-1.5">
+                        <span className="text-xs font-medium text-neutral-600">
+                          {t("mortgageSim.airbnbOccupancy")}
+                        </span>
+                        <input
+                          type="number"
+                          min={0}
+                          max={100}
+                          step={1}
+                          className="input-field"
+                          value={seasons.mid.occupancyPct}
+                          onChange={(e) => {
+                            const v = Number(e.target.value);
+                            updateSeason(
+                              "mid",
+                              "occupancyPct",
+                              Number.isFinite(v) ? Math.min(100, Math.max(0, v)) : 0,
+                            );
+                          }}
+                        />
+                      </label>
+                    </>
+                  )}
                   <label className="block space-y-1.5">
                     <span className="text-xs font-medium text-neutral-600">
                       {t("mortgageSim.airbnbPlatformFee")}
@@ -734,7 +956,11 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                         className="shrink-0 rounded-lg border border-surface-border px-3 text-xs font-medium text-neutral-700 hover:bg-neutral-50"
                         onClick={() =>
                           setUtilitiesAnnual(
-                            estimateAirbnbUtilitiesAnnual(price, occupancyPct, market),
+                            estimateAirbnbUtilitiesAnnual(
+                              price,
+                              airbnbNet.weightedOccupancyPct,
+                              market,
+                            ),
                           )
                         }
                       >
@@ -745,60 +971,100 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                       {t("mortgageSim.airbnbUtilitiesHint", {
                         monthly: fmtMoney(utilitiesMonthly, market),
                         estimate: fmtMoney(
-                          estimateAirbnbUtilitiesAnnual(price, occupancyPct, market),
+                          estimateAirbnbUtilitiesAnnual(
+                            price,
+                            airbnbNet.weightedOccupancyPct,
+                            market,
+                          ),
                           market,
                         ),
                       })}
                     </span>
                   </label>
                   <div className="space-y-3 sm:col-span-2">
-                    {airbnbNet.gross > 0 ? (
+                    {airbnbNet.gross > 0 ||
+                    airbnbNet.bySeason.low.gross > 0 ||
+                    airbnbNet.bySeason.mid.gross > 0 ||
+                    airbnbNet.bySeason.high.gross > 0 ? (
                       <div className="rounded-lg border border-surface-border/60 bg-neutral-50 p-3">
-                        <div className="mb-2 flex items-baseline justify-between gap-2">
+                        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                           <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-500">
                             {t("mortgageSim.airbnbBreakdownTitle")}
                           </p>
-                          <p className="text-xs text-neutral-600">
-                            {t("mortgageSim.airbnbGross")}:{" "}
-                            <span className="font-medium text-neutral-900">
-                              {fmtMoney(airbnbNet.gross, market)}
-                            </span>
-                          </p>
+                          {seasonsEnabled ? (
+                            <div className="flex overflow-hidden rounded-md border border-surface-border text-[11px]">
+                              {(
+                                [
+                                  { id: "year" as const, label: t("mortgageSim.airbnbSeason.year") },
+                                  { id: "low" as const, label: t("mortgageSim.airbnbSeason.low") },
+                                  { id: "mid" as const, label: t("mortgageSim.airbnbSeason.mid") },
+                                  { id: "high" as const, label: t("mortgageSim.airbnbSeason.high") },
+                                ] as const
+                              ).map(({ id, label }) => (
+                                <button
+                                  key={id}
+                                  type="button"
+                                  onClick={() => setBreakdownView(id)}
+                                  className={cn(
+                                    "px-2 py-1 transition-colors",
+                                    breakdownView === id
+                                      ? "bg-neutral-100 font-medium text-neutral-900"
+                                      : "text-neutral-500 hover:text-neutral-800",
+                                  )}
+                                >
+                                  {label}
+                                </button>
+                              ))}
+                            </div>
+                          ) : null}
                         </div>
                         {(() => {
+                          const view = seasonsEnabled ? breakdownView : "year";
+                          const slice =
+                            view === "year" ? airbnbNet : airbnbNet.bySeason[view];
+                          const monthsLabel =
+                            view === "year"
+                              ? (
+                                  effectiveSeasons.low.months +
+                                  effectiveSeasons.mid.months +
+                                  effectiveSeasons.high.months
+                                ).toFixed(1)
+                              : String(effectiveSeasons[view].months);
+                          const rentalNet = slice.net;
                           const recurring = sim.monthlyRecurring;
-                          const recurringInBar = Math.min(recurring, airbnbNet.net);
-                          const netAfterRecurring = Math.max(0, airbnbNet.net - recurring);
-                          const afterAll =
-                            airbnbNet.net - sim.monthlyPayment - recurring;
+                          const recurringInBar = Math.min(Math.max(0, recurring), Math.max(0, rentalNet));
+                          const netAfterRecurring = rentalNet - recurring;
+                          const netInBar = Math.max(0, netAfterRecurring);
+                          const afterRata = netAfterRecurring - sim.monthlyPayment;
+                          const barTotal = Math.max(slice.gross, 1);
                           const segments = [
                             {
                               key: "platform" as const,
-                              value: airbnbNet.platform,
+                              value: slice.platform,
                               color: "bg-amber-500",
                               dot: "bg-amber-500",
                             },
                             {
                               key: "cleaning" as const,
-                              value: airbnbNet.cleaning,
+                              value: slice.cleaning,
                               color: "bg-orange-400",
                               dot: "bg-orange-400",
                             },
                             {
                               key: "agency" as const,
-                              value: airbnbNet.agency,
+                              value: slice.agency,
                               color: "bg-violet-500",
                               dot: "bg-violet-500",
                             },
                             {
                               key: "tax" as const,
-                              value: airbnbNet.tax,
+                              value: slice.tax,
                               color: "bg-red-400",
                               dot: "bg-red-400",
                             },
                             {
                               key: "utilities" as const,
-                              value: airbnbNet.utilities,
+                              value: slice.utilities,
                               color: "bg-neutral-400",
                               dot: "bg-neutral-400",
                             },
@@ -811,14 +1077,27 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                             },
                             {
                               key: "net" as const,
-                              value: netAfterRecurring,
-                              listValue: airbnbNet.net,
+                              value: netInBar,
+                              listValue: netAfterRecurring,
                               color: "bg-cyan-500",
                               dot: "bg-cyan-500",
                             },
                           ];
                           return (
                             <>
+                              <div className="mb-2 flex items-baseline justify-between gap-2">
+                                <p className="text-[11px] text-neutral-500">
+                                  {t("mortgageSim.airbnbBreakdownSeasonHint", {
+                                    months: monthsLabel,
+                                  })}
+                                </p>
+                                <p className="text-xs text-neutral-600">
+                                  {t("mortgageSim.airbnbGross")}:{" "}
+                                  <span className="font-medium text-neutral-900">
+                                    {fmtMoney(slice.gross, market)}
+                                  </span>
+                                </p>
+                              </div>
                               <div className="flex h-3 overflow-hidden rounded-full bg-neutral-200">
                                 {segments.map((seg) =>
                                   seg.value > 0 ? (
@@ -826,7 +1105,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                                       key={seg.key}
                                       className={cn("h-full min-w-0", seg.color)}
                                       style={{
-                                        width: `${(seg.value / airbnbNet.gross) * 100}%`,
+                                        width: `${(seg.value / barTotal) * 100}%`,
                                       }}
                                       title={`${t(`mortgageSim.airbnbSeg.${seg.key}`)}: ${fmtMoney(
                                         seg.listValue ?? seg.value,
@@ -856,33 +1135,30 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                                   </li>
                                 ))}
                               </ul>
-                              {airbnbNet.net > 0 || sim.monthlyPayment > 0 ? (
+                              {rentalNet !== 0 || sim.monthlyPayment > 0 ? (
                                 <div className="mt-3 space-y-1 border-t border-surface-border/60 pt-2.5 text-[11px] text-neutral-600">
-                                  {sim.monthlyPayment > 0 ? (
-                                    <p>
-                                      {t("mortgageSim.airbnbCoverHint", {
-                                        cover: fmtMoney(
-                                          Math.min(sim.monthlyPayment, airbnbNet.net),
-                                          market,
-                                        ),
-                                        surplus: fmtMoney(
-                                          Math.max(0, airbnbNet.net - sim.monthlyPayment),
-                                          market,
-                                        ),
-                                      })}
-                                    </p>
-                                  ) : null}
+                                  <p>
+                                    {t("mortgageSim.airbnbCoverHint", {
+                                      cover: fmtMoney(
+                                        Math.min(sim.monthlyPayment, Math.max(0, rentalNet)),
+                                        market,
+                                      ),
+                                      surplus: fmtMoney(
+                                        Math.max(0, rentalNet - sim.monthlyPayment),
+                                        market,
+                                      ),
+                                    })}
+                                  </p>
                                   <p
                                     className={cn(
                                       "font-medium",
-                                      afterAll >= 0 ? "text-emerald-700" : "text-red-600",
+                                      afterRata >= 0 ? "text-emerald-700" : "text-red-600",
                                     )}
                                   >
                                     {t("mortgageSim.airbnbAfterMortgage", {
-                                      net: fmtMoney(airbnbNet.net, market),
+                                      net: fmtMoney(netAfterRecurring, market),
                                       payment: fmtMoney(sim.monthlyPayment, market),
-                                      recurring: fmtMoney(recurring, market),
-                                      result: fmtMoney(afterAll, market),
+                                      result: fmtMoney(afterRata, market),
                                     })}
                                   </p>
                                 </div>
