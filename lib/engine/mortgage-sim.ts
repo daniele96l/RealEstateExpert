@@ -252,13 +252,15 @@ export function buildMortgageSimSeries(params: {
     );
     const ownMinusRent = round2(totalPaid - cumulativeRentAvoided);
     const moneySaved = ownMinusRent;
+    /** Exclude anticipo so the line starts at full property value (same as propertyValue at t=0). */
+    const ownMinusRentExDown = round2(totalPaid - downPayment - cumulativeRentAvoided);
     points.push({
       month,
       year,
       propertyValue,
       propertyValuePlusRent: round2(propertyValue + cumulativeRentIncome),
       propertyValuePlusRentSaved: round2(propertyValue + cumulativeRentAvoided),
-      propertyValuePlusMoneySaved: round2(propertyValue - moneySaved),
+      propertyValuePlusMoneySaved: round2(propertyValue - ownMinusRentExDown),
       propertyValueMinusNetRata: round2(propertyValue - cumulativeOwnerNet),
       equity,
       equityGrown,

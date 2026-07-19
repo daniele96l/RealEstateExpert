@@ -14,7 +14,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { scaleSymlog } from "d3-scale";
 import {
   estimateMonthlyRent,
   estimateNightlyRate,
@@ -1720,7 +1719,6 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 tickFormatter={formatAxis}
                 axisLine={false}
                 tickLine={false}
-                scale={scaleSymlog().constant(50_000) as never}
                 domain={["auto", "auto"]}
               />
               <ReferenceLine y={0} stroke={COLORS.grid} />
