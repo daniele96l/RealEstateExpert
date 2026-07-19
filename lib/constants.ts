@@ -212,7 +212,7 @@ const UTILITIES_BASE_PER_SQM_SHORT = 18;
 const UTILITIES_FIXED_SHORT_EUR = 550;
 
 /** Minimo realistico piccolo monolocale/bilocale in breve termine. */
-const UTILITIES_FLOOR_SHORT_EUR = 1200;
+const UTILITIES_FLOOR_SHORT_EUR = 2400;
 
 /** Stima mq da prezzo (~€2.200/m² media provinciale) */
 export function estimateSqmFromPrice(purchasePrice: number): number {
