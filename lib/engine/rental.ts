@@ -35,12 +35,15 @@ export function shortTermNetMonthly(params: {
   agencyFeePct?: number;
   /** Rental income tax (cedolare / flat tax) as percent 0–100, or fraction 0–1 (on gross). */
   taxPct?: number;
+  /** Landlord utilities (bollette) monthly — typically paid by host on short-term. */
+  utilitiesMonthly?: number;
 }): {
   gross: number;
   platform: number;
   cleaning: number;
   agency: number;
   tax: number;
+  utilities: number;
   net: number;
 } {
   const nightly = Math.max(0, params.nightlyRate);
@@ -62,8 +65,9 @@ export function shortTermNetMonthly(params: {
   const cleaning = turnovers * cleaningFee;
   const agency = gross * agencyPct;
   const tax = gross * taxPct;
-  const net = Math.max(0, gross - platform - cleaning - agency - tax);
-  return { gross, platform, cleaning, agency, tax, net };
+  const utilities = Math.max(0, params.utilitiesMonthly ?? 0);
+  const net = Math.max(0, gross - platform - cleaning - agency - tax - utilities);
+  return { gross, platform, cleaning, agency, tax, utilities, net };
 }
 
 /** Commissione gestione immobile: % del canone mensile pieno */

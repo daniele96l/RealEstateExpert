@@ -15,11 +15,18 @@ import {
   YAxis,
 } from "recharts";
 import { scaleSymlog } from "d3-scale";
-import { estimateMonthlyRent, estimateNightlyRate, ITALY_DEFAULTS } from "@/lib/constants";
+import {
+  estimateMonthlyRent,
+  estimateNightlyRate,
+  estimateSqmFromPrice,
+  estimateUtilitiesAnnual,
+  ITALY_DEFAULTS,
+} from "@/lib/constants";
 import {
   CZECH_DEFAULTS,
   estimateCzechMonthlyRent,
   estimateCzechNightlyRate,
+  estimateCzechUtilitiesAnnual,
 } from "@/lib/constants-cz";
 import { buildMortgageSimSeries, MORTGAGE_SIM_ETF_RETURN_PCT, type MortgageSimPoint } from "@/lib/engine/mortgage-sim";
 import { shortTermNetMonthly } from "@/lib/engine/rental";
@@ -63,6 +70,27 @@ function estimateAvoidedRent(price: number, market: MarketId): number {
   return market === "cz"
     ? estimateCzechMonthlyRent(price)
     : estimateMonthlyRent(price);
+}
+
+function estimateAirbnbUtilitiesAnnual(
+  price: number,
+  occupancyPct: number,
+  market: MarketId,
+): number {
+  if (market === "cz") {
+    return estimateCzechUtilitiesAnnual(
+      CZECH_DEFAULTS.default_sqm,
+      "C",
+      "short_term_airbnb",
+      occupancyPct,
+    );
+  }
+  return estimateUtilitiesAnnual(
+    estimateSqmFromPrice(price),
+    "C",
+    "short_term_airbnb",
+    occupancyPct,
+  );
 }
 
 function defaultsForMarket(market: MarketId) {
@@ -162,13 +190,18 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
       ? CZECH_DEFAULTS.rental_income_tax_pct
       : ITALY_DEFAULTS.cedolare_short_first_property * 100,
   );
+  const [utilitiesAnnual, setUtilitiesAnnual] = useState(() =>
+    estimateAirbnbUtilitiesAnnual(defaults.price, 65, market),
+  );
   const [monthlyRentAvoided, setMonthlyRentAvoided] = useState(
     market === "cz" ? estimateAvoidedRent(defaults.price, market) : 1000,
   );
   const [rentGrowthPct, setRentGrowthPct] = useState(2);
+  const [showAfterMortgage, setShowAfterMortgage] = useState(true);
 
   const downPayment = Math.round((price * downPct) / 100);
   const maintenanceMonthly = monthlyMaintenanceCost(price, maintenancePct);
+  const utilitiesMonthly = Math.round((Math.max(0, utilitiesAnnual) / 12) * 100) / 100;
 
   const airbnbNet = useMemo(
     () =>
@@ -180,6 +213,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         cleaningPerTurnover,
         agencyFeePct,
         taxPct: rentalTaxPct,
+        utilitiesMonthly,
       }),
     [
       nightlyRate,
@@ -189,6 +223,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
       cleaningPerTurnover,
       agencyFeePct,
       rentalTaxPct,
+      utilitiesMonthly,
     ],
   );
 
@@ -200,6 +235,9 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
   const selectRentMode = (mode: RentMode) => {
     setRentMode(mode);
     if (mode !== "short_term_airbnb") return;
+    const airbnbPrice = market === "cz" ? 1_800_000 : 80_000;
+    setPrice(airbnbPrice);
+    setPropertyTaxAnnual(estimatePropertyTaxAnnual(airbnbPrice, market));
     const longDefault =
       market === "cz" ? CZECH_DEFAULTS.maintenance_pct_long : ITALY_DEFAULTS.maintenance_pct_long;
     const panelDefault = defaults.maintenancePct;
@@ -211,7 +249,12 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
       );
     }
     setNightlyRate(
-      market === "cz" ? estimateCzechNightlyRate(price) : estimateNightlyRate(price),
+      market === "cz"
+        ? estimateCzechNightlyRate(airbnbPrice)
+        : estimateNightlyRate(airbnbPrice),
+    );
+    setUtilitiesAnnual(
+      estimateAirbnbUtilitiesAnnual(airbnbPrice, occupancyPct, market),
     );
   };
 
@@ -247,15 +290,38 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
     ],
   );
 
-  const paymentSplitPoints = useMemo(
-    () => sim.points.filter((p) => p.month > 0),
-    [sim.points],
-  );
+  const loanMonths = years * 12;
+
+  const chartPoints = useMemo(() => {
+    if (showAfterMortgage) return sim.points;
+    return sim.points.filter((p) => p.month <= loanMonths);
+  }, [sim.points, showAfterMortgage, loanMonths]);
+
+  const paymentSplitPoints = useMemo(() => {
+    const rentGrossBar =
+      !rentEnabled
+        ? 0
+        : rentMode === "short_term_airbnb"
+          ? airbnbNet.gross
+          : effectiveTenantMonthly;
+    return chartPoints
+      .filter((p) => p.month > 0)
+      .map((p) => ({
+        ...p,
+        monthRentGross: rentGrossBar,
+      }));
+  }, [
+    chartPoints,
+    rentEnabled,
+    rentMode,
+    airbnbNet.gross,
+    effectiveTenantMonthly,
+  ]);
 
   const yearlyCostPoints = useMemo(() => {
-    const pts = sim.points.filter((p) => p.month > 0);
+    const pts = chartPoints.filter((p) => p.month > 0);
     return pts.map((p, i) => {
-      const prev = i === 0 ? sim.points[0]! : pts[i - 1]!;
+      const prev = i === 0 ? (chartPoints[0] ?? sim.points[0]!) : pts[i - 1]!;
       const yearOwnCost = Math.round((p.totalPaid - prev.totalPaid) * 100) / 100;
       const yearRentCost =
         Math.round((p.cumulativeRentAvoided - prev.cumulativeRentAvoided) * 100) / 100;
@@ -267,7 +333,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         yearDiff: Math.round((yearOwnCost - yearRentCost) * 100) / 100,
       };
     });
-  }, [sim.points]);
+  }, [chartPoints, sim.points]);
 
   const formatAxis = (value: number) => `${currencySymbol}${(value / 1000).toFixed(0)}k`;
 
@@ -628,37 +694,195 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                       }}
                     />
                   </label>
-                  <p className="text-[11px] text-neutral-500 sm:col-span-2">
-                    {t("mortgageSim.airbnbNetHint", {
-                      gross: fmtMoney(airbnbNet.gross, market),
-                      net: fmtMoney(airbnbNet.net, market),
-                      pct:
-                        sim.monthlyPayment > 0
-                          ? ((sim.tenantMonthlyIncome / sim.monthlyPayment) * 100).toFixed(0)
-                          : "0",
-                    })}
-                  </p>
-                  <p className="text-[11px] text-neutral-500 sm:col-span-2">
-                    {t("mortgageSim.airbnbDeductionsHint", {
-                      platform: fmtMoney(airbnbNet.platform, market),
-                      cleaning: fmtMoney(airbnbNet.cleaning, market),
-                      agency: fmtMoney(airbnbNet.agency, market),
-                      tax: fmtMoney(airbnbNet.tax, market),
-                    })}
-                  </p>
-                  <div className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-2 sm:col-span-2">
-                    <p className="text-[10px] uppercase tracking-wide text-neutral-500">
-                      {t("mortgageSim.rentIncome")}
-                    </p>
-                    <p className="text-base font-semibold text-neutral-900">
-                      {fmtMoney(sim.tenantMonthlyIncome, market)}
-                    </p>
-                    <p className="mt-0.5 text-[11px] text-neutral-500">
-                      {t("mortgageSim.airbnbCoverHint", {
-                        cover: fmtMoney(sim.tenantMonthlyCover, market),
-                        surplus: fmtMoney(sim.tenantMonthlySurplus, market),
+                  <label className="block space-y-1.5 sm:col-span-2">
+                    <span className="text-xs font-medium text-neutral-600">
+                      {t("mortgageSim.airbnbUtilities")}
+                    </span>
+                    <input
+                      type="number"
+                      min={0}
+                      step={market === "cz" ? 500 : 50}
+                      className="input-field"
+                      value={utilitiesAnnual}
+                      onChange={(e) => {
+                        const v = Number(e.target.value);
+                        setUtilitiesAnnual(Number.isFinite(v) && v >= 0 ? v : 0);
+                      }}
+                    />
+                    <span className="text-[11px] text-neutral-500">
+                      {t("mortgageSim.airbnbUtilitiesHint", {
+                        monthly: fmtMoney(utilitiesMonthly, market),
                       })}
-                    </p>
+                    </span>
+                  </label>
+                  <div className="space-y-3 sm:col-span-2">
+                    {airbnbNet.gross > 0 ? (
+                      <div className="rounded-lg border border-surface-border/60 bg-neutral-50 p-3">
+                        <div className="mb-2 flex items-baseline justify-between gap-2">
+                          <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-500">
+                            {t("mortgageSim.airbnbBreakdownTitle")}
+                          </p>
+                          <p className="text-xs text-neutral-600">
+                            {t("mortgageSim.airbnbGross")}:{" "}
+                            <span className="font-medium text-neutral-900">
+                              {fmtMoney(airbnbNet.gross, market)}
+                            </span>
+                          </p>
+                        </div>
+                        <div className="flex h-3 overflow-hidden rounded-full bg-neutral-200">
+                          {(
+                            [
+                              {
+                                key: "platform",
+                                value: airbnbNet.platform,
+                                color: "bg-amber-500",
+                              },
+                              {
+                                key: "cleaning",
+                                value: airbnbNet.cleaning,
+                                color: "bg-orange-400",
+                              },
+                              {
+                                key: "agency",
+                                value: airbnbNet.agency,
+                                color: "bg-violet-500",
+                              },
+                              {
+                                key: "tax",
+                                value: airbnbNet.tax,
+                                color: "bg-red-400",
+                              },
+                              {
+                                key: "utilities",
+                                value: airbnbNet.utilities,
+                                color: "bg-neutral-400",
+                              },
+                              {
+                                key: "net",
+                                value: airbnbNet.net,
+                                color: "bg-cyan-500",
+                              },
+                            ] as const
+                          ).map((seg) =>
+                            seg.value > 0 ? (
+                              <div
+                                key={seg.key}
+                                className={cn("h-full min-w-0", seg.color)}
+                                style={{
+                                  width: `${(seg.value / airbnbNet.gross) * 100}%`,
+                                }}
+                                title={`${t(`mortgageSim.airbnbSeg.${seg.key}`)}: ${fmtMoney(seg.value, market)}`}
+                              />
+                            ) : null,
+                          )}
+                        </div>
+                        <ul className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-1 text-[11px] text-neutral-600">
+                          {(
+                            [
+                              {
+                                key: "platform" as const,
+                                value: airbnbNet.platform,
+                                dot: "bg-amber-500",
+                              },
+                              {
+                                key: "cleaning" as const,
+                                value: airbnbNet.cleaning,
+                                dot: "bg-orange-400",
+                              },
+                              {
+                                key: "agency" as const,
+                                value: airbnbNet.agency,
+                                dot: "bg-violet-500",
+                              },
+                              {
+                                key: "tax" as const,
+                                value: airbnbNet.tax,
+                                dot: "bg-red-400",
+                              },
+                              {
+                                key: "utilities" as const,
+                                value: airbnbNet.utilities,
+                                dot: "bg-neutral-400",
+                              },
+                              {
+                                key: "net" as const,
+                                value: airbnbNet.net,
+                                dot: "bg-cyan-500",
+                              },
+                            ] as const
+                          ).map((row) => (
+                            <li key={row.key} className="flex items-center justify-between gap-2">
+                              <span className="flex min-w-0 items-center gap-1.5">
+                                <span
+                                  className={cn("h-2 w-2 shrink-0 rounded-sm", row.dot)}
+                                />
+                                <span className="truncate">
+                                  {t(`mortgageSim.airbnbSeg.${row.key}`)}
+                                </span>
+                              </span>
+                              <span className="shrink-0 font-medium text-neutral-800">
+                                {fmtMoney(row.value, market)}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                        {sim.monthlyPayment > 0 && airbnbNet.net > 0 ? (
+                          <div className="mt-3 border-t border-surface-border/60 pt-2.5">
+                            <p className="mb-1.5 text-[10px] font-medium uppercase tracking-wide text-neutral-500">
+                              {t("mortgageSim.airbnbNetUseTitle")}
+                            </p>
+                            <div className="flex h-2.5 overflow-hidden rounded-full bg-neutral-200">
+                              {sim.tenantMonthlyCover > 0 ? (
+                                <div
+                                  className="h-full bg-sky-500"
+                                  style={{
+                                    width: `${(sim.tenantMonthlyCover / airbnbNet.net) * 100}%`,
+                                  }}
+                                />
+                              ) : null}
+                              {sim.tenantMonthlySurplus > 0 ? (
+                                <div
+                                  className="h-full bg-emerald-500"
+                                  style={{
+                                    width: `${(sim.tenantMonthlySurplus / airbnbNet.net) * 100}%`,
+                                  }}
+                                />
+                              ) : null}
+                            </div>
+                            <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-neutral-600">
+                              <span className="flex items-center gap-1.5">
+                                <span className="h-2 w-2 rounded-sm bg-sky-500" />
+                                {t("mortgageSim.airbnbSeg.cover")}:{" "}
+                                <span className="font-medium text-neutral-800">
+                                  {fmtMoney(sim.tenantMonthlyCover, market)}
+                                </span>
+                              </span>
+                              <span className="flex items-center gap-1.5">
+                                <span className="h-2 w-2 rounded-sm bg-emerald-500" />
+                                {t("mortgageSim.airbnbSeg.surplus")}:{" "}
+                                <span className="font-medium text-neutral-800">
+                                  {fmtMoney(sim.tenantMonthlySurplus, market)}
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        ) : null}
+                      </div>
+                    ) : null}
+                    <div className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-2">
+                      <p className="text-[10px] uppercase tracking-wide text-neutral-500">
+                        {t("mortgageSim.rentIncome")}
+                      </p>
+                      <p className="text-base font-semibold text-neutral-900">
+                        {fmtMoney(sim.tenantMonthlyIncome, market)}
+                      </p>
+                      <p className="mt-0.5 text-[11px] text-neutral-500">
+                        {t("mortgageSim.airbnbCoverHint", {
+                          cover: fmtMoney(sim.tenantMonthlyCover, market),
+                          surplus: fmtMoney(sim.tenantMonthlySurplus, market),
+                        })}
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}
@@ -796,9 +1020,20 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
 
       {sim.loanAmount > 0 ? (
         <div className="card p-5">
-          <h3 className="mb-4 text-base font-semibold text-neutral-900">
-            {t("mortgageSim.paymentSplitChart")}
-          </h3>
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <h3 className="text-base font-semibold text-neutral-900">
+              {t("mortgageSim.paymentSplitChart")}
+            </h3>
+            <label className="flex cursor-pointer items-center gap-2 text-xs text-neutral-600">
+              <input
+                type="checkbox"
+                className="h-3.5 w-3.5 rounded border-neutral-300"
+                checked={showAfterMortgage}
+                onChange={(e) => setShowAfterMortgage(e.target.checked)}
+              />
+              {t("mortgageSim.showAfterMortgage")}
+            </label>
+          </div>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart
               data={paymentSplitPoints}
@@ -852,9 +1087,13 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                       </p>
                       {rentEnabled ? (
                         <p className="text-neutral-600">
-                          {t("mortgageSim.monthRentIncome")}:{" "}
+                          {t("mortgageSim.monthRentGross")}:{" "}
                           <span className="text-cyan-600">
-                            {fmtMoney(row.monthRentIncome, market)}
+                            {fmtMoney(
+                              (row as MortgageSimPoint & { monthRentGross?: number })
+                                .monthRentGross ?? row.monthRentIncome,
+                              market,
+                            )}
                           </span>
                         </p>
                       ) : null}
@@ -892,8 +1131,8 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               />
               {rentEnabled ? (
                 <Bar
-                  dataKey="monthRentIncome"
-                  name={t("mortgageSim.monthRentIncome")}
+                  dataKey="monthRentGross"
+                  name={t("mortgageSim.monthRentGross")}
                   fill={COLORS.tenant}
                   radius={[4, 4, 0, 0]}
                 />
@@ -912,7 +1151,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
           <h3 className="mb-4 text-base font-semibold text-neutral-900">{t("mortgageSim.chartTitle")}</h3>
           <ResponsiveContainer width="100%" height={340}>
             <ComposedChart
-              data={sim.points}
+              data={chartPoints}
               margin={{ top: 10, right: 12, left: 0, bottom: 0 }}
               barCategoryGap="20%"
             >
@@ -1049,7 +1288,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
           <p className="mb-4 text-sm text-neutral-500">{t("mortgageSim.ownVsRentSubtitle")}</p>
           <ResponsiveContainer width="100%" height={320}>
             <ComposedChart
-              data={sim.points}
+              data={chartPoints}
               margin={{ top: 10, right: 12, left: 0, bottom: 0 }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
@@ -1149,7 +1388,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
           </p>
           <ResponsiveContainer width="100%" height={320}>
             <ComposedChart
-              data={sim.points}
+              data={chartPoints}
               margin={{ top: 10, right: 12, left: 0, bottom: 0 }}
               barCategoryGap="22%"
             >
@@ -1266,7 +1505,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
           <p className="mb-4 text-sm text-neutral-500">{t("mortgageSim.totalCostsSubtitle")}</p>
           <ResponsiveContainer width="100%" height={300}>
             <ComposedChart
-              data={sim.points}
+              data={chartPoints}
               margin={{ top: 10, right: 12, left: 0, bottom: 0 }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />

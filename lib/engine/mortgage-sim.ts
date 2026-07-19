@@ -19,6 +19,8 @@ export interface MortgageSimPoint {
   propertyValuePlusRentSaved: number;
   /** Property value − (owning − renting) cash difference. */
   propertyValuePlusMoneySaved: number;
+  /** Property value − cumulative owner net cash (rata netta / costi, after rent surplus). */
+  propertyValueMinusNetRata: number;
   /** Equity without revaluation: purchase price − remaining balance. */
   equity: number;
   /** Equity with revaluation: property value − remaining balance. */
@@ -240,6 +242,10 @@ export function buildMortgageSimSeries(params: {
     const cumulativeRentIncome = round2(tenantMonthlyIncome * month);
     const cumulativeRentAvoided = rentCashAt(month);
     const totalPaid = owningCashAt(month);
+    const cumulativeRentSurplus = round2(
+      Math.max(0, cumulativeRentIncome - cumulativeTenantCover),
+    );
+    const cumulativeNetRata = round2(totalPaid - cumulativeRentSurplus);
     const ownMinusRent = round2(totalPaid - cumulativeRentAvoided);
     const moneySaved = ownMinusRent;
     points.push({
@@ -249,6 +255,7 @@ export function buildMortgageSimSeries(params: {
       propertyValuePlusRent: round2(propertyValue + cumulativeRentIncome),
       propertyValuePlusRentSaved: round2(propertyValue + cumulativeRentAvoided),
       propertyValuePlusMoneySaved: round2(propertyValue - moneySaved),
+      propertyValueMinusNetRata: round2(propertyValue - cumulativeNetRata),
       equity,
       equityGrown,
       cumulativeInterest: round2(cumulativeInterest),
