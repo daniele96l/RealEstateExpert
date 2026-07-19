@@ -17,6 +17,8 @@ export interface MortgageSimPoint {
   propertyValuePlusRent: number;
   /** Property value + cumulative rent avoided by living in the home. */
   propertyValuePlusRentSaved: number;
+  /** Property value − (owning − renting) cash difference. */
+  propertyValuePlusMoneySaved: number;
   /** Equity without revaluation: purchase price − remaining balance. */
   equity: number;
   /** Equity with revaluation: property value − remaining balance. */
@@ -221,6 +223,7 @@ export function buildMortgageSimSeries(params: {
       propertyValue,
       propertyValuePlusRent: round2(propertyValue + cumulativeTenantCover),
       propertyValuePlusRentSaved: round2(propertyValue + cumulativeRentAvoided),
+      propertyValuePlusMoneySaved: round2(propertyValue - moneySaved),
       equity,
       equityGrown,
       cumulativeInterest: round2(cumulativeInterest),

@@ -301,6 +301,7 @@ const it = {
     propertyValue: "Valore immobile (dopo crescita)",
     propertyValuePlusRent: "Valore immobile + affitto",
     propertyValuePlusRentSaved: "Valore immobile + affitto risparmiato",
+    propertyValuePlusMoneySaved: "Valore immobile − (possedere − affittare)",
     bankInterest: "Interessi alla banca",
     totalPaid: "Totale versato da te",
     chartTitle: "Equity vs interessi nel tempo",

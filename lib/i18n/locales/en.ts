@@ -302,6 +302,7 @@ const en: Translations = {
     propertyValue: "House value (after growth)",
     propertyValuePlusRent: "House value + rent",
     propertyValuePlusRentSaved: "House value + rent saved",
+    propertyValuePlusMoneySaved: "House value − (owning − renting)",
     bankInterest: "Interest to bank",
     totalPaid: "Your total cash paid",
     chartTitle: "Equity vs interest over time",

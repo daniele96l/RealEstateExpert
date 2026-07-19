@@ -118,12 +118,12 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
   const defaults = defaultsForMarket(market);
   const currencySymbol = getMarket(market).currency === "CZK" ? "Kč" : "€";
 
-  const [price, setPrice] = useState(defaults.price);
-  const [downPct, setDownPct] = useState(defaults.downPct);
-  const [rate, setRate] = useState(defaults.rate);
-  const [years, setYears] = useState(defaults.years);
+  const [price, setPrice] = useState<number>(defaults.price);
+  const [downPct, setDownPct] = useState<number>(defaults.downPct);
+  const [rate, setRate] = useState<number>(defaults.rate);
+  const [years, setYears] = useState<number>(defaults.years);
   const [appreciation, setAppreciation] = useState(0);
-  const [maintenancePct, setMaintenancePct] = useState(defaults.maintenancePct);
+  const [maintenancePct, setMaintenancePct] = useState<number>(defaults.maintenancePct);
   const [propertyTaxAnnual, setPropertyTaxAnnual] = useState(() =>
     estimatePropertyTaxAnnual(defaults.price, market),
   );
@@ -907,6 +907,12 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                           {fmtMoney(row.propertyValue, market)}
                         </span>
                       </p>
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.propertyValuePlusMoneySaved")}:{" "}
+                        <span className="text-cyan-600">
+                          {fmtMoney(row.propertyValuePlusMoneySaved, market)}
+                        </span>
+                      </p>
                     </div>
                   );
                 }}
@@ -935,6 +941,16 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 name={t("mortgageSim.propertyValue")}
                 stroke={COLORS.property}
                 strokeWidth={2}
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="propertyValuePlusMoneySaved"
+                name={t("mortgageSim.propertyValuePlusMoneySaved")}
+                stroke={COLORS.tenant}
+                strokeWidth={2}
+                strokeDasharray="4 3"
                 dot={false}
                 activeDot={{ r: 4 }}
               />
