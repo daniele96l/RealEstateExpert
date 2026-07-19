@@ -22,6 +22,50 @@ export function monthlyCleaningFee(scenario: InvestmentScenario): number {
   return turnovers * scenario.operating.cleaning_fee_per_turnover;
 }
 
+/** Net short-term income after platform, cleaning, agency/PM, and rental tax. */
+export function shortTermNetMonthly(params: {
+  nightlyRate: number;
+  /** Occupancy as percent 0–100, or fraction 0–1. */
+  occupancyPct: number;
+  /** Platform fee as percent 0–100, or fraction 0–1. */
+  platformFeePct: number;
+  avgStayNights: number;
+  cleaningPerTurnover: number;
+  /** Property-manager / agency fee as percent 0–100, or fraction 0–1 (on gross). */
+  agencyFeePct?: number;
+  /** Rental income tax (cedolare / flat tax) as percent 0–100, or fraction 0–1 (on gross). */
+  taxPct?: number;
+}): {
+  gross: number;
+  platform: number;
+  cleaning: number;
+  agency: number;
+  tax: number;
+  net: number;
+} {
+  const nightly = Math.max(0, params.nightlyRate);
+  const occRaw = Math.max(0, params.occupancyPct);
+  const occupancy = occRaw > 1 ? occRaw / 100 : occRaw;
+  const toFrac = (raw: number) => {
+    const v = Math.max(0, raw);
+    return v > 1 ? v / 100 : v;
+  };
+  const platformPct = toFrac(params.platformFeePct);
+  const agencyPct = toFrac(params.agencyFeePct ?? 0);
+  const taxPct = toFrac(params.taxPct ?? 0);
+  const avgStay = Math.max(0.5, params.avgStayNights);
+  const cleaningFee = Math.max(0, params.cleaningPerTurnover);
+
+  const gross = nightly * 30 * occupancy;
+  const platform = gross * platformPct;
+  const turnovers = (30 * occupancy) / avgStay;
+  const cleaning = turnovers * cleaningFee;
+  const agency = gross * agencyPct;
+  const tax = gross * taxPct;
+  const net = Math.max(0, gross - platform - cleaning - agency - tax);
+  return { gross, platform, cleaning, agency, tax, net };
+}
+
 /** Commissione gestione immobile: % del canone mensile pieno */
 export function monthlyAgencyFee(scenario: InvestmentScenario): number {
   if (scenario.rental.rental_mode === "short_term_airbnb") return 0;
