@@ -66,7 +66,7 @@ export const RENTAL_MODE_RULES = {
     agency_fee_months: 0,
     platform_fee_pct: 0.15,
     cleaning_fee_per_turnover: 30,
-    utilities_landlord_annual: 900,
+    utilities_landlord_annual: 1400,
     utilities_note: "Wi‑fi, elettricità e gas spesso a carico del proprietario.",
     maintenance_pct: ITALY_DEFAULTS.maintenance_pct_short,
     tari_multiplier: 1.35,

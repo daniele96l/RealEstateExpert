@@ -304,17 +304,36 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         : rentMode === "short_term_airbnb"
           ? airbnbNet.gross
           : effectiveTenantMonthly;
+    const rentOpexBar =
+      rentEnabled && rentMode === "short_term_airbnb"
+        ? Math.round(
+            (airbnbNet.platform +
+              airbnbNet.cleaning +
+              airbnbNet.agency +
+              airbnbNet.tax +
+              airbnbNet.utilities) *
+              100,
+          ) / 100
+        : 0;
     return chartPoints
       .filter((p) => p.month > 0)
       .map((p) => ({
         ...p,
         monthRentGross: rentGrossBar,
+        monthRentOpex: rentOpexBar,
+        /** Full rata (capitale + interessi) for tooltip / optional display. */
+        monthMortgage: Math.round((p.monthPrincipal + p.monthInterest) * 100) / 100,
       }));
   }, [
     chartPoints,
     rentEnabled,
     rentMode,
     airbnbNet.gross,
+    airbnbNet.platform,
+    airbnbNet.cleaning,
+    airbnbNet.agency,
+    airbnbNet.tax,
+    airbnbNet.utilities,
     effectiveTenantMonthly,
   ]);
 
@@ -698,20 +717,37 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                     <span className="text-xs font-medium text-neutral-600">
                       {t("mortgageSim.airbnbUtilities")}
                     </span>
-                    <input
-                      type="number"
-                      min={0}
-                      step={market === "cz" ? 500 : 50}
-                      className="input-field"
-                      value={utilitiesAnnual}
-                      onChange={(e) => {
-                        const v = Number(e.target.value);
-                        setUtilitiesAnnual(Number.isFinite(v) && v >= 0 ? v : 0);
-                      }}
-                    />
+                    <div className="flex gap-2">
+                      <input
+                        type="number"
+                        min={0}
+                        step={market === "cz" ? 500 : 50}
+                        className="input-field flex-1"
+                        value={utilitiesAnnual}
+                        onChange={(e) => {
+                          const v = Number(e.target.value);
+                          setUtilitiesAnnual(Number.isFinite(v) && v >= 0 ? v : 0);
+                        }}
+                      />
+                      <button
+                        type="button"
+                        className="shrink-0 rounded-lg border border-surface-border px-3 text-xs font-medium text-neutral-700 hover:bg-neutral-50"
+                        onClick={() =>
+                          setUtilitiesAnnual(
+                            estimateAirbnbUtilitiesAnnual(price, occupancyPct, market),
+                          )
+                        }
+                      >
+                        {t("mortgageSim.airbnbUtilitiesEstimate")}
+                      </button>
+                    </div>
                     <span className="text-[11px] text-neutral-500">
                       {t("mortgageSim.airbnbUtilitiesHint", {
                         monthly: fmtMoney(utilitiesMonthly, market),
+                        estimate: fmtMoney(
+                          estimateAirbnbUtilitiesAnnual(price, occupancyPct, market),
+                          market,
+                        ),
                       })}
                     </span>
                   </label>
@@ -729,160 +765,133 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                             </span>
                           </p>
                         </div>
-                        <div className="flex h-3 overflow-hidden rounded-full bg-neutral-200">
-                          {(
-                            [
-                              {
-                                key: "platform",
-                                value: airbnbNet.platform,
-                                color: "bg-amber-500",
-                              },
-                              {
-                                key: "cleaning",
-                                value: airbnbNet.cleaning,
-                                color: "bg-orange-400",
-                              },
-                              {
-                                key: "agency",
-                                value: airbnbNet.agency,
-                                color: "bg-violet-500",
-                              },
-                              {
-                                key: "tax",
-                                value: airbnbNet.tax,
-                                color: "bg-red-400",
-                              },
-                              {
-                                key: "utilities",
-                                value: airbnbNet.utilities,
-                                color: "bg-neutral-400",
-                              },
-                              {
-                                key: "net",
-                                value: airbnbNet.net,
-                                color: "bg-cyan-500",
-                              },
-                            ] as const
-                          ).map((seg) =>
-                            seg.value > 0 ? (
-                              <div
-                                key={seg.key}
-                                className={cn("h-full min-w-0", seg.color)}
-                                style={{
-                                  width: `${(seg.value / airbnbNet.gross) * 100}%`,
-                                }}
-                                title={`${t(`mortgageSim.airbnbSeg.${seg.key}`)}: ${fmtMoney(seg.value, market)}`}
-                              />
-                            ) : null,
-                          )}
-                        </div>
-                        <ul className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-1 text-[11px] text-neutral-600">
-                          {(
-                            [
-                              {
-                                key: "platform" as const,
-                                value: airbnbNet.platform,
-                                dot: "bg-amber-500",
-                              },
-                              {
-                                key: "cleaning" as const,
-                                value: airbnbNet.cleaning,
-                                dot: "bg-orange-400",
-                              },
-                              {
-                                key: "agency" as const,
-                                value: airbnbNet.agency,
-                                dot: "bg-violet-500",
-                              },
-                              {
-                                key: "tax" as const,
-                                value: airbnbNet.tax,
-                                dot: "bg-red-400",
-                              },
-                              {
-                                key: "utilities" as const,
-                                value: airbnbNet.utilities,
-                                dot: "bg-neutral-400",
-                              },
-                              {
-                                key: "net" as const,
-                                value: airbnbNet.net,
-                                dot: "bg-cyan-500",
-                              },
-                            ] as const
-                          ).map((row) => (
-                            <li key={row.key} className="flex items-center justify-between gap-2">
-                              <span className="flex min-w-0 items-center gap-1.5">
-                                <span
-                                  className={cn("h-2 w-2 shrink-0 rounded-sm", row.dot)}
-                                />
-                                <span className="truncate">
-                                  {t(`mortgageSim.airbnbSeg.${row.key}`)}
-                                </span>
-                              </span>
-                              <span className="shrink-0 font-medium text-neutral-800">
-                                {fmtMoney(row.value, market)}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                        {sim.monthlyPayment > 0 && airbnbNet.net > 0 ? (
-                          <div className="mt-3 border-t border-surface-border/60 pt-2.5">
-                            <p className="mb-1.5 text-[10px] font-medium uppercase tracking-wide text-neutral-500">
-                              {t("mortgageSim.airbnbNetUseTitle")}
-                            </p>
-                            <div className="flex h-2.5 overflow-hidden rounded-full bg-neutral-200">
-                              {sim.tenantMonthlyCover > 0 ? (
-                                <div
-                                  className="h-full bg-sky-500"
-                                  style={{
-                                    width: `${(sim.tenantMonthlyCover / airbnbNet.net) * 100}%`,
-                                  }}
-                                />
+                        {(() => {
+                          const recurring = sim.monthlyRecurring;
+                          const recurringInBar = Math.min(recurring, airbnbNet.net);
+                          const netAfterRecurring = Math.max(0, airbnbNet.net - recurring);
+                          const afterAll =
+                            airbnbNet.net - sim.monthlyPayment - recurring;
+                          const segments = [
+                            {
+                              key: "platform" as const,
+                              value: airbnbNet.platform,
+                              color: "bg-amber-500",
+                              dot: "bg-amber-500",
+                            },
+                            {
+                              key: "cleaning" as const,
+                              value: airbnbNet.cleaning,
+                              color: "bg-orange-400",
+                              dot: "bg-orange-400",
+                            },
+                            {
+                              key: "agency" as const,
+                              value: airbnbNet.agency,
+                              color: "bg-violet-500",
+                              dot: "bg-violet-500",
+                            },
+                            {
+                              key: "tax" as const,
+                              value: airbnbNet.tax,
+                              color: "bg-red-400",
+                              dot: "bg-red-400",
+                            },
+                            {
+                              key: "utilities" as const,
+                              value: airbnbNet.utilities,
+                              color: "bg-neutral-400",
+                              dot: "bg-neutral-400",
+                            },
+                            {
+                              key: "recurring" as const,
+                              value: recurringInBar,
+                              listValue: recurring,
+                              color: "bg-sky-700",
+                              dot: "bg-sky-700",
+                            },
+                            {
+                              key: "net" as const,
+                              value: netAfterRecurring,
+                              listValue: airbnbNet.net,
+                              color: "bg-cyan-500",
+                              dot: "bg-cyan-500",
+                            },
+                          ];
+                          return (
+                            <>
+                              <div className="flex h-3 overflow-hidden rounded-full bg-neutral-200">
+                                {segments.map((seg) =>
+                                  seg.value > 0 ? (
+                                    <div
+                                      key={seg.key}
+                                      className={cn("h-full min-w-0", seg.color)}
+                                      style={{
+                                        width: `${(seg.value / airbnbNet.gross) * 100}%`,
+                                      }}
+                                      title={`${t(`mortgageSim.airbnbSeg.${seg.key}`)}: ${fmtMoney(
+                                        seg.listValue ?? seg.value,
+                                        market,
+                                      )}`}
+                                    />
+                                  ) : null,
+                                )}
+                              </div>
+                              <ul className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-1 text-[11px] text-neutral-600">
+                                {segments.map((row) => (
+                                  <li
+                                    key={row.key}
+                                    className="flex items-center justify-between gap-2"
+                                  >
+                                    <span className="flex min-w-0 items-center gap-1.5">
+                                      <span
+                                        className={cn("h-2 w-2 shrink-0 rounded-sm", row.dot)}
+                                      />
+                                      <span className="truncate">
+                                        {t(`mortgageSim.airbnbSeg.${row.key}`)}
+                                      </span>
+                                    </span>
+                                    <span className="shrink-0 font-medium text-neutral-800">
+                                      {fmtMoney(row.listValue ?? row.value, market)}
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                              {airbnbNet.net > 0 || sim.monthlyPayment > 0 ? (
+                                <div className="mt-3 space-y-1 border-t border-surface-border/60 pt-2.5 text-[11px] text-neutral-600">
+                                  {sim.monthlyPayment > 0 ? (
+                                    <p>
+                                      {t("mortgageSim.airbnbCoverHint", {
+                                        cover: fmtMoney(
+                                          Math.min(sim.monthlyPayment, airbnbNet.net),
+                                          market,
+                                        ),
+                                        surplus: fmtMoney(
+                                          Math.max(0, airbnbNet.net - sim.monthlyPayment),
+                                          market,
+                                        ),
+                                      })}
+                                    </p>
+                                  ) : null}
+                                  <p
+                                    className={cn(
+                                      "font-medium",
+                                      afterAll >= 0 ? "text-emerald-700" : "text-red-600",
+                                    )}
+                                  >
+                                    {t("mortgageSim.airbnbAfterMortgage", {
+                                      net: fmtMoney(airbnbNet.net, market),
+                                      payment: fmtMoney(sim.monthlyPayment, market),
+                                      recurring: fmtMoney(recurring, market),
+                                      result: fmtMoney(afterAll, market),
+                                    })}
+                                  </p>
+                                </div>
                               ) : null}
-                              {sim.tenantMonthlySurplus > 0 ? (
-                                <div
-                                  className="h-full bg-emerald-500"
-                                  style={{
-                                    width: `${(sim.tenantMonthlySurplus / airbnbNet.net) * 100}%`,
-                                  }}
-                                />
-                              ) : null}
-                            </div>
-                            <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-neutral-600">
-                              <span className="flex items-center gap-1.5">
-                                <span className="h-2 w-2 rounded-sm bg-sky-500" />
-                                {t("mortgageSim.airbnbSeg.cover")}:{" "}
-                                <span className="font-medium text-neutral-800">
-                                  {fmtMoney(sim.tenantMonthlyCover, market)}
-                                </span>
-                              </span>
-                              <span className="flex items-center gap-1.5">
-                                <span className="h-2 w-2 rounded-sm bg-emerald-500" />
-                                {t("mortgageSim.airbnbSeg.surplus")}:{" "}
-                                <span className="font-medium text-neutral-800">
-                                  {fmtMoney(sim.tenantMonthlySurplus, market)}
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        ) : null}
+                            </>
+                          );
+                        })()}
                       </div>
                     ) : null}
-                    <div className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-2">
-                      <p className="text-[10px] uppercase tracking-wide text-neutral-500">
-                        {t("mortgageSim.rentIncome")}
-                      </p>
-                      <p className="text-base font-semibold text-neutral-900">
-                        {fmtMoney(sim.tenantMonthlyIncome, market)}
-                      </p>
-                      <p className="mt-0.5 text-[11px] text-neutral-500">
-                        {t("mortgageSim.airbnbCoverHint", {
-                          cover: fmtMoney(sim.tenantMonthlyCover, market),
-                          surplus: fmtMoney(sim.tenantMonthlySurplus, market),
-                        })}
-                      </p>
-                    </div>
                   </div>
                 </div>
               )}
@@ -939,31 +948,33 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         <Kpi
           label={t("mortgageSim.monthlyRecurring")}
           value={fmtMoney(sim.monthlyRecurring, market)}
+          hint={t("mortgageSim.monthlyRecurringHint", {
+            tax: fmtMoney(Math.round((propertyTaxAnnual / 12) * 100) / 100, market),
+            maintenance: fmtMoney(maintenanceMonthly, market),
+          })}
         />
         {rentEnabled ? (
           <>
             <Kpi
-              label={t("mortgageSim.ownerMonthlyNet")}
-              value={fmtMoney(sim.ownerMonthlyNet, market)}
-            />
-            <Kpi
               label={t("mortgageSim.rentIncome")}
-              value={fmtMoney(sim.tenantMonthlyIncome, market)}
+              value={fmtMoney(effectiveTenantMonthly, market)}
+              hint={
+                rentMode === "short_term_airbnb"
+                  ? t("mortgageSim.rentIncomeHintAirbnb")
+                  : t("mortgageSim.rentIncomeHintLong")
+              }
               tone="equity"
             />
-            {sim.tenantMonthlySurplus > 0 ? (
-              <Kpi
-                label={t("mortgageSim.rentSurplus")}
-                value={fmtMoney(sim.tenantMonthlySurplus, market)}
-                tone="equity"
-              />
-            ) : (
-              <Kpi
-                label={t("mortgageSim.tenantMonthlyCover")}
-                value={fmtMoney(sim.tenantMonthlyCover, market)}
-                tone="equity"
-              />
-            )}
+            <Kpi
+              label={t("mortgageSim.ownerMonthlyNet")}
+              value={fmtMoney(sim.ownerMonthlyNet, market)}
+              hint={t("mortgageSim.ownerMonthlyNetHint", {
+                payment: fmtMoney(sim.monthlyPayment, market),
+                costs: fmtMoney(sim.monthlyRecurring, market),
+                rent: fmtMoney(effectiveTenantMonthly, market),
+              })}
+              tone={sim.ownerMonthlyNet > 0 ? "interest" : "equity"}
+            />
           </>
         ) : liveInEnabled ? (
           <>
@@ -1059,7 +1070,11 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               <Tooltip
                 content={({ active, payload, label }) => {
                   if (!active || !payload?.length) return null;
-                  const row = payload[0]?.payload as MortgageSimPoint;
+                  const row = payload[0]?.payload as MortgageSimPoint & {
+                    monthRentGross?: number;
+                    monthRentOpex?: number;
+                    monthMortgage?: number;
+                  };
                   return (
                     <div className="rounded-xl border border-surface-border bg-white px-3 py-2 text-xs shadow-lg">
                       <p className="mb-2 font-medium text-neutral-800">
@@ -1068,9 +1083,9 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                         })}
                       </p>
                       <p className="text-neutral-600">
-                        {t("mortgageSim.monthlyPayment")}:{" "}
+                        {t("mortgageSim.monthMortgage")}:{" "}
                         <span className="font-medium text-neutral-900">
-                          {fmtMoney(row.monthlyPayment, market)}
+                          {fmtMoney(row.monthMortgage ?? row.monthlyPayment, market)}
                         </span>
                       </p>
                       <p className="text-neutral-600">
@@ -1085,15 +1100,19 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                         {t("mortgageSim.monthCosts")}:{" "}
                         <span className="text-amber-600">{fmtMoney(row.monthCosts, market)}</span>
                       </p>
+                      {rentEnabled && (row.monthRentOpex ?? 0) > 0 ? (
+                        <p className="text-neutral-600">
+                          {t("mortgageSim.monthRentOpex")}:{" "}
+                          <span className="text-violet-600">
+                            {fmtMoney(row.monthRentOpex ?? 0, market)}
+                          </span>
+                        </p>
+                      ) : null}
                       {rentEnabled ? (
                         <p className="text-neutral-600">
                           {t("mortgageSim.monthRentGross")}:{" "}
                           <span className="text-cyan-600">
-                            {fmtMoney(
-                              (row as MortgageSimPoint & { monthRentGross?: number })
-                                .monthRentGross ?? row.monthRentIncome,
-                              market,
-                            )}
+                            {fmtMoney(row.monthRentGross ?? row.monthRentIncome, market)}
                           </span>
                         </p>
                       ) : null}
@@ -1111,24 +1130,35 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
               />
               <Legend wrapperStyle={{ paddingTop: 12, fontSize: 11 }} />
               <Bar
-                stackId="split"
+                stackId="costs"
                 dataKey="monthPrincipal"
                 name={t("mortgageSim.monthPrincipal")}
                 fill={COLORS.equity}
               />
               <Bar
-                stackId="split"
+                stackId="costs"
                 dataKey="monthInterest"
                 name={t("mortgageSim.monthInterest")}
                 fill={COLORS.interest}
               />
               <Bar
-                stackId="split"
+                stackId="costs"
                 dataKey="monthCosts"
                 name={t("mortgageSim.monthCosts")}
                 fill={COLORS.costs}
-                radius={[4, 4, 0, 0]}
+                radius={
+                  rentEnabled && rentMode === "short_term_airbnb" ? undefined : [4, 4, 0, 0]
+                }
               />
+              {rentEnabled && rentMode === "short_term_airbnb" ? (
+                <Bar
+                  stackId="costs"
+                  dataKey="monthRentOpex"
+                  name={t("mortgageSim.monthRentOpex")}
+                  fill={COLORS.rentSaved}
+                  radius={[4, 4, 0, 0]}
+                />
+              ) : null}
               {rentEnabled ? (
                 <Bar
                   dataKey="monthRentGross"
@@ -1187,14 +1217,12 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                         {t("mortgageSim.propertyValue")}:{" "}
                         <span className="text-green-600">{fmtMoney(row.propertyValue, market)}</span>
                       </p>
-                      {rentEnabled ? (
-                        <p className="text-neutral-600">
-                          {t("mortgageSim.propertyValuePlusRent")}:{" "}
-                          <span className="text-cyan-600">
-                            {fmtMoney(row.propertyValuePlusRent, market)}
-                          </span>
-                        </p>
-                      ) : null}
+                      <p className="text-neutral-600">
+                        {t("mortgageSim.propertyValueMinusNetRata")}:{" "}
+                        <span className="text-cyan-600">
+                          {fmtMoney(row.propertyValueMinusNetRata, market)}
+                        </span>
+                      </p>
                       {rentEnabled && row.cumulativeRentIncome > 0 ? (
                         <p className="text-neutral-600">
                           {t("mortgageSim.cumulativeRentIncome")}:{" "}
@@ -1263,18 +1291,16 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 dot={false}
                 activeDot={{ r: 4 }}
               />
-              {rentEnabled ? (
-                <Line
-                  type="monotone"
-                  dataKey="propertyValuePlusRent"
-                  name={t("mortgageSim.propertyValuePlusRent")}
-                  stroke={COLORS.tenant}
-                  strokeWidth={2}
-                  strokeDasharray="6 4"
-                  dot={false}
-                  activeDot={{ r: 4 }}
-                />
-              ) : null}
+              <Line
+                type="monotone"
+                dataKey="propertyValueMinusNetRata"
+                name={t("mortgageSim.propertyValueMinusNetRata")}
+                stroke={COLORS.tenant}
+                strokeWidth={2}
+                strokeDasharray="6 4"
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
             </ComposedChart>
           </ResponsiveContainer>
         </div>

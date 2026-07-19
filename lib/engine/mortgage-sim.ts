@@ -19,7 +19,7 @@ export interface MortgageSimPoint {
   propertyValuePlusRentSaved: number;
   /** Property value − (owning − renting) cash difference. */
   propertyValuePlusMoneySaved: number;
-  /** Property value − cumulative owner net cash (rata netta / costi, after rent surplus). */
+  /** Property value − cumulative monthly owner net (rata + costi − affitto); starts at full value. */
   propertyValueMinusNetRata: number;
   /** Equity without revaluation: purchase price − remaining balance. */
   equity: number;
@@ -189,7 +189,7 @@ export function buildMortgageSimSeries(params: {
   const ownerShare =
     monthlyPayment > 0 ? 1 - tenantMonthlyCover / monthlyPayment : 1;
   const ownerMonthlyNet = round2(
-    monthlyPayment * ownerShare + monthlyRecurring - tenantMonthlySurplus,
+    monthlyPayment + monthlyRecurring - tenantMonthlyIncome,
   );
 
   const points: MortgageSimPoint[] = [];
@@ -242,10 +242,14 @@ export function buildMortgageSimSeries(params: {
     const cumulativeRentIncome = round2(tenantMonthlyIncome * month);
     const cumulativeRentAvoided = rentCashAt(month);
     const totalPaid = owningCashAt(month);
-    const cumulativeRentSurplus = round2(
-      Math.max(0, cumulativeRentIncome - cumulativeTenantCover),
+    const monthsOnLoan = Math.min(month, loanMonths);
+    const monthsAfterLoan = Math.max(0, month - loanMonths);
+    const ownerNetDuringLoan = monthlyPayment + monthlyRecurring - tenantMonthlyIncome;
+    const ownerNetAfterLoan = monthlyRecurring - tenantMonthlyIncome;
+    /** Cumulative monthly net cash only (no anticipo) so the line starts at full property value. */
+    const cumulativeOwnerNet = round2(
+      monthsOnLoan * ownerNetDuringLoan + monthsAfterLoan * ownerNetAfterLoan,
     );
-    const cumulativeNetRata = round2(totalPaid - cumulativeRentSurplus);
     const ownMinusRent = round2(totalPaid - cumulativeRentAvoided);
     const moneySaved = ownMinusRent;
     points.push({
@@ -255,7 +259,7 @@ export function buildMortgageSimSeries(params: {
       propertyValuePlusRent: round2(propertyValue + cumulativeRentIncome),
       propertyValuePlusRentSaved: round2(propertyValue + cumulativeRentAvoided),
       propertyValuePlusMoneySaved: round2(propertyValue - moneySaved),
-      propertyValueMinusNetRata: round2(propertyValue - cumulativeNetRata),
+      propertyValueMinusNetRata: round2(propertyValue - cumulativeOwnerNet),
       equity,
       equityGrown,
       cumulativeInterest: round2(cumulativeInterest),

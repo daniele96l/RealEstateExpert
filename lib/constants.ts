@@ -205,8 +205,14 @@ export const ENERGY_CLASS_MULTIPLIER: Record<EnergyClass, number> = {
   G: 2.55,
 };
 
-/** €/m² anno (classe C) — gas, luce, acqua, wi‑fi per affitto breve */
-const UTILITIES_BASE_PER_SQM_SHORT = 13;
+/** €/m² anno (classe C) — luce, gas, acqua per affitto breve (ospiti). */
+const UTILITIES_BASE_PER_SQM_SHORT = 18;
+
+/** Canone fisso annuo: wi‑fi, quote fisse luce/gas, canoni minimi. */
+const UTILITIES_FIXED_SHORT_EUR = 550;
+
+/** Minimo realistico piccolo monolocale/bilocale in breve termine. */
+const UTILITIES_FLOOR_SHORT_EUR = 1200;
 
 /** Stima mq da prezzo (~€2.200/m² media provinciale) */
 export function estimateSqmFromPrice(purchasePrice: number): number {
@@ -222,8 +228,9 @@ export function estimateUtilitiesAnnual(
 ): number {
   if (rentalMode === "long_term" || rentalMode === "medium_term_semester") return 0;
   const mult = ENERGY_CLASS_MULTIPLIER[energyClass];
-  const occFactor = 0.45 + 0.55 * (occupancyPct / 100);
-  const variable = sqm * UTILITIES_BASE_PER_SQM_SHORT * mult * occFactor;
-  const fixed = 200;
-  return Math.round(variable + fixed);
+  const occ = Math.min(100, Math.max(0, occupancyPct));
+  const occFactor = 0.5 + 0.5 * (occ / 100);
+  const variable = Math.max(25, sqm) * UTILITIES_BASE_PER_SQM_SHORT * mult * occFactor;
+  const raw = Math.round(variable + UTILITIES_FIXED_SHORT_EUR);
+  return Math.max(UTILITIES_FLOOR_SHORT_EUR, raw);
 }
