@@ -1031,8 +1031,14 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                                 ).toFixed(1)
                               : String(effectiveSeasons[view].months);
                           const rentalNet = slice.net;
-                          const recurring = sim.monthlyRecurring;
-                          const recurringInBar = Math.min(Math.max(0, recurring), Math.max(0, rentalNet));
+                          const propertyTaxMonthly =
+                            Math.round((propertyTaxAnnual / 12) * 100) / 100;
+                          const maintenanceCost = maintenanceMonthly;
+                          const recurring = propertyTaxMonthly + maintenanceCost;
+                          let barRemain = Math.max(0, rentalNet);
+                          const propertyTaxInBar = Math.min(propertyTaxMonthly, barRemain);
+                          barRemain -= propertyTaxInBar;
+                          const maintenanceInBar = Math.min(maintenanceCost, barRemain);
                           const netAfterRecurring = rentalNet - recurring;
                           const netInBar = Math.max(0, netAfterRecurring);
                           const afterRata = netAfterRecurring - sim.monthlyPayment;
@@ -1069,11 +1075,18 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                               dot: "bg-neutral-400",
                             },
                             {
-                              key: "recurring" as const,
-                              value: recurringInBar,
-                              listValue: recurring,
+                              key: "propertyTax" as const,
+                              value: propertyTaxInBar,
+                              listValue: propertyTaxMonthly,
                               color: "bg-sky-700",
                               dot: "bg-sky-700",
+                            },
+                            {
+                              key: "maintenance" as const,
+                              value: maintenanceInBar,
+                              listValue: maintenanceCost,
+                              color: "bg-sky-500",
+                              dot: "bg-sky-500",
                             },
                             {
                               key: "net" as const,
