@@ -57,18 +57,18 @@ function seasonsFromMidNightly(midNightly: number): SeasonsState {
   const mid = Math.max(0, Math.round(midNightly));
   return {
     low: {
-      nightlyRate: Math.round(mid * 0.7),
-      occupancyPct: 35,
+      nightlyRate: Math.max(50, Math.round(mid * 0.75)),
+      occupancyPct: 5,
       months: 4,
     },
     mid: {
-      nightlyRate: mid,
-      occupancyPct: 55,
+      nightlyRate: Math.max(mid, 80),
+      occupancyPct: 30,
       months: 5,
     },
     high: {
-      nightlyRate: Math.round(mid * 1.4),
-      occupancyPct: 80,
+      nightlyRate: 120,
+      occupancyPct: 60,
       months: 3,
     },
   };

@@ -19,7 +19,7 @@ export const ITALY_DEFAULTS = {
   /** Property manager fee as % of monthly rent */
   property_manager_fee_pct: 10,
   platform_fee_pct: 0.15,
-  cleaning_fee_per_turnover: 30,
+  cleaning_fee_per_turnover: 40,
   avg_stay_nights: 3.5,
   projection_years: 20,
   /** Anni simulati dopo estinzione mutuo */

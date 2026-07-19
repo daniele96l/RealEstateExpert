@@ -65,7 +65,7 @@ export const RENTAL_MODE_RULES = {
       "~240 notti/anno (65%). Città turistiche 70–75%; limite comunale spesso 120 giorni/anno in centro storico.",
     agency_fee_months: 0,
     platform_fee_pct: 0.15,
-    cleaning_fee_per_turnover: 30,
+    cleaning_fee_per_turnover: 40,
     utilities_landlord_annual: 1400,
     utilities_note: "Wi‑fi, elettricità e gas spesso a carico del proprietario.",
     maintenance_pct: ITALY_DEFAULTS.maintenance_pct_short,
