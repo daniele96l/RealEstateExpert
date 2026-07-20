@@ -1,13 +1,70 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-07-19T08:29:26.064Z",
+  "fetched_at": "2026-07-20T09:29:16.105Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3836141644",
+      "title": "Pronájem bytu 1+kk 20 m²",
+      "price": 7000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/plana-nad-luznici-plana-nad-luznici-prumyslova/3836141644",
+      "lat": 49.3660883,
+      "lng": 14.7013079,
+      "sqm": 20,
+      "rooms": 1,
+      "address": "Průmyslová, Planá nad Lužnicí, Planá nad Lužnicí",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-20",
+      "listing_updated_at": "2026-07-20"
+    },
+    {
+      "id": "sr_1934524492",
+      "title": "Pronájem bytu 3+1 67 m²",
+      "price": 15000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/tabor-tabor-sofijska/1934524492",
+      "lat": 49.3906706121533,
+      "lng": 14.6802937792483,
+      "sqm": 67,
+      "rooms": 3,
+      "address": "Sofijská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-06-01",
+      "listing_updated_at": "2026-07-20"
+    },
+    {
+      "id": "sr_3525763148",
+      "title": "Pronájem bytu 2+1 75 m²",
+      "price": 12900,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/bechyne-bechyne-na-libusi/3525763148",
+      "lat": 49.30522144746309,
+      "lng": 14.483326002927114,
+      "sqm": 75,
+      "rooms": 2,
+      "address": "Na Libuši, Bechyně, Bechyně",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-19",
+      "listing_updated_at": "2026-07-19"
+    },
     {
       "id": "sr_3731284044",
       "title": "Pronájem bytu 3+kk 120 m²",
@@ -44,7 +101,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-17",
-      "listing_updated_at": "2026-07-18"
+      "listing_updated_at": "2026-07-19"
     },
     {
       "id": "sr_1557459020",
@@ -237,25 +294,6 @@
       "listing_updated_at": "2026-07-16"
     },
     {
-      "id": "sr_1934524492",
-      "title": "Pronájem bytu 3+1 67 m²",
-      "price": 15000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/tabor-tabor-sofijska/1934524492",
-      "lat": 49.3906706121533,
-      "lng": 14.6802937792483,
-      "sqm": 67,
-      "rooms": 3,
-      "address": "Sofijská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-01",
-      "listing_updated_at": "2026-07-10"
-    },
-    {
       "id": "sr_857595980",
       "title": "Pronájem bytu 1+kk 36 m²",
       "price": 9000,
@@ -329,7 +367,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-09"
+      "listing_updated_at": "2026-07-20"
     },
     {
       "id": "sr_248504396",
@@ -368,25 +406,6 @@
       "needs_renovation": null,
       "listing_published_at": "2026-07-08",
       "listing_updated_at": "2026-07-08"
-    },
-    {
-      "id": "sr_4103659596",
-      "title": "Pronájem bytu 1+kk 24 m²",
-      "price": 7500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/tabor-tabor-budejovicka/4103659596",
-      "lat": 49.4113715624938,
-      "lng": 14.6723670094547,
-      "sqm": 24,
-      "rooms": 1,
-      "address": "Budějovická, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-07",
-      "listing_updated_at": "2026-07-17"
     },
     {
       "id": "sr_4009287756",
