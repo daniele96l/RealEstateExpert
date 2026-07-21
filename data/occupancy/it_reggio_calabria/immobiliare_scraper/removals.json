@@ -1,5 +1,71 @@
 [
   {
+    "id": "im_131034712",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-21T08:38:05.482Z",
+    "presumed_rented_at": "2026-07-21T08:38:05.482Z",
+    "first_seen_at": "2026-07-20T09:27:48.800Z",
+    "last_seen_at": "2026-07-20T09:27:48.800Z",
+    "days_on_market": 1,
+    "price": 650,
+    "sqm": 110,
+    "rooms": 4,
+    "address": "Via Giuseppe de Nava",
+    "zone": "Centro Storico, Pineta Zerbi",
+    "lat": 38.1174,
+    "lng": 15.6526,
+    "price_history": [
+      {
+        "at": "2026-07-20T09:27:48.800Z",
+        "price": 650
+      }
+    ]
+  },
+  {
+    "id": "im_128296168",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-21T08:38:05.482Z",
+    "presumed_rented_at": "2026-07-21T08:38:05.482Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-20T09:27:48.800Z",
+    "days_on_market": 13,
+    "price": 4000,
+    "sqm": 60,
+    "rooms": 4,
+    "address": "V. Gebbione a Mare,",
+    "zone": "Ferrovieri, Stadio, Sbarre",
+    "lat": 38.0833,
+    "lng": 15.6342,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 4000
+      }
+    ]
+  },
+  {
+    "id": "im_109971267",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-21T08:38:05.482Z",
+    "presumed_rented_at": "2026-07-21T08:38:05.482Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-20T09:27:48.800Z",
+    "days_on_market": 13,
+    "price": 500,
+    "sqm": 180,
+    "rooms": 5,
+    "address": "Via Santa Caterina d'Alessandria, 1",
+    "zone": "Santa Caterina, San Brunello, Vito",
+    "lat": 38.1289,
+    "lng": 15.6545,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 500
+      }
+    ]
+  },
+  {
     "id": "im_130610918",
     "portal": "immobiliare_scraper",
     "detected_at": "2026-07-20T09:27:48.800Z",

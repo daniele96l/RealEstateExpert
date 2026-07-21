@@ -2,8 +2,8 @@
   "city": "Rosice",
   "market": "cz",
   "portal": "sreality",
-  "updated_at": "2026-07-20T09:29:20.595Z",
-  "snapshot_count": 8,
+  "updated_at": "2026-07-21T08:39:38.294Z",
+  "snapshot_count": 9,
   "last_provider": "sreality",
   "listings": {
     "sr_3042828364": {
@@ -17,9 +17,9 @@
       "zone": "Rosice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/rosice-rosice-husova-ctvrt/3042828364",
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-19",
+      "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-20T09:29:20.595Z",
+      "last_seen_at": "2026-07-21T08:39:38.294Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -43,7 +43,7 @@
       "listing_published_at": "2026-07-11",
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-20T09:29:20.595Z",
+      "last_seen_at": "2026-07-21T08:39:38.294Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -67,7 +67,7 @@
       "listing_published_at": "2026-07-09",
       "listing_updated_at": "2026-07-09",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-20T09:29:20.595Z",
+      "last_seen_at": "2026-07-21T08:39:38.294Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -91,7 +91,7 @@
       "listing_published_at": "2026-06-04",
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-20T09:29:20.595Z",
+      "last_seen_at": "2026-07-21T08:39:38.294Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -115,7 +115,7 @@
       "listing_published_at": "2026-05-12",
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-20T09:29:20.595Z",
+      "last_seen_at": "2026-07-21T08:39:38.294Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -137,9 +137,9 @@
       "zone": "Rosice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/rosice-rosice-kastanova/1510072396",
       "listing_published_at": "2026-07-15",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-16T08:26:52.356Z",
-      "last_seen_at": "2026-07-20T09:29:20.595Z",
+      "last_seen_at": "2026-07-21T08:39:38.294Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -163,7 +163,7 @@
       "listing_published_at": "2026-07-15",
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-16T08:26:52.356Z",
-      "last_seen_at": "2026-07-20T09:29:20.595Z",
+      "last_seen_at": "2026-07-21T08:39:38.294Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -187,7 +187,7 @@
       "listing_published_at": "2026-07-18",
       "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-18T08:03:39.156Z",
-      "last_seen_at": "2026-07-20T09:29:20.595Z",
+      "last_seen_at": "2026-07-21T08:39:38.294Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -195,6 +195,54 @@
         {
           "at": "2026-07-18T08:03:39.156Z",
           "price": 12000
+        }
+      ]
+    },
+    "sr_308666444": {
+      "id": "sr_308666444",
+      "price": 13500,
+      "lat": 49.1825566585232,
+      "lng": 16.3930980394482,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Wolkerova, Rosice, Rosice",
+      "zone": "Rosice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/rosice-rosice-wolkerova/308666444",
+      "listing_published_at": "2026-07-20",
+      "listing_updated_at": "2026-07-20",
+      "first_seen_at": "2026-07-21T08:39:38.294Z",
+      "last_seen_at": "2026-07-21T08:39:38.294Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-21T08:39:38.294Z",
+          "price": 13500
+        }
+      ]
+    },
+    "sr_3169624140": {
+      "id": "sr_3169624140",
+      "price": 16500,
+      "lat": 49.1794857309202,
+      "lng": 16.3998838022404,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Karla IV., Rosice, Rosice",
+      "zone": "Rosice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/rosice-rosice-karla-iv/3169624140",
+      "listing_published_at": "2026-04-29",
+      "listing_updated_at": "2026-07-20",
+      "first_seen_at": "2026-07-21T08:39:38.294Z",
+      "last_seen_at": "2026-07-21T08:39:38.294Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-21T08:39:38.294Z",
+          "price": 16500
         }
       ]
     }

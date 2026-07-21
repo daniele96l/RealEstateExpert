@@ -1,5 +1,93 @@
 [
   {
+    "id": "sr_1192484940",
+    "portal": "sreality",
+    "detected_at": "2026-07-21T08:39:33.493Z",
+    "presumed_rented_at": "2026-07-21T08:39:33.493Z",
+    "first_seen_at": "2026-07-14T16:23:55.552Z",
+    "last_seen_at": "2026-07-20T09:29:16.105Z",
+    "days_on_market": 7,
+    "price": 12500,
+    "sqm": 67,
+    "rooms": 3,
+    "address": "Hanojská, Tábor, Tábor",
+    "zone": "Tábor",
+    "lat": 49.3912019539,
+    "lng": 14.6806093059,
+    "price_history": [
+      {
+        "at": "2026-07-14T16:23:55.552Z",
+        "price": 12500
+      }
+    ]
+  },
+  {
+    "id": "sr_2819616844",
+    "portal": "sreality",
+    "detected_at": "2026-07-21T08:39:33.493Z",
+    "presumed_rented_at": "2026-07-21T08:39:33.493Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-20T09:29:16.105Z",
+    "days_on_market": 9,
+    "price": 15000,
+    "sqm": 63,
+    "rooms": 2,
+    "address": "Kpt. Jaroše, Tábor, Tábor",
+    "zone": "Tábor",
+    "lat": 49.4190321362462,
+    "lng": 14.6464853348449,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 15000
+      }
+    ]
+  },
+  {
+    "id": "sr_3048730700",
+    "portal": "sreality",
+    "detected_at": "2026-07-21T08:39:33.493Z",
+    "presumed_rented_at": "2026-07-21T08:39:33.493Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-20T09:29:16.105Z",
+    "days_on_market": 9,
+    "price": 10500,
+    "sqm": 42,
+    "rooms": 2,
+    "address": "nám. F. Křižíka, Tábor, Tábor",
+    "zone": "Tábor",
+    "lat": 49.4126335589294,
+    "lng": 14.6633645219718,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 10500
+      }
+    ]
+  },
+  {
+    "id": "sr_2244276300",
+    "portal": "sreality",
+    "detected_at": "2026-07-21T08:39:33.493Z",
+    "presumed_rented_at": "2026-07-21T08:39:33.493Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-20T09:29:16.105Z",
+    "days_on_market": 9,
+    "price": 13000,
+    "sqm": 69,
+    "rooms": 3,
+    "address": "Čsl. armády, Tábor, Tábor",
+    "zone": "Tábor",
+    "lat": 49.41997833333,
+    "lng": 14.66157972222,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 13000
+      }
+    ]
+  },
+  {
     "id": "sr_4103659596",
     "portal": "sreality",
     "detected_at": "2026-07-20T09:29:16.105Z",

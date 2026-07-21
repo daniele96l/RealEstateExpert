@@ -1,7 +1,7 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-07-20T09:29:20.595Z",
+  "fetched_at": "2026-07-21T08:39:38.294Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
@@ -25,7 +25,26 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-19"
+      "listing_updated_at": "2026-07-20"
+    },
+    {
+      "id": "sr_308666444",
+      "title": "Pronájem bytu 1+kk 31 m²",
+      "price": 13500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/rosice-rosice-wolkerova/308666444",
+      "lat": 49.1825566585232,
+      "lng": 16.3930980394482,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "Wolkerova, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-20",
+      "listing_updated_at": "2026-07-20"
     },
     {
       "id": "sr_646438988",
@@ -63,7 +82,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-15",
-      "listing_updated_at": "2026-07-15"
+      "listing_updated_at": "2026-07-20"
     },
     {
       "id": "sr_3463610444",
@@ -159,6 +178,25 @@
       "needs_renovation": null,
       "listing_published_at": "2026-07-09",
       "listing_updated_at": "2026-07-09"
+    },
+    {
+      "id": "sr_3169624140",
+      "title": "Pronájem bytu 2+kk 54 m²",
+      "price": 16500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/rosice-rosice-karla-iv/3169624140",
+      "lat": 49.1794857309202,
+      "lng": 16.3998838022404,
+      "sqm": 54,
+      "rooms": 2,
+      "address": "Karla IV., Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-04-29",
+      "listing_updated_at": "2026-07-20"
     }
   ],
   "provider": "sreality"
