@@ -199,6 +199,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
   const [tenantMonthlyAmount, setTenantMonthlyAmount] = useState(
     market === "cz" ? 15_000 : 300,
   );
+  const [tenantRentGrowthPct, setTenantRentGrowthPct] = useState(2);
   const marketDefaults = market === "cz" ? CZECH_DEFAULTS : ITALY_DEFAULTS;
   const [seasons, setSeasons] = useState<SeasonsState>(() =>
     seasonsFromMidNightly(
@@ -326,6 +327,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
         annualAppreciationPct: appreciation,
         rentEnabled,
         tenantMonthlyAmount: effectiveTenantMonthly,
+        tenantRentGrowthPct: rentMode === "long_term" ? tenantRentGrowthPct : 0,
         liveInEnabled,
         monthlyRentAvoided,
         rentGrowthPct,
@@ -340,6 +342,8 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
       appreciation,
       rentEnabled,
       effectiveTenantMonthly,
+      rentMode,
+      tenantRentGrowthPct,
       liveInEnabled,
       monthlyRentAvoided,
       rentGrowthPct,
@@ -629,30 +633,52 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
                 </div>
               </div>
               {rentMode === "long_term" ? (
-                <label className="block space-y-1.5">
-                  <span className="text-xs font-medium text-neutral-600">
-                    {t("mortgageSim.tenantCoverage")}
-                  </span>
-                  <input
-                    type="number"
-                    min={0}
-                    step={market === "cz" ? 500 : 10}
-                    className="input-field"
-                    value={tenantMonthlyAmount}
-                    onChange={(e) => {
-                      const v = Number(e.target.value);
-                      setTenantMonthlyAmount(Number.isFinite(v) && v >= 0 ? v : 0);
-                    }}
-                  />
-                  <span className="text-[11px] text-neutral-500">
-                    {t("mortgageSim.tenantCoverageHint", {
-                      pct:
-                        sim.monthlyPayment > 0
-                          ? ((sim.tenantMonthlyCover / sim.monthlyPayment) * 100).toFixed(0)
-                          : "0",
-                    })}
-                  </span>
-                </label>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <label className="block space-y-1.5">
+                    <span className="text-xs font-medium text-neutral-600">
+                      {t("mortgageSim.tenantCoverage")}
+                    </span>
+                    <input
+                      type="number"
+                      min={0}
+                      step={market === "cz" ? 500 : 10}
+                      className="input-field"
+                      value={tenantMonthlyAmount}
+                      onChange={(e) => {
+                        const v = Number(e.target.value);
+                        setTenantMonthlyAmount(Number.isFinite(v) && v >= 0 ? v : 0);
+                      }}
+                    />
+                    <span className="text-[11px] text-neutral-500">
+                      {t("mortgageSim.tenantCoverageHint", {
+                        pct:
+                          sim.monthlyPayment > 0
+                            ? ((sim.tenantMonthlyCover / sim.monthlyPayment) * 100).toFixed(0)
+                            : "0",
+                      })}
+                    </span>
+                  </label>
+                  <label className="block space-y-1.5">
+                    <span className="text-xs font-medium text-neutral-600">
+                      {t("mortgageSim.tenantRentGrowth")}
+                    </span>
+                    <input
+                      type="number"
+                      min={-5}
+                      max={20}
+                      step={0.1}
+                      className="input-field"
+                      value={tenantRentGrowthPct}
+                      onChange={(e) => {
+                        const v = Number(e.target.value);
+                        setTenantRentGrowthPct(Number.isFinite(v) ? v : 0);
+                      }}
+                    />
+                    <span className="text-[11px] text-neutral-500">
+                      {t("mortgageSim.tenantRentGrowthHint")}
+                    </span>
+                  </label>
+                </div>
               ) : (
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div className="space-y-2 sm:col-span-2">

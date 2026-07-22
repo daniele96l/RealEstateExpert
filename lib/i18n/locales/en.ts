@@ -318,6 +318,8 @@ const en: Translations = {
     liveInToggleHint: "Count the rent you would otherwise pay as a tenant.",
     tenantCoverage: "Tenant pays toward mortgage (monthly)",
     tenantCoverageHint: "Absolute rent applied to the installment (~{pct}% of the rata).",
+    tenantRentGrowth: "Rent increase %/yr",
+    tenantRentGrowthHint: "How much tenant rent rises each year.",
     rentIncome: "Net rental income (monthly)",
     rentIncomeHintAirbnb: "Gross − platform − cleaning − manager − tax − utilities.",
     rentIncomeHintLong: "Monthly rent income.",

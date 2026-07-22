@@ -119,6 +119,36 @@ export function cumulativeRentAvoidedWithGrowth(
   return round2((base * (1 - Math.pow(monthlyFactor, n))) / (1 - monthlyFactor));
 }
 
+/** Rent in month `month` (1-based) with annual growth compounded monthly. */
+export function monthlyRentWithGrowth(
+  baseMonthly: number,
+  month: number,
+  annualGrowthPct: number,
+): number {
+  const base = Math.max(0, baseMonthly);
+  if (base <= 0 || month <= 0) return 0;
+  const monthlyFactor = Math.pow(1 + annualGrowthPct / 100, 1 / 12);
+  if (Math.abs(monthlyFactor - 1) < 1e-12) return round2(base);
+  return round2(base * Math.pow(monthlyFactor, month - 1));
+}
+
+/** Cumulative tenant cover of the rata with growing rent (capped to payment each month). */
+export function cumulativeTenantCoverWithGrowth(
+  baseMonthly: number,
+  months: number,
+  annualGrowthPct: number,
+  monthlyPayment: number,
+): number {
+  const n = Math.max(0, Math.floor(months));
+  const payment = Math.max(0, monthlyPayment);
+  if (n <= 0 || baseMonthly <= 0 || payment <= 0) return 0;
+  let sum = 0;
+  for (let m = 1; m <= n; m++) {
+    sum += Math.min(payment, monthlyRentWithGrowth(baseMonthly, m, annualGrowthPct));
+  }
+  return round2(sum);
+}
+
 export function buildMortgageSimSeries(params: {
   price: number;
   downPayment: number;
@@ -134,6 +164,8 @@ export function buildMortgageSimSeries(params: {
    * as rental income on the property+rent charts.
    */
   tenantMonthlyAmount?: number;
+  /** Annual growth of tenant / short-term rent %, e.g. 2. */
+  tenantRentGrowthPct?: number;
   /** When true, count rent you would otherwise pay as a tenant. */
   liveInEnabled?: boolean;
   /** Monthly rent avoided by living in the home (starting amount). */
@@ -169,6 +201,11 @@ export function buildMortgageSimSeries(params: {
       ? (params.rentGrowthPct as number)
       : 0
     : 0;
+  const tenantRentGrowthPct = rentEnabled
+    ? Number.isFinite(params.tenantRentGrowthPct)
+      ? (params.tenantRentGrowthPct as number)
+      : 0
+    : 0;
 
   const schedule = frenchAmortizationSchedule(loanAmount, annualRate, loanYears);
   const loanMonths = schedule.length;
@@ -186,11 +223,40 @@ export function buildMortgageSimSeries(params: {
   const tenantMonthlySurplus = round2(
     Math.max(0, tenantMonthlyIncome - tenantMonthlyCover),
   );
-  const ownerShare =
-    monthlyPayment > 0 ? 1 - tenantMonthlyCover / monthlyPayment : 1;
   const ownerMonthlyNet = round2(
     monthlyPayment + monthlyRecurring - tenantMonthlyIncome,
   );
+
+  const rentIncomeAt = (month: number) =>
+    monthlyRentWithGrowth(tenantMonthlyIncome, month, tenantRentGrowthPct);
+
+  const tenantCoverAt = (month: number) => {
+    if (month <= 0 || month > loanMonths || monthlyPayment <= 0) return 0;
+    return round2(Math.min(monthlyPayment, rentIncomeAt(month)));
+  };
+
+  const cumulativeTenantCoverAt = (month: number) =>
+    cumulativeTenantCoverWithGrowth(
+      tenantMonthlyIncome,
+      Math.min(Math.max(0, month), loanMonths),
+      tenantRentGrowthPct,
+      monthlyPayment,
+    );
+
+  const cumulativeRentIncomeAt = (month: number) =>
+    cumulativeRentAvoidedWithGrowth(tenantMonthlyIncome, month, tenantRentGrowthPct);
+
+  const cumulativeOwnerNetAt = (month: number) => {
+    const n = Math.max(0, Math.floor(month));
+    if (n <= 0) return 0;
+    let sum = 0;
+    for (let m = 1; m <= n; m++) {
+      const rent = rentIncomeAt(m);
+      if (m <= loanMonths) sum += monthlyPayment + monthlyRecurring - rent;
+      else sum += monthlyRecurring - rent;
+    }
+    return round2(sum);
+  };
 
   const points: MortgageSimPoint[] = [];
   let cumulativeInterest = 0;
@@ -203,7 +269,8 @@ export function buildMortgageSimSeries(params: {
   const owningCashAt = (month: number) => {
     const mortgageCash = cumulativePrincipal + cumulativeInterest;
     const cumulativeCosts = (annualRecurring * month) / 12;
-    return round2(downPayment + mortgageCash * ownerShare + cumulativeCosts);
+    const tenantCover = cumulativeTenantCoverAt(month);
+    return round2(downPayment + (mortgageCash - tenantCover) + cumulativeCosts);
   };
 
   const rentCashAt = (month: number) =>
@@ -235,21 +302,12 @@ export function buildMortgageSimSeries(params: {
     );
     const equity = round2(Math.max(0, price - remainingBalance));
     const equityGrown = round2(Math.max(0, propertyValue - remainingBalance));
-    const mortgageCash = cumulativePrincipal + cumulativeInterest;
     const cumulativeCosts = round2((annualRecurring * month) / 12);
-    const loanMonthsActive = Math.min(month, loanMonths);
-    const cumulativeTenantCover = round2(tenantMonthlyCover * loanMonthsActive);
-    const cumulativeRentIncome = round2(tenantMonthlyIncome * month);
+    const cumulativeTenantCover = cumulativeTenantCoverAt(month);
+    const cumulativeRentIncome = cumulativeRentIncomeAt(month);
     const cumulativeRentAvoided = rentCashAt(month);
     const totalPaid = owningCashAt(month);
-    const monthsOnLoan = Math.min(month, loanMonths);
-    const monthsAfterLoan = Math.max(0, month - loanMonths);
-    const ownerNetDuringLoan = monthlyPayment + monthlyRecurring - tenantMonthlyIncome;
-    const ownerNetAfterLoan = monthlyRecurring - tenantMonthlyIncome;
-    /** Cumulative monthly net cash only (no anticipo) so the line starts at full property value. */
-    const cumulativeOwnerNet = round2(
-      monthsOnLoan * ownerNetDuringLoan + monthsAfterLoan * ownerNetAfterLoan,
-    );
+    const cumulativeOwnerNet = cumulativeOwnerNetAt(month);
     const ownMinusRent = round2(totalPaid - cumulativeRentAvoided);
     const moneySaved = ownMinusRent;
     /** Exclude anticipo so the line starts at full property value (same as propertyValue at t=0). */
@@ -315,21 +373,22 @@ export function buildMortgageSimSeries(params: {
     };
   };
 
+  const rentBreakdownAt = (month: number, payment: number) => {
+    const income = rentIncomeAt(month);
+    const cover = tenantCoverAt(month);
+    const surplus =
+      month > 0 && month <= loanMonths
+        ? round2(Math.max(0, income - cover))
+        : round2(income);
+    return { income, cover, surplus, payment: month <= loanMonths ? payment : 0 };
+  };
+
   if (loanMonths === 0) {
     for (let month = 1; month <= horizonMonths; month++) {
       stepEtfMonth(month);
       if (month % 12 === 0 || month === horizonMonths) {
-        push(
-          month,
-          Math.ceil(month / 12),
-          0,
-          0,
-          0,
-          0,
-          0,
-          tenantMonthlyIncome,
-          tenantMonthlyIncome,
-        );
+        const { income, cover, surplus } = rentBreakdownAt(month, 0);
+        push(month, Math.ceil(month / 12), 0, 0, 0, 0, cover, income, surplus);
       }
     }
     return finish();
@@ -345,6 +404,7 @@ export function buildMortgageSimSeries(params: {
     const isYearEnd = month % 12 === 0;
     const isLastLoan = month === loanMonths || month === horizonMonths;
     if (isYearEnd || isLastLoan) {
+      const { income, cover, surplus } = rentBreakdownAt(month, row.payment);
       push(
         month,
         Math.ceil(month / 12),
@@ -352,9 +412,9 @@ export function buildMortgageSimSeries(params: {
         row.interest,
         row.principal,
         row.payment,
-        tenantMonthlyCover,
-        tenantMonthlyIncome,
-        tenantMonthlySurplus,
+        cover,
+        income,
+        surplus,
       );
     }
   }
@@ -363,17 +423,8 @@ export function buildMortgageSimSeries(params: {
   for (let month = lastLoanMonth + 1; month <= horizonMonths; month++) {
     stepEtfMonth(month);
     if (month % 12 === 0 || month === horizonMonths) {
-      push(
-        month,
-        Math.ceil(month / 12),
-        0,
-        0,
-        0,
-        0,
-        0,
-        tenantMonthlyIncome,
-        tenantMonthlyIncome,
-      );
+      const { income, cover, surplus } = rentBreakdownAt(month, 0);
+      push(month, Math.ceil(month / 12), 0, 0, 0, 0, cover, income, surplus);
     }
   }
 

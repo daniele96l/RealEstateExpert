@@ -317,6 +317,8 @@ const it = {
     liveInToggleHint: "Conta l'affitto che avresti pagato restando inquilino.",
     tenantCoverage: "Inquilino paga sul mutuo (mensile)",
     tenantCoverageHint: "Importo assoluto dell'affitto sulla rata (~{pct}% della rata).",
+    tenantRentGrowth: "Aumento affitto %/anno",
+    tenantRentGrowthHint: "Quanto cresce l'affitto dell'inquilino ogni anno.",
     rentIncome: "Affitto netto (mensile)",
     rentIncomeHintAirbnb: "Lordo − piattaforma − pulizie − gestore − tasse − bollette.",
     rentIncomeHintLong: "Importo mensile che entra dall'affitto.",
