@@ -360,12 +360,7 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
   }, [sim.points, showAfterMortgage, loanMonths]);
 
   const paymentSplitPoints = useMemo(() => {
-    const rentGrossBar =
-      !rentEnabled
-        ? 0
-        : rentMode === "short_term_airbnb"
-          ? airbnbNet.gross
-          : effectiveTenantMonthly;
+    const airbnbGross = airbnbNet.gross;
     const rentOpexBar =
       rentEnabled && rentMode === "short_term_airbnb"
         ? Math.round(
@@ -381,7 +376,11 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
       .filter((p) => p.month > 0)
       .map((p) => ({
         ...p,
-        monthRentGross: rentGrossBar,
+        monthRentGross: !rentEnabled
+          ? 0
+          : rentMode === "short_term_airbnb"
+            ? airbnbGross
+            : p.monthRentIncome,
         monthRentOpex: rentOpexBar,
         /** Full rata (capitale + interessi) for tooltip / optional display. */
         monthMortgage: Math.round((p.monthPrincipal + p.monthInterest) * 100) / 100,
@@ -396,7 +395,6 @@ export default function MortgageSimulatorPanel({ market = "it" }: Props) {
     airbnbNet.agency,
     airbnbNet.tax,
     airbnbNet.utilities,
-    effectiveTenantMonthly,
   ]);
 
   const yearlyCostPoints = useMemo(() => {
