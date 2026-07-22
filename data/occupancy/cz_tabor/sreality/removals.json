@@ -1,5 +1,27 @@
 [
   {
+    "id": "sr_1055449164",
+    "portal": "sreality",
+    "detected_at": "2026-07-22T08:38:59.470Z",
+    "presumed_rented_at": "2026-07-22T08:38:59.470Z",
+    "first_seen_at": "2026-07-16T08:26:47.738Z",
+    "last_seen_at": "2026-07-21T08:39:33.493Z",
+    "days_on_market": 6,
+    "price": 10900,
+    "sqm": 54,
+    "rooms": 2,
+    "address": "Nádražní, Veselí nad Lužnicí II, Veselí nad Lužnicí",
+    "zone": "Veselí nad Lužnicí II",
+    "lat": 49.1924352,
+    "lng": 14.7159197,
+    "price_history": [
+      {
+        "at": "2026-07-16T08:26:47.738Z",
+        "price": 10900
+      }
+    ]
+  },
+  {
     "id": "sr_1192484940",
     "portal": "sreality",
     "detected_at": "2026-07-21T08:39:33.493Z",

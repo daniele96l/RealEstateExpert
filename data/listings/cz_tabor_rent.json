@@ -1,13 +1,89 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-07-21T08:39:33.493Z",
+  "fetched_at": "2026-07-22T08:38:59.470Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3780608076",
+      "title": "Pronájem bytu 3+1 64 m²",
+      "price": 13500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/tabor-tabor-brigadniku/3780608076",
+      "lat": 49.4191110117954,
+      "lng": 14.6789719830554,
+      "sqm": 64,
+      "rooms": 3,
+      "address": "Brigádníků, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-06-08",
+      "listing_updated_at": "2026-07-22"
+    },
+    {
+      "id": "sr_1915281484",
+      "title": "Pronájem bytu 2+kk 42 m²",
+      "price": 11000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/tabor-tabor-havanska/1915281484",
+      "lat": 49.391638,
+      "lng": 14.681433,
+      "sqm": 42,
+      "rooms": 2,
+      "address": "Havanská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-06",
+      "listing_updated_at": "2026-07-22"
+    },
+    {
+      "id": "sr_4009025612",
+      "title": "Pronájem bytu 2+kk 43 m²",
+      "price": 12400,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/sobeslav-sobeslav-iii/4009025612",
+      "lat": 49.263894810785445,
+      "lng": 14.70208582862588,
+      "sqm": 43,
+      "rooms": 2,
+      "address": "Soběslav III, Soběslav",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-21",
+      "listing_updated_at": "2026-07-21"
+    },
+    {
+      "id": "sr_239394892",
+      "title": "Pronájem bytu 3+1 63 m²",
+      "price": 16000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/tabor-tabor-buzulucka/239394892",
+      "lat": 49.422321,
+      "lng": 14.64604,
+      "sqm": 63,
+      "rooms": 3,
+      "address": "Buzulucká, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-21",
+      "listing_updated_at": "2026-07-21"
+    },
     {
       "id": "sr_2730877004",
       "title": "Pronájem bytu 2+1 56 m²",
@@ -120,7 +196,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-20",
-      "listing_updated_at": "2026-07-20"
+      "listing_updated_at": "2026-07-22"
     },
     {
       "id": "sr_3836141644",
@@ -139,7 +215,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-20",
-      "listing_updated_at": "2026-07-20"
+      "listing_updated_at": "2026-07-21"
     },
     {
       "id": "sr_1934524492",
@@ -237,25 +313,6 @@
       "listing_updated_at": "2026-07-16"
     },
     {
-      "id": "sr_3780608076",
-      "title": "Pronájem bytu 3+1 64 m²",
-      "price": 13500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/tabor-tabor-brigadniku/3780608076",
-      "lat": 49.4191110117954,
-      "lng": 14.6789719830554,
-      "sqm": 64,
-      "rooms": 3,
-      "address": "Brigádníků, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-08",
-      "listing_updated_at": "2026-07-16"
-    },
-    {
       "id": "sr_1444839500",
       "title": "Pronájem bytu 2+1 57 m²",
       "price": 11500,
@@ -272,7 +329,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-06-01",
-      "listing_updated_at": "2026-07-16"
+      "listing_updated_at": "2026-07-22"
     },
     {
       "id": "sr_1508175948",
@@ -310,7 +367,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-20"
+      "listing_updated_at": "2026-07-22"
     },
     {
       "id": "sr_3216105548",
@@ -522,25 +579,6 @@
       "listing_updated_at": "2026-07-10"
     },
     {
-      "id": "sr_1055449164",
-      "title": "Pronájem bytu 2+1 54 m²",
-      "price": 10900,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/veseli-nad-luznici-veseli-nad-luznici-ii-nadrazni/1055449164",
-      "lat": 49.1924352,
-      "lng": 14.7159197,
-      "sqm": 54,
-      "rooms": 2,
-      "address": "Nádražní, Veselí nad Lužnicí II, Veselí nad Lužnicí",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-07",
-      "listing_updated_at": "2026-07-07"
-    },
-    {
       "id": "sr_1830346828",
       "title": "Pronájem bytu 1+1 34 m²",
       "price": 8500,
@@ -558,25 +596,6 @@
       "needs_renovation": null,
       "listing_published_at": "2026-07-07",
       "listing_updated_at": "2026-07-18"
-    },
-    {
-      "id": "sr_1915281484",
-      "title": "Pronájem bytu 2+kk 42 m²",
-      "price": 11000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/tabor-tabor-havanska/1915281484",
-      "lat": 49.391638,
-      "lng": 14.681433,
-      "sqm": 42,
-      "rooms": 2,
-      "address": "Havanská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-06",
-      "listing_updated_at": "2026-07-17"
     },
     {
       "id": "sr_2723733580",
@@ -614,7 +633,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-02",
-      "listing_updated_at": "2026-07-02"
+      "listing_updated_at": "2026-07-21"
     },
     {
       "id": "sr_3083591756",

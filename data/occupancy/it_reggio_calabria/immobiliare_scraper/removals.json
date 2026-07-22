@@ -1,5 +1,27 @@
 [
   {
+    "id": "im_131151378",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-22T08:37:26.309Z",
+    "presumed_rented_at": "2026-07-22T08:37:26.309Z",
+    "first_seen_at": "2026-07-21T08:38:05.482Z",
+    "last_seen_at": "2026-07-21T08:38:05.482Z",
+    "days_on_market": 1,
+    "price": 700,
+    "sqm": 170,
+    "rooms": 4,
+    "address": "Via Provinciale Vecchia Archi, 171",
+    "zone": "Archi, Gallico, Catona",
+    "lat": 38.1462,
+    "lng": 15.6594,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:38:05.482Z",
+        "price": 700
+      }
+    ]
+  },
+  {
     "id": "im_131034712",
     "portal": "immobiliare_scraper",
     "detected_at": "2026-07-21T08:38:05.482Z",
