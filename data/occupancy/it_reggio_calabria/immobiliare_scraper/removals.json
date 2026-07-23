@@ -1,5 +1,71 @@
 [
   {
+    "id": "im_130941388",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-23T08:39:31.113Z",
+    "presumed_rented_at": "2026-07-23T08:39:31.113Z",
+    "first_seen_at": "2026-07-14T16:22:28.856Z",
+    "last_seen_at": "2026-07-22T08:37:26.309Z",
+    "days_on_market": 9,
+    "price": 490,
+    "sqm": 160,
+    "rooms": 5,
+    "address": "Via Delle Camelie No Number",
+    "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
+    "lat": 38.0978,
+    "lng": 15.6633,
+    "price_history": [
+      {
+        "at": "2026-07-14T16:22:28.856Z",
+        "price": 490
+      }
+    ]
+  },
+  {
+    "id": "im_130941492",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-23T08:39:31.113Z",
+    "presumed_rented_at": "2026-07-23T08:39:31.113Z",
+    "first_seen_at": "2026-07-14T16:22:28.856Z",
+    "last_seen_at": "2026-07-22T08:37:26.309Z",
+    "days_on_market": 9,
+    "price": 380,
+    "sqm": 35,
+    "rooms": 1,
+    "address": "Via Nazionale San Gregorio No Number",
+    "zone": "San Gregorio, Pellaro",
+    "lat": 38.0592,
+    "lng": 15.6535,
+    "price_history": [
+      {
+        "at": "2026-07-14T16:22:28.856Z",
+        "price": 380
+      }
+    ]
+  },
+  {
+    "id": "im_130109684",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-07-23T08:39:31.113Z",
+    "presumed_rented_at": "2026-07-23T08:39:31.113Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-07-22T08:37:26.309Z",
+    "days_on_market": 15,
+    "price": 750,
+    "sqm": 111,
+    "rooms": 4,
+    "address": "Via Argine Destro Calopinace, 25",
+    "zone": "Ferrovieri, Stadio, Sbarre",
+    "lat": 38.1016,
+    "lng": 15.6414,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 750
+      }
+    ]
+  },
+  {
     "id": "im_131151378",
     "portal": "immobiliare_scraper",
     "detected_at": "2026-07-22T08:37:26.309Z",

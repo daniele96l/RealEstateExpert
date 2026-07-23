@@ -1,7 +1,7 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-07-22T08:39:05.359Z",
+  "fetched_at": "2026-07-23T08:41:05.225Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
@@ -25,7 +25,26 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-20"
+      "listing_updated_at": "2026-07-22"
+    },
+    {
+      "id": "sr_3463610444",
+      "title": "Pronájem bytu 1+kk 34 m²",
+      "price": 12413,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/rosice-rosice-sportovni/3463610444",
+      "lat": 49.1851586361,
+      "lng": 16.39013885,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Sportovní, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-06-04",
+      "listing_updated_at": "2026-07-22"
     },
     {
       "id": "sr_308666444",
@@ -83,25 +102,6 @@
       "needs_renovation": null,
       "listing_published_at": "2026-07-15",
       "listing_updated_at": "2026-07-20"
-    },
-    {
-      "id": "sr_3463610444",
-      "title": "Pronájem bytu 1+kk 34 m²",
-      "price": 12413,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/rosice-rosice-sportovni/3463610444",
-      "lat": 49.1851586361,
-      "lng": 16.39013885,
-      "sqm": 34,
-      "rooms": 1,
-      "address": "Sportovní, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-04",
-      "listing_updated_at": "2026-07-15"
     },
     {
       "id": "sr_1597104204",

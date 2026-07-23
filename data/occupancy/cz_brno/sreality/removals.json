@@ -1,5 +1,1369 @@
 [
   {
+    "id": "sr_2878726220",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-22T08:38:39.467Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 1,
+    "price": 15900,
+    "sqm": 23,
+    "rooms": 1,
+    "address": "Skorkovského, Židenice, Brno",
+    "zone": "Židenice",
+    "lat": 49.19289579745214,
+    "lng": 16.64208615058396,
+    "price_history": [
+      {
+        "at": "2026-07-22T08:38:39.467Z",
+        "price": 15900
+      }
+    ]
+  },
+  {
+    "id": "sr_2570379340",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-22T08:38:39.467Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 1,
+    "price": 19000,
+    "sqm": 53,
+    "rooms": 2,
+    "address": "Tábor, Žabovřesky, Brno",
+    "zone": "Žabovřesky",
+    "lat": 49.212799,
+    "lng": 16.590995,
+    "price_history": [
+      {
+        "at": "2026-07-22T08:38:39.467Z",
+        "price": 19000
+      }
+    ]
+  },
+  {
+    "id": "sr_1269096524",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-22T08:38:39.467Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 1,
+    "price": 14000,
+    "sqm": 29,
+    "rooms": 1,
+    "address": "Halasovo náměstí, Lesná, Brno",
+    "zone": "Lesná",
+    "lat": 49.2228323875335,
+    "lng": 16.6266586539499,
+    "price_history": [
+      {
+        "at": "2026-07-22T08:38:39.467Z",
+        "price": 14000
+      }
+    ]
+  },
+  {
+    "id": "sr_3316965452",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-22T08:38:39.467Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 1,
+    "price": 15500,
+    "sqm": 35,
+    "rooms": 1,
+    "address": "Kallabova, Žabovřesky, Brno",
+    "zone": "Žabovřesky",
+    "lat": 49.21283152100722,
+    "lng": 16.57399993533206,
+    "price_history": [
+      {
+        "at": "2026-07-22T08:38:39.467Z",
+        "price": 15500
+      }
+    ]
+  },
+  {
+    "id": "sr_2472927308",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 22000,
+    "sqm": 52,
+    "rooms": 2,
+    "address": "Korejská, Žabovřesky, Brno",
+    "zone": "Žabovřesky",
+    "lat": 49.2153578010162,
+    "lng": 16.5825720676274,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 22000
+      }
+    ]
+  },
+  {
+    "id": "sr_3446005836",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 11990,
+    "sqm": 21,
+    "rooms": 1,
+    "address": "Francouzská, Zábrdovice, Brno",
+    "zone": "Zábrdovice",
+    "lat": 49.20208645848334,
+    "lng": 16.620950238275725,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 11990
+      }
+    ]
+  },
+  {
+    "id": "sr_2925912140",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 13990,
+    "sqm": 22,
+    "rooms": 1,
+    "address": "Koliště, Brno",
+    "zone": "Koliště",
+    "lat": 49.1989378630622,
+    "lng": 16.61224091648296,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 13990
+      }
+    ]
+  },
+  {
+    "id": "sr_3119505484",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 11554,
+    "sqm": 33,
+    "rooms": 1,
+    "address": "Svitavské nábřeží, Brno",
+    "zone": "Svitavské nábřeží",
+    "lat": 49.20661304161538,
+    "lng": 16.630879216397066,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 11554
+      }
+    ]
+  },
+  {
+    "id": "sr_2960121932",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 5500,
+    "sqm": 16,
+    "rooms": null,
+    "address": "Cejl, Zábrdovice, Brno",
+    "zone": "Zábrdovice",
+    "lat": 49.201068313023036,
+    "lng": 16.626415799686793,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 5500
+      }
+    ]
+  },
+  {
+    "id": "sr_1101717580",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 21000,
+    "sqm": 40,
+    "rooms": 2,
+    "address": "Tyršova, Královo Pole, Brno",
+    "zone": "Královo Pole",
+    "lat": 49.2242936674979,
+    "lng": 16.5897848977051,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 21000
+      }
+    ]
+  },
+  {
+    "id": "sr_409530444",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 16700,
+    "sqm": 32,
+    "rooms": 1,
+    "address": "Pod Hády, Brno",
+    "zone": "Pod Hády",
+    "lat": 49.2134,
+    "lng": 16.6652,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 16700
+      }
+    ]
+  },
+  {
+    "id": "sr_3327299660",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 15500,
+    "sqm": 31,
+    "rooms": 2,
+    "address": "Štefánikova, Brno",
+    "zone": "Štefánikova",
+    "lat": 49.2123847301658,
+    "lng": 16.6016021684346,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 15500
+      }
+    ]
+  },
+  {
+    "id": "sr_2268454988",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 16500,
+    "sqm": 24,
+    "rooms": 1,
+    "address": "Dornych, Trnitá, Brno",
+    "zone": "Trnitá",
+    "lat": 49.1845131,
+    "lng": 16.6230957,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 16500
+      }
+    ]
+  },
+  {
+    "id": "sr_1614143564",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 22000,
+    "sqm": 70,
+    "rooms": 2,
+    "address": "Vídeňská, Brno",
+    "zone": "Vídeňská",
+    "lat": 49.1708771943,
+    "lng": 16.5977500861,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 22000
+      }
+    ]
+  },
+  {
+    "id": "sr_792059980",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 24000,
+    "sqm": 62,
+    "rooms": 3,
+    "address": "Hlinecká, Žebětín, Brno",
+    "zone": "Žebětín",
+    "lat": 49.219955,
+    "lng": 16.494629,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 24000
+      }
+    ]
+  },
+  {
+    "id": "sr_2598232140",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 21000,
+    "sqm": 62,
+    "rooms": 2,
+    "address": "K Rybníku, Medlánky, Brno",
+    "zone": "Medlánky",
+    "lat": 49.24458286190775,
+    "lng": 16.571727700217078,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 21000
+      }
+    ]
+  },
+  {
+    "id": "sr_3140870220",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 26000,
+    "sqm": 82,
+    "rooms": 3,
+    "address": "Bayerova, Veveří, Brno",
+    "zone": "Veveří",
+    "lat": 49.205662588219255,
+    "lng": 16.602892207184944,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 26000
+      }
+    ]
+  },
+  {
+    "id": "sr_2662658124",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 15990,
+    "sqm": 40,
+    "rooms": 1,
+    "address": "Vídeňská, Štýřice, Brno",
+    "zone": "Štýřice",
+    "lat": 49.184051445486176,
+    "lng": 16.59430869952246,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 15990
+      }
+    ]
+  },
+  {
+    "id": "sr_2567299148",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 17000,
+    "sqm": 50,
+    "rooms": 2,
+    "address": "Stejskalova, Židenice, Brno",
+    "zone": "Židenice",
+    "lat": 49.1933264342655,
+    "lng": 16.640434445281,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_2282086476",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 9000,
+    "sqm": 18,
+    "rooms": 1,
+    "address": "Stejskalova, Židenice, Brno",
+    "zone": "Židenice",
+    "lat": 49.1925026277063,
+    "lng": 16.6406646108832,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 9000
+      }
+    ]
+  },
+  {
+    "id": "sr_3567943756",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 55000,
+    "sqm": 104,
+    "rooms": 5,
+    "address": "Čejkova, Židenice, Brno",
+    "zone": "Židenice",
+    "lat": 49.2061851447314,
+    "lng": 16.6394724124591,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 55000
+      }
+    ]
+  },
+  {
+    "id": "sr_253091916",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 5970,
+    "sqm": 65,
+    "rooms": null,
+    "address": "Kamínky, Nový Lískovec, Brno",
+    "zone": "Nový Lískovec",
+    "lat": 49.17826969771564,
+    "lng": 16.55939157692403,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 5970
+      }
+    ]
+  },
+  {
+    "id": "sr_940957772",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 26000,
+    "sqm": 98,
+    "rooms": 3,
+    "address": "Šmahova, Slatina, Brno",
+    "zone": "Slatina",
+    "lat": 49.17338908408944,
+    "lng": 16.68706106068099,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 26000
+      }
+    ]
+  },
+  {
+    "id": "sr_3036012620",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 23400,
+    "sqm": 52,
+    "rooms": 2,
+    "address": "Nové sady, Staré Brno, Brno",
+    "zone": "Staré Brno",
+    "lat": 49.1850693,
+    "lng": 16.6028969,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 23400
+      }
+    ]
+  },
+  {
+    "id": "sr_2096488524",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 21000,
+    "sqm": 60,
+    "rooms": 2,
+    "address": "Bayerova, Veveří, Brno",
+    "zone": "Veveří",
+    "lat": 49.2077947432596,
+    "lng": 16.6009974987895,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 21000
+      }
+    ]
+  },
+  {
+    "id": "sr_2244337740",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 22500,
+    "sqm": 80,
+    "rooms": 2,
+    "address": "Renneská třída, Štýřice, Brno",
+    "zone": "Štýřice",
+    "lat": 49.181839333700765,
+    "lng": 16.599640596409582,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 22500
+      }
+    ]
+  },
+  {
+    "id": "sr_3301302348",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 25900,
+    "sqm": 32,
+    "rooms": 2,
+    "address": "Hybešova, Staré Brno, Brno",
+    "zone": "Staré Brno",
+    "lat": 49.1891993770649,
+    "lng": 16.6043899898101,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 25900
+      }
+    ]
+  },
+  {
+    "id": "sr_2590408780",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 33000,
+    "sqm": 126,
+    "rooms": 3,
+    "address": "Pekařská, Staré Brno, Brno",
+    "zone": "Staré Brno",
+    "lat": 49.1916839,
+    "lng": 16.5989471,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 33000
+      }
+    ]
+  },
+  {
+    "id": "sr_598073420",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 9000,
+    "sqm": 28,
+    "rooms": 1,
+    "address": "Úpatní, Nový Lískovec, Brno",
+    "zone": "Nový Lískovec",
+    "lat": 49.1799361513451,
+    "lng": 16.5604880279788,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 9000
+      }
+    ]
+  },
+  {
+    "id": "sr_255254604",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-20T09:28:58.357Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 3,
+    "price": 22490,
+    "sqm": 69,
+    "rooms": 2,
+    "address": "Rybářská, Staré Brno, Brno",
+    "zone": "Staré Brno",
+    "lat": 49.1877220568835,
+    "lng": 16.5895590539082,
+    "price_history": [
+      {
+        "at": "2026-07-20T09:28:58.357Z",
+        "price": 22490
+      }
+    ]
+  },
+  {
+    "id": "sr_2620907596",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 19900,
+    "sqm": 70,
+    "rooms": 2,
+    "address": "Údolní, Veveří, Brno",
+    "zone": "Veveří",
+    "lat": 49.1984376737498,
+    "lng": 16.5922709643948,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 19900
+      }
+    ]
+  },
+  {
+    "id": "sr_2055725132",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-18T08:03:18.297Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 5,
+    "price": 23000,
+    "sqm": 76,
+    "rooms": 3,
+    "address": "Suzova, Medlánky, Brno",
+    "zone": "Medlánky",
+    "lat": 49.23917,
+    "lng": 16.581866,
+    "price_history": [
+      {
+        "at": "2026-07-18T08:03:18.297Z",
+        "price": 23000
+      }
+    ]
+  },
+  {
+    "id": "sr_2526077004",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-17T08:21:57.499Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 6,
+    "price": 6000,
+    "sqm": 49,
+    "rooms": null,
+    "address": "Veveří, Veveří, Brno",
+    "zone": "Veveří",
+    "lat": 49.20161,
+    "lng": 16.59876,
+    "price_history": [
+      {
+        "at": "2026-07-17T08:21:57.499Z",
+        "price": 6000
+      }
+    ]
+  },
+  {
+    "id": "sr_542241612",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 8395,
+    "sqm": 69,
+    "rooms": null,
+    "address": "Uzbecká, Bohunice, Brno",
+    "zone": "Bohunice",
+    "lat": 49.17268656408459,
+    "lng": 16.58144293897871,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 8395
+      }
+    ]
+  },
+  {
+    "id": "sr_1469309004",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 17000,
+    "sqm": 45,
+    "rooms": 1,
+    "address": "Údolní, Brno-město, Brno",
+    "zone": "Brno-město",
+    "lat": 49.1963,
+    "lng": 16.6018,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_540729420",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 22500,
+    "sqm": 75,
+    "rooms": 2,
+    "address": "Tábor, Žabovřesky, Brno",
+    "zone": "Žabovřesky",
+    "lat": 49.2109704392917,
+    "lng": 16.587750259121,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 22500
+      }
+    ]
+  },
+  {
+    "id": "sr_3993165900",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 18284,
+    "sqm": 27,
+    "rooms": 1,
+    "address": "Jakubské náměstí, Brno-město, Brno",
+    "zone": "Brno-město",
+    "lat": 49.1967878654066,
+    "lng": 16.608378845051,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 18284
+      }
+    ]
+  },
+  {
+    "id": "sr_2716655692",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 20000,
+    "sqm": 55,
+    "rooms": 2,
+    "address": "Medlánecká, Řečkovice, Brno",
+    "zone": "Řečkovice",
+    "lat": 49.245542,
+    "lng": 16.577725,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 20000
+      }
+    ]
+  },
+  {
+    "id": "sr_1932456012",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 25000,
+    "sqm": 49,
+    "rooms": 2,
+    "address": "Komárovská, Komárov, Brno",
+    "zone": "Komárov",
+    "lat": 49.1802214815,
+    "lng": 16.6192313044,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "id": "sr_3280356172",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 18644,
+    "sqm": 28,
+    "rooms": 1,
+    "address": "Jakubské náměstí, Brno-město, Brno",
+    "zone": "Brno-město",
+    "lat": 49.1967878654066,
+    "lng": 16.608378845051,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 18644
+      }
+    ]
+  },
+  {
+    "id": "sr_427905868",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 19701,
+    "sqm": 30,
+    "rooms": 1,
+    "address": "Jakubské náměstí, Brno-město, Brno",
+    "zone": "Brno-město",
+    "lat": 49.1967878654066,
+    "lng": 16.608378845051,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 19701
+      }
+    ]
+  },
+  {
+    "id": "sr_880890700",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 20927,
+    "sqm": 33,
+    "rooms": 1,
+    "address": "Jakubské náměstí, Brno-město, Brno",
+    "zone": "Brno-město",
+    "lat": 49.1967878654066,
+    "lng": 16.608378845051,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 20927
+      }
+    ]
+  },
+  {
+    "id": "sr_510320716",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 40000,
+    "sqm": 90,
+    "rooms": 3,
+    "address": "Kosmova, Královo Pole, Brno",
+    "zone": "Královo Pole",
+    "lat": 49.2283426,
+    "lng": 16.5943765,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 40000
+      }
+    ]
+  },
+  {
+    "id": "sr_16814156",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 22900,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Poříčí, Pisárky, Brno",
+    "zone": "Pisárky",
+    "lat": 49.1854427813594,
+    "lng": 16.5865126284376,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 22900
+      }
+    ]
+  },
+  {
+    "id": "sr_2008346700",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-20T09:28:58.357Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 3,
+    "price": 23000,
+    "sqm": 65,
+    "rooms": 2,
+    "address": "Veveří, Veveří, Brno",
+    "zone": "Veveří",
+    "lat": 49.20161,
+    "lng": 16.59876,
+    "price_history": [
+      {
+        "at": "2026-07-20T09:28:58.357Z",
+        "price": 23000
+      }
+    ]
+  },
+  {
+    "id": "sr_356520780",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 8500,
+    "sqm": 21,
+    "rooms": null,
+    "address": "Vídeňská, Přízřenice, Brno",
+    "zone": "Přízřenice",
+    "lat": 49.1708771943,
+    "lng": 16.5977500861,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 8500
+      }
+    ]
+  },
+  {
+    "id": "sr_3763044428",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 21000,
+    "sqm": 74,
+    "rooms": 3,
+    "address": "Kneslova, Černovice, Brno",
+    "zone": "Černovice",
+    "lat": 49.1858527526456,
+    "lng": 16.6436498750807,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 21000
+      }
+    ]
+  },
+  {
+    "id": "sr_3277840460",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 22800,
+    "sqm": 62,
+    "rooms": 2,
+    "address": "Hoblíkova, Černá Pole, Brno",
+    "zone": "Černá Pole",
+    "lat": 49.2051087017599,
+    "lng": 16.6208262337252,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 22800
+      }
+    ]
+  },
+  {
+    "id": "sr_2574688332",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 25000,
+    "sqm": 69,
+    "rooms": 3,
+    "address": "Dukelská třída, Husovice, Brno",
+    "zone": "Husovice",
+    "lat": 49.212227,
+    "lng": 16.634899,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "id": "sr_2638475340",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 21000,
+    "sqm": 64,
+    "rooms": 2,
+    "address": "Prokofjevova, Kohoutovice, Brno",
+    "zone": "Kohoutovice",
+    "lat": 49.192298,
+    "lng": 16.544393,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 21000
+      }
+    ]
+  },
+  {
+    "id": "sr_3186393164",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 25000,
+    "sqm": 57,
+    "rooms": 2,
+    "address": "Došlíkova, Židenice, Brno",
+    "zone": "Židenice",
+    "lat": 49.195113,
+    "lng": 16.654772,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "id": "sr_3303309388",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 29000,
+    "sqm": 79,
+    "rooms": 3,
+    "address": "Panská, Brno-město, Brno",
+    "zone": "Brno-město",
+    "lat": 49.193598,
+    "lng": 16.608153,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 29000
+      }
+    ]
+  },
+  {
+    "id": "sr_4251447372",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 30000,
+    "sqm": 90,
+    "rooms": 3,
+    "address": "Kollárova, Královo Pole, Brno",
+    "zone": "Královo Pole",
+    "lat": 49.225818,
+    "lng": 16.594477,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 30000
+      }
+    ]
+  },
+  {
+    "id": "sr_1387589708",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 14490,
+    "sqm": 32,
+    "rooms": 1,
+    "address": "Vídeňská, Štýřice, Brno",
+    "zone": "Štýřice",
+    "lat": 49.18451431669537,
+    "lng": 16.59492837805053,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 14490
+      }
+    ]
+  },
+  {
+    "id": "sr_3400221516",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 16000,
+    "sqm": 23,
+    "rooms": 1,
+    "address": "Koliště, Zábrdovice, Brno",
+    "zone": "Zábrdovice",
+    "lat": 49.194393059833146,
+    "lng": 16.617492493445795,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 16000
+      }
+    ]
+  },
+  {
+    "id": "sr_2800672844",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-18T08:03:18.297Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 5,
+    "price": 16500,
+    "sqm": 32,
+    "rooms": 1,
+    "address": "Mírová, Černovice, Brno",
+    "zone": "Černovice",
+    "lat": 49.1769174921,
+    "lng": 16.6362276029,
+    "price_history": [
+      {
+        "at": "2026-07-18T08:03:18.297Z",
+        "price": 16500
+      }
+    ]
+  },
+  {
+    "id": "sr_2101051468",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 22900,
+    "sqm": 86,
+    "rooms": 2,
+    "address": "Podbělová, Líšeň, Brno",
+    "zone": "Líšeň",
+    "lat": 49.214254,
+    "lng": 16.686438,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 22900
+      }
+    ]
+  },
+  {
+    "id": "sr_2885607500",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 22900,
+    "sqm": 47,
+    "rooms": 2,
+    "address": "Hrázka, Medlánky, Brno",
+    "zone": "Medlánky",
+    "lat": 49.2452277712054,
+    "lng": 16.5736348802219,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 22900
+      }
+    ]
+  },
+  {
+    "id": "sr_2832130124",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-21T08:39:15.158Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 2,
+    "price": 27990,
+    "sqm": 71,
+    "rooms": 3,
+    "address": "Hybešova, Staré Brno, Brno",
+    "zone": "Staré Brno",
+    "lat": 49.1892109,
+    "lng": 16.6040398,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:39:15.158Z",
+        "price": 27990
+      }
+    ]
+  },
+  {
+    "id": "sr_3772203852",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-10T11:04:17.212Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 13,
+    "price": 12900,
+    "sqm": 29,
+    "rooms": 1,
+    "address": "Novoměstská, Řečkovice, Brno",
+    "zone": "Řečkovice",
+    "lat": 49.2439130941754,
+    "lng": 16.5882824810626,
+    "price_history": [
+      {
+        "at": "2026-07-10T11:04:17.212Z",
+        "price": 12900
+      }
+    ]
+  },
+  {
+    "id": "sr_1115258956",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-10T11:04:17.212Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 13,
+    "price": 17000,
+    "sqm": 37,
+    "rooms": 1,
+    "address": "Slovinská, Královo Pole, Brno",
+    "zone": "Královo Pole",
+    "lat": 49.2211447406661,
+    "lng": 16.5937376472595,
+    "price_history": [
+      {
+        "at": "2026-07-10T11:04:17.212Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_624853068",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:40:41.971Z",
+    "presumed_rented_at": "2026-07-23T08:40:41.971Z",
+    "first_seen_at": "2026-07-10T11:04:17.212Z",
+    "last_seen_at": "2026-07-22T08:38:39.467Z",
+    "days_on_market": 13,
+    "price": 22500,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Košinova, Královo Pole, Brno",
+    "zone": "Královo Pole",
+    "lat": 49.2235298432769,
+    "lng": 16.5994345592362,
+    "price_history": [
+      {
+        "at": "2026-07-10T11:04:17.212Z",
+        "price": 22500
+      }
+    ]
+  },
+  {
     "id": "sr_1485234252",
     "portal": "sreality",
     "detected_at": "2026-07-22T08:38:39.467Z",
@@ -9644,1370 +11008,6 @@
       {
         "at": "2026-07-14T16:23:38.437Z",
         "price": 12500
-      }
-    ]
-  },
-  {
-    "id": "sr_2609700940",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 17900,
-    "sqm": 43,
-    "rooms": 1,
-    "address": "Kigginsova, Slatina, Brno",
-    "zone": "Slatina",
-    "lat": 49.179656,
-    "lng": 16.671328,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 17900
-      }
-    ]
-  },
-  {
-    "id": "sr_2110648396",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 27000,
-    "sqm": 38,
-    "rooms": 1,
-    "address": "Cejl, Zábrdovice, Brno",
-    "zone": "Zábrdovice",
-    "lat": 49.1988604569044,
-    "lng": 16.6225320438874,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 27000
-      }
-    ]
-  },
-  {
-    "id": "sr_47050828",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 29000,
-    "sqm": 29,
-    "rooms": 1,
-    "address": "Cejl, Zábrdovice, Brno",
-    "zone": "Zábrdovice",
-    "lat": 49.1988604569044,
-    "lng": 16.6225320438874,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 29000
-      }
-    ]
-  },
-  {
-    "id": "sr_30273612",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 24000,
-    "sqm": 30,
-    "rooms": 1,
-    "address": "Vlhká, Brno-střed, Brno",
-    "zone": "Brno-střed",
-    "lat": 49.1944617580186,
-    "lng": 16.6180512451794,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 24000
-      }
-    ]
-  },
-  {
-    "id": "sr_1204678732",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 28000,
-    "sqm": 46,
-    "rooms": 1,
-    "address": "Vlhká, Brno-střed, Brno",
-    "zone": "Brno-střed",
-    "lat": 49.1944617580186,
-    "lng": 16.6180512451794,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 28000
-      }
-    ]
-  },
-  {
-    "id": "sr_80605260",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 33000,
-    "sqm": 83,
-    "rooms": 2,
-    "address": "Vlhká, Brno-střed, Brno",
-    "zone": "Brno-střed",
-    "lat": 49.1944617580186,
-    "lng": 16.6180512451794,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 33000
-      }
-    ]
-  },
-  {
-    "id": "sr_756125772",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 36000,
-    "sqm": 94,
-    "rooms": 3,
-    "address": "Kopečná, Staré Brno, Brno",
-    "zone": "Staré Brno",
-    "lat": 49.1909753647357,
-    "lng": 16.6040129280014,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 36000
-      }
-    ]
-  },
-  {
-    "id": "sr_1104842828",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 28000,
-    "sqm": 57,
-    "rooms": 2,
-    "address": "Cejl, Zábrdovice, Brno",
-    "zone": "Zábrdovice",
-    "lat": 49.1988604569044,
-    "lng": 16.6225320438874,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 28000
-      }
-    ]
-  },
-  {
-    "id": "sr_3595006796",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 24000,
-    "sqm": 50,
-    "rooms": 2,
-    "address": "Cejl, Zábrdovice, Brno",
-    "zone": "Zábrdovice",
-    "lat": 49.1988604569044,
-    "lng": 16.6225320438874,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 24000
-      }
-    ]
-  },
-  {
-    "id": "sr_3009933900",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 28000,
-    "sqm": 41,
-    "rooms": 1,
-    "address": "Kotlářská, Veveří, Brno",
-    "zone": "Veveří",
-    "lat": 49.2065607038458,
-    "lng": 16.5996006101615,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 28000
-      }
-    ]
-  },
-  {
-    "id": "sr_681369676",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 10000,
-    "sqm": 17,
-    "rooms": null,
-    "address": "Rakovecká, Bystrc, Brno",
-    "zone": "Bystrc",
-    "lat": 49.24817070618218,
-    "lng": 16.48994317858644,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 10000
-      }
-    ]
-  },
-  {
-    "id": "sr_1520230476",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 16000,
-    "sqm": 38,
-    "rooms": 1,
-    "address": "Bělohorská, Židenice, Brno",
-    "zone": "Židenice",
-    "lat": 49.1874390434064,
-    "lng": 16.6656115258181,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 16000
-      }
-    ]
-  },
-  {
-    "id": "sr_694411340",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 9495,
-    "sqm": 55,
-    "rooms": 3,
-    "address": "Běhounská, Brno-město, Brno",
-    "zone": "Brno-město",
-    "lat": 49.19591199507165,
-    "lng": 16.60906337530911,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 9495
-      }
-    ]
-  },
-  {
-    "id": "sr_3111379020",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 19990,
-    "sqm": 45,
-    "rooms": 2,
-    "address": "Jakubské náměstí, Brno-město, Brno",
-    "zone": "Brno-město",
-    "lat": 49.196285204,
-    "lng": 16.6083076947,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 19990
-      }
-    ]
-  },
-  {
-    "id": "sr_760012876",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-11T10:25:42.446Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 4,
-    "price": 18000,
-    "sqm": 60,
-    "rooms": 2,
-    "address": "Přadlácká, Zábrdovice, Brno",
-    "zone": "Zábrdovice",
-    "lat": 49.203399097774,
-    "lng": 16.6247916021949,
-    "price_history": [
-      {
-        "at": "2026-07-11T10:25:42.446Z",
-        "price": 18000
-      }
-    ]
-  },
-  {
-    "id": "sr_3444150348",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-14T16:23:38.437Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 1,
-    "price": 27000,
-    "sqm": 73,
-    "rooms": 3,
-    "address": "Jílkova, Židenice, Brno",
-    "zone": "Židenice",
-    "lat": 49.1961849276261,
-    "lng": 16.6410601977736,
-    "price_history": [
-      {
-        "at": "2026-07-14T16:23:38.437Z",
-        "price": 27000
-      }
-    ]
-  },
-  {
-    "id": "sr_1054048332",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 19000,
-    "sqm": 27,
-    "rooms": 1,
-    "address": "Jaselská, Veveří, Brno",
-    "zone": "Veveří",
-    "lat": 49.1988131115029,
-    "lng": 16.6005237663423,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 19000
-      }
-    ]
-  },
-  {
-    "id": "sr_248741964",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 27500,
-    "sqm": 36,
-    "rooms": 2,
-    "address": "Jaselská, Veveří, Brno",
-    "zone": "Veveří",
-    "lat": 49.1988131115029,
-    "lng": 16.6005237663423,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 27500
-      }
-    ]
-  },
-  {
-    "id": "sr_1590919244",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 29000,
-    "sqm": 51,
-    "rooms": 2,
-    "address": "Jaselská, Veveří, Brno",
-    "zone": "Veveří",
-    "lat": 49.1988131115029,
-    "lng": 16.6005237663423,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 29000
-      }
-    ]
-  },
-  {
-    "id": "sr_2983428172",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 85000,
-    "sqm": 120,
-    "rooms": 4,
-    "address": "Jaselská, Veveří, Brno",
-    "zone": "Veveří",
-    "lat": 49.1988131115029,
-    "lng": 16.6005237663423,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 85000
-      }
-    ]
-  },
-  {
-    "id": "sr_2883117132",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 50000,
-    "sqm": 235,
-    "rooms": null,
-    "address": "Křížová, Staré Brno, Brno",
-    "zone": "Staré Brno",
-    "lat": 49.18685120017845,
-    "lng": 16.594890988688775,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 50000
-      }
-    ]
-  },
-  {
-    "id": "sr_2710601804",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 14000,
-    "sqm": 32,
-    "rooms": 1,
-    "address": "Bořetická, Židenice, Brno",
-    "zone": "Židenice",
-    "lat": 49.20259416746043,
-    "lng": 16.66082046277801,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 14000
-      }
-    ]
-  },
-  {
-    "id": "sr_3400221516",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 2,
-    "price": 16000,
-    "sqm": 23,
-    "rooms": 1,
-    "address": "Koliště, Zábrdovice, Brno",
-    "zone": "Zábrdovice",
-    "lat": 49.194393059833146,
-    "lng": 16.617492493445795,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 16000
-      }
-    ]
-  },
-  {
-    "id": "sr_2032132172",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-10T11:04:17.212Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 5,
-    "price": 16990,
-    "sqm": 40,
-    "rooms": 1,
-    "address": "Mlýnská, Trnitá, Brno",
-    "zone": "Trnitá",
-    "lat": 49.1908589922,
-    "lng": 16.6164525187,
-    "price_history": [
-      {
-        "at": "2026-07-10T11:04:17.212Z",
-        "price": 16990
-      }
-    ]
-  },
-  {
-    "id": "sr_3789979724",
-    "portal": "sreality",
-    "detected_at": "2026-07-15T08:26:18.836Z",
-    "presumed_rented_at": "2026-07-15T08:26:18.836Z",
-    "first_seen_at": "2026-07-10T11:04:17.212Z",
-    "last_seen_at": "2026-07-14T16:23:38.437Z",
-    "days_on_market": 5,
-    "price": 31200,
-    "sqm": 56,
-    "rooms": 2,
-    "address": "Palackého třída, Královo Pole, Brno",
-    "zone": "Královo Pole",
-    "lat": 49.227112,
-    "lng": 16.593508,
-    "price_history": [
-      {
-        "at": "2026-07-10T11:04:17.212Z",
-        "price": 31200
-      }
-    ]
-  },
-  {
-    "id": "sr_658169932",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 29900,
-    "sqm": 54,
-    "rooms": 2,
-    "address": "Komárovská, Komárov, Brno",
-    "zone": "Komárov",
-    "lat": 49.1802214815,
-    "lng": 16.6192313044,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 29900
-      }
-    ]
-  },
-  {
-    "id": "sr_3827429452",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 4750,
-    "sqm": 17,
-    "rooms": null,
-    "address": "Běloruská, Bohunice, Brno",
-    "zone": "Bohunice",
-    "lat": 49.169271145552294,
-    "lng": 16.581848023878592,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 4750
-      }
-    ]
-  },
-  {
-    "id": "sr_1123868748",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 16500,
-    "sqm": 53,
-    "rooms": 1,
-    "address": "třída Kpt. Jaroše, Černá Pole, Brno",
-    "zone": "Černá Pole",
-    "lat": 49.20260066876388,
-    "lng": 16.61060073695102,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 16500
-      }
-    ]
-  },
-  {
-    "id": "sr_1893658700",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 20990,
-    "sqm": 22,
-    "rooms": 1,
-    "address": "Schodová, Černá Pole, Brno",
-    "zone": "Černá Pole",
-    "lat": 49.2076419399123,
-    "lng": 16.6132996208114,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 20990
-      }
-    ]
-  },
-  {
-    "id": "sr_3094118476",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 18500,
-    "sqm": 49,
-    "rooms": 2,
-    "address": "Pod Kaštany, Žabovřesky, Brno",
-    "zone": "Žabovřesky",
-    "lat": 49.211337,
-    "lng": 16.590023,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 18500
-      }
-    ]
-  },
-  {
-    "id": "sr_1942806604",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 16000,
-    "sqm": 38,
-    "rooms": 1,
-    "address": "Vondrákova, Bystrc, Brno",
-    "zone": "Bystrc",
-    "lat": 49.22154637968945,
-    "lng": 16.52644089232359,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 16000
-      }
-    ]
-  },
-  {
-    "id": "sr_1573707852",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 24500,
-    "sqm": 76,
-    "rooms": 3,
-    "address": "Brno-město, Brno",
-    "zone": "Brno-město",
-    "lat": 49.19186432206642,
-    "lng": 16.61108725871739,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 24500
-      }
-    ]
-  },
-  {
-    "id": "sr_4269187148",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 22500,
-    "sqm": 53,
-    "rooms": 2,
-    "address": "Kuřimská, Řečkovice, Brno",
-    "zone": "Řečkovice",
-    "lat": 49.2367187377919,
-    "lng": 16.5865294650584,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 22500
-      }
-    ]
-  },
-  {
-    "id": "sr_3816202316",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 18000,
-    "sqm": 38,
-    "rooms": 2,
-    "address": "Kuřimská, Řečkovice, Brno",
-    "zone": "Řečkovice",
-    "lat": 49.2367187377919,
-    "lng": 16.5865294650584,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 18000
-      }
-    ]
-  },
-  {
-    "id": "sr_3957121100",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 11700,
-    "sqm": 29,
-    "rooms": 1,
-    "address": "Halasovo náměstí, Lesná, Brno",
-    "zone": "Lesná",
-    "lat": 49.223622,
-    "lng": 16.626224,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 11700
-      }
-    ]
-  },
-  {
-    "id": "sr_1757901644",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 24900,
-    "sqm": 51,
-    "rooms": 2,
-    "address": "Komárovská, Komárov, Brno",
-    "zone": "Komárov",
-    "lat": 49.1802214815,
-    "lng": 16.6192313044,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 24900
-      }
-    ]
-  },
-  {
-    "id": "sr_3182223436",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 13500,
-    "sqm": 30,
-    "rooms": 1,
-    "address": "Švermova, Bohunice, Brno",
-    "zone": "Bohunice",
-    "lat": 49.168530108705,
-    "lng": 16.5704690420665,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 13500
-      }
-    ]
-  },
-  {
-    "id": "sr_2142036044",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 23800,
-    "sqm": 55,
-    "rooms": 2,
-    "address": "Bystrcká, Komín, Brno",
-    "zone": "Komín",
-    "lat": 49.21980141169113,
-    "lng": 16.538562388417617,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 23800
-      }
-    ]
-  },
-  {
-    "id": "sr_3148669004",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 21000,
-    "sqm": 57,
-    "rooms": 2,
-    "address": "Komprdova, Židenice, Brno",
-    "zone": "Židenice",
-    "lat": 49.205634239560034,
-    "lng": 16.644494221673007,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 21000
-      }
-    ]
-  },
-  {
-    "id": "sr_3518816332",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 14000,
-    "sqm": 35,
-    "rooms": 1,
-    "address": "Olomoucká, Brno",
-    "zone": "Olomoucká",
-    "lat": 49.18625525731381,
-    "lng": 16.652932562778698,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 14000
-      }
-    ]
-  },
-  {
-    "id": "sr_1971355724",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 32000,
-    "sqm": 59,
-    "rooms": 2,
-    "address": "Jižní, Horní Heršpice, Brno",
-    "zone": "Horní Heršpice",
-    "lat": 49.1659233329374,
-    "lng": 16.6213263478906,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 32000
-      }
-    ]
-  },
-  {
-    "id": "sr_1874649164",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 16000,
-    "sqm": 32,
-    "rooms": 1,
-    "address": "Střední, Ponava, Brno",
-    "zone": "Ponava",
-    "lat": 49.215130228,
-    "lng": 16.6034667964,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 16000
-      }
-    ]
-  },
-  {
-    "id": "sr_237367372",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 14000,
-    "sqm": 23,
-    "rooms": 1,
-    "address": "Halasovo náměstí, Lesná, Brno",
-    "zone": "Lesná",
-    "lat": 49.22283238753345,
-    "lng": 16.62665865394994,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 14000
-      }
-    ]
-  },
-  {
-    "id": "sr_2183831628",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-13T10:35:12.497Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 1,
-    "price": 20500,
-    "sqm": 53,
-    "rooms": 2,
-    "address": "Jánská, Brno-město, Brno",
-    "zone": "Brno-město",
-    "lat": 49.1946199775826,
-    "lng": 16.6109122360726,
-    "price_history": [
-      {
-        "at": "2026-07-13T10:35:12.497Z",
-        "price": 20500
-      }
-    ]
-  },
-  {
-    "id": "sr_1668608076",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 10500,
-    "sqm": 17,
-    "rooms": 1,
-    "address": "Libušino údolí, Pisárky, Brno",
-    "zone": "Pisárky",
-    "lat": 49.1967158312405,
-    "lng": 16.5526169437555,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 10500
-      }
-    ]
-  },
-  {
-    "id": "sr_3413827660",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 16900,
-    "sqm": 33,
-    "rooms": 1,
-    "address": "Trnitá, Trnitá, Brno",
-    "zone": "Trnitá",
-    "lat": 49.1866472,
-    "lng": 16.614291,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 16900
-      }
-    ]
-  },
-  {
-    "id": "sr_3351638092",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 38000,
-    "sqm": 102,
-    "rooms": 3,
-    "address": "třída Generála Píky, Brno",
-    "zone": "třída Generála Píky",
-    "lat": 49.21837984308131,
-    "lng": 16.61715890029512,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 38000
-      }
-    ]
-  },
-  {
-    "id": "sr_2000478284",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 13000,
-    "sqm": 30,
-    "rooms": 1,
-    "address": "Francouzská, Zábrdovice, Brno",
-    "zone": "Zábrdovice",
-    "lat": 49.2020864584833,
-    "lng": 16.6209502382757,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 13000
-      }
-    ]
-  },
-  {
-    "id": "sr_2532110412",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 7000,
-    "sqm": 90,
-    "rooms": null,
-    "address": "Březová, Jundrov, Brno",
-    "zone": "Jundrov",
-    "lat": 49.21162529231457,
-    "lng": 16.548365512401546,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 7000
-      }
-    ]
-  },
-  {
-    "id": "sr_4024533068",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 26000,
-    "sqm": 90,
-    "rooms": 3,
-    "address": "Březová, Jundrov, Brno",
-    "zone": "Jundrov",
-    "lat": 49.21162529231457,
-    "lng": 16.548365512401546,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 26000
-      }
-    ]
-  },
-  {
-    "id": "sr_1257611340",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 10000,
-    "sqm": 32,
-    "rooms": 1,
-    "address": "Březová, Jundrov, Brno",
-    "zone": "Jundrov",
-    "lat": 49.21162529231457,
-    "lng": 16.548365512401546,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 10000
-      }
-    ]
-  },
-  {
-    "id": "sr_2946228300",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 14000,
-    "sqm": 35,
-    "rooms": 1,
-    "address": "Košuličova, Horní Heršpice, Brno",
-    "zone": "Horní Heršpice",
-    "lat": 49.1676295918454,
-    "lng": 16.6114018330464,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 14000
-      }
-    ]
-  },
-  {
-    "id": "sr_101507148",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 18000,
-    "sqm": 52,
-    "rooms": 2,
-    "address": "Jeronýmova, Židenice, Brno",
-    "zone": "Židenice",
-    "lat": 49.19151988656228,
-    "lng": 16.636273346081207,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 18000
-      }
-    ]
-  },
-  {
-    "id": "sr_3792494668",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 16800,
-    "sqm": 45,
-    "rooms": 1,
-    "address": "Jana Uhra, Veveří, Brno",
-    "zone": "Veveří",
-    "lat": 49.2022774664,
-    "lng": 16.5951236805,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 16800
-      }
-    ]
-  },
-  {
-    "id": "sr_1846337612",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 13000,
-    "sqm": 34,
-    "rooms": 1,
-    "address": "Chvalovka, Brno",
-    "zone": "Chvalovka",
-    "lat": 49.21585186572604,
-    "lng": 16.49684449296309,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 13000
-      }
-    ]
-  },
-  {
-    "id": "sr_3138183244",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 20490,
-    "sqm": 35,
-    "rooms": 1,
-    "address": "Jeronýmova, Židenice, Brno",
-    "zone": "Židenice",
-    "lat": 49.191377784063675,
-    "lng": 16.634318387352252,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 20490
-      }
-    ]
-  },
-  {
-    "id": "sr_2082267212",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-12T09:19:12.089Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 2,
-    "price": 15900,
-    "sqm": 31,
-    "rooms": 1,
-    "address": "Řepova, Horní Heršpice, Brno",
-    "zone": "Horní Heršpice",
-    "lat": 49.16722654861649,
-    "lng": 16.611131328340935,
-    "price_history": [
-      {
-        "at": "2026-07-12T09:19:12.089Z",
-        "price": 15900
-      }
-    ]
-  },
-  {
-    "id": "sr_2947870796",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-11T10:25:42.446Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 3,
-    "price": 13000,
-    "sqm": 53,
-    "rooms": 2,
-    "address": "Koniklecová, Nový Lískovec, Brno",
-    "zone": "Nový Lískovec",
-    "lat": 49.1783039105955,
-    "lng": 16.5533085465236,
-    "price_history": [
-      {
-        "at": "2026-07-11T10:25:42.446Z",
-        "price": 13000
-      }
-    ]
-  },
-  {
-    "id": "sr_2025709644",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-11T10:25:42.446Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 3,
-    "price": 23900,
-    "sqm": 78,
-    "rooms": 3,
-    "address": "Vyšehradská, Brněnské Ivanovice, Brno",
-    "zone": "Brněnské Ivanovice",
-    "lat": 49.1488322746,
-    "lng": 16.658667027,
-    "price_history": [
-      {
-        "at": "2026-07-11T10:25:42.446Z",
-        "price": 23900
-      }
-    ]
-  },
-  {
-    "id": "sr_2230906956",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-11T10:25:42.446Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 3,
-    "price": 14500,
-    "sqm": 34,
-    "rooms": 1,
-    "address": "Bašty, Brno-město, Brno",
-    "zone": "Brno-město",
-    "lat": 49.1907008613,
-    "lng": 16.6092118599,
-    "price_history": [
-      {
-        "at": "2026-07-11T10:25:42.446Z",
-        "price": 14500
-      }
-    ]
-  },
-  {
-    "id": "sr_2392191052",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-11T10:25:42.446Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 3,
-    "price": 15000,
-    "sqm": 27,
-    "rooms": 1,
-    "address": "Koliště, Zábrdovice, Brno",
-    "zone": "Zábrdovice",
-    "lat": 49.1989378630622,
-    "lng": 16.61224091648296,
-    "price_history": [
-      {
-        "at": "2026-07-11T10:25:42.446Z",
-        "price": 15000
-      }
-    ]
-  },
-  {
-    "id": "sr_1032708172",
-    "portal": "sreality",
-    "detected_at": "2026-07-14T16:23:38.437Z",
-    "presumed_rented_at": "2026-07-14T16:23:38.437Z",
-    "first_seen_at": "2026-07-11T10:25:42.446Z",
-    "last_seen_at": "2026-07-13T10:35:12.497Z",
-    "days_on_market": 3,
-    "price": 19900,
-    "sqm": 54,
-    "rooms": 2,
-    "address": "Trýbova, Staré Brno, Brno",
-    "zone": "Staré Brno",
-    "lat": 49.19634133876502,
-    "lng": 16.593323547409685,
-    "price_history": [
-      {
-        "at": "2026-07-11T10:25:42.446Z",
-        "price": 19900
       }
     ]
   }

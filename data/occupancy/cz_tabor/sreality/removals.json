@@ -1,5 +1,93 @@
 [
   {
+    "id": "sr_576839756",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:41:00.387Z",
+    "presumed_rented_at": "2026-07-23T08:41:00.387Z",
+    "first_seen_at": "2026-07-15T08:26:40.332Z",
+    "last_seen_at": "2026-07-22T08:38:59.470Z",
+    "days_on_market": 8,
+    "price": 8800,
+    "sqm": 36,
+    "rooms": 1,
+    "address": "Náchodská, Tábor, Tábor",
+    "zone": "Tábor",
+    "lat": 49.424789008804,
+    "lng": 14.6561642394795,
+    "price_history": [
+      {
+        "at": "2026-07-15T08:26:40.332Z",
+        "price": 8800
+      }
+    ]
+  },
+  {
+    "id": "sr_595038284",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:41:00.387Z",
+    "presumed_rented_at": "2026-07-23T08:41:00.387Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-22T08:38:59.470Z",
+    "days_on_market": 11,
+    "price": 16800,
+    "sqm": 89,
+    "rooms": 2,
+    "address": "Třída Čs. armády, Veselí nad Lužnicí II, Veselí nad Lužnicí",
+    "zone": "Veselí nad Lužnicí II",
+    "lat": 49.194515633,
+    "lng": 14.715714596,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 16800
+      }
+    ]
+  },
+  {
+    "id": "sr_2427777100",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:41:00.387Z",
+    "presumed_rented_at": "2026-07-23T08:41:00.387Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-22T08:38:59.470Z",
+    "days_on_market": 11,
+    "price": 7000,
+    "sqm": 50,
+    "rooms": 1,
+    "address": "Smolínova, Tábor, Tábor",
+    "zone": "Tábor",
+    "lat": 49.4074628581974,
+    "lng": 14.6777940971939,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 7000
+      }
+    ]
+  },
+  {
+    "id": "sr_1845485644",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T08:41:00.387Z",
+    "presumed_rented_at": "2026-07-23T08:41:00.387Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-22T08:38:59.470Z",
+    "days_on_market": 11,
+    "price": 10100,
+    "sqm": 40,
+    "rooms": 2,
+    "address": "Kamarýtova, Tábor, Tábor",
+    "zone": "Tábor",
+    "lat": 49.41409324769985,
+    "lng": 14.67087222017319,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 10100
+      }
+    ]
+  },
+  {
     "id": "sr_1055449164",
     "portal": "sreality",
     "detected_at": "2026-07-22T08:38:59.470Z",
