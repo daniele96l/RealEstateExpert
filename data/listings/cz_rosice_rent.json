@@ -1,7 +1,7 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-07-23T08:41:05.225Z",
+  "fetched_at": "2026-07-23T22:19:13.896Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
@@ -101,7 +101,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-15",
-      "listing_updated_at": "2026-07-20"
+      "listing_updated_at": "2026-07-23"
     },
     {
       "id": "sr_1597104204",

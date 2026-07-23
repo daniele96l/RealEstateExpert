@@ -6,7 +6,7 @@ export const PROPERTY_TYPE_LABELS: Record<string, string> = {
   duplex: "Duplex",
   penthouse: "Attico",
   homes: "Abitazione",
-  room: "Stanza",
+  room: "Pokoj / Stanza",
 };
 
 export function propertyTypeLabel(raw?: string | null): string | null {

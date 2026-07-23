@@ -1,4 +1,5 @@
 import { loadEnvLocal } from "../lib/server/load-env";
+import { BATCH_FETCH_ALL_PAGES } from "../lib/batch-fetch-pages";
 import { getOccupancyCityConfig, type OccupancyCitySlug } from "../lib/occupancy/cities";
 import { fetchSrealityRentalsListings } from "../lib/server/brno-rentals-fetch";
 import { saveCache } from "../lib/server/listings-cache";
@@ -10,12 +11,20 @@ async function syncCity(citySlug: OccupancyCitySlug) {
   const { city, market } = getOccupancyCityConfig(citySlug);
   console.log(`\n=== ${city} ===`);
 
-  const cache = await fetchSrealityRentalsListings(citySlug, 10, (progress) => {
-    console.log(`  page ${progress.page}/${progress.maxPages} · ${progress.listingsTotal} listings`);
-  });
+  const cache = await fetchSrealityRentalsListings(
+    citySlug,
+    BATCH_FETCH_ALL_PAGES,
+    (progress) => {
+      console.log(`  page ${progress.page}/${progress.maxPages} · ${progress.listingsTotal} listings`);
+    },
+  );
 
+  const rooms = cache.listings.filter((l) => l.property_type === "room").length;
+  const flats = cache.listings.filter((l) => l.property_type === "flat").length;
   await saveCache(cache, market);
-  console.log(`Saved listings cache: ${cache.listings.length} rentals`);
+  console.log(
+    `Saved listings cache: ${cache.listings.length} rentals (${flats} byt, ${rooms} pokoj)`,
+  );
 
   const result = await runOccupancySnapshot("sreality", undefined, {
     citySlug,
@@ -23,9 +32,13 @@ async function syncCity(citySlug: OccupancyCitySlug) {
     provider: "sreality",
   });
 
+  const typeSeg = result.metrics.segments?.type ?? [];
   console.log(`Occupancy snapshot #${result.registry.snapshot_count}`);
   console.log(
     `Fetched: ${result.fetched_count} · Active: ${result.metrics.active_count} · Occupancy: ${result.metrics.estimated_occupancy_pct ?? "—"}%`,
+  );
+  console.log(
+    `Type segments: ${typeSeg.map((s) => `${s.segment_id}=${s.active_count}`).join(", ") || "—"}`,
   );
 }
 

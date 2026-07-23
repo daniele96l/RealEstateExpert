@@ -2,11 +2,11 @@
   {
     "id": "sr_576839756",
     "portal": "sreality",
-    "detected_at": "2026-07-23T08:41:00.387Z",
-    "presumed_rented_at": "2026-07-23T08:41:00.387Z",
+    "detected_at": "2026-07-23T22:19:10.067Z",
+    "presumed_rented_at": "2026-07-23T22:19:10.067Z",
     "first_seen_at": "2026-07-15T08:26:40.332Z",
     "last_seen_at": "2026-07-22T08:38:59.470Z",
-    "days_on_market": 8,
+    "days_on_market": 9,
     "price": 8800,
     "sqm": 36,
     "rooms": 1,
@@ -24,8 +24,8 @@
   {
     "id": "sr_595038284",
     "portal": "sreality",
-    "detected_at": "2026-07-23T08:41:00.387Z",
-    "presumed_rented_at": "2026-07-23T08:41:00.387Z",
+    "detected_at": "2026-07-23T22:19:10.067Z",
+    "presumed_rented_at": "2026-07-23T22:19:10.067Z",
     "first_seen_at": "2026-07-12T19:34:49.198Z",
     "last_seen_at": "2026-07-22T08:38:59.470Z",
     "days_on_market": 11,
@@ -44,10 +44,32 @@
     ]
   },
   {
+    "id": "sr_2886660172",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T22:19:10.067Z",
+    "presumed_rented_at": "2026-07-23T22:19:10.067Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-22T08:38:59.470Z",
+    "days_on_market": 11,
+    "price": 18000,
+    "sqm": 58,
+    "rooms": 3,
+    "address": "Pod Markem, Veselí nad Lužnicí I, Veselí nad Lužnicí",
+    "zone": "Veselí nad Lužnicí I",
+    "lat": 49.180963339,
+    "lng": 14.694288242,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 18000
+      }
+    ]
+  },
+  {
     "id": "sr_2427777100",
     "portal": "sreality",
-    "detected_at": "2026-07-23T08:41:00.387Z",
-    "presumed_rented_at": "2026-07-23T08:41:00.387Z",
+    "detected_at": "2026-07-23T22:19:10.067Z",
+    "presumed_rented_at": "2026-07-23T22:19:10.067Z",
     "first_seen_at": "2026-07-12T19:34:49.198Z",
     "last_seen_at": "2026-07-22T08:38:59.470Z",
     "days_on_market": 11,
@@ -66,10 +88,54 @@
     ]
   },
   {
+    "id": "sr_1748754508",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T22:19:10.067Z",
+    "presumed_rented_at": "2026-07-23T22:19:10.067Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-22T08:38:59.470Z",
+    "days_on_market": 11,
+    "price": 15500,
+    "sqm": 79,
+    "rooms": 3,
+    "address": "K Zastávce, Veselí nad Lužnicí I, Veselí nad Lužnicí",
+    "zone": "Veselí nad Lužnicí I",
+    "lat": 49.17833464980721,
+    "lng": 14.69489916431979,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 15500
+      }
+    ]
+  },
+  {
+    "id": "sr_2723733580",
+    "portal": "sreality",
+    "detected_at": "2026-07-23T22:19:10.067Z",
+    "presumed_rented_at": "2026-07-23T22:19:10.067Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-22T08:38:59.470Z",
+    "days_on_market": 11,
+    "price": 13500,
+    "sqm": 56,
+    "rooms": 2,
+    "address": "Angela Kančeva, Tábor, Tábor",
+    "zone": "Tábor",
+    "lat": 49.40117042457544,
+    "lng": 14.684728959744362,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 13500
+      }
+    ]
+  },
+  {
     "id": "sr_1845485644",
     "portal": "sreality",
-    "detected_at": "2026-07-23T08:41:00.387Z",
-    "presumed_rented_at": "2026-07-23T08:41:00.387Z",
+    "detected_at": "2026-07-23T22:19:10.067Z",
+    "presumed_rented_at": "2026-07-23T22:19:10.067Z",
     "first_seen_at": "2026-07-12T19:34:49.198Z",
     "last_seen_at": "2026-07-22T08:38:59.470Z",
     "days_on_market": 11,

@@ -268,6 +268,8 @@ export interface OccupancyBasicListing {
   lng: number;
   sqm: number | null;
   rooms: number | null;
+  /** e.g. flat | room (pokoj) — from portal typology when known. */
+  property_type: string | null;
   address: string | null;
   zone: string | null;
   url?: string | null;
@@ -329,6 +331,7 @@ export interface OccupancySegmentGroups {
   price: OccupancySegmentMetrics[];
   rooms: OccupancySegmentMetrics[];
   size: OccupancySegmentMetrics[];
+  type: OccupancySegmentMetrics[];
 }
 
 export type OccupancySegmentGroupId = keyof OccupancySegmentGroups;

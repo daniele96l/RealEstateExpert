@@ -29,6 +29,7 @@ interface SrealityEstate {
   name: string;
   priceCzk?: number;
   priceSummaryCzk?: number;
+  categoryMainCb?: { name?: string; value?: number };
   categorySubCb?: { name?: string; value?: number };
   categoryTypeCb?: { name?: string; value?: number };
   locality?: SrealityLocality;
@@ -51,6 +52,9 @@ interface NextData {
     };
   };
 }
+
+/** Sreality search path segment: flats (`byty`) or rooms (`pokoj`, rent only). */
+type SrealitySearchKind = "byty" | "pokoj";
 
 function parseRoomsFromName(name: string): number | null {
   const m = name.match(/(\d+)\s*\+(?:kk|1)/i) ?? name.match(/(\d+)\s*\+\s*(\d+)/);
@@ -82,13 +86,23 @@ function resolveSrealityRegion(city: string): SrealityRegionSearch | null {
   return SREALITY_REGION_CITIES[citySeoName(city)] ?? null;
 }
 
+function isSrealityRoomEstate(
+  estate: Pick<SrealityEstate, "categorySubCb">,
+  kind?: SrealitySearchKind,
+): boolean {
+  if (kind === "pokoj") return true;
+  const sub = estate.categorySubCb?.name?.trim().toLowerCase() ?? "";
+  return sub === "pokoj";
+}
+
 function searchPageUrl(
   citySeo: string,
   operation: "sale" | "rent",
   page: number,
+  kind: SrealitySearchKind = "byty",
   region?: SrealityRegionSearch | null,
 ): string {
-  const kind = operation === "sale" ? "prodej" : "pronajem";
+  const op = operation === "sale" ? "prodej" : "pronajem";
   if (region) {
     const params = new URLSearchParams({
       region: region.region,
@@ -96,9 +110,9 @@ function searchPageUrl(
       "region-typ": region.regionTyp,
     });
     if (page > 1) params.set("strana", String(page));
-    return `https://www.sreality.cz/hledani/${kind}/byty?${params}`;
+    return `https://www.sreality.cz/hledani/${op}/${kind}?${params}`;
   }
-  const base = `https://www.sreality.cz/hledani/${kind}/byty/${citySeo}`;
+  const base = `https://www.sreality.cz/hledani/${op}/${kind}/${citySeo}`;
   return page > 1 ? `${base}?strana=${page}` : base;
 }
 
@@ -149,17 +163,11 @@ function estateAddress(locality: SrealityLocality | undefined): string | null {
   return parts.length ? parts.join(", ") : locality.city ?? null;
 }
 
-function estateDetailSlug(locality: SrealityLocality | undefined): string {
-  if (!locality?.citySeoName) return "brno";
-  const parts = [locality.citySeoName, locality.cityPartSeoName, locality.streetSeoName].filter(Boolean);
-  return parts.join("-") || locality.citySeoName;
-}
-
 function estateUrl(estate: SrealityEstate, operation: "sale" | "rent"): string {
   const kind = operation === "sale" ? "prodej" : "pronajem";
   const rooms = encodeURIComponent(estate.categorySubCb?.name ?? "byt").replace(/%2B/g, "+");
-  const slug = estateDetailSlug(estate.locality);
-  return `https://www.sreality.cz/detail/${kind}/byt/${rooms}/${slug}/${estate.id}`;
+  // Locality slug `_` lets Sreality redirect to the canonical path (avoids broken/partial slugs).
+  return `https://www.sreality.cz/detail/${kind}/byt/${rooms}/_/${estate.id}?noredirect=1`;
 }
 
 function estatePrice(estate: SrealityEstate): number | null {
@@ -168,13 +176,18 @@ function estatePrice(estate: SrealityEstate): number | null {
   return Number(raw);
 }
 
-function mapEstate(estate: SrealityEstate, operation: "sale" | "rent"): MapListing | null {
+function mapEstate(
+  estate: SrealityEstate,
+  operation: "sale" | "rent",
+  kind: SrealitySearchKind = "byty",
+): MapListing | null {
   const price = estatePrice(estate);
   const lat = estate.locality?.latitude;
   const lng = estate.locality?.longitude;
   if (price == null || lat == null || lng == null) return null;
 
-  const name = estate.name ?? `Byt ${estate.id}`;
+  const isRoom = isSrealityRoomEstate(estate, kind);
+  const name = estate.name ?? (isRoom ? `Pokoj ${estate.id}` : `Byt ${estate.id}`);
   return {
     id: `sr_${estate.id}`,
     title: name,
@@ -184,10 +197,10 @@ function mapEstate(estate: SrealityEstate, operation: "sale" | "rent"): MapListi
     lat: Number(lat),
     lng: Number(lng),
     sqm: parseSqmFromName(name),
-    rooms: parseRoomsFromName(name),
+    rooms: isRoom ? 1 : parseRoomsFromName(name),
     address: estateAddress(estate.locality),
-    property_type: "flat",
-    property_type_label: "Byt",
+    property_type: isRoom ? "room" : "flat",
+    property_type_label: isRoom ? "Pokoj" : "Byt",
     condition_status: null,
     condition: null,
     needs_renovation: null,
@@ -256,9 +269,10 @@ async function fetchSrealityPage(
   citySeo: string,
   operation: "sale" | "rent",
   page: number,
+  kind: SrealitySearchKind = "byty",
   region?: SrealityRegionSearch | null,
 ): Promise<SrealitySearchPayload | null> {
-  const response = await fetch(searchPageUrl(citySeo, operation, page, region), {
+  const response = await fetch(searchPageUrl(citySeo, operation, page, kind, region), {
     headers: {
       Accept: "text/html,application/xhtml+xml",
       "User-Agent": USER_AGENT,
@@ -287,12 +301,14 @@ async function fetchSrealityPage(
 async function openSrealityCitySearch(
   city: string,
   operation: "sale" | "rent",
-): Promise<{ seo: string; region: SrealityRegionSearch | null; firstPage: SrealitySearchPayload }> {
+  kind: SrealitySearchKind = "byty",
+): Promise<{ seo: string; region: SrealityRegionSearch | null; firstPage: SrealitySearchPayload } | null> {
   const region = resolveSrealityRegion(city);
   if (region) {
     const seo = citySeoName(city);
-    const firstPage = await fetchSrealityPage(seo, operation, 1, region);
+    const firstPage = await fetchSrealityPage(seo, operation, 1, kind, region);
     if (firstPage) return { seo, region, firstPage };
+    if (kind === "pokoj") return null;
     throw new SrealitySearchError(
       `Località non trovata su Sreality per «${city.trim()}».`,
     );
@@ -300,10 +316,12 @@ async function openSrealityCitySearch(
 
   let last404 = false;
   for (const slug of srealityCitySlugCandidates(city)) {
-    const firstPage = await fetchSrealityPage(slug, operation, 1);
+    const firstPage = await fetchSrealityPage(slug, operation, 1, kind);
     if (firstPage) return { seo: slug, region: null, firstPage };
     last404 = true;
   }
+
+  if (kind === "pokoj") return null;
 
   if (last404) {
     throw new SrealitySearchError(
@@ -314,6 +332,47 @@ async function openSrealityCitySearch(
   throw new SrealitySearchError(
     `Sreality non ha risposto per ${city}. Verifica connessione o riprova più tardi.`,
   );
+}
+
+async function collectSrealityKindListings(
+  city: string,
+  operation: "sale" | "rent",
+  kind: SrealitySearchKind,
+  maxPages: number,
+  byId: Map<string, MapListing>,
+  onPage?: BatchFetchProgressCallback,
+): Promise<void> {
+  const opened = await openSrealityCitySearch(city, operation, kind);
+  if (!opened) return;
+
+  const { seo, region, firstPage } = opened;
+  let prevPageIds: string[] = [];
+
+  for (let page = 1; page <= maxPages; page++) {
+    const data =
+      page === 1 ? firstPage : await fetchSrealityPage(seo, operation, page, kind, region);
+    if (!data) break;
+    const estates = data.results ?? [];
+    if (!estates.length) break;
+
+    const pageIds = estates.map((e) => String(e.id));
+    if (page > 1 && pageIds.join(",") === prevPageIds.join(",")) break;
+    prevPageIds = pageIds;
+
+    for (const estate of estates) {
+      const listing = mapEstate(estate, operation, kind);
+      if (listing) byId.set(listing.id, listing);
+    }
+
+    onPage?.({
+      operation,
+      page,
+      maxPages,
+      listingsTotal: byId.size,
+    });
+
+    if (page >= maxPages) break;
+  }
 }
 
 export async function fetchSrealityCityListings(
@@ -329,33 +388,18 @@ export async function fetchSrealityCityListings(
 
   const maxPages = Math.max(1, opts?.maxPages ?? 3);
   const byId = new Map<string, MapListing>();
-  const { seo, region, firstPage } = await openSrealityCitySearch(city, operation);
-  let prevPageIds: string[] = [];
+  const kinds: SrealitySearchKind[] =
+    operation === "rent" ? ["byty", "pokoj"] : ["byty"];
 
-  for (let page = 1; page <= maxPages; page++) {
-    const data =
-      page === 1 ? firstPage : await fetchSrealityPage(seo, operation, page, region);
-    if (!data) break;
-    const estates = data.results ?? [];
-    if (!estates.length) break;
-
-    const pageIds = estates.map((e) => String(e.id));
-    if (page > 1 && pageIds.join(",") === prevPageIds.join(",")) break;
-    prevPageIds = pageIds;
-
-    for (const estate of estates) {
-      const listing = mapEstate(estate, operation);
-      if (listing) byId.set(listing.id, listing);
-    }
-
-    opts?.onPage?.({
+  for (const kind of kinds) {
+    await collectSrealityKindListings(
+      city,
       operation,
-      page,
+      kind,
       maxPages,
-      listingsTotal: byId.size,
-    });
-
-    if (page >= maxPages) break;
+      byId,
+      opts?.onPage,
+    );
   }
 
   const listings = await enrichSrealityListingsWithDates([...byId.values()]);
@@ -397,21 +441,21 @@ interface SrealityApiEstateDetail {
   locality?: SrealityApiLocality | null;
 }
 
-function srealityDetailSlugFromApiLocality(locality: SrealityApiLocality | undefined): string {
-  if (!locality?.city_seo_name) return "brno";
-  const parts = [locality.city_seo_name, locality.citypart_seo_name, locality.street_seo_name].filter(
-    Boolean,
-  );
-  return parts.join("-") || locality.city_seo_name;
-}
-
 function srealityDetailUrlFromApiEstate(estateId: number, estate: SrealityApiEstateDetail): string | null {
   const operation = estate.category_type_cb?.name === "Pronájem" ? "pronajem" : "prodej";
   const rooms = encodeURIComponent(estate.category_sub_cb?.name ?? "byt").replace(/%2B/g, "+");
-  const slug = srealityDetailSlugFromApiLocality(estate.locality ?? undefined);
-  return `https://www.sreality.cz/detail/${operation}/byt/${rooms}/${slug}/${estateId}`;
+  const slug = [
+    estate.locality?.city_seo_name,
+    estate.locality?.citypart_seo_name,
+    estate.locality?.street_seo_name,
+  ]
+    .filter(Boolean)
+    .join("-");
+  const locality = slug || "_";
+  return `https://www.sreality.cz/detail/${operation}/byt/${rooms}/${locality}/${estateId}?noredirect=1`;
 }
 
+/** Resolve a browser-friendly detail URL (canonical slug + noredirect). */
 export async function fetchSrealityListingDetailUrl(listingId: string): Promise<string | null> {
   const estateId = srealityEstateIdFromListingId(listingId);
   if (!estateId) return null;
@@ -430,7 +474,33 @@ export async function fetchSrealityListingDetailUrl(listingId: string): Promise<
 
   const payload = (await response.json()) as { result?: SrealityApiEstateDetail };
   if (!payload.result) return null;
-  return srealityDetailUrlFromApiEstate(estateId, payload.result);
+
+  const built = srealityDetailUrlFromApiEstate(estateId, payload.result);
+  if (!built) return null;
+
+  // Confirm the URL resolves (HEAD); if Sreality corrects the slug, keep noredirect=1.
+  try {
+    const probe = await fetch(built, {
+      method: "HEAD",
+      redirect: "manual",
+      headers: {
+        Accept: "text/html",
+        "User-Agent": USER_AGENT,
+        Referer: "https://www.sreality.cz/",
+      },
+      signal: AbortSignal.timeout(10_000),
+    });
+    const loc = probe.headers.get("location");
+    if (probe.status >= 300 && probe.status < 400 && loc) {
+      const canonical = new URL(loc, "https://www.sreality.cz");
+      canonical.searchParams.set("noredirect", "1");
+      return canonical.toString();
+    }
+  } catch {
+    /* keep built URL */
+  }
+
+  return built;
 }
 
 export async function fetchSrealityListingDetailUrls(listingIds: string[]): Promise<Map<string, string>> {

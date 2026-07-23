@@ -166,6 +166,9 @@ export function parseSrealityEstateDetail(
     .slice(0, 12);
   const { listing_published_at, listing_updated_at } = extractSrealityListingDates(estate.params);
 
+  const isRoom =
+    base?.property_type === "room" ||
+    (estate.categorySubCb?.name ?? "").trim().toLowerCase() === "pokoj";
   const listing: MapListing = {
     id: srealityListingId(estate.id, base, sourceUrl),
     title: name,
@@ -175,10 +178,12 @@ export function parseSrealityEstateDetail(
     lat: Number(lat),
     lng: Number(lng),
     sqm,
-    rooms,
+    rooms: isRoom ? (base?.rooms ?? 1) : rooms,
     address: estateAddress(estate.locality) ?? base?.address ?? null,
-    property_type: base?.property_type ?? "flat",
-    property_type_label: base?.property_type_label ?? estate.categorySubCb?.name ?? "Byt",
+    property_type: isRoom ? "room" : (base?.property_type ?? "flat"),
+    property_type_label: isRoom
+      ? "Pokoj"
+      : (base?.property_type_label ?? estate.categorySubCb?.name ?? "Byt"),
     condition_status: conditionInfo.condition_status ?? conditionStatus,
     condition: conditionInfo.condition ?? base?.condition ?? null,
     needs_renovation: conditionInfo.needs_renovation ?? base?.needs_renovation ?? null,

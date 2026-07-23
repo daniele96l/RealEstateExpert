@@ -20,7 +20,7 @@ export async function buildBreakdownListings(
     url: listing.url ?? urlById.get(listing.id) ?? null,
   }));
 
-  if (citySlug === "brno" && portal === "sreality") {
+  if (portal === "sreality") {
     const missingActiveIds = enriched
       .filter((listing) => listing.status === "active" && !listing.url && listing.id.startsWith("sr_"))
       .map((listing) => listing.id);

@@ -730,6 +730,7 @@ const it = {
       title: "{label} · {count} annunci attivi",
       empty: "Nessun annuncio in questo segmento.",
       close: "Chiudi",
+      openListing: "Vedi annuncio →",
       daysOnMarket: "Giorni sul mercato",
       daysSincePublished: "Giorni dalla pubblicazione",
     },
@@ -757,6 +758,7 @@ const it = {
     segmentsSubtitle: "Metriche raggruppate per fascia di prezzo, locali o metratura",
     segmentsGroupPrice: "Prezzo",
     segmentsGroupRooms: "Locali",
+    segmentsGroupType: "Tipologia",
     segmentsGroupSize: "Metratura",
     segments: {
       price: {
@@ -772,11 +774,16 @@ const it = {
         over_35000: "> 35.000 Kč",
       },
       rooms: {
+        pokoj: "Pokoj (stanza)",
         "1": "1 locale",
         "2": "2 locali",
         "3": "3 locali",
         "4_plus": "4+ locali",
         unknown: "Locali non indicati",
+      },
+      type: {
+        flat: "Byt (appartamento)",
+        room: "Pokoj (stanza)",
       },
       size: {
         under_40: "≤ 40 m²",
@@ -799,6 +806,10 @@ const it = {
       metricsBasisPosted: "Data pubblicazione",
       allCity: "Tutta la città",
       areaFilter: "Zona",
+      typeFilter: "Tipologia",
+      allTypes: "Tutte",
+      typeFlat: "Byt",
+      typeRoom: "Pokoj",
       metricsPeriod: "Periodo",
       metricsPeriodDaily: "Giornaliero (1 gg)",
       metricsPeriodWeekly: "Settimanale",

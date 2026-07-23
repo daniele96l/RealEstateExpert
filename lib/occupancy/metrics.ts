@@ -14,6 +14,7 @@ import {
 import { getOccupancyCityConfig, type OccupancyCitySlug } from "./cities";
 import { loadAllSnapshots } from "./registry";
 import { computeSegmentGroups } from "./segment-metrics";
+import { withNormalizedPropertyType } from "./filtered-breakdown";
 import { resolveListingZone } from "./zone";
 import {
   aggregateOccupancyListings,
@@ -181,10 +182,13 @@ export async function computeOccupancyMetrics(
     basis === "posted" ? undefined : period,
   );
 
-  let all: TrackedRentalListing[] = Object.values(registry.listings).map((listing) => ({
-    ...listing,
-    zone: listing.zone ?? resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
-  }));
+  let all: TrackedRentalListing[] = Object.values(registry.listings).map((listing) =>
+    withNormalizedPropertyType({
+      ...listing,
+      property_type: listing.property_type ?? null,
+      zone: listing.zone ?? resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
+    }),
+  );
 
   const latestSnapshot = allSnapshots[allSnapshots.length - 1];
   if (basis === "posted" && latestSnapshot?.listings.length) {

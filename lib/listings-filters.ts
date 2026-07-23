@@ -89,6 +89,15 @@ export const PROPERTY_TYPE_OPTIONS: { value: string; label: string }[] = [
   { value: "countryHouse", label: "Casa di campagna" },
 ];
 
+export const PROPERTY_TYPE_OPTIONS_CZ: { value: string; label: string }[] = [
+  { value: "flat", label: "Byt" },
+  { value: "room", label: "Pokoj" },
+];
+
+export function propertyTypeOptionsForMarket(market: "it" | "cz") {
+  return market === "cz" ? PROPERTY_TYPE_OPTIONS_CZ : PROPERTY_TYPE_OPTIONS;
+}
+
 export const ROOMS_OPTIONS: { value: number; label: string }[] = [
   { value: 1, label: "1" },
   { value: 2, label: "2" },

@@ -2,7 +2,7 @@
   "city": "Tábor",
   "market": "cz",
   "portal": "sreality",
-  "updated_at": "2026-07-23T08:41:00.387Z",
+  "updated_at": "2026-07-23T22:19:10.067Z",
   "snapshot_count": 11,
   "last_provider": "sreality",
   "listings": {
@@ -19,7 +19,7 @@
       "listing_published_at": "2026-06-01",
       "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -28,7 +28,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 15000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_857595980": {
       "id": "sr_857595980",
@@ -43,7 +44,7 @@
       "listing_published_at": "2026-07-10",
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -52,7 +53,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 9000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3025002572": {
       "id": "sr_3025002572",
@@ -67,7 +69,7 @@
       "listing_published_at": "2026-07-09",
       "listing_updated_at": "2026-07-09",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -76,7 +78,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 6500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2943213644": {
       "id": "sr_2943213644",
@@ -91,7 +94,7 @@
       "listing_published_at": "2026-07-09",
       "listing_updated_at": "2026-07-22",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -100,7 +103,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 12000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1557459020": {
       "id": "sr_1557459020",
@@ -113,9 +117,9 @@
       "zone": "Klokoty",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/tabor-klokoty-staroklokotska/1557459020",
       "listing_published_at": "2026-07-01",
-      "listing_updated_at": "2026-07-16",
+      "listing_updated_at": "2026-07-23",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -124,7 +128,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 16000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2458837068": {
       "id": "sr_2458837068",
@@ -139,7 +144,7 @@
       "listing_published_at": "2026-07-09",
       "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -148,7 +153,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 11500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2783895628": {
       "id": "sr_2783895628",
@@ -163,7 +169,7 @@
       "listing_published_at": "2026-07-09",
       "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -172,7 +178,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 12500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2276450380": {
       "id": "sr_2276450380",
@@ -211,7 +218,7 @@
       "listing_published_at": "2026-07-08",
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -220,7 +227,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 11000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1845485644": {
       "id": "sr_1845485644",
@@ -236,7 +244,7 @@
       "listing_updated_at": "2026-07-08",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
       "last_seen_at": "2026-07-22T08:38:59.470Z",
-      "rented_at": "2026-07-23T08:41:00.387Z",
+      "rented_at": "2026-07-23T22:19:10.067Z",
       "status": "presumed_rented",
       "days_on_market": 11,
       "price_history": [
@@ -259,7 +267,7 @@
       "listing_published_at": "2026-07-07",
       "listing_updated_at": "2026-07-10",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -268,7 +276,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 11000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1915281484": {
       "id": "sr_1915281484",
@@ -283,7 +292,7 @@
       "listing_published_at": "2026-07-06",
       "listing_updated_at": "2026-07-22",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -292,7 +301,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 11000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2723733580": {
       "id": "sr_2723733580",
@@ -307,10 +317,10 @@
       "listing_published_at": "2026-07-06",
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "last_seen_at": "2026-07-22T08:38:59.470Z",
+      "rented_at": "2026-07-23T22:19:10.067Z",
+      "status": "presumed_rented",
+      "days_on_market": 11,
       "price_history": [
         {
           "at": "2026-07-12T19:34:49.198Z",
@@ -329,9 +339,9 @@
       "zone": "Náchod",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/tabor-nachod-lhotecka/299622476",
       "listing_published_at": "2026-07-02",
-      "listing_updated_at": "2026-07-21",
+      "listing_updated_at": "2026-07-23",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -340,7 +350,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 8500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3083591756": {
       "id": "sr_3083591756",
@@ -355,7 +366,7 @@
       "listing_published_at": "2026-07-02",
       "listing_updated_at": "2026-07-02",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -364,7 +375,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 15000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1748754508": {
       "id": "sr_1748754508",
@@ -379,10 +391,10 @@
       "listing_published_at": "2026-07-02",
       "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "last_seen_at": "2026-07-22T08:38:59.470Z",
+      "rented_at": "2026-07-23T22:19:10.067Z",
+      "status": "presumed_rented",
+      "days_on_market": 11,
       "price_history": [
         {
           "at": "2026-07-12T19:34:49.198Z",
@@ -403,7 +415,7 @@
       "listing_published_at": "2026-07-02",
       "listing_updated_at": "2026-07-02",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -412,7 +424,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 13000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2427777100": {
       "id": "sr_2427777100",
@@ -428,7 +441,7 @@
       "listing_updated_at": "2026-07-07",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
       "last_seen_at": "2026-07-22T08:38:59.470Z",
-      "rented_at": "2026-07-23T08:41:00.387Z",
+      "rented_at": "2026-07-23T22:19:10.067Z",
       "status": "presumed_rented",
       "days_on_market": 11,
       "price_history": [
@@ -475,7 +488,7 @@
       "listing_published_at": "2026-07-01",
       "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -484,7 +497,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 9000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_551940172": {
       "id": "sr_551940172",
@@ -499,7 +513,7 @@
       "listing_published_at": "2026-06-30",
       "listing_updated_at": "2026-07-07",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -508,7 +522,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 13000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3048730700": {
       "id": "sr_3048730700",
@@ -547,7 +562,7 @@
       "listing_published_at": "2026-06-26",
       "listing_updated_at": "2026-07-07",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -556,7 +571,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 12500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3222463308": {
       "id": "sr_3222463308",
@@ -569,9 +585,9 @@
       "zone": "Náchod",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/tabor-nachod-lhotecka/3222463308",
       "listing_published_at": "2025-09-10",
-      "listing_updated_at": "2026-07-02",
+      "listing_updated_at": "2026-07-23",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -580,7 +596,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 8500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2886660172": {
       "id": "sr_2886660172",
@@ -595,10 +612,10 @@
       "listing_published_at": "2026-06-18",
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "last_seen_at": "2026-07-22T08:38:59.470Z",
+      "rented_at": "2026-07-23T22:19:10.067Z",
+      "status": "presumed_rented",
+      "days_on_market": 11,
       "price_history": [
         {
           "at": "2026-07-12T19:34:49.198Z",
@@ -667,7 +684,7 @@
       "listing_published_at": "2026-04-19",
       "listing_updated_at": "2026-06-13",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -676,7 +693,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 12000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_579596364": {
       "id": "sr_579596364",
@@ -739,7 +757,7 @@
       "listing_published_at": "2026-04-20",
       "listing_updated_at": "2026-06-11",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -748,7 +766,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 15000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1894101068": {
       "id": "sr_1894101068",
@@ -763,7 +782,7 @@
       "listing_published_at": "2026-04-20",
       "listing_updated_at": "2026-07-07",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -772,7 +791,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 15000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3780608076": {
       "id": "sr_3780608076",
@@ -787,7 +807,7 @@
       "listing_published_at": "2026-06-08",
       "listing_updated_at": "2026-07-22",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -796,7 +816,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 13500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2070839372": {
       "id": "sr_2070839372",
@@ -835,7 +856,7 @@
       "listing_published_at": "2026-06-03",
       "listing_updated_at": "2026-06-03",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -844,7 +865,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 11000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1444839500": {
       "id": "sr_1444839500",
@@ -859,7 +881,7 @@
       "listing_published_at": "2026-06-01",
       "listing_updated_at": "2026-07-22",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -868,7 +890,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 11500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1464762444": {
       "id": "sr_1464762444",
@@ -907,7 +930,7 @@
       "listing_published_at": "2026-05-28",
       "listing_updated_at": "2026-05-29",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -916,7 +939,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 11000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_595038284": {
       "id": "sr_595038284",
@@ -932,7 +956,7 @@
       "listing_updated_at": "2026-07-13",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
       "last_seen_at": "2026-07-22T08:38:59.470Z",
-      "rented_at": "2026-07-23T08:41:00.387Z",
+      "rented_at": "2026-07-23T22:19:10.067Z",
       "status": "presumed_rented",
       "days_on_market": 11,
       "price_history": [
@@ -955,7 +979,7 @@
       "listing_published_at": "2026-07-03",
       "listing_updated_at": "2026-07-03",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -964,7 +988,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 16500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1708888140": {
       "id": "sr_1708888140",
@@ -979,7 +1004,7 @@
       "listing_published_at": "2026-05-09",
       "listing_updated_at": "2026-06-18",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -988,7 +1013,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 12000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_146059340": {
       "id": "sr_146059340",
@@ -1027,7 +1053,7 @@
       "listing_published_at": "2025-11-20",
       "listing_updated_at": "2026-06-30",
       "first_seen_at": "2026-07-12T19:34:49.198Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1036,7 +1062,8 @@
           "at": "2026-07-12T19:34:49.198Z",
           "price": 9000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2364727372": {
       "id": "sr_2364727372",
@@ -1051,7 +1078,7 @@
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-16",
       "first_seen_at": "2026-07-14T16:23:55.552Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1060,7 +1087,8 @@
           "at": "2026-07-14T16:23:55.552Z",
           "price": 7000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_4225949772": {
       "id": "sr_4225949772",
@@ -1073,9 +1101,9 @@
       "zone": "Tábor",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/tabor-tabor-jaselska/4225949772",
       "listing_published_at": "2026-07-14",
-      "listing_updated_at": "2026-07-15",
+      "listing_updated_at": "2026-07-23",
       "first_seen_at": "2026-07-14T16:23:55.552Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1084,7 +1112,8 @@
           "at": "2026-07-14T16:23:55.552Z",
           "price": 14500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1192484940": {
       "id": "sr_1192484940",
@@ -1123,7 +1152,7 @@
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-14T16:23:55.552Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1132,7 +1161,8 @@
           "at": "2026-07-14T16:23:55.552Z",
           "price": 13000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_576839756": {
       "id": "sr_576839756",
@@ -1148,9 +1178,9 @@
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-15T08:26:40.332Z",
       "last_seen_at": "2026-07-22T08:38:59.470Z",
-      "rented_at": "2026-07-23T08:41:00.387Z",
+      "rented_at": "2026-07-23T22:19:10.067Z",
       "status": "presumed_rented",
-      "days_on_market": 8,
+      "days_on_market": 9,
       "price_history": [
         {
           "at": "2026-07-15T08:26:40.332Z",
@@ -1171,7 +1201,7 @@
       "listing_published_at": "2026-07-15",
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-16T08:26:47.738Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1180,7 +1210,8 @@
           "at": "2026-07-16T08:26:47.738Z",
           "price": 11000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1055449164": {
       "id": "sr_1055449164",
@@ -1243,7 +1274,7 @@
       "listing_published_at": "2026-07-07",
       "listing_updated_at": "2026-07-18",
       "first_seen_at": "2026-07-18T08:03:35.143Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1252,7 +1283,8 @@
           "at": "2026-07-18T08:03:35.143Z",
           "price": 8500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3731284044": {
       "id": "sr_3731284044",
@@ -1267,7 +1299,7 @@
       "listing_published_at": "2026-07-18",
       "listing_updated_at": "2026-07-18",
       "first_seen_at": "2026-07-19T08:29:26.064Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1276,7 +1308,8 @@
           "at": "2026-07-19T08:29:26.064Z",
           "price": 13000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_927457356": {
       "id": "sr_927457356",
@@ -1291,7 +1324,7 @@
       "listing_published_at": "2026-07-17",
       "listing_updated_at": "2026-07-23",
       "first_seen_at": "2026-07-19T08:29:26.064Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1301,10 +1334,11 @@
           "price": 13000
         },
         {
-          "at": "2026-07-23T08:41:00.387Z",
+          "at": "2026-07-23T22:19:10.067Z",
           "price": 12000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3836141644": {
       "id": "sr_3836141644",
@@ -1319,7 +1353,7 @@
       "listing_published_at": "2026-07-20",
       "listing_updated_at": "2026-07-21",
       "first_seen_at": "2026-07-20T09:29:16.105Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1328,7 +1362,8 @@
           "at": "2026-07-20T09:29:16.105Z",
           "price": 7000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3525763148": {
       "id": "sr_3525763148",
@@ -1343,7 +1378,7 @@
       "listing_published_at": "2026-07-19",
       "listing_updated_at": "2026-07-19",
       "first_seen_at": "2026-07-20T09:29:16.105Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1352,7 +1387,8 @@
           "at": "2026-07-20T09:29:16.105Z",
           "price": 12900
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2730877004": {
       "id": "sr_2730877004",
@@ -1367,7 +1403,7 @@
       "listing_published_at": "2026-07-21",
       "listing_updated_at": "2026-07-21",
       "first_seen_at": "2026-07-21T08:39:33.493Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1376,7 +1412,8 @@
           "at": "2026-07-21T08:39:33.493Z",
           "price": 13000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1240850508": {
       "id": "sr_1240850508",
@@ -1391,7 +1428,7 @@
       "listing_published_at": "2026-07-20",
       "listing_updated_at": "2026-07-21",
       "first_seen_at": "2026-07-21T08:39:33.493Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1400,7 +1437,8 @@
           "at": "2026-07-21T08:39:33.493Z",
           "price": 9000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2071322700": {
       "id": "sr_2071322700",
@@ -1415,7 +1453,7 @@
       "listing_published_at": "2026-07-20",
       "listing_updated_at": "2026-07-23",
       "first_seen_at": "2026-07-21T08:39:33.493Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1424,7 +1462,8 @@
           "at": "2026-07-21T08:39:33.493Z",
           "price": 17000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2459361356": {
       "id": "sr_2459361356",
@@ -1439,7 +1478,7 @@
       "listing_published_at": "2026-07-20",
       "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-21T08:39:33.493Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1448,7 +1487,8 @@
           "at": "2026-07-21T08:39:33.493Z",
           "price": 9000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3801538636": {
       "id": "sr_3801538636",
@@ -1463,7 +1503,7 @@
       "listing_published_at": "2026-07-20",
       "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-21T08:39:33.493Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1472,7 +1512,8 @@
           "at": "2026-07-21T08:39:33.493Z",
           "price": 10500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_4273397836": {
       "id": "sr_4273397836",
@@ -1487,7 +1528,7 @@
       "listing_published_at": "2026-07-20",
       "listing_updated_at": "2026-07-22",
       "first_seen_at": "2026-07-21T08:39:33.493Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1496,7 +1537,8 @@
           "at": "2026-07-21T08:39:33.493Z",
           "price": 14500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_4009025612": {
       "id": "sr_4009025612",
@@ -1511,7 +1553,7 @@
       "listing_published_at": "2026-07-21",
       "listing_updated_at": "2026-07-22",
       "first_seen_at": "2026-07-22T08:38:59.470Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1520,7 +1562,8 @@
           "at": "2026-07-22T08:38:59.470Z",
           "price": 12400
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_239394892": {
       "id": "sr_239394892",
@@ -1535,7 +1578,7 @@
       "listing_published_at": "2026-07-21",
       "listing_updated_at": "2026-07-21",
       "first_seen_at": "2026-07-22T08:38:59.470Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1543,6 +1586,32 @@
         {
           "at": "2026-07-22T08:38:59.470Z",
           "price": 16000
+        }
+      ],
+      "property_type": "flat"
+    },
+    "sr_437964876": {
+      "id": "sr_437964876",
+      "price": 14500,
+      "lat": 49.4031109688966,
+      "lng": 14.6994549618374,
+      "sqm": 42,
+      "rooms": 2,
+      "property_type": "flat",
+      "address": "Svážná, Měšice, Tábor",
+      "zone": "Měšice",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/tabor-mesice-svazna/437964876",
+      "listing_published_at": "2026-07-23",
+      "listing_updated_at": "2026-07-23",
+      "first_seen_at": "2026-07-23T22:19:10.067Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-07-23T22:19:10.067Z",
+          "price": 14500
         }
       ]
     },
@@ -1553,19 +1622,20 @@
       "lng": 14.68644916666,
       "sqm": 42,
       "rooms": 2,
+      "property_type": "flat",
       "address": "Berlínská, Tábor, Tábor",
       "zone": "Tábor",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/tabor-tabor-berlinska/1725681740",
       "listing_published_at": "2026-07-22",
       "listing_updated_at": "2026-07-22",
-      "first_seen_at": "2026-07-23T08:41:00.387Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "first_seen_at": "2026-07-23T22:19:10.067Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-23T08:41:00.387Z",
+          "at": "2026-07-23T22:19:10.067Z",
           "price": 10700
         }
       ]
@@ -1577,19 +1647,20 @@
       "lng": 14.655715,
       "sqm": 57,
       "rooms": 2,
+      "property_type": "flat",
       "address": "Náchodská, Tábor, Tábor",
       "zone": "Tábor",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/tabor-tabor-nachodska/4274769996",
       "listing_published_at": "2026-07-22",
       "listing_updated_at": "2026-07-22",
-      "first_seen_at": "2026-07-23T08:41:00.387Z",
-      "last_seen_at": "2026-07-23T08:41:00.387Z",
+      "first_seen_at": "2026-07-23T22:19:10.067Z",
+      "last_seen_at": "2026-07-23T22:19:10.067Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-23T08:41:00.387Z",
+          "at": "2026-07-23T22:19:10.067Z",
           "price": 13500
         }
       ]

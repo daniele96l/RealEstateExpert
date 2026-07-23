@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  PROPERTY_TYPE_OPTIONS,
+  propertyTypeOptionsForMarket,
   CONDITION_FILTER_OPTIONS,
   ROOMS_OPTIONS,
   listingSourceOptionsForMarket,
@@ -270,7 +270,7 @@ export default function ListingsMapFilters({ market, viewMode, filters, onChange
                 }
               >
                 <option value="">Tutte</option>
-                {PROPERTY_TYPE_OPTIONS.map(({ value, label }) => (
+                {propertyTypeOptionsForMarket(market).map(({ value, label }) => (
                   <option key={value} value={value}>
                     {label}
                   </option>

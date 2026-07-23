@@ -57,6 +57,7 @@ function toBasic(listing: MapListing, citySlug: OccupancyCitySlug): OccupancyBas
     lng: listing.lng,
     sqm: listing.sqm,
     rooms: listing.rooms,
+    property_type: listing.property_type ?? null,
     address: listing.address,
     zone: resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
     url: listing.url,

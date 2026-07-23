@@ -728,6 +728,7 @@ const en: Translations = {
       title: "{label} · {count} active listings",
       empty: "No listings in this segment.",
       close: "Close",
+      openListing: "View listing →",
       daysOnMarket: "Days on market",
       daysSincePublished: "Days since published",
     },
@@ -755,6 +756,7 @@ const en: Translations = {
     segmentsSubtitle: "Metrics grouped by rent band, room count, or floor area",
     segmentsGroupPrice: "Rent",
     segmentsGroupRooms: "Rooms",
+    segmentsGroupType: "Type",
     segmentsGroupSize: "Size",
     segments: {
       price: {
@@ -770,11 +772,16 @@ const en: Translations = {
         over_35000: "> 35,000 CZK",
       },
       rooms: {
+        pokoj: "Pokoj (room)",
         "1": "1 room",
         "2": "2 rooms",
         "3": "3 rooms",
         "4_plus": "4+ rooms",
         unknown: "Rooms not listed",
+      },
+      type: {
+        flat: "Byt (flat)",
+        room: "Pokoj (room)",
       },
       size: {
         under_40: "≤ 40 m²",
@@ -797,6 +804,10 @@ const en: Translations = {
       metricsBasisPosted: "Posted date",
       allCity: "Whole city",
       areaFilter: "Area",
+      typeFilter: "Type",
+      allTypes: "All types",
+      typeFlat: "Byt",
+      typeRoom: "Pokoj",
       metricsPeriod: "Period",
       metricsPeriodDaily: "Daily (1d)",
       metricsPeriodWeekly: "Weekly",

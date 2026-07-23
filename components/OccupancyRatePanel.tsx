@@ -5,6 +5,14 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { fetchOccupancyMetrics, refreshOccupancySnapshot } from "@/lib/api";
 import { filterActiveBreakdownListings, type BreakdownGroupId } from "@/lib/occupancy/breakdown-listings";
+import {
+  buildFilteredAreas,
+  buildFilteredSegments,
+  filterOccupancyListings,
+  type OccupancyTypeFilter,
+} from "@/lib/occupancy/filtered-breakdown";
+import { aggregateOccupancyListings } from "@/lib/occupancy/aggregate";
+import { aggregatePostedOccupancyListings } from "@/lib/occupancy/aggregate-posted";
 import { resolveOccupancyListingUrl } from "@/lib/listing-url";
 import {
   occupancySnapshotProgressPercent,
@@ -317,6 +325,22 @@ function kpiSliceFromArea(area: OccupancyAreaMetrics, occupancyWindowDays: numbe
   };
 }
 
+function kpiSliceFromAggregate(
+  agg: OccupancyAreaMetrics | Omit<OccupancyAreaMetrics, "zone">,
+  occupancyWindowDays: number,
+): OccupancyKpiSlice {
+  return {
+    active_count: agg.active_count,
+    avg_days_on_market: agg.avg_days_on_market,
+    rented_in_window: agg.rented_in_window,
+    turnover_30d: agg.turnover_30d,
+    turnover_rented_30d: agg.turnover_rented_30d,
+    turnover_inventory_basis: agg.turnover_inventory_basis,
+    estimated_occupancy_pct: agg.estimated_occupancy_pct,
+    occupancy_window_days: occupancyWindowDays,
+  };
+}
+
 const STATUS_STYLES: Record<
   OccupancyListingChangeStatus,
   { badge: string; row: string; labelKey: "stillActive" | "new" | "removed" }
@@ -365,11 +389,18 @@ interface BreakdownRow {
 
 const BREAKDOWN_GROUPS: Array<{
   id: BreakdownGroupId;
-  labelKey: "breakdownGroupZone" | "segmentsGroupPrice" | "segmentsGroupRooms" | "segmentsGroupSize";
+  labelKey:
+    | "breakdownGroupZone"
+    | "segmentsGroupPrice"
+    | "segmentsGroupRooms"
+    | "segmentsGroupSize"
+    | "segmentsGroupType";
+  czOnly?: boolean;
 }> = [
   { id: "zone", labelKey: "breakdownGroupZone" },
   { id: "price", labelKey: "segmentsGroupPrice" },
   { id: "rooms", labelKey: "segmentsGroupRooms" },
+  { id: "type", labelKey: "segmentsGroupType", czOnly: true },
   { id: "size", labelKey: "segmentsGroupSize" },
 ];
 
@@ -548,6 +579,16 @@ function BreakdownListingsModal({
                           <p className="truncate text-[10px] text-neutral-500">{listing.address}</p>
                         )
                       ) : null}
+                      {listingUrl ? (
+                        <a
+                          href={listingUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-0.5 block text-[10px] font-medium text-sky-600 hover:underline"
+                        >
+                          {t("occupancy.breakdownDrilldown.openListing")}
+                        </a>
+                      ) : null}
                     </td>
                     <td className="px-2 py-2">{listing.rooms ?? "—"}</td>
                     <td className="px-2 py-2">{listing.sqm ?? "—"}</td>
@@ -616,6 +657,7 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const [breakdownGroup, setBreakdownGroup] = useState<BreakdownGroupId>("zone");
   const [breakdownPage, setBreakdownPage] = useState(0);
   const [metricsAreaFilter, setMetricsAreaFilter] = useState<"all" | string>("all");
+  const [metricsTypeFilter, setMetricsTypeFilter] = useState<OccupancyTypeFilter>("all");
   const [metricsPeriod, setMetricsPeriod] = useState<OccupancyMetricsPeriod>(readStoredMetricsPeriod);
   const [metricsBasis, setMetricsBasis] = useState<OccupancyMetricsBasis>(readStoredMetricsBasis);
   const [citySlug, setCitySlug] = useState<OccupancyCitySlug>(readStoredCity);
@@ -691,11 +733,18 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
 
   useEffect(() => {
     setMetricsAreaFilter("all");
+    setMetricsTypeFilter("all");
   }, [citySlug, portal, selectedSnapshotAt, metrics?.updated_at]);
 
   useEffect(() => {
+    if (occupancyMarket !== "cz" && breakdownGroup === "type") {
+      setBreakdownGroup("zone");
+    }
+  }, [breakdownGroup, occupancyMarket]);
+
+  useEffect(() => {
     setBreakdownPage(0);
-  }, [breakdownGroup, citySlug, portal, selectedSnapshotAt, metrics?.updated_at]);
+  }, [breakdownGroup, citySlug, portal, selectedSnapshotAt, metrics?.updated_at, metricsAreaFilter, metricsTypeFilter]);
 
   useEffect(() => {
     setBreakdownDrillDown(null);
@@ -821,15 +870,71 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   );
 
   const areas = metrics?.areas ?? [];
+
+  const filtersActive =
+    metricsAreaFilter !== "all" || (occupancyMarket === "cz" && metricsTypeFilter !== "all");
+
+  const filteredBreakdownListings = useMemo(() => {
+    if (!filtersActive) return breakdownListings;
+    return filterOccupancyListings(breakdownListings, {
+      areaFilter: metricsAreaFilter,
+      typeFilter: occupancyMarket === "cz" ? metricsTypeFilter : "all",
+      citySlug,
+    });
+  }, [
+    breakdownListings,
+    citySlug,
+    filtersActive,
+    metricsAreaFilter,
+    metricsTypeFilter,
+    occupancyMarket,
+  ]);
+
+  const filteredAreas = useMemo(() => {
+    if (!metrics || !filtersActive) return areas;
+    return buildFilteredAreas(filteredBreakdownListings, {
+      windowDays: metrics.occupancy_window_days,
+      turnoverDays: metrics.turnover_window_days,
+      asOfMs: Date.parse(metrics.updated_at ?? metrics.tracking_ended_at ?? new Date().toISOString()),
+      metricsBasis: metrics.metrics_basis,
+      flowMetricsReady: metrics.flow_metrics_ready,
+      windowStartMs: metrics.tracking_started_at
+        ? Date.parse(metrics.tracking_started_at)
+        : undefined,
+    });
+  }, [areas, filteredBreakdownListings, filtersActive, metrics]);
+
+  const filteredSegments = useMemo(() => {
+    if (!metrics || !filtersActive) return metrics?.segments ?? null;
+    return buildFilteredSegments(filteredBreakdownListings, occupancyMarket, {
+      windowDays: metrics.occupancy_window_days,
+      turnoverDays: metrics.turnover_window_days,
+      asOfMs: Date.parse(metrics.updated_at ?? metrics.tracking_ended_at ?? new Date().toISOString()),
+      metricsBasis: metrics.metrics_basis,
+      flowMetricsReady: metrics.flow_metrics_ready,
+      windowStartMs: metrics.tracking_started_at
+        ? Date.parse(metrics.tracking_started_at)
+        : undefined,
+    });
+  }, [filteredBreakdownListings, filtersActive, metrics, occupancyMarket]);
+
   const breakdownRows = useMemo((): BreakdownRow[] => {
     if (!metrics) return [];
     if (breakdownGroup === "zone") {
-      return areas.map(areaToBreakdownRow);
+      return filteredAreas.map(areaToBreakdownRow);
     }
-    return (metrics.segments?.[breakdownGroup] ?? []).map((segment) =>
+    const segments = filtersActive ? filteredSegments : metrics.segments;
+    return (segments?.[breakdownGroup] ?? []).map((segment) =>
       segmentToBreakdownRow(segment, breakdownGroup, t),
     );
-  }, [areas, breakdownGroup, metrics, t]);
+  }, [
+    breakdownGroup,
+    filteredAreas,
+    filteredSegments,
+    filtersActive,
+    metrics,
+    t,
+  ]);
 
   const breakdownPageSize = 5;
   const breakdownPageCount = Math.ceil(breakdownRows.length / breakdownPageSize) || 1;
@@ -841,13 +946,13 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
   const drillDownListings = useMemo(() => {
     if (!breakdownDrillDown) return [];
     return filterActiveBreakdownListings(
-      breakdownListings,
+      filteredBreakdownListings,
       breakdownDrillDown.group,
       breakdownDrillDown.rowKey,
       citySlug,
       occupancyMarket,
     );
-  }, [breakdownDrillDown, breakdownListings, citySlug, occupancyMarket]);
+  }, [breakdownDrillDown, filteredBreakdownListings, citySlug, occupancyMarket]);
 
   useEffect(() => {
     setBreakdownPage((current) => Math.min(current, Math.max(0, breakdownPageCount - 1)));
@@ -855,10 +960,63 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
 
   const kpiMetrics = useMemo((): OccupancyKpiSlice | null => {
     if (!metrics) return null;
-    if (metricsAreaFilter === "all") return kpiSliceFromCity(metrics);
-    const area = areas.find((entry) => entry.zone === metricsAreaFilter);
-    return area ? kpiSliceFromArea(area, metrics.occupancy_window_days) : kpiSliceFromCity(metrics);
-  }, [areas, metrics, metricsAreaFilter]);
+    if (!filtersActive) {
+      if (metricsAreaFilter === "all") return kpiSliceFromCity(metrics);
+      const area = areas.find((entry) => entry.zone === metricsAreaFilter);
+      return area ? kpiSliceFromArea(area, metrics.occupancy_window_days) : kpiSliceFromCity(metrics);
+    }
+    if (metricsAreaFilter !== "all" && metricsTypeFilter === "all") {
+      const area = filteredAreas.find((entry) => entry.zone === metricsAreaFilter);
+      if (area) return kpiSliceFromArea(area, metrics.occupancy_window_days);
+    }
+    const asOfMs = Date.parse(
+      metrics.updated_at ?? metrics.tracking_ended_at ?? new Date().toISOString(),
+    );
+    if (metrics.metrics_basis === "posted") {
+      return kpiSliceFromAggregate(
+        aggregatePostedOccupancyListings(
+          filteredBreakdownListings,
+          metrics.occupancy_window_days,
+          asOfMs,
+          {
+            flowMetricsReady: metrics.flow_metrics_ready,
+            windowStartMs: metrics.tracking_started_at
+              ? Date.parse(metrics.tracking_started_at)
+              : undefined,
+          },
+        ),
+        metrics.occupancy_window_days,
+      );
+    }
+    const active = filteredBreakdownListings.filter((l) => l.status === "active").length;
+    return kpiSliceFromAggregate(
+      aggregateOccupancyListings(
+        filteredBreakdownListings,
+        metrics.occupancy_window_days,
+        metrics.turnover_window_days,
+        active > 0 ? active : null,
+        asOfMs,
+        {
+          flowMetricsReady: metrics.flow_metrics_ready,
+          windowStartMs: metrics.tracking_started_at
+            ? Date.parse(metrics.tracking_started_at)
+            : undefined,
+          turnoverWindowStartMs: metrics.tracking_started_at
+            ? Date.parse(metrics.tracking_started_at)
+            : undefined,
+        },
+      ),
+      metrics.occupancy_window_days,
+    );
+  }, [
+    areas,
+    filteredAreas,
+    filteredBreakdownListings,
+    filtersActive,
+    metrics,
+    metricsAreaFilter,
+    metricsTypeFilter,
+  ]);
 
   const occupancyPeriodLabel = metrics
     ? metricsPeriodTableLabel(metricsPeriod, metrics.occupancy_window_days, t)
@@ -1402,9 +1560,16 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
         <>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm font-medium text-neutral-800">
-              {metricsAreaFilter === "all"
-                ? t("occupancy.kpi.allCity")
-                : metricsAreaFilter}
+              {[
+                metricsAreaFilter === "all" ? t("occupancy.kpi.allCity") : metricsAreaFilter,
+                occupancyMarket === "cz" && metricsTypeFilter !== "all"
+                  ? metricsTypeFilter === "room"
+                    ? t("occupancy.kpi.typeRoom")
+                    : t("occupancy.kpi.typeFlat")
+                  : null,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex flex-wrap items-center gap-2">
@@ -1458,6 +1623,26 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                         {area.zone}
                       </option>
                     ))}
+                  </select>
+                </label>
+              ) : null}
+              {occupancyMarket === "cz" ? (
+                <label
+                  className="inline-flex items-center gap-2 text-sm text-neutral-600"
+                  htmlFor="occupancy-metrics-type"
+                >
+                  <span>{t("occupancy.kpi.typeFilter")}</span>
+                  <select
+                    id="occupancy-metrics-type"
+                    value={metricsTypeFilter}
+                    onChange={(e) =>
+                      setMetricsTypeFilter(e.target.value as OccupancyTypeFilter)
+                    }
+                    className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                  >
+                    <option value="all">{t("occupancy.kpi.allTypes")}</option>
+                    <option value="flat">{t("occupancy.kpi.typeFlat")}</option>
+                    <option value="room">{t("occupancy.kpi.typeRoom")}</option>
                   </select>
                 </label>
               ) : null}
@@ -1567,7 +1752,9 @@ export default function OccupancyRatePanel({ onDataMutated }: { onDataMutated?: 
                   ) : null}
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {BREAKDOWN_GROUPS.map(({ id, labelKey }) => (
+                  {BREAKDOWN_GROUPS.filter(
+                    (group) => !group.czOnly || occupancyMarket === "cz",
+                  ).map(({ id, labelKey }) => (
                     <button
                       key={id}
                       type="button"

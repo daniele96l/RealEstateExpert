@@ -107,6 +107,18 @@ export function extractListingCacheId(url: string): string | null {
 export function resolveOccupancyListingUrl(
   listing: { id: string; url?: string | null },
 ): string | null {
+  const id = listing.id.trim();
+
+  // Sreality: same-origin redirect verifies the estate still exists, then sends
+  // the browser to a stable detail URL (avoids broken slugs / Seznam login loops).
+  if (id.startsWith("sr_")) {
+    const estateId = id.slice(3);
+    if (/^\d+$/.test(estateId)) {
+      return `/api/occupancy/listing-redirect?id=${encodeURIComponent(id)}`;
+    }
+    return null;
+  }
+
   const stored = listing.url?.trim();
   if (stored) {
     try {
@@ -116,15 +128,11 @@ export function resolveOccupancyListingUrl(
     }
   }
 
-  const id = listing.id.trim();
   if (id.startsWith("im_")) {
     const numericId = id.slice(3);
     if (/^\d+$/.test(numericId)) return `https://www.immobiliare.it/annunci/${numericId}/`;
   }
   if (/^\d+$/.test(id)) return `https://www.idealista.it/immobile/${id}/`;
-  if (id.startsWith("sr_")) {
-    return null;
-  }
   if (id.startsWith("ca_")) {
     const numericId = id.slice(3);
     if (/^\d+$/.test(numericId)) return `https://www.casa.it/immobili/${numericId}/`;

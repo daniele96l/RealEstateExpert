@@ -21,6 +21,11 @@ interface SegmentBucket {
   match: (listing: OccupancyBasicListing) => boolean;
 }
 
+export function isOccupancyRoomListing(listing: OccupancyBasicListing): boolean {
+  const type = listing.property_type?.trim().toLowerCase() ?? "";
+  return type === "room" || type === "pokoj";
+}
+
 function priceBuckets(market: MarketId): SegmentBucket[] {
   if (market === "cz") {
     return [
@@ -40,13 +45,25 @@ function priceBuckets(market: MarketId): SegmentBucket[] {
   ];
 }
 
-const ROOM_BUCKETS: SegmentBucket[] = [
-  { id: "1", match: (l) => l.rooms === 1 },
-  { id: "2", match: (l) => l.rooms === 2 },
-  { id: "3", match: (l) => l.rooms === 3 },
-  { id: "4_plus", match: (l) => l.rooms != null && l.rooms >= 4 },
-  { id: "unknown", match: (l) => l.rooms == null },
-];
+function roomBuckets(market: MarketId): SegmentBucket[] {
+  const flatRooms: SegmentBucket[] = [
+    { id: "1", match: (l) => !isOccupancyRoomListing(l) && l.rooms === 1 },
+    { id: "2", match: (l) => !isOccupancyRoomListing(l) && l.rooms === 2 },
+    { id: "3", match: (l) => !isOccupancyRoomListing(l) && l.rooms === 3 },
+    {
+      id: "4_plus",
+      match: (l) => !isOccupancyRoomListing(l) && l.rooms != null && l.rooms >= 4,
+    },
+    {
+      id: "unknown",
+      match: (l) => !isOccupancyRoomListing(l) && l.rooms == null,
+    },
+  ];
+  if (market === "cz") {
+    return [{ id: "pokoj", match: (l) => isOccupancyRoomListing(l) }, ...flatRooms];
+  }
+  return flatRooms;
+}
 
 const SIZE_BUCKETS: SegmentBucket[] = [
   { id: "under_40", match: (l) => l.sqm != null && l.sqm <= 40 },
@@ -55,6 +72,11 @@ const SIZE_BUCKETS: SegmentBucket[] = [
   { id: "80_100", match: (l) => l.sqm != null && l.sqm > 80 && l.sqm <= 100 },
   { id: "over_100", match: (l) => l.sqm != null && l.sqm > 100 },
   { id: "unknown", match: (l) => l.sqm == null },
+];
+
+const TYPE_BUCKETS: SegmentBucket[] = [
+  { id: "flat", match: (l) => !isOccupancyRoomListing(l) },
+  { id: "room", match: (l) => isOccupancyRoomListing(l) },
 ];
 
 export interface SegmentGroupOptions extends AggregateOccupancyOptions {
@@ -121,14 +143,19 @@ function buildGroup(
     .filter((row): row is OccupancySegmentMetrics => row != null);
 }
 
+function bucketsForGroup(group: OccupancySegmentGroupId, market: MarketId): SegmentBucket[] {
+  if (group === "price") return priceBuckets(market);
+  if (group === "rooms") return roomBuckets(market);
+  if (group === "type") return TYPE_BUCKETS;
+  return SIZE_BUCKETS;
+}
+
 export function getSegmentMatcher(
   group: OccupancySegmentGroupId,
   segmentId: string,
   market: MarketId,
 ): (listing: OccupancyBasicListing) => boolean {
-  const buckets =
-    group === "price" ? priceBuckets(market) : group === "rooms" ? ROOM_BUCKETS : SIZE_BUCKETS;
-  const bucket = buckets.find((entry) => entry.id === segmentId);
+  const bucket = bucketsForGroup(group, market).find((entry) => entry.id === segmentId);
   return bucket?.match ?? (() => false);
 }
 
@@ -142,7 +169,8 @@ export function computeSegmentGroups(
 ): OccupancySegmentGroups {
   return {
     price: buildGroup(listings, priceBuckets(market), windowDays, turnoverDays, asOfMs, options),
-    rooms: buildGroup(listings, ROOM_BUCKETS, windowDays, turnoverDays, asOfMs, options),
+    rooms: buildGroup(listings, roomBuckets(market), windowDays, turnoverDays, asOfMs, options),
     size: buildGroup(listings, SIZE_BUCKETS, windowDays, turnoverDays, asOfMs, options),
+    type: buildGroup(listings, TYPE_BUCKETS, windowDays, turnoverDays, asOfMs, options),
   };
 }

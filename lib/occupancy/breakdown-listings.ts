@@ -1,6 +1,7 @@
 import type { MarketId } from "@/lib/markets";
 import type { OccupancyBasicListing, OccupancySegmentGroupId, TrackedRentalListing } from "@/lib/types";
 import type { OccupancyCitySlug } from "./cities";
+import { withNormalizedPropertyType } from "./filtered-breakdown";
 import { getSegmentMatcher } from "./segment-metrics";
 import { resolveListingZone } from "./zone";
 
@@ -35,8 +36,11 @@ export function registryBreakdownListings(
   listings: Record<string, TrackedRentalListing>,
   citySlug: OccupancyCitySlug,
 ): TrackedRentalListing[] {
-  return Object.values(listings).map((listing) => ({
-    ...listing,
-    zone: listing.zone ?? resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
-  }));
+  return Object.values(listings).map((listing) =>
+    withNormalizedPropertyType({
+      ...listing,
+      property_type: listing.property_type ?? null,
+      zone: listing.zone ?? resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
+    }),
+  );
 }

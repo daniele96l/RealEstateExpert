@@ -2,7 +2,7 @@
   "city": "Rosice",
   "market": "cz",
   "portal": "sreality",
-  "updated_at": "2026-07-23T08:41:05.225Z",
+  "updated_at": "2026-07-23T22:19:13.896Z",
   "snapshot_count": 11,
   "last_provider": "sreality",
   "listings": {
@@ -19,7 +19,7 @@
       "listing_published_at": "2026-07-09",
       "listing_updated_at": "2026-07-22",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-23T08:41:05.225Z",
+      "last_seen_at": "2026-07-23T22:19:13.896Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -28,7 +28,8 @@
           "at": "2026-07-12T19:34:54.123Z",
           "price": 13590
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2067587148": {
       "id": "sr_2067587148",
@@ -43,7 +44,7 @@
       "listing_published_at": "2026-07-11",
       "listing_updated_at": "2026-07-11",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-23T08:41:05.225Z",
+      "last_seen_at": "2026-07-23T22:19:13.896Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -52,7 +53,8 @@
           "at": "2026-07-12T19:34:54.123Z",
           "price": 7200
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_2226053196": {
       "id": "sr_2226053196",
@@ -67,7 +69,7 @@
       "listing_published_at": "2026-07-09",
       "listing_updated_at": "2026-07-09",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-23T08:41:05.225Z",
+      "last_seen_at": "2026-07-23T22:19:13.896Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -76,7 +78,8 @@
           "at": "2026-07-12T19:34:54.123Z",
           "price": 14000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3463610444": {
       "id": "sr_3463610444",
@@ -91,7 +94,7 @@
       "listing_published_at": "2026-06-04",
       "listing_updated_at": "2026-07-22",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-23T08:41:05.225Z",
+      "last_seen_at": "2026-07-23T22:19:13.896Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -100,7 +103,8 @@
           "at": "2026-07-12T19:34:54.123Z",
           "price": 12413
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1344835660": {
       "id": "sr_1344835660",
@@ -115,7 +119,7 @@
       "listing_published_at": "2026-05-12",
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-12T19:34:54.123Z",
-      "last_seen_at": "2026-07-23T08:41:05.225Z",
+      "last_seen_at": "2026-07-23T22:19:13.896Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -124,7 +128,8 @@
           "at": "2026-07-12T19:34:54.123Z",
           "price": 23000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1510072396": {
       "id": "sr_1510072396",
@@ -137,9 +142,9 @@
       "zone": "Rosice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/rosice-rosice-kastanova/1510072396",
       "listing_published_at": "2026-07-15",
-      "listing_updated_at": "2026-07-20",
+      "listing_updated_at": "2026-07-23",
       "first_seen_at": "2026-07-16T08:26:52.356Z",
-      "last_seen_at": "2026-07-23T08:41:05.225Z",
+      "last_seen_at": "2026-07-23T22:19:13.896Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -148,7 +153,8 @@
           "at": "2026-07-16T08:26:52.356Z",
           "price": 19500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_1597104204": {
       "id": "sr_1597104204",
@@ -163,7 +169,7 @@
       "listing_published_at": "2026-07-15",
       "listing_updated_at": "2026-07-15",
       "first_seen_at": "2026-07-16T08:26:52.356Z",
-      "last_seen_at": "2026-07-23T08:41:05.225Z",
+      "last_seen_at": "2026-07-23T22:19:13.896Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -172,7 +178,8 @@
           "at": "2026-07-16T08:26:52.356Z",
           "price": 14900
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_646438988": {
       "id": "sr_646438988",
@@ -187,7 +194,7 @@
       "listing_published_at": "2026-07-18",
       "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-18T08:03:39.156Z",
-      "last_seen_at": "2026-07-23T08:41:05.225Z",
+      "last_seen_at": "2026-07-23T22:19:13.896Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -196,7 +203,8 @@
           "at": "2026-07-18T08:03:39.156Z",
           "price": 12000
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_308666444": {
       "id": "sr_308666444",
@@ -211,7 +219,7 @@
       "listing_published_at": "2026-07-20",
       "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-21T08:39:38.294Z",
-      "last_seen_at": "2026-07-23T08:41:05.225Z",
+      "last_seen_at": "2026-07-23T22:19:13.896Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -220,7 +228,8 @@
           "at": "2026-07-21T08:39:38.294Z",
           "price": 13500
         }
-      ]
+      ],
+      "property_type": "flat"
     },
     "sr_3169624140": {
       "id": "sr_3169624140",
@@ -235,7 +244,7 @@
       "listing_published_at": "2026-04-29",
       "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-21T08:39:38.294Z",
-      "last_seen_at": "2026-07-23T08:41:05.225Z",
+      "last_seen_at": "2026-07-23T22:19:13.896Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -244,7 +253,8 @@
           "at": "2026-07-21T08:39:38.294Z",
           "price": 16500
         }
-      ]
+      ],
+      "property_type": "flat"
     }
   }
 }
