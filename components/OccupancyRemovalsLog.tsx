@@ -9,6 +9,10 @@ import {
 } from "@/lib/occupancy/cities";
 import { defaultPortalForCity, portalsForCity, type OccupancyPortal } from "@/lib/occupancy/portals";
 import { getOccupancyCityConfig } from "@/lib/occupancy/cities";
+import {
+  normalizeOccupancyPropertyType,
+  type OccupancyTypeFilter,
+} from "@/lib/occupancy/filtered-breakdown";
 import type { MarketId } from "@/lib/markets";
 import type { OccupancyRemovalEvent } from "@/lib/types";
 import { useI18n } from "@/lib/i18n/context";
@@ -18,6 +22,10 @@ import { ClipboardList } from "lucide-react";
 const OCCUPANCY_PORTAL_STORAGE_KEY = "occupancy-portal";
 const REMOVALS_FETCH_LIMIT = 500;
 const PAGE_SIZE = 5;
+
+function isRemovalRoom(event: OccupancyRemovalEvent): boolean {
+  return normalizeOccupancyPropertyType(event) === "room";
+}
 
 function readStoredPortal(citySlug: OccupancyCitySlug): OccupancyPortal {
   if (typeof window === "undefined") return defaultPortalForCity(citySlug);
@@ -65,6 +73,17 @@ function formatPriceHistory(
   return history.map((p) => fmtMoney(p.price, market)).join(" → ");
 }
 
+function matchesRemovalFilters(
+  event: OccupancyRemovalEvent,
+  areaFilter: string,
+  typeFilter: OccupancyTypeFilter,
+): boolean {
+  if (areaFilter !== "all" && (event.zone ?? "") !== areaFilter) return false;
+  if (typeFilter === "room") return isRemovalRoom(event);
+  if (typeFilter === "flat") return !isRemovalRoom(event);
+  return true;
+}
+
 interface Props {
   refreshToken?: number;
 }
@@ -73,16 +92,31 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
   const { t, locale } = useI18n();
   const [events, setEvents] = useState<OccupancyRemovalEvent[]>([]);
   const [displayMarket, setDisplayMarket] = useState<MarketId>("it");
+  const [areaFilter, setAreaFilter] = useState<string>("all");
+  const [typeFilter, setTypeFilter] = useState<OccupancyTypeFilter>("all");
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const dateLocale = locale === "en" ? "en-GB" : "it-IT";
   const perSqmLabel = t("listings.perSqm");
 
-  const pageCount = Math.ceil(events.length / PAGE_SIZE) || 1;
+  const zoneOptions = useMemo(() => {
+    const zones = new Set<string>();
+    for (const event of events) {
+      if (event.zone) zones.add(event.zone);
+    }
+    return [...zones].sort((a, b) => a.localeCompare(b, displayMarket === "cz" ? "cs" : "it"));
+  }, [events, displayMarket]);
+
+  const filteredEvents = useMemo(
+    () => events.filter((event) => matchesRemovalFilters(event, areaFilter, typeFilter)),
+    [events, areaFilter, typeFilter],
+  );
+
+  const pageCount = Math.ceil(filteredEvents.length / PAGE_SIZE) || 1;
   const pageEvents = useMemo(
-    () => events.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE),
-    [events, page],
+    () => filteredEvents.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE),
+    [filteredEvents, page],
   );
 
   const reload = useCallback(async () => {
@@ -95,6 +129,8 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
       const data = await fetchOccupancyRemovals(portal, REMOVALS_FETCH_LIMIT, citySlug);
       setEvents(data.events);
       setDisplayMarket(market);
+      setAreaFilter("all");
+      setTypeFilter("all");
       setPage(0);
     } catch (err) {
       setError(err instanceof Error ? err.message : t("occupancy.removals.loadError"));
@@ -108,6 +144,10 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
   useEffect(() => {
     void reload();
   }, [reload, refreshToken]);
+
+  useEffect(() => {
+    setPage(0);
+  }, [areaFilter, typeFilter]);
 
   useEffect(() => {
     setPage((current) => Math.min(current, Math.max(0, pageCount - 1)));
@@ -128,10 +168,53 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
           </div>
           {!loading && !error && events.length > 0 ? (
             <p className="text-xs text-neutral-500">
-              {t("occupancy.removals.total", { count: events.length })}
+              {t("occupancy.removals.total", { count: filteredEvents.length })}
             </p>
           ) : null}
         </div>
+        {!loading && !error && events.length > 0 ? (
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            {zoneOptions.length > 0 ? (
+              <label
+                className="inline-flex items-center gap-2 text-sm text-neutral-600"
+                htmlFor="occupancy-removals-area"
+              >
+                <span>{t("occupancy.kpi.areaFilter")}</span>
+                <select
+                  id="occupancy-removals-area"
+                  value={areaFilter}
+                  onChange={(e) => setAreaFilter(e.target.value)}
+                  className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                >
+                  <option value="all">{t("occupancy.kpi.allCity")}</option>
+                  {zoneOptions.map((zone) => (
+                    <option key={zone} value={zone}>
+                      {zone}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ) : null}
+            {displayMarket === "cz" ? (
+              <label
+                className="inline-flex items-center gap-2 text-sm text-neutral-600"
+                htmlFor="occupancy-removals-type"
+              >
+                <span>{t("occupancy.kpi.typeFilter")}</span>
+                <select
+                  id="occupancy-removals-type"
+                  value={typeFilter}
+                  onChange={(e) => setTypeFilter(e.target.value as OccupancyTypeFilter)}
+                  className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                >
+                  <option value="all">{t("occupancy.kpi.allTypes")}</option>
+                  <option value="flat">{t("occupancy.kpi.typeFlat")}</option>
+                  <option value="room">{t("occupancy.kpi.typeRoom")}</option>
+                </select>
+              </label>
+            ) : null}
+          </div>
+        ) : null}
       </div>
 
       {loading ? (
@@ -140,6 +223,8 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
         <p className="px-6 py-8 text-center text-sm text-rose-400">{error}</p>
       ) : events.length === 0 ? (
         <p className="px-6 py-8 text-center text-sm text-neutral-500">{t("occupancy.removals.empty")}</p>
+      ) : filteredEvents.length === 0 ? (
+        <p className="px-6 py-8 text-center text-sm text-neutral-500">{t("occupancy.removals.emptyFiltered")}</p>
       ) : (
         <>
           <div className="overflow-x-auto">
@@ -186,7 +271,7 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
               </tbody>
             </table>
           </div>
-          {events.length > PAGE_SIZE ? (
+          {filteredEvents.length > PAGE_SIZE ? (
             <div className="flex items-center justify-between border-t border-surface-border/40 px-6 py-3 text-xs text-neutral-500">
               <button
                 type="button"
@@ -209,8 +294,8 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
                 {" · "}
                 {t("occupancy.removals.showing", {
                   from: page * PAGE_SIZE + 1,
-                  to: Math.min((page + 1) * PAGE_SIZE, events.length),
-                  total: events.length,
+                  to: Math.min((page + 1) * PAGE_SIZE, filteredEvents.length),
+                  total: filteredEvents.length,
                 })}
               </span>
               <button

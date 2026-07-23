@@ -857,6 +857,7 @@ const it = {
       subtitle:
         "Annunci non più online al successivo aggiornamento — trattati come affittati (presunto).",
       empty: "Nessuna rimozione registrata — esegui almeno due aggiornamenti in giorni diversi.",
+      emptyFiltered: "Nessuna rimozione corrisponde ai filtri selezionati.",
       loadError: "Impossibile caricare il log",
       total: "{count} rimozioni",
       showing: "{from}–{to} di {total}",

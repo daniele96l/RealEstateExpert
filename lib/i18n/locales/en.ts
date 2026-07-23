@@ -855,6 +855,7 @@ const en: Translations = {
       subtitle:
         "Listings no longer online after a refresh — treated as rented (presumed).",
       empty: "No removals logged yet — run at least two refreshes on different days.",
+      emptyFiltered: "No removals match the selected filters.",
       loadError: "Could not load removal log",
       total: "{count} removals",
       showing: "{from}–{to} of {total}",

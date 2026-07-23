@@ -3,6 +3,8 @@ import type { OccupancyRemovalEvent, TrackedRentalListing } from "@/lib/types";
 import { readJsonFile, writeJsonFile } from "@/lib/server/fs-cache-io";
 import { occupancyRemovalsLogPath } from "./constants";
 import { defaultOccupancyCitySlug, type OccupancyCitySlug } from "./cities";
+import { normalizeOccupancyPropertyType } from "./filtered-breakdown";
+import { loadRegistry } from "./registry";
 
 const MAX_REMOVAL_EVENTS = 500;
 
@@ -30,12 +32,46 @@ function toRemovalEvent(
     price: listing.price,
     sqm: listing.sqm,
     rooms: listing.rooms,
+    property_type: normalizeOccupancyPropertyType(listing),
     address: listing.address,
     zone: listing.zone,
+    url: listing.url ?? null,
     lat: listing.lat,
     lng: listing.lng,
     price_history: listing.price_history,
   };
+}
+
+async function enrichRemovalEvents(
+  events: OccupancyRemovalEvent[],
+  citySlug: OccupancyCitySlug,
+  portal: OccupancyPortal,
+): Promise<OccupancyRemovalEvent[]> {
+  const needsEnrichment = events.some((e) => !e.property_type || !e.url);
+  if (!needsEnrichment) return events;
+
+  const registry = await loadRegistry(citySlug, portal);
+  return events.map((event) => {
+    if (event.property_type && event.url) return event;
+    const tracked = registry.listings[event.id];
+    if (!tracked) {
+      return {
+        ...event,
+        property_type: event.property_type ?? normalizeOccupancyPropertyType(event),
+      };
+    }
+    return {
+      ...event,
+      property_type:
+        event.property_type ??
+        normalizeOccupancyPropertyType({
+          property_type: tracked.property_type,
+          url: tracked.url ?? event.url,
+        }),
+      url: event.url ?? tracked.url ?? null,
+      zone: event.zone ?? tracked.zone,
+    };
+  });
 }
 
 function logRemovalToConsole(event: OccupancyRemovalEvent, currency: "EUR" | "CZK"): void {
@@ -81,5 +117,6 @@ export async function loadRemovalEvents(
 ): Promise<OccupancyRemovalEvent[]> {
   const events =
     (await readJsonFile<OccupancyRemovalEvent[]>(occupancyRemovalsLogPath(citySlug, portal))) ?? [];
-  return events.slice(0, limit);
+  const enriched = await enrichRemovalEvents(events.slice(0, limit), citySlug, portal);
+  return enriched;
 }

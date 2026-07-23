@@ -419,8 +419,10 @@ export interface OccupancyRemovalEvent {
   price: number;
   sqm: number | null;
   rooms: number | null;
+  property_type: string | null;
   address: string | null;
   zone: string | null;
+  url?: string | null;
   lat: number;
   lng: number;
   price_history: OccupancyPricePoint[];
