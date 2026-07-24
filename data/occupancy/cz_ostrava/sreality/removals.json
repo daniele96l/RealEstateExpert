@@ -1,5 +1,441 @@
 [
   {
+    "id": "sr_3170563404",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-23T22:30:31.968Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 0,
+    "price": 50000,
+    "sqm": 137,
+    "rooms": 3,
+    "property_type": "flat",
+    "address": "Studentská, Poruba, Ostrava",
+    "zone": "Poruba",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/ostrava-poruba-studentska/3170563404",
+    "lat": 49.835155,
+    "lng": 18.155479,
+    "price_history": [
+      {
+        "at": "2026-07-23T22:30:31.968Z",
+        "price": 50000
+      }
+    ]
+  },
+  {
+    "id": "sr_2574745676",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-23T22:30:31.968Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 0,
+    "price": 40000,
+    "sqm": 137,
+    "rooms": 3,
+    "property_type": "flat",
+    "address": "Studentská, Poruba, Ostrava",
+    "zone": "Poruba",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/ostrava-poruba-studentska/2574745676",
+    "lat": 49.835155,
+    "lng": 18.155479,
+    "price_history": [
+      {
+        "at": "2026-07-23T22:30:31.968Z",
+        "price": 40000
+      }
+    ]
+  },
+  {
+    "id": "sr_2396704844",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-23T22:30:31.968Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 0,
+    "price": 8900,
+    "sqm": 42,
+    "rooms": 1,
+    "property_type": "flat",
+    "address": "Šeříková, Výškovice, Ostrava",
+    "zone": "Výškovice",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/ostrava-vyskovice-serikova/2396704844",
+    "lat": 49.7838610948286,
+    "lng": 18.2211399238043,
+    "price_history": [
+      {
+        "at": "2026-07-23T22:30:31.968Z",
+        "price": 8900
+      }
+    ]
+  },
+  {
+    "id": "sr_280781644",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-23T22:30:31.968Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 0,
+    "price": 16900,
+    "sqm": 48,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Slavníkovců, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/ostrava-marianske-hory-slavnikovcu/280781644",
+    "lat": 49.828647055843,
+    "lng": 18.2548510221099,
+    "price_history": [
+      {
+        "at": "2026-07-23T22:30:31.968Z",
+        "price": 16900
+      }
+    ]
+  },
+  {
+    "id": "sr_858054732",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-22T08:41:28.551Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 2,
+    "price": 10500,
+    "sqm": 18,
+    "rooms": 1,
+    "property_type": "flat",
+    "address": "Větrná, Poruba, Ostrava",
+    "zone": "Poruba",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/ostrava-poruba-vetrna/858054732",
+    "lat": 49.8253213411323,
+    "lng": 18.180238614308,
+    "price_history": [
+      {
+        "at": "2026-07-22T08:41:28.551Z",
+        "price": 10500
+      }
+    ]
+  },
+  {
+    "id": "sr_414638156",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-21T08:41:52.571Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 3,
+    "price": 16000,
+    "sqm": 74,
+    "rooms": 3,
+    "property_type": "flat",
+    "address": "Horymírova, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/ostrava-zabreh-horymirova/414638156",
+    "lat": 49.806183593175454,
+    "lng": 18.236836235950133,
+    "price_history": [
+      {
+        "at": "2026-07-21T08:41:52.571Z",
+        "price": 16000
+      }
+    ]
+  },
+  {
+    "id": "sr_4116111436",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-20T09:31:40.908Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 4,
+    "price": 12000,
+    "sqm": 56,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "náměstí Družby, Poruba, Ostrava",
+    "zone": "Poruba",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/ostrava-poruba-namesti-druzby/4116111436",
+    "lat": 49.835342986548966,
+    "lng": 18.181184007217666,
+    "price_history": [
+      {
+        "at": "2026-07-20T09:31:40.908Z",
+        "price": 12000
+      }
+    ]
+  },
+  {
+    "id": "sr_2712133708",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-18T08:05:48.888Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 6,
+    "price": 18900,
+    "sqm": 55,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Hlavní třída, Poruba, Ostrava",
+    "zone": "Poruba",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/ostrava-poruba-hlavni-trida/2712133708",
+    "lat": 49.8263554359422,
+    "lng": 18.1802906944141,
+    "price_history": [
+      {
+        "at": "2026-07-18T08:05:48.888Z",
+        "price": 18900
+      }
+    ]
+  },
+  {
+    "id": "sr_411557964",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-18T08:05:48.888Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 6,
+    "price": 18900,
+    "sqm": 62,
+    "rooms": 3,
+    "property_type": "flat",
+    "address": "Mitušova, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/ostrava-hrabuvka-mitusova/411557964",
+    "lat": 49.7889656244478,
+    "lng": 18.2532793085445,
+    "price_history": [
+      {
+        "at": "2026-07-18T08:05:48.888Z",
+        "price": 18900
+      }
+    ]
+  },
+  {
+    "id": "sr_804380748",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-16T08:29:27.999Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 8,
+    "price": 12200,
+    "sqm": 54,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Volgogradská, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/ostrava-zabreh-volgogradska/804380748",
+    "lat": 49.7917808179492,
+    "lng": 18.2225938743342,
+    "price_history": [
+      {
+        "at": "2026-07-16T08:29:27.999Z",
+        "price": 12200
+      }
+    ]
+  },
+  {
+    "id": "sr_2336415820",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-23T22:30:31.968Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 0,
+    "price": 10800,
+    "sqm": 37,
+    "rooms": 1,
+    "property_type": "flat",
+    "address": "Hornopolní, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/ostrava-moravska-ostrava-hornopolni/2336415820",
+    "lat": 49.84286449921177,
+    "lng": 18.26362922912014,
+    "price_history": [
+      {
+        "at": "2026-07-23T22:30:31.968Z",
+        "price": 10800
+      }
+    ]
+  },
+  {
+    "id": "sr_299298892",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-23T22:30:31.968Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 0,
+    "price": 9000,
+    "sqm": 35,
+    "rooms": 1,
+    "property_type": "flat",
+    "address": "Strelkovova, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/ostrava-zabreh-strelkovova/299298892",
+    "lat": 49.7927846868656,
+    "lng": 18.2431256310654,
+    "price_history": [
+      {
+        "at": "2026-07-23T22:30:31.968Z",
+        "price": 9000
+      }
+    ]
+  },
+  {
+    "id": "sr_1409278028",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-23T22:30:31.968Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 0,
+    "price": 17000,
+    "sqm": 54,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Balcarova, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/ostrava-moravska-ostrava-balcarova/1409278028",
+    "lat": 49.840684452706,
+    "lng": 18.2860152134116,
+    "price_history": [
+      {
+        "at": "2026-07-23T22:30:31.968Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_1024192588",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 12,
+    "price": 14500,
+    "sqm": 53,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Krasnoarmejců, Zábřeh, Ostrava",
+    "zone": "Zábřeh",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/ostrava-zabreh-krasnoarmejcu/1024192588",
+    "lat": 49.7879502942211,
+    "lng": 18.2332727574017,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 14500
+      }
+    ]
+  },
+  {
+    "id": "sr_3837517900",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 12,
+    "price": 10000,
+    "sqm": 40,
+    "rooms": 1,
+    "property_type": "flat",
+    "address": "Hasičská, Hrabůvka, Ostrava",
+    "zone": "Hrabůvka",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/ostrava-hrabuvka-hasicska/3837517900",
+    "lat": 49.7924329138,
+    "lng": 18.2651488278,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 11000
+      },
+      {
+        "at": "2026-07-17T08:24:40.392Z",
+        "price": 10000
+      }
+    ]
+  },
+  {
+    "id": "sr_3155595340",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 12,
+    "price": 17000,
+    "sqm": 50,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Na Jízdárně, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/ostrava-moravska-ostrava-na-jizdarne/3155595340",
+    "lat": 49.8267939053962,
+    "lng": 18.2733993308959,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "id": "sr_281830220",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 12,
+    "price": 15900,
+    "sqm": 42,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Slavníkovců, Mariánské Hory, Ostrava",
+    "zone": "Mariánské Hory",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/ostrava-marianske-hory-slavnikovcu/281830220",
+    "lat": 49.828647055843,
+    "lng": 18.2548510221099,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 15900
+      }
+    ]
+  },
+  {
+    "id": "sr_2819621708",
+    "portal": "sreality",
+    "detected_at": "2026-07-24T08:55:43.102Z",
+    "presumed_rented_at": "2026-07-24T08:55:43.102Z",
+    "first_seen_at": "2026-07-12T19:43:47.895Z",
+    "last_seen_at": "2026-07-23T22:30:31.968Z",
+    "days_on_market": 12,
+    "price": 35000,
+    "sqm": 105,
+    "rooms": 4,
+    "property_type": "flat",
+    "address": "28. října, Moravská Ostrava, Ostrava",
+    "zone": "Moravská Ostrava",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/ostrava-moravska-ostrava-28-rijna/2819621708",
+    "lat": 49.8291641164823,
+    "lng": 18.2661750008016,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:43:47.895Z",
+        "price": 35000
+      }
+    ]
+  },
+  {
     "id": "sr_3545555020",
     "portal": "sreality",
     "detected_at": "2026-07-23T22:30:31.968Z",
