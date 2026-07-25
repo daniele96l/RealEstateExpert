@@ -1,5 +1,53 @@
 [
   {
+    "id": "sr_239394892",
+    "portal": "sreality",
+    "detected_at": "2026-07-25T08:21:28.217Z",
+    "presumed_rented_at": "2026-07-25T08:21:28.217Z",
+    "first_seen_at": "2026-07-22T08:38:59.470Z",
+    "last_seen_at": "2026-07-24T08:40:33.632Z",
+    "days_on_market": 3,
+    "price": 16000,
+    "sqm": 63,
+    "rooms": 3,
+    "property_type": "flat",
+    "address": "Buzulucká, Tábor, Tábor",
+    "zone": "Tábor",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/239394892?noredirect=1",
+    "lat": 49.422321,
+    "lng": 14.64604,
+    "price_history": [
+      {
+        "at": "2026-07-22T08:38:59.470Z",
+        "price": 16000
+      }
+    ]
+  },
+  {
+    "id": "sr_4288864332",
+    "portal": "sreality",
+    "detected_at": "2026-07-25T08:21:28.217Z",
+    "presumed_rented_at": "2026-07-25T08:21:28.217Z",
+    "first_seen_at": "2026-07-14T16:23:55.552Z",
+    "last_seen_at": "2026-07-24T08:40:33.632Z",
+    "days_on_market": 11,
+    "price": 13000,
+    "sqm": 35,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Dukelská, Sezimovo Ústí, Sezimovo Ústí",
+    "zone": "Sezimovo Ústí",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/4288864332?noredirect=1",
+    "lat": 49.377751,
+    "lng": 14.705876,
+    "price_history": [
+      {
+        "at": "2026-07-14T16:23:55.552Z",
+        "price": 13000
+      }
+    ]
+  },
+  {
     "id": "sr_576839756",
     "portal": "sreality",
     "detected_at": "2026-07-23T22:19:10.067Z",
