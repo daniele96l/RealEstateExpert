@@ -511,6 +511,114 @@ function OfferChartCard({
   );
 }
 
+function InventoryChart({
+  series,
+  i18nRoot,
+}: {
+  series: OccupancyOfferRatePoint[];
+  i18nRoot: string;
+}) {
+  const { t } = useI18n();
+  const chartData = useMemo(() => {
+    const values = series.map((point) => point.active_count);
+    const trend = linearTrend(values);
+    const average = movingAverage(values, 3);
+    return series.map((point, index) => ({
+      label: point.label,
+      fetched_at: point.fetched_at,
+      value: values[index]!,
+      trend: trend[index]!,
+      average: average[index],
+    }));
+  }, [series]);
+
+  const labels = useMemo(
+    () => ({
+      value: t(`${i18nRoot}.offerRate.seriesInventory`),
+      trend: t(`${i18nRoot}.offerRate.seriesTrend`),
+      average: t(`${i18nRoot}.offerRate.seriesAverage`),
+    }),
+    [i18nRoot, t],
+  );
+
+  return (
+    <div className="card overflow-hidden">
+      <div className="border-b border-surface-border/60 px-6 py-4">
+        <h3 className="text-base font-semibold text-neutral-900">
+          {t(`${i18nRoot}.offerRate.inventoryTitle`)}
+        </h3>
+        <p className="mt-1 text-sm text-neutral-600">
+          {t(`${i18nRoot}.offerRate.inventorySubtitle`)}
+        </p>
+        {series.length ? (
+          <div className="mt-3 flex flex-wrap gap-4 text-xs text-neutral-500">
+            <span>
+              {t(`${i18nRoot}.offerRate.latestActive`, {
+                count: series[series.length - 1]!.active_count,
+              })}
+            </span>
+          </div>
+        ) : null}
+      </div>
+      <div className="px-4 py-5 sm:px-6">
+        <div className="h-72 w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <ComposedChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
+              <CartesianGrid stroke={CHART_THEME.grid} strokeDasharray="3 3" />
+              <XAxis
+                dataKey="label"
+                tick={{ fill: CHART_THEME.axis, fontSize: 11 }}
+                axisLine={{ stroke: CHART_THEME.grid }}
+                tickLine={false}
+              />
+              <YAxis
+                allowDecimals={false}
+                tick={{ fill: CHART_THEME.axis, fontSize: 11 }}
+                axisLine={false}
+                tickLine={false}
+                width={44}
+              />
+              <Tooltip content={<OfferTooltip labels={labels} />} contentStyle={chartTooltipStyle} />
+              <Legend
+                wrapperStyle={{ fontSize: 12, color: CHART_THEME.axis }}
+                formatter={(value) => labels[value as keyof typeof labels] ?? value}
+              />
+              <Area
+                type="monotone"
+                dataKey="value"
+                name="value"
+                stroke={CHART_THEME.primary}
+                fill="rgba(15, 23, 42, 0.08)"
+                strokeWidth={2.25}
+                dot={false}
+                activeDot={{ r: 4 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="average"
+                name="average"
+                stroke={CHART_THEME.series.amber}
+                strokeWidth={1.75}
+                strokeDasharray="4 3"
+                dot={false}
+                connectNulls
+              />
+              <Line
+                type="linear"
+                dataKey="trend"
+                name="trend"
+                stroke={CHART_THEME.series.slate}
+                strokeWidth={2}
+                dot={false}
+              />
+            </ComposedChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function OccupancyOfferRateChart({
   series,
   operation = "rent",
@@ -569,6 +677,7 @@ export default function OccupancyOfferRateChart({
 
   return (
     <div className="space-y-6">
+      <InventoryChart series={series} i18nRoot={i18nRoot} />
       <OfferChartCard
         title={t(`${i18nRoot}.offerRate.title`)}
         subtitle={t(`${i18nRoot}.offerRate.subtitle`)}

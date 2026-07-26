@@ -727,6 +727,9 @@ const it = {
       ppsqmRemovedTitle: "Rimossi · prezzo medio/m²",
       ppsqmRemovedSubtitle:
         "Prezzo medio al m² degli annunci usciti tra un aggiornamento e l'altro.",
+      inventoryTitle: "Offerta totale nel tempo",
+      inventorySubtitle: "Annunci attivi a ogni aggiornamento — inventario complessivo.",
+      seriesInventory: "Annunci attivi",
       empty: "Servono almeno due aggiornamenti in giorni diversi per tracciare i nuovi annunci.",
       viewBreakdown: "Serie",
       viewTrend: "Trend",
@@ -1076,6 +1079,9 @@ const it = {
       ppsqmRemovedTitle: "Rimossi · prezzo medio/m²",
       ppsqmRemovedSubtitle:
         "Prezzo medio al m² degli annunci di vendita usciti tra un aggiornamento e l'altro.",
+      inventoryTitle: "Offerta totale nel tempo",
+      inventorySubtitle: "Annunci di vendita attivi a ogni aggiornamento — inventario complessivo.",
+      seriesInventory: "Annunci attivi",
       empty: "Servono almeno due aggiornamenti in giorni diversi per tracciare i nuovi annunci.",
       viewBreakdown: "Serie",
       viewTrend: "Trend",

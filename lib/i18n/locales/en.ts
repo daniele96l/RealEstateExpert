@@ -725,6 +725,9 @@ const en: Translations = {
       ppsqmRemovedTitle: "Removals · avg price/m²",
       ppsqmRemovedSubtitle:
         "Average asking price per m² of listings that left between refreshes.",
+      inventoryTitle: "Total offers over time",
+      inventorySubtitle: "Active listings on each refresh — overall market inventory.",
+      seriesInventory: "Active offers",
       empty: "Need at least two refreshes on different days to chart new offers.",
       viewBreakdown: "Breakdown",
       viewTrend: "Trend",
@@ -1074,6 +1077,9 @@ const en: Translations = {
       ppsqmRemovedTitle: "Removals · avg price/m²",
       ppsqmRemovedSubtitle:
         "Average asking price per m² of sale listings that left between refreshes.",
+      inventoryTitle: "Total offers over time",
+      inventorySubtitle: "Active sale listings on each refresh — overall inventory.",
+      seriesInventory: "Active offers",
       empty: "Need at least two refreshes on different days to chart new offers.",
       viewBreakdown: "Breakdown",
       viewTrend: "Trend",
