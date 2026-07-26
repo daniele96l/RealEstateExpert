@@ -26,7 +26,7 @@ export default function ModalShell({
   return (
     <div
       className={cn(
-        "fixed inset-0 z-[100] flex items-end justify-center bg-neutral-900/40 p-4 sm:items-center",
+        "fixed inset-0 z-[2000] flex items-end justify-center bg-neutral-900/40 p-4 sm:items-center",
         className,
       )}
       onClick={onClose}

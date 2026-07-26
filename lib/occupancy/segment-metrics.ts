@@ -14,6 +14,10 @@ import {
 } from "./aggregate";
 import { aggregatePostedOccupancyListings } from "./aggregate-posted";
 import type { OccupancyMetricsBasis } from "./metrics-basis";
+import {
+  DEFAULT_OCCUPANCY_OPERATION,
+  type OccupancyOperation,
+} from "./operation";
 import { zoneInventoryBasis } from "./tracking-window";
 
 interface SegmentBucket {
@@ -26,7 +30,7 @@ export function isOccupancyRoomListing(listing: OccupancyBasicListing): boolean 
   return type === "room" || type === "pokoj";
 }
 
-function priceBuckets(market: MarketId): SegmentBucket[] {
+function rentPriceBuckets(market: MarketId): SegmentBucket[] {
   if (market === "cz") {
     return [
       { id: "under_12000", match: (l) => l.price <= 12_000 },
@@ -43,6 +47,30 @@ function priceBuckets(market: MarketId): SegmentBucket[] {
     { id: "1000_1500", match: (l) => l.price > 1_000 && l.price <= 1_500 },
     { id: "over_1500", match: (l) => l.price > 1_500 },
   ];
+}
+
+/** Purchase-price bands for sale tracking (not monthly rent). */
+function salePriceBuckets(market: MarketId): SegmentBucket[] {
+  if (market === "cz") {
+    return [
+      { id: "under_5500000", match: (l) => l.price <= 5_500_000 },
+      { id: "5500000_7500000", match: (l) => l.price > 5_500_000 && l.price <= 7_500_000 },
+      { id: "7500000_10000000", match: (l) => l.price > 7_500_000 && l.price <= 10_000_000 },
+      { id: "10000000_13000000", match: (l) => l.price > 10_000_000 && l.price <= 13_000_000 },
+      { id: "over_13000000", match: (l) => l.price > 13_000_000 },
+    ];
+  }
+  return [
+    { id: "under_80000", match: (l) => l.price <= 80_000 },
+    { id: "80000_120000", match: (l) => l.price > 80_000 && l.price <= 120_000 },
+    { id: "120000_200000", match: (l) => l.price > 120_000 && l.price <= 200_000 },
+    { id: "200000_350000", match: (l) => l.price > 200_000 && l.price <= 350_000 },
+    { id: "over_350000", match: (l) => l.price > 350_000 },
+  ];
+}
+
+function priceBuckets(market: MarketId, operation: OccupancyOperation): SegmentBucket[] {
+  return operation === "sale" ? salePriceBuckets(market) : rentPriceBuckets(market);
 }
 
 function roomBuckets(market: MarketId): SegmentBucket[] {
@@ -87,6 +115,7 @@ export interface SegmentGroupOptions extends AggregateOccupancyOptions {
   avgActiveOccupancy: number | null;
   avgActiveTurnover: number | null;
   metricsBasis?: OccupancyMetricsBasis;
+  operation?: OccupancyOperation;
 }
 
 function buildGroup(
@@ -143,8 +172,12 @@ function buildGroup(
     .filter((row): row is OccupancySegmentMetrics => row != null);
 }
 
-function bucketsForGroup(group: OccupancySegmentGroupId, market: MarketId): SegmentBucket[] {
-  if (group === "price") return priceBuckets(market);
+function bucketsForGroup(
+  group: OccupancySegmentGroupId,
+  market: MarketId,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
+): SegmentBucket[] {
+  if (group === "price") return priceBuckets(market, operation);
   if (group === "rooms") return roomBuckets(market);
   if (group === "type") return TYPE_BUCKETS;
   return SIZE_BUCKETS;
@@ -154,8 +187,9 @@ export function getSegmentMatcher(
   group: OccupancySegmentGroupId,
   segmentId: string,
   market: MarketId,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): (listing: OccupancyBasicListing) => boolean {
-  const bucket = bucketsForGroup(group, market).find((entry) => entry.id === segmentId);
+  const bucket = bucketsForGroup(group, market, operation).find((entry) => entry.id === segmentId);
   return bucket?.match ?? (() => false);
 }
 
@@ -167,8 +201,16 @@ export function computeSegmentGroups(
   asOfMs: number,
   options: SegmentGroupOptions,
 ): OccupancySegmentGroups {
+  const operation = options.operation ?? DEFAULT_OCCUPANCY_OPERATION;
   return {
-    price: buildGroup(listings, priceBuckets(market), windowDays, turnoverDays, asOfMs, options),
+    price: buildGroup(
+      listings,
+      priceBuckets(market, operation),
+      windowDays,
+      turnoverDays,
+      asOfMs,
+      options,
+    ),
     rooms: buildGroup(listings, roomBuckets(market), windowDays, turnoverDays, asOfMs, options),
     size: buildGroup(listings, SIZE_BUCKETS, windowDays, turnoverDays, asOfMs, options),
     type: buildGroup(listings, TYPE_BUCKETS, windowDays, turnoverDays, asOfMs, options),

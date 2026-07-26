@@ -248,6 +248,7 @@ export async function computeOccupancyMetrics(
         avgActiveOccupancy: null,
         avgActiveTurnover: null,
         metricsBasis: "posted",
+        operation,
       },
     );
 
@@ -369,6 +370,7 @@ export async function computeOccupancyMetrics(
       cityActive: cityTotals.active_count,
       avgActiveOccupancy,
       avgActiveTurnover,
+      operation,
     },
   );
 

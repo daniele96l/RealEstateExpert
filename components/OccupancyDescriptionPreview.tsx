@@ -3,6 +3,10 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useI18n } from "@/lib/i18n/context";
+import {
+  occupancyI18nRoot,
+  type OccupancyOperation,
+} from "@/lib/occupancy/operation";
 import { ExternalLink, X } from "lucide-react";
 
 function shortenDescription(text: string, maxWords = 8): string {
@@ -17,13 +21,16 @@ export default function OccupancyDescriptionPreview({
   url,
   className,
   textClassName,
+  operation = "rent",
 }: {
   description: string | null | undefined;
   url?: string | null;
   className?: string;
   textClassName?: string;
+  operation?: OccupancyOperation;
 }) {
   const { t } = useI18n();
+  const i18nRoot = occupancyI18nRoot(operation);
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const full = description?.replace(/\s+/g, " ").trim() || "";
@@ -56,7 +63,7 @@ export default function OccupancyDescriptionPreview({
           className ??
           "max-w-full truncate text-left text-xs leading-snug text-sky-700 hover:text-sky-900 hover:underline"
         }
-        title={isTruncated ? t("occupancy.descriptionPreview.openHint") : full}
+        title={isTruncated ? t(`${i18nRoot}.descriptionPreview.openHint`) : full}
       >
         {preview}
       </button>
@@ -64,11 +71,11 @@ export default function OccupancyDescriptionPreview({
       {mounted && open
         ? createPortal(
             <div
-              className="fixed inset-0 z-[120] flex items-center justify-center bg-neutral-900/40 p-3"
+              className="fixed inset-0 z-[2020] flex items-center justify-center bg-neutral-900/40 p-3"
               onClick={() => setOpen(false)}
               role="dialog"
               aria-modal="true"
-              aria-label={t("occupancy.descriptionPreview.title")}
+              aria-label={t(`${i18nRoot}.descriptionPreview.title`)}
             >
               <div
                 className="card flex max-h-[min(80vh,32rem)] w-full max-w-xl flex-col overflow-hidden shadow-xl"
@@ -76,13 +83,13 @@ export default function OccupancyDescriptionPreview({
               >
                 <div className="flex shrink-0 items-center justify-between gap-3 border-b border-surface-border px-4 py-3">
                   <h3 className="text-sm font-semibold text-neutral-900">
-                    {t("occupancy.descriptionPreview.title")}
+                    {t(`${i18nRoot}.descriptionPreview.title`)}
                   </h3>
                   <button
                     type="button"
                     onClick={() => setOpen(false)}
                     className="rounded-lg p-1 text-neutral-500 hover:bg-neutral-100"
-                    aria-label={t("occupancy.descriptionPreview.close")}
+                    aria-label={t(`${i18nRoot}.descriptionPreview.close`)}
                   >
                     <X size={18} />
                   </button>
@@ -100,7 +107,7 @@ export default function OccupancyDescriptionPreview({
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-700 hover:text-sky-900 hover:underline"
                     >
-                      {t("occupancy.descriptionPreview.openListing")}
+                      {t(`${i18nRoot}.descriptionPreview.openListing`)}
                       <ExternalLink size={14} aria-hidden />
                     </a>
                   </div>

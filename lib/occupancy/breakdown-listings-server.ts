@@ -2,17 +2,23 @@ import type { TrackedRentalListing } from "@/lib/types";
 import { fetchSrealityListingDetailUrls } from "@/lib/server/sreality-search";
 import type { OccupancyCitySlug } from "./cities";
 import { registryBreakdownListings } from "./breakdown-listings";
-import { DEFAULT_OCCUPANCY_PORTAL, type OccupancyPortal } from "./constants";
+import {
+  DEFAULT_OCCUPANCY_OPERATION,
+  DEFAULT_OCCUPANCY_PORTAL,
+  type OccupancyOperation,
+  type OccupancyPortal,
+} from "./constants";
 import { listingUrlMapFromRentCache } from "./listings-preview";
 
 export async function buildBreakdownListings(
   listings: Record<string, TrackedRentalListing>,
   citySlug: OccupancyCitySlug,
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<TrackedRentalListing[]> {
   const [base, urlById] = await Promise.all([
     Promise.resolve(registryBreakdownListings(listings, citySlug)),
-    listingUrlMapFromRentCache(citySlug, portal),
+    listingUrlMapFromRentCache(citySlug, portal, operation),
   ]);
 
   let enriched = base.map((listing) => ({

@@ -2,6 +2,10 @@ import type { MarketId } from "@/lib/markets";
 import type { OccupancyBasicListing, OccupancySegmentGroupId, TrackedRentalListing } from "@/lib/types";
 import type { OccupancyCitySlug } from "./cities";
 import { withNormalizedPropertyType } from "./filtered-breakdown";
+import {
+  DEFAULT_OCCUPANCY_OPERATION,
+  type OccupancyOperation,
+} from "./operation";
 import { getSegmentMatcher } from "./segment-metrics";
 import { resolveListingZone } from "./zone";
 
@@ -23,11 +27,12 @@ export function filterActiveBreakdownListings(
   rowKey: string,
   citySlug: OccupancyCitySlug,
   market: MarketId,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): TrackedRentalListing[] {
   const matchesRow =
     group === "zone"
       ? (listing: OccupancyBasicListing) => listingInBreakdownZone(listing, rowKey, citySlug)
-      : getSegmentMatcher(group, rowKey, market);
+      : getSegmentMatcher(group, rowKey, market, operation);
 
   return listings.filter((listing) => listing.status === "active" && matchesRow(listing));
 }

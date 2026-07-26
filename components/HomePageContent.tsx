@@ -15,6 +15,8 @@ import RoiChart from "@/components/RoiChart";
 import ListingsExportPanel from "@/components/ListingsExportPanel";
 import OccupancyRatePanel from "@/components/OccupancyRatePanel";
 import OccupancyRemovalsLog from "@/components/OccupancyRemovalsLog";
+import SaleRatePanel from "@/components/SaleRatePanel";
+import SaleRateRemovalsLog from "@/components/SaleRateRemovalsLog";
 import MortgageSimulatorPanel from "@/components/MortgageSimulatorPanel";
 import SegmentedControl from "@/components/ui/SegmentedControl";
 import {
@@ -286,10 +288,13 @@ export default function HomePageContent() {
 
       <main className="mx-auto max-w-7xl bg-surface px-4 py-8 sm:px-6">
         {pageTab === "occupancy" ? (
-          <OccupancyRatePanel onDataMutated={() => setOccupancyLogRefresh((n) => n + 1)} />
-        ) : pageTab === "saleRate" ? (
           <OccupancyRatePanel
-            operation="sale"
+            key="occupancy-panel"
+            onDataMutated={() => setOccupancyLogRefresh((n) => n + 1)}
+          />
+        ) : pageTab === "saleRate" ? (
+          <SaleRatePanel
+            key="sale-panel"
             onDataMutated={() => setSaleRateLogRefresh((n) => n + 1)}
           />
         ) : pageTab === "mortgage" ? (
@@ -362,9 +367,9 @@ export default function HomePageContent() {
         )}
 
         {pageTab === "occupancy" ? (
-          <OccupancyRemovalsLog refreshToken={occupancyLogRefresh} />
+          <OccupancyRemovalsLog key="occupancy-removals" refreshToken={occupancyLogRefresh} />
         ) : pageTab === "saleRate" ? (
-          <OccupancyRemovalsLog refreshToken={saleRateLogRefresh} operation="sale" />
+          <SaleRateRemovalsLog key="sale-removals" refreshToken={saleRateLogRefresh} />
         ) : null}
       </main>
     </div>

@@ -35,6 +35,37 @@ function isRemovalRoom(event: OccupancyRemovalEvent): boolean {
   return normalizeOccupancyPropertyType(event) === "room";
 }
 
+function removalListingKind(
+  event: OccupancyRemovalEvent,
+): "entire_place" | "private_room" | "shared_bed" | "unknown" {
+  if (!isRemovalRoom(event)) return "entire_place";
+  const kind = parseRoomOccupancyKind(event.description);
+  if (kind === "private_room" || kind === "shared_bed") return kind;
+  return "unknown";
+}
+
+function RemovalKindBadge({
+  kind,
+  label,
+}: {
+  kind: "entire_place" | "private_room" | "shared_bed" | "unknown";
+  label: string;
+}) {
+  return (
+    <span
+      className={cn(
+        "inline-flex rounded-full border px-2 py-0.5 text-[10px] font-medium whitespace-nowrap",
+        kind === "entire_place" && "border-sky-200 bg-sky-50 text-sky-800",
+        kind === "private_room" && "border-emerald-200 bg-emerald-50 text-emerald-800",
+        kind === "shared_bed" && "border-amber-200 bg-amber-50 text-amber-900",
+        kind === "unknown" && "border-neutral-200 bg-neutral-50 text-neutral-600",
+      )}
+    >
+      {label}
+    </span>
+  );
+}
+
 function matchesRemovalFilters(
   event: OccupancyRemovalEvent,
   areaFilter: string,
@@ -129,8 +160,16 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
   }, [events, displayMarket]);
 
   const filteredEvents = useMemo(
-    () => events.filter((event) => matchesRemovalFilters(event, areaFilter, typeFilter, roomKindFilter)),
-    [events, areaFilter, typeFilter, roomKindFilter],
+    () =>
+      events.filter((event) =>
+        matchesRemovalFilters(
+          event,
+          areaFilter,
+          typeFilter,
+          operation === "rent" ? roomKindFilter : "all",
+        ),
+      ),
+    [events, areaFilter, typeFilter, roomKindFilter, operation],
   );
 
   const pageCount = Math.ceil(filteredEvents.length / PAGE_SIZE) || 1;
@@ -174,6 +213,9 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
     setPage((current) => Math.min(current, Math.max(0, pageCount - 1)));
   }, [pageCount]);
 
+  const showCzFilters =
+    displayMarket === "cz" || events.some((event) => event.id.startsWith("sr_"));
+
   return (
     <section className="card mt-6 overflow-hidden">
       <div className="border-b border-surface-border/60 px-6 py-4">
@@ -194,10 +236,10 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
           ) : null}
         </div>
         {!loading && !error && events.length > 0 ? (
-          <div className="mt-4 flex flex-wrap items-center gap-3">
+          <div className="mt-4 space-y-3">
             {zoneOptions.length > 0 ? (
               <label
-                className="inline-flex items-center gap-2 text-sm text-neutral-600"
+                className="inline-flex flex-wrap items-center gap-2 text-sm text-neutral-600"
                 htmlFor="occupancy-removals-area"
               >
                 <span>{ot("kpi.areaFilter")}</span>
@@ -205,7 +247,7 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
                   id="occupancy-removals-area"
                   value={areaFilter}
                   onChange={(e) => setAreaFilter(e.target.value)}
-                  className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                  className="min-w-[12rem] rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
                 >
                   <option value="all">{ot("kpi.allCity")}</option>
                   {zoneOptions.map((zone) => (
@@ -216,42 +258,44 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
                 </select>
               </label>
             ) : null}
-            {displayMarket === "cz" ? (
-              <label
-                className="inline-flex items-center gap-2 text-sm text-neutral-600"
-                htmlFor="occupancy-removals-type"
-              >
-                <span>{ot("kpi.typeFilter")}</span>
-                <select
-                  id="occupancy-removals-type"
-                  value={typeFilter}
-                  onChange={(e) => setTypeFilter(e.target.value as OccupancyTypeFilter)}
-                  className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+            {showCzFilters ? (
+              <div className="flex flex-wrap items-center gap-3">
+                <label
+                  className="inline-flex items-center gap-2 text-sm text-neutral-600"
+                  htmlFor="occupancy-removals-type"
                 >
-                  <option value="all">{ot("kpi.allTypes")}</option>
-                  <option value="flat">{ot("kpi.typeFlat")}</option>
-                  <option value="room">{ot("kpi.typeRoom")}</option>
-                </select>
-              </label>
-            ) : null}
-            {displayMarket === "cz" ? (
-              <label
-                className="inline-flex items-center gap-2 text-sm text-neutral-600"
-                htmlFor="occupancy-removals-room-kind"
-              >
-                <span>{ot("diff.roomKindFilter")}</span>
-                <select
-                  id="occupancy-removals-room-kind"
-                  value={roomKindFilter}
-                  onChange={(e) => setRoomKindFilter(e.target.value as RoomOccupancyKindFilter)}
-                  className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
-                >
-                  <option value="all">{ot("diff.allRoomKinds")}</option>
-                  <option value="private_room">{ot("diff.roomKindPrivate")}</option>
-                  <option value="shared_bed">{ot("diff.roomKindSharedBed")}</option>
-                  <option value="unknown">{ot("diff.roomKindUnknown")}</option>
-                </select>
-              </label>
+                  <span>{ot("kpi.typeFilter")}</span>
+                  <select
+                    id="occupancy-removals-type"
+                    value={typeFilter}
+                    onChange={(e) => setTypeFilter(e.target.value as OccupancyTypeFilter)}
+                    className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                  >
+                    <option value="all">{ot("kpi.allTypes")}</option>
+                    <option value="flat">{ot("kpi.typeFlat")}</option>
+                    <option value="room">{ot("kpi.typeRoom")}</option>
+                  </select>
+                </label>
+                {operation === "rent" ? (
+                  <label
+                    className="inline-flex items-center gap-2 text-sm text-neutral-600"
+                    htmlFor="occupancy-removals-room-kind"
+                  >
+                    <span>{ot("diff.roomKindFilter")}</span>
+                    <select
+                      id="occupancy-removals-room-kind"
+                      value={roomKindFilter}
+                      onChange={(e) => setRoomKindFilter(e.target.value as RoomOccupancyKindFilter)}
+                      className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                    >
+                      <option value="all">{ot("diff.allRoomKinds")}</option>
+                      <option value="private_room">{ot("diff.roomKindPrivate")}</option>
+                      <option value="shared_bed">{ot("diff.roomKindSharedBed")}</option>
+                      <option value="unknown">{ot("diff.roomKindUnknown")}</option>
+                    </select>
+                  </label>
+                ) : null}
+              </div>
             ) : null}
           </div>
         ) : null}
@@ -278,11 +322,22 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
                   <th className="px-4 py-3">{ot("removals.table.dom")}</th>
                   <th className="px-4 py-3">{ot("removals.table.priceHistory")}</th>
                   <th className="px-6 py-3">{ot("removals.table.address")}</th>
+                  <th className="px-4 py-3">{ot("removals.table.kind")}</th>
                   <th className="min-w-[14rem] px-6 py-3">{ot("removals.table.description")}</th>
                 </tr>
               </thead>
               <tbody>
-                {pageEvents.map((event) => (
+                {pageEvents.map((event) => {
+                  const kind = removalListingKind(event);
+                  const kindLabel =
+                    kind === "entire_place"
+                      ? ot("removals.table.entirePlace")
+                      : kind === "private_room"
+                        ? ot("removals.table.privateRoom")
+                        : kind === "shared_bed"
+                          ? ot("removals.table.sharedBed")
+                          : ot("removals.table.kindUnknown");
+                  return (
                   <tr
                     key={`${event.id}-${event.detected_at}`}
                     className="border-b border-surface-border/20 text-neutral-700 last:border-0"
@@ -307,14 +362,19 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
                       <p className="truncate text-neutral-700">{event.address ?? "—"}</p>
                       <p className="mt-0.5 truncate text-xs text-neutral-500">{event.id}</p>
                     </td>
+                    <td className="px-4 py-3">
+                      <RemovalKindBadge kind={kind} label={kindLabel} />
+                    </td>
                     <td className="max-w-xs px-6 py-3">
                       <OccupancyDescriptionPreview
                         description={event.description}
                         url={resolveOccupancyListingUrl(event)}
+                        operation={operation}
                       />
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>

@@ -711,6 +711,21 @@ const en: Translations = {
         status: "Status",
       },
     },
+
+    offerRate: {
+      title: "Offer rate over time",
+      subtitle:
+        "New listings pushed onto the market between refreshes, by type — what supply is being added.",
+      empty: "Need at least two refreshes on different days to chart new offers.",
+      seriesTotal: "New (all)",
+      seriesFlat: "New flats",
+      seriesRoom: "New rooms",
+      seriesOther: "New other",
+      seriesRemoved: "Removed",
+      totalNew: "{count} new across span",
+      totalRemoved: "{count} removed",
+      latestActive: "{count} active now",
+    },
     lastProvider: "Last provider",
     needsSnapshots:
       "At least 2 refreshes on different days are needed to estimate days on market, turnover, and occupancy.",
@@ -885,6 +900,11 @@ const en: Translations = {
         dom: "Days on market",
         priceHistory: "Price history",
         address: "Address",
+        kind: "Type",
+        entirePlace: "Entire place",
+        privateRoom: "Private room",
+        sharedBed: "Bed in shared room",
+        kindUnknown: "Unclear",
         description: "Description",
       },
     },
@@ -935,17 +955,17 @@ const en: Translations = {
     portalCasaScraper: "Casa.it (scraper)",
     portalSubitoScraper: "Subito.it (scraper)",
     portalSreality: "Sreality.cz",
-    portalImmobiliareHint: "No Immobiliare API snapshots yet — click Refresh data to start tracking.",
+    portalImmobiliareHint: "No Immobiliare sale snapshots yet — click Refresh data to start tracking.",
     portalImmobiliareScraperHint:
-      "No local scraper snapshots yet — click Refresh data to run reggio_rentals.",
+      "No local scraper snapshots yet — click Refresh data to start sale tracking.",
     portalIdealistaScraperHint:
-      "No Idealista (scraper) snapshots yet — click Refresh data to run Playwright.",
+      "No Idealista (scraper) snapshots yet — click Refresh data to run Playwright for sales.",
     portalCasaScraperHint:
-      "No Casa.it (scraper) snapshots yet — click Refresh data to run the scraper.",
+      "No Casa.it (scraper) snapshots yet — click Refresh data to run the sale scraper.",
     portalSubitoScraperHint:
-      "No Subito.it (scraper) snapshots yet — click Refresh data to run the scraper.",
+      "No Subito.it (scraper) snapshots yet — click Refresh data to run the sale scraper.",
     portalSrealityHint:
-      "No Sreality snapshots yet — click Refresh data to start tracking.",
+      "No Sreality sale snapshots yet — click Refresh data to start tracking.",
     refresh: "Refresh data",
     refreshing: "Refreshing…",
     refreshProgress: "Fetching listings…",
@@ -990,7 +1010,7 @@ const en: Translations = {
         density: "Density",
         densityHint: "Listing intensity per area",
         price: "Prices",
-        priceHint: "Color = average rent per m² per area",
+        priceHint: "Color = average sale price per m² per area",
         darkMap: "Dark",
         darkMapHint: "Dark base map",
       },
@@ -1024,9 +1044,24 @@ const en: Translations = {
         status: "Status",
       },
     },
+
+    offerRate: {
+      title: "Offer rate over time",
+      subtitle:
+        "New sale listings pushed onto the market between refreshes, by type — what inventory is being added.",
+      empty: "Need at least two refreshes on different days to chart new offers.",
+      seriesTotal: "New (all)",
+      seriesFlat: "New flats",
+      seriesRoom: "New rooms",
+      seriesOther: "New other",
+      seriesRemoved: "Removed",
+      totalNew: "{count} new across span",
+      totalRemoved: "{count} removed",
+      latestActive: "{count} active now",
+    },
     lastProvider: "Last provider",
     needsSnapshots:
-      "At least 2 refreshes on different days are needed to estimate days on market, turnover, and occupancy.",
+      "At least 2 refreshes on different days are needed to estimate days on market, turnover, and sell-through.",
     needsSnapshotsHistorical:
       "This snapshot only covers one day of tracking. Select a more recent refresh to see flow metrics.",
     earlyTrackingBanner:
@@ -1034,7 +1069,7 @@ const en: Translations = {
     disclaimer:
       "Sell-through rate from Idealista listings tracked over time. Removed listings are assumed sold.",
     disclaimerPosted:
-      "Metrics from portal publish dates on currently visible listings only. Turnover and occupancy are not shown in this mode.",
+      "Metrics from portal publish dates on currently visible listings only. Turnover and sell-through are not shown in this mode.",
     needsPostedDates:
       "No portal publish dates on active listings. Refresh data or use a portal that exposes publish dates (e.g. Sreality).",
     portalDatesBlockedImmobiliare:
@@ -1043,7 +1078,7 @@ const en: Translations = {
     refreshError: "Refresh failed",
     refreshSummary: "Fetched {fetched} listings · {newCount} new · {rented} presumed sold",
     breakdownTitle: "Areas & segments",
-    breakdownSubtitle: "Zones or metrics by rent band, room count, and floor area",
+    breakdownSubtitle: "Zones or metrics by purchase-price band, room count, and floor area",
     breakdownGroupZone: "Zones",
     breakdownRowCount: "{count} rows",
     breakdownDrilldownHint: "Click to view active listings",
@@ -1066,7 +1101,7 @@ const en: Translations = {
     areasTitle: "Areas",
     areasSubtitle: "Zones inferred from listing addresses",
     areaChart: {
-      title: "Average price by area",
+      title: "Average sale price by area",
       subtitle: "Visual comparison across zones — bars sorted from priciest to cheapest",
       modeRent: "Sale price",
       modePerSqm: "€/m²",
@@ -1081,11 +1116,11 @@ const en: Translations = {
     },
     noAreas: "No area data — run a refresh.",
     metricLegend:
-      "Colors: green = strong, amber = moderate, red = weak (occupancy ≥75% / ≥55%; turnover ≥1.2× / ≥0.7×).",
+      "Colors: green = strong, amber = moderate, red = weak (sell-through ≥75% / ≥55%; turnover ≥1.2× / ≥0.7×).",
     noSegments: "No data for this segment type.",
     segmentsTitle: "By segment",
-    segmentsSubtitle: "Metrics grouped by rent band, room count, or floor area",
-    segmentsGroupPrice: "Rent",
+    segmentsSubtitle: "Metrics grouped by purchase-price band, rooms, or floor area",
+    segmentsGroupPrice: "Sale price",
     segmentsGroupRooms: "Rooms",
     segmentsGroupType: "Type",
     segmentsGroupSize: "Size",
@@ -1101,6 +1136,16 @@ const en: Translations = {
         "18000_25000": "18,001–25,000 CZK",
         "25000_35000": "25,001–35,000 CZK",
         over_35000: "> 35,000 CZK",
+        under_80000: "≤ €80,000",
+        "80000_120000": "€80,001–120,000",
+        "120000_200000": "€120,001–200,000",
+        "200000_350000": "€200,001–350,000",
+        over_350000: "> €350,000",
+        under_5500000: "≤ 5.5M CZK",
+        "5500000_7500000": "5.5–7.5M CZK",
+        "7500000_10000000": "7.5–10M CZK",
+        "10000000_13000000": "10–13M CZK",
+        over_13000000: "> 13M CZK",
       },
       rooms: {
         pokoj: "Pokoj (room)",
@@ -1155,7 +1200,7 @@ const en: Translations = {
         "{rented} sold ÷ {inventory} avg active ({days}d). 1.0× = one full inventory cycle.",
       occupancy: "Sell-through rate · {period}",
       occupancyHint:
-        "Sold in the {period} view ÷ (avg active + rented). Only listings tracked at least 1 day before removal.",
+        "Sold in the {period} view ÷ (avg active + sold). Only listings tracked at least 1 day before removal.",
     },
     table: {
       zone: "Area",
@@ -1175,7 +1220,7 @@ const en: Translations = {
         "Inventory cycles in the {period} view. Ratio: presumed sales ÷ avg active listings ({days}d). 1.0× ≈ one full cycle.",
       occupancy: "Sell-through",
       occupancyHint:
-        "Estimated share in the {period} view: sold ÷ (avg active + rented). Only removals after at least 1 day online.",
+        "Estimated share in the {period} view: sold ÷ (avg active + sold). Only removals after at least 1 day online.",
       periodLabelDaily: "daily (1d)",
       periodLabelWeekly: "weekly ({days}d)",
       periodLabelMonthly: "monthly ({days}d)",
@@ -1193,17 +1238,22 @@ const en: Translations = {
       table: {
         detected: "Detected",
         zone: "Zone",
-        rent: "Rent",
+        rent: "Sale price",
         rentPerSqm: "€/m²",
         dom: "Days on market",
         priceHistory: "Price history",
         address: "Address",
+        kind: "Type",
+        entirePlace: "Entire place",
+        privateRoom: "Private room",
+        sharedBed: "Bed in shared room",
+        kindUnknown: "Unclear",
         description: "Description",
       },
     },
     preview: {
       title: "Cached sales preview",
-      subtitle: "Latest locally saved sale listings (Idealista map cache)",
+      subtitle: "Latest locally saved sale listings (map cache)",
       snapshotTitle: "Listings at snapshot",
       snapshotSubtitle: "Active listings from the selected scrape",
       cachedAt: "Cached on",

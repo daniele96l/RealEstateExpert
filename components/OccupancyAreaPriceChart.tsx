@@ -15,6 +15,10 @@ import {
 } from "recharts";
 import type { OccupancyAreaPreview } from "@/lib/types";
 import type { MarketId } from "@/lib/markets";
+import {
+  occupancyI18nRoot,
+  type OccupancyOperation,
+} from "@/lib/occupancy/operation";
 import { cn, fmtMoney } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
 
@@ -33,6 +37,7 @@ interface Props {
   market?: MarketId;
   cityAvgRent?: number | null;
   cityAvgPerSqm?: number | null;
+  operation?: OccupancyOperation;
 }
 
 interface ChartRow {
@@ -113,8 +118,10 @@ export default function OccupancyAreaPriceChart({
   market = "it",
   cityAvgRent,
   cityAvgPerSqm,
+  operation = "rent",
 }: Props) {
   const { t } = useI18n();
+  const i18nRoot = occupancyI18nRoot(operation);
   const [mode, setMode] = useState<ChartMode>(() => defaultMode(areas));
 
   useEffect(() => {
@@ -159,7 +166,7 @@ export default function OccupancyAreaPriceChart({
   if (!rows.length) {
     return (
       <div className="flex h-40 items-center justify-center px-6 text-sm text-neutral-500">
-        {t("occupancy.areaChart.empty")}
+        {t(`${i18nRoot}.areaChart.empty`)}
       </div>
     );
   }
@@ -171,8 +178,8 @@ export default function OccupancyAreaPriceChart({
     <div className="px-6 py-5">
       <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h3 className="text-base font-semibold text-neutral-900">{t("occupancy.areaChart.title")}</h3>
-          <p className="mt-1 text-sm text-neutral-600">{t("occupancy.areaChart.subtitle")}</p>
+          <h3 className="text-base font-semibold text-neutral-900">{t(`${i18nRoot}.areaChart.title`)}</h3>
+          <p className="mt-1 text-sm text-neutral-600">{t(`${i18nRoot}.areaChart.subtitle`)}</p>
         </div>
         <div className="inline-flex rounded-lg border border-surface-border/60 bg-neutral-50 p-1">
           <button
@@ -185,7 +192,7 @@ export default function OccupancyAreaPriceChart({
                 : "text-neutral-600 hover:text-neutral-800",
             )}
           >
-            {t("occupancy.areaChart.modePerSqm")}
+            {t(`${i18nRoot}.areaChart.modePerSqm`)}
           </button>
           <button
             type="button"
@@ -197,7 +204,7 @@ export default function OccupancyAreaPriceChart({
                 : "text-neutral-600 hover:text-neutral-800",
             )}
           >
-            {t("occupancy.areaChart.modeRent")}
+            {t(`${i18nRoot}.areaChart.modeRent`)}
           </button>
         </div>
       </div>
@@ -205,16 +212,16 @@ export default function OccupancyAreaPriceChart({
       <div className="mb-4 grid gap-3 sm:grid-cols-3">
         <div className="rounded-xl border border-green-200 bg-green-50 px-4 py-3">
           <p className="text-xs uppercase tracking-wide text-green-700/80">
-            {t("occupancy.areaChart.cheapest")}
+            {t(`${i18nRoot}.areaChart.cheapest`)}
           </p>
           <p className="mt-1 truncate text-sm font-medium text-neutral-800">{cheapest?.shortZone}</p>
           <p className="mt-0.5 text-lg font-bold text-green-700">{cheapest?.displayValue}</p>
         </div>
         <div className="rounded-xl border border-sky-500/20 bg-sky-500/5 px-4 py-3">
           <p className="text-xs uppercase tracking-wide text-sky-300/80">
-            {t("occupancy.areaChart.cityAvg")}
+            {t(`${i18nRoot}.areaChart.cityAvg`)}
           </p>
-          <p className="mt-1 text-sm text-neutral-600">{t("occupancy.areaChart.allAreas")}</p>
+          <p className="mt-1 text-sm text-neutral-600">{t(`${i18nRoot}.areaChart.allAreas`)}</p>
           <p className="mt-0.5 text-lg font-bold text-sky-300">
             {resolvedCityAvg != null
               ? mode === "rent"
@@ -225,7 +232,7 @@ export default function OccupancyAreaPriceChart({
         </div>
         <div className="rounded-xl border border-rose-500/20 bg-rose-500/5 px-4 py-3">
           <p className="text-xs uppercase tracking-wide text-rose-300/80">
-            {t("occupancy.areaChart.priciest")}
+            {t(`${i18nRoot}.areaChart.priciest`)}
           </p>
           <p className="mt-1 truncate text-sm font-medium text-neutral-800">{priciest?.shortZone}</p>
           <p className="mt-0.5 text-lg font-bold text-rose-300">{priciest?.displayValue}</p>
@@ -233,9 +240,9 @@ export default function OccupancyAreaPriceChart({
       </div>
 
       <div className="flex items-center gap-2 text-[11px] text-neutral-500">
-        <span>{t("occupancy.areaChart.scaleLow")}</span>
+        <span>{t(`${i18nRoot}.areaChart.scaleLow`)}</span>
         <div className="h-2 flex-1 rounded-full bg-gradient-to-r from-emerald-400 via-sky-400 to-rose-400" />
-        <span>{t("occupancy.areaChart.scaleHigh")}</span>
+        <span>{t(`${i18nRoot}.areaChart.scaleHigh`)}</span>
       </div>
 
       <div className="mt-3" style={{ height: chartHeight }}>
@@ -270,9 +277,9 @@ export default function OccupancyAreaPriceChart({
                 <ChartTooltip
                   perSqmLabel={perSqmLabel}
                   market={market}
-                  listingsLabel={t("occupancy.areaChart.listings")}
-                  avgRentLabel={t("occupancy.table.avgRent")}
-                  perSqmFullLabel={t("occupancy.table.avgRentPerSqm")}
+                  listingsLabel={t(`${i18nRoot}.areaChart.listings`)}
+                  avgRentLabel={t(`${i18nRoot}.table.avgRent`)}
+                  perSqmFullLabel={t(`${i18nRoot}.table.avgRentPerSqm`)}
                 />
               }
             />

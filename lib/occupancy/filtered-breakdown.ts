@@ -9,6 +9,7 @@ import type { OccupancyCitySlug } from "./cities";
 import { aggregateOccupancyListings } from "./aggregate";
 import { aggregatePostedOccupancyListings } from "./aggregate-posted";
 import type { OccupancyMetricsBasis } from "./metrics-basis";
+import type { OccupancyOperation } from "./operation";
 import { isOccupancyRoomListing, computeSegmentGroups } from "./segment-metrics";
 import { resolveListingZone } from "./zone";
 import {
@@ -132,6 +133,7 @@ export function buildFilteredSegments(
     metricsBasis: OccupancyMetricsBasis;
     flowMetricsReady: boolean;
     windowStartMs?: number;
+    operation?: OccupancyOperation;
   },
 ): OccupancySegmentGroups {
   const cityActive = listings.filter((l) => l.status === "active").length;
@@ -153,6 +155,7 @@ export function buildFilteredSegments(
       avgActiveOccupancy: null,
       avgActiveTurnover: null,
       metricsBasis: opts.metricsBasis,
+      operation: opts.operation,
     },
   );
 }

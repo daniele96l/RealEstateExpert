@@ -94,6 +94,12 @@
   display: none;
 }
 
+/* Keep Leaflet panes inside the map stacking context so they don't cover app modals. */
+.leaflet-container {
+  z-index: 0;
+  isolation: isolate;
+}
+
 .leaflet-draw-toolbar a {
   background-image: url("/leaflet-draw/images/spritesheet.svg") !important;
   background-size: 300px 30px !important;

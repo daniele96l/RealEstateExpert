@@ -668,7 +668,7 @@ export default function OccupancyMinimap({
       {expanded && mounted
         ? createPortal(
             <div
-              className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-900/40 p-4 "
+              className="fixed inset-0 z-[2000] flex items-center justify-center bg-neutral-900/40 p-4 "
               onClick={() => setExpanded(false)}
               role="dialog"
               aria-modal="true"

@@ -145,7 +145,7 @@ function SnapshotEditModal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[110] flex items-center justify-center bg-neutral-900/40 p-3"
+      className="fixed inset-0 z-[2010] flex items-center justify-center bg-neutral-900/40 p-3"
       onClick={onClose}
       role="dialog"
       aria-modal="true"

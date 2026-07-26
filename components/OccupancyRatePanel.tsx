@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { fetchOccupancyMetrics, refreshOccupancySnapshot } from "@/lib/api";
 import { filterActiveBreakdownListings, type BreakdownGroupId } from "@/lib/occupancy/breakdown-listings";
@@ -36,6 +36,7 @@ import type {
   OccupancyListingsPreview,
   OccupancyListingChangeStatus,
   OccupancyMapListing,
+  OccupancyOfferRatePoint,
   OccupancySegmentGroupId,
   OccupancySegmentMetrics,
   OccupancySnapshotDiff,
@@ -46,6 +47,7 @@ import type {
 import { fmtMoney } from "@/lib/utils";
 import { Activity, CalendarDays, MapPin, RefreshCw, X } from "lucide-react";
 import OccupancyAreaPriceChart from "@/components/OccupancyAreaPriceChart";
+import OccupancyOfferRateChart from "@/components/OccupancyOfferRateChart";
 import OccupancyDescriptionPreview from "@/components/OccupancyDescriptionPreview";
 import OccupancySnapshotManagePanel from "@/components/OccupancySnapshotManagePanel";
 import { importWithChunkRetry } from "@/lib/chunk-retry-import";
@@ -524,6 +526,7 @@ function BreakdownListingsModal({
   occupancyMarket,
   showDom,
   asOfMs,
+  operation = "rent",
 }: {
   drillDown: BreakdownDrillDown;
   listings: TrackedRentalListing[];
@@ -533,6 +536,7 @@ function BreakdownListingsModal({
   occupancyMarket: import("@/lib/markets").MarketId;
   showDom: boolean;
   asOfMs: number;
+  operation?: OccupancyOperation;
 }) {
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -549,7 +553,7 @@ function BreakdownListingsModal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-900/40 p-3"
+      className="fixed inset-0 z-[2000] flex items-center justify-center bg-neutral-900/40 p-3"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -656,6 +660,7 @@ function BreakdownListingsModal({
                           <OccupancyDescriptionPreview
                             description={listing.description}
                             url={listingUrl}
+                            operation={operation}
                             textClassName="text-[10px] text-neutral-400"
                             className="max-w-full truncate text-left text-[10px] leading-snug text-sky-700 hover:text-sky-900 hover:underline"
                           />
@@ -739,6 +744,7 @@ export default function OccupancyRatePanel({
   const [metrics, setMetrics] = useState<OccupancyCityMetrics | null>(null);
   const [listingsPreview, setListingsPreview] = useState<OccupancyListingsPreview | null>(null);
   const [snapshotDiff, setSnapshotDiff] = useState<OccupancySnapshotDiff | null>(null);
+  const [offerRateSeries, setOfferRateSeries] = useState<OccupancyOfferRatePoint[]>([]);
   const [mapListings, setMapListings] = useState<OccupancyMapListing[]>([]);
   const [diffFilter, setDiffFilter] = useState<DiffFilter>("all");
   const [diffAreaFilter, setDiffAreaFilter] = useState<string>("all");
@@ -757,6 +763,7 @@ export default function OccupancyRatePanel({
   const [citySlug, setCitySlug] = useState<OccupancyCitySlug>(readStoredCity);
   const cityConfig = getOccupancyCityConfig(citySlug);
   const occupancyMarket = cityConfig.market;
+  const showRoomKindFilters = operation === "rent" && occupancyMarket === "cz";
   const [portal, setPortal] = useState<OccupancyPortal>(() => readStoredPortal(readStoredCity()));
   const [availableSnapshots, setAvailableSnapshots] = useState<OccupancySnapshotSummary[]>([]);
   const [selectedSnapshotAt, setSelectedSnapshotAt] = useState<string | null>(null);
@@ -769,19 +776,21 @@ export default function OccupancyRatePanel({
   const [breakdownListings, setBreakdownListings] = useState<TrackedRentalListing[]>([]);
   const [breakdownDrillDown, setBreakdownDrillDown] = useState<BreakdownDrillDown | null>(null);
   const [drillDownMounted, setDrillDownMounted] = useState(false);
+  const loadSeqRef = useRef(0);
 
   const applyDashboardData = useCallback((data: OccupancyDashboardData) => {
     setMetrics(data.metrics);
     setListingsPreview(data.listings_preview);
     setSnapshotDiff(data.snapshot_diff);
+    setOfferRateSeries(data.offer_rate_series ?? []);
     setMapListings(data.map_listings);
     setBreakdownListings(data.breakdown_listings ?? []);
     setAvailableSnapshots(data.available_snapshots);
     setSelectedSnapshotAt(data.selected_snapshot_at);
     setPortal(data.selected_portal);
     setCitySlug(data.selected_city);
-    setMetricsPeriod(data.selected_metrics_period);
-    setMetricsBasis(data.selected_metrics_basis);
+    // Keep client-owned basis/period — overwriting from a stale in-flight response
+    // snaps the toggle buttons back and makes them look broken.
     setDiffFilter("all");
     setDiffAreaFilter("all");
     setDiffTypeFilter("all");
@@ -799,17 +808,38 @@ export default function OccupancyRatePanel({
     const activeCity = cityArg ?? citySlug;
     const activePeriod = periodArg ?? metricsPeriod;
     const activeBasis = basisArg ?? metricsBasis;
+    const seq = ++loadSeqRef.current;
     setLoading(true);
     setError(null);
     try {
       const data = await fetchOccupancyMetrics(asOf, activePortal, activeCity, activePeriod, activeBasis, operation);
+      if (seq !== loadSeqRef.current) return;
       applyDashboardData(data);
     } catch (err) {
+      if (seq !== loadSeqRef.current) return;
       setError(err instanceof Error ? err.message : ot("loadError"));
     } finally {
-      setLoading(false);
+      if (seq === loadSeqRef.current) setLoading(false);
     }
-  }, [portal, citySlug, metricsPeriod, metricsBasis, t, applyDashboardData]);
+  }, [portal, citySlug, metricsPeriod, metricsBasis, operation, ot, applyDashboardData]);
+
+  useEffect(() => {
+    setMetrics(null);
+    setListingsPreview(null);
+    setSnapshotDiff(null);
+    setOfferRateSeries([]);
+    setMapListings([]);
+    setBreakdownListings([]);
+    setAvailableSnapshots([]);
+    setSelectedSnapshotAt(null);
+    setBreakdownDrillDown(null);
+    setLastRefreshSummary(null);
+    setLastRefreshWarning(null);
+    setError(null);
+    setMetricsAreaFilter("all");
+    setMetricsTypeFilter("all");
+    setMetricsRoomKindFilter("all");
+  }, [operation]);
 
   useEffect(() => {
     if (!selectedSnapshotAt) return;
@@ -858,7 +888,7 @@ export default function OccupancyRatePanel({
 
   useEffect(() => {
     setBreakdownPage(0);
-  }, [breakdownGroup, citySlug, portal, selectedSnapshotAt, metrics?.updated_at, metricsAreaFilter, metricsTypeFilter]);
+  }, [breakdownGroup, citySlug, portal, selectedSnapshotAt, metrics?.updated_at, metricsAreaFilter, metricsTypeFilter, metricsRoomKindFilter]);
 
   useEffect(() => {
     setBreakdownDrillDown(null);
@@ -880,12 +910,7 @@ export default function OccupancyRatePanel({
       });
       setSelectedSnapshotAt(null);
       const latest = await fetchOccupancyMetrics(null, portal, citySlug, metricsPeriod, metricsBasis, operation);
-      setMetrics(latest.metrics);
-      setListingsPreview(latest.listings_preview);
-      setSnapshotDiff(latest.snapshot_diff);
-      setMapListings(latest.map_listings);
-      setBreakdownListings(latest.breakdown_listings ?? []);
-      setAvailableSnapshots(latest.available_snapshots);
+      applyDashboardData(latest);
       setLastRefreshSummary(
         ot("refreshSummary", {
           fetched: result.fetched_count,
@@ -907,11 +932,22 @@ export default function OccupancyRatePanel({
 
   const perSqmLabel = t("listings.perSqm");
   const areaPriceAreas = listingsPreview?.areas ?? [];
-  const showAreaPriceChart = areaPriceAreas.some(
+  const metricsAlreadyShowAreaPrices = (metrics?.areas ?? []).some(
     (area) =>
       (area.avg_price != null && area.avg_price > 0) ||
       (area.avg_price_per_sqm != null && area.avg_price_per_sqm > 0),
   );
+  // Chart is only a fallback for snapshot previews — skip when the areas table
+  // already has prices, and skip map-cache previews (common on Sale Rate before
+  // the first sale tracking refresh).
+  const showAreaPriceChart =
+    !metricsAlreadyShowAreaPrices &&
+    listingsPreview?.source === "occupancy_snapshot" &&
+    areaPriceAreas.some(
+      (area) =>
+        (area.avg_price != null && area.avg_price > 0) ||
+        (area.avg_price_per_sqm != null && area.avg_price_per_sqm > 0),
+    );
 
   const isPostedBasis = metricsBasis === "posted";
   const portalListingSample =
@@ -980,7 +1016,7 @@ export default function OccupancyRatePanel({
         areaFilter: diffAreaFilter,
         typeFilter: diffTypeFilter,
         roomsFilter: diffRoomsFilter,
-        roomKindFilter: diffRoomKindFilter,
+        roomKindFilter: showRoomKindFilters ? diffRoomKindFilter : "all",
         applyTypeFilter: occupancyMarket === "cz",
       }),
     );
@@ -991,6 +1027,7 @@ export default function OccupancyRatePanel({
     diffRoomsFilter,
     diffRoomKindFilter,
     occupancyMarket,
+    showRoomKindFilters,
   ]);
 
   const filteredDiffListings: OccupancySnapshotListing[] =
@@ -1051,14 +1088,14 @@ export default function OccupancyRatePanel({
   const filtersActive =
     metricsAreaFilter !== "all" ||
     (occupancyMarket === "cz" && metricsTypeFilter !== "all") ||
-    (occupancyMarket === "cz" && metricsRoomKindFilter !== "all");
+    (showRoomKindFilters && metricsRoomKindFilter !== "all");
 
   const filteredBreakdownListings = useMemo(() => {
     if (!filtersActive) return breakdownListings;
     return filterOccupancyListings(breakdownListings, {
       areaFilter: metricsAreaFilter,
       typeFilter: occupancyMarket === "cz" ? metricsTypeFilter : "all",
-      roomKindFilter: occupancyMarket === "cz" ? metricsRoomKindFilter : "all",
+      roomKindFilter: showRoomKindFilters ? metricsRoomKindFilter : "all",
       citySlug,
     });
   }, [
@@ -1069,6 +1106,7 @@ export default function OccupancyRatePanel({
     metricsRoomKindFilter,
     metricsTypeFilter,
     occupancyMarket,
+    showRoomKindFilters,
   ]);
 
   const filteredAreas = useMemo(() => {
@@ -1096,8 +1134,9 @@ export default function OccupancyRatePanel({
       windowStartMs: metrics.tracking_started_at
         ? Date.parse(metrics.tracking_started_at)
         : undefined,
+      operation,
     });
-  }, [filteredBreakdownListings, filtersActive, metrics, occupancyMarket]);
+  }, [filteredBreakdownListings, filtersActive, metrics, occupancyMarket, operation]);
 
   const breakdownRows = useMemo((): BreakdownRow[] => {
     if (!metrics) return [];
@@ -1132,8 +1171,9 @@ export default function OccupancyRatePanel({
       breakdownDrillDown.rowKey,
       citySlug,
       occupancyMarket,
+      operation,
     );
-  }, [breakdownDrillDown, filteredBreakdownListings, citySlug, occupancyMarket]);
+  }, [breakdownDrillDown, filteredBreakdownListings, citySlug, occupancyMarket, operation]);
 
   useEffect(() => {
     setBreakdownPage((current) => Math.min(current, Math.max(0, breakdownPageCount - 1)));
@@ -1601,6 +1641,7 @@ export default function OccupancyRatePanel({
                         <OccupancyDescriptionPreview
                           description={description}
                           url={resolveOccupancyListingUrl(listing)}
+                          operation={operation}
                         />
                       </td>
                       <td className="px-4 py-3">{listing.sqm ?? "—"}</td>
@@ -1708,7 +1749,7 @@ export default function OccupancyRatePanel({
                   </select>
                 </label>
               ) : null}
-              {occupancyMarket === "cz" ? (
+              {showRoomKindFilters ? (
                 <label
                   className="inline-flex items-center gap-2 text-sm text-neutral-600"
                   htmlFor="occupancy-diff-room-kind"
@@ -1816,6 +1857,7 @@ export default function OccupancyRatePanel({
                           <OccupancyDescriptionPreview
                           description={description}
                           url={resolveOccupancyListingUrl(listing)}
+                          operation={operation}
                         />
                         </div>
                       </td>
@@ -1913,7 +1955,7 @@ export default function OccupancyRatePanel({
                         : "border-surface-border/60 bg-neutral-50 text-neutral-600 hover:text-neutral-800",
                     )}
                   >
-                    {t(`occupancy.kpi.${labelKey}`)}
+                    {ot(`kpi.${labelKey}`)}
                   </button>
                 ))}
               </div>
@@ -1931,7 +1973,7 @@ export default function OccupancyRatePanel({
                         : "border-surface-border/60 bg-neutral-50 text-neutral-600 hover:text-neutral-800",
                     )}
                   >
-                    {t(`occupancy.kpi.${labelKey}`)}
+                    {ot(`kpi.${labelKey}`)}
                   </button>
                 ))}
               </div>
@@ -1973,7 +2015,7 @@ export default function OccupancyRatePanel({
                   </select>
                 </label>
               ) : null}
-              {occupancyMarket === "cz" ? (
+              {showRoomKindFilters ? (
                 <label
                   className="inline-flex items-center gap-2 text-sm text-neutral-600"
                   htmlFor="occupancy-metrics-room-kind"
@@ -2114,11 +2156,54 @@ export default function OccupancyRatePanel({
                           : "border-surface-border/60 bg-neutral-50 text-neutral-600 hover:text-neutral-800",
                       )}
                     >
-                      {t(`occupancy.${labelKey}`)}
+                      {ot(labelKey)}
                     </button>
                   ))}
                 </div>
               </div>
+              {occupancyMarket === "cz" ? (
+                <div className="mt-3 flex flex-wrap items-center gap-3">
+                  <label
+                    className="inline-flex items-center gap-2 text-sm text-neutral-600"
+                    htmlFor="occupancy-breakdown-type"
+                  >
+                    <span>{ot("kpi.typeFilter")}</span>
+                    <select
+                      id="occupancy-breakdown-type"
+                      value={metricsTypeFilter}
+                      onChange={(e) =>
+                        setMetricsTypeFilter(e.target.value as OccupancyTypeFilter)
+                      }
+                      className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                    >
+                      <option value="all">{ot("kpi.allTypes")}</option>
+                      <option value="flat">{ot("kpi.typeFlat")}</option>
+                      <option value="room">{ot("kpi.typeRoom")}</option>
+                    </select>
+                  </label>
+                  {showRoomKindFilters ? (
+                    <label
+                      className="inline-flex items-center gap-2 text-sm text-neutral-600"
+                      htmlFor="occupancy-breakdown-room-kind"
+                    >
+                      <span>{ot("diff.roomKindFilter")}</span>
+                      <select
+                        id="occupancy-breakdown-room-kind"
+                        value={metricsRoomKindFilter}
+                        onChange={(e) =>
+                          setMetricsRoomKindFilter(e.target.value as RoomOccupancyKindFilter)
+                        }
+                        className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                      >
+                        <option value="all">{ot("diff.allRoomKinds")}</option>
+                        <option value="private_room">{ot("diff.roomKindPrivate")}</option>
+                        <option value="shared_bed">{ot("diff.roomKindSharedBed")}</option>
+                        <option value="unknown">{ot("diff.roomKindUnknown")}</option>
+                      </select>
+                    </label>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm">
@@ -2292,6 +2377,14 @@ export default function OccupancyRatePanel({
         </>
       ) : null}
 
+      {!loading ? (
+        <OccupancyOfferRateChart
+          series={offerRateSeries}
+          operation={operation}
+          showRoomSeries={occupancyMarket === "cz"}
+        />
+      ) : null}
+
       {!loading && showAreaPriceChart ? (
         <div className="card overflow-hidden">
           <OccupancyAreaPriceChart
@@ -2300,6 +2393,7 @@ export default function OccupancyRatePanel({
             market={occupancyMarket}
             cityAvgRent={listingsPreview?.avg_price}
             cityAvgPerSqm={listingsPreview?.avg_price_per_sqm}
+            operation={operation}
           />
         </div>
       ) : null}
@@ -2313,6 +2407,7 @@ export default function OccupancyRatePanel({
           perSqmLabel={perSqmLabel}
           occupancyMarket={occupancyMarket}
           showDom={!isPostedBasis}
+          operation={operation}
           asOfMs={
             metrics?.updated_at
               ? new Date(metrics.updated_at).getTime()

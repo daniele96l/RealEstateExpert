@@ -2,6 +2,7 @@ import { computeOccupancyMetrics } from "./metrics";
 import { buildBreakdownListings } from "./breakdown-listings-server";
 import { buildMapListings } from "./map-listings";
 import { buildPreviewFromSnapshot, resolveListingsPreview } from "./listings-preview";
+import { buildOfferRateSeries } from "./offer-rate-series";
 import { listSnapshotSummaries, loadAllSnapshots, loadRegistry } from "./registry";
 import { computeSnapshotDiff } from "./snapshot-diff";
 import { rebuildRegistryFromSnapshots } from "./snapshot";
@@ -115,7 +116,13 @@ export async function loadOccupancyDashboard(
 
   const snapshot_diff = resolveSnapshotDiff(allSnapshots, selected);
   const map_listings = buildMapListings(snapshot_diff, allSnapshots, selected);
-  const breakdown_listings = await buildBreakdownListings(registry.listings, citySlug, portal);
+  const breakdown_listings = await buildBreakdownListings(
+    registry.listings,
+    citySlug,
+    portal,
+    operation,
+  );
+  const offer_rate_series = buildOfferRateSeries(allSnapshots);
 
   const descriptionById = new Map(
     Object.values(registry.listings)
@@ -161,6 +168,7 @@ export async function loadOccupancyDashboard(
     map_listings,
     breakdown_listings,
     available_snapshots,
+    offer_rate_series,
     selected_snapshot_at: selected,
     selected_portal: portal,
     selected_city: citySlug,

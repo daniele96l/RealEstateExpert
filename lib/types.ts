@@ -409,6 +409,18 @@ export interface OccupancySnapshotDiff {
   listings: OccupancySnapshotListing[];
 }
 
+/** New listings between consecutive snapshots — market offer pulse. */
+export interface OccupancyOfferRatePoint {
+  fetched_at: string;
+  label: string;
+  new_total: number;
+  new_flat: number;
+  new_room: number;
+  new_other: number;
+  removed_total: number;
+  active_count: number;
+}
+
 /** Logged when a listing disappears from the portal (presumed rented). */
 export interface OccupancyRemovalEvent {
   id: string;
@@ -494,6 +506,7 @@ export interface OccupancyDashboardData {
   map_listings: OccupancyMapListing[];
   breakdown_listings: TrackedRentalListing[];
   available_snapshots: OccupancySnapshotSummary[];
+  offer_rate_series: OccupancyOfferRatePoint[];
   selected_snapshot_at: string | null;
   selected_portal: OccupancyPortal;
   selected_city: import("@/lib/occupancy/cities").OccupancyCitySlug;

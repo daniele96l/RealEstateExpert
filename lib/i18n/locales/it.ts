@@ -713,6 +713,21 @@ const it = {
         status: "Stato",
       },
     },
+
+    offerRate: {
+      title: "Offerta nel tempo",
+      subtitle:
+        "Nuovi annunci messi sul mercato tra un aggiornamento e l'altro, per tipologia — cosa sta spingendo l'offerta.",
+      empty: "Servono almeno due aggiornamenti in giorni diversi per tracciare i nuovi annunci.",
+      seriesTotal: "Nuovi (tutti)",
+      seriesFlat: "Nuovi appartamenti",
+      seriesRoom: "Nuove camere",
+      seriesOther: "Nuovi altro",
+      seriesRemoved: "Rimossi",
+      totalNew: "{count} nuovi nel periodo",
+      totalRemoved: "{count} rimossi",
+      latestActive: "{count} attivi ora",
+    },
     lastProvider: "Ultimo provider",
     needsSnapshots:
       "Servono almeno 2 aggiornamenti (in giorni diversi) per stimare giorni sul mercato, rotazione e occupazione.",
@@ -887,6 +902,11 @@ const it = {
         dom: "Giorni sul mercato",
         priceHistory: "Storico prezzi",
         address: "Indirizzo",
+        kind: "Tipologia",
+        entirePlace: "Intero appartamento",
+        privateRoom: "Camera singola",
+        sharedBed: "Posto letto",
+        kindUnknown: "Non chiaro",
         description: "Descrizione",
       },
     },
@@ -939,7 +959,7 @@ const it = {
     portalSreality: "Sreality.cz",
     portalImmobiliareHint: "Nessuno snapshot Immobiliare API ancora — premi Aggiorna dati per avviare il tracciamento.",
     portalImmobiliareScraperHint:
-      "Nessuno snapshot dallo scraper locale ancora — premi Aggiorna dati per eseguire reggio_rentals.",
+      "Nessuno snapshot dallo scraper locale ancora — premi Aggiorna dati per avviare il tracking vendite.",
     portalIdealistaScraperHint:
       "Nessuno snapshot Idealista (scraper) ancora — premi Aggiorna dati per avviare Playwright.",
     portalCasaScraperHint:
@@ -992,7 +1012,7 @@ const it = {
         density: "Densità",
         densityHint: "Intensità annunci per area",
         price: "Prezzi",
-        priceHint: "Colore = canone medio al m² per area",
+        priceHint: "Colore = prezzo di vendita medio al m² per area",
         darkMap: "Scura",
         darkMapHint: "Mappa base scura",
       },
@@ -1026,9 +1046,24 @@ const it = {
         status: "Stato",
       },
     },
+
+    offerRate: {
+      title: "Offerta nel tempo",
+      subtitle:
+        "Nuovi annunci di vendita messi sul mercato tra un aggiornamento e l'altro, per tipologia — cosa sta spingendo l'offerta.",
+      empty: "Servono almeno due aggiornamenti in giorni diversi per tracciare i nuovi annunci.",
+      seriesTotal: "Nuovi (tutti)",
+      seriesFlat: "Nuovi appartamenti",
+      seriesRoom: "Nuove camere",
+      seriesOther: "Nuovi altro",
+      seriesRemoved: "Rimossi",
+      totalNew: "{count} nuovi nel periodo",
+      totalRemoved: "{count} rimossi",
+      latestActive: "{count} attivi ora",
+    },
     lastProvider: "Ultimo provider",
     needsSnapshots:
-      "Servono almeno 2 aggiornamenti (in giorni diversi) per stimare giorni sul mercato, rotazione e occupazione.",
+      "Servono almeno 2 aggiornamenti (in giorni diversi) per stimare giorni sul mercato, rotazione e sell-through.",
     needsSnapshotsHistorical:
       "Questo snapshot copre un solo giorno di monitoraggio. Seleziona un aggiornamento più recente per vedere le metriche di flusso.",
     earlyTrackingBanner:
@@ -1036,7 +1071,7 @@ const it = {
     disclaimer:
       "Occupazione stimata su annunci Idealista tracciati nel tempo. Un annuncio rimosso è considerato venduto.",
     disclaimerPosted:
-      "Metriche dalla data di pubblicazione del portale sugli annunci attualmente visibili. In questa modalità non sono mostrati turnover e occupazione.",
+      "Metriche dalla data di pubblicazione del portale sugli annunci attualmente visibili. In questa modalità non sono mostrati turnover e sell-through.",
     needsPostedDates:
       "Nessuna data di pubblicazione del portale sugli annunci attivi. Aggiorna i dati o usa un portale che espone le date (es. Sreality).",
     portalDatesBlockedImmobiliare:
@@ -1068,9 +1103,9 @@ const it = {
     areasTitle: "Aree",
     areasSubtitle: "Quartieri Immobiliare.it (da indirizzo e coordinate)",
     areaChart: {
-      title: "Canoni medi per area",
+      title: "Prezzi medi di vendita per area",
       subtitle: "Confronto visivo tra quartieri — barre ordinate dal più caro al più economico",
-      modeRent: "Canone mensile",
+      modeRent: "Prezzo di vendita",
       modePerSqm: "€/m²",
       listings: "Annunci",
       empty: "Nessun dato di prezzo per area.",
@@ -1087,7 +1122,7 @@ const it = {
     noSegments: "Nessun dato per questa tipologia.",
     segmentsTitle: "Per tipologia",
     segmentsSubtitle: "Metriche raggruppate per fascia di prezzo, locali o metratura",
-    segmentsGroupPrice: "Prezzo",
+    segmentsGroupPrice: "Prezzo vendita",
     segmentsGroupRooms: "Locali",
     segmentsGroupType: "Tipologia",
     segmentsGroupSize: "Metratura",
@@ -1103,6 +1138,16 @@ const it = {
         "18000_25000": "18.001–25.000 Kč",
         "25000_35000": "25.001–35.000 Kč",
         over_35000: "> 35.000 Kč",
+        under_80000: "≤ €80.000",
+        "80000_120000": "€80.001–120.000",
+        "120000_200000": "€120.001–200.000",
+        "200000_350000": "€200.001–350.000",
+        over_350000: "> €350.000",
+        under_5500000: "≤ 5,5M Kč",
+        "5500000_7500000": "5,5–7,5M Kč",
+        "7500000_10000000": "7,5–10M Kč",
+        "10000000_13000000": "10–13M Kč",
+        over_13000000: "> 13M Kč",
       },
       rooms: {
         pokoj: "Pokoj (stanza)",
@@ -1149,21 +1194,21 @@ const it = {
       longestPeriodBanner:
         "Periodo completo: {from} → {to} ({days} gg, {snapshotDays} giorni con snapshot).",
       longestPeriodMathOccupancy:
-        "Occupazione = {rented} venduti ÷ ({inventory} media attivi + {rented}) = {pct}",
+        "Sell-through = {rented} venduti ÷ ({inventory} media attivi + {rented}) = {pct}",
       longestPeriodMathTurnover:
         "Rotazione = {rented} venduti ÷ {inventory} media attivi = {turnover}",
       turnover: "Rotazione inventario · {period}",
       turnoverHint:
         "{rented} venduti ÷ {inventory} attivi (media {days} gg). 1,0× = l'inventario medio si rinnova una volta.",
-      occupancy: "Occupazione stimata · {period}",
+      occupancy: "Sell-through · {period}",
       occupancyHint:
-        "Affittati nel periodo {period} ÷ (media attivi + venduti). Solo annunci tracciati almeno 1 giorno prima della rimozione.",
+        "Venduti nel periodo {period} ÷ (media attivi + venduti). Solo annunci tracciati almeno 1 giorno prima della rimozione.",
     },
     table: {
       zone: "Quartiere",
       segment: "Tipologia",
       active: "Attivi",
-      rented: "Affittati · {period}",
+      rented: "Venduti · {period}",
       posted: "Pubblicati · {period}",
       avgRent: "Prezzo medio",
       avgRentPerSqm: "€/m²",
@@ -1175,7 +1220,7 @@ const it = {
       turnover: "Rotazione · {period}",
       turnoverHint:
         "Rinnovi inventario nel periodo {period}. Rapporto: venduti presumibilmente ÷ media annunci attivi ({days} gg). 1,0× ≈ un rinnovo completo.",
-      occupancy: "Occupazione",
+      occupancy: "Sell-through",
       occupancyHint:
         "Quota stimata nel periodo {period}: venduti ÷ (media attivi + venduti). Solo rimozioni dopo almeno 1 giorno online.",
       periodLabelDaily: "giornaliero (1 gg)",
@@ -1195,11 +1240,16 @@ const it = {
       table: {
         detected: "Rilevato",
         zone: "Zona",
-        rent: "Canone",
+        rent: "Prezzo",
         rentPerSqm: "€/m²",
         dom: "Giorni sul mercato",
         priceHistory: "Storico prezzi",
         address: "Indirizzo",
+        kind: "Tipologia",
+        entirePlace: "Intero appartamento",
+        privateRoom: "Camera singola",
+        sharedBed: "Posto letto",
+        kindUnknown: "Non chiaro",
         description: "Descrizione",
       },
     },
@@ -1220,7 +1270,7 @@ const it = {
         zone: "Quartiere / indirizzo",
         rooms: "Locali",
         sqm: "m²",
-        rent: "Canone mensile",
+        rent: "Prezzo",
         published: "Pubblicato",
         updated: "Aggiornato",
         rentPerSqm: "€/m²",
