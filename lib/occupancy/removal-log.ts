@@ -77,7 +77,15 @@ async function enrichRemovalEvents(
 
   const registry = await loadRegistry(citySlug, portal, operation);
   return events.map((event) => {
-    if (event.property_type && event.url && event.description) return event;
+    if (
+      event.property_type &&
+      event.url &&
+      event.description &&
+      event.title &&
+      event.listing_published_at
+    ) {
+      return event;
+    }
     const tracked = registry.listings[event.id];
     if (!tracked) {
       return {
@@ -95,6 +103,25 @@ async function enrichRemovalEvents(
         }),
       url: event.url ?? tracked.url ?? null,
       description: event.description ?? tracked.description ?? null,
+      title: event.title ?? tracked.title ?? null,
+      bathrooms: event.bathrooms ?? tracked.bathrooms ?? null,
+      floor: event.floor ?? tracked.floor ?? null,
+      energy_class: event.energy_class ?? tracked.energy_class ?? null,
+      energy_kwh_sqm: event.energy_kwh_sqm ?? tracked.energy_kwh_sqm ?? null,
+      images: event.images?.length ? event.images : tracked.images ?? null,
+      furnished: event.furnished ?? tracked.furnished ?? null,
+      built_year: event.built_year ?? tracked.built_year ?? null,
+      lift: event.lift ?? tracked.lift ?? null,
+      garden: event.garden ?? tracked.garden ?? null,
+      terrace: event.terrace ?? tracked.terrace ?? null,
+      garage: event.garage ?? tracked.garage ?? null,
+      condominio_monthly: event.condominio_monthly ?? tracked.condominio_monthly ?? null,
+      advertiser_name: event.advertiser_name ?? tracked.advertiser_name ?? null,
+      condition: event.condition ?? tracked.condition ?? null,
+      condition_status: event.condition_status ?? tracked.condition_status ?? null,
+      needs_renovation: event.needs_renovation ?? tracked.needs_renovation ?? null,
+      listing_published_at: event.listing_published_at ?? tracked.listing_published_at ?? null,
+      listing_updated_at: event.listing_updated_at ?? tracked.listing_updated_at ?? null,
       zone: event.zone ?? tracked.zone,
     };
   });
@@ -136,7 +163,7 @@ export async function logPresumedRentalRemoval(
   const next = [
     event,
     ...existing.filter((item) => item.id !== event.id || item.detected_at !== event.detected_at),
-  ];
+  ].slice(0, MAX_REMOVAL_EVENTS);
   await writeJsonFile(path, next);
 
   return event;

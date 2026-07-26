@@ -15,7 +15,7 @@ import {
   getOccupancyCityConfig,
   type OccupancyCitySlug,
 } from "./cities";
-import { remapListingZones, withResolvedZone } from "./zone";
+import { remapListingZones, resolveListingZone, withResolvedZone } from "./zone";
 import { mapListingToOccupancyBasic } from "./listing-fields";
 
 const PREVIEW_SAMPLE_SIZE = 8;

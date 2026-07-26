@@ -89,6 +89,8 @@ function mapRow(row: ReggioRentalsRow): MapListing | null {
     needs_renovation: null,
     listing_published_at: row.listing_published_at ?? null,
     listing_updated_at: row.listing_updated_at ?? null,
+    bathrooms: row.bathrooms ?? null,
+    advertiser_name: row.advertiser_name ?? row.advertiser_label ?? null,
   };
 }
 

@@ -328,7 +328,10 @@ async function enrichSrealityListingsWithDates(listings: MapListing[]): Promise<
         ...listing,
         listing_published_at: listing.listing_published_at ?? fields.listing_published_at,
         listing_updated_at: listing.listing_updated_at ?? fields.listing_updated_at,
-        description: listing.description ?? fields.description,
+        description:
+          (fields.description?.length ?? 0) > (listing.description?.length ?? 0)
+            ? fields.description
+            : listing.description ?? fields.description,
         address: weakAddress && fields.address ? fields.address : listing.address,
         lat: weakAddress && fields.lat != null ? fields.lat : listing.lat,
         lng: weakAddress && fields.lng != null ? fields.lng : listing.lng,

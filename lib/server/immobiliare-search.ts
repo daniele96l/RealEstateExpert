@@ -158,6 +158,19 @@ export function mapSearchResultToListing(
     needs_renovation: detail.needs_renovation,
     listing_published_at: detail.listing_published_at ?? null,
     listing_updated_at: detail.listing_updated_at ?? null,
+    description: detail.description ?? null,
+    bathrooms: detail.bathrooms ?? null,
+    floor: detail.floor ?? null,
+    energy_class: detail.energy_class ?? null,
+    energy_kwh_sqm: detail.energy_kwh_sqm ?? null,
+    images: detail.images?.length ? detail.images.slice(0, 8) : null,
+    furnished: detail.furnished ?? null,
+    built_year: detail.built_year ?? null,
+    lift: detail.lift ?? null,
+    garden: detail.garden ?? null,
+    terrace: detail.terrace ?? null,
+    garage: detail.garage ?? null,
+    condominio_monthly: detail.condominio_monthly ?? null,
   };
 }
 

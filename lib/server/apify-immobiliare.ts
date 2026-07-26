@@ -276,6 +276,30 @@ function mapItemToListing(raw: Record<string, unknown>): MapListing | null {
     needs_renovation: null,
     listing_published_at: dates.listing_published_at,
     listing_updated_at: dates.listing_updated_at,
+    description:
+      typeof item.description === "string" && item.description.trim()
+        ? item.description.trim()
+        : null,
+    bathrooms: parseIntField(item.bathrooms) ?? parseIntField(item.bathRooms),
+    floor:
+      item.floor != null
+        ? String(item.floor)
+        : item.floorNumber != null
+          ? String(item.floorNumber)
+          : null,
+    energy_class: null,
+    images: Array.isArray(item.images)
+      ? item.images
+          .map((img) => (typeof img === "string" ? img : String((img as { url?: string })?.url ?? "")))
+          .filter(Boolean)
+          .slice(0, 8)
+      : null,
+    advertiser_name:
+      typeof item.advertiserName === "string"
+        ? item.advertiserName
+        : typeof item.agency === "string"
+          ? item.agency
+          : null,
   };
 }
 
