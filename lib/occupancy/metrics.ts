@@ -3,6 +3,7 @@ import type {
   OccupancyBasicListing,
   OccupancyCityMetrics,
   OccupancyRegistry,
+  OccupancySnapshot,
   TrackedRentalListing,
 } from "@/lib/types";
 import {
@@ -49,6 +50,8 @@ export interface ComputeOccupancyMetricsOptions {
   period?: OccupancyMetricsPeriod;
   basis?: OccupancyMetricsBasis;
   operation?: OccupancyOperation;
+  /** Reuse snapshots already loaded by the dashboard (avoids a second disk pass). */
+  snapshots?: OccupancySnapshot[];
 }
 
 function applyPostedMetricsPeriod(
@@ -111,7 +114,8 @@ function listingInZone(
   citySlug: OccupancyCitySlug,
 ): boolean {
   const resolved =
-    listing.zone ?? resolveListingZone(listing.address, listing.lat, listing.lng, citySlug);
+    listing.zone ??
+    resolveListingZone(listing.address, listing.lat, listing.lng, citySlug, listing.description);
   return resolved === zone;
 }
 
@@ -167,7 +171,8 @@ export async function computeOccupancyMetrics(
         : "reggio_calabria");
   const cityConfig = getOccupancyCityConfig(citySlug);
   const operation = options?.operation ?? DEFAULT_OCCUPANCY_OPERATION;
-  const allSnapshots = await loadAllSnapshots(citySlug, portal, operation);
+  const allSnapshots =
+    options?.snapshots ?? (await loadAllSnapshots(citySlug, portal, operation));
   const asOfMs = resolveAsOfMs(
     options?.asOf ?? allSnapshots[allSnapshots.length - 1]?.fetched_at ?? registry.updated_at,
   );
@@ -190,7 +195,15 @@ export async function computeOccupancyMetrics(
     withNormalizedPropertyType({
       ...listing,
       property_type: listing.property_type ?? null,
-      zone: listing.zone ?? resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
+      zone:
+        listing.zone ??
+        resolveListingZone(
+          listing.address,
+          listing.lat,
+          listing.lng,
+          citySlug,
+          listing.description,
+        ),
     }),
   );
 

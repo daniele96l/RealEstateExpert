@@ -721,10 +721,17 @@ const it = {
       removedTitle: "Rimossi nel tempo",
       removedSubtitle:
         "Annunci usciti dal mercato tra un aggiornamento e l'altro — breakdown di cosa lascia l'offerta.",
+      ppsqmNewTitle: "Nuovi · prezzo medio/m²",
+      ppsqmNewSubtitle:
+        "Prezzo medio al m² degli annunci nuovi tra un aggiornamento e l'altro.",
+      ppsqmRemovedTitle: "Rimossi · prezzo medio/m²",
+      ppsqmRemovedSubtitle:
+        "Prezzo medio al m² degli annunci usciti tra un aggiornamento e l'altro.",
       empty: "Servono almeno due aggiornamenti in giorni diversi per tracciare i nuovi annunci.",
       viewBreakdown: "Serie",
       viewTrend: "Trend",
       seriesValue: "Totale",
+      seriesPpsqm: "Prezzo medio/m²",
       seriesTrend: "Retta di trend",
       seriesAverage: "Media 3 gg",
       seriesTotal: "Nuovi (tutti)",
@@ -735,6 +742,7 @@ const it = {
       totalNew: "{count} nuovi nel periodo",
       totalRemoved: "{count} rimossi",
       latestActive: "{count} attivi ora",
+      latestPpsqm: "Ultima media {value}",
     },
     lastProvider: "Ultimo provider",
     needsSnapshots:
@@ -1062,10 +1070,17 @@ const it = {
       removedTitle: "Rimossi nel tempo",
       removedSubtitle:
         "Annunci di vendita usciti dal mercato tra un aggiornamento e l'altro — breakdown di cosa lascia l'offerta.",
+      ppsqmNewTitle: "Nuovi · prezzo medio/m²",
+      ppsqmNewSubtitle:
+        "Prezzo medio al m² degli annunci di vendita nuovi tra un aggiornamento e l'altro.",
+      ppsqmRemovedTitle: "Rimossi · prezzo medio/m²",
+      ppsqmRemovedSubtitle:
+        "Prezzo medio al m² degli annunci di vendita usciti tra un aggiornamento e l'altro.",
       empty: "Servono almeno due aggiornamenti in giorni diversi per tracciare i nuovi annunci.",
       viewBreakdown: "Serie",
       viewTrend: "Trend",
       seriesValue: "Totale",
+      seriesPpsqm: "Prezzo medio/m²",
       seriesTrend: "Retta di trend",
       seriesAverage: "Media 3 gg",
       seriesTotal: "Nuovi (tutti)",
@@ -1076,6 +1091,7 @@ const it = {
       totalNew: "{count} nuovi nel periodo",
       totalRemoved: "{count} rimossi",
       latestActive: "{count} attivi ora",
+      latestPpsqm: "Ultima media {value}",
     },
     lastProvider: "Ultimo provider",
     needsSnapshots:

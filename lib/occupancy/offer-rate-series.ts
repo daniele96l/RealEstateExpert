@@ -17,12 +17,29 @@ export const OFFER_BREAKDOWN_GROUPS: OccupancyOfferBreakdownGroup[] = [
 ];
 
 export type OfferSeriesMode = "new" | "removed";
+export type OfferSeriesMetric = "count" | "ppsqm";
 
 function withNormalizedType(listing: OccupancyBasicListing): OccupancyBasicListing {
   return {
     ...listing,
     property_type: normalizeOccupancyPropertyType(listing),
   };
+}
+
+function listingPpsqm(listing: OccupancyBasicListing): number | null {
+  if (!(listing.price > 0) || listing.sqm == null || listing.sqm <= 0) return null;
+  return listing.price / listing.sqm;
+}
+
+function averagePpsqm(listings: OccupancyBasicListing[]): number | null {
+  const values: number[] = [];
+  for (const listing of listings) {
+    const ppsqm = listingPpsqm(listing);
+    if (ppsqm == null) continue;
+    values.push(ppsqm);
+  }
+  if (!values.length) return null;
+  return Math.round(values.reduce((sum, value) => sum + value, 0) / values.length);
 }
 
 function countByBuckets(
@@ -41,6 +58,36 @@ function countByBuckets(
     counts[bucket.id] = (counts[bucket.id] ?? 0) + 1;
   }
   return counts;
+}
+
+function avgPpsqmByBuckets(
+  listings: OccupancyBasicListing[],
+  group: OccupancyOfferBreakdownGroup,
+  market: MarketId,
+  operation: OccupancyOperation,
+): Record<string, number> {
+  const buckets = listSegmentBuckets(group, market, operation);
+  const sums: Record<string, number> = {};
+  const counts: Record<string, number> = {};
+  for (const bucket of buckets) {
+    sums[bucket.id] = 0;
+    counts[bucket.id] = 0;
+  }
+  for (const listing of listings) {
+    const ppsqm = listingPpsqm(listing);
+    if (ppsqm == null) continue;
+    const normalized = withNormalizedType(listing);
+    const bucket = buckets.find((entry) => entry.match(normalized));
+    if (!bucket) continue;
+    sums[bucket.id] = (sums[bucket.id] ?? 0) + ppsqm;
+    counts[bucket.id] = (counts[bucket.id] ?? 0) + 1;
+  }
+  const averages: Record<string, number> = {};
+  for (const bucket of buckets) {
+    const count = counts[bucket.id] ?? 0;
+    averages[bucket.id] = count > 0 ? Math.round((sums[bucket.id] ?? 0) / count) : 0;
+  }
+  return averages;
 }
 
 function formatAxisLabel(iso: string): string {
@@ -64,7 +111,7 @@ function isCoverageJump(previousActive: number, currentActive: number): boolean 
 
 /**
  * Offer / removal rate over time between consecutive snapshots,
- * with breakdowns by type / size / rooms / price.
+ * with count and avg €/m² breakdowns by type / size / rooms / price.
  * Intervals where inventory coverage jumps sharply are omitted.
  */
 export function buildOfferRateSeries(
@@ -92,6 +139,8 @@ export function buildOfferRateSeries(
       new_total: newcomers.length,
       removed_total: removed.length,
       active_count: current.active_count,
+      new_avg_ppsqm: averagePpsqm(newcomers),
+      removed_avg_ppsqm: averagePpsqm(removed),
       by_type: countByBuckets(newcomers, "type", market, operation),
       by_size: countByBuckets(newcomers, "size", market, operation),
       by_rooms: countByBuckets(newcomers, "rooms", market, operation),
@@ -100,6 +149,14 @@ export function buildOfferRateSeries(
       removed_by_size: countByBuckets(removed, "size", market, operation),
       removed_by_rooms: countByBuckets(removed, "rooms", market, operation),
       removed_by_price: countByBuckets(removed, "price", market, operation),
+      ppsqm_by_type: avgPpsqmByBuckets(newcomers, "type", market, operation),
+      ppsqm_by_size: avgPpsqmByBuckets(newcomers, "size", market, operation),
+      ppsqm_by_rooms: avgPpsqmByBuckets(newcomers, "rooms", market, operation),
+      ppsqm_by_price: avgPpsqmByBuckets(newcomers, "price", market, operation),
+      removed_ppsqm_by_type: avgPpsqmByBuckets(removed, "type", market, operation),
+      removed_ppsqm_by_size: avgPpsqmByBuckets(removed, "size", market, operation),
+      removed_ppsqm_by_rooms: avgPpsqmByBuckets(removed, "rooms", market, operation),
+      removed_ppsqm_by_price: avgPpsqmByBuckets(removed, "price", market, operation),
     });
   }
 
@@ -109,15 +166,20 @@ export function buildOfferRateSeries(
 export function offerBreakdownField(
   group: OccupancyOfferBreakdownGroup,
   mode: OfferSeriesMode = "new",
-):
-  | "by_type"
-  | "by_size"
-  | "by_rooms"
-  | "by_price"
-  | "removed_by_type"
-  | "removed_by_size"
-  | "removed_by_rooms"
-  | "removed_by_price" {
+  metric: OfferSeriesMetric = "count",
+): keyof OccupancyOfferRatePoint {
+  if (metric === "ppsqm") {
+    if (mode === "removed") {
+      if (group === "type") return "removed_ppsqm_by_type";
+      if (group === "size") return "removed_ppsqm_by_size";
+      if (group === "rooms") return "removed_ppsqm_by_rooms";
+      return "removed_ppsqm_by_price";
+    }
+    if (group === "type") return "ppsqm_by_type";
+    if (group === "size") return "ppsqm_by_size";
+    if (group === "rooms") return "ppsqm_by_rooms";
+    return "ppsqm_by_price";
+  }
   if (mode === "removed") {
     if (group === "type") return "removed_by_type";
     if (group === "size") return "removed_by_size";

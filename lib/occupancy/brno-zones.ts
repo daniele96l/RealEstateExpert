@@ -9,11 +9,18 @@ function normalizeText(value: string): string {
 
 function extractDistrict(address: string): string | null {
   const parts = address.split(",").map((part) => part.trim()).filter(Boolean);
-  if (parts.length < 2) return null;
+  if (parts.length < 2) {
+    const single = parts[0] ?? "";
+    const hyphenated = single.match(/^brno[-–]\s*(.+)$/i);
+    if (hyphenated?.[1]?.trim()) return hyphenated[1].trim();
+    return null;
+  }
 
   const last = parts[parts.length - 1]!;
   if (/brno/i.test(last) && parts.length >= 2) {
-    return parts[parts.length - 2]!;
+    const candidate = parts[parts.length - 2]!;
+    const hyphenated = candidate.match(/^brno[-–]\s*(.+)$/i);
+    return hyphenated?.[1]?.trim() || candidate;
   }
 
   return null;
@@ -37,6 +44,21 @@ const KEYWORD_RULES: Array<{ zone: string; pattern: RegExp }> = [
   { zone: "Medlánky", pattern: /medl[aá]nky|medlanky/i },
   { zone: "Nový Lískovec", pattern: /nov[yý]\s*l[ií]skovec/i },
   { zone: "Starý Lískovec", pattern: /star[yý]\s*l[ií]skovec/i },
+  { zone: "Bosonohy", pattern: /bosonohy/i },
+  { zone: "Žebětín", pattern: /žeb[eě]t[ií]n|zebetin/i },
+  { zone: "Slatina", pattern: /slatina/i },
+  { zone: "Trnitá", pattern: /trnit[aá]/i },
+  { zone: "Černovice", pattern: /černovice|cernovice/i },
+  { zone: "Horní Heršpice", pattern: /horn[ií]\s*her[sš]pice/i },
+  { zone: "Dolní Heršpice", pattern: /doln[ií]\s*her[sš]pice/i },
+  { zone: "Lesná", pattern: /lesn[aá]/i },
+  { zone: "Řečkovice", pattern: /řečkovice|reckovice/i },
+  { zone: "Vinohrady", pattern: /vinohrady/i },
+  { zone: "Štýřice", pattern: /štýřice|styřice|styrice/i },
+  { zone: "Pisárky", pattern: /pis[aá]rky/i },
+  { zone: "Jundrov", pattern: /jundrov/i },
+  { zone: "Obřany", pattern: /obřany|obrany/i },
+  { zone: "Maloměřice", pattern: /malom[eě]řice|malomerice/i },
   { zone: "Brno-střed", pattern: /brno-střed|brno-stred/i },
   { zone: "Brno-sever", pattern: /brno-sever/i },
   { zone: "Brno-Židenice", pattern: /brno-židenice|brno-zidenice/i },
@@ -54,14 +76,20 @@ export function resolveBrnoZone(
   address: string | null,
   _lat?: number | null,
   _lng?: number | null,
+  description?: string | null,
 ): string {
-  if (!address?.trim()) return OCCUPANCY_FALLBACK_ZONE;
+  if (address?.trim()) {
+    const district = extractDistrict(address);
+    if (district && !/^brno$/i.test(district)) return district;
 
-  const district = extractDistrict(address);
-  if (district) return district;
+    const keyword = matchKeywordZone(address);
+    if (keyword) return keyword;
+  }
 
-  const keyword = matchKeywordZone(address);
-  if (keyword) return keyword;
+  if (description?.trim()) {
+    const fromDescription = matchKeywordZone(description);
+    if (fromDescription) return fromDescription;
+  }
 
   return OCCUPANCY_FALLBACK_ZONE;
 }

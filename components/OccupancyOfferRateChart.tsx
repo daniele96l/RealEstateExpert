@@ -22,11 +22,12 @@ import {
 import {
   OFFER_BREAKDOWN_GROUPS,
   offerBreakdownField,
+  type OfferSeriesMetric,
   type OfferSeriesMode,
 } from "@/lib/occupancy/offer-rate-series";
 import { listSegmentBuckets } from "@/lib/occupancy/segment-metrics";
 import { CHART_THEME, chartTooltipStyle } from "@/lib/chart-theme";
-import { cn } from "@/lib/utils";
+import { cn, fmtMoney } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
 
 interface Props {
@@ -93,11 +94,13 @@ function OfferTooltip({
   payload,
   label,
   labels,
+  formatValue,
 }: {
   active?: boolean;
   payload?: Array<{ dataKey?: string | number; value?: number; color?: string; name?: string }>;
   label?: string;
   labels: Record<string, string>;
+  formatValue?: (value: number) => string;
 }) {
   if (!active || !payload?.length) return null;
   return (
@@ -116,7 +119,9 @@ function OfferTooltip({
                 />
                 {labels[key] ?? entry.name}
               </span>
-              <span className="font-medium text-neutral-900">{entry.value}</span>
+              <span className="font-medium text-neutral-900">
+                {formatValue ? formatValue(entry.value) : entry.value}
+              </span>
             </li>
           );
         })}
@@ -128,33 +133,43 @@ function OfferTooltip({
 function BreakdownLineChart({
   series,
   mode,
+  metric,
   activeGroup,
   market,
   operation,
   i18nRoot,
+  formatValue,
 }: {
   series: OccupancyOfferRatePoint[];
   mode: OfferSeriesMode;
+  metric: OfferSeriesMetric;
   activeGroup: OccupancyOfferBreakdownGroup;
   market: MarketId;
   operation: OccupancyOperation;
   i18nRoot: string;
+  formatValue?: (value: number) => string;
 }) {
   const { t } = useI18n();
 
   const bucketIds = useMemo(() => {
-    const field = offerBreakdownField(activeGroup, mode);
+    const field = offerBreakdownField(activeGroup, mode, metric);
     const known = listSegmentBuckets(activeGroup, market, operation).map((b) => b.id);
     const seen = new Set<string>();
     const ordered: string[] = [];
     for (const id of known) {
-      const hasValue = series.some((point) => (point[field][id] ?? 0) > 0);
+      const hasValue = series.some((point) => {
+        const bag = point[field];
+        if (!bag || typeof bag !== "object") return false;
+        return ((bag as Record<string, number>)[id] ?? 0) > 0;
+      });
       if (!hasValue) continue;
       seen.add(id);
       ordered.push(id);
     }
     for (const point of series) {
-      for (const [id, value] of Object.entries(point[field])) {
+      const bag = point[field];
+      if (!bag || typeof bag !== "object") continue;
+      for (const [id, value] of Object.entries(bag as Record<string, number>)) {
         if (value > 0 && !seen.has(id)) {
           seen.add(id);
           ordered.push(id);
@@ -162,21 +177,25 @@ function BreakdownLineChart({
       }
     }
     return ordered;
-  }, [activeGroup, market, mode, operation, series]);
+  }, [activeGroup, market, metric, mode, operation, series]);
 
   const chartData = useMemo(() => {
-    const field = offerBreakdownField(activeGroup, mode);
+    const field = offerBreakdownField(activeGroup, mode, metric);
     return series.map((point) => {
+      const bag = point[field];
       const row: Record<string, string | number> = {
         label: point.label,
         fetched_at: point.fetched_at,
       };
       for (const id of bucketIds) {
-        row[id] = point[field][id] ?? 0;
+        row[id] =
+          bag && typeof bag === "object"
+            ? ((bag as Record<string, number>)[id] ?? 0)
+            : 0;
       }
       return row;
     });
-  }, [series, activeGroup, bucketIds, mode]);
+  }, [series, activeGroup, bucketIds, metric, mode]);
 
   const labels = useMemo(() => {
     const map: Record<string, string> = {};
@@ -202,9 +221,15 @@ function BreakdownLineChart({
             tick={{ fill: CHART_THEME.axis, fontSize: 11 }}
             axisLine={false}
             tickLine={false}
-            width={36}
+            width={metric === "ppsqm" ? 52 : 36}
+            tickFormatter={(value: number) =>
+              formatValue ? formatValue(value).replace(/\s/g, "") : String(value)
+            }
           />
-          <Tooltip content={<OfferTooltip labels={labels} />} contentStyle={chartTooltipStyle} />
+          <Tooltip
+            content={<OfferTooltip labels={labels} formatValue={formatValue} />}
+            contentStyle={chartTooltipStyle}
+          />
           <Legend
             wrapperStyle={{ fontSize: 12, color: CHART_THEME.axis }}
             formatter={(value) => labels[value] ?? value}
@@ -229,11 +254,15 @@ function BreakdownLineChart({
 function TrendChart({
   series,
   mode,
+  metric,
   i18nRoot,
+  formatValue,
 }: {
   series: OccupancyOfferRatePoint[];
   mode: OfferSeriesMode;
+  metric: OfferSeriesMetric;
   i18nRoot: string;
+  formatValue?: (value: number) => string;
 }) {
   const { t } = useI18n();
   const stroke =
@@ -242,9 +271,12 @@ function TrendChart({
     mode === "new" ? "rgba(37, 99, 235, 0.12)" : "rgba(220, 38, 38, 0.1)";
 
   const chartData = useMemo(() => {
-    const values = series.map((point) =>
-      mode === "new" ? point.new_total : point.removed_total,
-    );
+    const values = series.map((point) => {
+      if (metric === "ppsqm") {
+        return mode === "new" ? (point.new_avg_ppsqm ?? 0) : (point.removed_avg_ppsqm ?? 0);
+      }
+      return mode === "new" ? point.new_total : point.removed_total;
+    });
     const trend = linearTrend(values);
     const average = movingAverage(values, 3);
     return series.map((point, index) => ({
@@ -254,15 +286,18 @@ function TrendChart({
       trend: trend[index]!,
       average: average[index],
     }));
-  }, [mode, series]);
+  }, [metric, mode, series]);
 
   const labels = useMemo(
     () => ({
-      value: t(`${i18nRoot}.offerRate.seriesValue`),
+      value:
+        metric === "ppsqm"
+          ? t(`${i18nRoot}.offerRate.seriesPpsqm`)
+          : t(`${i18nRoot}.offerRate.seriesValue`),
       trend: t(`${i18nRoot}.offerRate.seriesTrend`),
       average: t(`${i18nRoot}.offerRate.seriesAverage`),
     }),
-    [i18nRoot, t],
+    [i18nRoot, metric, t],
   );
 
   return (
@@ -281,9 +316,15 @@ function TrendChart({
             tick={{ fill: CHART_THEME.axis, fontSize: 11 }}
             axisLine={false}
             tickLine={false}
-            width={36}
+            width={metric === "ppsqm" ? 52 : 36}
+            tickFormatter={(value: number) =>
+              formatValue ? formatValue(value).replace(/\s/g, "") : String(value)
+            }
           />
-          <Tooltip content={<OfferTooltip labels={labels} />} contentStyle={chartTooltipStyle} />
+          <Tooltip
+            content={<OfferTooltip labels={labels} formatValue={formatValue} />}
+            contentStyle={chartTooltipStyle}
+          />
           <Legend
             wrapperStyle={{ fontSize: 12, color: CHART_THEME.axis }}
             formatter={(value) => labels[value as keyof typeof labels] ?? value}
@@ -397,24 +438,28 @@ function OfferChartCard({
   stats,
   series,
   mode,
+  metric,
   availableGroups,
   activeGroup,
   onGroupChange,
   market,
   operation,
   i18nRoot,
+  formatValue,
 }: {
   title: string;
   subtitle: string;
   stats: ReactNode;
   series: OccupancyOfferRatePoint[];
   mode: OfferSeriesMode;
+  metric: OfferSeriesMetric;
   availableGroups: OccupancyOfferBreakdownGroup[];
   activeGroup: OccupancyOfferBreakdownGroup;
   onGroupChange: (group: OccupancyOfferBreakdownGroup) => void;
   market: MarketId;
   operation: OccupancyOperation;
   i18nRoot: string;
+  formatValue?: (value: number) => string;
 }) {
   const [viewMode, setViewMode] = useState<ChartViewMode>("breakdown");
 
@@ -445,13 +490,21 @@ function OfferChartCard({
           <BreakdownLineChart
             series={series}
             mode={mode}
+            metric={metric}
             activeGroup={activeGroup}
             market={market}
             operation={operation}
             i18nRoot={i18nRoot}
+            formatValue={formatValue}
           />
         ) : (
-          <TrendChart series={series} mode={mode} i18nRoot={i18nRoot} />
+          <TrendChart
+            series={series}
+            mode={mode}
+            metric={metric}
+            i18nRoot={i18nRoot}
+            formatValue={formatValue}
+          />
         )}
       </div>
     </div>
@@ -465,10 +518,19 @@ export default function OccupancyOfferRateChart({
 }: Props) {
   const { t } = useI18n();
   const i18nRoot = occupancyI18nRoot(operation);
+  const perSqmLabel = t("listings.perSqm");
+  const formatPpsqm = (value: number) => `${fmtMoney(value, market)}${perSqmLabel}`;
+
   const [newGroup, setNewGroup] = useState<OccupancyOfferBreakdownGroup>(
     market === "cz" ? "type" : "size",
   );
   const [removedGroup, setRemovedGroup] = useState<OccupancyOfferBreakdownGroup>(
+    market === "cz" ? "type" : "size",
+  );
+  const [newPpsqmGroup, setNewPpsqmGroup] = useState<OccupancyOfferBreakdownGroup>(
+    market === "cz" ? "type" : "size",
+  );
+  const [removedPpsqmGroup, setRemovedPpsqmGroup] = useState<OccupancyOfferBreakdownGroup>(
     market === "cz" ? "type" : "size",
   );
 
@@ -478,12 +540,8 @@ export default function OccupancyOfferRateChart({
     [market],
   );
 
-  const activeNewGroup = availableGroups.includes(newGroup)
-    ? newGroup
-    : (availableGroups[0] ?? "size");
-  const activeRemovedGroup = availableGroups.includes(removedGroup)
-    ? removedGroup
-    : (availableGroups[0] ?? "size");
+  const pickGroup = (group: OccupancyOfferBreakdownGroup) =>
+    availableGroups.includes(group) ? group : (availableGroups[0] ?? "size");
 
   const totals = useMemo(() => {
     if (!series.length) return null;
@@ -516,8 +574,9 @@ export default function OccupancyOfferRateChart({
         subtitle={t(`${i18nRoot}.offerRate.subtitle`)}
         series={series}
         mode="new"
+        metric="count"
         availableGroups={availableGroups}
-        activeGroup={activeNewGroup}
+        activeGroup={pickGroup(newGroup)}
         onGroupChange={setNewGroup}
         market={market}
         operation={operation}
@@ -540,8 +599,9 @@ export default function OccupancyOfferRateChart({
         subtitle={t(`${i18nRoot}.offerRate.removedSubtitle`)}
         series={series}
         mode="removed"
+        metric="count"
         availableGroups={availableGroups}
-        activeGroup={activeRemovedGroup}
+        activeGroup={pickGroup(removedGroup)}
         onGroupChange={setRemovedGroup}
         market={market}
         operation={operation}
@@ -551,6 +611,56 @@ export default function OccupancyOfferRateChart({
             <div className="mt-3 flex flex-wrap gap-4 text-xs text-neutral-500">
               <span>
                 {t(`${i18nRoot}.offerRate.totalRemoved`, { count: totals.removedTotal })}
+              </span>
+            </div>
+          ) : null
+        }
+      />
+      <OfferChartCard
+        title={t(`${i18nRoot}.offerRate.ppsqmNewTitle`)}
+        subtitle={t(`${i18nRoot}.offerRate.ppsqmNewSubtitle`)}
+        series={series}
+        mode="new"
+        metric="ppsqm"
+        availableGroups={availableGroups}
+        activeGroup={pickGroup(newPpsqmGroup)}
+        onGroupChange={setNewPpsqmGroup}
+        market={market}
+        operation={operation}
+        i18nRoot={i18nRoot}
+        formatValue={formatPpsqm}
+        stats={
+          totals?.latest.new_avg_ppsqm != null ? (
+            <div className="mt-3 flex flex-wrap gap-4 text-xs text-neutral-500">
+              <span>
+                {t(`${i18nRoot}.offerRate.latestPpsqm`, {
+                  value: formatPpsqm(totals.latest.new_avg_ppsqm),
+                })}
+              </span>
+            </div>
+          ) : null
+        }
+      />
+      <OfferChartCard
+        title={t(`${i18nRoot}.offerRate.ppsqmRemovedTitle`)}
+        subtitle={t(`${i18nRoot}.offerRate.ppsqmRemovedSubtitle`)}
+        series={series}
+        mode="removed"
+        metric="ppsqm"
+        availableGroups={availableGroups}
+        activeGroup={pickGroup(removedPpsqmGroup)}
+        onGroupChange={setRemovedPpsqmGroup}
+        market={market}
+        operation={operation}
+        i18nRoot={i18nRoot}
+        formatValue={formatPpsqm}
+        stats={
+          totals?.latest.removed_avg_ppsqm != null ? (
+            <div className="mt-3 flex flex-wrap gap-4 text-xs text-neutral-500">
+              <span>
+                {t(`${i18nRoot}.offerRate.latestPpsqm`, {
+                  value: formatPpsqm(totals.latest.removed_avg_ppsqm),
+                })}
               </span>
             </div>
           ) : null

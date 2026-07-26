@@ -719,10 +719,17 @@ const en: Translations = {
       removedTitle: "Removals over time",
       removedSubtitle:
         "Listings that left the market between refreshes — breakdown of what supply is leaving.",
+      ppsqmNewTitle: "New listings · avg price/m²",
+      ppsqmNewSubtitle:
+        "Average asking price per m² of listings newly added between refreshes.",
+      ppsqmRemovedTitle: "Removals · avg price/m²",
+      ppsqmRemovedSubtitle:
+        "Average asking price per m² of listings that left between refreshes.",
       empty: "Need at least two refreshes on different days to chart new offers.",
       viewBreakdown: "Breakdown",
       viewTrend: "Trend",
       seriesValue: "Total",
+      seriesPpsqm: "Avg price/m²",
       seriesTrend: "Trend line",
       seriesAverage: "3-day avg",
       seriesTotal: "New (all)",
@@ -733,6 +740,7 @@ const en: Translations = {
       totalNew: "{count} new across span",
       totalRemoved: "{count} removed",
       latestActive: "{count} active now",
+      latestPpsqm: "Latest avg {value}",
     },
     lastProvider: "Last provider",
     needsSnapshots:
@@ -1060,10 +1068,17 @@ const en: Translations = {
       removedTitle: "Removals over time",
       removedSubtitle:
         "Sale listings that left the market between refreshes — breakdown of what inventory is leaving.",
+      ppsqmNewTitle: "New listings · avg price/m²",
+      ppsqmNewSubtitle:
+        "Average asking price per m² of sale listings newly added between refreshes.",
+      ppsqmRemovedTitle: "Removals · avg price/m²",
+      ppsqmRemovedSubtitle:
+        "Average asking price per m² of sale listings that left between refreshes.",
       empty: "Need at least two refreshes on different days to chart new offers.",
       viewBreakdown: "Breakdown",
       viewTrend: "Trend",
       seriesValue: "Total",
+      seriesPpsqm: "Avg price/m²",
       seriesTrend: "Trend line",
       seriesAverage: "3-day avg",
       seriesTotal: "New (all)",
@@ -1074,6 +1089,7 @@ const en: Translations = {
       totalNew: "{count} new across span",
       totalRemoved: "{count} removed",
       latestActive: "{count} active now",
+      latestPpsqm: "Latest avg {value}",
     },
     lastProvider: "Last provider",
     needsSnapshots:

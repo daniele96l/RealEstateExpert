@@ -207,16 +207,32 @@ function mapEstate(
   };
 }
 
+interface SrealityApiLocalityResult {
+  city?: string | null;
+  citypart?: string | null;
+  quarter?: string | null;
+  street?: string | null;
+  streetnumber?: string | null;
+  housenumber?: string | null;
+  gps_lat?: number | null;
+  gps_lon?: number | null;
+}
+
 interface SrealityApiEstateResult {
   since?: string | null;
   edited?: string | null;
   advert_description?: string | null;
+  locality?: SrealityApiLocalityResult | null;
 }
 
 export interface SrealityListingApiFields {
   listing_published_at: string | null;
   listing_updated_at: string | null;
   description: string | null;
+  address: string | null;
+  city_part: string | null;
+  lat: number | null;
+  lng: number | null;
 }
 
 function normalizeAdvertDescription(value: unknown): string | null {
@@ -225,12 +241,29 @@ function normalizeAdvertDescription(value: unknown): string | null {
   return trimmed || null;
 }
 
-async function fetchSrealityListingFieldsFromApi(estateId: number): Promise<SrealityListingApiFields> {
-  const empty: SrealityListingApiFields = {
+function apiLocalityAddress(locality: SrealityApiLocalityResult | null | undefined): string | null {
+  if (!locality) return null;
+  const street = [locality.street, locality.streetnumber || locality.housenumber]
+    .filter(Boolean)
+    .join(" ");
+  const parts = [street, locality.citypart || locality.quarter, locality.city].filter(Boolean);
+  return parts.length ? parts.join(", ") : locality.city ?? null;
+}
+
+function emptySrealityListingApiFields(): SrealityListingApiFields {
+  return {
     listing_published_at: null,
     listing_updated_at: null,
     description: null,
+    address: null,
+    city_part: null,
+    lat: null,
+    lng: null,
   };
+}
+
+async function fetchSrealityListingFieldsFromApi(estateId: number): Promise<SrealityListingApiFields> {
+  const empty = emptySrealityListingApiFields();
 
   const response = await fetch(`https://www.sreality.cz/api/v1/estates/${estateId}`, {
     headers: {
@@ -245,16 +278,31 @@ async function fetchSrealityListingFieldsFromApi(estateId: number): Promise<Srea
   if (!response.ok) return empty;
 
   const payload = (await response.json()) as { result?: SrealityApiEstateResult };
-  const dates = extractSrealityListingDates(payload.result);
+  const result = payload.result;
+  const dates = extractSrealityListingDates(result);
+  const locality = result?.locality;
+  const lat = locality?.gps_lat;
+  const lng = locality?.gps_lon;
   return {
     listing_published_at: dates.listing_published_at,
     listing_updated_at: dates.listing_updated_at,
-    description: normalizeAdvertDescription(payload.result?.advert_description),
+    description: normalizeAdvertDescription(result?.advert_description),
+    address: apiLocalityAddress(locality),
+    city_part: locality?.citypart?.trim() || locality?.quarter?.trim() || null,
+    lat: lat != null && Number.isFinite(Number(lat)) ? Number(lat) : null,
+    lng: lng != null && Number.isFinite(Number(lng)) ? Number(lng) : null,
   };
 }
 
 function needsSrealityDetailEnrichment(listing: MapListing): boolean {
-  return !(listing.listing_published_at && listing.listing_updated_at && listing.description);
+  const address = listing.address?.trim() ?? "";
+  const weakAddress = !address || /^brno$/i.test(address);
+  return !(
+    listing.listing_published_at &&
+    listing.listing_updated_at &&
+    listing.description &&
+    !weakAddress
+  );
 }
 
 async function enrichSrealityListingsWithDates(listings: MapListing[]): Promise<MapListing[]> {
@@ -274,11 +322,16 @@ async function enrichSrealityListingsWithDates(listings: MapListing[]): Promise<
 
     try {
       const fields = await fetchSrealityListingFieldsFromApi(estateId);
+      const address = listing.address?.trim() ?? "";
+      const weakAddress = !address || /^brno$/i.test(address);
       enriched.push({
         ...listing,
         listing_published_at: listing.listing_published_at ?? fields.listing_published_at,
         listing_updated_at: listing.listing_updated_at ?? fields.listing_updated_at,
         description: listing.description ?? fields.description,
+        address: weakAddress && fields.address ? fields.address : listing.address,
+        lat: weakAddress && fields.lat != null ? fields.lat : listing.lat,
+        lng: weakAddress && fields.lng != null ? fields.lng : listing.lng,
       });
     } catch {
       enriched.push(listing);
@@ -298,15 +351,11 @@ export async function fetchSrealityListingDescription(
   const estateId = srealityEstateIdFromListingId(listingId);
   if (!estateId) return null;
 
-  const empty: SrealityListingApiFields = {
-    listing_published_at: null,
-    listing_updated_at: null,
-    description: null,
-  };
+  const empty = emptySrealityListingApiFields();
 
   try {
     const fromApi = await fetchSrealityListingFieldsFromApi(estateId);
-    if (fromApi.description) return fromApi;
+    if (fromApi.description || fromApi.address || fromApi.city_part) return fromApi;
   } catch {
     // try HTML / archive fallbacks below
   }
@@ -410,6 +459,10 @@ function parseDescriptionFromSrealityHtml(html: string): SrealityListingApiField
         listing_published_at: dates.listing_published_at,
         listing_updated_at: dates.listing_updated_at,
         description: normalizeAdvertDescription(estate.description),
+        address: null,
+        city_part: null,
+        lat: null,
+        lng: null,
       };
     }
   } catch {

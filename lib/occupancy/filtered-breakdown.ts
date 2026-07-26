@@ -54,7 +54,13 @@ export function filterOccupancyListings(
       ...listing,
       zone:
         listing.zone ??
-        resolveListingZone(listing.address, listing.lat, listing.lng, opts.citySlug),
+        resolveListingZone(
+          listing.address,
+          listing.lat,
+          listing.lng,
+          opts.citySlug,
+          listing.description,
+        ),
     }))
     .filter((listing) => {
       if (

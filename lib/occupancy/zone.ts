@@ -13,10 +13,11 @@ export function resolveListingZone(
   lat?: number | null,
   lng?: number | null,
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
+  description?: string | null,
 ): string {
   const { zoneResolver, city } = getOccupancyCityConfig(citySlug);
   if (zoneResolver === "brno") {
-    return resolveBrnoZone(address, lat, lng);
+    return resolveBrnoZone(address, lat, lng, description);
   }
   if (zoneResolver === "cz") {
     return resolveCzechZone(address, city);
@@ -30,7 +31,13 @@ export function withResolvedZone<T extends OccupancyBasicListing>(
 ): T {
   return {
     ...listing,
-    zone: resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
+    zone: resolveListingZone(
+      listing.address,
+      listing.lat,
+      listing.lng,
+      citySlug,
+      listing.description,
+    ),
   };
 }
 

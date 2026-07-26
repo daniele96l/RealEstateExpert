@@ -18,6 +18,39 @@ import {
 } from "./cities";
 import { isSnapshotExcluded, loadSnapshotMeta, markSnapshotEdited } from "./snapshot-meta";
 
+const SNAPSHOT_CACHE_TTL_MS = 60_000;
+
+type SnapshotCacheEntry = {
+  at: number;
+  data: OccupancySnapshot[];
+};
+
+const snapshotFileCache = new Map<string, SnapshotCacheEntry>();
+const snapshotFileInflight = new Map<string, Promise<OccupancySnapshot[]>>();
+
+function snapshotCacheKey(
+  citySlug: OccupancyCitySlug,
+  portal: OccupancyPortal,
+  operation: OccupancyOperation,
+): string {
+  return `${citySlug}|${portal}|${operation}`;
+}
+
+export function invalidateOccupancySnapshotCache(
+  citySlug?: OccupancyCitySlug,
+  portal?: OccupancyPortal,
+  operation?: OccupancyOperation,
+): void {
+  if (!citySlug || !portal || !operation) {
+    snapshotFileCache.clear();
+    snapshotFileInflight.clear();
+    return;
+  }
+  const key = snapshotCacheKey(citySlug, portal, operation);
+  snapshotFileCache.delete(key);
+  snapshotFileInflight.delete(key);
+}
+
 export function emptyRegistry(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
@@ -68,12 +101,13 @@ export async function saveSnapshot(
     occupancySnapshotPath(snapshot.fetched_at, citySlug, portal, operation),
     snapshot,
   );
+  invalidateOccupancySnapshotCache(citySlug, portal, operation);
 }
 
-export async function loadAllSnapshotFilesRaw(
-  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
-  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
-  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
+async function readAllSnapshotFilesFromDisk(
+  citySlug: OccupancyCitySlug,
+  portal: OccupancyPortal,
+  operation: OccupancyOperation,
 ): Promise<OccupancySnapshot[]> {
   const dir = occupancySnapshotsDir(citySlug, portal, operation);
   let files: string[];
@@ -83,16 +117,42 @@ export async function loadAllSnapshotFilesRaw(
     return [];
   }
 
-  const snapshots: OccupancySnapshot[] = [];
-  for (const file of files.filter((f) => f.endsWith(".json")).sort()) {
-    const data = await readJsonFile<OccupancySnapshot>(path.join(dir, file));
-    if (!data?.fetched_at) continue;
-    snapshots.push(data);
+  const jsonFiles = files.filter((f) => f.endsWith(".json")).sort();
+  const loaded = await Promise.all(
+    jsonFiles.map((file) => readJsonFile<OccupancySnapshot>(path.join(dir, file))),
+  );
+
+  return loaded
+    .filter((data): data is OccupancySnapshot => Boolean(data?.fetched_at))
+    .sort((a, b) => new Date(a.fetched_at).getTime() - new Date(b.fetched_at).getTime());
+}
+
+export async function loadAllSnapshotFilesRaw(
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
+  portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
+): Promise<OccupancySnapshot[]> {
+  const key = snapshotCacheKey(citySlug, portal, operation);
+  const cached = snapshotFileCache.get(key);
+  if (cached && Date.now() - cached.at < SNAPSHOT_CACHE_TTL_MS) {
+    return cached.data;
   }
 
-  return snapshots.sort(
-    (a, b) => new Date(a.fetched_at).getTime() - new Date(b.fetched_at).getTime(),
-  );
+  const inflight = snapshotFileInflight.get(key);
+  if (inflight) return inflight;
+
+  const loadPromise = (async () => {
+    try {
+      const data = await readAllSnapshotFilesFromDisk(citySlug, portal, operation);
+      snapshotFileCache.set(key, { at: Date.now(), data });
+      return data;
+    } finally {
+      snapshotFileInflight.delete(key);
+    }
+  })();
+
+  snapshotFileInflight.set(key, loadPromise);
+  return loadPromise;
 }
 
 export async function loadSnapshotByFetchedAt(
@@ -140,6 +200,20 @@ export async function loadAllSnapshots(
   return raw.filter((snapshot) => !isSnapshotExcluded(meta, snapshot.fetched_at));
 }
 
+export function summarizeSnapshots(
+  snapshots: OccupancySnapshot[],
+  meta: Awaited<ReturnType<typeof loadSnapshotMeta>>,
+): OccupancySnapshotSummary[] {
+  return [...snapshots]
+    .map((snapshot) => ({
+      fetched_at: snapshot.fetched_at,
+      active_count: snapshot.active_count,
+      excluded: isSnapshotExcluded(meta, snapshot.fetched_at),
+      exclude_reason: meta.entries[snapshot.fetched_at]?.exclude_reason ?? null,
+    }))
+    .reverse();
+}
+
 export async function listSnapshotSummaries(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
@@ -149,14 +223,7 @@ export async function listSnapshotSummaries(
     loadAllSnapshotFilesRaw(citySlug, portal, operation),
     loadSnapshotMeta(citySlug, portal, operation),
   ]);
-  return [...snapshots]
-    .map((snapshot) => ({
-      fetched_at: snapshot.fetched_at,
-      active_count: snapshot.active_count,
-      excluded: isSnapshotExcluded(meta, snapshot.fetched_at),
-      exclude_reason: meta.entries[snapshot.fetched_at]?.exclude_reason ?? null,
-    }))
-    .reverse();
+  return summarizeSnapshots(snapshots, meta);
 }
 
 export async function loadSnapshotsInWindow(

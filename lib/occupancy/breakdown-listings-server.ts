@@ -15,7 +15,10 @@ export async function buildBreakdownListings(
   citySlug: OccupancyCitySlug,
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
   operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
+  options?: { resolveMissingUrls?: boolean; slim?: boolean },
 ): Promise<TrackedRentalListing[]> {
+  const resolveMissingUrls = options?.resolveMissingUrls ?? true;
+  const slim = options?.slim ?? false;
   const [base, urlById] = await Promise.all([
     Promise.resolve(registryBreakdownListings(listings, citySlug)),
     listingUrlMapFromRentCache(citySlug, portal, operation),
@@ -26,7 +29,7 @@ export async function buildBreakdownListings(
     url: listing.url ?? urlById.get(listing.id) ?? null,
   }));
 
-  if (portal === "sreality") {
+  if (resolveMissingUrls && portal === "sreality") {
     const missingActiveIds = enriched
       .filter((listing) => listing.status === "active" && !listing.url && listing.id.startsWith("sr_"))
       .map((listing) => listing.id);
@@ -41,5 +44,18 @@ export async function buildBreakdownListings(
     }
   }
 
-  return enriched;
+  if (!slim) return enriched;
+
+  return enriched.map((listing) => {
+    const isRoom =
+      listing.property_type === "room" ||
+      listing.property_type === "pokoj" ||
+      listing.url?.includes("/pokoj");
+    return {
+      ...listing,
+      price_history: [],
+      // Keep room descriptions so camera / posto letto filters still work.
+      description: isRoom ? listing.description ?? null : null,
+    };
+  });
 }

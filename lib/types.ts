@@ -418,6 +418,8 @@ export interface OccupancyOfferRatePoint {
   new_total: number;
   removed_total: number;
   active_count: number;
+  new_avg_ppsqm: number | null;
+  removed_avg_ppsqm: number | null;
   by_type: Record<string, number>;
   by_size: Record<string, number>;
   by_rooms: Record<string, number>;
@@ -426,6 +428,14 @@ export interface OccupancyOfferRatePoint {
   removed_by_size: Record<string, number>;
   removed_by_rooms: Record<string, number>;
   removed_by_price: Record<string, number>;
+  ppsqm_by_type: Record<string, number>;
+  ppsqm_by_size: Record<string, number>;
+  ppsqm_by_rooms: Record<string, number>;
+  ppsqm_by_price: Record<string, number>;
+  removed_ppsqm_by_type: Record<string, number>;
+  removed_ppsqm_by_size: Record<string, number>;
+  removed_ppsqm_by_rooms: Record<string, number>;
+  removed_ppsqm_by_price: Record<string, number>;
 }
 
 /** Logged when a listing disappears from the portal (presumed rented). */

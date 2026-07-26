@@ -17,7 +17,8 @@ export function listingInBreakdownZone(
   citySlug: OccupancyCitySlug,
 ): boolean {
   const resolved =
-    listing.zone ?? resolveListingZone(listing.address, listing.lat, listing.lng, citySlug);
+    listing.zone ??
+    resolveListingZone(listing.address, listing.lat, listing.lng, citySlug, listing.description);
   return resolved === zone;
 }
 
@@ -45,7 +46,15 @@ export function registryBreakdownListings(
     withNormalizedPropertyType({
       ...listing,
       property_type: listing.property_type ?? null,
-      zone: listing.zone ?? resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
+      zone:
+        listing.zone ??
+        resolveListingZone(
+          listing.address,
+          listing.lat,
+          listing.lng,
+          citySlug,
+          listing.description,
+        ),
     }),
   );
 }

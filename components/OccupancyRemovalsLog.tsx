@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { fetchOccupancyRemovals } from "@/lib/api";
 import {
   OCCUPANCY_CITY_STORAGE_KEY,
@@ -146,8 +146,10 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
   const [typeFilter, setTypeFilter] = useState<OccupancyTypeFilter>("all");
   const [roomKindFilter, setRoomKindFilter] = useState<RoomOccupancyKindFilter>("all");
   const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const dateLocale = locale === "en" ? "en-GB" : "it-IT";
   const perSqmLabel = t("listings.perSqm");
 
@@ -202,8 +204,29 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
   }, [operation, ot]);
 
   useEffect(() => {
+    const node = sectionRef.current;
+    if (!node || shouldLoad) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setShouldLoad(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [shouldLoad]);
+
+  useEffect(() => {
+    if (!shouldLoad) return;
     void reload();
-  }, [reload, refreshToken]);
+  }, [reload, refreshToken, shouldLoad]);
 
   useEffect(() => {
     setPage(0);
@@ -217,7 +240,7 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
     displayMarket === "cz" || events.some((event) => event.id.startsWith("sr_"));
 
   return (
-    <section className="card mt-6 overflow-hidden">
+    <section ref={sectionRef} className="card mt-6 overflow-hidden">
       <div className="border-b border-surface-border/60 px-6 py-4">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="flex items-start gap-3">
