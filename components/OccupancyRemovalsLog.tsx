@@ -18,6 +18,7 @@ import type { OccupancyRemovalEvent } from "@/lib/types";
 import { useI18n } from "@/lib/i18n/context";
 import { cn, fmtMoney } from "@/lib/utils";
 import { ClipboardList } from "lucide-react";
+import OccupancyDescriptionPreview from "@/components/OccupancyDescriptionPreview";
 
 const OCCUPANCY_PORTAL_STORAGE_KEY = "occupancy-portal";
 const REMOVALS_FETCH_LIMIT = 500;
@@ -238,6 +239,7 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
                   <th className="px-4 py-3">{t("occupancy.removals.table.dom")}</th>
                   <th className="px-4 py-3">{t("occupancy.removals.table.priceHistory")}</th>
                   <th className="px-6 py-3">{t("occupancy.removals.table.address")}</th>
+                  <th className="min-w-[14rem] px-6 py-3">{t("occupancy.removals.table.description")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -265,6 +267,9 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
                     <td className="max-w-md px-6 py-3">
                       <p className="truncate text-neutral-700">{event.address ?? "—"}</p>
                       <p className="mt-0.5 truncate text-xs text-neutral-500">{event.id}</p>
+                    </td>
+                    <td className="max-w-xs px-6 py-3">
+                      <OccupancyDescriptionPreview description={event.description} />
                     </td>
                   </tr>
                 ))}

@@ -9,7 +9,7 @@ import type {
 import { getCache, mergeListings } from "@/lib/server/listings-cache";
 import { readJsonFile } from "@/lib/server/fs-cache-io";
 import { inferListingWebsiteSource } from "@/lib/listing-url";
-import { DEFAULT_OCCUPANCY_PORTAL, type OccupancyPortal } from "./constants";
+import { DEFAULT_OCCUPANCY_OPERATION, DEFAULT_OCCUPANCY_PORTAL, type OccupancyOperation, type OccupancyPortal } from "./constants";
 import {
   defaultOccupancyCitySlug,
   getOccupancyCityConfig,
@@ -63,6 +63,7 @@ function toBasic(listing: MapListing, citySlug: OccupancyCitySlug): OccupancyBas
     url: listing.url,
     listing_published_at: listing.listing_published_at ?? null,
     listing_updated_at: listing.listing_updated_at ?? null,
+    description: listing.description ?? null,
   };
 }
 
@@ -85,8 +86,9 @@ function listingSourceForPortal(portal: OccupancyPortal): string | null {
 export async function listingUrlMapFromRentCache(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<Map<string, string>> {
-  const cache = await loadMergedRentCache(citySlug, portal);
+  const cache = await loadMergedListingsCache(citySlug, portal, operation);
   const map = new Map<string, string>();
   for (const listing of cache?.listings ?? []) {
     const url = listing.url?.trim();
@@ -95,16 +97,28 @@ export async function listingUrlMapFromRentCache(
   return map;
 }
 
-async function loadMergedRentCache(
+async function loadMergedListingsCache(
   citySlug: OccupancyCitySlug,
   portal: OccupancyPortal,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<CityListingsCache | null> {
   const { city, market } = getOccupancyCityConfig(citySlug);
-  const primary = await getCache(market, city, "rent");
+  const primary = await getCache(market, city, operation);
 
   if (citySlug === "brno") {
     if (!primary?.listings.length) return null;
     const listings = primary.listings.filter((listing) => inferListingWebsiteSource(listing) === "sreality");
+    if (!listings.length) return null;
+    return { ...primary, listings };
+  }
+
+  if (operation === "sale") {
+    if (!primary?.listings.length) return null;
+    const listings = primary.listings.filter((listing) => {
+      const source = inferListingWebsiteSource(listing);
+      const expected = listingSourceForPortal(portal);
+      return expected ? source === expected : true;
+    });
     if (!listings.length) return null;
     return { ...primary, listings };
   }
@@ -144,11 +158,20 @@ async function loadMergedRentCache(
   };
 }
 
+/** @deprecated Use loadMergedListingsCache */
+async function loadMergedRentCache(
+  citySlug: OccupancyCitySlug,
+  portal: OccupancyPortal,
+): Promise<CityListingsCache | null> {
+  return loadMergedListingsCache(citySlug, portal, "rent");
+}
+
 export async function loadListingsPreview(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancyListingsPreview | null> {
-  const cache = await loadMergedRentCache(citySlug, portal);
+  const cache = await loadMergedListingsCache(citySlug, portal, operation);
   if (!cache?.listings.length) return null;
 
   const basics = remapListingZones(cache.listings.map((listing) => toBasic(listing, citySlug)), citySlug);
@@ -251,8 +274,9 @@ export async function resolveListingsPreview(
   portal: OccupancyPortal,
   snapshots: OccupancySnapshot[],
   provider: string | null = null,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancyListingsPreview | null> {
-  const fromCache = await loadListingsPreview(citySlug, portal);
+  const fromCache = await loadListingsPreview(citySlug, portal, operation);
   if (fromCache) return fromCache;
 
   const latest = snapshots[snapshots.length - 1];

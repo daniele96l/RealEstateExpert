@@ -15,11 +15,12 @@ export async function fetchSrealityRentalsListings(
   citySlug: OccupancyCitySlug,
   maxPages: number,
   onProgress?: (progress: BrnoRentalsFetchProgress) => void,
+  operation: "rent" | "sale" = "rent",
 ): Promise<CityListingsCache> {
   const { city, market } = getOccupancyCityConfig(citySlug);
   const resolvedMaxPages = resolveBatchFetchPageLimit(maxPages, market);
 
-  return fetchSrealityCityListings(city, "rent", market, {
+  return fetchSrealityCityListings(city, operation, market, {
     maxPages: resolvedMaxPages,
     onPage: (pageProgress) => {
       onProgress?.({
@@ -29,6 +30,14 @@ export async function fetchSrealityRentalsListings(
       });
     },
   });
+}
+
+export async function fetchSrealitySalesListings(
+  citySlug: OccupancyCitySlug,
+  maxPages: number,
+  onProgress?: (progress: BrnoRentalsFetchProgress) => void,
+): Promise<CityListingsCache> {
+  return fetchSrealityRentalsListings(citySlug, maxPages, onProgress, "sale");
 }
 
 /** @deprecated Use fetchSrealityRentalsListings("brno", …) */

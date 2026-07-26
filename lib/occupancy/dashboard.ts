@@ -6,9 +6,10 @@ import { listSnapshotSummaries, loadAllSnapshots, loadRegistry } from "./registr
 import { computeSnapshotDiff } from "./snapshot-diff";
 import { rebuildRegistryFromSnapshots } from "./snapshot";
 import {
-  DEFAULT_OCCUPANCY_PORTAL,
   resolveOccupancyCitySlug,
+  resolveOccupancyOperation,
   type OccupancyCitySlug,
+  type OccupancyOperation,
 } from "./constants";
 import { resolveOccupancyPortal } from "./portals";
 import type { OccupancyDashboardData, OccupancySnapshotDiff } from "@/lib/types";
@@ -42,16 +43,18 @@ export async function loadOccupancyDashboard(
   cityInput?: string | null,
   periodInput?: string | null,
   basisInput?: string | null,
+  operationInput?: string | null,
 ): Promise<OccupancyDashboardData> {
   const citySlug: OccupancyCitySlug = resolveOccupancyCitySlug(cityInput);
   const portal = resolveOccupancyPortal(portalInput, citySlug);
   const period = resolveOccupancyMetricsPeriod(periodInput);
   const basis = resolveOccupancyMetricsBasis(basisInput);
+  const operation: OccupancyOperation = resolveOccupancyOperation(operationInput);
 
   const [currentRegistry, available_snapshots, allSnapshots] = await Promise.all([
-    loadRegistry(citySlug, portal),
-    listSnapshotSummaries(citySlug, portal),
-    loadAllSnapshots(citySlug, portal),
+    loadRegistry(citySlug, portal, operation),
+    listSnapshotSummaries(citySlug, portal, operation),
+    loadAllSnapshots(citySlug, portal, operation),
   ]);
 
   const selected = asOf?.trim() || null;
@@ -63,6 +66,7 @@ export async function loadOccupancyDashboard(
     portal,
     allSnapshots,
     currentRegistry.last_provider ?? null,
+    operation,
   );
 
   if (selected) {
@@ -106,16 +110,54 @@ export async function loadOccupancyDashboard(
     citySlug,
     period,
     basis,
+    operation,
   });
 
   const snapshot_diff = resolveSnapshotDiff(allSnapshots, selected);
   const map_listings = buildMapListings(snapshot_diff, allSnapshots, selected);
   const breakdown_listings = await buildBreakdownListings(registry.listings, citySlug, portal);
 
+  const descriptionById = new Map(
+    Object.values(registry.listings)
+      .filter((listing) => listing.description?.trim())
+      .map((listing) => [listing.id, listing.description!.trim()] as const),
+  );
+
+  try {
+    const { loadRemovalEvents } = await import("./removal-log");
+    const removals = await loadRemovalEvents(citySlug, portal, 500, operation);
+    for (const event of removals) {
+      const text = event.description?.trim();
+      if (text && !descriptionById.has(event.id)) descriptionById.set(event.id, text);
+    }
+  } catch {
+    // removals log is optional enrichment
+  }
+
+  const enriched_snapshot_diff = snapshot_diff
+    ? {
+        ...snapshot_diff,
+        listings: snapshot_diff.listings.map((listing) => ({
+          ...listing,
+          description: listing.description ?? descriptionById.get(listing.id) ?? null,
+        })),
+      }
+    : null;
+
+  const enriched_listings_preview = listings_preview
+    ? {
+        ...listings_preview,
+        sample: listings_preview.sample.map((listing) => ({
+          ...listing,
+          description: listing.description ?? descriptionById.get(listing.id) ?? null,
+        })),
+      }
+    : null;
+
   return {
     metrics,
-    listings_preview,
-    snapshot_diff,
+    listings_preview: enriched_listings_preview,
+    snapshot_diff: enriched_snapshot_diff,
     map_listings,
     breakdown_listings,
     available_snapshots,

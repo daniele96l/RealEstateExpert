@@ -1,6 +1,12 @@
 import type { OccupancySnapshotMetaEntry, OccupancySnapshotMetaFile } from "@/lib/types";
 import { readJsonFile, writeJsonFile } from "@/lib/server/fs-cache-io";
-import { DEFAULT_OCCUPANCY_PORTAL, occupancySnapshotsMetaPath, type OccupancyPortal } from "./constants";
+import {
+  DEFAULT_OCCUPANCY_OPERATION,
+  DEFAULT_OCCUPANCY_PORTAL,
+  occupancySnapshotsMetaPath,
+  type OccupancyOperation,
+  type OccupancyPortal,
+} from "./constants";
 import { defaultOccupancyCitySlug, type OccupancyCitySlug } from "./cities";
 
 const EMPTY_META: OccupancySnapshotMetaFile = { entries: {} };
@@ -8,8 +14,11 @@ const EMPTY_META: OccupancySnapshotMetaFile = { entries: {} };
 export async function loadSnapshotMeta(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancySnapshotMetaFile> {
-  const data = await readJsonFile<OccupancySnapshotMetaFile>(occupancySnapshotsMetaPath(citySlug, portal));
+  const data = await readJsonFile<OccupancySnapshotMetaFile>(
+    occupancySnapshotsMetaPath(citySlug, portal, operation),
+  );
   if (!data?.entries) return { ...EMPTY_META };
   return data;
 }
@@ -18,8 +27,9 @@ export async function saveSnapshotMeta(
   meta: OccupancySnapshotMetaFile,
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<void> {
-  await writeJsonFile(occupancySnapshotsMetaPath(citySlug, portal), meta);
+  await writeJsonFile(occupancySnapshotsMetaPath(citySlug, portal, operation), meta);
 }
 
 export function snapshotMetaEntry(
@@ -39,8 +49,9 @@ export async function setSnapshotExcluded(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
   reason?: string | null,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<void> {
-  const meta = await loadSnapshotMeta(citySlug, portal);
+  const meta = await loadSnapshotMeta(citySlug, portal, operation);
   const existing = meta.entries[fetchedAt] ?? {};
 
   if (excluded) {
@@ -56,7 +67,7 @@ export async function setSnapshotExcluded(
     else delete meta.entries[fetchedAt];
   }
 
-  await saveSnapshotMeta(meta, citySlug, portal);
+  await saveSnapshotMeta(meta, citySlug, portal, operation);
 }
 
 export async function markSnapshotEdited(
@@ -64,12 +75,13 @@ export async function markSnapshotEdited(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
   note?: string | null,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<void> {
-  const meta = await loadSnapshotMeta(citySlug, portal);
+  const meta = await loadSnapshotMeta(citySlug, portal, operation);
   meta.entries[fetchedAt] = {
     ...meta.entries[fetchedAt],
     edited_at: new Date().toISOString(),
     edit_note: note?.trim() || meta.entries[fetchedAt]?.edit_note || null,
   };
-  await saveSnapshotMeta(meta, citySlug, portal);
+  await saveSnapshotMeta(meta, citySlug, portal, operation);
 }

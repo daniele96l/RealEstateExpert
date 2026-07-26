@@ -17,6 +17,7 @@
     "occupancy:poll": "tsx scripts/poll-occupancy.ts --city=reggio_calabria",
     "occupancy:poll:brno": "tsx scripts/poll-occupancy.ts --city=brno",
     "occupancy:seed:brno": "tsx scripts/seed-occupancy-brno.ts",
+    "occupancy:backfill-descriptions:brno": "tsx scripts/backfill-sreality-descriptions.mts",
     "data:sync-immobiliare": "tsx scripts/sync-prod-immobiliare.ts",
     "data:sync-brno": "tsx scripts/sync-prod-brno.ts",
     "data:sync-occupancy:cz": "tsx scripts/sync-prod-occupancy-cz.ts",

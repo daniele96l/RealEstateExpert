@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { resolveOccupancyCitySlug } from "@/lib/occupancy/constants";
+import { resolveOccupancyCitySlug, resolveOccupancyOperation } from "@/lib/occupancy/constants";
 import { resolveOccupancyPortal } from "@/lib/occupancy/portals";
 import { resolveListingsPreview } from "@/lib/occupancy/listings-preview";
 import { loadAllSnapshots } from "@/lib/occupancy/registry";
@@ -17,10 +17,12 @@ export async function POST(request: Request) {
     const body = (await request.json().catch(() => ({}))) as {
       portal?: string;
       city?: string;
+      operation?: string;
       stream?: boolean;
     };
     const citySlug = resolveOccupancyCitySlug(body.city);
     const portal = resolveOccupancyPortal(body.portal, citySlug);
+    const operation = resolveOccupancyOperation(body.operation);
 
     if (body.stream) {
       const encoder = new TextEncoder();
@@ -32,14 +34,15 @@ export async function POST(request: Request) {
               (progress) => {
                 controller.enqueue(encoder.encode(`${JSON.stringify({ type: "progress", ...progress })}\n`));
               },
-              { citySlug },
+              { citySlug, operation },
             );
-            const snapshots = await loadAllSnapshots(citySlug, result.registry.portal);
+            const snapshots = await loadAllSnapshots(citySlug, result.registry.portal, operation);
             const listings_preview = await resolveListingsPreview(
               citySlug,
               result.registry.portal,
               snapshots,
               result.registry.last_provider ?? null,
+              operation,
             );
             controller.enqueue(
               encoder.encode(
@@ -74,13 +77,14 @@ export async function POST(request: Request) {
       });
     }
 
-    const result = await runOccupancySnapshot(portal, undefined, { citySlug });
-    const snapshots = await loadAllSnapshots(citySlug, result.registry.portal);
+    const result = await runOccupancySnapshot(portal, undefined, { citySlug, operation });
+    const snapshots = await loadAllSnapshots(citySlug, result.registry.portal, operation);
     const listings_preview = await resolveListingsPreview(
       citySlug,
       result.registry.portal,
       snapshots,
       result.registry.last_provider ?? null,
+      operation,
     );
     return NextResponse.json({
       metrics: result.metrics,

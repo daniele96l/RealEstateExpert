@@ -16,6 +16,12 @@ import {
   resolveOccupancyCitySlug,
   type OccupancyCitySlug,
 } from "./cities";
+import {
+  DEFAULT_OCCUPANCY_OPERATION,
+  isOccupancyOperation,
+  resolveOccupancyOperation,
+  type OccupancyOperation,
+} from "./operation";
 
 export {
   DEFAULT_OCCUPANCY_PORTAL,
@@ -26,6 +32,10 @@ export {
   isOccupancyCitySlug,
   resolveOccupancyCitySlug,
   type OccupancyCitySlug,
+  DEFAULT_OCCUPANCY_OPERATION,
+  isOccupancyOperation,
+  resolveOccupancyOperation,
+  type OccupancyOperation,
 };
 
 /** @deprecated Use getOccupancyCityConfig(slug).city */
@@ -39,53 +49,68 @@ export const OCCUPANCY_TURNOVER_DAYS = 30;
 export const OCCUPANCY_FETCH_MAX_PAGES = BATCH_FETCH_ALL_PAGES;
 export const OCCUPANCY_FALLBACK_ZONE = "Altro";
 
-const DATA_DIR = path.join(process.cwd(), "data", "occupancy");
+function trackingDataRoot(operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION): string {
+  return path.join(
+    process.cwd(),
+    "data",
+    operation === "sale" ? "sale-rate" : "occupancy",
+  );
+}
 
-function occupancyCityDir(citySlug: OccupancyCitySlug = defaultOccupancyCitySlug()): string {
+function occupancyCityDir(
+  citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
+): string {
   const { market, city } = getOccupancyCityConfig(citySlug);
-  return path.join(DATA_DIR, listingsCacheSlug(market, city));
+  return path.join(trackingDataRoot(operation), listingsCacheSlug(market, city));
 }
 
 export function occupancyDataDir(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): string {
-  return path.join(occupancyCityDir(citySlug), portal);
+  return path.join(occupancyCityDir(citySlug, operation), portal);
 }
 
 export function occupancyRegistryPath(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): string {
-  return path.join(occupancyDataDir(citySlug, portal), "registry.json");
+  return path.join(occupancyDataDir(citySlug, portal, operation), "registry.json");
 }
 
 export function occupancySnapshotsDir(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): string {
-  return path.join(occupancyDataDir(citySlug, portal), "snapshots");
+  return path.join(occupancyDataDir(citySlug, portal, operation), "snapshots");
 }
 
 export function occupancySnapshotPath(
   fetchedAt: string,
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): string {
   const safe = fetchedAt.replace(/[:.]/g, "-");
-  return path.join(occupancySnapshotsDir(citySlug, portal), `${safe}.json`);
+  return path.join(occupancySnapshotsDir(citySlug, portal, operation), `${safe}.json`);
 }
 
 export function occupancyRemovalsLogPath(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): string {
-  return path.join(occupancyDataDir(citySlug, portal), "removals.json");
+  return path.join(occupancyDataDir(citySlug, portal, operation), "removals.json");
 }
 
 export function occupancySnapshotsMetaPath(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): string {
-  return path.join(occupancyDataDir(citySlug, portal), "snapshots-meta.json");
+  return path.join(occupancyDataDir(citySlug, portal, operation), "snapshots-meta.json");
 }

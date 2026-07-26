@@ -3,7 +3,9 @@ import path from "path";
 import type { OccupancyBasicListing, OccupancyRegistry, OccupancySnapshot, OccupancySnapshotSummary } from "@/lib/types";
 import { readJsonFile, writeJsonFile } from "@/lib/server/fs-cache-io";
 import {
+  DEFAULT_OCCUPANCY_OPERATION,
   DEFAULT_OCCUPANCY_PORTAL,
+  type OccupancyOperation,
   type OccupancyPortal,
   occupancyRegistryPath,
   occupancySnapshotPath,
@@ -35,8 +37,11 @@ export function emptyRegistry(
 export async function loadRegistry(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancyRegistry> {
-  const data = await readJsonFile<OccupancyRegistry>(occupancyRegistryPath(citySlug, portal));
+  const data = await readJsonFile<OccupancyRegistry>(
+    occupancyRegistryPath(citySlug, portal, operation),
+  );
   if (!data?.listings) return emptyRegistry(citySlug, portal);
   return { ...data, portal: data.portal ?? portal };
 }
@@ -45,23 +50,32 @@ export async function saveRegistry(
   registry: OccupancyRegistry,
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = registry.portal ?? DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<void> {
-  await writeJsonFile(occupancyRegistryPath(citySlug, portal), { ...registry, portal });
+  await writeJsonFile(occupancyRegistryPath(citySlug, portal, operation), {
+    ...registry,
+    portal,
+  });
 }
 
 export async function saveSnapshot(
   snapshot: OccupancySnapshot,
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<void> {
-  await writeJsonFile(occupancySnapshotPath(snapshot.fetched_at, citySlug, portal), snapshot);
+  await writeJsonFile(
+    occupancySnapshotPath(snapshot.fetched_at, citySlug, portal, operation),
+    snapshot,
+  );
 }
 
 export async function loadAllSnapshotFilesRaw(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancySnapshot[]> {
-  const dir = occupancySnapshotsDir(citySlug, portal);
+  const dir = occupancySnapshotsDir(citySlug, portal, operation);
   let files: string[];
   try {
     files = await readdir(dir);
@@ -85,8 +99,11 @@ export async function loadSnapshotByFetchedAt(
   fetchedAt: string,
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancySnapshot | null> {
-  return readJsonFile<OccupancySnapshot>(occupancySnapshotPath(fetchedAt, citySlug, portal));
+  return readJsonFile<OccupancySnapshot>(
+    occupancySnapshotPath(fetchedAt, citySlug, portal, operation),
+  );
 }
 
 export async function updateSnapshotListings(
@@ -95,8 +112,9 @@ export async function updateSnapshotListings(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
   editNote?: string | null,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancySnapshot> {
-  const existing = await loadSnapshotByFetchedAt(fetchedAt, citySlug, portal);
+  const existing = await loadSnapshotByFetchedAt(fetchedAt, citySlug, portal, operation);
   if (!existing) throw new Error("Snapshot not found");
 
   const snapshot: OccupancySnapshot = {
@@ -105,18 +123,19 @@ export async function updateSnapshotListings(
     listings,
     active_count: listings.length,
   };
-  await saveSnapshot(snapshot, citySlug, portal);
-  await markSnapshotEdited(fetchedAt, citySlug, portal, editNote ?? null);
+  await saveSnapshot(snapshot, citySlug, portal, operation);
+  await markSnapshotEdited(fetchedAt, citySlug, portal, editNote ?? null, operation);
   return snapshot;
 }
 
 export async function loadAllSnapshots(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancySnapshot[]> {
   const [raw, meta] = await Promise.all([
-    loadAllSnapshotFilesRaw(citySlug, portal),
-    loadSnapshotMeta(citySlug, portal),
+    loadAllSnapshotFilesRaw(citySlug, portal, operation),
+    loadSnapshotMeta(citySlug, portal, operation),
   ]);
   return raw.filter((snapshot) => !isSnapshotExcluded(meta, snapshot.fetched_at));
 }
@@ -124,10 +143,11 @@ export async function loadAllSnapshots(
 export async function listSnapshotSummaries(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancySnapshotSummary[]> {
   const [snapshots, meta] = await Promise.all([
-    loadAllSnapshotFilesRaw(citySlug, portal),
-    loadSnapshotMeta(citySlug, portal),
+    loadAllSnapshotFilesRaw(citySlug, portal, operation),
+    loadSnapshotMeta(citySlug, portal, operation),
   ]);
   return [...snapshots]
     .map((snapshot) => ({
@@ -144,9 +164,10 @@ export async function loadSnapshotsInWindow(
   asOfMs = Date.now(),
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancySnapshot[]> {
   const cutoff = asOfMs - days * 24 * 60 * 60 * 1000;
-  const snapshots = await loadAllSnapshots(citySlug, portal);
+  const snapshots = await loadAllSnapshots(citySlug, portal, operation);
   return snapshots.filter((s) => {
     const t = new Date(s.fetched_at).getTime();
     return t >= cutoff && t <= asOfMs;

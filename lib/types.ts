@@ -163,6 +163,7 @@ export interface MapListing {
   needs_renovation: boolean | null;
   listing_published_at?: string | null;
   listing_updated_at?: string | null;
+  description?: string | null;
 }
 
 export interface ListingDetail extends MapListing {
@@ -275,6 +276,7 @@ export interface OccupancyBasicListing {
   url?: string | null;
   listing_published_at?: string | null;
   listing_updated_at?: string | null;
+  description?: string | null;
 }
 
 export interface OccupancyPricePoint {
@@ -423,6 +425,7 @@ export interface OccupancyRemovalEvent {
   address: string | null;
   zone: string | null;
   url?: string | null;
+  description?: string | null;
   lat: number;
   lng: number;
   price_history: OccupancyPricePoint[];

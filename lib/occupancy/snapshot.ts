@@ -1,22 +1,8 @@
-import type {
-  CityListingsCache,
-  ListingsProvider,
-  MapListing,
-  OccupancyBasicListing,
-  OccupancyCityMetrics,
-  OccupancyRegistry,
-  OccupancySnapshot,
-  TrackedRentalListing,
-} from "@/lib/types";
-import { fetchSrealityRentalsListings } from "@/lib/server/brno-rentals-fetch";
-import { fetchReggioRentalsListings } from "@/lib/server/reggio-rentals-fetch";
-import { getCache, mergeListingCache, saveCache } from "@/lib/server/listings-cache";
-import { fetchIdealistaScraperListings } from "@/lib/server/idealista-rentals-fetch";
-import { fetchCasaScraperListings } from "@/lib/server/casa-rentals-fetch";
-import { fetchSubitoScraperListings } from "@/lib/server/subito-rentals-fetch";
 import {
+  DEFAULT_OCCUPANCY_OPERATION,
   DEFAULT_OCCUPANCY_PORTAL,
   OCCUPANCY_FETCH_MAX_PAGES,
+  type OccupancyOperation,
   type OccupancyPortal,
 } from "./constants";
 import { isOccupancyScraperPortal } from "./portals";
@@ -32,6 +18,23 @@ import { emptyRegistry, loadRegistry, saveRegistry, saveSnapshot } from "./regis
 import { computeOccupancyMetrics } from "./metrics";
 import { DEFAULT_OCCUPANCY_METRICS_PERIOD } from "./metrics-period";
 import { logPresumedRentalRemoval } from "./removal-log";
+import { fetchImmobiliareCityListings } from "@/lib/server/immobiliare-search";
+import { fetchSrealityRentalsListings } from "@/lib/server/brno-rentals-fetch";
+import { fetchReggioRentalsListings } from "@/lib/server/reggio-rentals-fetch";
+import { getCache, mergeListingCache, saveCache } from "@/lib/server/listings-cache";
+import { fetchIdealistaScraperListings } from "@/lib/server/idealista-rentals-fetch";
+import { fetchCasaScraperListings } from "@/lib/server/casa-rentals-fetch";
+import { fetchSubitoScraperListings } from "@/lib/server/subito-rentals-fetch";
+import type {
+  CityListingsCache,
+  ListingsProvider,
+  MapListing,
+  OccupancyBasicListing,
+  OccupancyCityMetrics,
+  OccupancyRegistry,
+  OccupancySnapshot,
+  TrackedRentalListing,
+} from "@/lib/types";
 
 function daysBetween(startIso: string, endIso: string): number {
   const ms = new Date(endIso).getTime() - new Date(startIso).getTime();
@@ -52,6 +55,7 @@ function mapListingToBasic(listing: MapListing, citySlug: OccupancyCitySlug): Oc
     url: listing.url,
     listing_published_at: listing.listing_published_at ?? null,
     listing_updated_at: listing.listing_updated_at ?? null,
+    description: listing.description ?? null,
   };
 }
 
@@ -91,6 +95,7 @@ function updateTrackedFields(
     url: basic.url ?? tracked.url ?? null,
     listing_published_at: basic.listing_published_at ?? tracked.listing_published_at ?? null,
     listing_updated_at: basic.listing_updated_at ?? tracked.listing_updated_at ?? null,
+    description: basic.description ?? tracked.description ?? null,
     last_seen_at: at,
     price_history: priceHistory,
   };
@@ -164,12 +169,13 @@ export async function rebuildRegistryUpTo(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
   lastProvider: ListingsProvider | null = null,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancyRegistry | null> {
   const { loadAllSnapshots } = await import("./registry");
   const targetMs = new Date(targetFetchedAt).getTime();
   if (!Number.isFinite(targetMs)) return null;
 
-  const snapshots = (await loadAllSnapshots(citySlug, portal)).filter(
+  const snapshots = (await loadAllSnapshots(citySlug, portal, operation)).filter(
     (s) => new Date(s.fetched_at).getTime() <= targetMs,
   );
   if (!snapshots.length) return null;
@@ -178,6 +184,7 @@ export async function rebuildRegistryUpTo(
 
 export interface OccupancySnapshotOptions {
   citySlug?: OccupancyCitySlug;
+  operation?: OccupancyOperation;
   /** Skip fetch when data was already scraped (e.g. prod sync script). */
   prefetched?: CityListingsCache;
   provider?: ListingsProvider;
@@ -191,6 +198,7 @@ async function fetchOccupancyListings(
   options?: OccupancySnapshotOptions,
 ): Promise<{ data: CityListingsCache; provider: ListingsProvider }> {
   const cityConfig = getOccupancyCityConfig(citySlug);
+  const operation = options?.operation ?? DEFAULT_OCCUPANCY_OPERATION;
 
   if (cityConfig.market === "cz" && portal === "sreality") {
     if (options?.prefetched) {
@@ -199,18 +207,44 @@ async function fetchOccupancyListings(
         provider: options.provider ?? "sreality",
       };
     }
-    const data = await fetchSrealityRentalsListings(citySlug, maxPages, (progress) => {
-      reportProgress(
-        progress.page,
-        progress.page,
-        progress.listingsTotal,
-        `Sreality · page ${progress.page}/${progress.maxPages}`,
-      );
-    });
+    const labelPrefix = operation === "sale" ? "Sreality sale" : "Sreality";
+    const data = await fetchSrealityRentalsListings(
+      citySlug,
+      maxPages,
+      (progress) => {
+        reportProgress(
+          progress.page,
+          progress.page,
+          progress.listingsTotal,
+          `${labelPrefix} · page ${progress.page}/${progress.maxPages}`,
+        );
+      },
+      operation,
+    );
     return { data, provider: "sreality" };
   }
 
   if (portal === "immobiliare_scraper") {
+    if (operation === "sale") {
+      if (options?.prefetched) {
+        return {
+          data: options.prefetched,
+          provider: options.provider ?? "direct",
+        };
+      }
+      const data = await fetchImmobiliareCityListings(cityConfig.city, "sale", {
+        maxPages,
+        onPage: (pageProgress) => {
+          reportProgress(
+            pageProgress.page,
+            pageProgress.page,
+            pageProgress.listingsTotal,
+            `Immobiliare sale · pag. ${pageProgress.page}/${pageProgress.maxPages}`,
+          );
+        },
+      });
+      return { data: { ...data, provider: "direct" }, provider: "direct" };
+    }
     if (options?.prefetched) {
       return {
         data: options.prefetched,
@@ -232,6 +266,10 @@ async function fetchOccupancyListings(
       );
     });
     return { data, provider: "reggio_rentals" };
+  }
+
+  if (operation === "sale") {
+    throw new Error(`Sale rate non supportato per il portale: ${portal}`);
   }
 
   if (portal === "idealista_scraper") {
@@ -297,9 +335,10 @@ export async function runOccupancySnapshot(
   options?: OccupancySnapshotOptions,
 ): Promise<OccupancySnapshotResult> {
   const citySlug = options?.citySlug ?? defaultOccupancyCitySlug();
+  const operation = options?.operation ?? DEFAULT_OCCUPANCY_OPERATION;
   const cityConfig = getOccupancyCityConfig(citySlug);
   const maxPages =
-    isOccupancyScraperPortal(portal)
+    isOccupancyScraperPortal(portal) && operation === "rent"
       ? Math.min(resolveItalyListingMaxPages(OCCUPANCY_FETCH_MAX_PAGES), 10)
       : cityConfig.market === "cz"
         ? resolveBatchFetchPageLimit(OCCUPANCY_FETCH_MAX_PAGES, "cz")
@@ -327,11 +366,11 @@ export async function runOccupancySnapshot(
     portal,
     maxPages,
     reportProgress,
-    options,
+    { ...options, operation },
   );
 
   if (citySlug === "brno" && portal === "sreality") {
-    const existing = await getCache(cityConfig.market, cityConfig.city, "rent");
+    const existing = await getCache(cityConfig.market, cityConfig.city, operation);
     await saveCache(mergeListingCache(existing, data), cityConfig.market);
   }
 
@@ -341,7 +380,7 @@ export async function runOccupancySnapshot(
   const basics = data.listings.map((listing) => mapListingToBasic(listing, citySlug));
   const currentIds = new Set(basics.map((l) => l.id));
 
-  const registry = await loadRegistry(citySlug, portal);
+  const registry = await loadRegistry(citySlug, portal, operation);
   const listings = { ...registry.listings };
 
   let newCount = 0;
@@ -371,7 +410,7 @@ export async function runOccupancySnapshot(
     const rented = markRented(tracked, fetchedAt);
     listings[id] = rented;
     rentedCount++;
-    await logPresumedRentalRemoval(rented, fetchedAt, portal, citySlug, currency);
+    await logPresumedRentalRemoval(rented, fetchedAt, portal, citySlug, currency, operation);
   }
 
   const updatedRegistry = {
@@ -393,12 +432,14 @@ export async function runOccupancySnapshot(
     },
     citySlug,
     portal,
+    operation,
   );
-  await saveRegistry(updatedRegistry, citySlug, portal);
+  await saveRegistry(updatedRegistry, citySlug, portal, operation);
 
   const metrics = await computeOccupancyMetrics(updatedRegistry, {
     citySlug,
     period: DEFAULT_OCCUPANCY_METRICS_PERIOD,
+    operation,
   });
 
   reportProgress(totalSteps, maxPages, basics.length, "Completato");
@@ -407,7 +448,10 @@ export async function runOccupancySnapshot(
     (listing) => listing.listing_published_at || listing.listing_updated_at,
   ).length;
   const portal_dates_warning =
-    portal === "immobiliare_scraper" && basics.length > 0 && portalDatesCount === 0
+    portal === "immobiliare_scraper" &&
+    operation === "rent" &&
+    basics.length > 0 &&
+    portalDatesCount === 0
       ? "immobiliare_portal_dates_blocked"
       : null;
 

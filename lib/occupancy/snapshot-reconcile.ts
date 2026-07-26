@@ -1,5 +1,10 @@
 import type { OccupancyRegistry } from "@/lib/types";
-import { DEFAULT_OCCUPANCY_PORTAL, type OccupancyPortal } from "./constants";
+import {
+  DEFAULT_OCCUPANCY_OPERATION,
+  DEFAULT_OCCUPANCY_PORTAL,
+  type OccupancyOperation,
+  type OccupancyPortal,
+} from "./constants";
 import { defaultOccupancyCitySlug, type OccupancyCitySlug } from "./cities";
 import { loadAllSnapshots, loadRegistry, saveRegistry } from "./registry";
 import { rebuildRegistryFromSnapshots } from "./snapshot";
@@ -7,15 +12,16 @@ import { rebuildRegistryFromSnapshots } from "./snapshot";
 export async function reconcileOccupancyAfterSnapshotChange(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancyRegistry> {
-  const current = await loadRegistry(citySlug, portal);
-  const snapshots = await loadAllSnapshots(citySlug, portal);
+  const current = await loadRegistry(citySlug, portal, operation);
+  const snapshots = await loadAllSnapshots(citySlug, portal, operation);
   const registry = rebuildRegistryFromSnapshots(
     snapshots,
     citySlug,
     portal,
     current.last_provider ?? null,
   );
-  await saveRegistry(registry, citySlug, portal);
+  await saveRegistry(registry, citySlug, portal, operation);
   return registry;
 }

@@ -8,7 +8,9 @@ import type {
 import {
   OCCUPANCY_TURNOVER_DAYS,
   OCCUPANCY_WINDOW_DAYS,
+  DEFAULT_OCCUPANCY_OPERATION,
   DEFAULT_OCCUPANCY_PORTAL,
+  type OccupancyOperation,
   type OccupancyPortal,
 } from "./constants";
 import { getOccupancyCityConfig, type OccupancyCitySlug } from "./cities";
@@ -46,6 +48,7 @@ export interface ComputeOccupancyMetricsOptions {
   asOf?: string;
   period?: OccupancyMetricsPeriod;
   basis?: OccupancyMetricsBasis;
+  operation?: OccupancyOperation;
 }
 
 function applyPostedMetricsPeriod(
@@ -163,7 +166,8 @@ export async function computeOccupancyMetrics(
         ? "brno"
         : "reggio_calabria");
   const cityConfig = getOccupancyCityConfig(citySlug);
-  const allSnapshots = await loadAllSnapshots(citySlug, portal);
+  const operation = options?.operation ?? DEFAULT_OCCUPANCY_OPERATION;
+  const allSnapshots = await loadAllSnapshots(citySlug, portal, operation);
   const asOfMs = resolveAsOfMs(
     options?.asOf ?? allSnapshots[allSnapshots.length - 1]?.fetched_at ?? registry.updated_at,
   );
@@ -394,12 +398,14 @@ export async function computeOccupancyMetrics(
 export async function loadOccupancyMetrics(
   citySlug: OccupancyCitySlug = "reggio_calabria",
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancyCityMetrics> {
   const { loadRegistry } = await import("./registry");
-  const registry = await loadRegistry(citySlug, portal);
+  const registry = await loadRegistry(citySlug, portal, operation);
   return computeOccupancyMetrics(registry, {
     citySlug,
     period: DEFAULT_OCCUPANCY_METRICS_PERIOD,
+    operation,
   });
 }
 

@@ -210,11 +210,28 @@ function mapEstate(
 interface SrealityApiEstateResult {
   since?: string | null;
   edited?: string | null;
+  advert_description?: string | null;
 }
 
-async function fetchSrealityListingDatesFromApi(
-  estateId: number,
-): Promise<{ listing_published_at: string | null; listing_updated_at: string | null }> {
+export interface SrealityListingApiFields {
+  listing_published_at: string | null;
+  listing_updated_at: string | null;
+  description: string | null;
+}
+
+function normalizeAdvertDescription(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.replace(/\s+/g, " ").trim();
+  return trimmed || null;
+}
+
+async function fetchSrealityListingFieldsFromApi(estateId: number): Promise<SrealityListingApiFields> {
+  const empty: SrealityListingApiFields = {
+    listing_published_at: null,
+    listing_updated_at: null,
+    description: null,
+  };
+
   const response = await fetch(`https://www.sreality.cz/api/v1/estates/${estateId}`, {
     headers: {
       Accept: "application/json",
@@ -225,19 +242,26 @@ async function fetchSrealityListingDatesFromApi(
     signal: AbortSignal.timeout(15_000),
   });
 
-  if (!response.ok) {
-    return { listing_published_at: null, listing_updated_at: null };
-  }
+  if (!response.ok) return empty;
 
   const payload = (await response.json()) as { result?: SrealityApiEstateResult };
-  return extractSrealityListingDates(payload.result);
+  const dates = extractSrealityListingDates(payload.result);
+  return {
+    listing_published_at: dates.listing_published_at,
+    listing_updated_at: dates.listing_updated_at,
+    description: normalizeAdvertDescription(payload.result?.advert_description),
+  };
+}
+
+function needsSrealityDetailEnrichment(listing: MapListing): boolean {
+  return !(listing.listing_published_at && listing.listing_updated_at && listing.description);
 }
 
 async function enrichSrealityListingsWithDates(listings: MapListing[]): Promise<MapListing[]> {
   const enriched: MapListing[] = [];
 
   for (const listing of listings) {
-    if (listing.listing_published_at && listing.listing_updated_at) {
+    if (!needsSrealityDetailEnrichment(listing)) {
       enriched.push(listing);
       continue;
     }
@@ -249,11 +273,12 @@ async function enrichSrealityListingsWithDates(listings: MapListing[]): Promise<
     }
 
     try {
-      const dates = await fetchSrealityListingDatesFromApi(estateId);
+      const fields = await fetchSrealityListingFieldsFromApi(estateId);
       enriched.push({
         ...listing,
-        listing_published_at: listing.listing_published_at ?? dates.listing_published_at,
-        listing_updated_at: listing.listing_updated_at ?? dates.listing_updated_at,
+        listing_published_at: listing.listing_published_at ?? fields.listing_published_at,
+        listing_updated_at: listing.listing_updated_at ?? fields.listing_updated_at,
+        description: listing.description ?? fields.description,
       });
     } catch {
       enriched.push(listing);
@@ -263,6 +288,134 @@ async function enrichSrealityListingsWithDates(listings: MapListing[]): Promise<
   }
 
   return enriched;
+}
+
+/** Fetch description (+ dates if missing) for occupancy registry/removal backfill. */
+export async function fetchSrealityListingDescription(
+  listingId: string,
+  opts?: { url?: string | null },
+): Promise<SrealityListingApiFields | null> {
+  const estateId = srealityEstateIdFromListingId(listingId);
+  if (!estateId) return null;
+
+  const empty: SrealityListingApiFields = {
+    listing_published_at: null,
+    listing_updated_at: null,
+    description: null,
+  };
+
+  try {
+    const fromApi = await fetchSrealityListingFieldsFromApi(estateId);
+    if (fromApi.description) return fromApi;
+  } catch {
+    // try HTML / archive fallbacks below
+  }
+
+  const candidateUrls = [
+    opts?.url?.trim() || null,
+    `https://www.sreality.cz/detail/pronajem/byt/-/-/${estateId}`,
+  ].filter((value, index, all): value is string => Boolean(value) && all.indexOf(value) === index);
+
+  for (const url of candidateUrls) {
+    const fromHtml = await fetchSrealityDescriptionFromHtml(url);
+    if (fromHtml?.description) return fromHtml;
+  }
+
+  for (const url of candidateUrls) {
+    const archived = await fetchSrealityDescriptionFromWayback(url);
+    if (archived?.description) return archived;
+  }
+
+  return empty;
+}
+
+async function fetchSrealityDescriptionFromHtml(url: string): Promise<SrealityListingApiFields | null> {
+  try {
+    const response = await fetch(url, {
+      headers: {
+        Accept: "text/html,application/xhtml+xml",
+        "User-Agent": USER_AGENT,
+        Referer: "https://www.sreality.cz/",
+        "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8",
+      },
+      signal: AbortSignal.timeout(12_000),
+      redirect: "follow",
+    });
+    if (!response.ok) return null;
+    const html = await response.text();
+    return parseDescriptionFromSrealityHtml(html);
+  } catch {
+    return null;
+  }
+}
+
+async function fetchSrealityDescriptionFromWayback(url: string): Promise<SrealityListingApiFields | null> {
+  try {
+    const availability = await fetch(
+      `https://archive.org/wayback/available?url=${encodeURIComponent(url)}`,
+      { signal: AbortSignal.timeout(8_000) },
+    );
+    if (!availability.ok) return null;
+    const payload = (await availability.json()) as {
+      archived_snapshots?: { closest?: { available?: boolean; url?: string } };
+    };
+    const archivedUrl = payload.archived_snapshots?.closest?.available
+      ? payload.archived_snapshots.closest.url
+      : null;
+    if (!archivedUrl) return null;
+
+    const response = await fetch(archivedUrl, {
+      headers: {
+        Accept: "text/html,application/xhtml+xml",
+        "User-Agent": USER_AGENT,
+      },
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!response.ok) return null;
+    const html = await response.text();
+    return parseDescriptionFromSrealityHtml(html);
+  } catch {
+    return null;
+  }
+}
+
+function parseDescriptionFromSrealityHtml(html: string): SrealityListingApiFields | null {
+  const match = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
+  if (!match?.[1]) return null;
+  try {
+    const data = JSON.parse(match[1]) as {
+      props?: {
+        pageProps?: {
+          dehydratedState?: {
+            queries?: Array<{
+              queryKey?: unknown[];
+              state?: {
+                data?: {
+                  description?: string | null;
+                  params?: { since?: string | null; edited?: string | null };
+                };
+              };
+            }>;
+          };
+        };
+      };
+    };
+    const queries = data.props?.pageProps?.dehydratedState?.queries ?? [];
+    for (const query of queries) {
+      if (query.queryKey?.[0] !== "estate") continue;
+      const estate = query.state?.data;
+      if (!estate) continue;
+      const dates = extractSrealityListingDates(estate.params);
+      return {
+        listing_published_at: dates.listing_published_at,
+        listing_updated_at: dates.listing_updated_at,
+        description: normalizeAdvertDescription(estate.description),
+      };
+    }
+  } catch {
+    return null;
+  }
+  return null;
 }
 
 async function fetchSrealityPage(

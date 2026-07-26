@@ -10,6 +10,7 @@ import {
   type OccupancyCitySlug,
 } from "@/lib/occupancy/cities";
 import { portalsForCity } from "@/lib/occupancy/portals";
+import { resolveOccupancyOperation, type OccupancyOperation } from "@/lib/occupancy/operation";
 import { isAuthorizedCronRequest } from "@/lib/server/cron-auth";
 import { isServerCacheReadOnly } from "@/lib/server/fs-cache-io";
 
@@ -19,6 +20,7 @@ export const dynamic = "force-dynamic";
 interface PortalCronResult {
   city: OccupancyCitySlug;
   portal: OccupancyPortal;
+  operation: OccupancyOperation;
   ok: boolean;
   snapshot_count?: number;
   fetched_count?: number;
@@ -32,12 +34,14 @@ interface PortalCronResult {
 async function runPortalCron(
   citySlug: OccupancyCitySlug,
   portal: OccupancyPortal,
+  operation: OccupancyOperation,
 ): Promise<PortalCronResult> {
   try {
-    const result = await runOccupancySnapshot(portal, undefined, { citySlug });
+    const result = await runOccupancySnapshot(portal, undefined, { citySlug, operation });
     return {
       city: citySlug,
       portal,
+      operation,
       ok: true,
       snapshot_count: result.registry.snapshot_count,
       fetched_count: result.fetched_count,
@@ -50,6 +54,7 @@ async function runPortalCron(
     return {
       city: citySlug,
       portal,
+      operation,
       ok: false,
       detail: err instanceof Error ? err.message : "Occupancy cron failed",
     };
@@ -64,6 +69,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const portalParam = searchParams.get("portal");
   const cityParam = searchParams.get("city");
+  const operation = resolveOccupancyOperation(searchParams.get("operation"));
   const citySlug: OccupancyCitySlug = isOccupancyCitySlug(cityParam) ? cityParam : "reggio_calabria";
   const portals =
     portalParam && isOccupancyPortal(portalParam)
@@ -72,7 +78,7 @@ export async function GET(request: Request) {
 
   const results: PortalCronResult[] = [];
   for (const portal of portals) {
-    results.push(await runPortalCron(citySlug, portal));
+    results.push(await runPortalCron(citySlug, portal, operation));
   }
 
   const failures = results.filter((r) => !r.ok);
@@ -83,6 +89,7 @@ export async function GET(request: Request) {
       ok,
       city: citySlug,
       city_label: getOccupancyCityConfig(citySlug).city,
+      operation,
       portals: results,
       read_only_host: isServerCacheReadOnly(),
       warning: isServerCacheReadOnly()

@@ -18,6 +18,7 @@ import type { BatchFetchProgressState, BatchFetchStreamEvent } from "./batch-fet
 import type { MarketId } from "./markets";
 import type { CachedCityOption } from "./cached-cities";
 import type { OccupancyPortal } from "./occupancy/portals";
+import type { OccupancyOperation } from "./occupancy/operation";
 import type {
   OccupancySnapshotProgressState,
   OccupancySnapshotStreamEvent,
@@ -298,6 +299,7 @@ export async function fetchOccupancyMetrics(
   city?: string | null,
   period?: string | null,
   basis?: string | null,
+  operation?: OccupancyOperation | null,
 ): Promise<OccupancyDashboardData> {
   const params = new URLSearchParams();
   if (asOf) params.set("asOf", asOf);
@@ -305,6 +307,7 @@ export async function fetchOccupancyMetrics(
   if (city) params.set("city", city);
   if (period) params.set("period", period);
   if (basis) params.set("basis", basis);
+  if (operation) params.set("operation", operation);
   const query = params.toString();
   const res = await fetch(`/api/occupancy/metrics${query ? `?${query}` : ""}`);
   if (!res.ok) throw new Error(await parseError(res, "Lettura metriche occupancy non riuscita"));
@@ -313,7 +316,7 @@ export async function fetchOccupancyMetrics(
 
 export async function fetchOccupancySnapshotDetail(
   fetchedAt: string,
-  opts?: { city?: string | null; portal?: OccupancyPortal | null },
+  opts?: { city?: string | null; portal?: OccupancyPortal | null; operation?: OccupancyOperation | null },
 ): Promise<{
   snapshot: import("./types").OccupancySnapshot;
   meta: import("./types").OccupancySnapshotMetaEntry;
@@ -321,6 +324,7 @@ export async function fetchOccupancySnapshotDetail(
   const params = new URLSearchParams({ fetched_at: fetchedAt });
   if (opts?.city) params.set("city", opts.city);
   if (opts?.portal) params.set("portal", opts.portal);
+  if (opts?.operation) params.set("operation", opts.operation);
   const res = await fetch(`/api/occupancy/snapshot/manage?${params.toString()}`);
   if (!res.ok) throw new Error(await parseError(res, "Lettura snapshot non riuscita"));
   return res.json();
@@ -331,6 +335,7 @@ export async function patchOccupancySnapshot(
     fetched_at: string;
     city?: string | null;
     portal?: OccupancyPortal | null;
+    operation?: OccupancyOperation | null;
     excluded?: boolean;
     exclude_reason?: string | null;
     remove_listing_ids?: string[];
@@ -370,6 +375,7 @@ export async function refreshOccupancySnapshot(
   portal?: OccupancyPortal,
   opts?: {
     city?: string | null;
+    operation?: OccupancyOperation | null;
     onProgress?: (progress: OccupancySnapshotProgressState) => void;
   },
 ): Promise<{
@@ -382,7 +388,7 @@ export async function refreshOccupancySnapshot(
   portal_dates_warning?: string | null;
 }> {
   if (opts?.onProgress) {
-    return refreshOccupancySnapshotStream(portal, opts.city, opts.onProgress);
+    return refreshOccupancySnapshotStream(portal, opts.city, opts.onProgress, opts.operation);
   }
 
   const res = await fetch("/api/occupancy/snapshot", {
@@ -391,6 +397,7 @@ export async function refreshOccupancySnapshot(
     body: JSON.stringify({
       ...(portal ? { portal } : {}),
       ...(opts?.city ? { city: opts.city } : {}),
+      ...(opts?.operation ? { operation: opts.operation } : {}),
     }),
   });
   if (!res.ok) throw new Error(await parseError(res, "Aggiornamento occupancy non riuscito"));
@@ -401,6 +408,7 @@ export async function refreshOccupancySnapshotStream(
   portal: OccupancyPortal | undefined,
   city: string | null | undefined,
   onProgress: (progress: OccupancySnapshotProgressState) => void,
+  operation?: OccupancyOperation | null,
 ): Promise<{
   metrics: OccupancyCityMetrics;
   listings_preview: OccupancyDashboardData["listings_preview"];
@@ -416,6 +424,7 @@ export async function refreshOccupancySnapshotStream(
     body: JSON.stringify({
       ...(portal ? { portal } : {}),
       ...(city ? { city } : {}),
+      ...(operation ? { operation } : {}),
       stream: true,
     }),
   });
@@ -489,10 +498,12 @@ export async function fetchOccupancyRemovals(
   portal?: OccupancyPortal | null,
   limit = 50,
   city?: string | null,
+  operation?: OccupancyOperation | null,
 ): Promise<{ events: OccupancyRemovalEvent[]; portal: OccupancyPortal; city: string }> {
   const params = new URLSearchParams();
   if (portal) params.set("portal", portal);
   if (city) params.set("city", city);
+  if (operation) params.set("operation", operation);
   if (limit !== 50) params.set("limit", String(limit));
   const query = params.toString();
   const res = await fetch(`/api/occupancy/removals${query ? `?${query}` : ""}`);

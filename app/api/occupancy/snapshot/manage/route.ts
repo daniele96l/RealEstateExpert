@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { resolveOccupancyCitySlug } from "@/lib/occupancy/constants";
+import { resolveOccupancyCitySlug, resolveOccupancyOperation } from "@/lib/occupancy/constants";
 import { loadOccupancyDashboard } from "@/lib/occupancy/dashboard";
 import { resolveOccupancyPortal } from "@/lib/occupancy/portals";
 import {
@@ -27,9 +27,10 @@ export async function GET(request: Request) {
 
     const citySlug = resolveOccupancyCitySlug(searchParams.get("city"));
     const portal = resolveOccupancyPortal(searchParams.get("portal"), citySlug);
+    const operation = resolveOccupancyOperation(searchParams.get("operation"));
     const [snapshot, metaFile] = await Promise.all([
-      loadSnapshotByFetchedAt(fetchedAt, citySlug, portal),
-      loadSnapshotMeta(citySlug, portal),
+      loadSnapshotByFetchedAt(fetchedAt, citySlug, portal, operation),
+      loadSnapshotMeta(citySlug, portal, operation),
     ]);
 
     if (!snapshot) {
@@ -54,6 +55,7 @@ export async function PATCH(request: Request) {
       fetched_at?: string;
       city?: string;
       portal?: string;
+      operation?: string;
       excluded?: boolean;
       exclude_reason?: string | null;
       remove_listing_ids?: string[];
@@ -70,7 +72,8 @@ export async function PATCH(request: Request) {
 
     const citySlug = resolveOccupancyCitySlug(body.city);
     const portal = resolveOccupancyPortal(body.portal, citySlug);
-    const snapshot = await loadSnapshotByFetchedAt(fetchedAt, citySlug, portal);
+    const operation = resolveOccupancyOperation(body.operation);
+    const snapshot = await loadSnapshotByFetchedAt(fetchedAt, citySlug, portal, operation);
     if (!snapshot) {
       return NextResponse.json({ detail: "Snapshot not found" }, { status: 404 });
     }
@@ -78,7 +81,14 @@ export async function PATCH(request: Request) {
     let changed = false;
 
     if (typeof body.excluded === "boolean") {
-      await setSnapshotExcluded(fetchedAt, body.excluded, citySlug, portal, body.exclude_reason);
+      await setSnapshotExcluded(
+        fetchedAt,
+        body.excluded,
+        citySlug,
+        portal,
+        body.exclude_reason,
+        operation,
+      );
       changed = true;
     }
 
@@ -88,7 +98,14 @@ export async function PATCH(request: Request) {
       if (listings.length === snapshot.listings.length) {
         return NextResponse.json({ detail: "No matching listings to remove" }, { status: 400 });
       }
-      await updateSnapshotListings(fetchedAt, listings, citySlug, portal, body.edit_note);
+      await updateSnapshotListings(
+        fetchedAt,
+        listings,
+        citySlug,
+        portal,
+        body.edit_note,
+        operation,
+      );
       changed = true;
     }
 
@@ -96,13 +113,14 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ detail: "No changes requested" }, { status: 400 });
     }
 
-    await reconcileOccupancyAfterSnapshotChange(citySlug, portal);
+    await reconcileOccupancyAfterSnapshotChange(citySlug, portal, operation);
     const dashboard = await loadOccupancyDashboard(
       body.asOf ?? null,
       portal,
       citySlug,
       body.period ?? null,
       body.basis ?? null,
+      operation,
     );
 
     return NextResponse.json(dashboard);
