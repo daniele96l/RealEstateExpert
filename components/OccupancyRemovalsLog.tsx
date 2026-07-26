@@ -28,7 +28,6 @@ import OccupancyDescriptionPreview from "@/components/OccupancyDescriptionPrevie
 import { resolveOccupancyListingUrl } from "@/lib/listing-url";
 
 const OCCUPANCY_PORTAL_STORAGE_KEY = "occupancy-portal";
-const REMOVALS_FETCH_LIMIT = 500;
 const PAGE_SIZE = 5;
 
 function isRemovalRoom(event: OccupancyRemovalEvent): boolean {
@@ -187,7 +186,7 @@ export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "re
       const citySlug = readStoredCity();
       const portal = readStoredPortal(citySlug);
       const market = getOccupancyCityConfig(citySlug).market;
-      const data = await fetchOccupancyRemovals(portal, REMOVALS_FETCH_LIMIT, citySlug, operation);
+      const data = await fetchOccupancyRemovals(portal, undefined, citySlug, operation);
       setEvents(data.events);
       setDisplayMarket(market);
       setAreaFilter("all");

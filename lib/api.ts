@@ -496,7 +496,7 @@ export async function refreshOccupancySnapshotStream(
 
 export async function fetchOccupancyRemovals(
   portal?: OccupancyPortal | null,
-  limit = 50,
+  limit?: number | null,
   city?: string | null,
   operation?: OccupancyOperation | null,
 ): Promise<{ events: OccupancyRemovalEvent[]; portal: OccupancyPortal; city: string }> {
@@ -504,7 +504,7 @@ export async function fetchOccupancyRemovals(
   if (portal) params.set("portal", portal);
   if (city) params.set("city", city);
   if (operation) params.set("operation", operation);
-  if (limit !== 50) params.set("limit", String(limit));
+  if (limit != null) params.set("limit", String(limit));
   const query = params.toString();
   const res = await fetch(`/api/occupancy/removals${query ? `?${query}` : ""}`);
   if (!res.ok) throw new Error(await parseError(res, "Lettura log rimozioni non riuscita"));

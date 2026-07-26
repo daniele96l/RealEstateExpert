@@ -15,7 +15,8 @@ import {
   getOccupancyCityConfig,
   type OccupancyCitySlug,
 } from "./cities";
-import { remapListingZones, resolveListingZone, withResolvedZone } from "./zone";
+import { remapListingZones, withResolvedZone } from "./zone";
+import { mapListingToOccupancyBasic } from "./listing-fields";
 
 const PREVIEW_SAMPLE_SIZE = 8;
 const PREVIEW_AREA_LIMIT = 20;
@@ -50,21 +51,7 @@ function medianPricePerSqm(listings: Array<{ price: number; sqm: number | null }
 }
 
 function toBasic(listing: MapListing, citySlug: OccupancyCitySlug): OccupancyBasicListing {
-  return {
-    id: listing.id,
-    price: listing.price,
-    lat: listing.lat,
-    lng: listing.lng,
-    sqm: listing.sqm,
-    rooms: listing.rooms,
-    property_type: listing.property_type ?? null,
-    address: listing.address,
-    zone: resolveListingZone(listing.address, listing.lat, listing.lng, citySlug),
-    url: listing.url,
-    listing_published_at: listing.listing_published_at ?? null,
-    listing_updated_at: listing.listing_updated_at ?? null,
-    description: listing.description ?? null,
-  };
+  return mapListingToOccupancyBasic(listing, citySlug);
 }
 
 function shortenAddress(address: string | null): string {

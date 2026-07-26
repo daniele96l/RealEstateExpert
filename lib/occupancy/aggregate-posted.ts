@@ -53,6 +53,7 @@ export function aggregatePostedOccupancyListings(
 
   return {
     active_count: active.length,
+    new_in_window: postedInWindow.length,
     rented_in_window: postedInWindow.length,
     avg_price: flowReady ? averageMetricValues(priceValues) : null,
     avg_price_per_sqm: flowReady ? averageMetricValues(pricePerSqmValues) : null,

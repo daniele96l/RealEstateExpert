@@ -164,6 +164,20 @@ export interface MapListing {
   listing_published_at?: string | null;
   listing_updated_at?: string | null;
   description?: string | null;
+  /** Optional detail fields — persisted into occupancy when present. */
+  bathrooms?: number | null;
+  floor?: string | null;
+  energy_class?: EnergyClass | null;
+  energy_kwh_sqm?: number | null;
+  images?: string[] | null;
+  furnished?: string | null;
+  built_year?: number | null;
+  lift?: boolean | null;
+  garden?: boolean | null;
+  terrace?: boolean | null;
+  garage?: boolean | null;
+  condominio_monthly?: number | null;
+  advertiser_name?: string | null;
 }
 
 export interface ListingDetail extends MapListing {
@@ -277,6 +291,23 @@ export interface OccupancyBasicListing {
   listing_published_at?: string | null;
   listing_updated_at?: string | null;
   description?: string | null;
+  title?: string | null;
+  bathrooms?: number | null;
+  floor?: string | null;
+  energy_class?: EnergyClass | null;
+  energy_kwh_sqm?: number | null;
+  images?: string[] | null;
+  furnished?: string | null;
+  built_year?: number | null;
+  lift?: boolean | null;
+  garden?: boolean | null;
+  terrace?: boolean | null;
+  garage?: boolean | null;
+  condominio_monthly?: number | null;
+  advertiser_name?: string | null;
+  condition?: string | null;
+  condition_status?: string | null;
+  needs_renovation?: boolean | null;
 }
 
 export interface OccupancyPricePoint {
@@ -313,6 +344,7 @@ export interface OccupancySnapshot {
 export interface OccupancyAreaMetrics {
   zone: string;
   active_count: number;
+  new_in_window: number;
   rented_in_window: number;
   avg_price: number | null;
   avg_price_per_sqm: number | null;
@@ -346,6 +378,7 @@ export interface OccupancyCityMetrics {
   snapshot_count: number;
   last_provider: ListingsProvider | null;
   active_count: number;
+  new_in_window: number;
   rented_in_window: number;
   avg_days_on_market: number | null;
   median_days_on_market: number | null;
@@ -455,6 +488,25 @@ export interface OccupancyRemovalEvent {
   zone: string | null;
   url?: string | null;
   description?: string | null;
+  title?: string | null;
+  bathrooms?: number | null;
+  floor?: string | null;
+  energy_class?: EnergyClass | null;
+  energy_kwh_sqm?: number | null;
+  images?: string[] | null;
+  furnished?: string | null;
+  built_year?: number | null;
+  lift?: boolean | null;
+  garden?: boolean | null;
+  terrace?: boolean | null;
+  garage?: boolean | null;
+  condominio_monthly?: number | null;
+  advertiser_name?: string | null;
+  condition?: string | null;
+  condition_status?: string | null;
+  needs_renovation?: boolean | null;
+  listing_published_at?: string | null;
+  listing_updated_at?: string | null;
   lat: number;
   lng: number;
   price_history: OccupancyPricePoint[];

@@ -9,7 +9,11 @@ export async function GET(request: Request) {
     const portal = searchParams.get("portal");
     const city = searchParams.get("city");
     const operation = resolveOccupancyOperation(searchParams.get("operation"));
-    const limit = Math.min(Math.max(Number(searchParams.get("limit") ?? "500") || 500, 1), 500);
+    const rawLimit = searchParams.get("limit");
+    const limit =
+      rawLimit == null || rawLimit === ""
+        ? undefined
+        : Math.max(Number(rawLimit) || 1, 1);
     const citySlug = resolveOccupancyCitySlug(city);
     const resolvedPortal = resolveOccupancyPortal(portal, citySlug);
     const events = await loadRemovalEvents(citySlug, resolvedPortal, limit, operation);

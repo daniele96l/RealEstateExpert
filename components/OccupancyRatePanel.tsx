@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { fetchOccupancyMetrics, refreshOccupancySnapshot } from "@/lib/api";
-import { filterActiveBreakdownListings, type BreakdownGroupId } from "@/lib/occupancy/breakdown-listings";
+import { filterActiveBreakdownListings, filterNewBreakdownListings, filterRentedBreakdownListings, type BreakdownGroupId } from "@/lib/occupancy/breakdown-listings";
 import {
   buildFilteredAreas,
   buildFilteredSegments,
@@ -19,6 +19,7 @@ import {
 } from "@/lib/occupancy/room-occupancy-kind";
 import { aggregateOccupancyListings } from "@/lib/occupancy/aggregate";
 import { aggregatePostedOccupancyListings } from "@/lib/occupancy/aggregate-posted";
+import { resolveWindowStartMs } from "@/lib/occupancy/tracking-window";
 import { resolveOccupancyListingUrl } from "@/lib/listing-url";
 import {
   occupancySnapshotProgressPercent,
@@ -108,11 +109,6 @@ function formatPct(value: number | null): string {
   return `${value.toFixed(1)}%`;
 }
 
-function formatTurnover(value: number | null): string {
-  if (value == null) return "—";
-  return `${value.toFixed(2)}×`;
-}
-
 function metricsPeriodTableLabel(
   period: OccupancyMetricsPeriod,
   days: number,
@@ -134,15 +130,8 @@ type MetricTone = "good" | "mid" | "bad" | "neutral";
 
 function occupancyTone(value: number | null): MetricTone {
   if (value == null) return "neutral";
-  if (value >= 75) return "good";
-  if (value >= 55) return "mid";
-  return "bad";
-}
-
-function turnoverTone(value: number | null): MetricTone {
-  if (value == null) return "neutral";
-  if (value >= 1.2) return "good";
-  if (value >= 0.7) return "mid";
+  if (value >= 45) return "good";
+  if (value >= 30) return "mid";
   return "bad";
 }
 
@@ -428,17 +417,25 @@ function RoomOccupancyKindBadge({
   );
 }
 
+const BREAKDOWN_PAGE_SIZE = 10;
+const BREAKDOWN_MIN_ACTIVE = 20;
+const BREAKDOWN_OTHER_KEY = "__other__";
+
 interface BreakdownDrillDown {
   group: BreakdownGroupId;
   rowKey: string;
   rowLabel: string;
+  memberKeys?: string[];
+  mode: "active" | "new" | "rented";
 }
 
 interface BreakdownRow {
   rowKey: string;
   rowLabel: string;
   areaFilterKey?: string;
+  memberKeys?: string[];
   active_count: number;
+  new_in_window: number;
   rented_in_window: number;
   avg_price: number | null;
   avg_price_per_sqm: number | null;
@@ -474,6 +471,7 @@ function areaToBreakdownRow(area: OccupancyAreaMetrics): BreakdownRow {
     rowLabel: area.zone,
     areaFilterKey: area.zone,
     active_count: area.active_count,
+    new_in_window: area.new_in_window,
     rented_in_window: area.rented_in_window,
     avg_price: area.avg_price,
     avg_price_per_sqm: area.avg_price_per_sqm,
@@ -496,6 +494,7 @@ function segmentToBreakdownRow(
     rowKey: segment.segment_id,
     rowLabel: segmentLabel(t, group, segment.segment_id),
     active_count: segment.active_count,
+    new_in_window: segment.new_in_window,
     rented_in_window: segment.rented_in_window,
     avg_price: segment.avg_price,
     avg_price_per_sqm: segment.avg_price_per_sqm,
@@ -507,6 +506,80 @@ function segmentToBreakdownRow(
     turnover_inventory_basis: segment.turnover_inventory_basis,
     estimated_occupancy_pct: segment.estimated_occupancy_pct,
   };
+}
+
+function weightedMetricAverage(
+  rows: BreakdownRow[],
+  pick: (row: BreakdownRow) => number | null,
+): number | null {
+  let weighted = 0;
+  let weight = 0;
+  for (const row of rows) {
+    const value = pick(row);
+    if (value == null) continue;
+    const w = Math.max(row.active_count, 1);
+    weighted += value * w;
+    weight += w;
+  }
+  if (weight <= 0) return null;
+  return Math.round(weighted / weight);
+}
+
+function collapseSmallBreakdownRows(
+  rows: BreakdownRow[],
+  otherLabel: string,
+  minActive = BREAKDOWN_MIN_ACTIVE,
+): BreakdownRow[] {
+  const kept: BreakdownRow[] = [];
+  const small: BreakdownRow[] = [];
+  for (const row of rows) {
+    if (row.active_count >= minActive) kept.push(row);
+    else small.push(row);
+  }
+  if (small.length === 0) return kept;
+  if (small.length === 1 && kept.length === 0) return small;
+
+  const active = small.reduce((sum, row) => sum + row.active_count, 0);
+  const neu = small.reduce((sum, row) => sum + row.new_in_window, 0);
+  const rented = small.reduce((sum, row) => sum + row.rented_in_window, 0);
+  const turnoverRented = small.reduce((sum, row) => sum + row.turnover_rented_30d, 0);
+  const inventoryParts = small
+    .map((row) => row.turnover_inventory_basis)
+    .filter((value): value is number => value != null && value > 0);
+  const inventory =
+    inventoryParts.length > 0
+      ? Math.round(inventoryParts.reduce((sum, value) => sum + value, 0))
+      : active > 0
+        ? active
+        : null;
+  const turnover =
+    inventory != null && inventory > 0
+      ? Math.round((turnoverRented / inventory) * 100) / 100
+      : null;
+  const occupancyDenom =
+    inventory != null && inventory > 0 ? inventory + rented : active + rented;
+  const occupancy =
+    occupancyDenom > 0 ? Math.round((rented / occupancyDenom) * 1000) / 10 : null;
+
+  kept.push({
+    rowKey: BREAKDOWN_OTHER_KEY,
+    rowLabel: otherLabel,
+    memberKeys: small.map((row) => row.rowKey),
+    active_count: active,
+    new_in_window: neu,
+    rented_in_window: rented,
+    avg_price: weightedMetricAverage(small, (row) => row.avg_price),
+    avg_price_per_sqm: weightedMetricAverage(small, (row) => row.avg_price_per_sqm),
+    avg_days_on_market: weightedMetricAverage(small, (row) => row.avg_days_on_market),
+    median_days_on_market: weightedMetricAverage(small, (row) => row.median_days_on_market),
+    avg_waiting_days: weightedMetricAverage(small, (row) => row.avg_waiting_days),
+    turnover_30d: turnover,
+    turnover_rented_30d: turnoverRented,
+    turnover_inventory_basis: inventory,
+    estimated_occupancy_pct: occupancy,
+  });
+
+  return kept;
 }
 
 function segmentLabel(
@@ -546,10 +619,38 @@ function BreakdownListingsModal({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [onClose]);
 
-  const sorted = useMemo(
-    () => [...listings].sort((a, b) => b.price - a.price || (a.zone ?? "").localeCompare(b.zone ?? "", "it")),
-    [listings],
-  );
+  const sorted = useMemo(() => {
+    if (drillDown.mode === "rented") {
+      return [...listings].sort((a, b) => {
+        const aMs = a.rented_at ? Date.parse(a.rented_at) : 0;
+        const bMs = b.rented_at ? Date.parse(b.rented_at) : 0;
+        return bMs - aMs || b.price - a.price;
+      });
+    }
+    if (drillDown.mode === "new") {
+      return [...listings].sort((a, b) => {
+        const aMs = Date.parse(a.first_seen_at);
+        const bMs = Date.parse(b.first_seen_at);
+        return bMs - aMs || b.price - a.price;
+      });
+    }
+    return [...listings].sort(
+      (a, b) => b.price - a.price || (a.zone ?? "").localeCompare(b.zone ?? "", "it"),
+    );
+  }, [listings, drillDown.mode]);
+
+  const titleKey =
+    drillDown.mode === "rented"
+      ? "breakdownDrilldown.titleRented"
+      : drillDown.mode === "new"
+        ? "breakdownDrilldown.titleNew"
+        : "breakdownDrilldown.title";
+  const emptyKey =
+    drillDown.mode === "rented"
+      ? "breakdownDrilldown.emptyRented"
+      : drillDown.mode === "new"
+        ? "breakdownDrilldown.emptyNew"
+        : "breakdownDrilldown.empty";
 
   return createPortal(
     <div
@@ -557,7 +658,7 @@ function BreakdownListingsModal({
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label={t("breakdownDrilldown.title", {
+      aria-label={t(titleKey, {
         label: drillDown.rowLabel,
         count: sorted.length,
       })}
@@ -568,7 +669,7 @@ function BreakdownListingsModal({
       >
         <div className="flex shrink-0 items-center justify-between gap-3 border-b border-surface-border px-3 py-2">
           <h3 className="truncate text-sm font-semibold text-neutral-900">
-            {t("breakdownDrilldown.title", {
+            {t(titleKey, {
               label: drillDown.rowLabel,
               count: sorted.length,
             })}
@@ -585,7 +686,7 @@ function BreakdownListingsModal({
         <div className="overflow-y-auto">
           {sorted.length === 0 ? (
             <p className="px-3 py-6 text-center text-xs text-neutral-500">
-              {t("breakdownDrilldown.empty")}
+              {t(emptyKey)}
             </p>
           ) : (
             <table className="min-w-full text-xs">
@@ -1157,13 +1258,13 @@ export default function OccupancyRatePanel({
 
   const breakdownRows = useMemo((): BreakdownRow[] => {
     if (!metrics) return [];
-    if (breakdownGroup === "zone") {
-      return filteredAreas.map(areaToBreakdownRow);
-    }
-    const segments = filtersActive ? filteredSegments : metrics.segments;
-    return (segments?.[breakdownGroup] ?? []).map((segment) =>
-      segmentToBreakdownRow(segment, breakdownGroup, ot),
-    );
+    const raw =
+      breakdownGroup === "zone"
+        ? filteredAreas.map(areaToBreakdownRow)
+        : (filtersActive ? filteredSegments : metrics.segments)?.[breakdownGroup]?.map(
+            (segment) => segmentToBreakdownRow(segment, breakdownGroup, ot),
+          ) ?? [];
+    return collapseSmallBreakdownRows(raw, ot("breakdownOther"));
   }, [
     breakdownGroup,
     filteredAreas,
@@ -1173,7 +1274,7 @@ export default function OccupancyRatePanel({
     t,
   ]);
 
-  const breakdownPageSize = 5;
+  const breakdownPageSize = BREAKDOWN_PAGE_SIZE;
   const breakdownPageCount = Math.ceil(breakdownRows.length / breakdownPageSize) || 1;
   const pagedBreakdownRows = breakdownRows.slice(
     breakdownPage * breakdownPageSize,
@@ -1181,16 +1282,80 @@ export default function OccupancyRatePanel({
   );
 
   const drillDownListings = useMemo(() => {
-    if (!breakdownDrillDown) return [];
-    return filterActiveBreakdownListings(
-      filteredBreakdownListings,
-      breakdownDrillDown.group,
-      breakdownDrillDown.rowKey,
-      citySlug,
-      occupancyMarket,
-      operation,
+    if (!breakdownDrillDown || !metrics) return [];
+    const keys = breakdownDrillDown.memberKeys?.length
+      ? breakdownDrillDown.memberKeys
+      : [breakdownDrillDown.rowKey];
+    const asOfMs = Date.parse(
+      metrics.updated_at ?? metrics.tracking_ended_at ?? new Date().toISOString(),
     );
-  }, [breakdownDrillDown, filteredBreakdownListings, citySlug, occupancyMarket, operation]);
+    const windowStartMs = resolveWindowStartMs(
+      asOfMs,
+      metrics.occupancy_window_days,
+      metrics.tracking_started_at,
+      metricsPeriod,
+    );
+
+    const windowOpts = {
+      windowDays: metrics.occupancy_window_days,
+      asOfMs,
+      windowStartMs,
+    };
+
+    const filterOne = (key: string) => {
+      if (breakdownDrillDown.mode === "rented") {
+        return filterRentedBreakdownListings(
+          filteredBreakdownListings,
+          breakdownDrillDown.group,
+          key,
+          citySlug,
+          occupancyMarket,
+          operation,
+          windowOpts,
+        );
+      }
+      if (breakdownDrillDown.mode === "new") {
+        return filterNewBreakdownListings(
+          filteredBreakdownListings,
+          breakdownDrillDown.group,
+          key,
+          citySlug,
+          occupancyMarket,
+          operation,
+          windowOpts,
+        );
+      }
+      return filterActiveBreakdownListings(
+        filteredBreakdownListings,
+        breakdownDrillDown.group,
+        key,
+        citySlug,
+        occupancyMarket,
+        operation,
+      );
+    };
+
+    if (keys.length === 1) return filterOne(keys[0]!);
+
+    const seen = new Set<string>();
+    const merged: TrackedRentalListing[] = [];
+    for (const key of keys) {
+      for (const listing of filterOne(key)) {
+        if (seen.has(listing.id)) continue;
+        seen.add(listing.id);
+        merged.push(listing);
+      }
+    }
+    return merged;
+  }, [
+    breakdownDrillDown,
+    filteredBreakdownListings,
+    citySlug,
+    occupancyMarket,
+    operation,
+    metrics,
+    metricsPeriod,
+  ]);
 
   useEffect(() => {
     setBreakdownPage((current) => Math.min(current, Math.max(0, breakdownPageCount - 1)));
@@ -1259,9 +1424,6 @@ export default function OccupancyRatePanel({
 
   const occupancyPeriodLabel = metrics
     ? metricsPeriodTableLabel(metricsPeriod, metrics.occupancy_window_days, ot)
-    : "";
-  const turnoverPeriodLabel = metrics
-    ? metricsPeriodTableLabel(metricsPeriod, metrics.turnover_window_days, ot)
     : "";
   const periodTargetDays =
     metricsPeriod === "longest" ? null : occupancyMetricsPeriodDays(metricsPeriod);
@@ -1597,33 +1759,6 @@ export default function OccupancyRatePanel({
                 </span>
               ) : null}
             </div>
-          </div>
-
-          <div className="grid gap-4 border-b border-surface-border/40 p-6 sm:grid-cols-2 xl:grid-cols-5">
-            <KpiCard
-              label={ot("preview.listings")}
-              value={String(listingsPreview.listing_count)}
-            />
-            <KpiCard
-              label={ot("preview.avgRent")}
-              value={listingsPreview.avg_price != null ? fmtMoney(listingsPreview.avg_price, occupancyMarket) : "—"}
-            />
-            <KpiCard
-              label={ot("preview.medianRent")}
-              value={listingsPreview.median_price != null ? fmtMoney(listingsPreview.median_price, occupancyMarket) : "—"}
-            />
-            <KpiCard
-              label={ot("preview.avgRentPerSqm")}
-              value={
-                listingsPreview.avg_price_per_sqm != null
-                  ? `${fmtMoney(listingsPreview.avg_price_per_sqm, occupancyMarket)}${perSqmLabel}`
-                  : "—"
-              }
-            />
-            <KpiCard
-              label={ot("preview.avgSqm")}
-              value={listingsPreview.avg_sqm != null ? `${listingsPreview.avg_sqm} m²` : "—"}
-            />
           </div>
 
           {mapListings.length > 0 && !snapshotDiff ? minimapBlock : null}
@@ -2080,35 +2215,6 @@ export default function OccupancyRatePanel({
                 ? ot("needsSnapshotsHistorical")
                 : ot("needsSnapshots")}
             </div>
-          ) : !isPostedBasis && metricsPeriod === "longest" ? (
-            <div className="rounded-xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-950">
-              <p>
-                {ot("kpi.longestPeriodBanner", {
-                  from: metrics.tracking_started_at
-                    ? formatWhen(metrics.tracking_started_at, dateLocale)
-                    : "—",
-                  to: metrics.tracking_ended_at
-                    ? formatWhen(metrics.tracking_ended_at, dateLocale)
-                    : "—",
-                  days: metrics.tracking_days,
-                  snapshotDays: metrics.tracking_snapshot_days,
-                })}
-              </p>
-              <p className="mt-2 font-mono text-xs">
-                {ot("kpi.longestPeriodMathOccupancy", {
-                  rented: kpiMetrics.turnover_rented_30d,
-                  inventory: kpiMetrics.turnover_inventory_basis ?? kpiMetrics.active_count,
-                  pct: formatPct(kpiMetrics.estimated_occupancy_pct),
-                })}
-              </p>
-              <p className="mt-1 font-mono text-xs">
-                {ot("kpi.longestPeriodMathTurnover", {
-                  rented: kpiMetrics.turnover_rented_30d,
-                  inventory: kpiMetrics.turnover_inventory_basis ?? kpiMetrics.active_count,
-                  turnover: formatTurnover(kpiMetrics.turnover_30d),
-                })}
-              </p>
-            </div>
           ) : !isPostedBasis && periodTargetDays != null && metrics.tracking_days < periodTargetDays ? (
             <div className="rounded-xl border border-amber-200/80 bg-amber-50 px-4 py-3 text-sm text-amber-900">
               {ot("earlyTrackingBanner", {
@@ -2119,48 +2225,6 @@ export default function OccupancyRatePanel({
               })}
             </div>
           ) : null}
-
-          <div className="grid gap-4 sm:grid-cols-3">
-            <KpiCard
-              label={ot("kpi.active")}
-              value={String(kpiMetrics.active_count)}
-            />
-            {isPostedBasis ? (
-              <KpiCard
-                label={ot("kpi.avgDom")}
-                value={formatDays(kpiMetrics.avg_days_on_market)}
-                hint={ot("kpi.postedDomHint")}
-              />
-            ) : null}
-            {isPostedBasis ? (
-              <KpiCard
-                label={ot("kpi.postedInWindow", { period: occupancyPeriodLabel })}
-                value={String(kpiMetrics.rented_in_window)}
-                hint={ot("kpi.postedInWindowHint", { period: occupancyPeriodLabel })}
-              />
-            ) : (
-              <>
-                <KpiCard
-                  label={ot("kpi.turnover", { period: turnoverPeriodLabel })}
-                  value={formatTurnover(kpiMetrics.turnover_30d)}
-                  valueTone={turnoverTone(kpiMetrics.turnover_30d)}
-                  hint={ot("kpi.turnoverHint", {
-                    rented: kpiMetrics.turnover_rented_30d,
-                    inventory: kpiMetrics.turnover_inventory_basis ?? kpiMetrics.active_count,
-                    days: metrics.turnover_window_days,
-                  })}
-                />
-                <KpiCard
-                  label={ot("kpi.occupancy", { period: occupancyPeriodLabel })}
-                  value={formatPct(kpiMetrics.estimated_occupancy_pct)}
-                  valueTone={occupancyTone(kpiMetrics.estimated_occupancy_pct)}
-                  hint={ot("kpi.occupancyHint", {
-                    period: occupancyPeriodLabel,
-                  })}
-                />
-              </>
-            )}
-          </div>
 
           <div className="card overflow-hidden">
             <div className="border-b border-surface-border/60 px-6 py-4">
@@ -2250,6 +2314,11 @@ export default function OccupancyRatePanel({
                         : ot("table.segment")}
                     </th>
                     <th className="px-4 py-3">{ot("table.active")}</th>
+                    {!isPostedBasis ? (
+                      <th className="px-4 py-3">
+                        {ot("table.new", { period: occupancyPeriodLabel })}
+                      </th>
+                    ) : null}
                     <th className="px-4 py-3">
                       {isPostedBasis
                         ? ot("table.posted", { period: occupancyPeriodLabel })
@@ -2259,25 +2328,14 @@ export default function OccupancyRatePanel({
                     <th className="px-4 py-3">{ot("table.avgRentPerSqm")}</th>
                     <th className="px-4 py-3">{ot("table.medianDom")}</th>
                     {!isPostedBasis ? (
-                      <>
-                        <th
-                          className="px-4 py-3 cursor-help"
-                          title={ot("table.turnoverHint", {
-                            days: metrics.turnover_window_days,
-                            period: turnoverPeriodLabel,
-                          })}
-                        >
-                          {ot("table.turnover", { period: turnoverPeriodLabel })}
-                        </th>
-                        <th
-                          className="px-6 py-3 cursor-help"
-                          title={ot("table.occupancyHint", {
-                            period: occupancyPeriodLabel,
-                          })}
-                        >
-                          {ot("table.occupancy")} · {occupancyPeriodLabel}
-                        </th>
-                      </>
+                      <th
+                        className="px-6 py-3 cursor-help"
+                        title={ot("table.occupancyHint", {
+                          period: occupancyPeriodLabel,
+                        })}
+                      >
+                        {ot("table.occupancy")} · {occupancyPeriodLabel}
+                      </th>
                     ) : null}
                   </tr>
                 </thead>
@@ -2316,12 +2374,60 @@ export default function OccupancyRatePanel({
                               group: breakdownGroup,
                               rowKey: row.rowKey,
                               rowLabel: row.rowLabel,
+                              memberKeys: row.memberKeys,
+                              mode: "active",
                             });
                           }}
                         >
                           {row.active_count}
                         </td>
-                        <td className="px-4 py-3">{row.rented_in_window}</td>
+                        {!isPostedBasis ? (
+                          <td
+                            className={cn(
+                              "px-4 py-3",
+                              row.new_in_window > 0 &&
+                                "text-sky-700 underline decoration-dotted underline-offset-2 hover:text-sky-900 cursor-pointer",
+                            )}
+                            title={ot("breakdownDrilldownHintNew")}
+                            onClick={(event) => {
+                              if (row.new_in_window <= 0) return;
+                              event.stopPropagation();
+                              setBreakdownDrillDown({
+                                group: breakdownGroup,
+                                rowKey: row.rowKey,
+                                rowLabel: row.rowLabel,
+                                memberKeys: row.memberKeys,
+                                mode: "new",
+                              });
+                            }}
+                          >
+                            {row.new_in_window}
+                          </td>
+                        ) : null}
+                        <td
+                          className={cn(
+                            "px-4 py-3",
+                            !isPostedBasis &&
+                              row.rented_in_window > 0 &&
+                              "text-sky-700 underline decoration-dotted underline-offset-2 hover:text-sky-900 cursor-pointer",
+                          )}
+                          title={
+                            !isPostedBasis ? ot("breakdownDrilldownHintRented") : undefined
+                          }
+                          onClick={(event) => {
+                            if (isPostedBasis || row.rented_in_window <= 0) return;
+                            event.stopPropagation();
+                            setBreakdownDrillDown({
+                              group: breakdownGroup,
+                              rowKey: row.rowKey,
+                              rowLabel: row.rowLabel,
+                              memberKeys: row.memberKeys,
+                              mode: "rented",
+                            });
+                          }}
+                        >
+                          {row.rented_in_window}
+                        </td>
                         <td className="px-4 py-3">
                           {row.avg_price != null ? fmtMoney(row.avg_price, occupancyMarket) : "—"}
                         </td>
@@ -2332,33 +2438,17 @@ export default function OccupancyRatePanel({
                         </td>
                         <td className="px-4 py-3">{formatDays(row.median_days_on_market)}</td>
                         {!isPostedBasis ? (
-                          <>
-                            <td
-                              className="px-4 py-3"
-                              title={ot("table.turnoverHint", {
-                                rented: row.turnover_rented_30d,
-                                inventory: row.turnover_inventory_basis ?? row.active_count,
-                                days: metrics.turnover_window_days,
-                                period: turnoverPeriodLabel,
-                              })}
-                            >
-                              <MetricValue
-                                value={formatTurnover(row.turnover_30d)}
-                                tone={turnoverTone(row.turnover_30d)}
-                              />
-                            </td>
-                            <td
-                              className="px-6 py-3"
-                              title={ot("table.occupancyHint", {
-                                period: occupancyPeriodLabel,
-                              })}
-                            >
-                              <MetricValue
-                                value={formatPct(row.estimated_occupancy_pct)}
-                                tone={occupancyTone(row.estimated_occupancy_pct)}
-                              />
-                            </td>
-                          </>
+                          <td
+                            className="px-6 py-3"
+                            title={ot("table.occupancyHint", {
+                              period: occupancyPeriodLabel,
+                            })}
+                          >
+                            <MetricValue
+                              value={formatPct(row.estimated_occupancy_pct)}
+                              tone={occupancyTone(row.estimated_occupancy_pct)}
+                            />
+                          </td>
                         ) : null}
                       </tr>
                     ))

@@ -13,7 +13,7 @@ import {
 } from "./cities";
 import { resolveBatchFetchPageLimit, resolveItalyListingMaxPages } from "@/lib/batch-fetch-pages";
 import type { OccupancySnapshotProgressState } from "@/lib/occupancy-snapshot-progress";
-import { resolveListingZone } from "./zone";
+import { mapListingToOccupancyBasic, mergeOccupancyListingFields } from "./listing-fields";
 import { emptyRegistry, loadRegistry, saveRegistry, saveSnapshot } from "./registry";
 import { computeOccupancyMetrics } from "./metrics";
 import { DEFAULT_OCCUPANCY_METRICS_PERIOD } from "./metrics-period";
@@ -42,27 +42,7 @@ function daysBetween(startIso: string, endIso: string): number {
 }
 
 function mapListingToBasic(listing: MapListing, citySlug: OccupancyCitySlug): OccupancyBasicListing {
-  return {
-    id: listing.id,
-    price: listing.price,
-    lat: listing.lat,
-    lng: listing.lng,
-    sqm: listing.sqm,
-    rooms: listing.rooms,
-    property_type: listing.property_type ?? null,
-    address: listing.address,
-    zone: resolveListingZone(
-      listing.address,
-      listing.lat,
-      listing.lng,
-      citySlug,
-      listing.description,
-    ),
-    url: listing.url,
-    listing_published_at: listing.listing_published_at ?? null,
-    listing_updated_at: listing.listing_updated_at ?? null,
-    description: listing.description ?? null,
-  };
+  return mapListingToOccupancyBasic(listing, citySlug);
 }
 
 function createTracked(basic: OccupancyBasicListing, at: string): TrackedRentalListing {
@@ -89,20 +69,12 @@ function updateTrackedFields(
       : tracked.price_history;
 
   return {
-    ...tracked,
-    price: basic.price,
-    lat: basic.lat,
-    lng: basic.lng,
-    sqm: basic.sqm,
-    rooms: basic.rooms,
-    property_type: basic.property_type ?? tracked.property_type ?? null,
-    address: basic.address,
-    zone: basic.zone,
-    url: basic.url ?? tracked.url ?? null,
-    listing_published_at: basic.listing_published_at ?? tracked.listing_published_at ?? null,
-    listing_updated_at: basic.listing_updated_at ?? tracked.listing_updated_at ?? null,
-    description: basic.description ?? tracked.description ?? null,
+    ...mergeOccupancyListingFields(tracked, basic),
+    first_seen_at: tracked.first_seen_at,
     last_seen_at: at,
+    rented_at: tracked.rented_at,
+    status: tracked.status,
+    days_on_market: tracked.days_on_market,
     price_history: priceHistory,
   };
 }

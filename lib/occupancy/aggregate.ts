@@ -125,7 +125,7 @@ function wasTrackedBeforeRemoval(listing: TrackedRentalListing): boolean {
   return rentedMs - firstMs >= 24 * 60 * 60 * 1000;
 }
 
-function rentedInWindow(
+export function rentedInWindow(
   listing: TrackedRentalListing,
   windowDays: number,
   now = Date.now(),
@@ -140,6 +140,19 @@ function rentedInWindow(
     rentedMs >= startMs &&
     wasTrackedBeforeRemoval(listing)
   );
+}
+
+export function newInWindow(
+  listing: TrackedRentalListing,
+  windowDays: number,
+  now = Date.now(),
+  windowStartMs?: number | null,
+): boolean {
+  if (listing.status !== "active" || windowDays <= 0) return false;
+  const firstMs = new Date(listing.first_seen_at).getTime();
+  if (!Number.isFinite(firstMs) || firstMs > now) return false;
+  const startMs = windowStartMs ?? now - windowDays * 24 * 60 * 60 * 1000;
+  return firstMs >= startMs;
 }
 
 export interface AggregateOccupancyOptions {
@@ -164,6 +177,9 @@ export function aggregateOccupancyListings(
   const active = items.filter((l) => l.status === "active");
   const rentedWindow = flowReady
     ? items.filter((l) => rentedInWindow(l, windowDays, now, windowStartMs))
+    : [];
+  const newWindow = flowReady
+    ? items.filter((l) => newInWindow(l, windowDays, now, windowStartMs))
     : [];
   const domValues = rentedWindow
     .map((l) => l.days_on_market)
@@ -215,6 +231,7 @@ export function aggregateOccupancyListings(
 
   return {
     active_count: active.length,
+    new_in_window: newWindow.length,
     rented_in_window: rentedWindow.length,
     avg_price: flowReady ? average(priceValues) : null,
     avg_price_per_sqm: flowReady ? average(pricePerSqmValues) : null,

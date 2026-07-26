@@ -10,7 +10,7 @@ import { defaultOccupancyCitySlug, type OccupancyCitySlug } from "./cities";
 import { normalizeOccupancyPropertyType } from "./filtered-breakdown";
 import { loadRegistry } from "./registry";
 
-const MAX_REMOVAL_EVENTS = 500;
+const MAX_REMOVAL_EVENTS = 2000;
 
 function formatMoney(value: number, currency: "EUR" | "CZK"): string {
   return new Intl.NumberFormat(currency === "CZK" ? "cs-CZ" : "it-IT", {
@@ -41,6 +41,25 @@ function toRemovalEvent(
     zone: listing.zone,
     url: listing.url ?? null,
     description: listing.description ?? null,
+    title: listing.title ?? null,
+    bathrooms: listing.bathrooms ?? null,
+    floor: listing.floor ?? null,
+    energy_class: listing.energy_class ?? null,
+    energy_kwh_sqm: listing.energy_kwh_sqm ?? null,
+    images: listing.images ?? null,
+    furnished: listing.furnished ?? null,
+    built_year: listing.built_year ?? null,
+    lift: listing.lift ?? null,
+    garden: listing.garden ?? null,
+    terrace: listing.terrace ?? null,
+    garage: listing.garage ?? null,
+    condominio_monthly: listing.condominio_monthly ?? null,
+    advertiser_name: listing.advertiser_name ?? null,
+    condition: listing.condition ?? null,
+    condition_status: listing.condition_status ?? null,
+    needs_renovation: listing.needs_renovation ?? null,
+    listing_published_at: listing.listing_published_at ?? null,
+    listing_updated_at: listing.listing_updated_at ?? null,
     lat: listing.lat,
     lng: listing.lng,
     price_history: listing.price_history,
@@ -97,7 +116,7 @@ function logRemovalToConsole(
   const tag = operation === "sale" ? "sale-rate:removed" : "occupancy:removed";
 
   console.log(
-    `[${tag}] ${event.id} · ${event.zone ?? "—"} · ${formatMoney(event.price, currency)}${perSqm}${dom}${priceChanges} · ${event.address ?? "—"}`,
+    `[${tag}] ${event.id} · ${event.title ?? "—"} · ${event.zone ?? "—"} · ${formatMoney(event.price, currency)}${perSqm}${dom}${priceChanges} · ${event.address ?? "—"} · ${event.url ?? "no-url"}`,
   );
 }
 
@@ -114,10 +133,10 @@ export async function logPresumedRentalRemoval(
 
   const path = occupancyRemovalsLogPath(citySlug, portal, operation);
   const existing = (await readJsonFile<OccupancyRemovalEvent[]>(path)) ?? [];
-  const next = [event, ...existing.filter((item) => item.id !== event.id || item.detected_at !== event.detected_at)].slice(
-    0,
-    MAX_REMOVAL_EVENTS,
-  );
+  const next = [
+    event,
+    ...existing.filter((item) => item.id !== event.id || item.detected_at !== event.detected_at),
+  ];
   await writeJsonFile(path, next);
 
   return event;
@@ -126,13 +145,14 @@ export async function logPresumedRentalRemoval(
 export async function loadRemovalEvents(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal,
-  limit = 100,
+  limit?: number,
   operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): Promise<OccupancyRemovalEvent[]> {
   const events =
     (await readJsonFile<OccupancyRemovalEvent[]>(
       occupancyRemovalsLogPath(citySlug, portal, operation),
     )) ?? [];
-  const enriched = await enrichRemovalEvents(events.slice(0, limit), citySlug, portal, operation);
+  const selected = limit != null ? events.slice(0, limit) : events;
+  const enriched = await enrichRemovalEvents(selected, citySlug, portal, operation);
   return enriched;
 }
