@@ -715,10 +715,18 @@ const it = {
     },
 
     offerRate: {
-      title: "Offerta nel tempo",
+      title: "Nuovi annunci nel tempo",
       subtitle:
-        "Nuovi annunci messi sul mercato tra un aggiornamento e l'altro, per tipologia — cosa sta spingendo l'offerta.",
+        "Nuovi annunci messi sul mercato tra un aggiornamento e l'altro — breakdown di cosa entra in offerta.",
+      removedTitle: "Rimossi nel tempo",
+      removedSubtitle:
+        "Annunci usciti dal mercato tra un aggiornamento e l'altro — breakdown di cosa lascia l'offerta.",
       empty: "Servono almeno due aggiornamenti in giorni diversi per tracciare i nuovi annunci.",
+      viewBreakdown: "Serie",
+      viewTrend: "Trend",
+      seriesValue: "Totale",
+      seriesTrend: "Retta di trend",
+      seriesAverage: "Media 3 gg",
       seriesTotal: "Nuovi (tutti)",
       seriesFlat: "Nuovi appartamenti",
       seriesRoom: "Nuove camere",
@@ -1048,10 +1056,18 @@ const it = {
     },
 
     offerRate: {
-      title: "Offerta nel tempo",
+      title: "Nuovi annunci nel tempo",
       subtitle:
-        "Nuovi annunci di vendita messi sul mercato tra un aggiornamento e l'altro, per tipologia — cosa sta spingendo l'offerta.",
+        "Nuovi annunci di vendita messi sul mercato tra un aggiornamento e l'altro — breakdown di cosa entra in offerta.",
+      removedTitle: "Rimossi nel tempo",
+      removedSubtitle:
+        "Annunci di vendita usciti dal mercato tra un aggiornamento e l'altro — breakdown di cosa lascia l'offerta.",
       empty: "Servono almeno due aggiornamenti in giorni diversi per tracciare i nuovi annunci.",
+      viewBreakdown: "Serie",
+      viewTrend: "Trend",
+      seriesValue: "Totale",
+      seriesTrend: "Retta di trend",
+      seriesAverage: "Media 3 gg",
       seriesTotal: "Nuovi (tutti)",
       seriesFlat: "Nuovi appartamenti",
       seriesRoom: "Nuove camere",

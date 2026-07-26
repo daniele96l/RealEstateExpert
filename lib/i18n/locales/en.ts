@@ -713,10 +713,18 @@ const en: Translations = {
     },
 
     offerRate: {
-      title: "Offer rate over time",
+      title: "New listings over time",
       subtitle:
-        "New listings pushed onto the market between refreshes, by type — what supply is being added.",
+        "New listings pushed onto the market between refreshes — breakdown of what supply is being added.",
+      removedTitle: "Removals over time",
+      removedSubtitle:
+        "Listings that left the market between refreshes — breakdown of what supply is leaving.",
       empty: "Need at least two refreshes on different days to chart new offers.",
+      viewBreakdown: "Breakdown",
+      viewTrend: "Trend",
+      seriesValue: "Total",
+      seriesTrend: "Trend line",
+      seriesAverage: "3-day avg",
       seriesTotal: "New (all)",
       seriesFlat: "New flats",
       seriesRoom: "New rooms",
@@ -1046,10 +1054,18 @@ const en: Translations = {
     },
 
     offerRate: {
-      title: "Offer rate over time",
+      title: "New listings over time",
       subtitle:
-        "New sale listings pushed onto the market between refreshes, by type — what inventory is being added.",
+        "New sale listings pushed onto the market between refreshes — breakdown of what inventory is being added.",
+      removedTitle: "Removals over time",
+      removedSubtitle:
+        "Sale listings that left the market between refreshes — breakdown of what inventory is leaving.",
       empty: "Need at least two refreshes on different days to chart new offers.",
+      viewBreakdown: "Breakdown",
+      viewTrend: "Trend",
+      seriesValue: "Total",
+      seriesTrend: "Trend line",
+      seriesAverage: "3-day avg",
       seriesTotal: "New (all)",
       seriesFlat: "New flats",
       seriesRoom: "New rooms",

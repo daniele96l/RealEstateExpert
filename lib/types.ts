@@ -410,15 +410,22 @@ export interface OccupancySnapshotDiff {
 }
 
 /** New listings between consecutive snapshots — market offer pulse. */
+export type OccupancyOfferBreakdownGroup = "type" | "size" | "rooms" | "price";
+
 export interface OccupancyOfferRatePoint {
   fetched_at: string;
   label: string;
   new_total: number;
-  new_flat: number;
-  new_room: number;
-  new_other: number;
   removed_total: number;
   active_count: number;
+  by_type: Record<string, number>;
+  by_size: Record<string, number>;
+  by_rooms: Record<string, number>;
+  by_price: Record<string, number>;
+  removed_by_type: Record<string, number>;
+  removed_by_size: Record<string, number>;
+  removed_by_rooms: Record<string, number>;
+  removed_by_price: Record<string, number>;
 }
 
 /** Logged when a listing disappears from the portal (presumed rented). */

@@ -183,13 +183,21 @@ function bucketsForGroup(
   return SIZE_BUCKETS;
 }
 
+export function listSegmentBuckets(
+  group: OccupancySegmentGroupId,
+  market: MarketId,
+  operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
+): Array<{ id: string; match: (listing: OccupancyBasicListing) => boolean }> {
+  return bucketsForGroup(group, market, operation);
+}
+
 export function getSegmentMatcher(
   group: OccupancySegmentGroupId,
   segmentId: string,
   market: MarketId,
   operation: OccupancyOperation = DEFAULT_OCCUPANCY_OPERATION,
 ): (listing: OccupancyBasicListing) => boolean {
-  const bucket = bucketsForGroup(group, market, operation).find((entry) => entry.id === segmentId);
+  const bucket = listSegmentBuckets(group, market, operation).find((entry) => entry.id === segmentId);
   return bucket?.match ?? (() => false);
 }
 

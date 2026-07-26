@@ -1035,6 +1035,23 @@ export default function OccupancyRatePanel({
       (l) => diffFilter === "all" || l.change_status === diffFilter,
     );
 
+  const filteredDiffAverages = useMemo(() => {
+    const prices: number[] = [];
+    const perSqm: number[] = [];
+    for (const listing of filteredDiffListings) {
+      if (!(listing.price > 0)) continue;
+      prices.push(listing.price);
+      if (listing.sqm != null && listing.sqm > 0) {
+        perSqm.push(listing.price / listing.sqm);
+      }
+    }
+    const mean = (values: number[]) =>
+      values.length
+        ? Math.round(values.reduce((sum, value) => sum + value, 0) / values.length)
+        : null;
+    return { avgPrice: mean(prices), avgPerSqm: mean(perSqm) };
+  }, [filteredDiffListings]);
+
   const diffZoneOptions = useMemo(() => {
     const zones = new Set<string>();
     for (const listing of snapshotDiff?.listings ?? []) {
@@ -1793,6 +1810,24 @@ export default function OccupancyRatePanel({
                   </select>
                 </label>
               ) : null}
+              <div className="ml-auto flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-neutral-600">
+                <span>
+                  {ot("preview.avgRent")}:{" "}
+                  <span className="font-medium text-neutral-900">
+                    {filteredDiffAverages.avgPrice != null
+                      ? fmtMoney(filteredDiffAverages.avgPrice, occupancyMarket)
+                      : "—"}
+                  </span>
+                </span>
+                <span>
+                  {ot("preview.avgRentPerSqm")}:{" "}
+                  <span className="font-medium text-neutral-900">
+                    {filteredDiffAverages.avgPerSqm != null
+                      ? `${fmtMoney(filteredDiffAverages.avgPerSqm, occupancyMarket)}${perSqmLabel}`
+                      : "—"}
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -2381,7 +2416,7 @@ export default function OccupancyRatePanel({
         <OccupancyOfferRateChart
           series={offerRateSeries}
           operation={operation}
-          showRoomSeries={occupancyMarket === "cz"}
+          market={occupancyMarket}
         />
       ) : null}
 

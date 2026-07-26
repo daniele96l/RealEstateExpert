@@ -12,6 +12,7 @@ import {
   type OccupancyCitySlug,
   type OccupancyOperation,
 } from "./constants";
+import { getOccupancyCityConfig } from "./cities";
 import { resolveOccupancyPortal } from "./portals";
 import type { OccupancyDashboardData, OccupancySnapshotDiff } from "@/lib/types";
 import {
@@ -47,6 +48,7 @@ export async function loadOccupancyDashboard(
   operationInput?: string | null,
 ): Promise<OccupancyDashboardData> {
   const citySlug: OccupancyCitySlug = resolveOccupancyCitySlug(cityInput);
+  const cityConfig = getOccupancyCityConfig(citySlug);
   const portal = resolveOccupancyPortal(portalInput, citySlug);
   const period = resolveOccupancyMetricsPeriod(periodInput);
   const basis = resolveOccupancyMetricsBasis(basisInput);
@@ -122,7 +124,11 @@ export async function loadOccupancyDashboard(
     portal,
     operation,
   );
-  const offer_rate_series = buildOfferRateSeries(allSnapshots);
+  const offer_rate_series = buildOfferRateSeries(
+    allSnapshots,
+    cityConfig.market,
+    operation,
+  );
 
   const descriptionById = new Map(
     Object.values(registry.listings)
