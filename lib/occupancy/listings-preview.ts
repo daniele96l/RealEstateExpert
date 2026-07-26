@@ -158,14 +158,6 @@ async function loadMergedListingsCache(
   };
 }
 
-/** @deprecated Use loadMergedListingsCache */
-async function loadMergedRentCache(
-  citySlug: OccupancyCitySlug,
-  portal: OccupancyPortal,
-): Promise<CityListingsCache | null> {
-  return loadMergedListingsCache(citySlug, portal, "rent");
-}
-
 export async function loadListingsPreview(
   citySlug: OccupancyCitySlug = defaultOccupancyCitySlug(),
   portal: OccupancyPortal = DEFAULT_OCCUPANCY_PORTAL,

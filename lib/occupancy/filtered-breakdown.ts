@@ -11,8 +11,13 @@ import { aggregatePostedOccupancyListings } from "./aggregate-posted";
 import type { OccupancyMetricsBasis } from "./metrics-basis";
 import { isOccupancyRoomListing, computeSegmentGroups } from "./segment-metrics";
 import { resolveListingZone } from "./zone";
+import {
+  parseRoomOccupancyKind,
+  type RoomOccupancyKindFilter,
+} from "./room-occupancy-kind";
 
 export type OccupancyTypeFilter = "all" | "flat" | "room";
+export type { RoomOccupancyKindFilter };
 
 export function normalizeOccupancyPropertyType(
   listing: Pick<TrackedRentalListing, "property_type" | "url"> & { title?: string | null },
@@ -37,9 +42,11 @@ export function filterOccupancyListings(
   opts: {
     areaFilter: "all" | string;
     typeFilter: OccupancyTypeFilter;
+    roomKindFilter?: RoomOccupancyKindFilter;
     citySlug: OccupancyCitySlug;
   },
 ): TrackedRentalListing[] {
+  const roomKindFilter = opts.roomKindFilter ?? "all";
   return listings
     .map(withNormalizedPropertyType)
     .map((listing) => ({
@@ -57,6 +64,10 @@ export function filterOccupancyListings(
       }
       if (opts.typeFilter === "room" && !isOccupancyRoomListing(listing)) return false;
       if (opts.typeFilter === "flat" && isOccupancyRoomListing(listing)) return false;
+      if (roomKindFilter !== "all") {
+        if (!isOccupancyRoomListing(listing)) return false;
+        if (parseRoomOccupancyKind(listing.description) !== roomKindFilter) return false;
+      }
       return true;
     });
 }

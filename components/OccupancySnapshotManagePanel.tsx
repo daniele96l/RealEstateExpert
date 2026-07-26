@@ -15,6 +15,8 @@ import type { OccupancyCitySlug } from "@/lib/occupancy/cities";
 import type { OccupancyPortal } from "@/lib/occupancy/portals";
 import type { OccupancyMetricsBasis } from "@/lib/occupancy/metrics-basis";
 import type { OccupancyMetricsPeriod } from "@/lib/occupancy/metrics-period";
+import type { OccupancyOperation } from "@/lib/occupancy/operation";
+import { occupancyI18nRoot } from "@/lib/occupancy/operation";
 import { Pencil, Settings2, X } from "lucide-react";
 
 function formatWhen(iso: string, locale: string): string {
@@ -35,6 +37,7 @@ function SnapshotEditModal({
   fetchedAt,
   citySlug,
   portal,
+  operation = "rent",
   selectedSnapshotAt,
   metricsPeriod,
   metricsBasis,
@@ -45,6 +48,7 @@ function SnapshotEditModal({
   fetchedAt: string;
   citySlug: OccupancyCitySlug;
   portal: OccupancyPortal;
+  operation?: OccupancyOperation;
   selectedSnapshotAt: string | null;
   metricsPeriod: OccupancyMetricsPeriod;
   metricsBasis: OccupancyMetricsBasis;
@@ -53,6 +57,8 @@ function SnapshotEditModal({
   onSaved: (data: OccupancyDashboardData) => void;
 }) {
   const { t } = useI18n();
+  const i18nRoot = occupancyI18nRoot(operation);
+  const ot = (key: string, vars?: Record<string, string | number>) => t(`${i18nRoot}.${key}`, vars);
   const [snapshot, setSnapshot] = useState<OccupancySnapshot | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -64,7 +70,7 @@ function SnapshotEditModal({
     let cancelled = false;
     setLoading(true);
     setError(null);
-    void fetchOccupancySnapshotDetail(fetchedAt, { city: citySlug, portal })
+    void fetchOccupancySnapshotDetail(fetchedAt, { city: citySlug, portal, operation })
       .then((data) => {
         if (cancelled) return;
         setSnapshot(data.snapshot);
@@ -72,7 +78,7 @@ function SnapshotEditModal({
       })
       .catch((err) => {
         if (cancelled) return;
-        setError(err instanceof Error ? err.message : t("occupancy.snapshotManage.loadError"));
+        setError(err instanceof Error ? err.message : ot("snapshotManage.loadError"));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -80,7 +86,7 @@ function SnapshotEditModal({
     return () => {
       cancelled = true;
     };
-  }, [fetchedAt, citySlug, portal, t]);
+  }, [fetchedAt, citySlug, portal, operation, t]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -121,6 +127,7 @@ function SnapshotEditModal({
         fetched_at: fetchedAt,
         city: citySlug,
         portal,
+        operation,
         remove_listing_ids: [...removeIds],
         edit_note: editNote.trim() || null,
         asOf,
@@ -130,7 +137,7 @@ function SnapshotEditModal({
       onSaved(data);
       onClose();
     } catch (err) {
-      setError(err instanceof Error ? err.message : t("occupancy.snapshotManage.saveError"));
+      setError(err instanceof Error ? err.message : ot("snapshotManage.saveError"));
     } finally {
       setSaving(false);
     }
@@ -150,7 +157,7 @@ function SnapshotEditModal({
         <div className="flex shrink-0 items-center justify-between gap-3 border-b border-surface-border px-4 py-3">
           <div>
             <h3 className="text-sm font-semibold text-neutral-900">
-              {t("occupancy.snapshotManage.editTitle")}
+              {ot("snapshotManage.editTitle")}
             </h3>
             <p className="text-xs text-neutral-500">{formatWhen(fetchedAt, dateLocale)}</p>
           </div>
@@ -161,28 +168,28 @@ function SnapshotEditModal({
 
         <div className="overflow-y-auto px-4 py-3">
           {loading ? (
-            <p className="text-sm text-neutral-500">{t("occupancy.snapshotManage.loading")}</p>
+            <p className="text-sm text-neutral-500">{ot("snapshotManage.loading")}</p>
           ) : error ? (
             <p className="text-sm text-red-500">{error}</p>
           ) : (
             <>
-              <p className="mb-3 text-xs text-neutral-600">{t("occupancy.snapshotManage.editHint")}</p>
+              <p className="mb-3 text-xs text-neutral-600">{ot("snapshotManage.editHint")}</p>
               <label className="mb-3 block text-xs text-neutral-600">
-                {t("occupancy.snapshotManage.editNote")}
+                {ot("snapshotManage.editNote")}
                 <input
                   value={editNote}
                   onChange={(e) => setEditNote(e.target.value)}
                   className="mt-1 w-full rounded-lg border border-surface-border px-3 py-2 text-sm text-neutral-800"
-                  placeholder={t("occupancy.snapshotManage.editNotePlaceholder")}
+                  placeholder={ot("snapshotManage.editNotePlaceholder")}
                 />
               </label>
               <table className="min-w-full text-xs">
                 <thead>
                   <tr className="border-b border-surface-border/40 text-left text-[10px] uppercase tracking-wide text-neutral-500">
-                    <th className="px-2 py-2">{t("occupancy.snapshotManage.remove")}</th>
-                    <th className="px-2 py-2">{t("occupancy.preview.table.zone")}</th>
-                    <th className="px-2 py-2">{t("occupancy.preview.table.rent")}</th>
-                    <th className="px-2 py-2">{t("occupancy.preview.table.sqm")}</th>
+                    <th className="px-2 py-2">{ot("snapshotManage.remove")}</th>
+                    <th className="px-2 py-2">{ot("preview.table.zone")}</th>
+                    <th className="px-2 py-2">{ot("preview.table.rent")}</th>
+                    <th className="px-2 py-2">{ot("preview.table.sqm")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -217,7 +224,7 @@ function SnapshotEditModal({
             onClick={onClose}
             className="rounded-lg border border-surface-border px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50"
           >
-            {t("occupancy.snapshotManage.cancel")}
+            {ot("snapshotManage.cancel")}
           </button>
           <button
             type="button"
@@ -225,7 +232,7 @@ function SnapshotEditModal({
             disabled={saving || loading || !removeIds.size}
             className="rounded-lg bg-neutral-900 px-3 py-2 text-sm font-medium text-white hover:bg-neutral-800 disabled:opacity-50"
           >
-            {saving ? t("occupancy.snapshotManage.saving") : t("occupancy.snapshotManage.save")}
+            {saving ? ot("snapshotManage.saving") : ot("snapshotManage.save")}
           </button>
         </div>
       </div>
@@ -238,6 +245,7 @@ export default function OccupancySnapshotManagePanel({
   snapshots,
   citySlug,
   portal,
+  operation = "rent",
   selectedSnapshotAt,
   metricsPeriod,
   metricsBasis,
@@ -248,6 +256,7 @@ export default function OccupancySnapshotManagePanel({
   snapshots: OccupancySnapshotSummary[];
   citySlug: OccupancyCitySlug;
   portal: OccupancyPortal;
+  operation?: OccupancyOperation;
   selectedSnapshotAt: string | null;
   metricsPeriod: OccupancyMetricsPeriod;
   metricsBasis: OccupancyMetricsBasis;
@@ -256,6 +265,11 @@ export default function OccupancySnapshotManagePanel({
   onDashboardUpdate: (data: OccupancyDashboardData) => void;
 }) {
   const { t } = useI18n();
+  const i18nRoot = occupancyI18nRoot(operation);
+  const ot = useCallback(
+    (key: string, vars?: Record<string, string | number>) => t(`${i18nRoot}.${key}`, vars),
+    [t, i18nRoot],
+  );
   const [open, setOpen] = useState(false);
   const [editingFetchedAt, setEditingFetchedAt] = useState<string | null>(null);
   const [reasonDrafts, setReasonDrafts] = useState<Record<string, string>>({});
@@ -276,6 +290,7 @@ export default function OccupancySnapshotManagePanel({
           fetched_at: snapshot.fetched_at,
           city: citySlug,
           portal,
+        operation,
           excluded: excluding,
           exclude_reason: excluding ? reasonDrafts[snapshot.fetched_at]?.trim() || null : null,
           asOf,
@@ -284,7 +299,7 @@ export default function OccupancySnapshotManagePanel({
         });
         onDashboardUpdate(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : t("occupancy.snapshotManage.saveError"));
+        setError(err instanceof Error ? err.message : ot("snapshotManage.saveError"));
       } finally {
         setBusyFetchedAt(null);
       }
@@ -294,10 +309,11 @@ export default function OccupancySnapshotManagePanel({
       metricsBasis,
       metricsPeriod,
       onDashboardUpdate,
+      operation,
+      ot,
       portal,
       reasonDrafts,
       selectedSnapshotAt,
-      t,
     ],
   );
 
@@ -312,12 +328,12 @@ export default function OccupancySnapshotManagePanel({
         className="inline-flex items-center gap-2 rounded-lg border border-surface-border bg-white px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50 disabled:opacity-50"
       >
         <Settings2 size={16} />
-        {t("occupancy.snapshotManage.title")}
+        {ot("snapshotManage.title")}
       </button>
 
       {open ? (
         <div className="mt-3 rounded-xl border border-surface-border bg-neutral-50/80 p-3">
-          <p className="mb-3 text-xs text-neutral-600">{t("occupancy.snapshotManage.subtitle")}</p>
+          <p className="mb-3 text-xs text-neutral-600">{ot("snapshotManage.subtitle")}</p>
           {error ? <p className="mb-3 text-sm text-red-500">{error}</p> : null}
           <ul className="space-y-2">
             {snapshots.map((snapshot) => (
@@ -333,12 +349,12 @@ export default function OccupancySnapshotManagePanel({
                     <p className="text-sm font-medium text-neutral-900">
                       {formatWhen(snapshot.fetched_at, dateLocale)}
                       <span className="ml-2 font-normal text-neutral-500">
-                        · {snapshot.active_count} {t("occupancy.refreshListings")}
+                        · {snapshot.active_count} {ot("refreshListings")}
                       </span>
                     </p>
                     {snapshot.excluded ? (
                       <p className="text-xs text-amber-800">
-                        {t("occupancy.snapshotManage.excludedLabel")}
+                        {ot("snapshotManage.excludedLabel")}
                         {snapshot.exclude_reason ? `: ${snapshot.exclude_reason}` : ""}
                       </p>
                     ) : null}
@@ -352,7 +368,7 @@ export default function OccupancySnapshotManagePanel({
                         className="inline-flex items-center gap-1 rounded-lg border border-surface-border px-2 py-1 text-xs text-neutral-700 hover:bg-neutral-50 disabled:opacity-50"
                       >
                         <Pencil size={14} />
-                        {t("occupancy.snapshotManage.edit")}
+                        {ot("snapshotManage.edit")}
                       </button>
                     ) : null}
                     <button
@@ -367,10 +383,10 @@ export default function OccupancySnapshotManagePanel({
                       )}
                     >
                       {busyFetchedAt === snapshot.fetched_at
-                        ? t("occupancy.snapshotManage.saving")
+                        ? ot("snapshotManage.saving")
                         : snapshot.excluded
-                          ? t("occupancy.snapshotManage.include")
-                          : t("occupancy.snapshotManage.exclude")}
+                          ? ot("snapshotManage.include")
+                          : ot("snapshotManage.exclude")}
                     </button>
                   </div>
                 </div>
@@ -383,7 +399,7 @@ export default function OccupancySnapshotManagePanel({
                         [snapshot.fetched_at]: e.target.value,
                       }))
                     }
-                    placeholder={t("occupancy.snapshotManage.excludeReasonPlaceholder")}
+                    placeholder={ot("snapshotManage.excludeReasonPlaceholder")}
                     className="mt-2 w-full rounded-lg border border-surface-border px-2 py-1.5 text-xs text-neutral-800"
                   />
                 ) : null}
@@ -398,6 +414,7 @@ export default function OccupancySnapshotManagePanel({
           fetchedAt={editingFetchedAt}
           citySlug={citySlug}
           portal={portal}
+          operation={operation}
           selectedSnapshotAt={selectedSnapshotAt}
           metricsPeriod={metricsPeriod}
           metricsBasis={metricsBasis}

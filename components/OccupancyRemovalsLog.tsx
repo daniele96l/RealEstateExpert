@@ -13,12 +13,19 @@ import {
   normalizeOccupancyPropertyType,
   type OccupancyTypeFilter,
 } from "@/lib/occupancy/filtered-breakdown";
+import {
+  parseRoomOccupancyKind,
+  type RoomOccupancyKindFilter,
+} from "@/lib/occupancy/room-occupancy-kind";
 import type { MarketId } from "@/lib/markets";
 import type { OccupancyRemovalEvent } from "@/lib/types";
 import { useI18n } from "@/lib/i18n/context";
+import type { OccupancyOperation } from "@/lib/occupancy/operation";
+import { occupancyI18nRoot } from "@/lib/occupancy/operation";
 import { cn, fmtMoney } from "@/lib/utils";
 import { ClipboardList } from "lucide-react";
 import OccupancyDescriptionPreview from "@/components/OccupancyDescriptionPreview";
+import { resolveOccupancyListingUrl } from "@/lib/listing-url";
 
 const OCCUPANCY_PORTAL_STORAGE_KEY = "occupancy-portal";
 const REMOVALS_FETCH_LIMIT = 500;
@@ -26,6 +33,22 @@ const PAGE_SIZE = 5;
 
 function isRemovalRoom(event: OccupancyRemovalEvent): boolean {
   return normalizeOccupancyPropertyType(event) === "room";
+}
+
+function matchesRemovalFilters(
+  event: OccupancyRemovalEvent,
+  areaFilter: string,
+  typeFilter: OccupancyTypeFilter,
+  roomKindFilter: RoomOccupancyKindFilter,
+): boolean {
+  if (areaFilter !== "all" && (event.zone ?? "") !== areaFilter) return false;
+  if (typeFilter === "room" && !isRemovalRoom(event)) return false;
+  if (typeFilter === "flat" && isRemovalRoom(event)) return false;
+  if (roomKindFilter !== "all") {
+    if (!isRemovalRoom(event)) return false;
+    if (parseRoomOccupancyKind(event.description) !== roomKindFilter) return false;
+  }
+  return true;
 }
 
 function readStoredPortal(citySlug: OccupancyCitySlug): OccupancyPortal {
@@ -74,27 +97,23 @@ function formatPriceHistory(
   return history.map((p) => fmtMoney(p.price, market)).join(" → ");
 }
 
-function matchesRemovalFilters(
-  event: OccupancyRemovalEvent,
-  areaFilter: string,
-  typeFilter: OccupancyTypeFilter,
-): boolean {
-  if (areaFilter !== "all" && (event.zone ?? "") !== areaFilter) return false;
-  if (typeFilter === "room") return isRemovalRoom(event);
-  if (typeFilter === "flat") return !isRemovalRoom(event);
-  return true;
-}
-
 interface Props {
   refreshToken?: number;
+  operation?: OccupancyOperation;
 }
 
-export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
+export default function OccupancyRemovalsLog({ refreshToken = 0, operation = "rent" }: Props) {
   const { t, locale } = useI18n();
+  const i18nRoot = occupancyI18nRoot(operation);
+  const ot = useCallback(
+    (key: string, vars?: Record<string, string | number>) => t(`${i18nRoot}.${key}`, vars),
+    [t, i18nRoot],
+  );
   const [events, setEvents] = useState<OccupancyRemovalEvent[]>([]);
   const [displayMarket, setDisplayMarket] = useState<MarketId>("it");
   const [areaFilter, setAreaFilter] = useState<string>("all");
   const [typeFilter, setTypeFilter] = useState<OccupancyTypeFilter>("all");
+  const [roomKindFilter, setRoomKindFilter] = useState<RoomOccupancyKindFilter>("all");
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -110,8 +129,8 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
   }, [events, displayMarket]);
 
   const filteredEvents = useMemo(
-    () => events.filter((event) => matchesRemovalFilters(event, areaFilter, typeFilter)),
-    [events, areaFilter, typeFilter],
+    () => events.filter((event) => matchesRemovalFilters(event, areaFilter, typeFilter, roomKindFilter)),
+    [events, areaFilter, typeFilter, roomKindFilter],
   );
 
   const pageCount = Math.ceil(filteredEvents.length / PAGE_SIZE) || 1;
@@ -127,20 +146,21 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
       const citySlug = readStoredCity();
       const portal = readStoredPortal(citySlug);
       const market = getOccupancyCityConfig(citySlug).market;
-      const data = await fetchOccupancyRemovals(portal, REMOVALS_FETCH_LIMIT, citySlug);
+      const data = await fetchOccupancyRemovals(portal, REMOVALS_FETCH_LIMIT, citySlug, operation);
       setEvents(data.events);
       setDisplayMarket(market);
       setAreaFilter("all");
       setTypeFilter("all");
+      setRoomKindFilter("all");
       setPage(0);
     } catch (err) {
-      setError(err instanceof Error ? err.message : t("occupancy.removals.loadError"));
+      setError(err instanceof Error ? err.message : ot("removals.loadError"));
       setEvents([]);
       setPage(0);
     } finally {
       setLoading(false);
     }
-  }, [t]);
+  }, [operation, ot]);
 
   useEffect(() => {
     void reload();
@@ -148,7 +168,7 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
 
   useEffect(() => {
     setPage(0);
-  }, [areaFilter, typeFilter]);
+  }, [areaFilter, typeFilter, roomKindFilter]);
 
   useEffect(() => {
     setPage((current) => Math.min(current, Math.max(0, pageCount - 1)));
@@ -163,13 +183,13 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
               <ClipboardList size={18} />
             </div>
             <div>
-              <h2 className="text-base font-semibold text-neutral-900">{t("occupancy.removals.title")}</h2>
-              <p className="mt-1 text-sm text-neutral-600">{t("occupancy.removals.subtitle")}</p>
+              <h2 className="text-base font-semibold text-neutral-900">{ot("removals.title")}</h2>
+              <p className="mt-1 text-sm text-neutral-600">{ot("removals.subtitle")}</p>
             </div>
           </div>
           {!loading && !error && events.length > 0 ? (
             <p className="text-xs text-neutral-500">
-              {t("occupancy.removals.total", { count: filteredEvents.length })}
+              {ot("removals.total", { count: filteredEvents.length })}
             </p>
           ) : null}
         </div>
@@ -180,14 +200,14 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
                 className="inline-flex items-center gap-2 text-sm text-neutral-600"
                 htmlFor="occupancy-removals-area"
               >
-                <span>{t("occupancy.kpi.areaFilter")}</span>
+                <span>{ot("kpi.areaFilter")}</span>
                 <select
                   id="occupancy-removals-area"
                   value={areaFilter}
                   onChange={(e) => setAreaFilter(e.target.value)}
                   className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
                 >
-                  <option value="all">{t("occupancy.kpi.allCity")}</option>
+                  <option value="all">{ot("kpi.allCity")}</option>
                   {zoneOptions.map((zone) => (
                     <option key={zone} value={zone}>
                       {zone}
@@ -201,16 +221,35 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
                 className="inline-flex items-center gap-2 text-sm text-neutral-600"
                 htmlFor="occupancy-removals-type"
               >
-                <span>{t("occupancy.kpi.typeFilter")}</span>
+                <span>{ot("kpi.typeFilter")}</span>
                 <select
                   id="occupancy-removals-type"
                   value={typeFilter}
                   onChange={(e) => setTypeFilter(e.target.value as OccupancyTypeFilter)}
                   className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
                 >
-                  <option value="all">{t("occupancy.kpi.allTypes")}</option>
-                  <option value="flat">{t("occupancy.kpi.typeFlat")}</option>
-                  <option value="room">{t("occupancy.kpi.typeRoom")}</option>
+                  <option value="all">{ot("kpi.allTypes")}</option>
+                  <option value="flat">{ot("kpi.typeFlat")}</option>
+                  <option value="room">{ot("kpi.typeRoom")}</option>
+                </select>
+              </label>
+            ) : null}
+            {displayMarket === "cz" ? (
+              <label
+                className="inline-flex items-center gap-2 text-sm text-neutral-600"
+                htmlFor="occupancy-removals-room-kind"
+              >
+                <span>{ot("diff.roomKindFilter")}</span>
+                <select
+                  id="occupancy-removals-room-kind"
+                  value={roomKindFilter}
+                  onChange={(e) => setRoomKindFilter(e.target.value as RoomOccupancyKindFilter)}
+                  className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                >
+                  <option value="all">{ot("diff.allRoomKinds")}</option>
+                  <option value="private_room">{ot("diff.roomKindPrivate")}</option>
+                  <option value="shared_bed">{ot("diff.roomKindSharedBed")}</option>
+                  <option value="unknown">{ot("diff.roomKindUnknown")}</option>
                 </select>
               </label>
             ) : null}
@@ -223,23 +262,23 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
       ) : error ? (
         <p className="px-6 py-8 text-center text-sm text-rose-400">{error}</p>
       ) : events.length === 0 ? (
-        <p className="px-6 py-8 text-center text-sm text-neutral-500">{t("occupancy.removals.empty")}</p>
+        <p className="px-6 py-8 text-center text-sm text-neutral-500">{ot("removals.empty")}</p>
       ) : filteredEvents.length === 0 ? (
-        <p className="px-6 py-8 text-center text-sm text-neutral-500">{t("occupancy.removals.emptyFiltered")}</p>
+        <p className="px-6 py-8 text-center text-sm text-neutral-500">{ot("removals.emptyFiltered")}</p>
       ) : (
         <>
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm">
               <thead>
                 <tr className="border-b border-surface-border/40 text-left text-xs uppercase tracking-wide text-neutral-500">
-                  <th className="px-6 py-3">{t("occupancy.removals.table.detected")}</th>
-                  <th className="px-4 py-3">{t("occupancy.removals.table.zone")}</th>
-                  <th className="px-4 py-3">{t("occupancy.removals.table.rent")}</th>
-                  <th className="px-4 py-3">{t("occupancy.removals.table.rentPerSqm")}</th>
-                  <th className="px-4 py-3">{t("occupancy.removals.table.dom")}</th>
-                  <th className="px-4 py-3">{t("occupancy.removals.table.priceHistory")}</th>
-                  <th className="px-6 py-3">{t("occupancy.removals.table.address")}</th>
-                  <th className="min-w-[14rem] px-6 py-3">{t("occupancy.removals.table.description")}</th>
+                  <th className="px-6 py-3">{ot("removals.table.detected")}</th>
+                  <th className="px-4 py-3">{ot("removals.table.zone")}</th>
+                  <th className="px-4 py-3">{ot("removals.table.rent")}</th>
+                  <th className="px-4 py-3">{ot("removals.table.rentPerSqm")}</th>
+                  <th className="px-4 py-3">{ot("removals.table.dom")}</th>
+                  <th className="px-4 py-3">{ot("removals.table.priceHistory")}</th>
+                  <th className="px-6 py-3">{ot("removals.table.address")}</th>
+                  <th className="min-w-[14rem] px-6 py-3">{ot("removals.table.description")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -269,7 +308,10 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
                       <p className="mt-0.5 truncate text-xs text-neutral-500">{event.id}</p>
                     </td>
                     <td className="max-w-xs px-6 py-3">
-                      <OccupancyDescriptionPreview description={event.description} />
+                      <OccupancyDescriptionPreview
+                        description={event.description}
+                        url={resolveOccupancyListingUrl(event)}
+                      />
                     </td>
                   </tr>
                 ))}
@@ -289,15 +331,15 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
                     : "border-surface-border/60 bg-neutral-50 hover:text-neutral-800",
                 )}
               >
-                {t("occupancy.diff.paginationPrev")}
+                {ot("diff.paginationPrev")}
               </button>
               <span>
-                {t("occupancy.diff.paginationPage", {
+                {ot("diff.paginationPage", {
                   current: page + 1,
                   total: pageCount,
                 })}
                 {" · "}
-                {t("occupancy.removals.showing", {
+                {ot("removals.showing", {
                   from: page * PAGE_SIZE + 1,
                   to: Math.min((page + 1) * PAGE_SIZE, filteredEvents.length),
                   total: filteredEvents.length,
@@ -314,7 +356,7 @@ export default function OccupancyRemovalsLog({ refreshToken = 0 }: Props) {
                     : "border-surface-border/60 bg-neutral-50 hover:text-neutral-800",
                 )}
               >
-                {t("occupancy.diff.paginationNext")}
+                {ot("diff.paginationNext")}
               </button>
             </div>
           ) : null}

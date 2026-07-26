@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useI18n } from "@/lib/i18n/context";
-import { X } from "lucide-react";
+import { ExternalLink, X } from "lucide-react";
 
 function shortenDescription(text: string, maxWords = 8): string {
   const trimmed = text.replace(/\s+/g, " ").trim();
@@ -14,10 +14,12 @@ function shortenDescription(text: string, maxWords = 8): string {
 
 export default function OccupancyDescriptionPreview({
   description,
+  url,
   className,
   textClassName,
 }: {
   description: string | null | undefined;
+  url?: string | null;
   className?: string;
   textClassName?: string;
 }) {
@@ -25,6 +27,7 @@ export default function OccupancyDescriptionPreview({
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const full = description?.replace(/\s+/g, " ").trim() || "";
+  const listingUrl = url?.trim() || null;
 
   useEffect(() => setMounted(true), []);
 
@@ -89,6 +92,19 @@ export default function OccupancyDescriptionPreview({
                     {full}
                   </p>
                 </div>
+                {listingUrl ? (
+                  <div className="shrink-0 border-t border-surface-border px-4 py-3">
+                    <a
+                      href={listingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-700 hover:text-sky-900 hover:underline"
+                    >
+                      {t("occupancy.descriptionPreview.openListing")}
+                      <ExternalLink size={14} aria-hidden />
+                    </a>
+                  </div>
+                ) : null}
               </div>
             </div>,
             document.body,

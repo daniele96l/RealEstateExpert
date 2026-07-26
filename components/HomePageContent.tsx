@@ -45,7 +45,7 @@ import type { ListingsExportContext } from "@/lib/listings-export";
 import { Building2, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type PageTab = "analysis" | "occupancy" | "mortgage";
+type PageTab = "analysis" | "occupancy" | "saleRate" | "mortgage";
 
 function initialMarketScenario(): SimpleScenario {
   const stored = typeof window !== "undefined" ? readStoredMarket() : "it";
@@ -75,6 +75,7 @@ export default function HomePageContent() {
   const [exportContext, setExportContext] = useState<ListingsExportContext | null>(null);
   const [pageTab, setPageTab] = useState<PageTab>("analysis");
   const [occupancyLogRefresh, setOccupancyLogRefresh] = useState(0);
+  const [saleRateLogRefresh, setSaleRateLogRefresh] = useState(0);
 
   useEffect(() => {
     const stored = readStoredMarket();
@@ -275,6 +276,7 @@ export default function HomePageContent() {
               options={[
                 { id: "analysis" as const, label: t("nav.analysis") },
                 { id: "occupancy" as const, label: t("nav.occupancy") },
+                { id: "saleRate" as const, label: t("nav.saleRate") },
                 { id: "mortgage" as const, label: t("nav.mortgage") },
               ]}
             />
@@ -285,6 +287,11 @@ export default function HomePageContent() {
       <main className="mx-auto max-w-7xl bg-surface px-4 py-8 sm:px-6">
         {pageTab === "occupancy" ? (
           <OccupancyRatePanel onDataMutated={() => setOccupancyLogRefresh((n) => n + 1)} />
+        ) : pageTab === "saleRate" ? (
+          <OccupancyRatePanel
+            operation="sale"
+            onDataMutated={() => setSaleRateLogRefresh((n) => n + 1)}
+          />
         ) : pageTab === "mortgage" ? (
           <MortgageSimulatorPanel key={market} market={market} />
         ) : (
@@ -356,6 +363,8 @@ export default function HomePageContent() {
 
         {pageTab === "occupancy" ? (
           <OccupancyRemovalsLog refreshToken={occupancyLogRefresh} />
+        ) : pageTab === "saleRate" ? (
+          <OccupancyRemovalsLog refreshToken={saleRateLogRefresh} operation="sale" />
         ) : null}
       </main>
     </div>

@@ -23,6 +23,30 @@
     {
       "path": "/api/cron/occupancy?portal=sreality&city=rosice",
       "schedule": "40 7 * * *"
+    },
+    {
+      "path": "/api/cron/occupancy?operation=sale&portal=immobiliare_scraper&city=reggio_calabria",
+      "schedule": "10 6 * * *"
+    },
+    {
+      "path": "/api/cron/occupancy?operation=sale&portal=sreality&city=brno",
+      "schedule": "30 6 * * *"
+    },
+    {
+      "path": "/api/cron/occupancy?operation=sale&portal=sreality&city=tabor",
+      "schedule": "50 6 * * *"
+    },
+    {
+      "path": "/api/cron/occupancy?operation=sale&portal=sreality&city=prague",
+      "schedule": "10 7 * * *"
+    },
+    {
+      "path": "/api/cron/occupancy?operation=sale&portal=sreality&city=ostrava",
+      "schedule": "30 7 * * *"
+    },
+    {
+      "path": "/api/cron/occupancy?operation=sale&portal=sreality&city=rosice",
+      "schedule": "50 7 * * *"
     }
   ]
 }

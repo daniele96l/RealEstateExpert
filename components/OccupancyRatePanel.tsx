@@ -655,6 +655,7 @@ function BreakdownListingsModal({
                         <div className="mt-1">
                           <OccupancyDescriptionPreview
                             description={listing.description}
+                            url={listingUrl}
                             textClassName="text-[10px] text-neutral-400"
                             className="max-w-full truncate text-left text-[10px] leading-snug text-sky-700 hover:text-sky-900 hover:underline"
                           />
@@ -749,6 +750,8 @@ export default function OccupancyRatePanel({
   const [breakdownPage, setBreakdownPage] = useState(0);
   const [metricsAreaFilter, setMetricsAreaFilter] = useState<"all" | string>("all");
   const [metricsTypeFilter, setMetricsTypeFilter] = useState<OccupancyTypeFilter>("all");
+  const [metricsRoomKindFilter, setMetricsRoomKindFilter] =
+    useState<RoomOccupancyKindFilter>("all");
   const [metricsPeriod, setMetricsPeriod] = useState<OccupancyMetricsPeriod>(readStoredMetricsPeriod);
   const [metricsBasis, setMetricsBasis] = useState<OccupancyMetricsBasis>(readStoredMetricsBasis);
   const [citySlug, setCitySlug] = useState<OccupancyCitySlug>(readStoredCity);
@@ -844,6 +847,7 @@ export default function OccupancyRatePanel({
   useEffect(() => {
     setMetricsAreaFilter("all");
     setMetricsTypeFilter("all");
+    setMetricsRoomKindFilter("all");
   }, [citySlug, portal, selectedSnapshotAt, metrics?.updated_at]);
 
   useEffect(() => {
@@ -1045,13 +1049,16 @@ export default function OccupancyRatePanel({
   const areas = metrics?.areas ?? [];
 
   const filtersActive =
-    metricsAreaFilter !== "all" || (occupancyMarket === "cz" && metricsTypeFilter !== "all");
+    metricsAreaFilter !== "all" ||
+    (occupancyMarket === "cz" && metricsTypeFilter !== "all") ||
+    (occupancyMarket === "cz" && metricsRoomKindFilter !== "all");
 
   const filteredBreakdownListings = useMemo(() => {
     if (!filtersActive) return breakdownListings;
     return filterOccupancyListings(breakdownListings, {
       areaFilter: metricsAreaFilter,
       typeFilter: occupancyMarket === "cz" ? metricsTypeFilter : "all",
+      roomKindFilter: occupancyMarket === "cz" ? metricsRoomKindFilter : "all",
       citySlug,
     });
   }, [
@@ -1059,6 +1066,7 @@ export default function OccupancyRatePanel({
     citySlug,
     filtersActive,
     metricsAreaFilter,
+    metricsRoomKindFilter,
     metricsTypeFilter,
     occupancyMarket,
   ]);
@@ -1138,7 +1146,7 @@ export default function OccupancyRatePanel({
       const area = areas.find((entry) => entry.zone === metricsAreaFilter);
       return area ? kpiSliceFromArea(area, metrics.occupancy_window_days) : kpiSliceFromCity(metrics);
     }
-    if (metricsAreaFilter !== "all" && metricsTypeFilter === "all") {
+    if (metricsAreaFilter !== "all" && metricsTypeFilter === "all" && metricsRoomKindFilter === "all") {
       const area = filteredAreas.find((entry) => entry.zone === metricsAreaFilter);
       if (area) return kpiSliceFromArea(area, metrics.occupancy_window_days);
     }
@@ -1189,6 +1197,7 @@ export default function OccupancyRatePanel({
     metrics,
     metricsAreaFilter,
     metricsTypeFilter,
+    metricsRoomKindFilter,
   ]);
 
   const occupancyPeriodLabel = metrics
@@ -1589,7 +1598,10 @@ export default function OccupancyRatePanel({
                       </td>
                       <td className="px-4 py-3">{listing.rooms ?? "—"}</td>
                       <td className="max-w-xs px-4 py-3">
-                        <OccupancyDescriptionPreview description={description} />
+                        <OccupancyDescriptionPreview
+                          description={description}
+                          url={resolveOccupancyListingUrl(listing)}
+                        />
                       </td>
                       <td className="px-4 py-3">{listing.sqm ?? "—"}</td>
                       <td className="px-4 py-3 font-medium text-neutral-900">{fmtMoney(listing.price, occupancyMarket)}</td>
@@ -1801,7 +1813,10 @@ export default function OccupancyRatePanel({
                               }
                             />
                           ) : null}
-                          <OccupancyDescriptionPreview description={description} />
+                          <OccupancyDescriptionPreview
+                          description={description}
+                          url={resolveOccupancyListingUrl(listing)}
+                        />
                         </div>
                       </td>
                       <td className="px-4 py-3">{listing.sqm ?? "—"}</td>
@@ -1871,6 +1886,13 @@ export default function OccupancyRatePanel({
                   ? metricsTypeFilter === "room"
                     ? ot("kpi.typeRoom")
                     : ot("kpi.typeFlat")
+                  : null,
+                occupancyMarket === "cz" && metricsRoomKindFilter !== "all"
+                  ? metricsRoomKindFilter === "private_room"
+                    ? ot("diff.roomKindPrivate")
+                    : metricsRoomKindFilter === "shared_bed"
+                      ? ot("diff.roomKindSharedBed")
+                      : ot("diff.roomKindUnknown")
                   : null,
               ]
                 .filter(Boolean)
@@ -1948,6 +1970,27 @@ export default function OccupancyRatePanel({
                     <option value="all">{ot("kpi.allTypes")}</option>
                     <option value="flat">{ot("kpi.typeFlat")}</option>
                     <option value="room">{ot("kpi.typeRoom")}</option>
+                  </select>
+                </label>
+              ) : null}
+              {occupancyMarket === "cz" ? (
+                <label
+                  className="inline-flex items-center gap-2 text-sm text-neutral-600"
+                  htmlFor="occupancy-metrics-room-kind"
+                >
+                  <span>{ot("diff.roomKindFilter")}</span>
+                  <select
+                    id="occupancy-metrics-room-kind"
+                    value={metricsRoomKindFilter}
+                    onChange={(e) =>
+                      setMetricsRoomKindFilter(e.target.value as RoomOccupancyKindFilter)
+                    }
+                    className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+                  >
+                    <option value="all">{ot("diff.allRoomKinds")}</option>
+                    <option value="private_room">{ot("diff.roomKindPrivate")}</option>
+                    <option value="shared_bed">{ot("diff.roomKindSharedBed")}</option>
+                    <option value="unknown">{ot("diff.roomKindUnknown")}</option>
                   </select>
                 </label>
               ) : null}
