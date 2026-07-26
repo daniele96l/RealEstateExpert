@@ -1,13 +1,32 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-07-25T08:21:35.429Z",
+  "fetched_at": "2026-07-26T08:40:03.914Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1597104204",
+      "title": "Pronájem bytu 2+1 45 m²",
+      "price": 14900,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/1597104204?noredirect=1",
+      "lat": 49.1857420774004,
+      "lng": 16.3958553635641,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Mrštíkova, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-15",
+      "listing_updated_at": "2026-07-25"
+    },
     {
       "id": "sr_3042828364",
       "title": "Pronájem bytu 2+1 58 m²",
@@ -140,25 +159,6 @@
       "needs_renovation": null,
       "listing_published_at": "2026-07-15",
       "listing_updated_at": "2026-07-23"
-    },
-    {
-      "id": "sr_1597104204",
-      "title": "Pronájem bytu 2+1 45 m²",
-      "price": 14900,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/1597104204?noredirect=1",
-      "lat": 49.1857420774004,
-      "lng": 16.3958553635641,
-      "sqm": 45,
-      "rooms": 2,
-      "address": "Mrštíkova, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-15",
-      "listing_updated_at": "2026-07-15"
     },
     {
       "id": "sr_2067587148",

@@ -1,5 +1,29 @@
 [
   {
+    "id": "sr_1439084620",
+    "portal": "sreality",
+    "detected_at": "2026-07-26T08:39:57.678Z",
+    "presumed_rented_at": "2026-07-26T08:39:57.678Z",
+    "first_seen_at": "2026-07-12T19:34:49.198Z",
+    "last_seen_at": "2026-07-25T08:21:28.217Z",
+    "days_on_market": 14,
+    "price": 12000,
+    "sqm": 61,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Brigádníků, Tábor, Tábor",
+    "zone": "Tábor",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/1439084620?noredirect=1",
+    "lat": 49.4190066,
+    "lng": 14.6786504,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:49.198Z",
+        "price": 12000
+      }
+    ]
+  },
+  {
     "id": "sr_239394892",
     "portal": "sreality",
     "detected_at": "2026-07-25T08:21:28.217Z",
