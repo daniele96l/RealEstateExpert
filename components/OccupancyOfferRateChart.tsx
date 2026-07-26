@@ -1,10 +1,8 @@
 "use client";
 
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, type ReactNode } from "react";
 import {
-  Area,
   CartesianGrid,
-  ComposedChart,
   Legend,
   Line,
   LineChart,
@@ -14,79 +12,19 @@ import {
   YAxis,
 } from "recharts";
 import type { MarketId } from "@/lib/markets";
-import type { OccupancyOfferBreakdownGroup, OccupancyOfferRatePoint } from "@/lib/types";
+import type { OccupancyOfferRatePoint } from "@/lib/types";
 import {
   occupancyI18nRoot,
   type OccupancyOperation,
 } from "@/lib/occupancy/operation";
-import {
-  OFFER_BREAKDOWN_GROUPS,
-  offerBreakdownField,
-  type OfferSeriesMetric,
-  type OfferSeriesMode,
-} from "@/lib/occupancy/offer-rate-series";
-import { listSegmentBuckets } from "@/lib/occupancy/segment-metrics";
 import { CHART_THEME, chartTooltipStyle } from "@/lib/chart-theme";
-import { cn, fmtMoney } from "@/lib/utils";
+import { fmtMoney } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/context";
 
 interface Props {
   series: OccupancyOfferRatePoint[];
   operation?: OccupancyOperation;
   market?: MarketId;
-}
-
-type ChartViewMode = "breakdown" | "trend";
-
-const SERIES_COLORS = [
-  CHART_THEME.series.blue,
-  CHART_THEME.series.amber,
-  CHART_THEME.series.violet,
-  CHART_THEME.series.cyan,
-  CHART_THEME.positive,
-  CHART_THEME.series.slate,
-  "#db2777",
-  "#0d9488",
-];
-
-const GROUP_LABEL_KEYS: Record<
-  OccupancyOfferBreakdownGroup,
-  "segmentsGroupType" | "segmentsGroupSize" | "segmentsGroupRooms" | "segmentsGroupPrice"
-> = {
-  type: "segmentsGroupType",
-  size: "segmentsGroupSize",
-  rooms: "segmentsGroupRooms",
-  price: "segmentsGroupPrice",
-};
-
-function linearTrend(values: number[]): number[] {
-  const n = values.length;
-  if (n === 0) return [];
-  if (n === 1) return [values[0]!];
-  let sumX = 0;
-  let sumY = 0;
-  let sumXY = 0;
-  let sumXX = 0;
-  for (let i = 0; i < n; i++) {
-    const y = values[i]!;
-    sumX += i;
-    sumY += y;
-    sumXY += i * y;
-    sumXX += i * i;
-  }
-  const denom = n * sumXX - sumX * sumX;
-  if (denom === 0) return values.map(() => sumY / n);
-  const slope = (n * sumXY - sumX * sumY) / denom;
-  const intercept = (sumY - slope * sumX) / n;
-  return values.map((_, i) => Math.max(0, Math.round(intercept + slope * i)));
-}
-
-function movingAverage(values: number[], window = 3): Array<number | null> {
-  return values.map((_, index) => {
-    if (index < window - 1) return null;
-    const slice = values.slice(index - window + 1, index + 1);
-    return Math.round(slice.reduce((sum, value) => sum + value, 0) / slice.length);
-  });
 }
 
 function OfferTooltip({
@@ -130,440 +68,38 @@ function OfferTooltip({
   );
 }
 
-function BreakdownLineChart({
-  series,
-  mode,
-  metric,
-  activeGroup,
-  market,
-  operation,
-  i18nRoot,
-  formatValue,
-}: {
-  series: OccupancyOfferRatePoint[];
-  mode: OfferSeriesMode;
-  metric: OfferSeriesMetric;
-  activeGroup: OccupancyOfferBreakdownGroup;
-  market: MarketId;
-  operation: OccupancyOperation;
-  i18nRoot: string;
-  formatValue?: (value: number) => string;
-}) {
-  const { t } = useI18n();
-
-  const bucketIds = useMemo(() => {
-    const field = offerBreakdownField(activeGroup, mode, metric);
-    const known = listSegmentBuckets(activeGroup, market, operation).map((b) => b.id);
-    const seen = new Set<string>();
-    const ordered: string[] = [];
-    for (const id of known) {
-      const hasValue = series.some((point) => {
-        const bag = point[field];
-        if (!bag || typeof bag !== "object") return false;
-        return ((bag as Record<string, number>)[id] ?? 0) > 0;
-      });
-      if (!hasValue) continue;
-      seen.add(id);
-      ordered.push(id);
-    }
-    for (const point of series) {
-      const bag = point[field];
-      if (!bag || typeof bag !== "object") continue;
-      for (const [id, value] of Object.entries(bag as Record<string, number>)) {
-        if (value > 0 && !seen.has(id)) {
-          seen.add(id);
-          ordered.push(id);
-        }
-      }
-    }
-    return ordered;
-  }, [activeGroup, market, metric, mode, operation, series]);
-
-  const chartData = useMemo(() => {
-    const field = offerBreakdownField(activeGroup, mode, metric);
-    return series.map((point) => {
-      const bag = point[field];
-      const row: Record<string, string | number> = {
-        label: point.label,
-        fetched_at: point.fetched_at,
-      };
-      for (const id of bucketIds) {
-        row[id] =
-          bag && typeof bag === "object"
-            ? ((bag as Record<string, number>)[id] ?? 0)
-            : 0;
-      }
-      return row;
-    });
-  }, [series, activeGroup, bucketIds, metric, mode]);
-
-  const labels = useMemo(() => {
-    const map: Record<string, string> = {};
-    for (const id of bucketIds) {
-      map[id] = t(`${i18nRoot}.segments.${activeGroup}.${id}`);
-    }
-    return map;
-  }, [bucketIds, activeGroup, i18nRoot, t]);
-
-  return (
-    <div className="h-72 w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
-          <CartesianGrid stroke={CHART_THEME.grid} strokeDasharray="3 3" />
-          <XAxis
-            dataKey="label"
-            tick={{ fill: CHART_THEME.axis, fontSize: 11 }}
-            axisLine={{ stroke: CHART_THEME.grid }}
-            tickLine={false}
-          />
-          <YAxis
-            allowDecimals={false}
-            tick={{ fill: CHART_THEME.axis, fontSize: 11 }}
-            axisLine={false}
-            tickLine={false}
-            width={metric === "ppsqm" ? 52 : 36}
-            tickFormatter={(value: number) =>
-              formatValue ? formatValue(value).replace(/\s/g, "") : String(value)
-            }
-          />
-          <Tooltip
-            content={<OfferTooltip labels={labels} formatValue={formatValue} />}
-            contentStyle={chartTooltipStyle}
-          />
-          <Legend
-            wrapperStyle={{ fontSize: 12, color: CHART_THEME.axis }}
-            formatter={(value) => labels[value] ?? value}
-          />
-          {bucketIds.map((id, index) => (
-            <Line
-              key={id}
-              type="monotone"
-              dataKey={id}
-              name={id}
-              stroke={SERIES_COLORS[index % SERIES_COLORS.length]}
-              strokeWidth={1.75}
-              dot={false}
-            />
-          ))}
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
-  );
-}
-
-function TrendChart({
-  series,
-  mode,
-  metric,
-  i18nRoot,
-  formatValue,
-}: {
-  series: OccupancyOfferRatePoint[];
-  mode: OfferSeriesMode;
-  metric: OfferSeriesMetric;
-  i18nRoot: string;
-  formatValue?: (value: number) => string;
-}) {
-  const { t } = useI18n();
-  const stroke =
-    mode === "new" ? CHART_THEME.series.blue : CHART_THEME.negative;
-  const fill =
-    mode === "new" ? "rgba(37, 99, 235, 0.12)" : "rgba(220, 38, 38, 0.1)";
-
-  const chartData = useMemo(() => {
-    const values = series.map((point) => {
-      if (metric === "ppsqm") {
-        return mode === "new" ? (point.new_avg_ppsqm ?? 0) : (point.removed_avg_ppsqm ?? 0);
-      }
-      return mode === "new" ? point.new_total : point.removed_total;
-    });
-    const trend = linearTrend(values);
-    const average = movingAverage(values, 3);
-    return series.map((point, index) => ({
-      label: point.label,
-      fetched_at: point.fetched_at,
-      value: values[index]!,
-      trend: trend[index]!,
-      average: average[index],
-    }));
-  }, [metric, mode, series]);
-
-  const labels = useMemo(
-    () => ({
-      value:
-        metric === "ppsqm"
-          ? t(`${i18nRoot}.offerRate.seriesPpsqm`)
-          : t(`${i18nRoot}.offerRate.seriesValue`),
-      trend: t(`${i18nRoot}.offerRate.seriesTrend`),
-      average: t(`${i18nRoot}.offerRate.seriesAverage`),
-    }),
-    [i18nRoot, metric, t],
-  );
-
-  return (
-    <div className="h-72 w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <ComposedChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
-          <CartesianGrid stroke={CHART_THEME.grid} strokeDasharray="3 3" />
-          <XAxis
-            dataKey="label"
-            tick={{ fill: CHART_THEME.axis, fontSize: 11 }}
-            axisLine={{ stroke: CHART_THEME.grid }}
-            tickLine={false}
-          />
-          <YAxis
-            allowDecimals={false}
-            tick={{ fill: CHART_THEME.axis, fontSize: 11 }}
-            axisLine={false}
-            tickLine={false}
-            width={metric === "ppsqm" ? 52 : 36}
-            tickFormatter={(value: number) =>
-              formatValue ? formatValue(value).replace(/\s/g, "") : String(value)
-            }
-          />
-          <Tooltip
-            content={<OfferTooltip labels={labels} formatValue={formatValue} />}
-            contentStyle={chartTooltipStyle}
-          />
-          <Legend
-            wrapperStyle={{ fontSize: 12, color: CHART_THEME.axis }}
-            formatter={(value) => labels[value as keyof typeof labels] ?? value}
-          />
-          <Area
-            type="monotone"
-            dataKey="value"
-            name="value"
-            stroke={stroke}
-            fill={fill}
-            strokeWidth={2}
-            dot={false}
-            activeDot={{ r: 4 }}
-          />
-          <Line
-            type="monotone"
-            dataKey="average"
-            name="average"
-            stroke={CHART_THEME.series.amber}
-            strokeWidth={1.75}
-            strokeDasharray="4 3"
-            dot={false}
-            connectNulls
-          />
-          <Line
-            type="linear"
-            dataKey="trend"
-            name="trend"
-            stroke={CHART_THEME.series.slate}
-            strokeWidth={2}
-            dot={false}
-          />
-        </ComposedChart>
-      </ResponsiveContainer>
-    </div>
-  );
-}
-
-function ViewToggle({
-  value,
-  onChange,
-  i18nRoot,
-}: {
-  value: ChartViewMode;
-  onChange: (next: ChartViewMode) => void;
-  i18nRoot: string;
-}) {
-  const { t } = useI18n();
-  return (
-    <div className="inline-flex gap-1 rounded-lg border border-surface-border/60 bg-neutral-50 p-1">
-      {(
-        [
-          ["breakdown", "viewBreakdown"],
-          ["trend", "viewTrend"],
-        ] as const
-      ).map(([id, key]) => (
-        <button
-          key={id}
-          type="button"
-          onClick={() => onChange(id)}
-          className={cn(
-            "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
-            value === id
-              ? "bg-neutral-900 text-white"
-              : "text-neutral-600 hover:text-neutral-800",
-          )}
-        >
-          {t(`${i18nRoot}.offerRate.${key}`)}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function GroupToggle({
-  availableGroups,
-  activeGroup,
-  onChange,
-  i18nRoot,
-}: {
-  availableGroups: OccupancyOfferBreakdownGroup[];
-  activeGroup: OccupancyOfferBreakdownGroup;
-  onChange: (group: OccupancyOfferBreakdownGroup) => void;
-  i18nRoot: string;
-}) {
-  const { t } = useI18n();
-  return (
-    <div className="inline-flex flex-wrap gap-1 rounded-lg border border-surface-border/60 bg-neutral-50 p-1">
-      {availableGroups.map((group) => (
-        <button
-          key={group}
-          type="button"
-          onClick={() => onChange(group)}
-          className={cn(
-            "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
-            activeGroup === group
-              ? "bg-neutral-900 text-white"
-              : "text-neutral-600 hover:text-neutral-800",
-          )}
-        >
-          {t(`${i18nRoot}.${GROUP_LABEL_KEYS[group]}`)}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function OfferChartCard({
+function SimpleLineCard({
   title,
   subtitle,
   stats,
-  series,
-  mode,
-  metric,
-  availableGroups,
-  activeGroup,
-  onGroupChange,
-  market,
-  operation,
-  i18nRoot,
+  data,
+  lines,
+  labels,
+  yWidth = 40,
   formatValue,
+  formatTick,
 }: {
   title: string;
   subtitle: string;
-  stats: ReactNode;
-  series: OccupancyOfferRatePoint[];
-  mode: OfferSeriesMode;
-  metric: OfferSeriesMetric;
-  availableGroups: OccupancyOfferBreakdownGroup[];
-  activeGroup: OccupancyOfferBreakdownGroup;
-  onGroupChange: (group: OccupancyOfferBreakdownGroup) => void;
-  market: MarketId;
-  operation: OccupancyOperation;
-  i18nRoot: string;
+  stats?: ReactNode;
+  data: Array<Record<string, string | number | null>>;
+  lines: Array<{ key: string; color: string; dashed?: boolean }>;
+  labels: Record<string, string>;
+  yWidth?: number;
   formatValue?: (value: number) => string;
+  formatTick?: (value: number) => string;
 }) {
-  const [viewMode, setViewMode] = useState<ChartViewMode>("breakdown");
-
   return (
     <div className="card overflow-hidden">
       <div className="border-b border-surface-border/60 px-6 py-4">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <h3 className="text-base font-semibold text-neutral-900">{title}</h3>
-            <p className="mt-1 text-sm text-neutral-600">{subtitle}</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <ViewToggle value={viewMode} onChange={setViewMode} i18nRoot={i18nRoot} />
-            {viewMode === "breakdown" ? (
-              <GroupToggle
-                availableGroups={availableGroups}
-                activeGroup={activeGroup}
-                onChange={onGroupChange}
-                i18nRoot={i18nRoot}
-              />
-            ) : null}
-          </div>
-        </div>
+        <h3 className="text-base font-semibold text-neutral-900">{title}</h3>
+        <p className="mt-1 text-sm text-neutral-600">{subtitle}</p>
         {stats}
       </div>
       <div className="px-4 py-5 sm:px-6">
-        {viewMode === "breakdown" ? (
-          <BreakdownLineChart
-            series={series}
-            mode={mode}
-            metric={metric}
-            activeGroup={activeGroup}
-            market={market}
-            operation={operation}
-            i18nRoot={i18nRoot}
-            formatValue={formatValue}
-          />
-        ) : (
-          <TrendChart
-            series={series}
-            mode={mode}
-            metric={metric}
-            i18nRoot={i18nRoot}
-            formatValue={formatValue}
-          />
-        )}
-      </div>
-    </div>
-  );
-}
-
-function InventoryChart({
-  series,
-  i18nRoot,
-}: {
-  series: OccupancyOfferRatePoint[];
-  i18nRoot: string;
-}) {
-  const { t } = useI18n();
-  const chartData = useMemo(() => {
-    const values = series.map((point) => point.active_count);
-    const trend = linearTrend(values);
-    const average = movingAverage(values, 3);
-    return series.map((point, index) => ({
-      label: point.label,
-      fetched_at: point.fetched_at,
-      value: values[index]!,
-      trend: trend[index]!,
-      average: average[index],
-    }));
-  }, [series]);
-
-  const labels = useMemo(
-    () => ({
-      value: t(`${i18nRoot}.offerRate.seriesInventory`),
-      trend: t(`${i18nRoot}.offerRate.seriesTrend`),
-      average: t(`${i18nRoot}.offerRate.seriesAverage`),
-    }),
-    [i18nRoot, t],
-  );
-
-  return (
-    <div className="card overflow-hidden">
-      <div className="border-b border-surface-border/60 px-6 py-4">
-        <h3 className="text-base font-semibold text-neutral-900">
-          {t(`${i18nRoot}.offerRate.inventoryTitle`)}
-        </h3>
-        <p className="mt-1 text-sm text-neutral-600">
-          {t(`${i18nRoot}.offerRate.inventorySubtitle`)}
-        </p>
-        {series.length ? (
-          <div className="mt-3 flex flex-wrap gap-4 text-xs text-neutral-500">
-            <span>
-              {t(`${i18nRoot}.offerRate.latestActive`, {
-                count: series[series.length - 1]!.active_count,
-              })}
-            </span>
-          </div>
-        ) : null}
-      </div>
-      <div className="px-4 py-5 sm:px-6">
-        <div className="h-72 w-full">
+        <div className="h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <ComposedChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
+            <LineChart data={data} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
               <CartesianGrid stroke={CHART_THEME.grid} strokeDasharray="3 3" />
               <XAxis
                 dataKey="label"
@@ -576,42 +112,32 @@ function InventoryChart({
                 tick={{ fill: CHART_THEME.axis, fontSize: 11 }}
                 axisLine={false}
                 tickLine={false}
-                width={44}
+                width={yWidth}
+                tickFormatter={formatTick}
               />
-              <Tooltip content={<OfferTooltip labels={labels} />} contentStyle={chartTooltipStyle} />
+              <Tooltip
+                content={<OfferTooltip labels={labels} formatValue={formatValue} />}
+                contentStyle={chartTooltipStyle}
+              />
               <Legend
                 wrapperStyle={{ fontSize: 12, color: CHART_THEME.axis }}
-                formatter={(value) => labels[value as keyof typeof labels] ?? value}
+                formatter={(value) => labels[value] ?? value}
               />
-              <Area
-                type="monotone"
-                dataKey="value"
-                name="value"
-                stroke={CHART_THEME.primary}
-                fill="rgba(15, 23, 42, 0.08)"
-                strokeWidth={2.25}
-                dot={false}
-                activeDot={{ r: 4 }}
-              />
-              <Line
-                type="monotone"
-                dataKey="average"
-                name="average"
-                stroke={CHART_THEME.series.amber}
-                strokeWidth={1.75}
-                strokeDasharray="4 3"
-                dot={false}
-                connectNulls
-              />
-              <Line
-                type="linear"
-                dataKey="trend"
-                name="trend"
-                stroke={CHART_THEME.series.slate}
-                strokeWidth={2}
-                dot={false}
-              />
-            </ComposedChart>
+              {lines.map((line) => (
+                <Line
+                  key={line.key}
+                  type="monotone"
+                  dataKey={line.key}
+                  name={line.key}
+                  stroke={line.color}
+                  strokeWidth={2}
+                  strokeDasharray={line.dashed ? "5 4" : undefined}
+                  dot={false}
+                  connectNulls
+                  activeDot={{ r: 4 }}
+                />
+              ))}
+            </LineChart>
           </ResponsiveContainer>
         </div>
       </div>
@@ -629,44 +155,39 @@ export default function OccupancyOfferRateChart({
   const perSqmLabel = t("listings.perSqm");
   const formatPpsqm = (value: number) => `${fmtMoney(value, market)}${perSqmLabel}`;
 
-  const [newGroup, setNewGroup] = useState<OccupancyOfferBreakdownGroup>(
-    market === "cz" ? "type" : "size",
-  );
-  const [removedGroup, setRemovedGroup] = useState<OccupancyOfferBreakdownGroup>(
-    market === "cz" ? "type" : "size",
-  );
-  const [newPpsqmGroup, setNewPpsqmGroup] = useState<OccupancyOfferBreakdownGroup>(
-    market === "cz" ? "type" : "size",
-  );
-  const [removedPpsqmGroup, setRemovedPpsqmGroup] = useState<OccupancyOfferBreakdownGroup>(
-    market === "cz" ? "type" : "size",
-  );
-
-  const availableGroups = useMemo(
-    () =>
-      OFFER_BREAKDOWN_GROUPS.filter((group) => market === "cz" || group !== "type"),
-    [market],
-  );
-
-  const pickGroup = (group: OccupancyOfferBreakdownGroup) =>
-    availableGroups.includes(group) ? group : (availableGroups[0] ?? "size");
-
   const totals = useMemo(() => {
     if (!series.length) return null;
-    const newTotal = series.reduce((sum, p) => sum + p.new_total, 0);
-    const removedTotal = series.reduce((sum, p) => sum + p.removed_total, 0);
     const latest = series[series.length - 1]!;
-    return { newTotal, removedTotal, latest };
+    return {
+      newTotal: series.reduce((sum, p) => sum + p.new_total, 0),
+      removedTotal: series.reduce((sum, p) => sum + p.removed_total, 0),
+      latest,
+    };
   }, [series]);
+
+  const chartData = useMemo(
+    () =>
+      series.map((point) => ({
+        label: point.label,
+        active: point.active_count,
+        new: point.new_total,
+        removed: point.removed_total,
+        newPpsqm: point.new_avg_ppsqm,
+        removedPpsqm: point.removed_avg_ppsqm,
+      })),
+    [series],
+  );
 
   if (!series.length) {
     return (
       <div className="card overflow-hidden">
         <div className="border-b border-surface-border/60 px-6 py-4">
           <h3 className="text-base font-semibold text-neutral-900">
-            {t(`${i18nRoot}.offerRate.title`)}
+            {t(`${i18nRoot}.offerRate.inventoryTitle`)}
           </h3>
-          <p className="mt-1 text-sm text-neutral-600">{t(`${i18nRoot}.offerRate.subtitle`)}</p>
+          <p className="mt-1 text-sm text-neutral-600">
+            {t(`${i18nRoot}.offerRate.inventorySubtitle`)}
+          </p>
         </div>
         <p className="px-6 py-10 text-center text-sm text-neutral-500">
           {t(`${i18nRoot}.offerRate.empty`)}
@@ -677,47 +198,39 @@ export default function OccupancyOfferRateChart({
 
   return (
     <div className="space-y-6">
-      <InventoryChart series={series} i18nRoot={i18nRoot} />
-      <OfferChartCard
-        title={t(`${i18nRoot}.offerRate.title`)}
-        subtitle={t(`${i18nRoot}.offerRate.subtitle`)}
-        series={series}
-        mode="new"
-        metric="count"
-        availableGroups={availableGroups}
-        activeGroup={pickGroup(newGroup)}
-        onGroupChange={setNewGroup}
-        market={market}
-        operation={operation}
-        i18nRoot={i18nRoot}
+      <SimpleLineCard
+        title={t(`${i18nRoot}.offerRate.inventoryTitle`)}
+        subtitle={t(`${i18nRoot}.offerRate.inventorySubtitle`)}
+        data={chartData}
+        lines={[{ key: "active", color: CHART_THEME.primary }]}
+        labels={{ active: t(`${i18nRoot}.offerRate.seriesInventory`) }}
         stats={
           totals ? (
-            <div className="mt-3 flex flex-wrap gap-4 text-xs text-neutral-500">
-              <span>{t(`${i18nRoot}.offerRate.totalNew`, { count: totals.newTotal })}</span>
-              <span>
-                {t(`${i18nRoot}.offerRate.latestActive`, {
-                  count: totals.latest.active_count,
-                })}
-              </span>
+            <div className="mt-3 text-xs text-neutral-500">
+              {t(`${i18nRoot}.offerRate.latestActive`, {
+                count: totals.latest.active_count,
+              })}
             </div>
           ) : null
         }
       />
-      <OfferChartCard
-        title={t(`${i18nRoot}.offerRate.removedTitle`)}
-        subtitle={t(`${i18nRoot}.offerRate.removedSubtitle`)}
-        series={series}
-        mode="removed"
-        metric="count"
-        availableGroups={availableGroups}
-        activeGroup={pickGroup(removedGroup)}
-        onGroupChange={setRemovedGroup}
-        market={market}
-        operation={operation}
-        i18nRoot={i18nRoot}
+
+      <SimpleLineCard
+        title={t(`${i18nRoot}.offerRate.flowTitle`)}
+        subtitle={t(`${i18nRoot}.offerRate.flowSubtitle`)}
+        data={chartData}
+        lines={[
+          { key: "new", color: CHART_THEME.series.blue },
+          { key: "removed", color: CHART_THEME.negative, dashed: true },
+        ]}
+        labels={{
+          new: t(`${i18nRoot}.offerRate.seriesNew`),
+          removed: t(`${i18nRoot}.offerRate.seriesRemoved`),
+        }}
         stats={
           totals ? (
             <div className="mt-3 flex flex-wrap gap-4 text-xs text-neutral-500">
+              <span>{t(`${i18nRoot}.offerRate.totalNew`, { count: totals.newTotal })}</span>
               <span>
                 {t(`${i18nRoot}.offerRate.totalRemoved`, { count: totals.removedTotal })}
               </span>
@@ -725,52 +238,39 @@ export default function OccupancyOfferRateChart({
           ) : null
         }
       />
-      <OfferChartCard
-        title={t(`${i18nRoot}.offerRate.ppsqmNewTitle`)}
-        subtitle={t(`${i18nRoot}.offerRate.ppsqmNewSubtitle`)}
-        series={series}
-        mode="new"
-        metric="ppsqm"
-        availableGroups={availableGroups}
-        activeGroup={pickGroup(newPpsqmGroup)}
-        onGroupChange={setNewPpsqmGroup}
-        market={market}
-        operation={operation}
-        i18nRoot={i18nRoot}
+
+      <SimpleLineCard
+        title={t(`${i18nRoot}.offerRate.ppsqmTitle`)}
+        subtitle={t(`${i18nRoot}.offerRate.ppsqmSubtitle`)}
+        data={chartData}
+        lines={[
+          { key: "newPpsqm", color: CHART_THEME.series.blue },
+          { key: "removedPpsqm", color: CHART_THEME.negative, dashed: true },
+        ]}
+        labels={{
+          newPpsqm: t(`${i18nRoot}.offerRate.seriesNewPpsqm`),
+          removedPpsqm: t(`${i18nRoot}.offerRate.seriesRemovedPpsqm`),
+        }}
+        yWidth={52}
         formatValue={formatPpsqm}
+        formatTick={(value) => formatPpsqm(value).replace(/\s/g, "")}
         stats={
-          totals?.latest.new_avg_ppsqm != null ? (
+          totals ? (
             <div className="mt-3 flex flex-wrap gap-4 text-xs text-neutral-500">
-              <span>
-                {t(`${i18nRoot}.offerRate.latestPpsqm`, {
-                  value: formatPpsqm(totals.latest.new_avg_ppsqm),
-                })}
-              </span>
-            </div>
-          ) : null
-        }
-      />
-      <OfferChartCard
-        title={t(`${i18nRoot}.offerRate.ppsqmRemovedTitle`)}
-        subtitle={t(`${i18nRoot}.offerRate.ppsqmRemovedSubtitle`)}
-        series={series}
-        mode="removed"
-        metric="ppsqm"
-        availableGroups={availableGroups}
-        activeGroup={pickGroup(removedPpsqmGroup)}
-        onGroupChange={setRemovedPpsqmGroup}
-        market={market}
-        operation={operation}
-        i18nRoot={i18nRoot}
-        formatValue={formatPpsqm}
-        stats={
-          totals?.latest.removed_avg_ppsqm != null ? (
-            <div className="mt-3 flex flex-wrap gap-4 text-xs text-neutral-500">
-              <span>
-                {t(`${i18nRoot}.offerRate.latestPpsqm`, {
-                  value: formatPpsqm(totals.latest.removed_avg_ppsqm),
-                })}
-              </span>
+              {totals.latest.new_avg_ppsqm != null ? (
+                <span>
+                  {t(`${i18nRoot}.offerRate.latestNewPpsqm`, {
+                    value: formatPpsqm(totals.latest.new_avg_ppsqm),
+                  })}
+                </span>
+              ) : null}
+              {totals.latest.removed_avg_ppsqm != null ? (
+                <span>
+                  {t(`${i18nRoot}.offerRate.latestRemovedPpsqm`, {
+                    value: formatPpsqm(totals.latest.removed_avg_ppsqm),
+                  })}
+                </span>
+              ) : null}
             </div>
           ) : null
         }
