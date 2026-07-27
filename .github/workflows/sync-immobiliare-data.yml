@@ -1,4 +1,4 @@
-name: Sync occupancy seed data
+name: Sync occupancy + sale-rate seed data
 
 on:
   schedule:
@@ -11,7 +11,7 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
 
@@ -39,7 +39,7 @@ jobs:
           APIFY_API_TOKEN: ${{ secrets.APIFY_API_TOKEN }}
         run: npm run data:sync-immobiliare
 
-      - name: Refresh Czech occupancy snapshots
+      - name: Refresh Czech occupancy + sale-rate snapshots
         id: cz
         continue-on-error: true
         run: npm run data:sync-occupancy:cz
@@ -57,7 +57,7 @@ jobs:
             echo "::warning::Reggio sync failed; committing Czech changes only"
           fi
           if [ "${CZ_OUTCOME}" = "failure" ]; then
-            echo "::warning::Czech sync failed; committing Reggio changes only"
+            echo "::warning::Czech sync failed; committing Reggio / partial Czech changes only"
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -65,12 +65,14 @@ jobs:
             data/listings/reggio_calabria_rent.json \
             data/occupancy/it_reggio_calabria/immobiliare_scraper/ \
             data/listings/cz_*_rent.json \
-            data/occupancy/cz_*/
+            data/listings/cz_*_sale.json \
+            data/occupancy/cz_*/ \
+            data/sale-rate/
           if git diff --staged --quiet; then
             echo "No data changes to commit"
             exit 0
           fi
           git commit \
-            -m "chore(data): refresh occupancy seed data for prod" \
-            -m "Automated sync of Reggio Calabria (Immobiliare) and Czech Sreality occupancy snapshots."
+            -m "chore(data): refresh occupancy and sale-rate seed data for prod" \
+            -m "Automated sync of Reggio Calabria (Immobiliare) and Czech Sreality occupancy + sale-rate snapshots."
           git push

@@ -7,9 +7,9 @@ import { runOccupancySnapshot } from "../lib/occupancy/snapshot";
 
 const CZ_CITIES: OccupancyCitySlug[] = ["brno", "tabor", "rosice", "prague", "ostrava"];
 
-async function syncCity(citySlug: OccupancyCitySlug) {
+async function syncCityRent(citySlug: OccupancyCitySlug) {
   const { city, market } = getOccupancyCityConfig(citySlug);
-  console.log(`\n=== ${city} ===`);
+  console.log(`\n=== ${city} (rent / occupancy) ===`);
 
   const cache = await fetchSrealityRentalsListings(
     citySlug,
@@ -42,10 +42,60 @@ async function syncCity(citySlug: OccupancyCitySlug) {
   );
 }
 
+async function syncCitySale(citySlug: OccupancyCitySlug) {
+  const { city, market } = getOccupancyCityConfig(citySlug);
+  console.log(`\n=== ${city} (sale / sale-rate) ===`);
+
+  const saleCache = await fetchSrealityRentalsListings(
+    citySlug,
+    BATCH_FETCH_ALL_PAGES,
+    (progress) => {
+      console.log(
+        `  sale page ${progress.page}/${progress.maxPages} · ${progress.listingsTotal} listings`,
+      );
+    },
+    "sale",
+  );
+  await saveCache(saleCache, market);
+  console.log(`Saved listings cache: ${saleCache.listings.length} sales`);
+
+  const saleResult = await runOccupancySnapshot("sreality", undefined, {
+    citySlug,
+    operation: "sale",
+    prefetched: saleCache,
+    provider: "sreality",
+  });
+  console.log(`Sale-rate snapshot #${saleResult.registry.snapshot_count}`);
+  console.log(
+    `Fetched: ${saleResult.fetched_count} · Active: ${saleResult.metrics.active_count} · Sold: ${saleResult.rented_count}`,
+  );
+}
+
 async function main() {
   loadEnvLocal();
+  const failures: string[] = [];
+
   for (const citySlug of CZ_CITIES) {
-    await syncCity(citySlug);
+    try {
+      await syncCityRent(citySlug);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.error(`[${citySlug} rent] FAILED: ${msg}`);
+      failures.push(`${citySlug}:rent`);
+    }
+
+    try {
+      await syncCitySale(citySlug);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.error(`[${citySlug} sale] FAILED: ${msg}`);
+      failures.push(`${citySlug}:sale`);
+    }
+  }
+
+  if (failures.length > 0) {
+    console.error(`\nSync completed with failures: ${failures.join(", ")}`);
+    process.exit(1);
   }
 }
 
