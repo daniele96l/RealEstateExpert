@@ -83,6 +83,7 @@ export default function SaleGoodOffersPanel() {
     useState<OccupancyMetricsPeriod>(readStoredMetricsPeriod);
   const [metrics, setMetrics] = useState<OccupancyCityMetrics | null>(null);
   const [listings, setListings] = useState<TrackedRentalListing[]>([]);
+  const [latestSnapshotAt, setLatestSnapshotAt] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -107,12 +108,19 @@ export default function SaleGoodOffersPanel() {
       );
       setMetrics(data.metrics);
       setListings(data.breakdown_listings ?? []);
+      const latest =
+        data.snapshot_diff?.current_fetched_at ??
+        data.available_snapshots?.filter((s) => !s.excluded).at(-1)?.fetched_at ??
+        data.metrics?.updated_at ??
+        null;
+      setLatestSnapshotAt(latest);
       if (data.selected_city) setCitySlug(data.selected_city as OccupancyCitySlug);
       if (data.selected_portal) setPortal(data.selected_portal);
     } catch (err) {
       setError(err instanceof Error ? err.message : ot("loadError"));
       setMetrics(null);
       setListings([]);
+      setLatestSnapshotAt(null);
     } finally {
       setLoading(false);
     }
@@ -222,6 +230,7 @@ export default function SaleGoodOffersPanel() {
           listings={listings}
           metrics={metrics}
           metricsPeriod={metricsPeriod}
+          latestSnapshotAt={latestSnapshotAt}
           market={market}
           t={ot}
           perSqmLabel={perSqmLabel}

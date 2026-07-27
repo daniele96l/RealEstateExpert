@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import OccupancyDescriptionPreview from "@/components/OccupancyDescriptionPreview";
 import { resolveOccupancyListingUrl } from "@/lib/listing-url";
 import { newInWindow } from "@/lib/occupancy/aggregate";
 import {
@@ -21,9 +20,8 @@ import { resolveWindowStartMs } from "@/lib/occupancy/tracking-window";
 import type { MarketId } from "@/lib/markets";
 import type { OccupancyMetricsPeriod } from "@/lib/occupancy/metrics-period";
 import type {
-  OccupancyAreaMetrics,
-  OccupancyBasicListing,
   OccupancyCityMetrics,
+  OccupancyBasicListing,
   TrackedRentalListing,
 } from "@/lib/types";
 import { cn, fmtMoney } from "@/lib/utils";
@@ -31,6 +29,68 @@ import { Search } from "lucide-react";
 
 type SortMode = "newest" | "ppsqm" | "price" | "deal";
 type RoomsFilter = "all" | "1" | "2" | "3" | "4_plus";
+/** `latest` = new on newest snapshot; `period` = metrics window; else YYYY-MM-DD first_seen day. */
+type SeenDateFilter = "latest" | "period" | string;
+/** Portal publish date (Sreality): all / relative window / specific YYYY-MM-DD. */
+type PublishedDateFilter = "all" | "1d" | "3d" | "7d" | "14d" | "30d" | string;
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+function dayKey(iso: string | null | undefined): string | null {
+  if (!iso?.trim()) return null;
+  const day = iso.trim().slice(0, 10);
+  return /^\d{4}-\d{2}-\d{2}$/.test(day) ? day : null;
+}
+
+function addCalendarDays(day: string, delta: number): string {
+  const ms = Date.parse(`${day}T12:00:00Z`) + delta * DAY_MS;
+  return new Date(ms).toISOString().slice(0, 10);
+}
+
+function matchesPublishedDate(
+  listing: TrackedRentalListing,
+  filter: PublishedDateFilter,
+  asOfDay: string | null,
+): boolean {
+  if (filter === "all") return true;
+  const publishedDay = dayKey(listing.listing_published_at);
+  if (!publishedDay) return false;
+  if (/^\d+d$/.test(filter)) {
+    if (!asOfDay) return false;
+    const days = Number(filter.slice(0, -1));
+    const from = addCalendarDays(asOfDay, -(Math.max(1, days) - 1));
+    return publishedDay >= from && publishedDay <= asOfDay;
+  }
+  return publishedDay === filter;
+}
+
+function formatSeenDay(day: string, locale: string): string {
+  try {
+    return new Date(`${day}T12:00:00Z`).toLocaleDateString(locale, {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  } catch {
+    return day;
+  }
+}
+
+function formatPublishedAt(listing: TrackedRentalListing, locale: string): string | null {
+  const iso = listing.listing_published_at?.trim() || listing.first_seen_at;
+  if (!iso) return null;
+  try {
+    return new Date(iso).toLocaleString(locale, {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  } catch {
+    return iso;
+  }
+}
 
 type PriceBand = {
   id: string;
@@ -157,17 +217,6 @@ function signalBadges(
   return badges;
 }
 
-function dealVsZone(
-  listing: TrackedRentalListing,
-  areaAvgByZone: Map<string, number>,
-): number | null {
-  const ppsqm = pricePerSqm(listing);
-  if (ppsqm == null || !listing.zone) return null;
-  const zoneAvg = areaAvgByZone.get(listing.zone);
-  if (zoneAvg == null || zoneAvg <= 0) return null;
-  return ((ppsqm - zoneAvg) / zoneAvg) * 100;
-}
-
 function resolveEnergyClass(listing: TrackedRentalListing): string | null {
   if (listing.energy_class?.trim()) return listing.energy_class.trim().toUpperCase();
   const text = [listing.title, listing.description]
@@ -195,6 +244,7 @@ export default function SaleGoodOffersSection({
   listings,
   metrics,
   metricsPeriod,
+  latestSnapshotAt = null,
   market,
   t,
   perSqmLabel,
@@ -203,20 +253,25 @@ export default function SaleGoodOffersSection({
   listings: TrackedRentalListing[];
   metrics: OccupancyCityMetrics | null;
   metricsPeriod: OccupancyMetricsPeriod;
+  latestSnapshotAt?: string | null;
   market: MarketId;
   t: (key: string, vars?: Record<string, string | number>) => string;
   perSqmLabel: string;
   showIntro?: boolean;
 }) {
+  const dateLocale = market === "cz" ? "cs-CZ" : "it-IT";
   const [areaFilter, setAreaFilter] = useState("all");
   const [roomsFilter, setRoomsFilter] = useState<RoomsFilter>("all");
   const [priceBand, setPriceBand] = useState("all");
   const [ownershipFilter, setOwnershipFilter] = useState<SaleOwnershipFilter>("all");
   const [floorFilter, setFloorFilter] = useState<SaleFloorFilter>("all");
+  const [seenDateFilter, setSeenDateFilter] = useState<SeenDateFilter>("latest");
+  const [publishedDateFilter, setPublishedDateFilter] = useState<PublishedDateFilter>("all");
   const [sortMode, setSortMode] = useState<SortMode>("deal");
   const [page, setPage] = useState(0);
 
   const priceBands = useMemo(() => goodOffersPriceBands(market), [market]);
+  const latestDay = dayKey(latestSnapshotAt);
 
   useEffect(() => {
     if (priceBand !== "all" && !priceBands.some((band) => band.id === priceBand)) {
@@ -225,10 +280,10 @@ export default function SaleGoodOffersSection({
   }, [priceBand, priceBands]);
 
   const asOfMs = useMemo(() => {
-    const raw = metrics?.updated_at ?? metrics?.tracking_ended_at;
+    const raw = latestSnapshotAt ?? metrics?.updated_at ?? metrics?.tracking_ended_at;
     const parsed = raw ? Date.parse(raw) : NaN;
     return Number.isFinite(parsed) ? parsed : Date.now();
-  }, [metrics?.updated_at, metrics?.tracking_ended_at]);
+  }, [latestSnapshotAt, metrics?.updated_at, metrics?.tracking_ended_at]);
 
   const windowDays = metrics?.occupancy_window_days ?? 30;
   const windowStartMs = resolveWindowStartMs(
@@ -238,55 +293,96 @@ export default function SaleGoodOffersSection({
     metricsPeriod,
   );
 
-  const areaAvgByZone = useMemo(() => {
-    const map = new Map<string, number>();
-    for (const area of (metrics?.areas ?? []) as OccupancyAreaMetrics[]) {
-      if (area.avg_price_per_sqm != null && area.avg_price_per_sqm > 0) {
-        map.set(area.zone, area.avg_price_per_sqm);
-      }
+  const seenDayOptions = useMemo(() => {
+    const days = new Set<string>();
+    for (const listing of listings) {
+      if (listing.status !== "active") continue;
+      const day = dayKey(listing.first_seen_at);
+      if (day) days.add(day);
     }
-    return map;
-  }, [metrics?.areas]);
+    return [...days].sort((a, b) => b.localeCompare(a));
+  }, [listings]);
 
-  const cityAvgPpsqm = useMemo(() => {
-    const areas = (metrics?.areas ?? []) as OccupancyAreaMetrics[];
-    let weighted = 0;
-    let weight = 0;
-    for (const area of areas) {
-      if (area.avg_price_per_sqm == null || area.avg_price_per_sqm <= 0) continue;
-      const n = Math.max(1, area.active_count ?? 0);
-      weighted += area.avg_price_per_sqm * n;
-      weight += n;
+  useEffect(() => {
+    if (seenDateFilter === "latest" || seenDateFilter === "period") return;
+    if (!seenDayOptions.includes(seenDateFilter)) {
+      setSeenDateFilter("latest");
     }
-    return weight > 0 ? weighted / weight : null;
-  }, [metrics?.areas]);
+  }, [seenDateFilter, seenDayOptions]);
 
-  const newListings = useMemo(() => {
-    return listings.filter((listing) =>
-      newInWindow(listing, windowDays, asOfMs, windowStartMs),
-    );
-  }, [listings, windowDays, asOfMs, windowStartMs]);
+  const candidateListings = useMemo(() => {
+    const active = listings.filter((listing) => listing.status === "active");
+    if (seenDateFilter === "period") {
+      return active.filter((listing) =>
+        newInWindow(listing, windowDays, asOfMs, windowStartMs),
+      );
+    }
+    const targetDay =
+      seenDateFilter === "latest" ? latestDay : dayKey(seenDateFilter);
+    if (!targetDay) {
+      // No snapshot yet — fall back to period window.
+      return active.filter((listing) =>
+        newInWindow(listing, windowDays, asOfMs, windowStartMs),
+      );
+    }
+    return active.filter((listing) => dayKey(listing.first_seen_at) === targetDay);
+  }, [
+    listings,
+    seenDateFilter,
+    latestDay,
+    windowDays,
+    asOfMs,
+    windowStartMs,
+  ]);
+
+  const publishedDayOptions = useMemo(() => {
+    const days = new Set<string>();
+    for (const listing of candidateListings) {
+      const day = dayKey(listing.listing_published_at);
+      if (day) days.add(day);
+    }
+    return [...days].sort((a, b) => b.localeCompare(a)).slice(0, 60);
+  }, [candidateListings]);
+
+  const hasPublishedDates = useMemo(
+    () => listings.some((listing) => Boolean(dayKey(listing.listing_published_at))),
+    [listings],
+  );
+
+  useEffect(() => {
+    if (
+      publishedDateFilter === "all" ||
+      publishedDateFilter === "1d" ||
+      publishedDateFilter === "3d" ||
+      publishedDateFilter === "7d" ||
+      publishedDateFilter === "14d" ||
+      publishedDateFilter === "30d"
+    ) {
+      return;
+    }
+    if (!publishedDayOptions.includes(publishedDateFilter)) {
+      setPublishedDateFilter("all");
+    }
+  }, [publishedDateFilter, publishedDayOptions]);
 
   const zoneOptions = useMemo(() => {
     const zones = new Set<string>();
-    for (const listing of newListings) {
+    for (const listing of candidateListings) {
       if (listing.zone) zones.add(listing.zone);
     }
     return [...zones].sort((a, b) => a.localeCompare(b, market === "cz" ? "cs" : "it"));
-  }, [newListings, market]);
+  }, [candidateListings, market]);
 
   const enriched = useMemo(() => {
-    return newListings.map((listing) => {
+    return candidateListings.map((listing) => {
       const signals = parseSaleListingSignals(listing);
       const ppsqm = pricePerSqm(listing);
       const energyClass = resolveEnergyClass(listing);
       const fair = estimateFairSalePpsqm({
-        zoneAvgPpsqm: listing.zone ? areaAvgByZone.get(listing.zone) : null,
-        cityAvgPpsqm,
+        listing,
+        universe: listings,
         signals,
         energyClass,
-        lift: listing.lift,
-        garage: listing.garage,
       });
       return {
         listing,
@@ -295,10 +391,10 @@ export default function SaleGoodOffersSection({
         energyClass,
         fairPpsqm: fair?.fairPpsqm ?? null,
         vsFair: askingVsFairPct(ppsqm, fair?.fairPpsqm ?? null),
-        vsZone: dealVsZone(listing, areaAvgByZone),
+        compCount: fair?.compCount ?? 0,
       };
     });
-  }, [newListings, areaAvgByZone, cityAvgPpsqm]);
+  }, [candidateListings, listings]);
 
   const filtered = useMemo(() => {
     const priceMatcher =
@@ -312,9 +408,20 @@ export default function SaleGoodOffersSection({
       if (priceMatcher && !priceMatcher(listing)) return false;
       if (ownershipFilter !== "all" && signals.ownership !== ownershipFilter) return false;
       if (floorFilter !== "all" && signals.floor !== floorFilter) return false;
+      if (!matchesPublishedDate(listing, publishedDateFilter, latestDay)) return false;
       return true;
     });
-  }, [enriched, areaFilter, roomsFilter, priceBand, priceBands, ownershipFilter, floorFilter]);
+  }, [
+    enriched,
+    areaFilter,
+    roomsFilter,
+    priceBand,
+    priceBands,
+    ownershipFilter,
+    floorFilter,
+    publishedDateFilter,
+    latestDay,
+  ]);
 
   const sorted = useMemo(() => {
     const rows = [...filtered];
@@ -374,6 +481,61 @@ export default function SaleGoodOffersSection({
         ) : null}
 
         <div className="flex flex-wrap items-end gap-3">
+          <label className="inline-flex flex-col gap-1 text-xs text-neutral-500" htmlFor="sale-good-seen">
+            {t("goodOffers.seenFilter")}
+            <select
+              id="sale-good-seen"
+              value={seenDateFilter}
+              onChange={(e) => {
+                setSeenDateFilter(e.target.value as SeenDateFilter);
+                setPage(0);
+              }}
+              className="min-w-[12rem] rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+            >
+              <option value="latest">
+                {t("goodOffers.seenLatest", {
+                  date: latestDay ? formatSeenDay(latestDay, dateLocale) : "—",
+                })}
+              </option>
+              <option value="period">{t("goodOffers.seenPeriod")}</option>
+              {seenDayOptions.map((day) => (
+                <option key={day} value={day}>
+                  {formatSeenDay(day, dateLocale)}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          {hasPublishedDates ? (
+            <label
+              className="inline-flex flex-col gap-1 text-xs text-neutral-500"
+              htmlFor="sale-good-published"
+            >
+              {t("goodOffers.publishedFilter")}
+              <select
+                id="sale-good-published"
+                value={publishedDateFilter}
+                onChange={(e) => {
+                  setPublishedDateFilter(e.target.value as PublishedDateFilter);
+                  setPage(0);
+                }}
+                className="min-w-[12rem] rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
+              >
+                <option value="all">{t("goodOffers.publishedAll")}</option>
+                <option value="1d">{t("goodOffers.publishedLast1d")}</option>
+                <option value="3d">{t("goodOffers.publishedLast3d")}</option>
+                <option value="7d">{t("goodOffers.publishedLast7d")}</option>
+                <option value="14d">{t("goodOffers.publishedLast14d")}</option>
+                <option value="30d">{t("goodOffers.publishedLast30d")}</option>
+                {publishedDayOptions.map((day) => (
+                  <option key={day} value={day}>
+                    {formatSeenDay(day, dateLocale)}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ) : null}
+
           <label className="inline-flex flex-col gap-1 text-xs text-neutral-500" htmlFor="sale-good-area">
             {t("kpi.areaFilter")}
             <select
@@ -490,7 +652,7 @@ export default function SaleGoodOffersSection({
         </div>
       </div>
 
-      {newListings.length === 0 ? (
+      {candidateListings.length === 0 ? (
         <p className="px-6 py-8 text-center text-sm text-neutral-500">{t("goodOffers.empty")}</p>
       ) : sorted.length === 0 ? (
         <p className="px-6 py-8 text-center text-sm text-neutral-500">{t("goodOffers.emptyFiltered")}</p>
@@ -508,13 +670,14 @@ export default function SaleGoodOffersSection({
                   <th className="px-4 py-3 font-medium">{t("goodOffers.table.energy")}</th>
                   <th className="px-4 py-3 font-medium">{t("goodOffers.table.condition")}</th>
                   <th className="px-4 py-3 font-medium">{t("goodOffers.table.signals")}</th>
-                  <th className="px-4 py-3 font-medium">{t("goodOffers.table.description")}</th>
+                  <th className="px-4 py-3 font-medium">{t("goodOffers.table.published")}</th>
                 </tr>
               </thead>
               <tbody>
                 {pageRows.map(({ listing, signals, ppsqm, fairPpsqm, vsFair, energyClass }) => {
                   const url = resolveOccupancyListingUrl(listing);
                   const badges = signalBadges(signals, t);
+                  const published = formatPublishedAt(listing, dateLocale);
                   return (
                     <tr key={listing.id} className="border-b border-surface-border/30 align-top">
                       <td className="px-4 py-3">
@@ -598,12 +761,13 @@ export default function SaleGoodOffersSection({
                           </div>
                         )}
                       </td>
-                      <td className="max-w-[16rem] px-4 py-3">
-                        <OccupancyDescriptionPreview
-                          description={listing.description}
-                          url={url}
-                          operation="sale"
-                        />
+                      <td className="px-4 py-3 whitespace-nowrap text-neutral-800">
+                        {published ?? <span className="text-neutral-400">—</span>}
+                        {listing.listing_published_at ? null : (
+                          <span className="mt-0.5 block text-[10px] text-neutral-400">
+                            {t("goodOffers.publishedFallback")}
+                          </span>
+                        )}
                       </td>
                     </tr>
                   );
