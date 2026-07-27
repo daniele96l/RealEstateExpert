@@ -1340,6 +1340,7 @@ const en: Translations = {
       floorFilter: "Floor",
       allFloors: "Any floor",
       sort: "Sort",
+      sortDeal: "Best vs fair",
       sortPpsqm: "Lowest €/m²",
       sortPrice: "Lowest price",
       sortNewest: "Newest first",
@@ -1373,7 +1374,9 @@ const en: Translations = {
       table: {
         listing: "Listing",
         price: "Price",
-        ppsqm: "€/m²",
+        ppsqm: "Ask / m²",
+        fairPpsqm: "Fair / m²",
+        vsFair: "vs fair",
         vsZone: "vs zone",
         energy: "Energy",
         condition: "State",

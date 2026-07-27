@@ -1,10 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import OccupancyDescriptionPreview from "@/components/OccupancyDescriptionPreview";
 import { resolveOccupancyListingUrl } from "@/lib/listing-url";
 import { newInWindow } from "@/lib/occupancy/aggregate";
-import { listSegmentBuckets } from "@/lib/occupancy/segment-metrics";
 import {
   parseSaleListingSignals,
   type SaleConditionKind,
@@ -14,20 +13,83 @@ import {
   type SaleOwnershipFilter,
   type SaleOwnershipKind,
 } from "@/lib/occupancy/sale-listing-signals";
+import {
+  askingVsFairPct,
+  estimateFairSalePpsqm,
+} from "@/lib/occupancy/sale-fair-ppsqm";
 import { resolveWindowStartMs } from "@/lib/occupancy/tracking-window";
 import type { MarketId } from "@/lib/markets";
 import type { OccupancyMetricsPeriod } from "@/lib/occupancy/metrics-period";
 import type {
   OccupancyAreaMetrics,
+  OccupancyBasicListing,
   OccupancyCityMetrics,
   TrackedRentalListing,
 } from "@/lib/types";
 import { cn, fmtMoney } from "@/lib/utils";
 import { Search } from "lucide-react";
 
-type SortMode = "newest" | "ppsqm" | "price";
+type SortMode = "newest" | "ppsqm" | "price" | "deal";
 type RoomsFilter = "all" | "1" | "2" | "3" | "4_plus";
 
+type PriceBand = {
+  id: string;
+  label: string;
+  match: (listing: OccupancyBasicListing) => boolean;
+};
+
+/** Good-offers price filter: 1M Kč / €50k steps (sale segment bands are coarser). */
+function goodOffersPriceBands(market: MarketId): PriceBand[] {
+  if (market === "cz") {
+    const step = 1_000_000;
+    const max = 20_000_000;
+    const bands: PriceBand[] = [
+      {
+        id: `under_${step}`,
+        label: "≤ 1M Kč",
+        match: (l) => l.price <= step,
+      },
+    ];
+    for (let from = step; from < max; from += step) {
+      const to = from + step;
+      bands.push({
+        id: `${from}_${to}`,
+        label: `${from / step}–${to / step}M Kč`,
+        match: (l) => l.price > from && l.price <= to,
+      });
+    }
+    bands.push({
+      id: `over_${max}`,
+      label: `> ${max / step}M Kč`,
+      match: (l) => l.price > max,
+    });
+    return bands;
+  }
+
+  const step = 50_000;
+  const max = 500_000;
+  const bands: PriceBand[] = [
+    {
+      id: `under_${step}`,
+      label: "≤ €50k",
+      match: (l) => l.price <= step,
+    },
+  ];
+  for (let from = step; from < max; from += step) {
+    const to = from + step;
+    bands.push({
+      id: `${from}_${to}`,
+      label: `€${from / 1000}–${to / 1000}k`,
+      match: (l) => l.price > from && l.price <= to,
+    });
+  }
+  bands.push({
+    id: `over_${max}`,
+    label: "> €500k",
+    match: (l) => l.price > max,
+  });
+  return bands;
+}
 const PAGE_SIZE = 8;
 
 function pricePerSqm(listing: TrackedRentalListing): number | null {
@@ -151,13 +213,16 @@ export default function SaleGoodOffersSection({
   const [priceBand, setPriceBand] = useState("all");
   const [ownershipFilter, setOwnershipFilter] = useState<SaleOwnershipFilter>("all");
   const [floorFilter, setFloorFilter] = useState<SaleFloorFilter>("all");
-  const [sortMode, setSortMode] = useState<SortMode>("ppsqm");
+  const [sortMode, setSortMode] = useState<SortMode>("deal");
   const [page, setPage] = useState(0);
 
-  const priceBands = useMemo(
-    () => listSegmentBuckets("price", market, "sale"),
-    [market],
-  );
+  const priceBands = useMemo(() => goodOffersPriceBands(market), [market]);
+
+  useEffect(() => {
+    if (priceBand !== "all" && !priceBands.some((band) => band.id === priceBand)) {
+      setPriceBand("all");
+    }
+  }, [priceBand, priceBands]);
 
   const asOfMs = useMemo(() => {
     const raw = metrics?.updated_at ?? metrics?.tracking_ended_at;
@@ -183,6 +248,19 @@ export default function SaleGoodOffersSection({
     return map;
   }, [metrics?.areas]);
 
+  const cityAvgPpsqm = useMemo(() => {
+    const areas = (metrics?.areas ?? []) as OccupancyAreaMetrics[];
+    let weighted = 0;
+    let weight = 0;
+    for (const area of areas) {
+      if (area.avg_price_per_sqm == null || area.avg_price_per_sqm <= 0) continue;
+      const n = Math.max(1, area.active_count ?? 0);
+      weighted += area.avg_price_per_sqm * n;
+      weight += n;
+    }
+    return weight > 0 ? weighted / weight : null;
+  }, [metrics?.areas]);
+
   const newListings = useMemo(() => {
     return listings.filter((listing) =>
       newInWindow(listing, windowDays, asOfMs, windowStartMs),
@@ -200,9 +278,27 @@ export default function SaleGoodOffersSection({
   const enriched = useMemo(() => {
     return newListings.map((listing) => {
       const signals = parseSaleListingSignals(listing);
-      return { listing, signals, ppsqm: pricePerSqm(listing), vsZone: dealVsZone(listing, areaAvgByZone) };
+      const ppsqm = pricePerSqm(listing);
+      const energyClass = resolveEnergyClass(listing);
+      const fair = estimateFairSalePpsqm({
+        zoneAvgPpsqm: listing.zone ? areaAvgByZone.get(listing.zone) : null,
+        cityAvgPpsqm,
+        signals,
+        energyClass,
+        lift: listing.lift,
+        garage: listing.garage,
+      });
+      return {
+        listing,
+        signals,
+        ppsqm,
+        energyClass,
+        fairPpsqm: fair?.fairPpsqm ?? null,
+        vsFair: askingVsFairPct(ppsqm, fair?.fairPpsqm ?? null),
+        vsZone: dealVsZone(listing, areaAvgByZone),
+      };
     });
-  }, [newListings, areaAvgByZone]);
+  }, [newListings, areaAvgByZone, cityAvgPpsqm]);
 
   const filtered = useMemo(() => {
     const priceMatcher =
@@ -231,6 +327,11 @@ export default function SaleGoodOffersSection({
       }
       if (sortMode === "price") {
         return a.listing.price - b.listing.price;
+      }
+      if (sortMode === "deal") {
+        const aD = a.vsFair ?? Number.POSITIVE_INFINITY;
+        const bD = b.vsFair ?? Number.POSITIVE_INFINITY;
+        return aD - bD || (a.ppsqm ?? Infinity) - (b.ppsqm ?? Infinity);
       }
       const aP = a.ppsqm ?? Number.POSITIVE_INFINITY;
       const bP = b.ppsqm ?? Number.POSITIVE_INFINITY;
@@ -326,7 +427,7 @@ export default function SaleGoodOffersSection({
               <option value="all">{t("goodOffers.allPrices")}</option>
               {priceBands.map((band) => (
                 <option key={band.id} value={band.id}>
-                  {t(`segments.price.${band.id}`)}
+                  {band.label}
                 </option>
               ))}
             </select>
@@ -380,6 +481,7 @@ export default function SaleGoodOffersSection({
               onChange={(e) => setSortMode(e.target.value as SortMode)}
               className="rounded-lg border border-surface-border/60 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-800"
             >
+              <option value="deal">{t("goodOffers.sortDeal")}</option>
               <option value="ppsqm">{t("goodOffers.sortPpsqm")}</option>
               <option value="price">{t("goodOffers.sortPrice")}</option>
               <option value="newest">{t("goodOffers.sortNewest")}</option>
@@ -401,7 +503,8 @@ export default function SaleGoodOffersSection({
                   <th className="px-4 py-3 font-medium">{t("goodOffers.table.listing")}</th>
                   <th className="px-4 py-3 font-medium">{t("goodOffers.table.price")}</th>
                   <th className="px-4 py-3 font-medium">{t("goodOffers.table.ppsqm")}</th>
-                  <th className="px-4 py-3 font-medium">{t("goodOffers.table.vsZone")}</th>
+                  <th className="px-4 py-3 font-medium">{t("goodOffers.table.fairPpsqm")}</th>
+                  <th className="px-4 py-3 font-medium">{t("goodOffers.table.vsFair")}</th>
                   <th className="px-4 py-3 font-medium">{t("goodOffers.table.energy")}</th>
                   <th className="px-4 py-3 font-medium">{t("goodOffers.table.condition")}</th>
                   <th className="px-4 py-3 font-medium">{t("goodOffers.table.signals")}</th>
@@ -409,7 +512,7 @@ export default function SaleGoodOffersSection({
                 </tr>
               </thead>
               <tbody>
-                {pageRows.map(({ listing, signals, ppsqm, vsZone }) => {
+                {pageRows.map(({ listing, signals, ppsqm, fairPpsqm, vsFair, energyClass }) => {
                   const url = resolveOccupancyListingUrl(listing);
                   const badges = signalBadges(signals, t);
                   return (
@@ -447,29 +550,32 @@ export default function SaleGoodOffersSection({
                           ? `${fmtMoney(Math.round(ppsqm), market)}${perSqmLabel}`
                           : "—"}
                       </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-neutral-800">
+                        {fairPpsqm != null
+                          ? `${fmtMoney(fairPpsqm, market)}${perSqmLabel}`
+                          : "—"}
+                      </td>
                       <td className="px-4 py-3 whitespace-nowrap">
-                        {vsZone == null ? (
+                        {vsFair == null ? (
                           <span className="text-neutral-400">—</span>
                         ) : (
                           <span
                             className={cn(
                               "font-medium",
-                              vsZone <= -5
+                              vsFair <= -5
                                 ? "text-emerald-700"
-                                : vsZone >= 5
+                                : vsFair >= 5
                                   ? "text-rose-700"
                                   : "text-neutral-700",
                             )}
                           >
-                            {vsZone > 0 ? "+" : ""}
-                            {vsZone.toFixed(0)}%
+                            {vsFair > 0 ? "+" : ""}
+                            {vsFair.toFixed(0)}%
                           </span>
                         )}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-neutral-800">
-                        {resolveEnergyClass(listing) ?? (
-                          <span className="text-neutral-400">—</span>
-                        )}
+                        {energyClass ?? <span className="text-neutral-400">—</span>}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap">
                         {signals.condition === "unknown" ? (

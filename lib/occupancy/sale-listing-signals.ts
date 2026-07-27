@@ -74,6 +74,9 @@ const BASEMENT_PATTERNS: RegExp[] = [
   /sklepni jednot/,
   /byt v (suteren|sklep|podzemi)/,
   /byt .{0,24}(v )?podzemni(m)?\s+podlaz/,
+  // CZ: 1.pp / 1. pp / 1. podzemní podlaží (underground floor)
+  /\b\d+\s*\.?\s*pp\b/,
+  /\b\d+\s*\.?\s*podzemni(m)?\s+podlaz/,
   /seminterrato/,
   /\bcantina\b/,
   /\binterrato\b/,
@@ -281,9 +284,10 @@ function parseFloorFromStructured(floor: string | null | undefined): SaleFloorKi
   const text = normalizeDescription(floor);
   if (!text) return "unknown";
   if (
-    /suteren|sklep|basement|seminterrato|cantina|interrato|^-/.test(text) ||
+    /suteren|sklep|basement|seminterrato|cantina|interrato|^-|podzemni|\bpp\b/.test(text) ||
     text === "-1" ||
-    text === "s"
+    text === "s" ||
+    /^\d+\s*\.?\s*pp$/.test(text)
   ) {
     return "basement";
   }

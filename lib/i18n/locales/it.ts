@@ -1342,6 +1342,7 @@ const it = {
       floorFilter: "Piano",
       allFloors: "Qualsiasi piano",
       sort: "Ordina",
+      sortDeal: "Migliori vs fair",
       sortPpsqm: "€/m² più basso",
       sortPrice: "Prezzo più basso",
       sortNewest: "Più recenti",
@@ -1375,7 +1376,9 @@ const it = {
       table: {
         listing: "Annuncio",
         price: "Prezzo",
-        ppsqm: "€/m²",
+        ppsqm: "Ask / m²",
+        fairPpsqm: "Fair / m²",
+        vsFair: "vs fair",
         vsZone: "vs zona",
         energy: "Energia",
         condition: "Stato",

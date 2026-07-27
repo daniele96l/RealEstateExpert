@@ -31,6 +31,19 @@ describe("parseSaleListingSignals", () => {
     expect(signals.floor).toBe("basement");
   });
 
+  it("detects Czech 1.pp (podzemní podlaží) as basement", () => {
+    const signals = parseSaleListingSignals({
+      description:
+        "Nabízím Vám naši další „novostavbu bytu“ v dispozičním uspořádání 3+1 v 1.pp, o celkové ploše 60 m², ještě v původním stavu.",
+    });
+    expect(signals.floor).toBe("basement");
+  });
+
+  it("detects structured floor 1.pp as basement (not upper)", () => {
+    expect(parseSaleListingSignals({ floor: "1.pp" }).floor).toBe("basement");
+    expect(parseSaleListingSignals({ floor: "1. PP" }).floor).toBe("basement");
+  });
+
   it("detects upper floor patterns", () => {
     const signals = parseSaleListingSignals({
       description: "Byt ve 3. patře panelového domu s výtahem.",
