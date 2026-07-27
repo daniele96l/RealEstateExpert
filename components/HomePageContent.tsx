@@ -17,6 +17,7 @@ import OccupancyRatePanel from "@/components/OccupancyRatePanel";
 import OccupancyRemovalsLog from "@/components/OccupancyRemovalsLog";
 import SaleRatePanel from "@/components/SaleRatePanel";
 import SaleRateRemovalsLog from "@/components/SaleRateRemovalsLog";
+import SaleGoodOffersPanel from "@/components/SaleGoodOffersPanel";
 import MortgageSimulatorPanel from "@/components/MortgageSimulatorPanel";
 import SegmentedControl from "@/components/ui/SegmentedControl";
 import {
@@ -47,7 +48,7 @@ import type { ListingsExportContext } from "@/lib/listings-export";
 import { Building2, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type PageTab = "analysis" | "occupancy" | "saleRate" | "mortgage";
+type PageTab = "analysis" | "occupancy" | "saleRate" | "goodOffers" | "mortgage";
 
 function initialMarketScenario(): SimpleScenario {
   const stored = typeof window !== "undefined" ? readStoredMarket() : "it";
@@ -279,6 +280,7 @@ export default function HomePageContent() {
                 { id: "analysis" as const, label: t("nav.analysis") },
                 { id: "occupancy" as const, label: t("nav.occupancy") },
                 { id: "saleRate" as const, label: t("nav.saleRate") },
+                { id: "goodOffers" as const, label: t("nav.goodOffers") },
                 { id: "mortgage" as const, label: t("nav.mortgage") },
               ]}
             />
@@ -297,6 +299,8 @@ export default function HomePageContent() {
             key="sale-panel"
             onDataMutated={() => setSaleRateLogRefresh((n) => n + 1)}
           />
+        ) : pageTab === "goodOffers" ? (
+          <SaleGoodOffersPanel key="good-offers-panel" />
         ) : pageTab === "mortgage" ? (
           <MortgageSimulatorPanel key={market} market={market} />
         ) : (

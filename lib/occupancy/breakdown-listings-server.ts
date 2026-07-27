@@ -51,11 +51,12 @@ export async function buildBreakdownListings(
       listing.property_type === "room" ||
       listing.property_type === "pokoj" ||
       listing.url?.includes("/pokoj");
+    // Sale good-offers parses ownership / floor / loan from flat descriptions.
+    const keepDescription = operation === "sale" || isRoom;
     return {
       ...listing,
       price_history: [],
-      // Keep room descriptions so camera / posto letto filters still work.
-      description: isRoom ? listing.description ?? null : null,
+      description: keepDescription ? listing.description ?? null : null,
     };
   });
 }
