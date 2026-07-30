@@ -1,0 +1,46 @@
+[
+  {
+    "id": "sr_1510072396",
+    "portal": "sreality",
+    "detected_at": "2026-07-30T08:52:20.430Z",
+    "presumed_rented_at": "2026-07-30T08:52:20.430Z",
+    "first_seen_at": "2026-07-16T08:26:52.356Z",
+    "last_seen_at": "2026-07-29T09:01:42.821Z",
+    "days_on_market": 14,
+    "price": 19500,
+    "sqm": 60,
+    "rooms": 3,
+    "property_type": "flat",
+    "address": "Kaštanová, Rosice, Rosice",
+    "zone": "Rosice",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/_/1510072396?noredirect=1",
+    "description": "Ve výhradním zastoupení majitele nabízíme k pronájmu vkusně zařízený mezonetový byt s balkonem o dispozici 3+kk s výměrou 60 m2.Byt se nachází v 5.NP/5 v cihlovém domě s výtahem. Byt je vybaven kuchyňskou linkou se spotřebiči (lednička, mrazák, mikrovlnná trouba, elektrická trouba, indukční varná deska a digestoř), dále jídelním stolem , vestavnými šatními skříněmi a koupelnovým nábytkem, pračkou. Po masivním dřevěném schodišti vstoupíme do horní části bytu kde jsou dvě samostatné ložnice. Výhodou bytu je vlastní plynový kotel sloužící k vytápění bytu a ohřevu teplé vody. Rosice jsou vzdáleny od Brna cca 15 minut s dobrou dostupností na D1. V okolí veškerá občanská vybavenost: obchody, restaurace, lékárna, zimní stadion, kino, zastávka autobusu v blízkosti domu. Měsíční nájem 19.500,- Kč vč.inkasa a internetu. Majitel požaduje vratnou kauci ve výši 20.000,- Kč. Byt je volný od 1.8.2026. V případě zájmu o prohlídku mne neváhejte kontaktovat.",
+    "title": "Pronájem bytu 3+kk 60 m²",
+    "bathrooms": null,
+    "floor": null,
+    "energy_class": null,
+    "energy_kwh_sqm": null,
+    "images": null,
+    "furnished": null,
+    "built_year": null,
+    "lift": null,
+    "garden": null,
+    "terrace": null,
+    "garage": null,
+    "condominio_monthly": null,
+    "advertiser_name": null,
+    "condition": null,
+    "condition_status": null,
+    "needs_renovation": null,
+    "listing_published_at": "2026-07-15",
+    "listing_updated_at": "2026-07-27",
+    "lat": 49.1858853740937,
+    "lng": 16.3812409486824,
+    "price_history": [
+      {
+        "at": "2026-07-16T08:26:52.356Z",
+        "price": 19500
+      }
+    ]
+  }
+]
