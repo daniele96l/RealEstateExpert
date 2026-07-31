@@ -1,7 +1,7 @@
 {
   "city": "cz_rosice",
   "operation": "sale",
-  "fetched_at": "2026-07-30T08:52:23.860Z",
+  "fetched_at": "2026-07-31T09:11:55.647Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
@@ -51,7 +51,7 @@
     {
       "id": "sr_4147991372",
       "title": "Prodej bytu 4+1 101 m²",
-      "price": 7990000,
+      "price": 7499000,
       "operation": "sale",
       "url": "https://www.sreality.cz/detail/prodej/byt/4+1/_/4147991372?noredirect=1",
       "lat": 49.185885374093715,
@@ -65,7 +65,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-03-08",
-      "listing_updated_at": "2026-06-23",
+      "listing_updated_at": "2026-07-30",
       "description": "Nabízíme prostorný byt o celkové ploše 101 m2. Byt poskytuje neprůchozí a velké pokoje s centrální chodbou, která umožňuje dostatečný úložný prostor, vhodný pro rodinu s dětmi. Součástí fotografií je i vizualizace možné úpravy bytu do \"velmi moderního stavu\" Rozpis místností a m2: - Kuchyně 9,5 m2 - Pokoj 20,44 m2 - Pokoj 16,02 m2 - Pokoj 13,63 m2 - Pokoj 19,92 m2 - Lodžie 3,79 m2 Celková plocha 101,21 m2 Byt je částečně po rekonstrukci (koupelna, okna, částečně podlahy, omítky, elektrika) Bezproblémové parkování za domem i pro více aut. Byt je alokován v těsné blízkosti Brna se skvělou dopravní dostupností. Prodej přímo od majitele bez RK."
     }
   ],
