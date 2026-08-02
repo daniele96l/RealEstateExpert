@@ -1,7 +1,7 @@
 {
   "city": "cz_rosice",
   "operation": "sale",
-  "fetched_at": "2026-08-01T08:40:19.324Z",
+  "fetched_at": "2026-08-02T08:45:30.274Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
@@ -27,26 +27,6 @@
       "listing_published_at": "2026-06-30",
       "listing_updated_at": "2026-06-30",
       "description": "Nabízíme prodej prostorného a světlého bytu 3+1 v bytovém domě s výtahem na ulici Kaštanová v Rosicích u Brna. Byt se nachází v 5.p. a má výměru 78 m2, disponuje neprůchozími pokoji, jak znázorňuje přiložený půdorys. Byt se nabízí jako částečně zařízený, v kuchyni jsou veškeré spotřebiče vestavěné: mikrovlnná trouba, lednice s mrazákem, myčka, trouba. Varná deska je plynová se čtyřmi hořáky. V pokojích jsou plovoucí podlahy, v předsíni moderní PVC. Velkou výhodou bytu jsou dvě toalety, z nichž jedna je samostatná a druhá zakomponovaná do koupelny. Prostorná předsíň umožňuje umístění skříní a dalšího úložného prostoru. Zasklená lodžie je orientovaná na jižní stranu. V domě lze využívat společnou kolárnu a kočárkárnu. Ze všech pokojů je krásný výhled, zejména severní strana bytu nabízí líbivý pohled do přírody. Dům má instalovány solární panely s bateriovým úložištěm, také disponuje úpravnou vody pro regulaci její tvrdosti, což zvyšuje kvalitu života všech uživatelů. I proto spadá PENB domu do třídy C. Měsíční platby jsou ve výši 7320 Kč. Parkování je zajištěno na veřejných parkovištích před domem i za domem. Přímo před domem je dětské hřiště. Rosice mají veškerou občanskou vybavenost, dopravu do Brna zajišťuje vlak a několik linek autobusů (č. 153, 405 a 423), včetně přímého spojení s FN Brno, za domem je možné napojení na cyklotrasu. Volné od 1.10.2026."
-    },
-    {
-      "id": "sr_1857859660",
-      "title": "Prodej bytu 2+kk 71 m²",
-      "price": 6990000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/1857859660?noredirect=1",
-      "lat": 49.1759983655135,
-      "lng": 16.3915409021561,
-      "sqm": 71,
-      "rooms": 2,
-      "address": "Na Štěpnici, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-04-13",
-      "listing_updated_at": "2026-07-01",
-      "description": "Ve výhradním zastoupení vám nabízíme prodej bytu se zahrádkou v Rosicích u Brna. Hledáte místo pro bydlení v bytě se zahrádkou, který je nízkonákladový a je s dobrým dosahem města a dostupností vlakem například od Brna? Hledáte dům, kde není nutné dělat rekonstrukci a stačí se jen nastěhovat? Právě Vám nabízíme byt o dispozici 2+kk se zahrádkou v okrajové části města Rosice. Po vstupu do zádveří, odkud je vstup do koupelny s WC o výměře 5,3 m² a na schodiště do podkroví, se před Vámi otevře světlý a prostorný obývací pokoj s kuchyňským koutem o výměře 27 m² a dále vstup na zahrádku s posezením o výměře 50 m². Podkroví o podlahové ploše 32 m² včetně úložného prostoru pod šikmou střechou. Celková plocha domu je 71 m² + zahrádka s posezením 50 m². Vytápění domu a ohřev vody je plynovým kotlem. Okna jsou plastová s izolačním dvojsklem. Fasáda domu a zateplení bylo realizováno v roce 2020. Jako podlahová krytina jsou použity dlažba a plovoucí podlaha. Průkaz energetické náročnosti: třída D. Rosice jsou město v okrese Brno-venkov v Jihomoravském kraji, 16 km západně od Brna. Leží v katastrálním území Rosice u Brna, tento název nese i místní pošta a železniční zastávka. Je zde veškerá občanská vybavenost. MŠ, ZŠ, obchod s potravinami, restaurace, městský úřad, pošta, lékárna a mnohé další. Dopravu zajištují autobusy a vlaky IDS JMk. Pro více informací nás neváhejte kontaktovat."
     },
     {
       "id": "sr_4147991372",
