@@ -1,7 +1,7 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-08-04T09:01:19.351Z",
+  "fetched_at": "2026-08-05T08:57:26.788Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
@@ -65,7 +65,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-06-26",
-      "listing_updated_at": "2026-08-03",
+      "listing_updated_at": "2026-08-05",
       "description": "Nabízíme k pronájmu byt v historické části Tábora, ulice Převrátilská. Byt o dispozici 2+kk a výměře 46 m2 se nachází ve 3.NP zrekonstruovaného bytového domu. Byt se pronajímá zařízený kuchyňskou linkou se spotřebiči (digestoř, elektrická trouba, varná deska, lednice, myčka na nádobí). Dispozice bytu-vstupní chodba, ložnice, obývací pokoj s kuchyňským koutem, koupelna se sprchovým koutem a WC, malý půdní prostor. Vytápění plynové, kotel pro celý dům, v jednotlivých bytech radiátory s vlastními měřiči spotřeby. Nájemné ve výši 12.500 Kč + záloha na služby 4.000,-Kč . Majitel požaduje vratnou kauci ve výši 12.500 Kč a poplatek zprostředkovateli ve výši 12.500 Kč + 21% DPH. Byt je k dispozici od 10.8.2026, prohlídky bytu jsou možné ke konci měsíce července. Vhodné pro dvě osoby. Pro více informací a domluvení prohlídky kontaktujte makléře."
     },
     {
@@ -409,26 +409,6 @@
       "description": "PROHLÉDNĚTE SI BYT V KLIDU DOMOVA V PŘILOŽENÉ 3D PROHLÍDCE. Nabízíme pronájem bytu 2+kk o velikosti 60m2 s velkou terasou (25m2). Byt i terasa s krásným výhledem jsou obráceny do klidného vnitrobloku. Byt se nachází na třídě 9.května v Táboře. Vytápění je řešeno vlastním plynovým kotlem s rozvodem do radiátorů, ohřev vody bojlerem. V ceně pronájmu nejsou zahrnuty služby ve výši: voda 300,- Kč/osoba/měsíc + 200,- Kč měsíčně za úklid a elektřinu společných prostor. Spotřeba plynu a elektřiny bude převedena na nájemce. Provize RK ve výši 15.000,- Kč, jistota (kauce) ve výši 20.000,- Kč. Byt je k dispozici novému nájemníkovi."
     },
     {
-      "id": "sr_2050936908",
-      "title": "Pronájem bytu 3+1 67 m²",
-      "price": 13000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/2050936908?noredirect=1",
-      "lat": 49.389583,
-      "lng": 14.681179,
-      "sqm": 67,
-      "rooms": 3,
-      "address": "Budapešťská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-29",
-      "listing_updated_at": "2026-07-29",
-      "description": "Nabízíme k pronájmu moderní a prostorný byt 3+1 o velikosti 67 m², který se nachází v klidné části města Tábor. Byt prošel kompletní rekonstrukcí a je připraven k okamžitému nastěhování. Nachází se ve 4. patře dobře udržovaného bytového domu s výtahem. Byt se nachází v klidné lokalitě s veškerou občanskou vybaveností – školy, školky, obchody, restaurace, zastávka MHD jsou v pěší dostupnosti. Parkování je možné před domem. K nastěhování ihned. Pokud máte zájem o prohlídku nebo další informace, neváhejte nás kontaktovat. Tento byt je ideální pro rodinu nebo páry hledající komfortní bydlení v klidné a dostupné lokalitě Tábora. K nájmu se připočítávají poplatky 4000,- - elektřina se přepisuje na nájemníka. Kauce 13 000,- Provize 13 000,-"
-    },
-    {
       "id": "sr_3533688908",
       "title": "Pronájem bytu 1+kk 25 m²",
       "price": 11000,
@@ -545,8 +525,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-24",
-      "listing_updated_at": "2026-07-24",
-      "description": "PROHLÉDNĚTE SI BYT V KLIDU DOMOVA V PŘILOŽENÉ 3D PROHLÍDCE. Nabízíme k pronájmu kompletně vybavený byt o dispozici 2+kk v novostavbě bytového domu v Táboře, ulici U Areálu. Byt se nachází v 1. nadzemním podlaží domu (přízemí), dispozice bytu (půdorys v inzerci): předsíň, koupelna s WC, kuchyně s obývacím pokojem a ložnice. K bytu náleží 2 terasy přístupné z bytu. Nájem činí 17.000,- Kč měsíčně, měsíční zálohy na služby činí 1.964,- Kč (na 1 osobu), bez spotřebované elektrické energie v bytě, která bude přepsána na nájemníka. Majitel požaduje vratnou peněžitou jistotu (\"kauci\") po dobu trvání nájmu. Provize RK je 15.000,- Kč. Byt je k dispozici novému nájemníkovi. Pro bližší informace volejte makléři zakázky."
+      "listing_updated_at": "2026-08-05",
+      "description": "PROHLÉDNĚTE SI BYT V KLIDU DOMOVA V PŘILOŽENÉ 3D PROHLÍDCE. Nabízíme k pronájmu kompletně vybavený byt o dispozici 2+kk v novostavbě bytového domu v Táboře, ulici U Areálu. Byt se nachází v 1. nadzemním podlaží domu (přízemí), dispozice bytu (půdorys v inzerci): předsíň, koupelna s WC, kuchyně s obývacím pokojem a ložnice. K bytu náleží 2 terasy přístupné z bytu. Nájem činí 17.000,- Kč měsíčně, měsíční zálohy na služby činí 1.964,- Kč, bez spotřebované elektrické energie v bytě, která bude přepsána na nájemníka. Majitel požaduje vratnou peněžitou jistotu (\"kauci\") po dobu trvání nájmu. Provize RK je 15.000,- Kč. Byt je k dispozici novému nájemníkovi. Pro bližší informace volejte makléři zakázky."
     },
     {
       "id": "sr_1725681740",
@@ -691,7 +671,7 @@
     {
       "id": "sr_2458837068",
       "title": "Pronájem bytu 1+1 40 m²",
-      "price": 11500,
+      "price": 9900,
       "operation": "rent",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/2458837068?noredirect=1",
       "lat": 49.4183622573,
@@ -705,8 +685,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-16",
-      "description": "Prohlédněte si byt z pohodlí domova v přiložené 3D prohlídce. Nabízíme k pronájmu byt o dispozici 1+1 ve sníženém přízemí kompletně zrekonstruovaného rodinného domu v Táboře - ulice Hošťálkova. Měsíční nájem činí 11.500,- Kč, měsíční služby 300,- Kč/osoba/měsíc za vodu, 30,- Kč za společnou elektřinu. Spotřeba elektrické energie (včetně vytápění a ohřevu vody) bude přepsána na nájemníka, není součástí plateb placených pronajímateli. Provize RK je 13.000,- Kč. Majitel požaduje peněžitou jistotu po dobu trvání nájmu ve výši 20.000,- Kč. Byt je k dispozici novému nájemníkovi. Majitel preferuje dlouhodobý pronájem. Pro bližší informace kontaktujte makléře zakázky."
+      "listing_updated_at": "2026-08-05",
+      "description": "Prohlédněte si byt z pohodlí domova v přiložené 3D prohlídce. Nabízíme k pronájmu byt o dispozici 1+1 ve sníženém přízemí kompletně zrekonstruovaného rodinného domu v Táboře - ulice Hošťálkova. Měsíční nájem činí 9.900,- Kč, měsíční služby 300,- Kč/osoba/měsíc za vodu, 30,- Kč za společnou elektřinu. Spotřeba elektrické energie (včetně vytápění a ohřevu vody) bude přepsána na nájemníka, není součástí plateb placených pronajímateli. Provize RK je 13.000,- Kč. Majitel požaduje peněžitou jistotu po dobu trvání nájmu ve výši 20.000,- Kč. Byt je k dispozici novému nájemníkovi. Majitel preferuje dlouhodobý pronájem. Pro bližší informace kontaktujte makléře zakázky."
     },
     {
       "id": "sr_2783895628",
