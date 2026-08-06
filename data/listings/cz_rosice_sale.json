@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "sale",
-  "fetched_at": "2026-08-05T08:58:13.197Z",
+  "fetched_at": "2026-08-06T08:57:40.329Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_2854277196",
+      "title": "Prodej bytu 2+kk 47 m²",
+      "price": 6190000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/2854277196?noredirect=1",
+      "lat": 49.18723523996032,
+      "lng": 16.386057437303638,
+      "sqm": 47,
+      "rooms": 2,
+      "address": "Na Vyhlídce, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-05",
+      "listing_updated_at": "2026-08-05",
+      "description": "B 3.06 Prodej Byt 2+kk s lodžií a sklepem Hledáte kvalitní bydlení pro sebe a své blízké? Hledáte místo bez městského ruchu, se zelení za zády? Nebo hledáte rozumnou investici? Vše Vám nabízí bytový dům Na Vyhlídce. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Vybavení bytu - vinylové podlahy, plastová okna s trojskly, podlahové topení, stropy z pohledového betonu, falcové interiérové dveře, velkoformátová dlažba v koupelně, sanita Zn. Geberit, Grohe, Hangrohe, plynové kotle Wolf samostatně ovládané v bytě, doplněné o elektrické topné žebříky. Kolaudace a předání bytu leden, únor 2028. Možnost koupě garážového stání v ceně 560.000,-Kč vč DPH. Pro více informací na webových stránkách panoramarosice."
+    },
     {
       "id": "sr_1139920972",
       "title": "Prodej bytu 3+kk 62 m²",
@@ -25,7 +45,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-04",
-      "listing_updated_at": "2026-08-04",
+      "listing_updated_at": "2026-08-05",
       "description": "B 2.05 Prodej Byt 3+kk s terasou a sklepem Hledáte kvalitní bydlení pro sebe a své blízké? Hledáte místo bez městského ruchu, se zelení za zády? Nebo hledáte rozumnou investici? Vše Vám nabízí bytový dům Na Vyhlídce. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Vybavení bytu - vinylové podlahy, plastová okna s trojskly, podlahové topení, stropy z pohledového betonu, falcové interiérové dveře, velkoformátová dlažba v koupelně, sanita Zn. Geberit, Grohe, Hangrohe, plynové kotle Wolf samostatně ovládané v bytě, doplněné o elektrické topné žebříky. Kolaudace a předání bytu leden, únor 2028. Možnost koupě garážového stání v ceně 560.000,-Kč vč DPH. Pro více informací na webových stránkách panoramarosice."
     },
     {
@@ -45,7 +65,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-04",
-      "listing_updated_at": "2026-08-04",
+      "listing_updated_at": "2026-08-05",
       "description": "B 2.04 Prodej Byt 2+kk s terasou a sklepem Hledáte kvalitní bydlení pro sebe a své blízké? Hledáte místo bez městského ruchu, se zelení za zády? Nebo hledáte rozumnou investici? Vše Vám nabízí bytový dům Na Vyhlídce. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Vybavení bytu - vinylové podlahy, plastová okna s trojskly, podlahové topení, stropy z pohledového betonu, falcové interiérové dveře, velkoformátová dlažba v koupelně, sanita Zn. Geberit, Grohe, Hangrohe, plynové kotle Wolf samostatně ovládané v bytě, doplněné o elektrické topné žebříky. Kolaudace a předání bytu leden, únor 2028. Možnost koupě garážového stání v ceně 560.000,-Kč vč DPH. Pro více informací na webových stránkách panoramarosice."
     },
     {
@@ -65,7 +85,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-04",
-      "listing_updated_at": "2026-08-04",
+      "listing_updated_at": "2026-08-05",
       "description": "B 1.04 Prodej Byt 3+kk s terasou a sklepem Hledáte kvalitní bydlení pro sebe a své blízké? Hledáte místo bez městského ruchu, se zelení za zády? Nebo hledáte rozumnou investici? Vše Vám nabízí bytový dům Na Vyhlídce. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Vybavení bytu - vinylové podlahy, plastová okna s trojskly, podlahové topení, stropy z pohledového betonu, falcové interiérové dveře, velkoformátová dlažba v koupelně, sanita Zn. Geberit, Grohe, Hangrohe, plynové kotle Wolf samostatně ovládané v bytě, doplněné o elektrické topné žebříky. Kolaudace a předání bytu leden, únor 2028. Možnost koupě garážového stání v ceně 560.000,-Kč vč DPH. Pro více informací na webových stránkách panoramarosice."
     },
     {
@@ -85,7 +105,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-04",
-      "listing_updated_at": "2026-08-04",
+      "listing_updated_at": "2026-08-05",
       "description": "A 1.13 Prodej Byt 2+kk s lodžií, zahrádkou a sklepem Hledáte kvalitní bydlení pro sebe a své blízké? Hledáte místo bez městského ruchu, se zelení za zády? Nebo hledáte rozumnou investici? Vše Vám nabízí bytový dům Na Vyhlídce. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Vybavení bytu - vinylové podlahy, plastová okna s trojskly, podlahové topení, stropy z pohledového betonu, falcové interiérové dveře, velkoformátová dlažba v koupelně, sanita Zn. Geberit, Grohe, Hangrohe, plynové kotle Wolf samostatně ovládané v bytě, doplněné o elektrické topné žebříky. Kolaudace a předání bytu leden, únor 2028. Možnost koupě garážového stání v ceně 560.000,-Kč vč DPH. Pro více informací na webových stránkách panoramarosice."
     },
     {
@@ -105,7 +125,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-04",
-      "listing_updated_at": "2026-08-04",
+      "listing_updated_at": "2026-08-05",
       "description": "A 1.02 Prodej Byt 1+kk s terasou a sklepem Hledáte kvalitní bydlení pro sebe a své blízké? Hledáte místo bez městského ruchu, se zelení za zády? Nebo hledáte rozumnou investici? Vše Vám nabízí bytový dům Na Vyhlídce. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Vybavení bytu - vinylové podlahy, plastová okna s trojskly, podlahové topení, stropy z pohledového betonu, falcové interiérové dveře, velkoformátová dlažba v koupelně, sanita Zn. Geberit, Grohe, Hangrohe, plynové kotle Wolf samostatně ovládané v bytě, doplněné o elektrické topné žebříky. Kolaudace a předání bytu leden, únor 2028. Možnost koupě garážového stání v ceně 560.000,-Kč vč DPH. Pro více informací na webových stránkách panoramarosice."
     },
     {
