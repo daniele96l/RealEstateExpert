@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-08-08T07:13:53.376Z",
+  "fetched_at": "2026-08-09T07:15:47.102Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_2346111052",
+      "title": "Pronájem bytu 2+kk 50 m²",
+      "price": 13000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/2346111052?noredirect=1",
+      "lat": 49.4161679096678,
+      "lng": 14.6396660167011,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Klokoty, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-08",
+      "listing_updated_at": "2026-08-08",
+      "description": "Nabízíme k pronájmu nový světlý byt o dispozici 2+kk a výměře cca 50 m², který se nachází ve 2. NP cihlového domu v klidné části Tábora ulice Šafránová, Klokoty. Dispozice a vybavení - obývací pokoj s kuchyňským koutem, ložnice, koupelna s vanou. Nová kuchyňská linka je vybavena elektrickou troubou, varnou deskou a digestoří. Topení podlahové elektrickým kotlem, ohřev vody zajišťuje elektrický bojler. Parkování je zajištěno u domu, možnost venkovního posezení. Nájemné 13.000 Kč / měsíc, záloha na elektřinu 3.000 Kč / měsíc a záloha na vodu 300 Kč / osoba / měsíc. Majitel požaduje vratnou jistotu ve výši 26.000 Kč, poplatek RK je jeden nájem + 21% DPH. Vhodné max. pro dvě osoby. Byt je k dispozici od 1.9.2026. Pro domluvení prohlídky kontaktujte makléře."
+    },
     {
       "id": "sr_4274769996",
       "title": "Pronájem bytu 2+1 57 m²",
@@ -209,26 +229,6 @@
       "description": "Nabízíme k pronájmu prostorný a světlý byt o dispozici 2kk a výměře 54,71 m² ulice Pražská v Táboře. Byt se nachází ve. 2 nadzemním podlaží bytového domu a poskytuje komfortní bydlení pro jednotlivce nebo pár. Dispozice bytu: Kuchyňská linka s vestavnou troubou, sklokeramickou deskou, myčkou a digestoří, prostorná vstupní chodba, pokoj,sprchový kout s WC. V celém bytě jsou nová dřevěná okna, plovoucí podlaha, stropní svítidla a v koupelně dlažba. Vytápění celého bytu - elektrokotel. V celém bytě je podlahové topení. Bytová jednotka má svůj elektroměr a podružný vodoměr. Bytový dům nabízí pohodlný přístup. Lokalita zajišťuje veškerou občanskou vybavenost – obchody, školy, školky, lékaře, restaurace i zastávky MHD – vše v docházkové vzdálenosti. Cena nájmu činí 17.000.-Kč/měsíc. Zálohy: voda 800 Kč / osoba, režie na společné prostory (elektřina, úklid ex. firmou) 600 Kč / osoba. Kauce činí dva nájmy. Elektřina bude přepsána na nájemce. V případě zájmu mě neváhejte kontaktovat."
     },
     {
-      "id": "sr_772001868",
-      "title": "Pronájem bytu 2+kk 47 m²",
-      "price": 11000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/772001868?noredirect=1",
-      "lat": 49.264051458637255,
-      "lng": 14.710510900260264,
-      "sqm": 47,
-      "rooms": 2,
-      "address": "Sídliště Svákov, Soběslav III, Soběslav",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-02",
-      "listing_updated_at": "2026-08-03",
-      "description": "Představujeme Vám tento byt k pronájmu v Soběslavi, který se nachází ve 3. patře panelového domu po rekonstrukci. Jedná se o bytovou jednotku 2+kk s užitnou plochou 47 m², což poskytuje dostatek prostoru pro pohodlné bydlení. Byt je v osobním vlastnictví a umožňuje bydlení v klidném a příjemném prostředí. Interiér bytu je promyšleně řešený, nabízí moderní uspořádání a komfort pro každodenní život. U bytů v panelových domech je známo, že poskytují optimální poměr mezi kvalitou a náklady na bydlení. Možnost nastěhování je od 1. září 2026, což umožňuje dost času na plánování vašeho přestěhování. Výše měsíčního nájemného činí 11 000 Kč. K tomu je nutné počítat s vratnou kaucí ve výši 22 000 Kč a náklady na bydlení činí přibližně 4 000 Kč měsíčně. Pro konkrétní informace o provozních nákladech se prosím obraťte na makléře, který je kontaktní osobou u tohoto inzerátu. Pokud Vás byt zaujal, neváhejte nám napsat nebo zavolat a rádi Vám vše ukážeme osobně. Prohlídky jsou možné po předchozí domluvě."
-    },
-    {
       "id": "sr_1873596492",
       "title": "Pronájem bytu 2+1 42 m²",
       "price": 12500,
@@ -325,7 +325,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-20",
-      "listing_updated_at": "2026-07-30",
+      "listing_updated_at": "2026-08-08",
       "description": "Exkluzivně nabízíme k pronájmu bytovou jednotku o velikosti 2+kk, nacházející se ve 2.patře (3.NP) bytového domu na hlavní třídě Husovo nám., v centru Tábora. Bytová jednotka prošla velmi zdařilou, kompletní rekonstrukcí a disponuje kuchyňským koutem, dvěma místnostmi a koupelnou se sprchovým koutem, toaletou a umyvadlem s toaletkou a zrcadlem, pračkou, v celém bytě nové podlahy, interiérové dveře a nová kuchyňská linka s vestavnými spotřebiči (lednice s mrazničkou, varná sklokeramická deska, vestavná trouba, digestoř, myčka). K nastěhování IHNED. Vytápění řešeno plynem. Kauce ve výši 29.000,-Kč, nájemné 14.500,-Kč + majitelka požaduje záloha na vodu 300,-Kč/osobu a měsíc a zálohu na úklid společných prostor 400,-Kč/měsíc, elektrika a plyn - přepis na nájemníka. Provize RK 14.500,-Kč + DPH 21%. V blízkém dosahu veškerá občanská vybavenost a centrum města Tábora. Pro více info volejte RK."
     },
     {
@@ -345,8 +345,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-07-30",
-      "description": "Exkluzivně nabízíme k pronájmu bytovou jednotku 3+kk (58m2), nacházející se v 1 patře (2NP) panelového domu v horní části sídliště nad Lužnicí, ulici Bělehradská. Jedná se o slunný byt s balkonem, který prošel kompletní rekonstrukcí v rovině - kuchyňské linky do tvaru U, součástí jsou vestavné spotřebiče (varná deska, trouba, digestoř), myčka 40cm, velká lednice s mrazničkou, dále zděného atypického koupelnového jádra se sprchovým koutem, umyvadlem a toaletkou a samostatnou toaletou. Byt dále disponuje novými interiérovými dřevěnými dveřmi a je nabízen k pronájmu bez vybavení, vyjma kompletní kuchyně s kuchyňskou linkou a dále jsou k dispozici vestavné skříně po obou stranách chodby. Jelikož je byt situován na jih, je součástí bytu také klimatizační jednotka. Požadované nájemné 12.000,-Kč, dále náklady na služby 4.100,-Kč (zálohy počítány při obsazenosti 2 osobami)+ přepis elektrické energie na nájemce. Kauce ve výši 2 x 12.000,-Kč, provize RK 12.000,-Kč + DPH. V blízkém dosahu veškerá občanská vybavenost. Doporučujeme, k nastěhování k 1.8.2026."
+      "listing_updated_at": "2026-08-08",
+      "description": "Rezervováno! Exkluzivně nabízíme k pronájmu bytovou jednotku 3+kk (58m2), nacházející se v 1 patře (2NP) panelového domu v horní části sídliště nad Lužnicí, ulici Bělehradská. Jedná se o slunný byt s balkonem, který prošel kompletní rekonstrukcí v rovině - kuchyňské linky do tvaru U, součástí jsou vestavné spotřebiče (varná deska, trouba, digestoř), myčka 40cm, velká lednice s mrazničkou, dále zděného atypického koupelnového jádra se sprchovým koutem, umyvadlem a toaletkou a samostatnou toaletou. Byt dále disponuje novými interiérovými dřevěnými dveřmi a je nabízen k pronájmu bez vybavení, vyjma kompletní kuchyně s kuchyňskou linkou a dále jsou k dispozici vestavné skříně po obou stranách chodby. Jelikož je byt situován na jih, je součástí bytu také klimatizační jednotka. Požadované nájemné 12.000,-Kč, dále náklady na služby 4.100,-Kč (zálohy počítány při obsazenosti 2 osobami)+ přepis elektrické energie na nájemce. Kauce ve výši 2 x 12.000,-Kč, provize RK 12.000,-Kč + DPH. V blízkém dosahu veškerá občanská vybavenost. Doporučujeme, k nastěhování k 1.8.2026."
     },
     {
       "id": "sr_1444839500",
@@ -607,26 +607,6 @@
       "listing_published_at": "2026-07-18",
       "listing_updated_at": "2026-07-18",
       "description": "K dlouhodobému podnájmu nabízím prostorný a plně vybavený apartmán s přístupem na rozlehlou zahradu o rozloze 2 000 m² s vířivkou, přírodním jezerem a dětským hřištěm, nacházející se uprostřed jihočeské přírody v osadě Nepřejov (Nadějkov), jen hodinu jízdy od Prahy. Apartmán je součástí zrekonstruovaného venkovského stavení a je ideální pro větší rodinu nebo partu přátel jako prázdninový dům. OBJEKT NENÍ MOŽNO DÁLE PODNAJÍMAT/PRONAJÍMAT! Byt má rozlohu 120 m² a je kompletně vybavený včetně spotřebičů i nábytku. V přízemí se nachází prostorná společenská místnost s krbem a kuchyňským koutem (lednice, mrazák, dřez, elektrický vařič). V patře jsou dvě ložnice, každá s manželskou postelí a samostatným jednolůžkem, a koupelna s vanou. K apartmánovému domu patří společná zahrada o rozloze 2 000 m², kterou mohou podnájemníci využívat. Nachází se zde přírodní jezírko, venkovní vířivka, bazén, pergola s posezením, ohniště, gril, dětské hřiště, kolárna. Okolí spadá do turistické oblasti Toulava, známé turistickými stezkami, cyklotrasami a v zimě klasickým lyžováním. Apartmán se nachází 10 minut jízdy autem od lyžařského areálu Monínec, 3 minuty od golfové hřiště Čertovo Břemeno. V docházkové vzdálenosti se nachází biofarma se sadem a včelstvy. Nejbližší město s občanskou vybaveností je vzdáleno 5 km, okresní město Tábor 20km. Cena podnájmu 13 000 Kč/měsíčně Zálohy na energie, vodu a služby (jímka, péče o zahradu, vířivka, bazén, jezero) 7 000 Kč/měsíčně Jistina (kauce) 20 000 Kč Provize realitní kanceláře je ve výši měsíčního podnájmu + DPH (13 000 Kč + DPH) Zaujala Vás tato nabídka? Neváhejte mě kontaktovat pro více informací! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
-    },
-    {
-      "id": "sr_1508175948",
-      "title": "Pronájem bytu 1+kk 23 m²",
-      "price": 9000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/1508175948?noredirect=1",
-      "lat": 49.414412431455,
-      "lng": 14.6578013760429,
-      "sqm": 23,
-      "rooms": 1,
-      "address": "Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-01",
-      "listing_updated_at": "2026-07-30",
-      "description": "Rezervováno! Exkluzivně nabízíme k pronájmu bytovou jednotku 1+kk o celkové výměře 23 m2, nacházející se ve 5. patře (6.NP) panelového domu na Náchodském sídlišti v Táboře. Tato lokalita je velmi klidná a vyhledávaná. Slunný byt s jihovýchodní orientací je po kompletní rekonstrukci, má zcela novou kuchyňskou linku s vestavnými spotřebiči (varná deska, vestavná trouba, digestoř, pračka). Byt je dále vybaven lednicí s malým mrazáčkem a velkou šatní skříní. V koupelně je sprchový kout, umyvadlo a závěsné WC. Podlahy jsou v chodbě a obytné místnosti řešeny linoleem, v koupelně a na WC je dlažba. Vytápění je zajištěno dálkově. K bytu náleží prostorná, slunná a zasklená lodžie, sklepní kóje o velikosti 2 m2 a společná sušárna. Dům je po rekonstrukci, byl zateplen, má nová plastová okna, a výtah. Byt je k nastěhování IHNED. Majitel si v bytě nepřeje kuřáky. Měsíční nájemné činí 9.000,-Kč + záloha na služby 2.000,-Kč (vyúčtování přeplatků i nedoplatků) a přepis elektrické energie na nájemníka. Po zateplení domu jsou spotřeby energií velmi nízké. Kauce ve výši 18.000,-Kč, provize RK 9.000,-Kč + DPH. Pro více informací volejte naši RK."
     },
     {
       "id": "sr_3652444236",
