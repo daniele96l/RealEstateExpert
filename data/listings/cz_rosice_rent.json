@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-08-09T07:16:18.405Z",
+  "fetched_at": "2026-08-10T08:03:45.624Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_86364236",
+      "title": "Pronájem bytu 1+kk 54 m²",
+      "price": 13000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/86364236?noredirect=1",
+      "lat": 49.1872352399603,
+      "lng": 16.3860574373036,
+      "sqm": 54,
+      "rooms": 1,
+      "address": "Na Vyhlídce, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-10",
+      "listing_updated_at": "2026-08-10",
+      "description": "Nabízím k pronájmu byt 1kk o dispozici 26 m2 v přízemí domu se zahrádkou 25 m2 a sklepem 3 m2. Byt se skládá ze vstupní chodby s šatnou, vstupem do koupelny a do pokoje s kuchyní a obývací částí, která ústí do zahrádky. Dopravní spojení linky 40,50,69,405,406, 37. Byt se pronajímá nevybavený, ale je možné odkoupit po domluvě nábytek od stávající nájemnice. Nájemně činí 13 000,- Kč Energie a služby 3 700,- Kč Vratná kauce 16 000,- Kč Provize 15 000,- Kč Neváhejte s prohlídkou tohoto krásného bytu."
+    },
     {
       "id": "sr_1593888844",
       "title": "Pronájem bytu 2+1 58 m²",
@@ -25,7 +45,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-05",
-      "listing_updated_at": "2026-08-08",
+      "listing_updated_at": "2026-08-09",
       "description": "Prostorný byt s balkonem v klidné části Rosic. Hledáte místo, kde budete mít s partnerem nebo rodinou dostatek prostoru, klid a zároveň dobrou dostupnost do Brna? Tento byt ve 3. patře cihlového domu v oblíbené Husově čtvrti v Rosicích může být právě tím pravým. Byt má praktickou dispozici 2+1 s neprůchozími pokoji, což ocení každý, kdo hledá soukromí a pohodlné zázemí. Obývací pokoj je světlý a prostorný, vybavený sedačkou, dvěma křesly, konferenčním stolkem a skříňkami. Z pokoje se navíc vychází na balkon, kde si můžete v klidu odpočinout nebo začít den s kávou na čerstvém vzduchu. Kuchyně je zařízená jídelním stolem, židlemi, sporákem a lednicí – připravená pro každodenní vaření i společné večeře. V koupelně najdete vanu a pračku, což zajišťuje plný komfort bez nutnosti dalších investic. K bytu náleží také sklep, ideální pro úschovu sezónních věcí či sportovního vybavení. Husova čtvrť je klidná a příjemná lokalita obklopená zelení, která nabízí výborné podmínky pro pohodové bydlení. Do Brna se snadno dostanete autem, autobusem i vlakem. Parkování je možné bez problémů přímo u domu. Byt je k dispozici od 1.9. 2026 Jaké služby nabízíme PRO PODNÁJEMNÍKY? S Garantovany Najem automaticky získáváte: - Plně pojištěný byt s non stop asistenční linkou, kdy pojištění se vztahuje navíc i na běžnou odpovědnost za škody způsobené v běžném životě, prodlouženou záruku spotřebičů o 2 roky a nebo servisní techniky v případě pojistné události (práce zámečníka, opravy havárií). - Zákaznický servis pro Vás od 7:00 – 18:00 pro řešení vašich dotazů a požadavků. T: +420 770 182 182 Technickou podporu (pro případ, že budete chtít pomoci s technickými záležitostmi na bytě. Zařídíme přepis energií. Možnost výměny bytu za větší/menší/jinde z portfolia bytů Garantovaný Nájem nebo ROI Estate (Brno, Praha a další města). Podnajmout si byt nebylo nikdy snazší a efektivnější."
     },
     {
