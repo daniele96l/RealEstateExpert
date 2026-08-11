@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-08-10T08:03:04.951Z",
+  "fetched_at": "2026-08-11T07:29:15.924Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1746194508",
+      "title": "Pronájem bytu 2+kk 47 m²",
+      "price": 13900,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/1746194508?noredirect=1",
+      "lat": 49.417762,
+      "lng": 14.66313,
+      "sqm": 47,
+      "rooms": 2,
+      "address": "Politických vězňů, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-11",
+      "listing_updated_at": "2026-08-11",
+      "description": "K dlouhodobému pronájmu nabízíme moderní byt o dispozici 2+kk a podlahové ploše 47 m², který se nachází ve 3. patře bytového domu v ulici Politických vězňů v Táboře. Byt nabízí praktickou dispozici s obývacím pokojem propojeným s kuchyňským koutem a samostatnou ložnicí. Kuchyňská linka je vybavena lednicí, indukční varnou deskou, elektrickou troubou a myčkou nádobí. V ložnici je k dispozici velká vestavná skříň, která poskytuje dostatek úložného prostoru. K bytu náleží také vlastní parkovací stání přímo v uzavřeném areálu bytového domu. Nemusíte tak každý den řešit hledání místa k parkování a auto máte zaparkované přímo u domu. Dalším výrazným benefitem je prostorná sklepní kóje o velikosti 9,4 m². Bez problémů tak získáte místo například pro kola, sportovní vybavení, sezónní věci nebo další úložné potřeby. Byt se nachází v ulici Politických vězňů ve velmi dobře dostupné části Tábora. Výhodou je kombinace klidnějšího bydlení s rychlou dostupností centra města. V okolí najdete běžnou občanskou vybavenost, obchody, služby, restaurace i možnosti sportovního vyžití. Lokalita nabízí výborné napojení na městskou dopravu a díky poloze v rámci města je praktická i pro každodenní dojíždění za prací nebo službami. Byt je ideální pro jednotlivce nebo pár bez domácích mazlíčků, kteří hledají moderní, praktické a dlouhodobé bydlení v Táboře. Kombinace dispozice 2+kk, vlastního parkování, velkého sklepa a dobré dostupnosti centra z něj dělá velmi pohodlné místo pro každodenní život."
+    },
     {
       "id": "sr_1915080780",
       "title": "Pronájem bytu 2+kk 75 m²",
@@ -26,7 +46,7 @@
       "needs_renovation": null,
       "listing_published_at": "2026-08-10",
       "listing_updated_at": "2026-08-10",
-      "description": "Nabízíme k pronájmu prostorný podkrovní byt s balkonem o dispozici 2+kk a podlahové ploše 75 m², který se nachází ve 3. patře bytového domu bez výtahu v ulici Chýnovská v Měšicích. Dominantou bytu je prostorný obývací pokoj s kuchyňským koutem a vstupem na balkon, který nabízí krásný výhled do okolí. Kuchyňská linka je vybavena elektrickou troubou, plynovou varnou deskou, myčkou nádobí a lednicí. V koupelně se nachází vana, součástí pronájmu zůstává také pračka. Byt se pronajímá bez nábytku viditelného z fotografií, s výjimkou vestavěné skříně v předsíni. K bytu náleží také sklep, který může nájemce využívat. Měsíční zálohy na služby činí 3.583,- Kč a zahrnují vodné, stočné, vytápění, ohřev teplé vody, elektřinu společných prostor a správu domu včetně úklidu. Podrobný rozpis záloh bude zájemcům předložen. Elektřina a plyn budou převedeny na nájemce. Při podpisu nájemní smlouvy hradí nájemce: • nájemné za první měsíc včetně záloh na služby, • vratnou kauci ve výši dvou měsíčních nájmů Provize realitní kanceláře je ve výši jednoho měsíčního nájmu bez energií + DPH ve výši 21 %. Byt bude k dispozici od 1.10. 2026 nebo po dohodě i dříve. Majitel preferuje dlouhodobý pronájem, byt je vhodný maximálně pro dvě osoby. Velkou předností je klidná a vyhledávaná lokalita s kompletní občanskou vybaveností, dobrou dopravní dostupností a dostatkem parkovacích míst na prostorném parkovišti přímo za domem. V případě zájmu o více informací nebo sjednání prohlídky mě neváhejte kontaktovat. Těším se na osobní setkání. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
+      "description": "Nabízíme k pronájmu prostorný podkrovní byt s balkonem o dispozici 2+kk a podlahové ploše 75 m², který se nachází ve 3. patře bytového domu bez výtahu v ulici Chýnovská v Měšicích. Dominantou bytu je prostorný obývací pokoj s kuchyňským koutem a vstupem na balkon, který nabízí krásný výhled do okolí. Kuchyňská linka je vybavena elektrickou troubou, plynovou varnou deskou, myčkou nádobí a lednicí. V koupelně se nachází vana, součástí pronájmu zůstává také pračka. Byt se pronajímá bez nábytku viditelného z fotografií, s výjimkou vestavěné skříně v předsíni. Měsíční zálohy na služby činí 3.583,- Kč a zahrnují vodné, stočné, vytápění, ohřev teplé vody, elektřinu společných prostor a správu domu včetně úklidu. Podrobný rozpis záloh bude zájemcům předložen. Elektřina a plyn budou převedeny na nájemce. Při podpisu nájemní smlouvy hradí nájemce: • nájemné za první měsíc včetně záloh na služby, • vratnou kauci ve výši dvou měsíčních nájmů Provize realitní kanceláře je ve výši jednoho měsíčního nájmu bez energií + DPH ve výši 21 %. Byt bude k dispozici od 1.10. 2026 nebo po dohodě i dříve. Majitel preferuje dlouhodobý pronájem, byt je vhodný maximálně pro dvě osoby. Velkou předností je klidná a vyhledávaná lokalita s kompletní občanskou vybaveností, dobrou dopravní dostupností a dostatkem parkovacích míst na prostorném parkovišti přímo za domem. V případě zájmu o více informací nebo sjednání prohlídky mě neváhejte kontaktovat. Těším se na osobní setkání. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
       "id": "sr_2346111052",
@@ -169,26 +189,6 @@
       "description": "Nabízíme k pronájmu krásný, zrekonstruovaný byt o dispozici 2+1 a výměře 65 m² s balkonem, který se nachází ve 2. patře panelového domu v klidné části Veselí nad Lužnicí, ulice Pod Markem. Byt je po renovaci a nabízí příjemné, světlé a komfortní bydlení. V okolí je veškerá občanská vybavenost – obchody, školy, školka, lékař i zastávky veřejné dopravy. Velkou výhodou je, že byt pronajímá přímo majitel – neplatíte žádnou provizi realitní kanceláři. Některé fotky jsou vizualizací toho, jak může byt vypadat zařízený. Cena: Nájemné: 14 500 Kč/měsíc Zálohy na energie: 3 500 Kč/měsíc Kauce: 19 000 Kč Byt je vhodný pro jednotlivce, pár i menší rodinu. V případě zájmu o více informací nebo domluvení prohlídky mě neváhejte kontaktovat. Ráda vám byt osobně představím."
     },
     {
-      "id": "sr_1095233612",
-      "title": "Pronájem bytu 2+kk 46 m²",
-      "price": 12500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/1095233612?noredirect=1",
-      "lat": 49.4146435989954,
-      "lng": 14.6563640923187,
-      "sqm": 46,
-      "rooms": 2,
-      "address": "Převrátilská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-26",
-      "listing_updated_at": "2026-08-05",
-      "description": "Nabízíme k pronájmu byt v historické části Tábora, ulice Převrátilská. Byt o dispozici 2+kk a výměře 46 m2 se nachází ve 3.NP zrekonstruovaného bytového domu. Byt se pronajímá zařízený kuchyňskou linkou se spotřebiči (digestoř, elektrická trouba, varná deska, lednice, myčka na nádobí). Dispozice bytu-vstupní chodba, ložnice, obývací pokoj s kuchyňským koutem, koupelna se sprchovým koutem a WC, malý půdní prostor. Vytápění plynové, kotel pro celý dům, v jednotlivých bytech radiátory s vlastními měřiči spotřeby. Nájemné ve výši 12.500 Kč + záloha na služby 4.000,-Kč . Majitel požaduje vratnou kauci ve výši 12.500 Kč a poplatek zprostředkovateli ve výši 12.500 Kč + 21% DPH. Byt je k dispozici od 10.8.2026, prohlídky bytu jsou možné ke konci měsíce července. Vhodné pro dvě osoby. Pro více informací a domluvení prohlídky kontaktujte makléře."
-    },
-    {
       "id": "sr_1306898508",
       "title": "Pronájem bytu 2+kk 90 m²",
       "price": 15000,
@@ -207,26 +207,6 @@
       "listing_published_at": "2026-04-20",
       "listing_updated_at": "2026-08-03",
       "description": "Hledáte místo, kde opravdu zpomalíte, nadechnete se a budete mít klid na práci i odpočinek? Nabízíme k pronájmu mezonetový byt 2+kk v citlivě zrekonstruovaném rodinném domě v obci Opařany ideální útočiště mimo ruch města. Byt má samostatný vstup a nabízí jedinečné spojení moderního komfortu s atmosférou venkova. V přízemí se nachází prostorná vstupní chodba, obývací pokoj s kuchyňským koutem a koupelna se sprchovým koutem a WC. Dominantou bytu je vzdušný podkrovní prostor(50 m2), zaplavený denním světlem, který může sloužit jako ložnice, pracovna nebo kreativní zázemí. Okolí domu nabízí naprostý klid, zeleň a přímý kontakt s přírodou ideální pro procházky, práci z domova i relaxaci. Lokalita je vzdálená cca 60 minut od Prahy a pouhých 15 minut od Tábora, takže zůstává dobře dostupná, ale bez kompromisů v kvalitě života. Velkým benefitem je možnost pronájmu zázemí pro koně včetně přilehlé louky ideální pro ty, kteří chtějí žít opravdu venkovským způsobem života. Technické informace: vytápění a ohřev vody zajišťuje úsporné tepelné čerpadlo podlahové vytápění v obývacím prostoru, radiátor v podkroví vlastní studna nulové náklady na vodu (neplatíte vodné ani stočné) Nájemné: 15.000 Kč / měsíc Zálohy na elektřinu: dle spotřeby Vratná jistota: 15.000 Kč Provize RK: 1 nájem + DPH Byt je ideální pro 1 až 2 osoby, které hledají ticho, prostor a blízkost přírody. Pro více informací nebo domluvení prohlídky kontaktujte makléře."
-    },
-    {
-      "id": "sr_2071322700",
-      "title": "Pronájem bytu 2+kk 55 m²",
-      "price": 17000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/2071322700?noredirect=1",
-      "lat": 49.41355478325214,
-      "lng": 14.660425159820642,
-      "sqm": 55,
-      "rooms": 2,
-      "address": "Pražská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-20",
-      "listing_updated_at": "2026-08-02",
-      "description": "Nabízíme k pronájmu prostorný a světlý byt o dispozici 2kk a výměře 54,71 m² ulice Pražská v Táboře. Byt se nachází ve. 2 nadzemním podlaží bytového domu a poskytuje komfortní bydlení pro jednotlivce nebo pár. Dispozice bytu: Kuchyňská linka s vestavnou troubou, sklokeramickou deskou, myčkou a digestoří, prostorná vstupní chodba, pokoj,sprchový kout s WC. V celém bytě jsou nová dřevěná okna, plovoucí podlaha, stropní svítidla a v koupelně dlažba. Vytápění celého bytu - elektrokotel. V celém bytě je podlahové topení. Bytová jednotka má svůj elektroměr a podružný vodoměr. Bytový dům nabízí pohodlný přístup. Lokalita zajišťuje veškerou občanskou vybavenost – obchody, školy, školky, lékaře, restaurace i zastávky MHD – vše v docházkové vzdálenosti. Cena nájmu činí 17.000.-Kč/měsíc. Zálohy: voda 800 Kč / osoba, režie na společné prostory (elektřina, úklid ex. firmou) 600 Kč / osoba. Kauce činí dva nájmy. Elektřina bude přepsána na nájemce. V případě zájmu mě neváhejte kontaktovat."
     },
     {
       "id": "sr_1873596492",
