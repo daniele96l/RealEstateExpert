@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-08-12T07:53:19.059Z",
+  "fetched_at": "2026-08-13T07:55:23.496Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_788185164",
+      "title": "Pronájem bytu 2+kk 48 m²",
+      "price": 11000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/788185164?noredirect=1",
+      "lat": 49.184869131,
+      "lng": 14.698968803,
+      "sqm": 48,
+      "rooms": 2,
+      "address": "Budějovická, Veselí nad Lužnicí I, Veselí nad Lužnicí",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-13",
+      "listing_updated_at": "2026-08-13",
+      "description": "Nabízíme k pronájmu krásný byt 2+kk o užitné ploše 48 m², situovaný v centru města Veselí nad Lužnicí, část Veselí nad Lužnicí I. Byt se nachází v prvním nadzemním podlaží cihlového domu. Nemovitost je po nedávné rekonstrukci a je ve velmi dobrém stavu. Dispozice bytu nabízí prostorný obývací pokoj s kuchyňským koutem a samostatnou ložnici, ideální pro jednotlivce či pár. Díky umístění v centru města máte veškerou občanskou vybavenost na dosah ruky. Nezmeškejte tuto příležitost bydlet v srdci Veselí nad Lužnicí!"
+    },
     {
       "id": "sr_265011276",
       "title": "Pronájem bytu 3+1 78 m²",
@@ -26,7 +46,7 @@
       "needs_renovation": null,
       "listing_published_at": "2026-08-12",
       "listing_updated_at": "2026-08-12",
-      "description": "Pronájem bytu 3+1 v Choustníku – 78 m², garáž, zahrada Nabízím k pronájmu prostorný byt 3+1 o velikosti 78 m² v Choustníku. Byt se nachází v 1. patře a kromě tří obytných místností a kuchyně nabízí také špajz a samostatnou prádelnu. Koupelna a WC jsou oddělené. K bytu náleží také balkon o velikosti 1,5 m². K bytu je k dispozici: garáž zahrada s pergolou dřevník dřevěná bouda sklep Byt bude k nastěhování od 1. 10. 2026. Byt může být předán částečně vybavený, případně zcela prázdný – záleží na domluvě. Choustník RK prosím nevolat. Nabídka je určena pouze pro přímé zájemce. Tel. číslo- +420 722 081 381"
+      "description": "Pronájem bytu 3+1 v Choustníku – 78 m², garáž, zahrada Nabízím k pronájmu prostorný byt 3+1 o velikosti 78 m² v Choustníku. !!FOTO PŘIDÁM DNESKA VEČER!! z důvodu rozmazání Byt se nachází v 1. patře a kromě tří obytných místností a kuchyně nabízí také špajz a samostatnou prádelnu. Koupelna a WC jsou oddělené. K bytu náleží také balkon o velikosti 1,5 m². K bytu je k dispozici: garáž zahrada s pergolou dřevník dřevěná bouda sklep Byt bude k nastěhování od 1. 10. 2026. Byt může být předán částečně vybavený, případně zcela prázdný – záleží na domluvě. Choustník RK prosím nevolat. Nabídka je určena pouze pro přímé zájemce."
     },
     {
       "id": "sr_2180759628",
@@ -249,6 +269,26 @@
       "description": "Nabízíme k pronájmu krásný, zrekonstruovaný byt o dispozici 2+1 a výměře 65 m² s balkonem, který se nachází ve 2. patře panelového domu v klidné části Veselí nad Lužnicí, ulice Pod Markem. Byt je po renovaci a nabízí příjemné, světlé a komfortní bydlení. V okolí je veškerá občanská vybavenost – obchody, školy, školka, lékař i zastávky veřejné dopravy. Velkou výhodou je, že byt pronajímá přímo majitel – neplatíte žádnou provizi realitní kanceláři. Některé fotky jsou vizualizací toho, jak může byt vypadat zařízený. Cena: Nájemné: 14 500 Kč/měsíc Zálohy na energie: 3 500 Kč/měsíc Kauce: 19 000 Kč Byt je vhodný pro jednotlivce, pár i menší rodinu. V případě zájmu o více informací nebo domluvení prohlídky mě neváhejte kontaktovat. Ráda vám byt osobně představím."
     },
     {
+      "id": "sr_1095233612",
+      "title": "Pronájem bytu 2+kk 46 m²",
+      "price": 12500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/1095233612?noredirect=1",
+      "lat": 49.4146435989954,
+      "lng": 14.6563640923187,
+      "sqm": 46,
+      "rooms": 2,
+      "address": "Převrátilská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-06-26",
+      "listing_updated_at": "2026-08-13",
+      "description": "Nabízíme k pronájmu byt v historické části Tábora, ulice Převrátilská. Byt o dispozici 2+kk a výměře 46 m2 se nachází ve 3.NP zrekonstruovaného bytového domu. Byt se pronajímá zařízený kuchyňskou linkou se spotřebiči (digestoř, elektrická trouba, varná deska, lednice, myčka na nádobí). Dispozice bytu-vstupní chodba, ložnice, obývací pokoj s kuchyňským koutem, koupelna se sprchovým koutem a WC, malý půdní prostor. Vytápění plynové, kotel pro celý dům, v jednotlivých bytech radiátory s vlastními měřiči spotřeby. Nájemné ve výši 12.500 Kč + záloha na služby 3.000,-Kč ( pro dvě osoby) + elektřinu si nájemce hradí s dodavatelem . Majitel požaduje vratnou kauci ve výši 12.500 Kč a poplatek zprostředkovateli ve výši 12.500 Kč + 21% DPH. Byt je k dispozici po dohodě. Vhodné pro dvě osoby. Pro více informací a domluvení prohlídky kontaktujte makléře."
+    },
+    {
       "id": "sr_1306898508",
       "title": "Pronájem bytu 2+kk 90 m²",
       "price": 15000,
@@ -325,7 +365,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-30",
-      "listing_updated_at": "2026-07-31",
+      "listing_updated_at": "2026-08-12",
       "description": "Nabízím k pronájmu světlý a prostorný byt 3+1, o velikosti 75 m², umístěný v 5. patře kompletně revitalizovaného panelového domu na Sídlišti Nad Lužnicí v Táboře. Jedná se o prostorný byt, který se skládá z velkého obývacího pokoje, ložnice, dětského pokoje, dvou komor, předsíně, chodby a kuchyně. Byt prošel v letošním roce kompletní rekonstrukcí a dosud v něm nikdo nebydlel, proto bude mít první nájemce skutečný komfort. Dispozičně je byt velmi prostorný, nabízí spoustu možností pro úložné prostory. Vybavení bytu na fotografiích je součástí – v bytě se nachází trouba, mikrovlnka, myčka, lednice, pračka, postel a skřínky. Dále k bytu náleží sklepní kóje v suterénu domu. Dům je zateplený, má plastová okna a dvojici prostorných výtahů. Jedná se o skvělou lokalita s kompletní občanskou vybaveností v docházkové vzdálenosti – obchodní zóny, restaurace, sportoviště, zastávka mhd. Byt je vhodný především k dlouhodobému pronájmu a je k nastěhování ihned."
     },
     {
@@ -589,26 +629,6 @@
       "description": "K dlouhodobému podnájmu nabízím prostorný a plně vybavený apartmán s přístupem na rozlehlou zahradu o rozloze 2 000 m² s vířivkou, přírodním jezerem a dětským hřištěm, nacházející se uprostřed jihočeské přírody v osadě Nepřejov (Nadějkov), jen hodinu jízdy od Prahy. Apartmán je součástí zrekonstruovaného venkovského stavení a je ideální pro větší rodinu nebo partu přátel jako prázdninový dům. OBJEKT NENÍ MOŽNO DÁLE PODNAJÍMAT/PRONAJÍMAT! Byt má rozlohu 120 m² a je kompletně vybavený včetně spotřebičů i nábytku. V přízemí se nachází prostorná společenská místnost s krbem a kuchyňským koutem (lednice, mrazák, dřez, elektrický vařič). V patře jsou dvě ložnice, každá s manželskou postelí a samostatným jednolůžkem, a koupelna s vanou. K apartmánovému domu patří společná zahrada o rozloze 2 000 m², kterou mohou podnájemníci využívat. Nachází se zde přírodní jezírko, venkovní vířivka, bazén, pergola s posezením, ohniště, gril, dětské hřiště, kolárna. Okolí spadá do turistické oblasti Toulava, známé turistickými stezkami, cyklotrasami a v zimě klasickým lyžováním. Apartmán se nachází 10 minut jízdy autem od lyžařského areálu Monínec, 3 minuty od golfové hřiště Čertovo Břemeno. V docházkové vzdálenosti se nachází biofarma se sadem a včelstvy. Nejbližší město s občanskou vybaveností je vzdáleno 5 km, okresní město Tábor 20km. Cena podnájmu 13 000 Kč/měsíčně Zálohy na energie, vodu a služby (jímka, péče o zahradu, vířivka, bazén, jezero) 7 000 Kč/měsíčně Jistina (kauce) 20 000 Kč Provize realitní kanceláře je ve výši měsíčního podnájmu + DPH (13 000 Kč + DPH) Zaujala Vás tato nabídka? Neváhejte mě kontaktovat pro více informací! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
-      "id": "sr_3652444236",
-      "title": "Pronájem bytu 2+kk 45 m²",
-      "price": 15000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/3652444236?noredirect=1",
-      "lat": 49.386154734004116,
-      "lng": 14.686824964468995,
-      "sqm": 45,
-      "rooms": 2,
-      "address": "Vítkovecká, Sezimovo Ústí, Sezimovo Ústí",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-13",
-      "listing_updated_at": "2026-08-08",
-      "description": "Hledáte moderní a klidné bydlení? Nabízíme k pronájmu byt 2+kk (45 m²) v nově postaveném rodinném domě v Sezimově Ústí I, v ulici Vítkovecká. K dispozici je rozlehlá oplocená zahrada, vybavená pergola pro společné chvíle a prostorné parkoviště přímo u domu. Nájem: 15 000 Kč/měsíc + cca 3 000 Kč/měsíc za služby. Požadavky na nájemce: Hledáme spolehlivé a solventní nájemníky s dobrou platební morálkou, bez probíhajících exekučních či insolvenčních řízení. Preferujeme dlouhodobý pronájem podmíněný složením vratné kauce ve výši 3měsíčních nájmů. Byt je striktně nekuřácký. Domácí mazlíčci jsou povoleni pouze po předchozí domluvě (pouze menší plemena). Vybavení a hlavní výhody: • Moderní novostavba v žádané a klidné lokalitě • Nová kuchyňská linka se spotřebiči a prosvětlené interiéry • Oplocené parkoviště zaručující bezproblémové parkování • Velká zahrada k relaxaci a odpočinku • Zastřešená pergola s posezením Bydlení je ideální pro rodiny s dětmi, páry i jednotlivce, kteří ocení kombinaci moderního bytu a výhod rodinného domu se zahradou."
-    },
-    {
       "id": "sr_2458837068",
       "title": "Pronájem bytu 1+1 40 m²",
       "price": 9900,
@@ -647,26 +667,6 @@
       "listing_published_at": "2026-07-02",
       "listing_updated_at": "2026-07-02",
       "description": "K pronájmu Vám nabízím moderní, zařízený byt 2+kk o velikosti 40 m2, který se nachází ve 2. patře novostavby bytového domu. Byt bude k dispozici k nastěhování od 1.10.2026. Tento příjemný byt se skládá z předsíně, pokoje s kuchyňským koutem, ložnice a koupelny s WC. Byt má podlahové vytápění s individuálním ovládáním v každé místnosti. Součástí pronájmu je kompletní vybavení: TV, sedací souprava a konferenční stolek, skříň, stůl, postel, věšák, lednička, kávovar, mikrovlná trouba, indukční deska a nádobí. V domě je k dispozici také společná prádelna (pračka, sušička) a garáž na uložení věcí. K dispozici je i uzavřená společná terasa určená pouze pro obyvatele domu - ideální místo k relaxaci. Celý objekt je vkusně osvětlený, díky čemuž je atmosféra ve večerních hodinách nejen útulná, ale i bezpečná. Parkování je bezproblémové, lze parkovat přímo před domem. Měsíční náklady na bydlení: Nájemné: 13.000 Kč / měsíc Energie + služby: 3.000 Kč/měsíc Kauce: 16.000 Kč Provize RK: 13.000 Kč + DPH Pozn.: Elektřina a voda jsou vyúčtovávány 1x ročně dle skutečné spotřeby. Jistebnice leží kousek od Tábora i Milevska a nabízí vše, co člověk pro pohodlné bydlení potřebuje - obchod, mateřskou i základní školu, restauraci i poštu. Dostupná je také autobusová doprava. Okolí je plné krásné přírody, která přímo vybízí k procházkám, výletům a dalším volnočasovým aktivitám. Pokud Vás nabídka zaujala, kontaktujte makléřku nabídky pro více informací a termín prohlídky! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
-    },
-    {
-      "id": "sr_3251404876",
-      "title": "Pronájem bytu 2+kk 39 m²",
-      "price": 11000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/3251404876?noredirect=1",
-      "lat": 49.2961266451933,
-      "lng": 14.4678809647721,
-      "sqm": 39,
-      "rooms": 2,
-      "address": "Soukenická, Bechyně, Bechyně",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-06-03",
-      "listing_updated_at": "2026-06-03",
-      "description": "V zastoupení majitele nabízíme pronájem bytu 2+KK v obci Bechyně. Byt se nachází v podkroví domu, půdní vestavba, v ulici Soukenická. Byt je po kompletní rekonstrukci. V domě je pět bytových jednotek. Vybavení v bytě je kuchyňská linka, koupelna, vybavena sprchovým koutem, umyvadlo, zrcadlo, WC. Podlahy v bytě jsou z PVC, dlažba, plovoucí podlaha. K bytu náleží prostorný sklep. Možnost parkování na náměstí u domu. Bechyně je šestitisícové lázeňské jihočeské město, které leží asi dvacet kilometrů jižně od Tábora nad soutokem Lužnice a říčky Smutné. Město je velmi malebné, klidné, má množství kulturních památek a romantické okolí. Zámek, kostel sv. Matěje na náměstí, Františkánský klášter, kostel sv. Michala, židovský hřbitov, lázně. K nastěhování od 1.8.2026."
     },
     {
       "id": "sr_1708888140",

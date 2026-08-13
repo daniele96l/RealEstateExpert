@@ -1,5 +1,53 @@
 [
   {
+    "id": "sr_3463610444",
+    "portal": "sreality",
+    "detected_at": "2026-08-13T07:56:02.702Z",
+    "presumed_rented_at": "2026-08-13T07:56:02.702Z",
+    "first_seen_at": "2026-07-12T19:34:54.123Z",
+    "last_seen_at": "2026-08-12T07:53:58.627Z",
+    "days_on_market": 32,
+    "price": 11900,
+    "sqm": 34,
+    "rooms": 1,
+    "property_type": "flat",
+    "address": "Sportovní, Rosice, Rosice",
+    "zone": "Rosice",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/3463610444?noredirect=1",
+    "description": "Nabízíme k pronájmu poslední volný apartmán (A301) umístěný ve 3. nadzemním podlaží nové přístavby na ulici Sportovní - Rosice u Brna. Jednotka je orientována na jihovýchod, což zajišťuje příjemné denní světlo. Současně připravujeme k pronájmu i další apartmány, které budou dokončovány v následujících měsících. Apartmán nabízí obytný pokoj s kuchyňským koutem a dostatkem prostoru. Koupelna je vybavena umyvadlem, sprchovým koutem a přípojkou pro pračku. Toaleta je samostatná. Kuchyňská linka je vybavena elektrickou troubou, varnou deskou, digestoří a vestavěnou lednicí. Součástí je také příprava pro mikrovlnnou troubu. Apartmán se pronajímá bez dalšího vybavení. Vytápění zajišťuje plynový kotel umístěný na podlaží, který pomáhá snižovat tepelné ztráty a udržovat rozumné provozní náklady. Měsíční zálohy ve výši 2.550 Kč zahrnují náklady na teplo, vodu, elektřinu i poplatky za společné prostory, výtah a odvoz komunálního odpadu. Kauce je stanovena ve výši dvou měsíčních nájmů. Provize realitní kanceláře činí jeden měsíční nájem. Obec Rosice se nachází východně od Brna, odkud je centrum města dostupné autem přibližně za 20 minut. Autobusová zastávka je vzdálena jen 4 minuty chůze od domu. Do centra Rosic i k rosickému zámku dojdete pohodlně během 10 minut. Výhodou lokality je také široká nabídka pracovních příležitostí v Rosicích a okolí spolu s rychlým spojením do Brna. Pronájem je určen zájemcům bez domácích mazlíčků. Pro více informací nebo domluvení prohlídky kontaktujte makléře.",
+    "title": "Pronájem bytu 1+kk 34 m²",
+    "bathrooms": null,
+    "floor": null,
+    "energy_class": null,
+    "energy_kwh_sqm": null,
+    "images": null,
+    "furnished": null,
+    "built_year": null,
+    "lift": null,
+    "garden": null,
+    "terrace": null,
+    "garage": null,
+    "condominio_monthly": null,
+    "advertiser_name": null,
+    "condition": null,
+    "condition_status": null,
+    "needs_renovation": null,
+    "listing_published_at": "2026-06-04",
+    "listing_updated_at": "2026-08-07",
+    "lat": 49.1851586361,
+    "lng": 16.39013885,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:54.123Z",
+        "price": 12413
+      },
+      {
+        "at": "2026-08-08T07:14:25.737Z",
+        "price": 11900
+      }
+    ]
+  },
+  {
     "id": "sr_3169624140",
     "portal": "sreality",
     "detected_at": "2026-08-06T08:57:35.597Z",
