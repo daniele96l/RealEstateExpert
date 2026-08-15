@@ -1,13 +1,53 @@
 {
   "city": "cz_tabor",
   "operation": "sale",
-  "fetched_at": "2026-08-14T07:51:39.041Z",
+  "fetched_at": "2026-08-15T07:02:05.848Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_930582604",
+      "title": "Prodej bytu 3+1 74 m²",
+      "price": 6490000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/_/930582604?noredirect=1",
+      "lat": 49.4276585061135,
+      "lng": 14.6848881745771,
+      "sqm": 74,
+      "rooms": 3,
+      "address": "Družstevní, Čekanice, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-05-21",
+      "listing_updated_at": "2026-08-14",
+      "description": "Exkluzivně nabízíme k prodeji bytovou jednotku o dispozici 3+1 v ulici Družstevní v části Čekanice. Byt se nachází v 1. patře bytového domu a nabízí užitnou plochu 74 m². Součástí bytu je balkon a samostatná terasa o výměře 47,54 m², která poskytuje nadstandardní venkovní prostor pro relaxaci, posezení s rodinou či přáteli nebo letní grilování. Díky oddělenému umístění balkonu a terasy nabízí byt více možností využití venkovních prostor a zároveň větší komfort a soukromí. Dispozice bytu je prakticky řešena a nabízí dostatek prostoru pro pohodlné rodinné bydlení. Velkým benefitem této nemovitosti je také vlastní dílna/sklep, která může sloužit jako úložný prostor, technické zázemí nebo místo pro kutily. Součástí prodeje je rovněž vlastní garáž, která zajišťuje pohodlné parkování i další úložné možnosti. Byt je vhodný jak pro vlastní bydlení, tak i jako investiční příležitost. Umístění v 1. patře zajišťuje pohodlný přístup a příjemné bydlení v klidné lokalitě. Čekanice jsou vyhledávanou částí Tábora s výbornou dostupností do centra města a kompletní občanskou vybaveností v okolí. V blízkosti naleznete školy, školky, obchody, restaurace, zdravotní služby, sportovní areály i zastávky MHD. Lokalita zároveň nabízí dostatek zeleně a možností pro procházky, sport i volnočasové aktivity. Pro komunikaci uvádějte evidenční číslo zakázky N117973."
+    },
+    {
+      "id": "sr_2312749132",
+      "title": "Prodej bytu 2+1 74 m²",
+      "price": 2850000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/_/2312749132?noredirect=1",
+      "lat": 49.348358496,
+      "lng": 14.6334465744,
+      "sqm": 74,
+      "rooms": 2,
+      "address": "Maršov, Malšice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-14",
+      "listing_updated_at": "2026-08-14",
+      "description": "Prodej prostorného bytu 2+1, 74 m², Maršov Nabízíme k prodeji prostorný byt o dispozici 2+1 a celkové výměře 74 m², který se nachází v 1. zvýšeném podlaží bytového domu v klidné obci Maršov. Byt disponuje dvěma samostatnými pokoji o velikosti 22 m² a 23 m² a prostornou kuchyní o výměře 25 m², která nabízí dostatek místa pro jídelní kout i každodenní rodinný život. Příjemnou atmosféru interiéru doplňují krbová kamna, která zajišťují nejen tepelný komfort, ale dodávají bytu osobitý charakter. Je vypracovaný projekt na instalaci kotle s rozvodem tepla po bytě a ohřevem teplé vody. Projekt součástí prodeje. Součástí prodeje jsou také dva sklepy o výměře 8 m² a 6 m², které poskytují dostatek úložného prostoru. Na posledním snímku je oranžově vyznačená garáž a zahrada, která jsou také součástí. Maršov je klidná obec obklopená přírodou, ideální pro ty, kteří hledají bydlení mimo ruch města, ale zároveň ocení příjemné a dostupné zázemí pro každodenní život. Pokud hledáte prostorný byt v klidné lokalitě s příjemnou atmosférou, neváhejte nás kontaktovat pro více informací nebo domluvení prohlídky."
+    },
     {
       "id": "sr_1092027212",
       "title": "Prodej bytu 3+kk 89 m²",
@@ -125,7 +165,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-20",
-      "listing_updated_at": "2026-08-13",
+      "listing_updated_at": "2026-08-14",
       "description": "Nabízíme k prodeji byt 1+1 v os. vlastnictví v Táboře, ulice Budovatelů 2616 v 1. nadzemní podlaží. Byt prošel částečnou rekonstrukcí, celková plocha 42,47 m2, sklep 3,25 m2. Podlaha v pokoji připravena na finální pokládku (nivelační stěrka hotová). Je možné se dohodnout i k pronájmu garáže. Orientace bytu na jihozápad. Doporučujeme k bydlení i jako investici."
     },
     {
@@ -205,7 +245,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-06-23",
-      "listing_updated_at": "2026-08-13",
+      "listing_updated_at": "2026-08-14",
       "description": "K prodeji bytová jednotka 3+1 s balkonem v Táboře, ulice Angela Kančeva. Nachází se ve třetím patře zděného bytového domu. Dům projde příští rok revitalizací. Stav jednotky je původní s plastovými okny(s trojskly). Byt je orientovaný na sever, jih a východ. Vytápění a teplá voda jsou dálkové. Dispozici je možné při rekonstrukci upravit na 4+1. K jednotce náleží sklep 10 m2. Výhodou může být možnost přikoupit k bytu garáž před kterou lze zaparkovat další vůz."
     },
     {
@@ -527,26 +567,6 @@
       "listing_published_at": "2025-08-26",
       "listing_updated_at": "2026-08-10",
       "description": "Prodej bytu 3+kk, 77,2 m² + terasa a zahrádka – developerský projekt (dokončení srpen 2026) Nabízíme k prodeji moderní byt o dispozici 3+kk a celkové ploše 77,2 m², který se nachází v 1. nadzemním podlaží nového developerského projektu. Součástí bytu je terasa s navazující zahrádkou určenou k výlučnému užívání vlastníka bytu, ideální pro relaxaci, posezení či zahradničení. Hrubá stavba projektu je již dokončena, dokončení celého areálu je plánováno na léto 2026. Byt nabízí možnost individuálních klientských úprav, a to jak v rámci dispozice bytu, tak řešení terasy a venkovního prostoru, dle technických možností projektu. Projekt je situován v lokalitě Čekanice, která nabízí klidné bydlení s výbornou dostupností do centra Tábora. V docházkové vzdálenosti se nachází vlakové nádraží, zajišťující pohodlné spojení nejen do Tábora, ale i do širšího okolí. Bytový dům bude napojen na centrální zdroj tepla, který zajišťuje vytápění i ohřev teplé vody. Díky moderním technologiím splňuje budova energetickou třídu náročnosti A – mimořádně úsporná. V ceně bytu je zahrnuto: podlahové krytiny interiérové dveře kompletně vybavená koupelna příprava na kuchyňskou linku Cena za byt: 100 000 Kč/m² Zahrada je součástí ceny za nemovitost uvedenou v interátu Nabízíme i možnost zakoupení parkovacího stání vedle domu. Pro více informací nebo sjednání prohlídky nás neváhejte kontaktovat. Rádi vám poskytneme veškeré podrobnosti o projektu."
-    },
-    {
-      "id": "sr_930582604",
-      "title": "Prodej bytu 3+1 74 m²",
-      "price": 6490000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/_/930582604?noredirect=1",
-      "lat": 49.4276585061135,
-      "lng": 14.6848881745771,
-      "sqm": 74,
-      "rooms": 3,
-      "address": "Družstevní, Čekanice, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-05-21",
-      "listing_updated_at": "2026-08-07",
-      "description": "Exkluzivně nabízíme k prodeji bytovou jednotku o dispozici 3+1 v ulici Družstevní v části Čekanice. Byt se nachází v 1. patře bytového domu a nabízí užitnou plochu 74 m². Součástí bytu je balkon a samostatná terasa o výměře 47,54 m², která poskytuje nadstandardní venkovní prostor pro relaxaci, posezení s rodinou či přáteli nebo letní grilování. Díky oddělenému umístění balkonu a terasy nabízí byt více možností využití venkovních prostor a zároveň větší komfort a soukromí. Dispozice bytu je prakticky řešena a nabízí dostatek prostoru pro pohodlné rodinné bydlení. Velkým benefitem této nemovitosti je také vlastní dílna/sklep, která může sloužit jako úložný prostor, technické zázemí nebo místo pro kutily. Součástí prodeje je rovněž vlastní garáž, která zajišťuje pohodlné parkování i další úložné možnosti. Byt je vhodný jak pro vlastní bydlení, tak i jako investiční příležitost. Umístění v 1. patře zajišťuje pohodlný přístup a příjemné bydlení v klidné lokalitě. Čekanice jsou vyhledávanou částí Tábora s výbornou dostupností do centra města a kompletní občanskou vybaveností v okolí. V blízkosti naleznete školy, školky, obchody, restaurace, zdravotní služby, sportovní areály i zastávky MHD. Lokalita zároveň nabízí dostatek zeleně a možností pro procházky, sport i volnočasové aktivity. Pro komunikaci uvádějte evidenční číslo zakázky N117973."
     },
     {
       "id": "sr_1810227276",
