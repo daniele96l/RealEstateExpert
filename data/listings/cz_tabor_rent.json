@@ -1,7 +1,7 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-08-15T07:01:31.284Z",
+  "fetched_at": "2026-08-16T07:00:25.887Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
@@ -627,6 +627,26 @@
       "listing_published_at": "2026-07-21",
       "listing_updated_at": "2026-07-22",
       "description": "Rádi bychom Vám představili byt v perfektním stavu k pronájmu v Soběslavi. Jedná se o útulný byt 2+kk o celkové výměře 43 m², který se nachází ve třetím patře panelového domu s výtahem. Byt nabízí dostatečný prostor pro komfortní bydlení. Byt se pronajímá částečně vybavený (dle domluvy). Součástí vybavení zůstává šatní skříň a postel v ložnici. V obývacím pokoji je skříň, gauč, stolek. V kuchyni se nachází jídelní stůl, židle a lednice s mrazákem. Kuchyň je vybavena varnou deskou, pečicí troubou a digestoří. V koupelně je připojená pračka k okamžitému použití. Koupelna a samostatné WC jsou zděné. K bytu náleží také prostorná sklepní kóje, kam lze uskladnit např. kolo nebo sezónní věci. Dům je zatím nezateplený, má plastová okna, nové vchodové dveře, zvonky a poštovní schránky. Byt je ideální pro jednotlivce nebo pár, který hledá klidné bydlení v zeleni, ale zároveň ocení výbornou dostupnost. Byt je vybaven balkónem. Panelový dům se nachází na okraji sídliště a zajišťuje klidné bydlení s výbornou dopravní dostupností. V případě potřeby můžete využít vlakové spojení, dálnici a autobusové spoje. Parkování před domem. Cena pronájmu je 12 400 Kč + záloha na energie 2700 Kč měsíčně + elektřina (přepis na nájemce - orientačně cca 1.000 - 2.000 Kč/měsíc dle spotřeby). Byt bude k nastěhování od 1. září 2026, což vám poskytuje dostatek času na plánování stěhování. Vratná kauce ve výši 25 000 Kč. Velkou výhodou je lokalita. Sídliště Svákov nabízí kompletní občanskou vybavenost školy, školky, obchody, restaurace, školu, školku i zastávky MHD. V blízkosti domu se nachází dětské hřiště a nedaleko sportovní areál. Okolí vybízí k příjemným procházkám, sportovnímu vyžití a relaxu. Byt je vhodný pro nekuřáky. Preferujeme dlouhodobý pronájem, ideálně pro osoby bez domácích mazlíčků. Hledáme spolehlivého a finančně zodpovědného nájemníka. Pouze zájemci bez probíhající insolvence či exekuce a s trvalým bydlištěm vedeným na standardní adrese, nikoliv na ÚP. Pro více informací nebo sjednání prohlídky mě neváhejte kontaktovat."
+    },
+    {
+      "id": "sr_3652444236",
+      "title": "Pronájem bytu 2+kk 45 m²",
+      "price": 15000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/3652444236?noredirect=1",
+      "lat": 49.386154734004116,
+      "lng": 14.686824964468995,
+      "sqm": 45,
+      "rooms": 2,
+      "address": "Vítkovecká, Sezimovo Ústí, Sezimovo Ústí",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-13",
+      "listing_updated_at": "2026-08-15",
+      "description": "Hledáte moderní a klidné bydlení? Nabízíme k pronájmu byt 2+kk (45 m²) v nově postaveném rodinném domě v Sezimově Ústí I, v ulici Vítkovecká. K dispozici je rozlehlá oplocená zahrada, vybavená pergola pro společné chvíle a prostorné parkoviště přímo u domu. Nájem: 15 000 Kč/měsíc + cca 3 000 Kč/měsíc za služby. Požadavky na nájemce: Hledáme spolehlivé a solventní nájemníky s dobrou platební morálkou, bez probíhajících exekučních či insolvenčních řízení. Preferujeme dlouhodobý pronájem podmíněný složením vratné kauce ve výši 3měsíčních nájmů. Byt je striktně nekuřácký. Domácí mazlíčci jsou povoleni pouze po předchozí domluvě (pouze menší plemena). Vybavení a hlavní výhody: • Moderní novostavba v žádané a klidné lokalitě • Nová kuchyňská linka se spotřebiči a prosvětlené interiéry • Oplocené parkoviště zaručující bezproblémové parkování • Velká zahrada k relaxaci a odpočinku • Zastřešená pergola s posezením Bydlení je ideální pro rodiny s dětmi, páry i jednotlivce, kteří ocení kombinaci moderního bytu a výhod rodinného domu se zahradou."
     },
     {
       "id": "sr_2458837068",
