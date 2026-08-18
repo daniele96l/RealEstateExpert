@@ -2,8 +2,8 @@
   "city": "Reggio Calabria",
   "market": "it",
   "portal": "immobiliare_scraper",
-  "updated_at": "2026-08-17T07:11:17.326Z",
-  "snapshot_count": 47,
+  "updated_at": "2026-08-18T06:53:36.291Z",
+  "snapshot_count": 48,
   "last_provider": "reggio_rentals",
   "listings": {
     "im_60357824": {
@@ -37,23 +37,12 @@
       "lng": 15.64669991,
       "sqm": 70,
       "rooms": 3,
+      "property_type": "Attico - Mansarda",
       "address": "Via Feudo, 35",
       "zone": "Ravagnese, Gallina, Armo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 470
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/78894637/",
       "listing_published_at": "2023-04-12",
       "listing_updated_at": "2026-05-28",
-      "url": "https://www.immobiliare.it/annunci/78894637/",
-      "property_type": "Attico - Mansarda",
       "description": null,
       "title": "Attico - Mansarda",
       "bathrooms": 1,
@@ -71,7 +60,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 470
+        }
+      ]
     },
     "im_86728980": {
       "id": "im_86728980",
@@ -80,23 +80,12 @@
       "lng": 15.66168022,
       "sqm": 128,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via Salita Zerbi Traversa 1, 4",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 600
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/86728980/",
       "listing_published_at": "2021-03-23",
       "listing_updated_at": "2026-04-04",
-      "url": "https://www.immobiliare.it/annunci/86728980/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -114,7 +103,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 600
+        }
+      ]
     },
     "im_94562640": {
       "id": "im_94562640",
@@ -166,10 +166,10 @@
       "lng": 15.66064739,
       "sqm": 30,
       "rooms": 1,
-      "address": "Via Cardinale Gennaro Portanova",
+      "address": "Via Cardinale Gennaro Portanova, 128",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-17T07:11:17.326Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -184,7 +184,7 @@
       "url": "https://www.immobiliare.it/annunci/97747342/",
       "property_type": "Appartamento",
       "description": "Inside a larger apartment, on the 4th floor with elevator, elegantly furnished studio or one-bedroom apartments (one double bed, one single sofa bed, wardrobes, table and chairs) with en-suite bathroom complete with washing machine, kitchenette complete with sink, burners, hood, and fridge. Air conditioning, 40-inch television, windows or balconies. Studio 25 sqm: €370/month + €30/utility expenses + electricity consumption/month. Studio 30 sqm: €420/month + €30/month utility expenses + electricity consumption/month. Studio 40 sqm: €470/month + €30/month utility expenses + electricity consumption/month. One-bedroom apartment: €570/month + €30/month utility expenses + electricity consumption/month. One-time security deposit of €300 to be refunded at the end of the lease if there are no damages.",
-      "title": "Monolocale via Cardinale Gennaro Portanova 128, Tremulini - Eremo, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 1,
       "floor": "4",
       "energy_class": null,
@@ -261,23 +261,12 @@
       "lng": 15.65481663,
       "sqm": 100,
       "rooms": 3,
+      "property_type": "Villa",
       "address": "Via Nazionale Occhio di Pellaro, 157",
       "zone": "San Gregorio, Pellaro",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1000
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/109938953/",
       "listing_published_at": "2024-03-06",
       "listing_updated_at": "2026-08-09",
-      "url": "https://www.immobiliare.it/annunci/109938953/",
-      "property_type": "Villa",
       "description": null,
       "title": "Villa",
       "bathrooms": 2,
@@ -295,7 +284,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1000
+        }
+      ]
     },
     "im_109971267": {
       "id": "im_109971267",
@@ -328,23 +328,12 @@
       "lng": 15.64101982,
       "sqm": 140,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via Tommaso Gulli, 24",
       "zone": "Terreti, Ortì",
       "url": "https://www.immobiliare.it/annunci/110843515/",
       "listing_published_at": "2024-04-11",
       "listing_updated_at": "2026-07-16",
-      "first_seen_at": "2026-07-17T08:20:46.815Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 31,
-      "price_history": [
-        {
-          "at": "2026-07-17T08:20:46.815Z",
-          "price": 1000
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -362,7 +351,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1000
+        }
+      ]
     },
     "im_110940589": {
       "id": "im_110940589",
@@ -395,23 +395,12 @@
       "lng": 15.65408039,
       "sqm": 70,
       "rooms": 1,
+      "property_type": "Appartamento",
       "address": "Via Sant'Anna II Tronco, 121",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 400
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/112215613/",
       "listing_published_at": "2024-06-02",
       "listing_updated_at": "2026-03-02",
-      "url": "https://www.immobiliare.it/annunci/112215613/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -429,7 +418,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 400
+        }
+      ]
     },
     "im_113935425": {
       "id": "im_113935425",
@@ -481,23 +481,12 @@
       "lng": 15.6549,
       "sqm": 150,
       "rooms": null,
+      "property_type": "Appartamento",
       "address": "Via Giuseppe Melacrino",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 600
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/114316089/",
       "listing_published_at": "2024-09-05",
       "listing_updated_at": "2026-02-25",
-      "url": "https://www.immobiliare.it/annunci/114316089/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -515,7 +504,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 600
+        }
+      ]
     },
     "im_115350817": {
       "id": "im_115350817",
@@ -524,23 +524,12 @@
       "lng": 15.6417,
       "sqm": 297,
       "rooms": 5,
+      "property_type": "Villa",
       "address": "Vico Francia, 3",
       "zone": "Ravagnese, Gallina, Armo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1050
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/115350817/",
       "listing_published_at": "2024-10-15",
       "listing_updated_at": "2025-03-20",
-      "url": "https://www.immobiliare.it/annunci/115350817/",
-      "property_type": "Villa",
       "description": null,
       "title": "Villa",
       "bathrooms": null,
@@ -558,7 +547,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1050
+        }
+      ]
     },
     "im_116189527": {
       "id": "im_116189527",
@@ -567,23 +567,12 @@
       "lng": 15.66464043,
       "sqm": 157,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Spirito Santo, 291A",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 600
-        }
-      ],
-      "listing_published_at": "2024-11-16",
-      "listing_updated_at": "2026-02-16",
       "url": "https://www.immobiliare.it/annunci/116189527/",
-      "property_type": "Appartamento",
+      "listing_published_at": "2024-11-16",
+      "listing_updated_at": "2026-08-16",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -601,7 +590,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 600
+        }
+      ]
     },
     "im_116788667": {
       "id": "im_116788667",
@@ -610,23 +610,12 @@
       "lng": 15.6458,
       "sqm": 150,
       "rooms": 5,
+      "property_type": "Appartamento",
       "address": "Via Sbarre Superiori di Marconi, 11",
       "zone": "Ferrovieri, Stadio, Sbarre",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 550
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/116788667/",
       "listing_published_at": "2024-12-07",
       "listing_updated_at": "2026-07-08",
-      "url": "https://www.immobiliare.it/annunci/116788667/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -644,7 +633,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 550
+        }
+      ]
     },
     "im_116852959": {
       "id": "im_116852959",
@@ -653,23 +653,12 @@
       "lng": 15.66147995,
       "sqm": 143,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via Rausei, 1",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 650
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/116852959/",
       "listing_published_at": "2024-12-10",
       "listing_updated_at": "2026-03-10",
-      "url": "https://www.immobiliare.it/annunci/116852959/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -687,7 +676,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 650
+        }
+      ]
     },
     "im_117727317": {
       "id": "im_117727317",
@@ -696,23 +696,12 @@
       "lng": 15.6422,
       "sqm": 65,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Traversa Lungomare",
       "zone": "Ravagnese, Gallina, Armo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 2000
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/117727317/",
       "listing_published_at": "2025-01-23",
       "listing_updated_at": "2026-05-18",
-      "url": "https://www.immobiliare.it/annunci/117727317/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -730,7 +719,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 2000
+        }
+      ]
     },
     "im_118009681": {
       "id": "im_118009681",
@@ -739,23 +739,12 @@
       "lng": 15.644,
       "sqm": 150,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via degli Ottimati",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1000
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/118009681/",
       "listing_published_at": "2025-02-02",
       "listing_updated_at": "2026-03-02",
-      "url": "https://www.immobiliare.it/annunci/118009681/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -773,7 +762,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1000
+        }
+      ]
     },
     "im_120883186": {
       "id": "im_120883186",
@@ -782,23 +782,12 @@
       "lng": 15.63570023,
       "sqm": 90,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Gaeta, 7",
       "zone": "Terreti, Ortì",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 650
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/120883186/",
       "listing_published_at": "2025-05-27",
       "listing_updated_at": "2026-02-27",
-      "url": "https://www.immobiliare.it/annunci/120883186/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -816,7 +805,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 650
+        }
+      ]
     },
     "im_121202144": {
       "id": "im_121202144",
@@ -825,23 +825,12 @@
       "lng": 15.65861034,
       "sqm": 105,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Viale Giovanni Amendola, 2N",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 550
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/121202144/",
       "listing_published_at": "2025-06-07",
       "listing_updated_at": "2026-03-07",
-      "url": "https://www.immobiliare.it/annunci/121202144/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -859,7 +848,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 550
+        }
+      ]
     },
     "im_121212916": {
       "id": "im_121212916",
@@ -868,23 +868,12 @@
       "lng": 15.65291119,
       "sqm": 200,
       "rooms": 4,
+      "property_type": "Attico - Mansarda",
       "address": "Via Santa Caterina d'Alessandria, 2",
       "zone": "Santa Caterina, San Brunello, Vito",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 2000
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/121212916/",
       "listing_published_at": "2025-06-08",
       "listing_updated_at": "2026-03-08",
-      "url": "https://www.immobiliare.it/annunci/121212916/",
-      "property_type": "Attico - Mansarda",
       "description": null,
       "title": "Attico - Mansarda",
       "bathrooms": null,
@@ -902,7 +891,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 2000
+        }
+      ]
     },
     "im_121213236": {
       "id": "im_121213236",
@@ -911,23 +911,12 @@
       "lng": 15.65828991,
       "sqm": 100,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Nazionale Pentimele, 87",
       "zone": "Santa Caterina, San Brunello, Vito",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 650
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/121213236/",
       "listing_published_at": "2025-06-08",
       "listing_updated_at": "2026-03-08",
-      "url": "https://www.immobiliare.it/annunci/121213236/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -945,7 +934,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 650
+        }
+      ]
     },
     "im_121485084": {
       "id": "im_121485084",
@@ -954,23 +954,12 @@
       "lng": 15.65903187,
       "sqm": 100,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Petrara, 10",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1000
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/121485084/",
       "listing_published_at": "2025-06-19",
       "listing_updated_at": "2026-03-19",
-      "url": "https://www.immobiliare.it/annunci/121485084/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -988,7 +977,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1000
+        }
+      ]
     },
     "im_121513576": {
       "id": "im_121513576",
@@ -997,23 +997,12 @@
       "lng": 15.63461971,
       "sqm": 65,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Antonio Pacinotti, 44",
       "zone": "Terreti, Ortì",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 700
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/121513576/",
       "listing_published_at": "2025-06-20",
       "listing_updated_at": "2026-03-20",
-      "url": "https://www.immobiliare.it/annunci/121513576/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1031,7 +1020,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 700
+        }
+      ]
     },
     "im_121632084": {
       "id": "im_121632084",
@@ -1040,23 +1040,12 @@
       "lng": 15.64731979,
       "sqm": 178,
       "rooms": 5,
+      "property_type": "Appartamento",
       "address": "Via Fiume, 20",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 800
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/121632084/",
       "listing_published_at": "2025-06-26",
       "listing_updated_at": "2026-05-22",
-      "url": "https://www.immobiliare.it/annunci/121632084/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -1074,7 +1063,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 800
+        }
+      ]
     },
     "im_121840474": {
       "id": "im_121840474",
@@ -1083,23 +1083,12 @@
       "lng": 15.64722443,
       "sqm": 240,
       "rooms": 5,
+      "property_type": "Villetta a schiera",
       "address": "Via Quarnaro, 24",
       "zone": "Archi, Gallico, Catona",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1200
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/121840474/",
       "listing_published_at": "2025-07-05",
       "listing_updated_at": "2026-04-05",
-      "url": "https://www.immobiliare.it/annunci/121840474/",
-      "property_type": "Villetta a schiera",
       "description": null,
       "title": "Villetta a schiera",
       "bathrooms": null,
@@ -1117,7 +1106,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1200
+        }
+      ]
     },
     "im_122129486": {
       "id": "im_122129486",
@@ -1149,23 +1149,12 @@
       "lng": 15.65425968,
       "sqm": 25,
       "rooms": 1,
+      "property_type": "Appartamento",
       "address": "Via Italia, 77d",
       "zone": "Santa Caterina, San Brunello, Vito",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 300
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/122472158/",
       "listing_published_at": "2025-08-05",
       "listing_updated_at": "2026-06-27",
-      "url": "https://www.immobiliare.it/annunci/122472158/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1183,7 +1172,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 300
+        }
+      ]
     },
     "im_122525596": {
       "id": "im_122525596",
@@ -1192,23 +1192,12 @@
       "lng": 15.65793037,
       "sqm": 80,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Antonino Lupoi",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 400
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/122525596/",
       "listing_published_at": "2025-08-08",
       "listing_updated_at": "2026-08-08",
-      "url": "https://www.immobiliare.it/annunci/122525596/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1226,7 +1215,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 400
+        }
+      ]
     },
     "im_122553782": {
       "id": "im_122553782",
@@ -1235,23 +1235,12 @@
       "lng": 15.6404,
       "sqm": 56,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Fratelli Cairoli",
       "zone": "Terreti, Ortì",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 750
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/122553782/",
       "listing_published_at": "2025-08-11",
       "listing_updated_at": "2025-12-01",
-      "url": "https://www.immobiliare.it/annunci/122553782/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1269,7 +1258,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 750
+        }
+      ]
     },
     "im_122724752": {
       "id": "im_122724752",
@@ -1303,23 +1303,12 @@
       "lng": 15.6996,
       "sqm": 450,
       "rooms": 5,
+      "property_type": "Villa",
       "address": "Via Armo Gallina, 102",
       "zone": "Ravagnese, Gallina, Armo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 2200
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/122774598/",
       "listing_published_at": "2025-08-29",
       "listing_updated_at": "2025-11-04",
-      "url": "https://www.immobiliare.it/annunci/122774598/",
-      "property_type": "Villa",
       "description": null,
       "title": "Villa",
       "bathrooms": null,
@@ -1337,7 +1326,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 2200
+        }
+      ]
     },
     "im_124083629": {
       "id": "im_124083629",
@@ -1346,23 +1346,12 @@
       "lng": 15.65429974,
       "sqm": 75,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Zara",
       "zone": "Santa Caterina, San Brunello, Vito",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 790
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/124083629/",
       "listing_published_at": "2025-10-23",
       "listing_updated_at": "2026-07-23",
-      "url": "https://www.immobiliare.it/annunci/124083629/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1380,7 +1369,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 790
+        }
+      ]
     },
     "im_124137611": {
       "id": "im_124137611",
@@ -1389,23 +1389,12 @@
       "lng": 15.6512,
       "sqm": 55,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Trabocchetto 2",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 550
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/124137611/",
       "listing_published_at": "2025-10-26",
       "listing_updated_at": "2025-11-02",
-      "url": "https://www.immobiliare.it/annunci/124137611/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1423,7 +1412,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 550
+        }
+      ]
     },
     "im_124365585": {
       "id": "im_124365585",
@@ -1432,23 +1432,12 @@
       "lng": 15.6535,
       "sqm": 80,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via 25 Luglio 1943",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1500
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/124365585/",
       "listing_published_at": "2025-11-04",
       "listing_updated_at": "2025-11-04",
-      "url": "https://www.immobiliare.it/annunci/124365585/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1466,7 +1455,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1500
+        }
+      ]
     },
     "im_124400853": {
       "id": "im_124400853",
@@ -1475,23 +1475,12 @@
       "lng": 0,
       "sqm": 131,
       "rooms": 5,
+      "property_type": "Appartamento",
       "address": "Vico Ferruccio, 113",
       "zone": "Altro",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 690
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/124400853/",
       "listing_published_at": "2025-11-05",
       "listing_updated_at": "2025-11-05",
-      "url": "https://www.immobiliare.it/annunci/124400853/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -1509,7 +1498,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 690
+        }
+      ]
     },
     "im_124609435": {
       "id": "im_124609435",
@@ -1561,23 +1561,12 @@
       "lng": 15.65583134,
       "sqm": 40,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Strada Statale 106, 121",
       "zone": "San Gregorio, Pellaro",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 200
-        }
-      ],
-      "listing_published_at": "2025-11-17",
-      "listing_updated_at": "2026-02-17",
       "url": "https://www.immobiliare.it/annunci/124703031/",
-      "property_type": "Appartamento",
+      "listing_published_at": "2025-11-17",
+      "listing_updated_at": "2026-08-17",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1595,7 +1584,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 200
+        }
+      ]
     },
     "im_125046079": {
       "id": "im_125046079",
@@ -1604,23 +1604,12 @@
       "lng": 15.65544033,
       "sqm": 30,
       "rooms": 1,
+      "property_type": "Appartamento",
       "address": "Via Tito Minniti, 8",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 450
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/125046079/",
       "listing_published_at": "2025-11-29",
       "listing_updated_at": "2026-02-28",
-      "url": "https://www.immobiliare.it/annunci/125046079/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1638,7 +1627,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 450
+        }
+      ]
     },
     "im_125806441": {
       "id": "im_125806441",
@@ -1647,23 +1647,12 @@
       "lng": 15.67803192,
       "sqm": 50,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Tangenziale di Reggio Calabria",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 460
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/125806441/",
       "listing_published_at": "2026-01-10",
       "listing_updated_at": "2026-06-26",
-      "url": "https://www.immobiliare.it/annunci/125806441/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1681,7 +1670,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 460
+        }
+      ]
     },
     "im_125889403": {
       "id": "im_125889403",
@@ -1690,23 +1690,12 @@
       "lng": 15.65547466,
       "sqm": 75,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Tangenziale di Reggio Calabria, 45",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1000
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/125889403/",
       "listing_published_at": "2026-01-14",
       "listing_updated_at": "2026-04-14",
-      "url": "https://www.immobiliare.it/annunci/125889403/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -1724,7 +1713,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1000
+        }
+      ]
     },
     "im_125901407": {
       "id": "im_125901407",
@@ -1776,23 +1776,12 @@
       "lng": 15.6549,
       "sqm": 130,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Amerigo Vespucci",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 600
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/126246661/",
       "listing_published_at": "2026-01-27",
       "listing_updated_at": "2026-05-20",
-      "url": "https://www.immobiliare.it/annunci/126246661/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1810,7 +1799,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 600
+        }
+      ]
     },
     "im_126420789": {
       "id": "im_126420789",
@@ -1819,23 +1819,12 @@
       "lng": 15.6379,
       "sqm": 65,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Marsala, 25",
       "zone": "Terreti, Ortì",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 630
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/126420789/",
       "listing_published_at": "2026-02-03",
       "listing_updated_at": "2026-02-03",
-      "url": "https://www.immobiliare.it/annunci/126420789/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1853,7 +1842,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 630
+        }
+      ]
     },
     "im_126463611": {
       "id": "im_126463611",
@@ -1862,23 +1862,12 @@
       "lng": 15.65642929,
       "sqm": 110,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via Santa Lucia al Parco, 25",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 450
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/126463611/",
       "listing_published_at": "2026-02-04",
       "listing_updated_at": "2026-08-04",
-      "url": "https://www.immobiliare.it/annunci/126463611/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1896,7 +1885,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 450
+        }
+      ]
     },
     "im_126843697": {
       "id": "im_126843697",
@@ -1905,23 +1905,12 @@
       "lng": 15.63639832,
       "sqm": 80,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Gebbione, 12",
       "zone": "Ferrovieri, Stadio, Sbarre",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 500
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/126843697/",
       "listing_published_at": "2026-02-18",
       "listing_updated_at": "2026-06-26",
-      "url": "https://www.immobiliare.it/annunci/126843697/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1939,7 +1928,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 500
+        }
+      ]
     },
     "im_127196251": {
       "id": "im_127196251",
@@ -1991,23 +1991,12 @@
       "lng": 15.66419983,
       "sqm": 130,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via Cardinale Gennaro Portanova, 45",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 500
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/127319251/",
       "listing_published_at": "2026-03-08",
       "listing_updated_at": "2026-03-08",
-      "url": "https://www.immobiliare.it/annunci/127319251/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -2025,7 +2014,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 500
+        }
+      ]
     },
     "im_127372275": {
       "id": "im_127372275",
@@ -2081,23 +2081,12 @@
       "lng": 15.6549,
       "sqm": 200,
       "rooms": 5,
+      "property_type": "Appartamento",
       "address": "Via Giuseppe Melacrino",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 800
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/127699486/",
       "listing_published_at": "2026-03-23",
       "listing_updated_at": "2026-03-23",
-      "url": "https://www.immobiliare.it/annunci/127699486/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -2115,7 +2104,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 800
+        }
+      ]
     },
     "im_127800514": {
       "id": "im_127800514",
@@ -2191,23 +2191,12 @@
       "lng": 15.6489,
       "sqm": 300,
       "rooms": 5,
+      "property_type": "Appartamento",
       "address": "Via Sbarre Centrali",
       "zone": "Ferrovieri, Stadio, Sbarre",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1000
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/127949808/",
       "listing_published_at": "2026-04-01",
       "listing_updated_at": "2026-04-01",
-      "url": "https://www.immobiliare.it/annunci/127949808/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": null,
@@ -2225,7 +2214,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1000
+        }
+      ]
     },
     "im_128067144": {
       "id": "im_128067144",
@@ -2234,23 +2234,12 @@
       "lng": 15.63483238,
       "sqm": 75,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Giuseppe Mercalli, 22",
       "zone": "Terreti, Ortì",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 500
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/128067144/",
       "listing_published_at": "2026-04-06",
       "listing_updated_at": "2026-05-15",
-      "url": "https://www.immobiliare.it/annunci/128067144/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -2268,7 +2257,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 500
+        }
+      ]
     },
     "im_128083956": {
       "id": "im_128083956",
@@ -2277,23 +2277,12 @@
       "lng": 15.66132164,
       "sqm": 150,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via Privata Nervesa, 31",
       "zone": "Santa Caterina, San Brunello, Vito",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 700
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/128083956/",
       "listing_published_at": "2026-04-07",
       "listing_updated_at": "2026-04-08",
-      "url": "https://www.immobiliare.it/annunci/128083956/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -2311,7 +2300,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 700
+        }
+      ]
     },
     "im_128107322": {
       "id": "im_128107322",
@@ -2320,23 +2320,12 @@
       "lng": 15.6478,
       "sqm": 173,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via della giudecca , 47",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1000
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/128107322/",
       "listing_published_at": "2026-04-08",
       "listing_updated_at": "2026-04-08",
-      "url": "https://www.immobiliare.it/annunci/128107322/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -2354,7 +2343,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1000
+        }
+      ]
     },
     "im_128276172": {
       "id": "im_128276172",
@@ -2363,23 +2363,12 @@
       "lng": 15.6481,
       "sqm": 110,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via Sbarre Superiori",
       "zone": "Ferrovieri, Stadio, Sbarre",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 450
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/128276172/",
       "listing_published_at": "2026-04-14",
       "listing_updated_at": "2026-05-13",
-      "url": "https://www.immobiliare.it/annunci/128276172/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -2397,7 +2386,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 450
+        }
+      ]
     },
     "im_128296168": {
       "id": "im_128296168",
@@ -2473,23 +2473,12 @@
       "lng": 15.6503,
       "sqm": 95,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Appartamento",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1200
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/128398032/",
       "listing_published_at": "2026-04-18",
       "listing_updated_at": "2026-04-18",
-      "url": "https://www.immobiliare.it/annunci/128398032/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -2507,7 +2496,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1200
+        }
+      ]
     },
     "im_128615324": {
       "id": "im_128615324",
@@ -2516,10 +2516,10 @@
       "lng": 15.6425,
       "sqm": 150,
       "rooms": 5,
-      "address": "Via fra Gesualdo Melacrino",
+      "address": "Via fra Gesualdo Melacrino, 53",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-17T07:11:17.326Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2534,7 +2534,7 @@
       "url": "https://www.immobiliare.it/annunci/128615324/",
       "property_type": "Appartamento",
       "description": "Via Fra Gesualdo Melacrinò We offer for rent a bright apartment located on the fourth floor of a building served by an elevator, characterized by a splendid panoramic view that provides natural light throughout the day. The entrance welcomes you into a functional and well-distributed environment, leading to the various spaces of the house. The kitchen, already partially furnished, is ideal for those who desire practicality without sacrificing personalization. The living room, spacious and livable, represents the heart of the home, perfect for moments of relaxation or conviviality. The sleeping area consists of four bedrooms, an ideal solution for large families, professionals, or those who need dedicated spaces for study or smart working. The two bathrooms ensure comfort and functionality in daily management, while the practical storage room offers additional space for organizing the home. Completing the property are the balconies, which allow you to enjoy open and airy views, further enhancing the livability of the spaces. The property is in fair internal condition, equipped with wooden fixtures with single glass and air conditioners, offering a good level of living comfort. It is also partially furnished, ensuring an ideal balance between practicality and personalization. The high floor position, combined with the presence of the elevator, ensures tranquility, privacy, and ease of access. An ideal solution for those looking for generous spaces, brightness, and an open view, without sacrificing the convenience of services. Contact us for more information or to schedule a visit: this could be the home you were looking for.",
-      "title": "Appartamento via fra Gesualdo Melacrino 53, Centro Storico, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 2,
       "floor": "4",
       "energy_class": null,
@@ -2701,10 +2701,10 @@
       "lng": 15.6588,
       "sqm": 87,
       "rooms": 2,
-      "address": "Vicolo Casalotto",
+      "address": "Vicolo Casalotto, 39",
       "zone": "Santa Caterina, San Brunello, Vito",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-17T07:11:17.326Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2717,9 +2717,9 @@
       "listing_published_at": "2026-05-06",
       "listing_updated_at": "2026-07-14",
       "url": "https://www.immobiliare.it/annunci/128829948/",
-      "property_type": "Bilocale",
+      "property_type": "Appartamento",
       "description": "Vicolo Casalotto. The Tecnocasa Agency Studio Reggio Calabria Nord offers for rent an apartment of 87 sqm located on the raised ground floor, in Via Casalotto. The property is in good condition and equipped with air conditioning, providing a functional layout with 2 bedrooms, a comfortable kitchen-living room, a rather spacious storage room, and a bathroom. A courtyard of about 25 sqm, for exclusive use, completes the residence, providing a second and convenient independent entrance to the apartment. The strategic location ensures easy access to the main services in the area, making daily life comfortable and convenient. Just a few steps from the motorway exit, the apartment is ideal for those who need quick and frequent movements. An excellent solution for those looking for a welcoming environment that is well connected, without giving up the tranquility of a reserved outdoor space.",
-      "title": "Bilocale vicolo Casalotto 39, Santa Caterina - San Brunello, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 1,
       "floor": "T",
       "energy_class": null,
@@ -2777,23 +2777,12 @@
       "lng": 15.64616966,
       "sqm": 80,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Sbarre Superiori, 95",
       "zone": "Ferrovieri, Stadio, Sbarre",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 400
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/128967368/",
       "listing_published_at": "2026-05-10",
       "listing_updated_at": "2026-08-10",
-      "url": "https://www.immobiliare.it/annunci/128967368/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -2811,7 +2800,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 400
+        }
+      ]
     },
     "im_129015602": {
       "id": "im_129015602",
@@ -2820,23 +2820,12 @@
       "lng": 15.6486,
       "sqm": 45,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Demetrio Tripepi 65",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 550
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129015602/",
       "listing_published_at": "2025-12-04",
       "listing_updated_at": "2026-06-04",
-      "url": "https://www.immobiliare.it/annunci/129015602/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -2854,7 +2843,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 550
+        }
+      ]
     },
     "im_129015608": {
       "id": "im_129015608",
@@ -2863,23 +2863,12 @@
       "lng": 0,
       "sqm": 18,
       "rooms": null,
+      "property_type": "Appartamento",
       "address": "Via Demetrio Tripepi 65",
       "zone": "Altro",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 110
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129015608/",
       "listing_published_at": "2025-12-04",
       "listing_updated_at": "2026-05-12",
-      "url": "https://www.immobiliare.it/annunci/129015608/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": null,
@@ -2897,7 +2886,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 110
+        }
+      ]
     },
     "im_129015638": {
       "id": "im_129015638",
@@ -2906,23 +2906,12 @@
       "lng": 0,
       "sqm": 60,
       "rooms": 2,
+      "property_type": "Villa",
       "address": "Agriturismo Sant'Anna 89126, Reggio Calabria Reggi",
       "zone": "Altro",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 400
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129015638/",
       "listing_published_at": "2025-12-04",
       "listing_updated_at": "2026-05-12",
-      "url": "https://www.immobiliare.it/annunci/129015638/",
-      "property_type": "Villa",
       "description": null,
       "title": "Villa",
       "bathrooms": 1,
@@ -2940,7 +2929,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 400
+        }
+      ]
     },
     "im_129015642": {
       "id": "im_129015642",
@@ -2949,23 +2949,12 @@
       "lng": 0,
       "sqm": 75,
       "rooms": 2,
+      "property_type": "Villetta a schiera",
       "address": "Ortì Contrada Sant'Anna",
       "zone": "Terreti, Ortì",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 450
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129015642/",
       "listing_published_at": "2025-12-04",
       "listing_updated_at": "2026-05-12",
-      "url": "https://www.immobiliare.it/annunci/129015642/",
-      "property_type": "Villetta a schiera",
       "description": null,
       "title": "Villetta a schiera",
       "bathrooms": 1,
@@ -2983,7 +2972,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 450
+        }
+      ]
     },
     "im_129015646": {
       "id": "im_129015646",
@@ -2992,23 +2992,12 @@
       "lng": 0,
       "sqm": 50,
       "rooms": 2,
+      "property_type": "Attico - Mansarda",
       "address": "Via Cappuccinelli Diramazione Zagarella 40",
       "zone": "Altro",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 545
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129015646/",
       "listing_published_at": "2025-12-04",
       "listing_updated_at": "2026-05-12",
-      "url": "https://www.immobiliare.it/annunci/129015646/",
-      "property_type": "Attico - Mansarda",
       "description": null,
       "title": "Attico - Mansarda",
       "bathrooms": 1,
@@ -3026,7 +3015,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 545
+        }
+      ]
     },
     "im_129015648": {
       "id": "im_129015648",
@@ -3035,23 +3035,12 @@
       "lng": 0,
       "sqm": 95,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via Demetrio Tripepi 65",
       "zone": "Altro",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1200
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129015648/",
       "listing_published_at": "2026-05-12",
       "listing_updated_at": "2026-05-12",
-      "url": "https://www.immobiliare.it/annunci/129015648/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -3069,7 +3058,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1200
+        }
+      ]
     },
     "im_129022956": {
       "id": "im_129022956",
@@ -3192,23 +3192,12 @@
       "lng": 15.6468,
       "sqm": 141,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Guglielmo Marconi",
       "zone": "Ferrovieri, Stadio, Sbarre",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 400
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129133436/",
       "listing_published_at": "2026-05-15",
       "listing_updated_at": "2026-05-18",
-      "url": "https://www.immobiliare.it/annunci/129133436/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -3226,7 +3215,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 400
+        }
+      ]
     },
     "im_129244466": {
       "id": "im_129244466",
@@ -3278,23 +3278,12 @@
       "lng": 15.6389,
       "sqm": 140,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Bosco, 20",
       "zone": "San Gregorio, Pellaro",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 900
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129272118/",
       "listing_published_at": "2026-05-21",
       "listing_updated_at": "2026-05-21",
-      "url": "https://www.immobiliare.it/annunci/129272118/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -3312,7 +3301,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 900
+        }
+      ]
     },
     "im_129484956": {
       "id": "im_129484956",
@@ -3321,23 +3321,12 @@
       "lng": 15.65361977,
       "sqm": 260,
       "rooms": 5,
+      "property_type": "Appartamento",
       "address": "Via Salita Stazione Santa Caterina, 1",
       "zone": "Santa Caterina, San Brunello, Vito",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1500
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129484956/",
       "listing_published_at": "2026-05-29",
       "listing_updated_at": "2026-06-02",
-      "url": "https://www.immobiliare.it/annunci/129484956/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 3,
@@ -3355,7 +3344,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1500
+        }
+      ]
     },
     "im_129505842": {
       "id": "im_129505842",
@@ -3431,23 +3431,12 @@
       "lng": 15.6595,
       "sqm": 138,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via Santa Lucia, 37/O",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 450
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129724638/",
       "listing_published_at": "2026-04-15",
       "listing_updated_at": "2026-06-08",
-      "url": "https://www.immobiliare.it/annunci/129724638/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -3465,7 +3454,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 450
+        }
+      ]
     },
     "im_129765112": {
       "id": "im_129765112",
@@ -3474,23 +3474,12 @@
       "lng": 15.6339798,
       "sqm": 55,
       "rooms": 1,
+      "property_type": "Appartamento",
       "address": "Via Luigi Galvani, 5",
       "zone": "Terreti, Ortì",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 100
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129765112/",
       "listing_published_at": "2026-06-10",
       "listing_updated_at": "2026-06-10",
-      "url": "https://www.immobiliare.it/annunci/129765112/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -3508,7 +3497,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 100
+        }
+      ]
     },
     "im_129792080": {
       "id": "im_129792080",
@@ -3560,23 +3560,12 @@
       "lng": 15.6493,
       "sqm": 122,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via del Salvatore, 46",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 600
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129878944/",
       "listing_published_at": "2026-01-30",
       "listing_updated_at": "2026-07-29",
-      "url": "https://www.immobiliare.it/annunci/129878944/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -3594,7 +3583,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 600
+        }
+      ]
     },
     "im_129878974": {
       "id": "im_129878974",
@@ -3603,23 +3603,12 @@
       "lng": 15.6612,
       "sqm": 65,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Cardinale Portanova diramazione Rausei, 14",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 380
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129878974/",
       "listing_published_at": "2026-06-13",
       "listing_updated_at": "2026-07-31",
-      "url": "https://www.immobiliare.it/annunci/129878974/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -3637,7 +3626,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 380
+        }
+      ]
     },
     "im_129956468": {
       "id": "im_129956468",
@@ -3689,23 +3689,12 @@
       "lng": 15.6486,
       "sqm": 45,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Demetrio Tripepi, 65",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 600
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129957600/",
       "listing_published_at": "2026-06-16",
       "listing_updated_at": "2026-06-17",
-      "url": "https://www.immobiliare.it/annunci/129957600/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -3723,7 +3712,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 600
+        }
+      ]
     },
     "im_129972734": {
       "id": "im_129972734",
@@ -3732,23 +3732,12 @@
       "lng": 15.64700031,
       "sqm": 157,
       "rooms": 5,
+      "property_type": "Appartamento",
       "address": "Via Sbarre Superiori, 95M",
       "zone": "Ferrovieri, Stadio, Sbarre",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 450
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129972734/",
       "listing_published_at": "2026-06-17",
       "listing_updated_at": "2026-06-17",
-      "url": "https://www.immobiliare.it/annunci/129972734/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -3766,7 +3755,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 450
+        }
+      ]
     },
     "im_129975654": {
       "id": "im_129975654",
@@ -3775,23 +3775,12 @@
       "lng": 15.6486,
       "sqm": 41,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Demetrio Tripepi, 65",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 600
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129975654/",
       "listing_published_at": "2026-06-17",
       "listing_updated_at": "2026-06-17",
-      "url": "https://www.immobiliare.it/annunci/129975654/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -3809,7 +3798,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 600
+        }
+      ]
     },
     "im_129978024": {
       "id": "im_129978024",
@@ -3818,23 +3818,12 @@
       "lng": 15.6559,
       "sqm": 71,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Crocevia, 30",
       "zone": "San Gregorio, Pellaro",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 450
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/129978024/",
       "listing_published_at": "2025-06-18",
       "listing_updated_at": "2026-06-17",
-      "url": "https://www.immobiliare.it/annunci/129978024/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -3852,7 +3841,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 450
+        }
+      ]
     },
     "im_130040994": {
       "id": "im_130040994",
@@ -3928,23 +3928,12 @@
       "lng": 15.64400959,
       "sqm": 157,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Viale Pio XI, 1",
       "zone": "Ferrovieri, Stadio, Sbarre",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1000
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/130081744/",
       "listing_published_at": "2026-06-20",
       "listing_updated_at": "2026-07-08",
-      "url": "https://www.immobiliare.it/annunci/130081744/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -3962,7 +3951,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1000
+        }
+      ]
     },
     "im_130109684": {
       "id": "im_130109684",
@@ -3995,23 +3995,12 @@
       "lng": 15.6483,
       "sqm": 110,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Emilio Cuzzocrea",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 550
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/130122504/",
       "listing_published_at": "2026-06-22",
       "listing_updated_at": "2026-06-22",
-      "url": "https://www.immobiliare.it/annunci/130122504/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -4029,7 +4018,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 550
+        }
+      ]
     },
     "im_130152748": {
       "id": "im_130152748",
@@ -4114,23 +4114,12 @@
       "lng": 15.64941978,
       "sqm": 100,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Corso Giuseppe Garibaldi, 100",
       "zone": "Centro Storico, Pineta Zerbi",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 1300
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/130624882/",
       "listing_published_at": "2026-07-03",
       "listing_updated_at": "2026-07-06",
-      "url": "https://www.immobiliare.it/annunci/130624882/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -4148,7 +4137,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1300
+        }
+      ]
     },
     "im_130667618": {
       "id": "im_130667618",
@@ -4180,10 +4180,10 @@
       "lng": 15.6654,
       "sqm": 63,
       "rooms": 1,
-      "address": "Via Strada Provinciale Spirito Santo",
+      "address": "Via Strada Provinciale Spirito Santo, 6",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-17T07:11:17.326Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -4196,9 +4196,9 @@
       "listing_published_at": "2026-07-07",
       "listing_updated_at": "2026-07-07",
       "url": "https://www.immobiliare.it/annunci/130709348/",
-      "property_type": "Monolocale",
+      "property_type": "Appartamento",
       "description": "Spirito Santo. In an excellent residential context, within a recently constructed building served by an elevator, we offer for rent an elegant furnished studio apartment of about 50 sqm, located on the sixth and top floor. The property consists of a bright open space, with a fold-down bed, equipped kitchen, and direct access to a splendid terrace at the same level of about 55 sqm, ideal for enjoying pleasant moments outdoors while taking in a panoramic view. The bathroom has a window and is equipped with a comfortable shower. The property also includes a cellar in the basement and the following finishes: armored entrance door, double-glazed windows, and air conditioning. An ideal solution for singles or couples looking for a modern, comfortable apartment with ample outdoor spaces. The property requires a rental contract at an agreed rate and highly qualified tenants.",
-      "title": "Monolocale via Strada Provinciale Spirito Santo 6, Trabocchetto - Spirito Santo, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 1,
       "floor": "6",
       "energy_class": null,
@@ -4299,23 +4299,12 @@
       "lng": 15.6585,
       "sqm": 110,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "CONTRADA MARIANNAZZO, SNC",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
-      "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
-      "price_history": [
-        {
-          "at": "2026-07-08T15:25:48Z",
-          "price": 500
-        }
-      ],
+      "url": "https://www.immobiliare.it/annunci/130759116/",
       "listing_published_at": "2026-07-08",
       "listing_updated_at": "2026-08-03",
-      "url": "https://www.immobiliare.it/annunci/130759116/",
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -4333,7 +4322,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 500
+        }
+      ]
     },
     "im_130761342": {
       "id": "im_130761342",
@@ -4342,10 +4342,10 @@
       "lng": 15.6476,
       "sqm": 98,
       "rooms": 2,
-      "address": "Via dei Filippini",
+      "address": "Via dei Filippini, 38",
       "zone": "Centro Storico, Pineta Zerbi",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-08-17T07:11:17.326Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -4358,9 +4358,9 @@
       "listing_published_at": "2026-07-08",
       "listing_updated_at": "2026-07-08",
       "url": "https://www.immobiliare.it/annunci/130761342/",
-      "property_type": "Bilocale",
+      "property_type": "Appartamento",
       "description": "Via Filippini corner with Tapis Roulant. In a convenient and central location, at the corner with the tapis roulant, we offer for rent a cozy furnished apartment, located on the raised ground floor and ideal for those seeking comfort and functionality. The property consists of a kitchen with access to the internal balcony, a bright living room overlooking the tapis roulant, an internal bedroom that ensures maximum tranquility and privacy, and a windowed bathroom with a shower box. The apartment is equipped with all the main comforts: armored door, private autoclave, independent heating, and air conditioning. The rent includes condominium fees and water consumption. A ready-to-move-in solution, perfect for professionals or couples who wish to live in a well-served area without sacrificing tranquility. The property requires proven and solid income references.",
-      "title": "Bilocale via dei Filippini 38, Centro Storico, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 1,
       "floor": "R",
       "energy_class": null,
@@ -4437,12 +4437,12 @@
       "lng": 15.6569,
       "sqm": 126,
       "rooms": 4,
-      "address": "Via Cardinale Gennaro Portanova",
+      "address": "Via Cardinale Gennaro Portanova, 1",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "listing_published_at": "2026-07-11",
       "listing_updated_at": "2026-07-20",
       "first_seen_at": "2026-07-11T10:06:45Z",
-      "last_seen_at": "2026-08-17T07:11:17.326Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -4453,9 +4453,9 @@
         }
       ],
       "url": "https://www.immobiliare.it/annunci/130870058/",
-      "property_type": "Quadrilocale",
+      "property_type": "Appartamento",
       "description": "Vico Cardinale Portanova Spacious furnished apartment with exclusive courtyard – Via Cardinale Portanova area In a central and well-served location, just a short distance from Via Cardinale Portanova, we offer for rent a bright furnished apartment, located on the raised ground floor and featuring an exclusive courtyard/terrace. The property stands out for its spacious and well-distributed rooms and consists of: * Living room with eat-in kitchen; * Three spacious bedrooms; * Two windowed bathrooms; * Practical storage room. The property also includes: * Exclusive courtyard/terrace, ideal for relaxing moments with friends and family; * Reinforced entrance door; * Double-glazed windows; * Air conditioning. The strategic location allows for easy walking access to shops, schools, offices, hospitals, public transport, and all main services. Available exclusively for referenced individuals with demonstrable income. For more information or to schedule a visit, please do not hesitate to contact us.",
-      "title": "Quadrilocale via Cardinale Gennaro Portanova 1, Tremulini - Eremo, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 2,
       "floor": "R",
       "energy_class": null,
@@ -4513,13 +4513,13 @@
       "lng": 15.6773,
       "sqm": 66,
       "rooms": 1,
-      "address": "Via S. Sperato",
+      "address": "Via S. Sperato, 13",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "url": "https://www.immobiliare.it/annunci/130962896/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
       "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-17T07:11:17.326Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -4529,9 +4529,9 @@
           "price": 360
         }
       ],
-      "property_type": "Monolocale",
+      "property_type": "Appartamento",
       "description": "In Via San Sperato, within a building served by an elevator, built in 2001, a 66 sqm cadastral apartment is arranged over two levels, located on the third and fourth floors. The entrance opens onto the living area, a bright and well-organized space where the living room and kitchen merge into a single environment, perfect for those who love to live in a functional and stylish home. A convenient internal staircase leads to the upper level, dedicated to the sleeping area, which includes a bedroom and a bathroom, creating a pleasant separation between the home's environments. To complete the property, there is a convenient parking space within the condominium courtyard, an added value that makes daily life even more comfortable. The apartment is rented fully furnished, ready to be inhabited from day one. The rental of the property is reserved exclusively for those with a permanent employment contract in the public or state sector or for retirees, possessing adequate income guarantees.",
-      "title": "Monolocale via San Sperato 13, San Sperato, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 1,
       "floor": "4",
       "energy_class": null,
@@ -4589,23 +4589,12 @@
       "lng": 15.6409,
       "sqm": 65,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Viale Calabria No Number",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/130941424/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 680
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -4623,7 +4612,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 680
+        }
+      ]
     },
     "im_130941488": {
       "id": "im_130941488",
@@ -4632,23 +4632,12 @@
       "lng": 15.6517,
       "sqm": 80,
       "rooms": 1,
+      "property_type": "Appartamento",
       "address": "Diramazione Terza Via Ciccarello, 1",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/130941488/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 570
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -4666,7 +4655,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 570
+        }
+      ]
     },
     "im_130941454": {
       "id": "im_130941454",
@@ -4675,23 +4675,12 @@
       "lng": 15.6516,
       "sqm": 25,
       "rooms": 1,
+      "property_type": "Appartamento",
       "address": "Viale Pio Xi, 224",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/130941454/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 330
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -4709,7 +4698,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 330
+        }
+      ]
     },
     "im_130941330": {
       "id": "im_130941330",
@@ -4718,31 +4718,12 @@
       "lng": 15.6515,
       "sqm": 55,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Viale Pio Xi, 255",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/130941330/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-08-07",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 450
-        },
-        {
-          "at": "2026-07-29T08:49:35.032Z",
-          "price": 430
-        },
-        {
-          "at": "2026-08-08T07:02:59.199Z",
-          "price": 400
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -4760,7 +4741,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 400
+        }
+      ]
     },
     "im_130941420": {
       "id": "im_130941420",
@@ -4769,23 +4761,12 @@
       "lng": 15.6441,
       "sqm": 60,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Paolo Pellicano No Number",
       "zone": "Centro Storico, Pineta Zerbi",
       "url": "https://www.immobiliare.it/annunci/130941420/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 500
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -4803,7 +4784,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 500
+        }
+      ]
     },
     "im_130941398": {
       "id": "im_130941398",
@@ -4855,23 +4847,12 @@
       "lng": 15.6514,
       "sqm": 50,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Del Torrione, 9",
       "zone": "Centro Storico, Pineta Zerbi",
       "url": "https://www.immobiliare.it/annunci/130941370/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 650
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -4889,7 +4870,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 650
+        }
+      ]
     },
     "im_130941380": {
       "id": "im_130941380",
@@ -4898,27 +4890,12 @@
       "lng": 15.6373,
       "sqm": 130,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Vico Ecce Homo Diramazione Privata No Number",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/130941380/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-22",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 480
-        },
-        {
-          "at": "2026-07-23T08:39:31.113Z",
-          "price": 470
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -4936,7 +4913,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 470
+        }
+      ]
     },
     "im_130941318": {
       "id": "im_130941318",
@@ -4945,23 +4933,12 @@
       "lng": 15.6339,
       "sqm": 70,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Luigi Galvani No Number",
       "zone": "Terreti, Ortì",
       "url": "https://www.immobiliare.it/annunci/130941318/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 1000
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -4979,7 +4956,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1000
+        }
+      ]
     },
     "im_130941430": {
       "id": "im_130941430",
@@ -4988,23 +4976,12 @@
       "lng": 15.6339,
       "sqm": 55,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Luigi Galvani No Number",
       "zone": "Terreti, Ortì",
       "url": "https://www.immobiliare.it/annunci/130941430/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 700
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -5022,7 +4999,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 700
+        }
+      ]
     },
     "im_130941480": {
       "id": "im_130941480",
@@ -5031,23 +5019,12 @@
       "lng": 15.6382,
       "sqm": 100,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Sbarre Inferiori, 13",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/130941480/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 690
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -5065,7 +5042,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 690
+        }
+      ]
     },
     "im_130941450": {
       "id": "im_130941450",
@@ -5074,23 +5062,12 @@
       "lng": 15.6397,
       "sqm": 70,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "San Francesco Da Paola No Number",
       "zone": "Terreti, Ortì",
       "url": "https://www.immobiliare.it/annunci/130941450/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 1100
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -5108,7 +5085,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 1100
+        }
+      ]
     },
     "im_130941356": {
       "id": "im_130941356",
@@ -5117,23 +5105,12 @@
       "lng": 15.6549,
       "sqm": 55,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Pasquale Andiloro No Number",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "url": "https://www.immobiliare.it/annunci/130941356/",
       "listing_published_at": "2026-07-14",
       "listing_updated_at": "2026-07-14",
-      "first_seen_at": "2026-07-14T16:22:28.856Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
-      "price_history": [
-        {
-          "at": "2026-07-14T16:22:28.856Z",
-          "price": 450
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -5151,7 +5128,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 450
+        }
+      ]
     },
     "im_130963238": {
       "id": "im_130963238",
@@ -5228,23 +5216,12 @@
       "lng": 15.6552,
       "sqm": 83,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Pasquale Andiloro",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "url": "https://www.immobiliare.it/annunci/129728092/",
       "listing_published_at": "2026-06-08",
       "listing_updated_at": "2026-07-23",
-      "first_seen_at": "2026-07-18T08:02:10.122Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 30,
-      "price_history": [
-        {
-          "at": "2026-07-18T08:02:10.122Z",
-          "price": 280
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -5262,7 +5239,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 280
+        }
+      ]
     },
     "im_131064082": {
       "id": "im_131064082",
@@ -5314,23 +5302,12 @@
       "lng": 15.659,
       "sqm": 51,
       "rooms": 2,
+      "property_type": "Appartamento",
       "address": "Via Giusti, 5",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "url": "https://www.immobiliare.it/annunci/131064056/",
       "listing_published_at": "2025-11-07",
-      "listing_updated_at": "2026-08-15",
-      "first_seen_at": "2026-07-18T08:02:10.122Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 30,
-      "price_history": [
-        {
-          "at": "2026-07-18T08:02:10.122Z",
-          "price": 700
-        }
-      ],
-      "property_type": "Appartamento",
+      "listing_updated_at": "2026-08-17",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -5348,7 +5325,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 700
+        }
+      ]
     },
     "im_131097650": {
       "id": "im_131097650",
@@ -5357,23 +5345,12 @@
       "lng": 15.66362381,
       "sqm": 120,
       "rooms": 4,
+      "property_type": "Appartamento",
       "address": "Via Vecchia San Sperato",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "url": "https://www.immobiliare.it/annunci/131097650/",
       "listing_published_at": "2026-07-18",
       "listing_updated_at": "2026-07-19",
-      "first_seen_at": "2026-07-19T08:27:58.924Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 29,
-      "price_history": [
-        {
-          "at": "2026-07-19T08:27:58.924Z",
-          "price": 700
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -5391,7 +5368,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 700
+        }
+      ]
     },
     "im_131034712": {
       "id": "im_131034712",
@@ -5424,14 +5412,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-07-28T08:44:47.707Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 20,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-28T08:44:47.707Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 700
         }
       ]
@@ -5467,23 +5455,12 @@
       "lng": 15.6965,
       "sqm": 90,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Via Gallina-Armo Diramazione Fornaci",
       "zone": "Ravagnese, Gallina, Armo",
       "url": "https://www.immobiliare.it/annunci/131134678/",
       "listing_published_at": "2026-07-20",
       "listing_updated_at": "2026-07-20",
-      "first_seen_at": "2026-07-21T08:38:05.482Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 27,
-      "price_history": [
-        {
-          "at": "2026-07-21T08:38:05.482Z",
-          "price": 380
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -5501,7 +5478,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 380
+        }
+      ]
     },
     "im_131132064": {
       "id": "im_131132064",
@@ -5510,23 +5498,12 @@
       "lng": 15.6887,
       "sqm": 90,
       "rooms": 3,
+      "property_type": "Appartamento",
       "address": "Contrada Pietrastorta, 40",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "url": "https://www.immobiliare.it/annunci/131132064/",
       "listing_published_at": "2026-07-20",
       "listing_updated_at": "2026-07-21",
-      "first_seen_at": "2026-07-21T08:38:05.482Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 27,
-      "price_history": [
-        {
-          "at": "2026-07-21T08:38:05.482Z",
-          "price": 400
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -5544,7 +5521,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 400
+        }
+      ]
     },
     "im_131178704": {
       "id": "im_131178704",
@@ -5553,23 +5541,12 @@
       "lng": 15.6526,
       "sqm": 120,
       "rooms": 5,
+      "property_type": "Appartamento",
       "address": "Diramazione Gulli, 30",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/131178704/",
       "listing_published_at": "2026-07-21",
       "listing_updated_at": "2026-07-21",
-      "first_seen_at": "2026-07-22T08:37:26.309Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 26,
-      "price_history": [
-        {
-          "at": "2026-07-22T08:37:26.309Z",
-          "price": 400
-        }
-      ],
-      "property_type": "Appartamento",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -5587,7 +5564,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 400
+        }
+      ]
     },
     "im_131160644": {
       "id": "im_131160644",
@@ -5639,13 +5627,13 @@
       "lng": 15.669,
       "sqm": 58,
       "rooms": 2,
-      "address": "Via Madonna di Fatima",
+      "address": "Via Madonna di Fatima, 16",
       "zone": "Modena, San Giorgio Extra, San Sperato",
       "url": "https://www.immobiliare.it/annunci/131204930/",
       "listing_published_at": "2026-07-22",
       "listing_updated_at": "2026-07-22",
       "first_seen_at": "2026-07-23T08:39:31.113Z",
-      "last_seen_at": "2026-08-17T07:11:17.326Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -5655,9 +5643,9 @@
           "price": 350
         }
       ],
-      "property_type": "Bilocale",
+      "property_type": "Appartamento",
       "description": "Via Madonna di Fatima Panoramic two-room apartment with covered parking space – Fourth floor with elevator If you are looking for a comfortable, bright, and ready-to-live-in solution, this apartment represents an excellent opportunity for those who desire a functional, well-distributed home in a serviced context. The property, approximately 58 square meters, is located on the fourth floor, served by an elevator, and enjoys a pleasant panoramic exposure that provides natural light to the rooms and an open view. The entrance opens directly onto the cozy living area with a living room and kitchen in a single space, a practical and convivial area, ideal for daily life. The kitchen is already present, making the property partially furnished and ready to be personalized according to your needs. The sleeping area consists of a comfortable double bedroom, while the bathroom, with a window, ensures excellent ventilation and brightness. The property is completed by two balconies, which provide a pleasant outdoor escape and allow you to fully enjoy the panoramic view. What makes this solution even more interesting is the presence of a covered parking space, an added value that ensures practicality and comfort in everyday life. The apartment also features: * independent heating; * armored entrance door; * double-glazed windows for better thermal and acoustic insulation; * condominium autoclave; * elevator. Thanks to the rational distribution of spaces, the brightness of the rooms, and the available amenities, this home is ideal for singles, young couples, or professionals looking for a comfortable house with well-organized spaces and all the main comforts. Contact us for more information or to schedule an appointment: we will be happy to accompany you on a visit to this interesting rental solution.",
-      "title": "Bilocale via Madonna di Fatima 16, Trabocchetto - Spirito Santo, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 1,
       "floor": "4",
       "energy_class": null,
@@ -5691,13 +5679,13 @@
       "lng": 15.6592,
       "sqm": 120,
       "rooms": 4,
-      "address": "Via Achille Sacchi",
+      "address": "Via Achille Sacchi, 1",
       "zone": "Santa Caterina, San Brunello, Vito",
       "url": "https://www.immobiliare.it/annunci/131193188/",
       "listing_published_at": "2026-07-22",
       "listing_updated_at": "2026-07-22",
       "first_seen_at": "2026-07-23T08:39:31.113Z",
-      "last_seen_at": "2026-08-17T07:11:17.326Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -5707,9 +5695,9 @@
           "price": 500
         }
       ],
-      "property_type": "Quadrilocale",
+      "property_type": "Appartamento",
       "description": "VIA ACHILLE SACCHI In a quiet and well-served area, we offer for rent a bright furnished apartment, located on the 3rd floor of a building served by an elevator, in excellent maintenance condition and ready to be inhabited. The property, very bright thanks to its double exposure, also enjoys a pleasant partially panoramic view of the sea, making the rooms even more enjoyable and airy. The internal layout is functional and includes a spacious living room, a kitchen, three bedrooms, a bathroom, a storage room, and two balconies. The apartment is in excellent internal condition and is equipped with: * autonomous heating; * air conditioning; * armored entrance door; * aluminum frames with double glazing; * shutters; * mosquito nets. The property is rented fully furnished, representing the ideal solution for those looking for a comfortable home, ready to live in, and located in an area well connected to the main services. Please note that the property is not rented to students. For further information or to schedule a visit, do not hesitate to contact us.",
-      "title": "Quadrilocale via Achille Sacchi 1, Tremulini - Eremo, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 1,
       "floor": "3",
       "energy_class": null,
@@ -5749,17 +5737,6 @@
       "url": "https://www.immobiliare.it/annunci/131246058/",
       "listing_published_at": "2026-07-23",
       "listing_updated_at": "2026-07-23",
-      "first_seen_at": "2026-07-24T08:35:29.166Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 24,
-      "price_history": [
-        {
-          "at": "2026-07-24T08:35:29.166Z",
-          "price": 650
-        }
-      ],
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -5777,7 +5754,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 650
+        }
+      ]
     },
     "im_131262282": {
       "id": "im_131262282",
@@ -5792,17 +5780,6 @@
       "url": "https://www.immobiliare.it/annunci/131262282/",
       "listing_published_at": "2026-03-05",
       "listing_updated_at": "2026-07-24",
-      "first_seen_at": "2026-07-24T08:35:29.166Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 24,
-      "price_history": [
-        {
-          "at": "2026-07-24T08:35:29.166Z",
-          "price": 500
-        }
-      ],
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -5820,7 +5797,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 500
+        }
+      ]
     },
     "im_115704189": {
       "id": "im_115704189",
@@ -5964,21 +5952,6 @@
       "url": "https://www.immobiliare.it/annunci/131300894/",
       "listing_published_at": "2026-07-25",
       "listing_updated_at": "2026-07-31",
-      "first_seen_at": "2026-07-26T08:34:35.723Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 22,
-      "price_history": [
-        {
-          "at": "2026-07-26T08:34:35.723Z",
-          "price": 430
-        },
-        {
-          "at": "2026-07-31T08:58:12.230Z",
-          "price": 500
-        }
-      ],
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -5996,7 +5969,18 @@
       "advertiser_name": null,
       "condition": null,
       "condition_status": null,
-      "needs_renovation": null
+      "needs_renovation": null,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-08-18T06:53:36.291Z",
+          "price": 500
+        }
+      ]
     },
     "im_131332536": {
       "id": "im_131332536",
@@ -6029,14 +6013,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-07-27T10:02:09.693Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 21,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-27T10:02:09.693Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 400
         }
       ]
@@ -6049,13 +6033,13 @@
       "sqm": 140,
       "rooms": 5,
       "property_type": "Appartamento",
-      "address": "Via Scilla",
+      "address": "Via Scilla, 65",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/131346204/",
       "listing_published_at": "2026-07-27",
       "listing_updated_at": "2026-07-27",
       "description": "VIA SCILLA Apartment of 140 square meters located on the third floor of a well-maintained building served by an elevator. The property opens onto a comfortable hallway that leads to the living area, consisting of a kitchen with a dining room, a bathroom, and a spacious living room, ideal for moments of relaxation and socializing. The sleeping area offers three spacious bedrooms, a second bathroom, completely renovated in 2023, and a practical storage room. Completing the property is an assigned parking space within the condominium courtyard. The apartment enjoys double exposure, ensuring excellent brightness. Among the amenities, we find mosquito nets installed in all rooms and an independent heating system with radiators powered by a boiler. An ideal solution for families or for those looking for spacious living areas in a convenient and well-served context.",
-      "title": "Appartamento via Scilla 65, Sbarre, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 2,
       "floor": "3",
       "energy_class": null,
@@ -6082,7 +6066,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-07-28T08:44:47.707Z",
-      "last_seen_at": "2026-08-17T07:11:17.326Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6210,14 +6194,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-07-30T08:37:56.839Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 18,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-07-30T08:37:56.839Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 400
         }
       ]
@@ -6296,14 +6280,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-05T08:45:12.274Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 12,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-05T08:45:12.274Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 700
         }
       ]
@@ -6425,14 +6409,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-07T07:25:15.838Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 10,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-07T07:25:15.838Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 700
         }
       ]
@@ -6468,14 +6452,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-07T07:25:15.838Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 10,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-07T07:25:15.838Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 450
         }
       ]
@@ -6511,14 +6495,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-08T07:02:59.199Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 9,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-08T07:02:59.199Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 1000
         }
       ]
@@ -6554,14 +6538,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-08T07:02:59.199Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 9,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-08T07:02:59.199Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 500
         }
       ]
@@ -6597,14 +6581,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-12T07:41:22.457Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 5,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-12T07:41:22.457Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 500
         }
       ]
@@ -6640,14 +6624,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-12T07:41:22.457Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 5,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-12T07:41:22.457Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 950
         }
       ]
@@ -6683,14 +6667,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-12T07:41:22.457Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 5,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-12T07:41:22.457Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 500
         }
       ]
@@ -6726,14 +6710,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-14T07:40:25.316Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 3,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-14T07:40:25.316Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 580
         }
       ]
@@ -6769,14 +6753,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-16T06:49:46.926Z",
-      "last_seen_at": "2026-08-16T06:49:46.926Z",
-      "rented_at": "2026-08-17T07:11:17.326Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "first_seen_at": "2026-08-18T06:53:36.291Z",
+      "last_seen_at": "2026-08-18T06:53:36.291Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-16T06:49:46.926Z",
+          "at": "2026-08-18T06:53:36.291Z",
           "price": 850
         }
       ]
