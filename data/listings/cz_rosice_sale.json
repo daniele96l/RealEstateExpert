@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "sale",
-  "fetched_at": "2026-08-19T07:07:41.970Z",
+  "fetched_at": "2026-08-20T07:12:39.478Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_65912908",
+      "title": "Prodej bytu 2+kk 49 m²",
+      "price": 6920000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/65912908?noredirect=1",
+      "lat": 49.18807957962956,
+      "lng": 16.38436764478684,
+      "sqm": 49,
+      "rooms": 2,
+      "address": "Na Vyhlídce, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-19",
+      "listing_updated_at": "2026-08-19",
+      "description": "B 4.04 Hledáte výjimečné bydlení s atmosférou? Nabízíme k prodeji slunný byt 2+kk o užitné ploše 49 m² ve 4. nadzemním podlaží moderní novostavby v Rosicích. Dominantou bytu je velkorysá terasa o rozloze 29 m², na kterou vstoupíte z obou pokojů. Díky velkým proskleným stěnám jsou interiéry krásně světlé a vzdušné. Západní orientace zaručuje krásné západy slunce a dostatek denního světla. Byt nabízí naprostý klid v posledním patře, moderní standardy stavby a komfortní parkování. Byt je ideální pro mladé páry, jednotlivce hledající nadstandardní prostor nebo jako investice na pronájem díky skvělému poměru velikosti a úložných prostor. Výhodné financování: Nyní uhradíte pouze 10 % z kupní ceny a zbývajících 90 % doplatíte až po úspěšné kolaudaci v roce 2028. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. K bytu je možné dokoupit garážové stání v hodnotě 560.000,-Kč. Kolaudace a předání bytu leden, únor 2028. Pro více informací na webových stránkách panoramarosice."
+    },
     {
       "id": "sr_2249642060",
       "title": "Prodej bytu 3+kk 62 m²",
