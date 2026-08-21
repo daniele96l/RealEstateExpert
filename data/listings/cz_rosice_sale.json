@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "sale",
-  "fetched_at": "2026-08-20T07:12:39.478Z",
+  "fetched_at": "2026-08-21T07:08:37.057Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_4147991372",
+      "title": "Prodej bytu 4+1 101 m²",
+      "price": 7499000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/4+1/_/4147991372?noredirect=1",
+      "lat": 49.185885374093715,
+      "lng": 16.38124094868238,
+      "sqm": 101,
+      "rooms": 4,
+      "address": "Kaštanová, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-03-08",
+      "listing_updated_at": "2026-08-20",
+      "description": "Nabízíme prostorný byt o celkové ploše 101 m2. Byt poskytuje neprůchozí a velké pokoje s centrální chodbou, která umožňuje dostatečný úložný prostor, vhodný pro rodinu s dětmi. Součástí fotografií je i vizualizace možné úpravy bytu do \"velmi moderního stavu\" Rozpis místností a m2: - Kuchyně 9,5 m2 - Pokoj 20,44 m2 - Pokoj 16,02 m2 - Pokoj 13,63 m2 - Pokoj 19,92 m2 - Lodžie 3,79 m2 Celková plocha 101,21 m2 Byt je částečně po rekonstrukci (koupelna, okna, částečně podlahy, omítky, elektrika) Bezproblémové parkování za domem i pro více aut. Byt je alokován v těsné blízkosti Brna se skvělou dopravní dostupností. Prodej přímo od majitele bez RK. Bankovní odhad hodnoty nemovitosti je na 8 mil, prodej tedy dává někomu dostatečný prostor pro následnou rekonstrukci. Cenové zvýhodnění má omezenou dobu platnosti."
+    },
     {
       "id": "sr_65912908",
       "title": "Prodej bytu 2+kk 49 m²",
@@ -287,26 +307,6 @@
       "listing_published_at": "2026-04-13",
       "listing_updated_at": "2026-07-01",
       "description": "Ve výhradním zastoupení vám nabízíme prodej bytu se zahrádkou v Rosicích u Brna. Hledáte místo pro bydlení v bytě se zahrádkou, který je nízkonákladový a je s dobrým dosahem města a dostupností vlakem například od Brna? Hledáte dům, kde není nutné dělat rekonstrukci a stačí se jen nastěhovat? Právě Vám nabízíme byt o dispozici 2+kk se zahrádkou v okrajové části města Rosice. Po vstupu do zádveří, odkud je vstup do koupelny s WC o výměře 5,3 m² a na schodiště do podkroví, se před Vámi otevře světlý a prostorný obývací pokoj s kuchyňským koutem o výměře 27 m² a dále vstup na zahrádku s posezením o výměře 50 m². Podkroví o podlahové ploše 32 m² včetně úložného prostoru pod šikmou střechou. Celková plocha domu je 71 m² + zahrádka s posezením 50 m². Vytápění domu a ohřev vody je plynovým kotlem. Okna jsou plastová s izolačním dvojsklem. Fasáda domu a zateplení bylo realizováno v roce 2020. Jako podlahová krytina jsou použity dlažba a plovoucí podlaha. Průkaz energetické náročnosti: třída D. Rosice jsou město v okrese Brno-venkov v Jihomoravském kraji, 16 km západně od Brna. Leží v katastrálním území Rosice u Brna, tento název nese i místní pošta a železniční zastávka. Je zde veškerá občanská vybavenost. MŠ, ZŠ, obchod s potravinami, restaurace, městský úřad, pošta, lékárna a mnohé další. Dopravu zajištují autobusy a vlaky IDS JMk. Pro více informací nás neváhejte kontaktovat."
-    },
-    {
-      "id": "sr_4147991372",
-      "title": "Prodej bytu 4+1 101 m²",
-      "price": 7499000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/4+1/_/4147991372?noredirect=1",
-      "lat": 49.185885374093715,
-      "lng": 16.38124094868238,
-      "sqm": 101,
-      "rooms": 4,
-      "address": "Kaštanová, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-03-08",
-      "listing_updated_at": "2026-07-30",
-      "description": "Nabízíme prostorný byt o celkové ploše 101 m2. Byt poskytuje neprůchozí a velké pokoje s centrální chodbou, která umožňuje dostatečný úložný prostor, vhodný pro rodinu s dětmi. Součástí fotografií je i vizualizace možné úpravy bytu do \"velmi moderního stavu\" Rozpis místností a m2: - Kuchyně 9,5 m2 - Pokoj 20,44 m2 - Pokoj 16,02 m2 - Pokoj 13,63 m2 - Pokoj 19,92 m2 - Lodžie 3,79 m2 Celková plocha 101,21 m2 Byt je částečně po rekonstrukci (koupelna, okna, částečně podlahy, omítky, elektrika) Bezproblémové parkování za domem i pro více aut. Byt je alokován v těsné blízkosti Brna se skvělou dopravní dostupností. Prodej přímo od majitele bez RK."
     }
   ],
   "provider": "sreality"
