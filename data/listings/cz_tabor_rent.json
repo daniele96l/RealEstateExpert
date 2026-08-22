@@ -1,13 +1,53 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-08-21T07:07:55.555Z",
+  "fetched_at": "2026-08-22T07:01:47.240Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_322158668",
+      "title": "Pronájem bytu 1+1 36 m²",
+      "price": 9500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/322158668?noredirect=1",
+      "lat": 49.4190321362462,
+      "lng": 14.6464853348449,
+      "sqm": 36,
+      "rooms": 1,
+      "address": "Kpt. Jaroše, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-21",
+      "listing_updated_at": "2026-08-21",
+      "description": "Nabízíme k pronájmu zrekonstruovaný byt s balkonem v klidné lokalitě na Pražském sídlišti v Táboře, ulice Kpt. Jaroše. Byt o dispozici 1+1 a podlahové ploše 36m2 se nachází ve čtvrtém patře panelového domu. Byt je tvořen vstupní chodbou, koupelnou se sprchovým koutem a WC, pokojem s kuchyňskou linkou a ložnicí, ze které je vstup na balkon. Byt se pronajímá zařízený pouze kuchyňskou linkou s elektrickým sporákem, varnou deskou a myčkou. Vytápění centrální, samostatné měření vody a tepla. Nájemné ve výši 9.500,-Kč + 4.000,-Kč záloha na služby - TUV, SUV, topení, společná elektřina a úklid, správní poplatky spojené s užíváním bytu a spotřeba elektřiny bytu. Majitel požaduje vratnou kauci ve výši 18.000,-Kč + poplatek RK ve výši jednoho měs. nájmu + 21% DPH. Byt je volný od 1.10.2026. V dosahu veškerá občanská vybavenost nákupní středisko, zdravotní středisko, školka, škola, a dětské hřiště. Parkování před domem, v blízkosti zastávka MHD. Pro domluvení prohlídky kontaktujte makléře ing. Vendulu Kümmelovou."
+    },
+    {
+      "id": "sr_1714667596",
+      "title": "Pronájem bytu 1+1 32 m²",
+      "price": 9950,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/1714667596?noredirect=1",
+      "lat": 49.4100982840978,
+      "lng": 14.6839123220977,
+      "sqm": 32,
+      "rooms": 1,
+      "address": "Chýnovská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-21",
+      "listing_updated_at": "2026-08-21",
+      "description": "Nabízíme k pronájmu příjemný byt s vlastní šatnou 1+1 o výměře 32 m², který se nachází ve 2. patře bytového domu bez výtahu v ulici Chýnovská 533/1 v Táboře. K bytu náleží také praktický úložný prostor o výměře cca 1,5 m² ve formě uzamykatelné skříně. Byt nabízí praktickou dispozici 1+1 a díky své velikosti je ideální pro jednotlivce nebo pár. Velkou výhodou jsou **nízké měsíční náklady**. Nájemné činí 9 950 Kč měsíčně, záloha na vodu 350 Kč/osoba, záloha na otop 1 300 Kč měsíčně a paušální platba za služby 1 000 Kč měsíčně. Elektřina se přepisuje na nájemníka, předpokládaná měsíční záloha činí přibližně 850 Kč. **Předpokládané celkové měsíční náklady včetně elektřiny jsou přibližně 13 500 Kč.** Majitel požaduje vratnou kauci ve výši 20 000 Kč. Provize realitní kanceláři činí 5 000 Kč. Byt se nachází v dobře dostupné části Tábora s veškerou občanskou vybaveností v dosahu. Lokalita nabízí pohodlné spojení do centra města i dobrou dostupnost obchodů, služeb a dalších potřeb pro každodenní život. Dispozice: 1+1 Výměra bytu: 32 m² Úložný prostor: 1,5 m² uzamykatelná skříň Lokalita: Tábor, Chýnovská 533/1 Patro: 2. patro, bez výtahu Nájemné: 9 950 Kč/měsíc Voda: 350 Kč/os./měsíc Otop: 1 300 Kč/měsíc Paušální platba: 1 000 Kč/měsíc Elektřina: cca 850 Kč/měsíc, přepisuje se na nájemníka - jen předpoklad Předpokládané celkové měsíční náklady pro 1 osobu: cca 13 500 Kč, pro 2 osoby cca 14 000 Kč Vratná kauce: 20 000 Kč Provize RK: 5 000 Kč K dispozici: od 28.9.2026 Vhodné pro: jednotlivce nebo pár Byt je k dispozici po dohodě. Pro domluvení prohlídky kontaktujte makléře."
+    },
     {
       "id": "sr_4139565132",
       "title": "Pronájem bytu 3+1 120 m²",
@@ -191,7 +231,7 @@
     {
       "id": "sr_4077830220",
       "title": "Pronájem bytu 2+kk 57 m²",
-      "price": 17000,
+      "price": 15500,
       "operation": "rent",
       "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/4077830220?noredirect=1",
       "lat": 49.4131914718755,
@@ -205,8 +245,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-18",
-      "listing_updated_at": "2026-08-18",
-      "description": "Nabízíme k pronájmu byt o dispozici 2+kk s obytnou plochou 57 m², který se nachází ve 4. patře cihlového domu s výtahem, přímo v centru města. Byt nabízí příjemné a praktické uspořádání. Součástí je balkon o velikosti 6 m², který poskytuje příjemný prostor pro posezení a odpočinek. Kuchyňská část je vybavena kuchyňskou linkou se sporákem, sklokeramickou varnou deskou a myčkou nádobí. Koupelna je vybavena vanou, toaleta je samostatná. K bytu náleží také sklep umístěný přímo na patře, což nabízí pohodlné a praktické úložné prostory. Velkou předností nemovitosti je její atraktivní poloha v centru města, s výbornou dostupností občanské vybavenosti, obchodů, služeb, restaurací i veřejné dopravy. Vše potřebné je tak pohodlně dostupné v pěší vzdálenosti."
+      "listing_updated_at": "2026-08-21",
+      "description": "Nabízíme k pronájmu byt o dispozici 2+kk s obytnou plochou 57 m², který se nachází ve 4. patře cihlového domu s výtahem, přímo v centru města. Byt nabízí příjemné a praktické uspořádání. Součástí je balkon o velikosti 6 m², který poskytuje příjemný prostor pro posezení a odpočinek. Kuchyňská část je vybavena kuchyňskou linkou se sporákem, sklokeramickou varnou deskou a myčkou nádobí. Koupelna je vybavena vanou, toaleta je samostatná. K bytu náleží také sklep umístěný přímo na patře, což nabízí pohodlné a praktické úložné prostory. Velkou předností nemovitosti je její atraktivní poloha v centru města, s výbornou dostupností občanské vybavenosti, obchodů, služeb, restaurací i veřejné dopravy. Vše potřebné je tak pohodlně dostupné v pěší vzdálenosti. K dispozici od 10.9.2026."
     },
     {
       "id": "sr_706330700",
@@ -267,26 +307,6 @@
       "listing_published_at": "2026-08-17",
       "listing_updated_at": "2026-08-17",
       "description": "Nabízíme k dlouhodobému pronájmu moderní a kompletně vybavený byt o dispozici 1+1 o užitné ploše 30 m², který se nachází v přízemí zrekonstruovaného rodinného domu v klidné obci Zvěrotice nedaleko města Soběslav. Byt se pronajímá plně zařízený a je připraven k nastěhování od 1.10.2026 , dle domluvy s majitelem by byt mohl být k dispozici popřípadě i dříve. Je ideální například pro mladý pár. Dispozice nabízí obývací prostor s kuchyní a vestavěnými spotřebiči, má samostatnou ložnici a koupelnu se sprchovým koutem a toaletou. K dispozici je udržovaná zahrada s bazénem a odpočinkovou zónou. K bytu náleží také jedno vyhrazené parkovací stání přímo u domu. Celkové měsíční nájemné včetně energií, internetu a parkování činí 14.500 Kč. Vratná kauce je ve výši dvou měsíčních nájmů."
-    },
-    {
-      "id": "sr_4263100492",
-      "title": "Pronájem bytu 2+1 56 m²",
-      "price": 11000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/4263100492?noredirect=1",
-      "lat": 49.4019288,
-      "lng": 14.6857298,
-      "sqm": 56,
-      "rooms": 2,
-      "address": "Budovatelů, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-14",
-      "listing_updated_at": "2026-08-17",
-      "description": "Nabízíme k pronájmu prostorný byt o dispozici 2+1 s lodžií, který se nachází v 1. patře bytového domu s výtahem v ulici Budovatelů, ve velmi oblíbené a vyhledávané lokalitě Na Kopečku v Táboře. Byt nabízí příjemné a praktické dispoziční řešení. Kuchyně o výměře 7,02 m² je vybavena elektrickým sporákem a lednicí. Dále se zde nachází prostorný obývací pokoj o výměře 20,69 m², ložnice 18,50 m², koupelna 2,27 m², samostatné WC 0,81 m² a předsíň 6,48 m² s vestavěnou šatní skříní. K bytu náleží lodžie o výměře 4,05 m² a sklep o výměře 3,25 m². Velkou předností nabídky je především lokalita Na Kopečku, která patří mezi vyhledávané části Tábora. Nabízí příjemné bydlení s výbornou občanskou vybaveností a dobrou dostupností do centra města. V blízkém okolí se nacházejí obchody, školy, školky, zastávky MHD i další služby. Lokalita zároveň poskytuje dostatek možností pro procházky, sport a volnočasové aktivity. Nájemné: 11.000 Kč/měsíc, služby: 3.200 Kč/měsíc, elektřina: hrazena samostatně nájemcem, kauce: 14.000,-Kč. Byt je k dispozici od 1. 9. 2026. Pro více informací nebo sjednání prohlídky mě neváhejte kontaktovat."
     },
     {
       "id": "sr_3731284044",
@@ -445,8 +465,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-06",
-      "listing_updated_at": "2026-08-18",
-      "description": "Nabízíme k pronájmu zděný byt o dispozici 2+1 ve 3. patře bytového domu nedaleko centra Tábora. Byt se skládá z předsíně s vestavěnou skříní, odkud se vchází do kuchyně, která je orientovaná do vnitrobloku. V předsíni a kuchyni je podlahové vytápění. V koupelně s WC je rohová vana, umyvadlo se skříňkou, topný žebřík a místo na pračku. Obývák a ložnice jsou orientovány směrem do Vančurovy ulice, v obýváku jsou kamna na tuhá paliva. Byt prošel rekonstrukcí - nové rozvody elektřiny a vody, topení řešeno elektrickým kotlem s rozvodem do radiátorů. Majitel požaduje vratnou peněžitou jistotu po dobu nájmu ve výši 20.000,- Kč, služby placené pronajímateli činí 1.100,- Kč, elektřina se přepisuje na nájemce a není součástí služeb. Poplatek realitní kanceláři je ve výši 13.000,- Kč. Byt je k dispozici novému nájemníkovi."
+      "listing_updated_at": "2026-08-21",
+      "description": "Nabízíme k pronájmu zděný byt o dispozici 2+1 ve 3. patře bytového domu (bez výtahu) nedaleko centra Tábora. Byt se skládá z předsíně s vestavěnou skříní, odkud se vchází do kuchyně, která je orientovaná do vnitrobloku. V předsíni a kuchyni je podlahové vytápění. V koupelně s WC je rohová vana, umyvadlo se skříňkou, topný žebřík a místo na pračku. Obývák a ložnice jsou orientovány směrem do Vančurovy ulice, v obýváku jsou kamna na tuhá paliva. Topení řešeno elektrickým kotlem s rozvodem do radiátorů. Majitel požaduje vratnou peněžitou jistotu po dobu nájmu ve výši 20.000,- Kč, služby placené pronajímateli činí 1.100,- Kč, elektřina se přepisuje na nájemce a není součástí služeb. Poplatek realitní kanceláři je ve výši 13.000,- Kč. Byt je k dispozici novému nájemníkovi."
     },
     {
       "id": "sr_4057653324",
@@ -605,8 +625,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-29",
-      "listing_updated_at": "2026-07-29",
-      "description": "PROHLÉDNĚTE SI BYT V KLIDU DOMOVA V PŘILOŽENÉ 3D PROHLÍDCE. Nabízíme pronájem bytu 2+kk o velikosti 60m2 s velkou terasou (25m2). Byt i terasa s krásným výhledem jsou obráceny do klidného vnitrobloku. Byt se nachází na třídě 9.května v Táboře. Vytápění je řešeno vlastním plynovým kotlem s rozvodem do radiátorů, ohřev vody bojlerem. V ceně pronájmu nejsou zahrnuty služby ve výši: voda 300,- Kč/osoba/měsíc + 200,- Kč měsíčně za úklid a elektřinu společných prostor. Spotřeba plynu a elektřiny bude převedena na nájemce. Provize RK ve výši 15.000,- Kč, jistota (kauce) ve výši 20.000,- Kč. Byt je k dispozici novému nájemníkovi."
+      "listing_updated_at": "2026-08-21",
+      "description": "PROHLÉDNĚTE SI BYT V KLIDU DOMOVA V PŘILOŽENÉ 3D PROHLÍDCE. Nabízíme pronájem bytu 2+kk o velikosti 60m2 s velkou terasou (25m2). Byt i terasa s krásným výhledem jsou obráceny do klidného vnitrobloku. Byt se nachází na třídě 9.května v Táboře v malém bytovém domě bez výtahu. Vytápění je řešeno vlastním plynovým kotlem s rozvodem do radiátorů, ohřev vody bojlerem. V ceně pronájmu nejsou zahrnuty služby ve výši: voda 300,- Kč/osoba/měsíc + 200,- Kč měsíčně za úklid a elektřinu společných prostor. Spotřeba plynu a elektřiny bude převedena na nájemce. Provize RK ve výši 15.000,- Kč, jistota (kauce) ve výši 20.000,- Kč. Byt je k dispozici novému nájemníkovi."
     },
     {
       "id": "sr_3533688908",
@@ -709,26 +729,6 @@
       "description": "Nabízíme k pronájmu prostorný, slunný a velmi příjemný byt 2+1 o výměře cca 80 m², který se nachází v 1. NP tichého a klidného cihlového domu přímo v centru Tábora, na ulici 9. května. Lokalita nabízí výjímečnou dostupnost vše potřebné máte doslova pár kroků od domu. Dispozice bytu - prostorná vstupní hala s vestavěnými skříněmi, dva velké, světlé pokoje, kuchyně s kuchyňskou linkou, koupelna s vanou, samostatné WC, komora. Topení je řešeno elektrickými kamny (přímotopy), ohřev vody zajišťuje elektrický bojler. Nájemné ve výši 11.000,-Kč + záloha na vodu 400,-Kč/os., záloha na elektřinu 3000 Kč/měs. Majitel požaduje vratnou kauci ve výši 15 000,-Kč, poplatek RK ve výši jednoho měsíčního nájmu + 21% DPH. Byt se nachází v samotném centru města, v pěší vzdálenosti od veškeré občanské vybavenosti obchodů, služeb, restaurací, škol, zdravotnických zařízení. V blízkosti je také vlakové i autobusové nádraží, což zajišťuje skvělou dopravní dostupnost. Byt je k dispozici po dohodě. Pro domluvení prohlídky kontaktujte makléře."
     },
     {
-      "id": "sr_3538538572",
-      "title": "Pronájem bytu 2+kk 55 m²",
-      "price": 17000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/3538538572?noredirect=1",
-      "lat": 49.4024823346,
-      "lng": 14.6820875946,
-      "sqm": 55,
-      "rooms": 2,
-      "address": "U Areálu, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-24",
-      "listing_updated_at": "2026-08-06",
-      "description": "PROHLÉDNĚTE SI BYT V KLIDU DOMOVA V PŘILOŽENÉ 3D PROHLÍDCE. Nabízíme k pronájmu kompletně vybavený byt o dispozici 2+kk v novostavbě bytového domu v Táboře, ulici U Areálu. Byt se nachází v 1. nadzemním podlaží domu (přízemí), dispozice bytu (půdorys v inzerci): předsíň, koupelna s WC, kuchyně s obývacím pokojem a ložnice. K bytu náleží 2 terasy přístupné z bytu. Nájem činí 17.000,- Kč měsíčně, měsíční zálohy na služby činí 1.964,- Kč, bez spotřebované elektrické energie v bytě, která bude přepsána na nájemníka. Majitel požaduje vratnou peněžitou jistotu (\"kauci\") po dobu trvání nájmu. Provize RK je 15.000,- Kč. Byt je k dispozici novému nájemníkovi. Pro bližší informace volejte makléři zakázky."
-    },
-    {
       "id": "sr_3780608076",
       "title": "Pronájem bytu 3+1 64 m²",
       "price": 13500,
@@ -747,26 +747,6 @@
       "listing_published_at": "2026-06-08",
       "listing_updated_at": "2026-07-22",
       "description": "Exkluzivně nabízíme ihned k pronájmu zděnou bytovou jednotku s balkonem nacházející se na Blanickém předměstí v Táboře. Výměra bytu je 64m2 a je situován ve 2. patře bytového domu bez výtahu. Bytový dům je nově zateplený, nové vchodové dveře a chodby. Bytová jednotka je také po rekonstrukci: plastová okna s žaluziemi, nová kuchyňská linka s vestavným sporákem, varnou deskou a digestoří, zděné koupelnové jádro s umyvadlem, toaletní skříňkou a vanou, nové obklady a dlažba, toaleta samostatná s umyvadlem a bidetovou sprškou. V obývacím pokoji je k dispozici obývací stěna, v chodbě nové vestavěné šatní skříně. Podlahy - parkety, vytápění elektrické, ohřev vody bojlerem. Majitel požaduje měsíční nájemné 13.500,-Kč + záloha na elektriku (přepis na nájemníka) + záloha na vodu 300,-Kč/1osobu/měsíc. Vratná kauce 27.000,-Kč, provize RK 13.500,-Kč + DPH. Byt se nachází v klidné lokalitě s pěší dostupností do centra Tábora, autobusové a vlakové nádraží. Veškerá občanská vybavenost v blízké dostupnosti, zastávka MHD. Pro více informací volejte naši realitní makléřku."
-    },
-    {
-      "id": "sr_3652444236",
-      "title": "Pronájem bytu 2+kk 45 m²",
-      "price": 15000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/3652444236?noredirect=1",
-      "lat": 49.386154734004116,
-      "lng": 14.686824964468995,
-      "sqm": 45,
-      "rooms": 2,
-      "address": "Vítkovecká, Sezimovo Ústí, Sezimovo Ústí",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-13",
-      "listing_updated_at": "2026-08-15",
-      "description": "Hledáte moderní a klidné bydlení? Nabízíme k pronájmu byt 2+kk (45 m²) v nově postaveném rodinném domě v Sezimově Ústí I, v ulici Vítkovecká. K dispozici je rozlehlá oplocená zahrada, vybavená pergola pro společné chvíle a prostorné parkoviště přímo u domu. Nájem: 15 000 Kč/měsíc + cca 3 000 Kč/měsíc za služby. Požadavky na nájemce: Hledáme spolehlivé a solventní nájemníky s dobrou platební morálkou, bez probíhajících exekučních či insolvenčních řízení. Preferujeme dlouhodobý pronájem podmíněný složením vratné kauce ve výši 3měsíčních nájmů. Byt je striktně nekuřácký. Domácí mazlíčci jsou povoleni pouze po předchozí domluvě (pouze menší plemena). Vybavení a hlavní výhody: • Moderní novostavba v žádané a klidné lokalitě • Nová kuchyňská linka se spotřebiči a prosvětlené interiéry • Oplocené parkoviště zaručující bezproblémové parkování • Velká zahrada k relaxaci a odpočinku • Zastřešená pergola s posezením Bydlení je ideální pro rodiny s dětmi, páry i jednotlivce, kteří ocení kombinaci moderního bytu a výhod rodinného domu se zahradou."
     },
     {
       "id": "sr_3025002572",

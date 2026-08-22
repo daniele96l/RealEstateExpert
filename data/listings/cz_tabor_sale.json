@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "sale",
-  "fetched_at": "2026-08-21T07:08:24.200Z",
+  "fetched_at": "2026-08-22T07:02:18.561Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3464557388",
+      "title": "Prodej bytu 3+kk 77 m²",
+      "price": 100000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/_/3464557388?noredirect=1",
+      "lat": 49.42041924587162,
+      "lng": 14.677085861927745,
+      "sqm": 77,
+      "rooms": 3,
+      "address": "Fibichova, Čekanice, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2025-08-26",
+      "listing_updated_at": "2026-08-21",
+      "description": "Prodej bytu 3+kk, 77,2 m² + terasa a zahrádka – developerský projekt (dokončení srpen 2026) Nabízíme k prodeji moderní byt o dispozici 3+kk a celkové ploše 77,2 m², který se nachází v 1. nadzemním podlaží nového developerského projektu. Součástí bytu je terasa s navazující zahrádkou určenou k výlučnému užívání vlastníka bytu, ideální pro relaxaci, posezení či zahradničení. Hrubá stavba projektu je již dokončena, dokončení celého areálu je plánováno na léto 2026. Byt nabízí možnost individuálních klientských úprav, a to jak v rámci dispozice bytu, tak řešení terasy a venkovního prostoru, dle technických možností projektu. Projekt je situován v lokalitě Čekanice, která nabízí klidné bydlení s výbornou dostupností do centra Tábora. V docházkové vzdálenosti se nachází vlakové nádraží, zajišťující pohodlné spojení nejen do Tábora, ale i do širšího okolí. Bytový dům bude napojen na centrální zdroj tepla, který zajišťuje vytápění i ohřev teplé vody. Díky moderním technologiím splňuje budova energetickou třídu náročnosti A – mimořádně úsporná. V ceně bytu je zahrnuto: podlahové krytiny interiérové dveře kompletně vybavená koupelna příprava na kuchyňskou linku Cena za byt: 100 000 Kč/m² Zahrada je součástí ceny za nemovitost uvedenou v interátu Nabízíme i možnost zakoupení parkovacího stání vedle domu. Pro více informací nebo sjednání prohlídky nás neváhejte kontaktovat. Rádi vám poskytneme veškeré podrobnosti o projektu."
+    },
     {
       "id": "sr_383119436",
       "title": "Prodej bytu 3+1 65 m²",
@@ -489,26 +509,6 @@
       "description": "Nabízíme k prodeji prostorný dvoupodlažní byt v osobním vlastnictví o dispozici 5+kk a celkové ploše 163 m², který se nachází ve Veselí nad Lužnicí I. Byt je situován ve druhém a třetím nadzemním podlaží a zaujme především svou nadstandardní velikostí, velmi pěkným stavem a praktickým uspořádáním obytného prostoru. Ve spodním podlaží se nachází obývací pokoj s kuchyňským koutem, dvě ložnice a koupelna s toaletou. Z tohoto podlaží jsou zároveň přístupné dva prostorné balkony, které nabízejí příjemný venkovní prostor k posezení. Horní podlaží nabízí další dvě ložnice a druhou koupelnu s toaletou. Díky dvěma koupelnám a rozdělení místností mezi dvě podlaží poskytuje byt dostatek prostoru i soukromí pro větší rodinu. Součástí prodeje je také garáž a parkovací místo přímo před ní. Velkou výhodou nemovitosti je dobrá dopravní dostupnost. Nájezd na dálnici je vzdálený přibližně čtyři minuty jízdy a do Českých Budějovic se dostanete zhruba za 25 minut. Veselí nad Lužnicí je zároveň významným železničním uzlem s dobrým spojením do Českých Budějovic, Tábora, Prahy, Jindřichova Hradce i dalších měst. Ve městě se nachází kompletní občanská vybavenost zahrnující obchody, restaurace, úřady, zdravotnické služby, autobusové i vlakové nádraží a další služby potřebné pro každodenní život. Rodiny s dětmi ocení mateřské a základní školy, základní uměleckou školu i střední školu. K dispozici jsou také sportoviště, knihovna a řada sportovních i volnočasových aktivit. Byt je ideální pro zájemce, kteří hledají velkorysý prostor pro rodinné bydlení. Díky dvěma podlažím, čtyřem ložnicím, dvěma koupelnám, dvěma balkonům, garáži a parkovacímu místu nabízí vysoký komfort, dostatek soukromí a praktické uspořádání pro každodenní život. Kombinace rozlohy 163 m² a promyšlené dispozice představuje na trhu nadstandardní a neobvyklou nabídku. Přijďte se podívat osobně a zjistěte, zda právě tento byt bude vaším budoucím domovem. Pro naše klienty zajišťujeme kompletní právní servis a rádi pomůžeme také s výběrem vhodného financování."
     },
     {
-      "id": "sr_1625677900",
-      "title": "Prodej bytu 1+1 39 m²",
-      "price": 3380000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/_/1625677900?noredirect=1",
-      "lat": 49.40162384086172,
-      "lng": 14.68583329943236,
-      "sqm": 39,
-      "rooms": 1,
-      "address": "Budovatelů, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-20",
-      "listing_updated_at": "2026-08-14",
-      "description": "Nabízíme k prodeji byt 1+1 v os. vlastnictví v Táboře, ulice Budovatelů 2616 v 1. nadzemní podlaží. Byt prošel částečnou rekonstrukcí, celková plocha 42,47 m2, sklep 3,25 m2. Podlaha v pokoji připravena na finální pokládku (nivelační stěrka hotová). Je možné se dohodnout i k pronájmu garáže. Orientace bytu na jihozápad. Doporučujeme k bydlení i jako investici."
-    },
-    {
       "id": "sr_423026764",
       "title": "Prodej bytu 2+1 66 m²",
       "price": 4490000,
@@ -747,26 +747,6 @@
       "listing_published_at": "2026-06-08",
       "listing_updated_at": "2026-08-10",
       "description": "Nabízíme k prodeji bytovou jednotku 3+kk č. 3 v novém rezidenčním projektu Rezidence Svákov, který právě vstoupil do fáze prodeje. Byt se nachází ve 2. NP a disponuje plochou 73,28 m². K bytu náleží prostorný balkon o výměře 6,56 m² a sklepní kóje o velikosti 3,37 m². Celková plocha bytu včetně balkonu činí 79,84 m². Byt je vybavený vlastní rekuperační jednotkou, splňuje parametry energetické třídy A, je napojen na městský teplovod a centrální ohřev teplé vody. K bytu je možné zakoupit parkovací stání včetně přípravy na elektromobilitu. Rezidence bude vybavena fotovoltaickými panely, které přispějí k nižším nákladům na provoz domu díky výrobě vlastní elektřiny pro společné prostory a podpoře ohřevu teplé vody ve všech bytech. Projekt vzniká v oblíbené lokalitě sídliště Svákov v Soběslavi a přináší moderní bydlení s důrazem na komfort, praktičnost a příjemné okolní prostředí. Budoucí obyvatelé ocení blízkost občanské vybavenosti, přírody i snadnou dostupnost centra města. Byt je aktuálně volný a připravený k rezervaci. V případě zájmu o více informací nás neváhejte kontaktovat. Rádi vám poskytneme veškeré podklady k této nabídce."
-    },
-    {
-      "id": "sr_3464557388",
-      "title": "Prodej bytu 3+kk 77 m²",
-      "price": 100000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/_/3464557388?noredirect=1",
-      "lat": 49.42041924587162,
-      "lng": 14.677085861927745,
-      "sqm": 77,
-      "rooms": 3,
-      "address": "Fibichova, Čekanice, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2025-08-26",
-      "listing_updated_at": "2026-08-10",
-      "description": "Prodej bytu 3+kk, 77,2 m² + terasa a zahrádka – developerský projekt (dokončení srpen 2026) Nabízíme k prodeji moderní byt o dispozici 3+kk a celkové ploše 77,2 m², který se nachází v 1. nadzemním podlaží nového developerského projektu. Součástí bytu je terasa s navazující zahrádkou určenou k výlučnému užívání vlastníka bytu, ideální pro relaxaci, posezení či zahradničení. Hrubá stavba projektu je již dokončena, dokončení celého areálu je plánováno na léto 2026. Byt nabízí možnost individuálních klientských úprav, a to jak v rámci dispozice bytu, tak řešení terasy a venkovního prostoru, dle technických možností projektu. Projekt je situován v lokalitě Čekanice, která nabízí klidné bydlení s výbornou dostupností do centra Tábora. V docházkové vzdálenosti se nachází vlakové nádraží, zajišťující pohodlné spojení nejen do Tábora, ale i do širšího okolí. Bytový dům bude napojen na centrální zdroj tepla, který zajišťuje vytápění i ohřev teplé vody. Díky moderním technologiím splňuje budova energetickou třídu náročnosti A – mimořádně úsporná. V ceně bytu je zahrnuto: podlahové krytiny interiérové dveře kompletně vybavená koupelna příprava na kuchyňskou linku Cena za byt: 100 000 Kč/m² Zahrada je součástí ceny za nemovitost uvedenou v interátu Nabízíme i možnost zakoupení parkovacího stání vedle domu. Pro více informací nebo sjednání prohlídky nás neváhejte kontaktovat. Rádi vám poskytneme veškeré podrobnosti o projektu."
     },
     {
       "id": "sr_2071523404",
@@ -1169,26 +1149,6 @@
       "description": "Výjimečné místo k životu i rekreaci v blízkosti historického centra Tábora! Atraktivní byt s rozsáhlou terasou, garážovým stáním a výhledem na vilovou čtvrť v Táboře, které je součástí. V nově postaveném domě o celkovém počtu 8 bytových jednotek v Bechyňské ulici v Táboře, nedaleko Kotnova a historického centra města Vám nabízíme ve druhém nadzemním podlaží ke koupi byt o velikosti 38 m2, v počtu místností 1 + kuchyňský kout, vstupní chodba, sociální zařízení. Na byt navazuje prostorná dlážděná terasa s další zatravněnou plochou o výměře 20 m2. Terasa je krytá pergolou se zařízením na ovládání zastínění ze všech stran i stropu, která vytváří možnost dalšího využitelného prostoru k posezení i odpočinku. Unikátní terasa a travnatá plocha je jako stvořená pro útulné venkovní posezení, relaxaci, slunění, cvičení nebo malé zahradničení. Kuchyně je vybavená kuchyňskou linkou včetně spotřebičů (lednice, myčka, kávovar Philips, elektrická trouba, varná deska). V prostorné koupelně je sprchový kout, umyvadlo, WC, pračka se sušičkou ( kombinace). V obývací části a vstupní chodbě jsou prostorné vestavěné skříně k uložení osobních věcí. Podlahovou krytinu tvoří parkety. Byt se prodává včetně zařízení tak, jak je zobrazeno na fotografiích. K bytu dále patří sklepní prostor v prvním podlaží. V domě je výtah, plynová kotelna Buderus s akumulační nádrží na teplou vodu, bytová jednotka je napojena na vodovod a elektřinu. Pohodlné parkování na vlastním garážovém stání v 1. nadzemním podlaží, které je dostupné výtahem přímo z patra bytu, je za cenu 900.000,- Kč a je podmínkou koupě bytu. Na prostorném parkovacím místě o velikosti 1 + 1/2 klasického parkovacího stání zaparkuje nejen osobní automobil, ale dále i například dva motocykly. Vjezd je zabezpečen automatickými dálkově ovládanými vraty zn. Hormann. Nízké náklady na bydlení včetně energií činí 2.921 Kč + elektřina ( v současné době je záloha nastavena na 740 Kč/měs.). Veškerá občanská vybavenost se nachází v bezprostřední blízkosti domu v centru Tábora. Obchody, restaurace, historická část města, zastávka MHD, na druhé straně příroda, řeka Lužnice, lesopark Pintovka, Tismenické údolí s příjemnou procházkou do Klokot, vše v pěší dostupnosti během několika minut. Byt je vhodný jak pro vlastní bydlení jednotlivce, páry, seniory, startovací bydlení, tak i na investici. Následný pronájem Vám rádi zajistíme. Pokud hledáte byt pro sebe, Vaše děti či rodiče, investiční příležitost, extravagantní bezúdržbový prostor pro útěky z velkoměsta bez nutnosti vzdát se všech civilizačních výhod, bydlení v aktuálním trendu s nadstandardním venkovním prostorem, přijďte na prohlídku, nebude zklamaní. Vynikající spojení Praha -Tábor, vlakem jedna hodina. Neváhejte a kontaktujte prosím makléře zakázky pro získání dalších informací a domluvení prohlídky."
     },
     {
-      "id": "sr_3885752396",
-      "title": "Prodej bytu 2+1 56 m²",
-      "price": 3390000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/_/3885752396?noredirect=1",
-      "lat": 49.180756,
-      "lng": 14.693861,
-      "sqm": 56,
-      "rooms": 2,
-      "address": "Pod Markem, Veselí nad Lužnicí I, Veselí nad Lužnicí",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-02",
-      "listing_updated_at": "2026-07-31",
-      "description": "PRODÁNO !!! ERA Reality Premiéra nabízí skvělou investiční příležitost ve Veselí nad Lužnicí. Byt s balkonem po kompletní rekonstrukci o dispozici 2+1 se nachází na adrese Pod Markem 475. Přejete si koupit byt o velikosti 56 m2 s balkonem ( 2,5m2 ), ze kterého se nabízí hezký výhled do okolí ? Byt je připraven k okamžitému nastěhování bez dalších investic. Klidná obytná část města s příjemnou atmosférou a veškerou občanskou vybaveností se může stát Vaším novým domovem nebo skvělou investicí k následnému pronájmu. Malé jihočeské město v okrese Tábor leží na soutoku řek Lužnice a Nežárky a nabízí mnoho výhod k pohodlnému a příjemnému bydlení. Město je obklopeno lesy, rybníky, pískovnami a vodními plochami. Nepřeberné množství aktivit od koupání až po rybaření i vodní sporty. V okolí také najdete spoustu cyklostezek a turistických tras. Vodácké trasy po Lužnici a Nežárce patří k místnímu životnímu stylu a lákají milovníky přírody a sportu. Bydlet tady ocení každý, kdo se chce vyhnout velkému městu, ale zároveň vyžaduje plnou občanskou vybavenost. Veselí nad Lužnicí je také důležitým železničním uzlem s přímými spojeními do Prahy, Českých Budějovic, Třeboně, Jindřichova Hradce. Ideální nájezd na dálnici D3 ( směr Tábor, Praha ). Využijete potenciál bytu k vlastnímu bydlení nebo pronájmu ? Potřebujete byt pronajmout a neztrácet čas ? Pojďme do toho společně. Rádi poskytneme pomoc s financováním i následným pronájmem. Byt je v osobním vlastnictví a můžete využít financování hypotečním úvěrem. Máte možnost využít i obou variant, bydlet i pronajímat. V nabídce máme na prodej ještě další byt o dispozici 3+1 , který se nachází ve vedlejším bytovém domě. Pořídit si tady můžete dva byty za cenu jednoho v Českých Budějovicích. Byt se nachází ve 3.patře a nadchne Vás prostorem a dostatkem světla. Koupelna s velmi elegantním designem a celkově celý interiér bytu působí vzdušně a moderně. Nabízíme byt, který je ve velmi dobrém stavu po celkové rekonstrukci. Podrobné informace o dispozici a výměrách jednotlivých místností naleznete v přiloženém půdorysu ve 2D a 3D. K bytu náleží sklepní koje, bytový dům bez výtahu. Poplatky spojené s bydlením a veškeré další informace rádi sdělíme při osobní prohlídce. Projděte si v klidu byt v odkazu ( matterport ). Zavolejte a domluvte si prohlídku. Těším se na setkání. Radka Vacková, ERA Reality Premiéra, Masarykova 972, Hluboká nad Vltavou"
-    },
-    {
       "id": "sr_1693773900",
       "title": "Prodej bytu 1+1 30 m²",
       "price": 2800000,
@@ -1447,6 +1407,26 @@
       "listing_published_at": "2026-04-29",
       "listing_updated_at": "2026-06-17",
       "description": "Nabízíme k prodeji moderní bytovou jednotku situovanou v 5. nadzemním podlaží bytového domu v projektu Dvorce II. Byt se nachází v atraktivní lokalitě Tábora na ulici Kpt. Jaroše. Dům byl kolaudován v roce 2024 a byt představuje zajímavou investiční příležitost. Velmi nízké náklady na bydlení, PENB A. Dispozice bytu je 2+kk o celkové podlahové ploše 63,54m², lodžie o výměře 16,62 m2 a sklepní kóje cca 2 m². Dispoziční řešení bytu - vstupní chodba, koupelna se sprchovým koutem a WC, obývací pokoj s kuchyňským koutem a samostatná ložnice. V domě je k dispozici výtah. Vytápění a ohřev vody jsou řešeny dálkově s vlastními měřiči. Součástí prodeje je kuchyňská linka se spotřebiči - el. varná deska, el. trouba, odsavač par, myčka. V koupelně - umyvadlo se skříňkou, zrcadlo, osvětlení, topný žebřík, WC. Byt je aktuálně obsazen platícím a spolehlivým nájemníkem se smlouvou na dobu určitou, což z něj činí ideální investici s okamžitým výnosem. Lokalita Pražského sídliště patří mezi vyhledávané části Tábora hlavně díky kompletní občanské vybavenosti, která je v docházkové vzdálenosti - obchody, školy, školky, dětská hřiště, zdravotnická zařízení i zastávky MHD. Pro více informací nebo sjednání prohlídky kontaktujte makléře."
+    },
+    {
+      "id": "sr_2661912652",
+      "title": "Prodej bytu 4+1 108 m²",
+      "price": 3490000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/4+1/_/2661912652?noredirect=1",
+      "lat": 49.536487203,
+      "lng": 14.878721143,
+      "sqm": 108,
+      "rooms": 4,
+      "address": "Smilovy Hory, Smilovy Hory",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-05-12",
+      "listing_updated_at": "2026-08-21",
+      "description": "Nabízíme k prodeji byt o dispozici 4+1 o užitné ploše 108 m² s vlastní garáží a podílem na pozemku /zahrada/ za budovou v obci Smilovy Hory. Velkou předností je soukromá garáž přímo v ceně, která zajistí pohodlné parkování i další praktický úložný prostor. Byt se nachází ve zděném a zatepleném domě o třech nadzemních podlažích, který navíc disponuje novou střechou. Dispozice 4+1 nabízí dostatek prostoru pro rodinu, práci z domova i pohodlný každodenní život. Z kuchyně je navíc přímý vstup na lodžii, která příjemně rozšiřuje obytný prostor a nabízí místo pro ranní kávu i chvíle odpočinku. Součástí nabídky jsou také sklepní prostory. O vytápění a ohřev vody se stará elektrokotel. Lokalita nabízí klid, soukromí a okolí plné zeleně – ideální pro ty, kdo hledají harmonické bydlení mimo ruch města. Více informací v RK."
     },
     {
       "id": "sr_1126805580",
