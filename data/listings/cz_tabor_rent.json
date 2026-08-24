@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-08-23T07:01:11.394Z",
+  "fetched_at": "2026-08-24T07:19:44.427Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_2098380876",
+      "title": "Pronájem bytu 4+1 109 m²",
+      "price": 11000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+1/_/2098380876?noredirect=1",
+      "lat": 49.536487203,
+      "lng": 14.878721143,
+      "sqm": 109,
+      "rooms": 4,
+      "address": "Smilovy Hory, Smilovy Hory",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-24",
+      "listing_updated_at": "2026-08-24",
+      "description": "Nabízíme k pronájmu prostorný byt 4+1 o výměře 87 m² s garáží o výměře 22 m² v klidné obci Smilovy Hory. Byt se nachází ve 2. patře zděného a zatepleného domu s novou střechou. Nabízí dostatek prostoru pro pohodlné rodinné bydlení. Z kuchyně je přímý vstup na lodžii a k dispozici jsou také sklepní prostory. Velkou výhodou je vlastní garáž, která je součástí pronájmu. Vytápění a ohřev vody zajišťuje elektrokotel. Smilovy Hory nabízejí klidné bydlení v příjemném prostředí s dostatkem zeleně. Nájemné je uvedeno bez energií. Pro více informací nebo sjednání prohlídky kontaktujte makléře."
+    },
     {
       "id": "sr_3581067340",
       "title": "Pronájem bytu 3+1 68 m²",
@@ -267,26 +287,6 @@
       "listing_published_at": "2026-08-18",
       "listing_updated_at": "2026-08-21",
       "description": "Nabízíme k pronájmu byt o dispozici 2+kk s obytnou plochou 57 m², který se nachází ve 4. patře cihlového domu s výtahem, přímo v centru města. Byt nabízí příjemné a praktické uspořádání. Součástí je balkon o velikosti 6 m², který poskytuje příjemný prostor pro posezení a odpočinek. Kuchyňská část je vybavena kuchyňskou linkou se sporákem, sklokeramickou varnou deskou a myčkou nádobí. Koupelna je vybavena vanou, toaleta je samostatná. K bytu náleží také sklep umístěný přímo na patře, což nabízí pohodlné a praktické úložné prostory. Velkou předností nemovitosti je její atraktivní poloha v centru města, s výbornou dostupností občanské vybavenosti, obchodů, služeb, restaurací i veřejné dopravy. Vše potřebné je tak pohodlně dostupné v pěší vzdálenosti. K dispozici od 10.9.2026."
-    },
-    {
-      "id": "sr_706330700",
-      "title": "Pronájem bytu 1+1 37 m²",
-      "price": 10000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/706330700?noredirect=1",
-      "lat": 49.4244996471861,
-      "lng": 14.6551146316403,
-      "sqm": 37,
-      "rooms": 1,
-      "address": "Leskovická, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-14",
-      "listing_updated_at": "2026-08-18",
-      "description": "Nabízíme k dlouhodobému pronájmu byt o dispozici 1+1, který se nachází ve 2. patře udržovaného panelového domu s výtahem v Leskovické ulici na Náchodském sídlišti v Táboře. Byt má podlahovou plochu přibližně 37 m² a dále balkon o výměře 2,5 m². K bytu náleží také sklep. Byt je vybavený podle aktuálních fotografií a je připravený pro nájemníka, který hledá stabilní a dlouhodobé bydlení. Dispozice bytu obývací pokoj s kuchyní: 15 m² ložnice: 16,5 m² chodba: 2 m² koupelna s WC: 3,5 m² balkon: 2,5 m² Kuchyňská část je vybavena kuchyňskou linkou, lednicí a plynovým sporákem s troubou. Součástí vybavení je také pračka a další nábytek zachycený na fotografiích. V koupelně se nachází prostorný sprchový kout. Na chodbě jsou k dispozici úložné prostory a botník. Nájemce může využívat také společné prostory domu, například sušárnu a místnost pro uložení kol. Dům je v dobrém a udržovaném stavu. Lokalita nabízí kompletní občanskou vybavenost a možnost parkování před domem. Podmínky pronájmu měsíční nájemné: 10 000 Kč zálohy na služby: 2 400 Kč elektřina a plyn budou převedeny na nájemce vratná kauce: 20 000 Kč celkem při podpisu nájemní smlouvy: 32 400 Kč byt je volný od 31. 8. 2026 Zálohy na služby zahrnují zejména vytápění, vodné a stočné, ohřev teplé vody, správu domu, provoz společných částí a internet. Podrobný rozpis záloh bude zájemcům předložen. Majitel hledá spolehlivého nájemníka se zájmem o dlouhodobé a stabilní bydlení. V případě zájmu o více informací nebo domluvení prohlídky mě kontaktujte. Rád vám byt osobně představím."
     },
     {
       "id": "sr_2107621452",
