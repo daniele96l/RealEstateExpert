@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-08-25T07:10:32.793Z",
+  "fetched_at": "2026-08-26T07:08:54.558Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1084342348",
+      "title": "Pronájem bytu 1+kk 21 m²",
+      "price": 5500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/1084342348?noredirect=1",
+      "lat": 49.4214827388661,
+      "lng": 14.6500782968761,
+      "sqm": 21,
+      "rooms": 1,
+      "address": "Jaselská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-25",
+      "listing_updated_at": "2026-08-25",
+      "description": "Pronájem slunného bytu 1+kk, který se nachází v 5. nadzemním podlaží. Dům je revitalizován, kompletně zateplen, nová plastová okna s výtahem. Celková plocha bytu činí 20,19 m2. Byt je po částečné rekonstrukci. Dispozice bytu - vstupní chodba (šatní skříň), prostorný pokoj s kuchyňským koutem, koupelna a WC- původní umakartové + sklepní místnost v suterénu a uzamykatelná lodžie v mezipatře. Velice nízké provozní náklady. V okolí domu je veškerá občanská vybavenost a dostatek parkovacích míst. Nájem 5.500,-Kč, služby 2.267,-Kč, vratná kauce 10.000,-Kč, + provize RK. Elektřina se přepisuje na nájemce, není součástí nájmu. Prosím bez domácích mazlíčků. Volný 1.9. 2026."
+    },
     {
       "id": "sr_3502358604",
       "title": "Pronájem bytu 2+1 62 m²",
