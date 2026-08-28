@@ -1,5 +1,53 @@
 [
   {
+    "id": "sr_2226053196",
+    "portal": "sreality",
+    "detected_at": "2026-08-28T18:38:39.886Z",
+    "presumed_rented_at": "2026-08-28T18:38:39.886Z",
+    "first_seen_at": "2026-07-12T19:34:54.123Z",
+    "last_seen_at": "2026-08-27T17:45:38.570Z",
+    "days_on_market": 47,
+    "price": 13000,
+    "sqm": 50,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Wolkerova, Rosice, Rosice",
+    "zone": "Rosice",
+    "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/2226053196?noredirect=1",
+    "description": "K dlouhodobému pronájmu nabízíme byt o dispozici 2+1 a podlahové ploše cca 50 m² plus sklep cca 9 m². Byt se nachází v přízemí cihlového domu situovaného na ulici Wolkerova v Rosicích. Byt tvoří vstupní chodba s menšími úložnými prostory, samostatná jednodušší kuchyňka, dva neprůchozí pokoje, koupelna s vanou a toaletou a sklepní kóje. Vybavení bytu odpovídá skutečnému aktuálnímu stavu zachyceného na fotografiích. Součástí bytu je vlastní plynový kotel pro vytápění i ohřev teplé vody. Díky tomu máte možnost regulovat si spotřebu i teplotu podle svých potřeb a spotřebu energií máte pod vlastní kontrolou. V docházkové vzdálenosti najdete mateřskou i základní školu, obchody, lékárnu, restaurace, autobusové zastávky i vlakové nádraží. Výhodou je také dobré dopravní spojení do Brna a snadné napojení na hlavní silniční tahy. Nájemné: 13 000 Kč / měsíc Zálohy na energie: 4 770 Kč / měsíc Jistota: 20 000 Kč Provize RK: 13 000 Kč Průkaz energetické náročnosti budovy: Průkaz energetické náročnosti nebyl dodán, ze zákona uvádíme tř. G. Byt je k dispozici od 1. 8. 2026, ale již nyní si jej můžete rezervovat. V případě zájmu o více informací nebo prohlídku nás prosím kontaktujte.",
+    "title": "Pronájem bytu 2+1 50 m²",
+    "bathrooms": null,
+    "floor": null,
+    "energy_class": null,
+    "energy_kwh_sqm": null,
+    "images": null,
+    "furnished": null,
+    "built_year": null,
+    "lift": null,
+    "garden": null,
+    "terrace": null,
+    "garage": null,
+    "condominio_monthly": null,
+    "advertiser_name": null,
+    "condition": null,
+    "condition_status": null,
+    "needs_renovation": null,
+    "listing_published_at": "2026-07-09",
+    "listing_updated_at": "2026-08-24",
+    "lat": 49.18270729765299,
+    "lng": 16.392450048212385,
+    "price_history": [
+      {
+        "at": "2026-07-12T19:34:54.123Z",
+        "price": 14000
+      },
+      {
+        "at": "2026-08-25T07:11:13.906Z",
+        "price": 13000
+      }
+    ]
+  },
+  {
     "id": "sr_4236427340",
     "portal": "sreality",
     "detected_at": "2026-08-27T17:45:38.570Z",

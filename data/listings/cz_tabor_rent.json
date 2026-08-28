@@ -1,7 +1,7 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-08-27T17:45:02.819Z",
+  "fetched_at": "2026-08-28T18:38:04.869Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
@@ -231,7 +231,7 @@
     {
       "id": "sr_1714667596",
       "title": "Pronájem bytu 1+1 32 m²",
-      "price": 9950,
+      "price": 9800,
       "operation": "rent",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/1714667596?noredirect=1",
       "lat": 49.4100982840978,
@@ -245,8 +245,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-21",
-      "listing_updated_at": "2026-08-21",
-      "description": "Nabízíme k pronájmu příjemný byt s vlastní šatnou 1+1 o výměře 32 m², který se nachází ve 2. patře bytového domu bez výtahu v ulici Chýnovská 533/1 v Táboře. K bytu náleží také praktický úložný prostor o výměře cca 1,5 m² ve formě uzamykatelné skříně. Byt nabízí praktickou dispozici 1+1 a díky své velikosti je ideální pro jednotlivce nebo pár. Velkou výhodou jsou **nízké měsíční náklady**. Nájemné činí 9 950 Kč měsíčně, záloha na vodu 350 Kč/osoba, záloha na otop 1 300 Kč měsíčně a paušální platba za služby 1 000 Kč měsíčně. Elektřina se přepisuje na nájemníka, předpokládaná měsíční záloha činí přibližně 850 Kč. **Předpokládané celkové měsíční náklady včetně elektřiny jsou přibližně 13 500 Kč.** Majitel požaduje vratnou kauci ve výši 20 000 Kč. Provize realitní kanceláři činí 5 000 Kč. Byt se nachází v dobře dostupné části Tábora s veškerou občanskou vybaveností v dosahu. Lokalita nabízí pohodlné spojení do centra města i dobrou dostupnost obchodů, služeb a dalších potřeb pro každodenní život. Dispozice: 1+1 Výměra bytu: 32 m² Úložný prostor: 1,5 m² uzamykatelná skříň Lokalita: Tábor, Chýnovská 533/1 Patro: 2. patro, bez výtahu Nájemné: 9 950 Kč/měsíc Voda: 350 Kč/os./měsíc Otop: 1 300 Kč/měsíc Paušální platba: 1 000 Kč/měsíc Elektřina: cca 850 Kč/měsíc, přepisuje se na nájemníka - jen předpoklad Předpokládané celkové měsíční náklady pro 1 osobu: cca 13 500 Kč, pro 2 osoby cca 14 000 Kč Vratná kauce: 20 000 Kč Provize RK: 5 000 Kč K dispozici: od 28.9.2026 Vhodné pro: jednotlivce nebo pár Byt je k dispozici po dohodě. Pro domluvení prohlídky kontaktujte makléře."
+      "listing_updated_at": "2026-08-28",
+      "description": "Nabízíme k pronájmu příjemný byt s vlastní šatnou 1+1 o výměře 32 m², který se nachází ve 2. patře bytového domu bez výtahu v ulici Chýnovská 533/1 v Táboře. K bytu náleží také praktický úložný prostor o výměře cca 1,5 m² ve formě uzamykatelné skříně. Byt nabízí praktickou dispozici 1+1 a díky své velikosti je ideální pro jednotlivce nebo pár. Velkou výhodou jsou **nízké měsíční náklady**. Nájemné činí 9 800 Kč měsíčně, záloha na vodu 350 Kč/osoba, záloha na otop 1 300 Kč měsíčně a paušální platba za služby 1 100 Kč měsíčně. Elektřina se přepisuje na nájemníka, předpokládaná měsíční záloha činí přibližně 1000 Kč. **Předpokládané celkové měsíční náklady včetně elektřiny jsou přibližně 13 550 Kč pro 1 osobu pro 2 osoby 13900 Kč.** Majitel požaduje vratnou kauci ve výši 20 000 Kč. Provize realitní kanceláři činí 5 000 Kč. Byt se nachází v dobře dostupné části Tábora s veškerou občanskou vybaveností v dosahu. Lokalita nabízí pohodlné spojení do centra města i dobrou dostupnost obchodů, služeb a dalších potřeb pro každodenní život. Dispozice: 1+1 Výměra bytu: 32 m² Úložný prostor: 1,5 m² uzamykatelná skříň Lokalita: Tábor, Chýnovská 533/1 Patro: 2. patro, bez výtahu Nájemné: 9 800 Kč/měsíc Voda: 350 Kč/os./měsíc Otop: 1 300 Kč/měsíc Paušální platba: 1 100 Kč/měsíc Elektřina: cca 900 Kč/měsíc, přepisuje se na nájemníka - jen předpoklad Předpokládané celkové měsíční náklady pro 1 osobu: cca 13 550 Kč, pro 2 osoby cca 13 900 Kč Vratná kauce: 20 000 Kč Provize RK: 5 000 Kč K dispozici: od 28.9.2026 Vhodné pro: jednotlivce nebo pár Byt je k dispozici po dohodě. Pro domluvení prohlídky kontaktujte makléře."
     },
     {
       "id": "sr_4139565132",
@@ -607,26 +607,6 @@
       "listing_published_at": "2026-07-27",
       "listing_updated_at": "2026-07-27",
       "description": "Nabízíme k pronájmu prostorný, slunný, mezonetový byt 2+1 o výměře cca 85 m², který se nachází ve 3. NP tichého a klidného cihlového domu přímo v centru Tábora, na ulici 9. května. Lokalita nabízí výjimečnou dostupnost vše potřebné máte doslova pár kroků od domu. Dispozice bytu - prostorná vstupní hala s vestavěnými skříněmi, koupelna s vanou a WC, dva pokoje , kuchyně s kuchyňskou linkou. Topení je řešeno elektrickými kamny (přímotopy), ohřev vody zajišťuje elektrický bojler. Nájemné ve výši 11.500,-Kč + záloha na vodu 300,-Kč/os., záloha na elektřinu 3000 Kč/měs. Majitel požaduje vratnou kauci ve výši 15 000,-Kč, poplatek RK ve výši jednoho měsíčního nájmu + 21% DPH. Byt se nachází v samotném centru města, v pěší vzdálenosti od veškeré občanské vybavenosti obchodů, služeb, restaurací, škol, zdravotnických zařízení. V blízkosti je také vlakové i autobusové nádraží, což zajišťuje skvělou dopravní dostupnost. Byt je k dispozici po dohodě. Pro domluvení prohlídky kontaktujte makléře."
-    },
-    {
-      "id": "sr_4187541580",
-      "title": "Pronájem bytu 1+1 50 m²",
-      "price": 9500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/4187541580?noredirect=1",
-      "lat": 49.4127049301727,
-      "lng": 14.6698484969858,
-      "sqm": 50,
-      "rooms": 1,
-      "address": "9. května, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-27",
-      "listing_updated_at": "2026-07-27",
-      "description": "Nabízíme k pronájmu prostorný, slunný a velmi příjemný byt 1+1 o výměře cca 50 m², který se nachází ve 2. NP tichého a klidného cihlového domu přímo v centru Tábora, na ulici 9. května. Lokalita nabízí výjimečnou dostupnost vše potřebné máte doslova pár kroků od domu. Dispozice bytu vstupní chodba, koupelna s WC a sprchovým koutem, obývací pokoj s kuchyňskou linkou a prostorná ložnice. Topení je řešeno elektrickými kamny (přímotopy), ohřev vody zajišťuje elektrický bojler. Nájemné ve výši 9500,-Kč + záloha na vodu 400,-Kč/os., záloha na elektřinu 3000 Kč/měs. Majitel požaduje vratnou kauci ve výši 15 000,-Kč, poplatek RK ve výši jednoho měsíčního nájmu + 21% DPH. Byt se nachází v samotném centru města, v pěší vzdálenosti od veškeré občanské vybavenosti obchodů, služeb, restaurací, škol, zdravotnických zařízení. V blízkosti je také vlakové i autobusové nádraží, což zajišťuje skvělou dopravní dostupnost. Byt je k dispozici po dohodě. Pro domluvení prohlídky kontaktujte makléře."
     },
     {
       "id": "sr_3717779532",
