@@ -1,7 +1,7 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-08-29T12:45:32.165Z",
+  "fetched_at": "2026-08-30T11:52:44.179Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
@@ -187,26 +187,6 @@
       "listing_published_at": "2026-07-03",
       "listing_updated_at": "2026-08-24",
       "description": "Nabízíme k pronájmu prostorný byt o dispozici 3+kk a výměře 85 m² s prostornou terasou, který se nachází v 1. patře kompletně zrekonstruovaného zděného domu v klidné části Sezimova Ústí I, u řeky Lužnice. Dům prošel celkovou rekonstrukcí s kolaudací v roce 2019 a celý byt působí velmi moderním, vzdušným a příjemným dojmem. Dominantou bytu je světlý obývací prostor s kuchyňským koutem a přímým vstupem na terasu o výměře 12 m², která nabízí ideální místo pro ranní kávu, posezení s přáteli nebo chvíle odpočinku po práci. Kuchyňská linka je vybavena spotřebiči včetně myčky, elektrického sporáku se sklokeramickou deskou, lednice a digestoře. Součástí vybavení je také pračka a postel pro dvě osoby. Vytápění bytu je řešeno elektrickým kotlem, ohřev vody zajišťuje elektrický bojler a každý byt má vlastní podružný elektroměr i vodoměr. Součástí nájemného je také internetové připojení přes WIFI. K dispozici je společná zahrada o výměře 170 m², kterou mohou nájemníci využívat. Příjemným benefitem je také bezproblémové parkování přímo před domem. Lokalita nabízí kompletní občanskou vybavenost v docházkové vzdálenosti, nachází se zde supermarkety, menší obchody, restaurace U Vili, pošta, školy i školky. Výborná je také dopravní dostupnost a pravidelné spojení MHD do centra Tábora i okolních částí města. Velkým benefitem je blízkost sportovního a relaxačního areálu Komora, který nabízí široké možnosti volnočasového vyžití – cyklostezky, inline trasy, sportoviště, dětská hřiště i příjemné procházky v přírodě kolem řeky Lužnice. Lokalita tak spojuje pohodlné městské bydlení s množstvím zeleně a možností aktivního odpočinku. Pro více informací nebo domluvení prohlídky mě neváhejte kontaktovat."
-    },
-    {
-      "id": "sr_2098380876",
-      "title": "Pronájem bytu 4+1 109 m²",
-      "price": 11000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/4+1/_/2098380876?noredirect=1",
-      "lat": 49.536487203,
-      "lng": 14.878721143,
-      "sqm": 109,
-      "rooms": 4,
-      "address": "Smilovy Hory, Smilovy Hory",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-24",
-      "listing_updated_at": "2026-08-24",
-      "description": "Nabízíme k pronájmu prostorný byt 4+1 o výměře 87 m² s garáží o výměře 22 m² v klidné obci Smilovy Hory. Byt se nachází ve 2. patře zděného a zatepleného domu s novou střechou. Nabízí dostatek prostoru pro pohodlné rodinné bydlení. Z kuchyně je přímý vstup na lodžii a k dispozici jsou také sklepní prostory. Velkou výhodou je vlastní garáž, která je součástí pronájmu. Vytápění a ohřev vody zajišťuje elektrokotel. Smilovy Hory nabízejí klidné bydlení v příjemném prostředí s dostatkem zeleně. Nájemné je uvedeno bez energií. Pro více informací nebo sjednání prohlídky kontaktujte makléře."
     },
     {
       "id": "sr_3581067340",
