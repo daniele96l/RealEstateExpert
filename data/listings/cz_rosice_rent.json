@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-08-30T11:53:24.396Z",
+  "fetched_at": "2026-08-31T13:29:34.189Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_38125644",
+      "title": "Pronájem bytu 3+kk 80 m²",
+      "price": 19000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/_/38125644?noredirect=1",
+      "lat": 49.1818105614,
+      "lng": 16.4009490392,
+      "sqm": 80,
+      "rooms": 3,
+      "address": "Husova čtvrť, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-28",
+      "listing_updated_at": "2026-08-31",
+      "description": "Ve výhradním zastoupení majitele nabízím k dlouhodobému pronájmu slunný byt o velikosti 3+kk v Rosicích na ulici Husova čtvrť. Nezařízený byt o celkové ploše 80 m2 se nachází ve 2. patře bytového domu bez výtahu. Kuchyňský kout je vybaven kuchyňskou linkou s dřezem a plynovým sporákem. Obývací část se nabízí jako nezařízená. Z obývací místnosti je vstup na zastřešený balkon. Obě ložnice jsou neprůchozí a nejsou vybaveny nábytkem. V koupelně se nachází rohová vana, umyvadlo, otopný žebřík a přípojka na pračku. Toaleta je samostatně. Předsíň nabízí dostatek prostoru k umístění šatní skříně a botníku. V ceně pronájmu je vlastní sklepní kóje umístěná v suterénu domu, Bezproblémové parkování na veřejném parkovišti před domem i v přilehlých ulicích. V docházkové vzdálenosti restaurace, obchody, lékárna i všechny nezbytné instituce a služby. Prohlídka je možná kdykoliv po vzájemné domluvě. S ohledem na legislativní požadavek jeho zveřejnění, musí být nemovitost označena v en. třídě G, což ovšem neznamená, že do této en. třídy opravdu patří."
+    },
     {
       "id": "sr_2638594124",
       "title": "Pronájem bytu 2+kk 40 m²",
@@ -27,26 +47,6 @@
       "listing_published_at": "2026-08-28",
       "listing_updated_at": "2026-08-28",
       "description": "Ve výhradním zastoupení majitele nabízím k pronájmu podkrovní byt o velikosti 2+kk a celkové ploše cca 40,5 m2 nacházející se ve 2. patře cihlového domu v Rosicích na ul. Trávníky. Kuchyňský kout je vybaven kuchyňskou linkou s varnou deskou, troubou a digestoří. Z tohoto pokoje je vstup na balkon (cca 4 m2) s výhledem do zeleně. Ložnice je nezařízená. V koupelně se nachází sprchový kout, umyvadlo, otopný žebřík, toaleta a přípojka na pračku. K bytu náleží společná zahrada. Možnost grilování, pěstování zeleniny a ovoce. Zahrada nabízí dostatek prostoru k umístění bazénu. Možnost připojení k internetu a TV za příplatek. V blízkosti domu potraviny, restaurace, zastávka MHD, sportovní hřiště, v okolí potřebné a nezbytné instituce a služby. K nastěhování ihned nebo po dohodě. S ohledem na legislativní požadavek jeho zveřejnění, musí být nemovitost označena v energetické třídě G, což ovšem neznamená, že do této en. třídy opravdu patří."
-    },
-    {
-      "id": "sr_38125644",
-      "title": "Pronájem bytu 3+kk 80 m²",
-      "price": 19000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/_/38125644?noredirect=1",
-      "lat": 49.1818105614,
-      "lng": 16.4009490392,
-      "sqm": 80,
-      "rooms": 3,
-      "address": "Husova čtvrť, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-28",
-      "listing_updated_at": "2026-08-28",
-      "description": "Ve výhradním zastoupení majitele nabízím k dlouhodobému pronájmu slunný byt o velikosti 3+kk v Rosicích na ulici Husova čtvrť. Nezařízený byt o celkové ploše 80 m2 se nachází ve 2. patře bytového domu bez výtahu. Kuchyňský kout je vybaven kuchyňskou linkou s dřezem a plynovým sporákem. Obývací část se nabízí jako nezařízená. Z obývací místnosti je vstup na zastřešený balkon. Obě ložnice jsou neprůchozí a nejsou vybaveny nábytkem. V koupelně se nachází rohová vana, umyvadlo, otopný žebřík a přípojka na pračku. Toaleta je samostatně. Předsíň nabízí dostatek prostoru k umístění šatní skříně a botníku. V ceně pronájmu je vlastní sklepní kóje umístěná v suterénu domu, Bezproblémové parkování na veřejném parkovišti před domem i v přilehlých ulicích. V docházkové vzdálenosti restaurace, obchody, lékárna i všechny nezbytné instituce a služby. Prohlídka je možná kdykoliv po vzájemné domluvě. S ohledem na legislativní požadavek jeho zveřejnění, musí být nemovitost označena v en. třídě G, což ovšem neznamená, že do této en. třídy opravdu patří."
     },
     {
       "id": "sr_2407972940",
