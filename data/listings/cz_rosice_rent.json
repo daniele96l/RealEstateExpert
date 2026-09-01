@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-08-31T13:29:34.189Z",
+  "fetched_at": "2026-09-01T11:39:27.695Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_2374287436",
+      "title": "Pronájem bytu 2+kk 55 m²",
+      "price": 19000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/2374287436?noredirect=1",
+      "lat": 49.1872352399603,
+      "lng": 16.3860574373036,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Na Vyhlídce, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-31",
+      "listing_updated_at": "2026-08-31",
+      "description": "K dlouhodobému podnájmu nabízíme krásný byt o dispozici 2+kk v klidné a oblíbené lokalitě v Rosicích u Brna. Byt o celkové výměře 55 m2 se nachází ve třetím podlaží panelového domu s výtahem. Jistě vás potěší, že k bytu náleží také parkovací stání, balkón a sklep. Byt se nabízí částečně vybavený. Kuchyně disponuje lednicí, myčkou, elektrickou a mikrovlnou troubou, varnou deskou a digestoří. Soušástí pronájmu je také TV, klimatizace a internet. V koupelně je sprchový kout, toaleta, pračka a umyvadlo. V okolí domu najdeme restaurace, obchod s potravinami, rozsáhlou zeleň a další. Dopravní dostupnost je zajištěna autobusovou zastávkou kousek od domu. Byt je volný k nastěhování od 1. října. Uvedena energetická kategorie G, jelikož nemáme k dispozici PENB. Byt pronajímá Ideální nájemce - služba, se kterou budete bydlet bezstarostně a za férových podmínek. Když se něco přihodí, k dispozici jsou správci, kteří s vámi vše vyřeší. Pomůžeme s veškerou administrativou, s nastavením plateb a zajistíme vám speciální pojištění. Pojďte bydlet s námi!"
+    },
     {
       "id": "sr_38125644",
       "title": "Pronájem bytu 3+kk 80 m²",
@@ -167,26 +187,6 @@
       "listing_published_at": "2026-08-22",
       "listing_updated_at": "2026-08-22",
       "description": "Nabízíme k pronájmu světlý a velmi příjemný byt 2+1 o výměře 59 m², který prošel kompletní rekonstrukcí a nachází se v oblíbené lokalitě Komenského náměstí v Rosicích. Byt je situovaný v 1. nadzemním podlaží, tedy ve zvýšeném přízemí, což zajišťuje pohodlný přístup i dostatek soukromí. Je připraven k okamžitému nastěhování. ‌ Po vstupu do bytu se ocitnete v prostorné chodbě, která nabízí dostatek místa pro vestavěné skříně a další úložná řešení. Z chodby je vstup do komory, samostatného WC a do zrekonstruované koupelny se sprchovým koutem. Samostatná kuchyně je vybavena novou kuchyňskou linkou se spotřebiči a poskytuje dostatek prostoru pro jídelní stůl. Dispozici doplňují dva prostorné, neprůchozí pokoje, které lze využít jako obývací pokoj, ložnici, dětský pokoj či pracovnu. ‌ Byt se prodává bez vybavení, což umožňuje novému majiteli zařídit si jej podle vlastních představ. K bytu náleží také sklepní kóje o velikosti 1,5 m². ‌ Komenského náměstí je klidná a vyhledávaná část Rosic s výbornou občanskou vybaveností. V docházkové vzdálenosti se nachází obchody, služby, škola, školka i zastávka MHD. Díky skvělé dopravní dostupnosti je Brno snadno dosažitelné jak autem, tak veřejnou dopravou. ‌ Nájemné: 16 000 Kč / měsíc Zálohy na služby: 3 500 Kč / měsíc Elektřina se přepisuje na nájemce Kauce: 32 000 Kč Provize RK: 16 000 Kč ‌ Pokud vás byt zaujal, neváhejte se ozvat ohledně prohlídky — rádi vám jej osobně představíme."
-    },
-    {
-      "id": "sr_86364236",
-      "title": "Pronájem bytu 1+kk 54 m²",
-      "price": 13000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/86364236?noredirect=1",
-      "lat": 49.1872352399603,
-      "lng": 16.3860574373036,
-      "sqm": 54,
-      "rooms": 1,
-      "address": "Na Vyhlídce, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-10",
-      "listing_updated_at": "2026-08-21",
-      "description": "Nabízím k pronájmu byt 1kk o dispozici 26 m2 v přízemí domu se zahrádkou 25 m² a sklepem 3 m². Klidná lokalita s perfektní dostupností do Brna. Byt se nachází v moderní, žádané rezidenční lokalitě Panorama Rosice. Tato čtvrť kombinuje klidné rodinné zázemí plné zeleně s kompletní občanskou vybaveností na dosah ruky. Dopravní spojení linky 40,50,69,405,406, 37 a zastávka je nedaleko bytu. V docházkové vzdálenosti se nachází obchody (Penny, Tesco, Albert), restaurace, kavárny, lékaři, pošta i vyhlášený zámek Rosice s parkem. Byt se skládá ze vstupní chodby s šatnou, vstupem do koupelny a do pokoje s kuchyní a obývací částí, která ústí do zahrádky a pronajímá se s malou vestavnou lednicí, jinak je nevybavený, ale je možné odkoupit po domluvě nábytek od stávající nájemnice. Nájemně činí 13 000,- Kč Energie a služby 3 700,- Kč Vratná kauce 16 000,- Kč Provize 15 000,- Kč Neváhejte s prohlídkou tohoto krásného bytu."
     },
     {
       "id": "sr_2933837900",
