@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-09-01T11:39:27.695Z",
+  "fetched_at": "2026-09-02T11:12:10.973Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_2572759116",
+      "title": "Pronájem bytu 2+1 63 m²",
+      "price": 16900,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/2572759116?noredirect=1",
+      "lat": 49.185994,
+      "lng": 16.380153,
+      "sqm": 63,
+      "rooms": 2,
+      "address": "Kaštanová, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-02",
+      "listing_updated_at": "2026-09-02",
+      "description": "Hledáte nový domov, kde stačí jen přijít a bydlet? Nabízíme Vám kompletně zařízený byt 2+1 po čerstvé a velmi povedené rekonstrukci v klidné části Rosic u Brna, na ulici Kaštanová. Stačí si přinést osobní věci a můžete začít bydlet! Byt o výměře 62,5 m² se nachází v udržovaném domě a je připraven k okamžitému nastěhování. Součástí je praktická komora (1,5 m²) vybavená policemi a skříní, zasklená lodžie (5 m²) s příjemným posezením a výhledem do okolní zeleně a také sklepní kóje (2 m²). Dispozice: předsíň s úložným prostorem samostatné WC koupelna s vanou, umyvadlem, zrcadlem a pračkou obývací pokoj se vstupem na lodžii prostorná ložnice kuchyně s jídelním koutem a vestavěnými spotřebiči (myčka, lednice s mrazákem, plynový sporák, el. trouba, digestoř) Byt je vybaven tak, jak ho uvidíte na fotografiích – včetně nábytku, osvětlení, zrcadel, dekorací, spotřebičů i drobných doplňků jako koberce, závěsy, botník či komoda. Všechna okna jsou plastová se žaluziemi a závěsy. K dispozici je také domovní telefon a připojení k internetu od společnosti Twistnet. Pro koho je byt vhodný? Ideálně pro 1 až max. 2 slušné, spolehlivé a pracující osoby, které ocení čisté, nekuřácké prostředí (platí i pro lodžii). Měsíční náklady: Nájemné: 16.900 Kč Zálohy měs. - elektřina, plyn, teplá a studená voda voda, teplo, úklid spol. prostor, osvětlení v domě, výtah a služby domu v celkový výši 5.669,- Kč. Kauce: 2 měsíční nájmy Rezervační poplatek: 1 nájem + DPH Byt je volný od říjen 2026. Rádi Vás přivítáme osobně a vše Vám ukážeme. Prohlídky budou možné po 1.10. 2026 - termín si můžete domlouvat již nyní. Zaujala Vás tato nabídka? Zavolejte nám, napište – rádi se s Vámi potkáme a byt Vám představíme. Těšíme se na setkání. Poznámka: Majitel si vyhrazuje právo vybrat nájemce dle vlastních kritérií."
+    },
     {
       "id": "sr_2374287436",
       "title": "Pronájem bytu 2+kk 55 m²",
@@ -167,26 +187,6 @@
       "listing_published_at": "2026-08-12",
       "listing_updated_at": "2026-08-27",
       "description": "Nabízíme k pronájmu byt (apartmán) 1+kk (29,6 m2) B101, který se nachází v 1. nadzemním podlaží přístavby na ulici Sportovní v Rosicích u Brna. Apartmán nabízí obytný pokoj s kuchyňským koutem a koupelnu vybavenou umyvadlem, toaletou a sprchovým koutem. Apartmán je vhodný také pro osoby se sníženou pohyblivostí viz foto koupelna. Kuchyňská linka je vybavena elektrickou troubou, varnou deskou a digestoří. K dispozici je také příprava pro mikrovlnnou troubu a na chodbě se nachází přípojka pro pračku. Apartmán se pronajímá bez dalšího vybavení. V ceně nájmu jsou již zahrnuty měsíční zálohy na teplo, vodu a elektřinu a také poplatky za společné prostory. Kauce je stanovena ve výši dvou měsíčních nájmů. Provize realitní kanceláře činí jeden měsíční nájem. Rosice se nacházejí východně od Brna a centrum Brna je autem dostupné přibližně za 20 minut. Autobusová zastávka je vzdálena jen 4 minuty chůze od domu. Do centra Rosic i k rosickému zámku se dostanete pohodlně přibližně za 10 minut. Lokalita nabízí také široké možnosti pracovního uplatnění v Rosicích a okolí a dobré spojení do Brna. Pronájem je určen zájemcům bez domácích mazlíčků. Jedná se o apartmánovou jednotku, u které je třeba počítat s omezením možnosti přihlášení k trvalému pobytu či čerpání příspěvku na bydlení. Jinak nabízí plnohodnotné a komfortní zázemí pro každodenní život. Pro více informací nebo domluvení prohlídky kontaktujte makléře."
-    },
-    {
-      "id": "sr_2041823308",
-      "title": "Pronájem bytu 2+1 59 m²",
-      "price": 16000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/2041823308?noredirect=1",
-      "lat": 49.1823805,
-      "lng": 16.3906908,
-      "sqm": 59,
-      "rooms": 2,
-      "address": "Komenského náměstí, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-22",
-      "listing_updated_at": "2026-08-22",
-      "description": "Nabízíme k pronájmu světlý a velmi příjemný byt 2+1 o výměře 59 m², který prošel kompletní rekonstrukcí a nachází se v oblíbené lokalitě Komenského náměstí v Rosicích. Byt je situovaný v 1. nadzemním podlaží, tedy ve zvýšeném přízemí, což zajišťuje pohodlný přístup i dostatek soukromí. Je připraven k okamžitému nastěhování. ‌ Po vstupu do bytu se ocitnete v prostorné chodbě, která nabízí dostatek místa pro vestavěné skříně a další úložná řešení. Z chodby je vstup do komory, samostatného WC a do zrekonstruované koupelny se sprchovým koutem. Samostatná kuchyně je vybavena novou kuchyňskou linkou se spotřebiči a poskytuje dostatek prostoru pro jídelní stůl. Dispozici doplňují dva prostorné, neprůchozí pokoje, které lze využít jako obývací pokoj, ložnici, dětský pokoj či pracovnu. ‌ Byt se prodává bez vybavení, což umožňuje novému majiteli zařídit si jej podle vlastních představ. K bytu náleží také sklepní kóje o velikosti 1,5 m². ‌ Komenského náměstí je klidná a vyhledávaná část Rosic s výbornou občanskou vybaveností. V docházkové vzdálenosti se nachází obchody, služby, škola, školka i zastávka MHD. Díky skvělé dopravní dostupnosti je Brno snadno dosažitelné jak autem, tak veřejnou dopravou. ‌ Nájemné: 16 000 Kč / měsíc Zálohy na služby: 3 500 Kč / měsíc Elektřina se přepisuje na nájemce Kauce: 32 000 Kč Provize RK: 16 000 Kč ‌ Pokud vás byt zaujal, neváhejte se ozvat ohledně prohlídky — rádi vám jej osobně představíme."
     },
     {
       "id": "sr_2933837900",
