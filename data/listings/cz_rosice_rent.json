@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-09-02T11:12:10.973Z",
+  "fetched_at": "2026-09-03T11:13:14.701Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_324714572",
+      "title": "Pronájem bytu 1+kk 34 m²",
+      "price": 13278,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/324714572?noredirect=1",
+      "lat": 49.1851586361,
+      "lng": 16.39013885,
+      "sqm": 34,
+      "rooms": 1,
+      "address": "Sportovní, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-12",
+      "listing_updated_at": "2026-09-02",
+      "description": "Nabízíme k pronájmu byt (apartmán) 1+kk (29,6 m2) B101, který se nachází v 1. nadzemním podlaží přístavby na ulici Sportovní v Rosicích u Brna. Apartmán nabízí obytný pokoj s kuchyňským koutem a koupelnu vybavenou umyvadlem, toaletou a sprchovým koutem. Apartmán je vhodný také pro osoby se sníženou pohyblivostí viz foto koupelna. Kuchyňská linka je vybavena elektrickou troubou, varnou deskou a digestoří. K dispozici je také příprava pro mikrovlnnou troubu a na chodbě se nachází přípojka pro pračku. Apartmán se pronajímá bez dalšího vybavení. V ceně nájmu jsou již zahrnuty měsíční zálohy na teplo, vodu a elektřinu a také poplatky za společné prostory. Kauce je stanovena ve výši dvou měsíčních nájmů. Provize realitní kanceláře činí jeden měsíční nájem. Rosice se nacházejí východně od Brna a centrum Brna je autem dostupné přibližně za 20 minut. Autobusová zastávka je vzdálena jen 4 minuty chůze od domu. Do centra Rosic i k rosickému zámku se dostanete pohodlně přibližně za 10 minut. Lokalita nabízí také široké možnosti pracovního uplatnění v Rosicích a okolí a dobré spojení do Brna. Pronájem je určen zájemcům bez domácích mazlíčků. Jedná se o apartmánovou jednotku, u které je třeba počítat s omezením možnosti přihlášení k trvalému pobytu či čerpání příspěvku na bydlení. Jinak nabízí plnohodnotné a komfortní zázemí pro každodenní život. Pro více informací nebo domluvení prohlídky kontaktujte makléře."
+    },
     {
       "id": "sr_2572759116",
       "title": "Pronájem bytu 2+1 63 m²",
@@ -167,26 +187,6 @@
       "listing_published_at": "2026-08-13",
       "listing_updated_at": "2026-08-26",
       "description": "Hledáte útulné a moderní bydlení v klidné lokalitě? Máme pro vás jedinečnou příležitost stát se nájemníkem krásného bytu 5+kk v novostavbě na ulici Wolkerova v Rosicích. Tento byt je ideální volbou pro rodinu, která hledá komfortní a stylové bydlení s veškerým zázemím. Základní informace o bytě: - Dispozice: 5+kk - Užitná plocha: 89 m² - Patro: 3. patro - Podlahové vytápění - Balkon: – ideální místo na ranní kávu nebo večerní relax - Sklep: K dispozici – skvělé pro uskladnění sezónních věcí - Výhoda prvního nájemníka a výběr z několika bytů - Možnost pronájmu garážového nebo parkovacího venkovního stání Byt je navržen s důrazem na moderní styl a funkčnost. Díky promyšlené dispozici 5+kk nabízí dostatek prostoru pro pohodlné bydlení. Obývací část je propojena s kuchyňským koutem, který je vybaven moderními spotřebiči (lednice, mikrovlnná trouba, myčka, varná deska, digestoř, trouba), takže vaření bude radost. Z obývacího pokoje se dostanete na prostorný balkon, kde si můžete užívat čerstvý vzduch a výhled do okolí. V koupelně je dostatečně velký prostor s velkým umyvadlem, toaletou, vanou, sprchovým koutem a přípojkou na pračku. K bytu náleží také sklep, který poskytuje další úložný prostor. Pokud máte auto, jistě oceníte možnost pronájmu garážového nebo parkovacího venkovního stání (za příplatek) – už žádné starosti s parkováním! Rosice jsou vyhledávanou lokalitou díky své klidné atmosféře a výborné dostupnosti. Ulice Wolkerova se nachází v blízkosti veškeré občanské vybavenosti – obchody, restaurace, školy i sportovní zařízení máte na dosah ruky. Zároveň je zde skvělá dopravní dostupnost do Brna i okolí. Ideální místo pro ty, kteří chtějí bydlet mimo ruch velkoměsta, ale zároveň mít vše na dosah. Prohlídky jsou možné kdykoliv po domluvě s uvedeným makléřem. V případě Vašeho zájmu Vám můžeme nabídnout video-prohlídky nemovitostí v přímém přenosu. Možnost zajištění jednorázového či pravidelného úklidu naší úklidovou firmou."
-    },
-    {
-      "id": "sr_324714572",
-      "title": "Pronájem bytu 1+kk 34 m²",
-      "price": 13278,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/324714572?noredirect=1",
-      "lat": 49.1851586361,
-      "lng": 16.39013885,
-      "sqm": 34,
-      "rooms": 1,
-      "address": "Sportovní, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-12",
-      "listing_updated_at": "2026-08-27",
-      "description": "Nabízíme k pronájmu byt (apartmán) 1+kk (29,6 m2) B101, který se nachází v 1. nadzemním podlaží přístavby na ulici Sportovní v Rosicích u Brna. Apartmán nabízí obytný pokoj s kuchyňským koutem a koupelnu vybavenou umyvadlem, toaletou a sprchovým koutem. Apartmán je vhodný také pro osoby se sníženou pohyblivostí viz foto koupelna. Kuchyňská linka je vybavena elektrickou troubou, varnou deskou a digestoří. K dispozici je také příprava pro mikrovlnnou troubu a na chodbě se nachází přípojka pro pračku. Apartmán se pronajímá bez dalšího vybavení. V ceně nájmu jsou již zahrnuty měsíční zálohy na teplo, vodu a elektřinu a také poplatky za společné prostory. Kauce je stanovena ve výši dvou měsíčních nájmů. Provize realitní kanceláře činí jeden měsíční nájem. Rosice se nacházejí východně od Brna a centrum Brna je autem dostupné přibližně za 20 minut. Autobusová zastávka je vzdálena jen 4 minuty chůze od domu. Do centra Rosic i k rosickému zámku se dostanete pohodlně přibližně za 10 minut. Lokalita nabízí také široké možnosti pracovního uplatnění v Rosicích a okolí a dobré spojení do Brna. Pronájem je určen zájemcům bez domácích mazlíčků. Jedná se o apartmánovou jednotku, u které je třeba počítat s omezením možnosti přihlášení k trvalému pobytu či čerpání příspěvku na bydlení. Jinak nabízí plnohodnotné a komfortní zázemí pro každodenní život. Pro více informací nebo domluvení prohlídky kontaktujte makléře."
     },
     {
       "id": "sr_2933837900",
