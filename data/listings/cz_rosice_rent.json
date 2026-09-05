@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-09-04T11:11:53.109Z",
+  "fetched_at": "2026-09-05T10:34:14.670Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3216977996",
+      "title": "Pronájem bytu 3+kk 69 m²",
+      "price": 23000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/_/3216977996?noredirect=1",
+      "lat": 49.17936102643538,
+      "lng": 16.39949900324698,
+      "sqm": 69,
+      "rooms": 3,
+      "address": "Karla IV., Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-04",
+      "listing_updated_at": "2026-09-04",
+      "description": "K dlouhodobému pronájmu nabízíme byt o dispozici 3+kk a podlahové ploše cca 69,6 m² s balkonem. Nachází se ve 3. patře bytového domu na ulici Karla IV. v Rosicích. K bytu náleží také jedno parkovací stání v garáži. Dispozici tvoří obývací pokoj s kuchyňským koutem a vstupem na balkon, dva samostatné neprůchozí pokoje, koupelna se sprchovým koutem, samostatná toaleta a vstupní chodba s úložnými prostory. Byt se pronajímá vybavený dle fotografií. Součástí je kuchyňská linka s vestavěnými spotřebiči, jídelní stůl se židlemi, sedací souprava, televizní stolek, postele, pracovní stoly, šatní skříně a pračka. Komfort bydlení zvyšují elektronicky ovládané venkovní rolety. Velká okna zajišťují dostatek denního světla a z obývacího pokoje je přímý vstup na balkon. V okolí je dobrá občanská vybavenost. V pěší vzdálenosti najdete potraviny, lékárnu, základní školu, autobusové zastávky i další běžné služby. Nedaleko se nachází také mateřská škola. Rosice mají autobusové i vlakové spojení a jsou praktické také pro dojíždění směrem na Brno. K dispozici od: 15. 9. 2026 Nájemné: 23 000 Kč / měsíc Zálohy na energie a služby: 4 946 Kč / měsíc Jistota: 30 000 Kč Provize RK: 23 000 Kč PENB: třída B V případě zájmu o více informací nebo prohlídku mě prosím kontaktujte."
+    },
     {
       "id": "sr_324714572",
       "title": "Pronájem bytu 1+kk 34 m²",
