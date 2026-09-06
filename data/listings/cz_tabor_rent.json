@@ -1,7 +1,7 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-09-05T10:33:31.846Z",
+  "fetched_at": "2026-09-06T10:51:33.110Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
@@ -507,6 +507,26 @@
       "listing_published_at": "2026-08-20",
       "listing_updated_at": "2026-08-20",
       "description": "K nastěhování ihned. Nabízíme k pronájmu přízemní byt 2kk o výměře 50 m² s předzahrádkou, na Třídě Čs. armády ve Veselí nad Lužnicí II. Dispozice je řešená prakticky: vstupní chodba s věšákovou stěnou, prostorný obývací pokoj spojený s plně vybavenou kuchyní, samostatná ložnice a koupelna s WC. Rohová kuchyňská linka má plynovou varnou desku, vestavnou troubu, myčku, digestoř a lednici s mrazákem. Z obývací části vedou prosklené dveře do zahrádky. Ložnice pojme manželskou postel i šatní skříň, která v bytě zůstává. Koupelna je obložená, se sprchou, závěsným WC, umyvadlem se skříňkou a žebříkovým radiátorem na ručníky. Podlahy jsou vinylové, okna plastová se žaluziemi. Lokalita nabízí kompletní vybavenost v docházkové vzdálenosti: základní škola je přímo na Třídě Čs. armády, centrum s náměstím T. G. Masaryka, obchody s potravinami (COOP Trefa) a lékárnou jsou pár minut chůze. V blízkosti bytu se nachází autobusové a vlakové nádraží. Velkou výhodou pro potenciální nájemce je, že byt je v profesionální správě společnosti Bohemian Estates, jenž správu pro majitele tohoto bytu vykonává. Nájemci je k dispozici kontaktní osoba, která řeší veškeré záležitosti s nájmem spojené (údržba, platby nájemného, vyúčtování, dodatky, a pod.). Nájemci je tak zajištěno bezproblémové užívání bytu s kompletním servisem. Nájemné: 13500 Kč/měsíc + 3000 záloha na služby vč. el. a plynu. vratná jistota 16500 Kč, provize RK 16500 Kč + DPH V případě zájmu o tuto nemovitost prosíme o uvedení základních informací (zda Vám vyhovuje počátek nájmu; počet osob, které by byt obývaly, zaměstnání, zda máte domácího mazlíčka)."
+    },
+    {
+      "id": "sr_915722316",
+      "title": "Pronájem bytu 3+1 80 m²",
+      "price": 13500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/915722316?noredirect=1",
+      "lat": 49.256277,
+      "lng": 14.721487,
+      "sqm": 80,
+      "rooms": 3,
+      "address": "tř. Dr. Edvarda Beneše, Soběslav II, Soběslav",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-11",
+      "listing_updated_at": "2026-09-05",
+      "description": "Pronájem podkrovního bytu 3+1, 80 m², v centru jihočeského města Soběslav, ul. tř. Dr. Edvarda Beneše. Zrekonstruovaný byt se nachází ve 3. patře zděného domu po revitalizaci, bez výtahu. Dispozice bytu: vstupní chodba a předsíň 15,5 m², kuchyně 9 m², obývací pokoj 21 m², dětský pokoj nebo pracovna 12 m², ložnice 15 m², prostorná koupelna 6 m² a samostatná toaleta 1,5 m². Všechny pokoje jsou neprůchozí, samostatně přístupné z chodby. Byt je vybaven novou moderní kuchyňskou linkou s vestavěnými spotřebiči: indukční sporák s horkovzdušnou troubou, digestoř, myčka, samostatná nová velká lednice s mrazákem v chodbě. Na podlaze laminátová podlaha a dlažba, ohřev vody elektrickým bojlerem, topení úspornými elektrickými sálavými topnými panely s akumulací a bezdrátovým termostatem Mirava. K bytu přináleží sklepní kóje, možnost využití společné kolárny. Parkování u domu na veřejných parkovištích, sjezd na D3 směr Praha, České Budějovice cca 5 min. Měsíční nájem 13 500 Kč + platba za vodu, 1 x ročně poplatek za úklid společných prostor a elektřinu v společných prostorách + elektřina na nájemce /zálohy ve výši 3 500 Kč/. Možnost využití připojení na společný internet v domě. Majitel požaduje kauci ve výši tří měsíčních nájmu 40 500 Kč /polovinu vratné kauce je možné uhradit formou splátek/ + provize RK 15 000 Kč. K nastěhování po dohodě v průběhu září 2026 a dlouhodobě. Majitel upřednostní zájemce se stálým příjmem, bez zvířecích mazlíčků. Kvalitní bydlení se širokou nabídkou veškeré občanské vybavenosti: školy, obchody, pošta, parky na procházky nebo sportování, zimní stadión, bowling, sportovní a dětská hřiště, kino, knihovna, lékaři, lékárny, čerpací stanice, restaurace, cukrárny … Pro další informace a dohodnutí termínu prohlídky mě kontaktujte telefonicky, ráda vás bytem provedu. Prohlídky možné koncem srpna 2026."
     },
     {
       "id": "sr_2346111052",
