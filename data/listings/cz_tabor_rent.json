@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-09-06T10:51:33.110Z",
+  "fetched_at": "2026-09-07T12:18:21.088Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3606917196",
+      "title": "Pronájem bytu 1+1 36 m²",
+      "price": 8000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/3606917196?noredirect=1",
+      "lat": 49.4132774729709,
+      "lng": 14.663930241629,
+      "sqm": 36,
+      "rooms": 1,
+      "address": "nám. F. Křižíka, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-07",
+      "listing_updated_at": "2026-09-07",
+      "description": "Společnost GOLDEN CASTLE s.r.o. nabízí k pronájmu pěkný zděný byt 1+1, 36 m2 + terasa 12 m2 na náměstí Františka Křižíka v Táboře. Pěkný slunný byt přímo ve městě. Měsíční nájem 8.000,- Kč + služby 2500 a elektřina 4000,- Kč/měsíc. Byt volný od 15.09.2026. Podmínkou je kauce (jistina). Pronájem dlouhodobě pro seriózního nájemníka. Ideálně pro jednu až dvě osoby co chtějí bydlet ve městě v docházkové vzdálenosti od všech možných služeb."
+    },
     {
       "id": "sr_1277112396",
       "title": "Pronájem bytu 2+kk 38 m²",
@@ -367,26 +387,6 @@
       "listing_published_at": "2025-10-30",
       "listing_updated_at": "2026-08-31",
       "description": "Pronájem bytu 3+1 po kompletní rekonstrukci, 97,9 m² – Školní náměstí, Sezimovo Ústí Nabízíme k pronájmu prostorný a světlý byt 3+1 po kompletní rekonstrukci, nacházející se ve vyhledávané a klidné lokalitě Sezimovo Ústí – Školní náměstí. Byt o celkové ploše 97,9 m² (včetně dvou lodžií a sklepa) a podlahové ploše 82,6 m² je umístěn v 7. nadzemním podlaží (6. patro) zděného domu s novým výtahem. Nabízí moderní, pohodlné a slunné bydlení s plnou občanskou vybaveností v dosahu. Byt prošel kompletní rekonstrukcí a je připraven k okamžitému nastěhování. Dispozice a vybavení: • obývací pokoj se vstupem na lodžii • samostatná kuchyně s novou linkou, myčkou, troubou a sklokeramickou varnou deskou • druhá lodžie přístupná z kuchyně • dvě samostatné ložnice (žádný pokoj není průchozí) • koupelna s vanou a umyvadlem • samostatné WC • prostorná šatna • komora/spíž přístupná z kuchyně • k bytu náleží zděný sklep o výměře 7,4 m² V bytě jsou nové vinylové podlahy, interiér působí velmi příjemně a vzdušně. Dům se nachází v oblíbené části města s plnou občanskou vybaveností – v blízkosti je škola, školka, obchody, pošta, restaurace, sportoviště i zdravotní služby. Výborná dopravní dostupnost do Tábora – v docházkové vzdálenosti se nachází vlakové nádraží i zastávky MHD. Měsíční náklady: • Nájemné: 16 000 Kč / měsíc • Zálohy na poplatky a služby: 5 000 Kč / měsíc • Elektřina: 1 200 Kč / měsíc • Kauce: 32 000 Kč • Provize za zprostředkování: 21 000 Kč Byt je k dispozici od 1.11.2026."
-    },
-    {
-      "id": "sr_923058252",
-      "title": "Pronájem bytu 1+kk 31 m²",
-      "price": 10000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/923058252?noredirect=1",
-      "lat": 49.402482,
-      "lng": 14.682012,
-      "sqm": 31,
-      "rooms": 1,
-      "address": "U Areálu, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-31",
-      "listing_updated_at": "2026-08-31",
-      "description": "Nabízíme k pronájmu bytovou jednotku 1+kk, 31 m2 v Táboře v lokalitě na Maredově vrchu. Byt se nachází v 1. patře zděného bytového domu v ulici U Areálu 3104. Vybaven je kuchyňskou linkou, el. troubou se sklokeramickou deskou a digestoří. Velkou předností tohoto bytu je prostorný balkón o výměře 7 m2. Dispozice se skládá z chodby, obývacího pokoje s kuchyňským koutem a koupelny s WC. Vytápění a ohřev teplé vody je řešen dálkovým přívodem. Spotřebu elektřiny si nájemník hradí sám u příslušného dodavatele. Jedná se o dlouhodobí pronájem, který je vhodný pro jednu až dvě osoby bez domácích mazlíčků. Parkovat je možné před domem na obecním parkovišti. K dispozici od 1.11.2026. Pro více informací nebo se zájmem o prohlídku mě můžete kontaktovat. Budu se těšit."
     },
     {
       "id": "sr_3731284044",
