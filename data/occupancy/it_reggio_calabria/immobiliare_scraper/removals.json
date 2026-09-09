@@ -1,5 +1,58 @@
 [
   {
+    "id": "im_128829948",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-09-09T11:04:43.441Z",
+    "presumed_rented_at": "2026-09-09T11:04:43.441Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-09-08T11:01:25.479Z",
+    "days_on_market": 63,
+    "price": 350,
+    "sqm": 87,
+    "rooms": 2,
+    "property_type": "bilocale",
+    "address": "Vicolo Casalotto",
+    "zone": "Santa Caterina, San Brunello, Vito",
+    "url": "https://www.immobiliare.it/annunci/128829948/",
+    "description": "Vicolo Casalotto. The Tecnocasa Agency Studio Reggio Calabria Nord offers for rent an apartment of 87 sqm located on the raised ground floor, in Via Casalotto. The property is in good condition and equipped with air conditioning, providing a functional layout with 2 bedrooms, a comfortable kitchen-living room, a rather spacious storage room, and a bathroom. A courtyard of about 25 sqm, for exclusive use, completes the residence, providing a second and convenient independent entrance to the apartment. The strategic location ensures easy access to the main services in the area, making daily life comfortable and convenient. Just a few steps from the motorway exit, the apartment is ideal for those who need quick and frequent movements. An excellent solution for those looking for a welcoming environment that is well connected, without giving up the tranquility of a reserved outdoor space.",
+    "title": "Bilocale vicolo Casalotto 39, Santa Caterina - San Brunello, Reggio Calabria",
+    "bathrooms": 1,
+    "floor": "Piano terra",
+    "energy_class": null,
+    "energy_kwh_sqm": null,
+    "images": [
+      "https://pic.im-cdn.it/image/1918365404/xxl.jpg",
+      "https://pic.im-cdn.it/image/1918372098/xxl.jpg",
+      "https://pic.im-cdn.it/image/1918372116/xxl.jpg",
+      "https://pic.im-cdn.it/image/1918372150/xxl.jpg",
+      "https://pic.im-cdn.it/image/1918372186/xxl.jpg",
+      "https://pic.im-cdn.it/image/1918372214/xxl.jpg",
+      "https://pic.im-cdn.it/image/1918372254/xxl.jpg",
+      "https://pic.im-cdn.it/image/1918372292/xxl.jpg"
+    ],
+    "furnished": null,
+    "built_year": null,
+    "lift": null,
+    "garden": null,
+    "terrace": null,
+    "garage": null,
+    "condominio_monthly": null,
+    "advertiser_name": "Affiliato Tecnocasa: STUDIO REGGIO CALABRIA NORD SRL",
+    "condition": null,
+    "condition_status": null,
+    "needs_renovation": null,
+    "listing_published_at": "2026-05-06",
+    "listing_updated_at": "2026-07-14",
+    "lat": 38.1257,
+    "lng": 15.6588,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 350
+      }
+    ]
+  },
+  {
     "id": "im_131993868",
     "portal": "immobiliare_scraper",
     "detected_at": "2026-09-08T11:01:25.479Z",
