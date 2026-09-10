@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-09-09T11:17:29.355Z",
+  "fetched_at": "2026-09-10T11:12:57.304Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3952226380",
+      "title": "Pronájem bytu 3+1 90 m²",
+      "price": 18000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/3952226380?noredirect=1",
+      "lat": 49.4186702778,
+      "lng": 14.6804072222,
+      "sqm": 90,
+      "rooms": 3,
+      "address": "Brigádníků, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-09",
+      "listing_updated_at": "2026-09-09",
+      "description": "Nabízíme k pronájmu prostorný a světlý byt 3+1 o ploše 90 m² v ulici Brigádníků v Táboře. Byt se nachází ve 3. patře udržovaného cihlového domu a náleží k němu balkon a sklep. Dispozici tvoří tři samostatné pokoje, oddělená kuchyně s kuchyňskou linkou, prostorná chodba s úložnými skříněmi, koupelna se sprchovým koutem a samostatné WC. V obytných místnostech jsou dřevěné parkety. Byt se pronajímá nezařízený. Výhodou lokality je dobrá pěší dostupnost – vlakové i autobusové nádraží jsou přibližně 600 m od domu, v okolí jsou obchody, školy a další běžné služby. Nájemné činí 18 000 Kč měsíčně, služby 3 500 Kč. Elektřina a plyn se převádějí na nájemce. Vratná kauce 25 000 Kč, provize RK 18 000 Kč. Byt je k dispozici od 20. 9. 2026. Prohlídky jsou možné po předchozí domluvě."
+    },
     {
       "id": "sr_542257228",
       "title": "Pronájem bytu 2+1 65 m²",
@@ -207,26 +227,6 @@
       "listing_published_at": "2026-04-20",
       "listing_updated_at": "2026-09-02",
       "description": "Hledáte místo, kde opravdu zpomalíte, nadechnete se a budete mít klid na práci i odpočinek? Nabízíme k pronájmu mezonetový byt 2+kk v citlivě zrekonstruovaném rodinném domě v obci Opařany ideální útočiště mimo ruch města. Byt má samostatný vstup a nabízí jedinečné spojení moderního komfortu s atmosférou venkova. V přízemí se nachází prostorná vstupní chodba, obývací pokoj s kuchyňským koutem a koupelna se sprchovým koutem a WC. Dominantou bytu je vzdušný podkrovní prostor(50 m2), zaplavený denním světlem, který může sloužit jako ložnice, pracovna nebo kreativní zázemí. Okolí domu nabízí naprostý klid, zeleň a přímý kontakt s přírodou ideální pro procházky, práci z domova i relaxaci. Lokalita je vzdálená cca 60 minut od Prahy a pouhých 15 minut od Tábora, takže zůstává dobře dostupná, ale bez kompromisů v kvalitě života. Velkým benefitem je možnost pronájmu zázemí pro koně včetně přilehlé louky ideální pro ty, kteří chtějí žít opravdu venkovským způsobem života. Technické informace: vytápění a ohřev vody zajišťuje úsporné tepelné čerpadlo podlahové vytápění v obývacím prostoru, radiátor v podkroví vlastní studna nulové náklady na vodu (neplatíte vodné ani stočné) Nájemné: 15.000 Kč / měsíc Zálohy na elektřinu: dle spotřeby Vratná jistota: 15.000 Kč Provize RK: 1 nájem + DPH Byt je ideální pro 1 až 2 osoby, které hledají ticho, prostor a blízkost přírody. Pro více informací nebo domluvení prohlídky kontaktujte makléře."
-    },
-    {
-      "id": "sr_1786327116",
-      "title": "Pronájem bytu 1+1 50 m²",
-      "price": 6000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/1786327116?noredirect=1",
-      "lat": 49.362984,
-      "lng": 14.579067,
-      "sqm": 50,
-      "rooms": 1,
-      "address": "náměstí V. Háka, Malšice, Malšice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-09-02",
-      "listing_updated_at": "2026-09-02",
-      "description": "Nabízíme k pronájmu zrekonstruovaný byt s dispozicí 1+1 a výměře 50 m², který se nachází v centru městyse Malšice. Byt je ideální pro jednotlivce, páry nebo malou rodinu. Kuchyňská linka je vybavena elektrickou troubou, varnou deskou a digestoří. Zároveň nabízí prostor a přípravu pro zabudování myčky a pračky. Lednici lze prakticky umístit do levého rohu kuchyně. Koupelna je se sprchovým koutem a toaletou, na podlaze je položena praktická dlažba. Vytápění je řešeno pomocí elektrokotle, ohřev vody pak zajišťuje bojler. Velkou výhodou tohoto bytu je i možnost používání uzavřené udržované zahrady s dětským hřištěm i posezením (viz foto). Lokalita nabízí pohodlné parkování přímo před domem. K dispozici je dále společný sklad na konci budovy (jedna místnost pro 5 bytů dohromady). Městys Malšic je vzdálen 8 km od Tábora a 15 km od Bechyně. V okolí najdete veškerou občanskou vybavenost, jako jsou školy, školky, restaurace, obchody. Zálohové platby spojené s užíváním bytu jsou ve výši 400,- Kč/osobu za vodu, elektřina bude převedena na nájemce. Předpokládaná záloha na elektřinu je ve výši cca 5.000,- Kč. Požadována vratná kauce ve výši dvou měsíčních nájmů, tj. 12.000,- Kč. Majitel preferuje dlouhodobého nájemce. Odměna pro realitní kancelář ve výši 1x nájem + DPH, tj. 7.260,- Kč. Byt bude volný od 1.10. 2026 nebo po dohodě. Pro více informací a sjednání prohlídky mě neváhejte kontaktovat, budu se těšit na osobní setkání. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
       "id": "sr_3382325324",
@@ -469,26 +469,6 @@
       "description": "K dlouhodobému podnájmu nabízím prostorný a plně vybavený apartmán s přístupem na rozlehlou zahradu o rozloze 2 000 m² s vířivkou, přírodním jezerem a dětským hřištěm, nacházející se uprostřed jihočeské přírody v osadě Nepřejov (Nadějkov), jen hodinu jízdy od Prahy. Apartmán je součástí zrekonstruovaného venkovského stavení a je ideální pro větší rodinu nebo partu přátel jako prázdninový dům. OBJEKT NENÍ MOŽNO DÁLE PODNAJÍMAT/PRONAJÍMAT! Byt má rozlohu 120 m² a je kompletně vybavený včetně spotřebičů i nábytku. V přízemí se nachází prostorná společenská místnost s krbem a kuchyňským koutem (lednice, mrazák, dřez, elektrický vařič). V patře jsou dvě ložnice, každá s manželskou postelí a samostatným jednolůžkem, a koupelna s vanou. K apartmánovému domu patří společná zahrada o rozloze 2 000 m², kterou mohou podnájemníci využívat. Nachází se zde přírodní jezírko, venkovní vířivka, bazén, pergola s posezením, ohniště, gril, dětské hřiště, kolárna. Okolí spadá do turistické oblasti Toulava, známé turistickými stezkami, cyklotrasami a v zimě klasickým lyžováním. Apartmán se nachází 10 minut jízdy autem od lyžařského areálu Monínec, 3 minuty od golfové hřiště Čertovo Břemeno. V docházkové vzdálenosti se nachází biofarma se sadem a včelstvy. Nejbližší město s občanskou vybaveností je vzdáleno 5 km, okresní město Tábor 20km. Cena podnájmu 13 000 Kč/měsíčně Zálohy na energie, vodu a služby (jímka, péče o zahradu, vířivka, bazén, jezero) 7 000 Kč/měsíčně Jistina (kauce) 20 000 Kč Provize realitní kanceláře je ve výši měsíčního podnájmu + DPH (13 000 Kč + DPH) Zaujala Vás tato nabídka? Neváhejte mě kontaktovat pro více informací! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
-      "id": "sr_3502358604",
-      "title": "Pronájem bytu 2+1 62 m²",
-      "price": 13500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/3502358604?noredirect=1",
-      "lat": 49.3776974086118,
-      "lng": 14.705048302686,
-      "sqm": 62,
-      "rooms": 2,
-      "address": "Dukelská, Sezimovo Ústí, Sezimovo Ústí",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-25",
-      "listing_updated_at": "2026-09-09",
-      "description": "Pronájem zrekonstruovaného bytu 2+1 v Sezimově Ústí II. Celková plocha 62m2. Byt byl kompletně zrekonstruován v roce 2020. Byt se nachází ve čtvrtém nadzemním podlaží panelového domu. Byt se skládá z chodby, šatny, obývacího pokoje, ložnice a kuchyně, koupelny a samostatného WC. Součástí ložnice je balkon. Vše je ve výborném stavu. Kuchyňská linka s vestavěnou varnou deskou, elektrickou troubou, myčkou na nádobí a digestoří. V koupelně sprchový kout a příprava pro pračku. Podlahy PVC na chodbě, v kuchyni a v pokojích. V koupelně a na WC je keramická dlažba. Dům je zateplen, nová plastová okna. Vytápění centrální dálkové. Sklep 1 m2 k dispozici. Parkování na ulici. Cena je bez záloh na služby. Nájem splatný předem vždy k 25. dni v měsíci. Požadována kauce ve výši 2 nájmů + provize RK. Volný od října 2026."
-    },
-    {
       "id": "sr_3581067340",
       "title": "Pronájem bytu 3+1 68 m²",
       "price": 13000,
@@ -507,26 +487,6 @@
       "listing_published_at": "2026-08-23",
       "listing_updated_at": "2026-08-23",
       "description": "Nabízím k dlouhodobému pronájmu prostorný a prakticky řešený byt 3+1 o ploše přibližně 68 m² a celkové s lodžií a sklepem 73 m2, který se nachází v udržovaném bytovém domě s výtahem v Helsinské ulici v Táboře. Byt nabízí dostatek prostoru pro pohodlné rodinné bydlení. Velkou výhodou je samostatná a prostorná kuchyně, dostatek úložných prostor, lodžie a sklep. Dispozice umožňuje jednotlivým členům domácnosti dostatek soukromí a zároveň nabízí příjemný společný prostor. Dispozice a vybavení bytu: -prostorná samostatná kuchyně s jídelní částí, -obývací pokoj se vstupem na lodžii, -dvě samostatné ložnice, -koupelna se sprchovým koutem, samostatné WC -lodžie a sklep, Kuchyň je plně vybavena a nabízí dostatek pracovní i úložné plochy. K dispozici je lednice s mrazákem, myčka nádobí, vestavná trouba, plynová varná deska, mikrovlnná trouba a digestoř. Součástí kuchyně je také prostor pro jídelní stůl. V bytě jsou praktické vestavěné skříně a úložné prostory, které významně usnadňují každodenní fungování domácnosti. Další úložný prostor poskytuje sklep náležející k bytu. Nájemce může využívat rovněž společné prostory domu. Dům je vybaven výtahem a parkování je možné přímo v okolí domu. Lokalita vhodná pro rodinné bydlení Helsinská ulice patří mezi zavedené obytné lokality Tábora a pro rodinu s dětmi nabízí velmi praktické zázemí. Přímo v Helsinské ulici se nachází základní škola a mateřská škola, včetně školní jídelny a sportovního/atletického hřiště. V blízké Světlogorské ulici je další mateřská škola, supermarket COOP TERNO a také Poliklinika Tábor, kde jsou mimo jiné ordinace praktických, dětských a dalších odborných lékařů. Lokalita tak nabízí vše potřebné pro každodenní život školy, školky, zdravotní péči, obchody, sportovní možnosti i dobrou dostupnost městské hromadné dopravy. MHD v Táboře zároveň propojuje Tábor, Sezimovo Ústí a Planou nad Lužnicí. Finanční podmínky Nájemné: 13 000 Kč / měsíc Zálohy na služby: 3 301 Kč / měsíc Předpokládaná záloha na elektřinu: cca 1 300 Kč / měsíc Vratná kauce: 26 000 Kč Celkové předpokládané měsíční náklady tedy činí přibližně 17 601 Kč včetně služeb a předpokládané spotřeby elektřiny. Majitel hledá především spolehlivé nájemce pro dlouhodobý pronájem. Byt je svou dispozicí, množstvím úložných prostor i dostupností škol, školek a dalších služeb velmi vhodný také pro rodinu s dětmi, která hledá stabilní bydlení v klidné části Tábora. Pokud vás nabídka zaujala, rád vám byt osobně představím a zodpovím všechny další otázky."
-    },
-    {
-      "id": "sr_1714667596",
-      "title": "Pronájem bytu 1+1 32 m²",
-      "price": 9800,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/1714667596?noredirect=1",
-      "lat": 49.4100982840978,
-      "lng": 14.6839123220977,
-      "sqm": 32,
-      "rooms": 1,
-      "address": "Chýnovská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-21",
-      "listing_updated_at": "2026-08-28",
-      "description": "Nabízíme k pronájmu příjemný byt s vlastní šatnou 1+1 o výměře 32 m², který se nachází ve 2. patře bytového domu bez výtahu v ulici Chýnovská 533/1 v Táboře. K bytu náleží také praktický úložný prostor o výměře cca 1,5 m² ve formě uzamykatelné skříně. Byt nabízí praktickou dispozici 1+1 a díky své velikosti je ideální pro jednotlivce nebo pár. Velkou výhodou jsou **nízké měsíční náklady**. Nájemné činí 9 800 Kč měsíčně, záloha na vodu 350 Kč/osoba, záloha na otop 1 300 Kč měsíčně a paušální platba za služby 1 100 Kč měsíčně. Elektřina se přepisuje na nájemníka, předpokládaná měsíční záloha činí přibližně 1000 Kč. **Předpokládané celkové měsíční náklady včetně elektřiny jsou přibližně 13 550 Kč pro 1 osobu pro 2 osoby 13900 Kč.** Majitel požaduje vratnou kauci ve výši 20 000 Kč. Provize realitní kanceláři činí 5 000 Kč. Byt se nachází v dobře dostupné části Tábora s veškerou občanskou vybaveností v dosahu. Lokalita nabízí pohodlné spojení do centra města i dobrou dostupnost obchodů, služeb a dalších potřeb pro každodenní život. Dispozice: 1+1 Výměra bytu: 32 m² Úložný prostor: 1,5 m² uzamykatelná skříň Lokalita: Tábor, Chýnovská 533/1 Patro: 2. patro, bez výtahu Nájemné: 9 800 Kč/měsíc Voda: 350 Kč/os./měsíc Otop: 1 300 Kč/měsíc Paušální platba: 1 100 Kč/měsíc Elektřina: cca 900 Kč/měsíc, přepisuje se na nájemníka - jen předpoklad Předpokládané celkové měsíční náklady pro 1 osobu: cca 13 550 Kč, pro 2 osoby cca 13 900 Kč Vratná kauce: 20 000 Kč Provize RK: 5 000 Kč K dispozici: od 28.9.2026 Vhodné pro: jednotlivce nebo pár Byt je k dispozici po dohodě. Pro domluvení prohlídky kontaktujte makléře."
     },
     {
       "id": "sr_4139565132",

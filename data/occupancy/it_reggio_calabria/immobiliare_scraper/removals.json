@@ -1,5 +1,58 @@
 [
   {
+    "id": "im_130761342",
+    "portal": "immobiliare_scraper",
+    "detected_at": "2026-09-10T11:00:56.681Z",
+    "presumed_rented_at": "2026-09-10T11:00:56.681Z",
+    "first_seen_at": "2026-07-08T15:25:48Z",
+    "last_seen_at": "2026-09-09T11:04:43.441Z",
+    "days_on_market": 64,
+    "price": 700,
+    "sqm": 98,
+    "rooms": 2,
+    "property_type": "appartamento",
+    "address": "Via dei Filippini, 38",
+    "zone": "Centro Storico, Pineta Zerbi",
+    "url": "https://www.immobiliare.it/annunci/130761342/",
+    "description": "Via Filippini corner with Tapis Roulant. In a convenient and central location, at the corner with the tapis roulant, we offer for rent a cozy furnished apartment, located on the raised ground floor and ideal for those seeking comfort and functionality. The property consists of a kitchen with access to the internal balcony, a bright living room overlooking the tapis roulant, an internal bedroom that ensures maximum tranquility and privacy, and a windowed bathroom with a shower box. The apartment is equipped with all the main comforts: armored door, private autoclave, independent heating, and air conditioning. The rent includes condominium fees and water consumption. A ready-to-move-in solution, perfect for professionals or couples who wish to live in a well-served area without sacrificing tranquility. The property requires proven and solid income references.",
+    "title": "Appartamento",
+    "bathrooms": 1,
+    "floor": "R",
+    "energy_class": null,
+    "energy_kwh_sqm": null,
+    "images": [
+      "https://pic.im-cdn.it/image/1965186124/xxl.jpg",
+      "https://pic.im-cdn.it/image/1965186130/xxl.jpg",
+      "https://pic.im-cdn.it/image/1965186134/xxl.jpg",
+      "https://pic.im-cdn.it/image/1965186138/xxl.jpg",
+      "https://pic.im-cdn.it/image/1965186142/xxl.jpg",
+      "https://pic.im-cdn.it/image/1965186146/xxl.jpg",
+      "https://pic.im-cdn.it/image/1965186150/xxl.jpg",
+      "https://pic.im-cdn.it/image/1965186154/xxl.jpg"
+    ],
+    "furnished": null,
+    "built_year": null,
+    "lift": null,
+    "garden": null,
+    "terrace": null,
+    "garage": null,
+    "condominio_monthly": null,
+    "advertiser_name": "Affiliato Tecnocasa: STUDIO REGGIO CALABRIA CENTRO SRL",
+    "condition": null,
+    "condition_status": null,
+    "needs_renovation": null,
+    "listing_published_at": "2026-07-08",
+    "listing_updated_at": "2026-07-08",
+    "lat": 38.1087,
+    "lng": 15.6476,
+    "price_history": [
+      {
+        "at": "2026-07-08T15:25:48Z",
+        "price": 700
+      }
+    ]
+  },
+  {
     "id": "im_128829948",
     "portal": "immobiliare_scraper",
     "detected_at": "2026-09-09T11:04:43.441Z",

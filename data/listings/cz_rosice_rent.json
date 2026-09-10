@@ -1,7 +1,7 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-09-09T11:18:13.987Z",
+  "fetched_at": "2026-09-10T11:13:40.105Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
@@ -27,26 +27,6 @@
       "listing_published_at": "2026-09-04",
       "listing_updated_at": "2026-09-09",
       "description": "K dlouhodobému pronájmu nabízíme byt o dispozici 3+kk a podlahové ploše cca 69,6 m² s balkonem. Nachází se ve 3. patře bytového domu na ulici Karla IV. v Rosicích. K bytu náleží také jedno parkovací stání v garáži. Dispozici tvoří obývací pokoj s kuchyňským koutem a vstupem na balkon, dva samostatné neprůchozí pokoje, koupelna se sprchovým koutem, samostatná toaleta a vstupní chodba s úložnými prostory. Byt se pronajímá vybavený dle fotografií. Součástí je kuchyňská linka s vestavěnými spotřebiči, jídelní stůl se židlemi, sedací souprava, televizní stolek, postele, pracovní stoly, šatní skříně a pračka. Komfort bydlení zvyšují elektronicky ovládané venkovní rolety. Velká okna zajišťují dostatek denního světla a z obývacího pokoje je přímý vstup na balkon. V okolí je dobrá občanská vybavenost. V pěší vzdálenosti najdete potraviny, lékárnu, základní školu, autobusové zastávky i další běžné služby. Nedaleko se nachází také mateřská škola. Rosice mají autobusové i vlakové spojení a jsou praktické také pro dojíždění směrem na Brno. K dispozici od: 15. 9. 2026 Nájemné: 23 000 Kč / měsíc Zálohy na energie a služby: 4 946 Kč / měsíc Jistota: 30 000 Kč Provize RK: 23 000 Kč PENB: třída B V případě zájmu o více informací nebo prohlídku mě prosím kontaktujte."
-    },
-    {
-      "id": "sr_1259548748",
-      "title": "Pronájem bytu 3+1 78 m²",
-      "price": 15000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/1259548748?noredirect=1",
-      "lat": 49.1858853740937,
-      "lng": 16.3812409486824,
-      "sqm": 78,
-      "rooms": 3,
-      "address": "Kaštanová, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-09-08",
-      "listing_updated_at": "2026-09-08",
-      "description": "Nabízíme pronájem prostorného a světlého bytu 3+1 v bytovém domě s výtahem na ulici Kaštanová v Rosicích u Brna. Byt se nachází v 5.p. a má výměru 78 m2, disponuje neprůchozími pokoji, jak znázorňuje přiložený půdorys. Byt se nabízí jako částečně zařízený, v kuchyni jsou veškeré spotřebiče vestavěné: mikrovlnná trouba, lednice s mrazákem, myčka, trouba. Varná deska je plynová se čtyřmi hořáky. V pokojích jsou plovoucí podlahy, v předsíni moderní PVC. Velkou výhodou bytu jsou dvě toalety, z nichž jedna je samostatná a druhá zakomponovaná do koupelny. Prostorná předsíň umožňuje umístění skříní a dalšího úložného prostoru. Zasklená lodžie je orientovaná na jižní stranu. V domě lze využívat společnou kolárnu a kočárkárnu. Ze všech pokojů je krásný výhled, zejména severní strana bytu nabízí líbivý pohled do přírody. Dům má instalovány solární panely pro ohřev vody, také disponuje úpravnou vody pro regulaci její tvrdosti, což zvyšuje kvalitu života všech uživatelů. I proto spadá PENB domu do třídy C. Parkování je zajištěno na veřejných parkovištích před domem i za domem. Přímo před domem je dětské hřiště. Rosice mají veškerou občanskou vybavenost, dopravu do Brna zajišťuje vlak a několik linek autobusů (č. 153, 405 a 423), včetně přímého spojení s FN Brno. Vhodné pro nekuřáckou rodinu, milovníky přírody a cykloturistiky, za domem je možné napojení na cyklotrasu. Nájemníci mohou mít zvíře. Volné od 1.10.2026."
     },
     {
       "id": "sr_86364236",
