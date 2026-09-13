@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-09-12T10:39:20.969Z",
+  "fetched_at": "2026-09-13T11:43:27.431Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3581067340",
+      "title": "Pronájem bytu 3+1 68 m²",
+      "price": 13000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/3581067340?noredirect=1",
+      "lat": 49.3859883014111,
+      "lng": 14.68798316759,
+      "sqm": 68,
+      "rooms": 3,
+      "address": "Helsinská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-23",
+      "listing_updated_at": "2026-09-12",
+      "description": "Nabízím k dlouhodobému pronájmu prostorný a prakticky řešený byt 3+1 o ploše přibližně 68 m² a celkové s lodžií a sklepem 73 m2, který se nachází v udržovaném bytovém domě s výtahem v Helsinské ulici v Táboře. Byt nabízí dostatek prostoru pro pohodlné rodinné bydlení. Velkou výhodou je samostatná a prostorná kuchyně, dostatek úložných prostor, lodžie a sklep. Dispozice umožňuje jednotlivým členům domácnosti dostatek soukromí a zároveň nabízí příjemný společný prostor. Dispozice a vybavení bytu: -prostorná samostatná kuchyně s jídelní částí, -obývací pokoj se vstupem na lodžii, -dvě samostatné ložnice, -koupelna se sprchovým koutem, samostatné WC -lodžie a sklep, Kuchyň je plně vybavena a nabízí dostatek pracovní i úložné plochy. K dispozici je lednice s mrazákem, myčka nádobí, vestavná trouba, plynová varná deska, mikrovlnná trouba a digestoř. Součástí kuchyně je také prostor pro jídelní stůl. V bytě jsou praktické vestavěné skříně a úložné prostory, které významně usnadňují každodenní fungování domácnosti. Další úložný prostor poskytuje sklep náležející k bytu. Nájemce může využívat rovněž společné prostory domu. Dům je vybaven výtahem a parkování je možné přímo v okolí domu. Lokalita vhodná pro rodinné bydlení Helsinská ulice patří mezi zavedené obytné lokality Tábora a pro rodinu s dětmi nabízí velmi praktické zázemí. Přímo v Helsinské ulici se nachází základní škola a mateřská škola, včetně školní jídelny a sportovního/atletického hřiště. V blízké Světlogorské ulici je další mateřská škola, supermarket COOP TERNO a také Poliklinika Tábor, kde jsou mimo jiné ordinace praktických, dětských a dalších odborných lékařů. Lokalita tak nabízí vše potřebné pro každodenní život školy, školky, zdravotní péči, obchody, sportovní možnosti i dobrou dostupnost městské hromadné dopravy. MHD v Táboře zároveň propojuje Tábor, Sezimovo Ústí a Planou nad Lužnicí. Finanční podmínky Nájemné: 13 000 Kč / měsíc Zálohy na služby: 3 301 Kč / měsíc Předpokládaná záloha na elektřinu: cca 1 300 Kč / měsíc Vratná kauce: 26 000 Kč Celkové předpokládané měsíční náklady tedy činí přibližně 17 601 Kč včetně služeb a předpokládané spotřeby elektřiny. Majitel hledá především spolehlivé nájemce pro dlouhodobý pronájem. Byt je svou dispozicí, množstvím úložných prostor i dostupností škol, školek a dalších služeb velmi vhodný také pro rodinu s dětmi, která hledá stabilní bydlení v klidné části Tábora. Pokud vás nabídka zaujala, rád vám byt osobně představím a zodpovím všechny další otázky."
+    },
     {
       "id": "sr_2350919756",
       "title": "Pronájem bytu 2+1 57 m²",
@@ -509,26 +529,6 @@
       "description": "K dlouhodobému podnájmu nabízím prostorný a plně vybavený apartmán s přístupem na rozlehlou zahradu o rozloze 2 000 m² s vířivkou, přírodním jezerem a dětským hřištěm, nacházející se uprostřed jihočeské přírody v osadě Nepřejov (Nadějkov), jen hodinu jízdy od Prahy. Apartmán je součástí zrekonstruovaného venkovského stavení a je ideální pro větší rodinu nebo partu přátel jako prázdninový dům. OBJEKT NENÍ MOŽNO DÁLE PODNAJÍMAT/PRONAJÍMAT! Byt má rozlohu 120 m² a je kompletně vybavený včetně spotřebičů i nábytku. V přízemí se nachází prostorná společenská místnost s krbem a kuchyňským koutem (lednice, mrazák, dřez, elektrický vařič). V patře jsou dvě ložnice, každá s manželskou postelí a samostatným jednolůžkem, a koupelna s vanou. K apartmánovému domu patří společná zahrada o rozloze 2 000 m², kterou mohou podnájemníci využívat. Nachází se zde přírodní jezírko, venkovní vířivka, bazén, pergola s posezením, ohniště, gril, dětské hřiště, kolárna. Okolí spadá do turistické oblasti Toulava, známé turistickými stezkami, cyklotrasami a v zimě klasickým lyžováním. Apartmán se nachází 10 minut jízdy autem od lyžařského areálu Monínec, 3 minuty od golfové hřiště Čertovo Břemeno. V docházkové vzdálenosti se nachází biofarma se sadem a včelstvy. Nejbližší město s občanskou vybaveností je vzdáleno 5 km, okresní město Tábor 20km. Cena podnájmu 13 000 Kč/měsíčně Zálohy na energie, vodu a služby (jímka, péče o zahradu, vířivka, bazén, jezero) 7 000 Kč/měsíčně Jistina (kauce) 20 000 Kč Provize realitní kanceláře je ve výši měsíčního podnájmu + DPH (13 000 Kč + DPH) Zaujala Vás tato nabídka? Neváhejte mě kontaktovat pro více informací! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
-      "id": "sr_3581067340",
-      "title": "Pronájem bytu 3+1 68 m²",
-      "price": 13000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/3581067340?noredirect=1",
-      "lat": 49.3859883014111,
-      "lng": 14.68798316759,
-      "sqm": 68,
-      "rooms": 3,
-      "address": "Helsinská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-23",
-      "listing_updated_at": "2026-08-23",
-      "description": "Nabízím k dlouhodobému pronájmu prostorný a prakticky řešený byt 3+1 o ploše přibližně 68 m² a celkové s lodžií a sklepem 73 m2, který se nachází v udržovaném bytovém domě s výtahem v Helsinské ulici v Táboře. Byt nabízí dostatek prostoru pro pohodlné rodinné bydlení. Velkou výhodou je samostatná a prostorná kuchyně, dostatek úložných prostor, lodžie a sklep. Dispozice umožňuje jednotlivým členům domácnosti dostatek soukromí a zároveň nabízí příjemný společný prostor. Dispozice a vybavení bytu: -prostorná samostatná kuchyně s jídelní částí, -obývací pokoj se vstupem na lodžii, -dvě samostatné ložnice, -koupelna se sprchovým koutem, samostatné WC -lodžie a sklep, Kuchyň je plně vybavena a nabízí dostatek pracovní i úložné plochy. K dispozici je lednice s mrazákem, myčka nádobí, vestavná trouba, plynová varná deska, mikrovlnná trouba a digestoř. Součástí kuchyně je také prostor pro jídelní stůl. V bytě jsou praktické vestavěné skříně a úložné prostory, které významně usnadňují každodenní fungování domácnosti. Další úložný prostor poskytuje sklep náležející k bytu. Nájemce může využívat rovněž společné prostory domu. Dům je vybaven výtahem a parkování je možné přímo v okolí domu. Lokalita vhodná pro rodinné bydlení Helsinská ulice patří mezi zavedené obytné lokality Tábora a pro rodinu s dětmi nabízí velmi praktické zázemí. Přímo v Helsinské ulici se nachází základní škola a mateřská škola, včetně školní jídelny a sportovního/atletického hřiště. V blízké Světlogorské ulici je další mateřská škola, supermarket COOP TERNO a také Poliklinika Tábor, kde jsou mimo jiné ordinace praktických, dětských a dalších odborných lékařů. Lokalita tak nabízí vše potřebné pro každodenní život školy, školky, zdravotní péči, obchody, sportovní možnosti i dobrou dostupnost městské hromadné dopravy. MHD v Táboře zároveň propojuje Tábor, Sezimovo Ústí a Planou nad Lužnicí. Finanční podmínky Nájemné: 13 000 Kč / měsíc Zálohy na služby: 3 301 Kč / měsíc Předpokládaná záloha na elektřinu: cca 1 300 Kč / měsíc Vratná kauce: 26 000 Kč Celkové předpokládané měsíční náklady tedy činí přibližně 17 601 Kč včetně služeb a předpokládané spotřeby elektřiny. Majitel hledá především spolehlivé nájemce pro dlouhodobý pronájem. Byt je svou dispozicí, množstvím úložných prostor i dostupností škol, školek a dalších služeb velmi vhodný také pro rodinu s dětmi, která hledá stabilní bydlení v klidné části Tábora. Pokud vás nabídka zaujala, rád vám byt osobně představím a zodpovím všechny další otázky."
-    },
-    {
       "id": "sr_4139565132",
       "title": "Pronájem bytu 3+1 120 m²",
       "price": 20000,
@@ -585,8 +585,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-11",
-      "listing_updated_at": "2026-09-05",
-      "description": "Pronájem podkrovního bytu 3+1, 80 m², v centru jihočeského města Soběslav, ul. tř. Dr. Edvarda Beneše. Zrekonstruovaný byt se nachází ve 3. patře zděného domu po revitalizaci, bez výtahu. Dispozice bytu: vstupní chodba a předsíň 15,5 m², kuchyně 9 m², obývací pokoj 21 m², dětský pokoj nebo pracovna 12 m², ložnice 15 m², prostorná koupelna 6 m² a samostatná toaleta 1,5 m². Všechny pokoje jsou neprůchozí, samostatně přístupné z chodby. Byt je vybaven novou moderní kuchyňskou linkou s vestavěnými spotřebiči: indukční sporák s horkovzdušnou troubou, digestoř, myčka, samostatná nová velká lednice s mrazákem v chodbě. Na podlaze laminátová podlaha a dlažba, ohřev vody elektrickým bojlerem, topení úspornými elektrickými sálavými topnými panely s akumulací a bezdrátovým termostatem Mirava. K bytu přináleží sklepní kóje, možnost využití společné kolárny. Parkování u domu na veřejných parkovištích, sjezd na D3 směr Praha, České Budějovice cca 5 min. Měsíční nájem 13 500 Kč + platba za vodu, 1 x ročně poplatek za úklid společných prostor a elektřinu v společných prostorách + elektřina na nájemce /zálohy ve výši 3 500 Kč/. Možnost využití připojení na společný internet v domě. Majitel požaduje kauci ve výši tří měsíčních nájmu 40 500 Kč /polovinu vratné kauce je možné uhradit formou splátek/ + provize RK 15 000 Kč. K nastěhování po dohodě v průběhu září 2026 a dlouhodobě. Majitel upřednostní zájemce se stálým příjmem, bez zvířecích mazlíčků. Kvalitní bydlení se širokou nabídkou veškeré občanské vybavenosti: školy, obchody, pošta, parky na procházky nebo sportování, zimní stadión, bowling, sportovní a dětská hřiště, kino, knihovna, lékaři, lékárny, čerpací stanice, restaurace, cukrárny … Pro další informace a dohodnutí termínu prohlídky mě kontaktujte telefonicky, ráda vás bytem provedu. Prohlídky možné koncem srpna 2026."
+      "listing_updated_at": "2026-09-12",
+      "description": "Pronájem bytu je rezervován pro zájemce do 1.10.2026! Pronájem podkrovního bytu 3+1, 80 m², v centru jihočeského města Soběslav, ul. tř. Dr. Edvarda Beneše. Zrekonstruovaný byt se nachází ve 3. patře zděného domu po revitalizaci, bez výtahu. Dispozice bytu: vstupní chodba a předsíň 15,5 m², kuchyně 9 m², obývací pokoj 21 m², dětský pokoj nebo pracovna 12 m², ložnice 15 m², prostorná koupelna 6 m² a samostatná toaleta 1,5 m². Všechny pokoje jsou neprůchozí, samostatně přístupné z chodby. Byt je vybaven novou moderní kuchyňskou linkou s vestavěnými spotřebiči: indukční sporák s horkovzdušnou troubou, digestoř, myčka, samostatná nová velká lednice s mrazákem v chodbě. Na podlaze laminátová podlaha a dlažba, ohřev vody elektrickým bojlerem, topení úspornými elektrickými sálavými topnými panely s akumulací a bezdrátovým termostatem Mirava. K bytu přináleží sklepní kóje, možnost využití společné kolárny. Parkování u domu na veřejných parkovištích, sjezd na D3 směr Praha, České Budějovice cca 5 min. Měsíční nájem 13 500 Kč + platba za vodu, 1 x ročně poplatek za úklid společných prostor a elektřinu v společných prostorách + elektřina na nájemce /zálohy ve výši 3 500 Kč/. Možnost využití připojení na společný internet v domě. Majitel požaduje kauci ve výši tří měsíčních nájmu 40 500 Kč /polovinu vratné kauce je možné uhradit formou splátek/ + provize RK 15 000 Kč. K nastěhování po dohodě v průběhu září 2026 a dlouhodobě. Majitel upřednostní zájemce se stálým příjmem, bez zvířecích mazlíčků. Kvalitní bydlení se širokou nabídkou veškeré občanské vybavenosti: školy, obchody, pošta, parky na procházky nebo sportování, zimní stadión, bowling, sportovní a dětská hřiště, kino, knihovna, lékaři, lékárny, čerpací stanice, restaurace, cukrárny … Pro další informace a dohodnutí termínu prohlídky mě kontaktujte telefonicky, ráda vás bytem provedu. Prohlídky možné koncem srpna 2026."
     },
     {
       "id": "sr_2346111052",

@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-09-12T10:40:04.682Z",
+  "fetched_at": "2026-09-13T11:44:11.614Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3687264332",
+      "title": "Pronájem bytu 3+kk 74 m²",
+      "price": 25000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/_/3687264332?noredirect=1",
+      "lat": 49.179248,
+      "lng": 16.398841,
+      "sqm": 74,
+      "rooms": 3,
+      "address": "Petra Hechta, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-12",
+      "listing_updated_at": "2026-09-12",
+      "description": "Nabízíme Vám k pronájmu úžasný byt 3+kk o celkové užitné ploše 74 m2 v žádané lokalitě Rosice u Brna s vlastní zahradou 228 m2, zastřešenou terasou a vlastním parkovacím stáním pro 2 vozidla přímo před domem. Byt se nachází v prvním patře dvoupodlažního domu z roku 2016 na klidné ulici Petra Hechta a je kompletně bezbariérový. Byt se nabízí vybavený nábytkem (po domluvě) a je volný k nastěhování od 1.1.2024. Obrovským bonusem je vlastní zahrada, která náleží k bytu a zastřešená terasa s venkovním posezením a grilem. O ohřev vody a vytápění se stará vlastní plynový kotel, na termostatu v obývacím pokoji si nastavíte Vámi požadovanou teplotu a čas. Průkaz energetické náročnosti budovy (PENB) udává kategorii B (úsporná). Dispozice bytu: - zádveří se zabudovanou šatní skříní (je zde i plynový kotel a pračka): 8,3 m2 - pokoj (dětský, pro hosty nebo pracovna) orientovaný na východ: 12,4 m2 - prostorná koupelna s vanou, sprchovým koutem, toaletou a sušičkou: 8,4 m2 - ložnice orientovaná na západ: 14,3 m2 - obývací pokoj s plně vybaveným kuchyňským koutem (vyjma myčky na nádobí): 22,9 m2 - sklad (samostatný vstup ze zahrady): 8,2 m2 - terasa: 24,6 m2 - zahrada: 228 m2 Měsíční nájem činí 21.000 Kč, jednorázová jistina ve výši 50.000 Kč, zálohy na energie ve výši 5.000 Kč, provizi RK ve výši jednoho měsíčního nájmu + DPH hradí nájemce. Pokud Vás tato nabídka zaujala, zavolejte mi a rád Vás nemovitostí provedu. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
+    },
     {
       "id": "sr_2378874956",
       "title": "Pronájem bytu 5+kk 89 m²",
