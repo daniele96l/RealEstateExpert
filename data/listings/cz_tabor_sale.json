@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "sale",
-  "fetched_at": "2026-09-13T11:44:04.054Z",
+  "fetched_at": "2026-09-14T12:35:27.540Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_66465868",
+      "title": "Prodej bytu 2+kk 38 m²",
+      "price": 3150000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/66465868?noredirect=1",
+      "lat": 49.3474138663739,
+      "lng": 14.7084319379596,
+      "sqm": 38,
+      "rooms": 2,
+      "address": "ČSLA, Planá nad Lužnicí, Planá nad Lužnicí",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-14",
+      "listing_updated_at": "2026-09-14",
+      "description": "Prodej bytu 2+kk s balkonem, 38 m² – Planá nad Lužnicí Nabízíme k prodeji útulný byt 2+kk s balkonem o celkové ploše 38 m², který se nachází přímo v centru Plané nad Lužnicí. Byt je umístěn ve 4. patře zatepleného panelového domu bez výtahu. Dům má novou střechu a je ve velmi dobré kondici. Byt prošel rekonstrukcí – koupelna je zděná, se sprchovým koutem a WC, keramické obklady, v kuchyni a chodbě je dlažba a v pokoji je plovoucí podlaha. Z pokoje je přímý vstup na balkon. Velkou výhodou jsou velmi nízké náklady na bydlení a výborná poloha v centru města s veškerou občanskou vybaveností v dosahu. Byt je ideální pro vlastní bydlení i jako investice k pronájmu. Pro více informací a domluvení prohlídky mě neváhejte kontaktovat."
+    },
     {
       "id": "sr_4236304460",
       "title": "Prodej bytu 3+1 55 m²",
@@ -185,7 +205,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-06-30",
-      "listing_updated_at": "2026-09-10",
+      "listing_updated_at": "2026-09-14",
       "description": "Nabízíme k prodeji byt v osobním vlastnictví o dispozici 3+1 v ulici Příčná č.p. 443 v Plané nad Lužnicí, který se nachází ve zděném bytovém domě a představuje ideální příležitost pro rodinné bydlení i investici. Byt se nachází v prvním patře a disponuje celkovou podlahovou plochou 68,4 m², z čehož užitná plocha činí 65,6 m². Nemovitost je v původním, avšak velmi pečlivě udržovaném stavu, a nabízí tak možnost okamžitého bydlení nebo rekonstrukce dle vlastních představ. Dispozičně byt nabízí praktické uspořádání s dostatkem prostoru pro každodenní život. Velkým benefitem je balkon o výměře 2,7 m², který poskytuje příjemné místo k odpočinku. K bytu dále náleží prostorný sklep o velikosti 7 m², jenž nabízí dostatek úložného prostoru. K dispozici jsou rovněž společné prostory domu v podobě kolárny a sušárny. O vytápění bytu je postaráno dvěma způsoby. K dispozici je kotel na tuhá paliva, který umožňuje ekonomický provoz, a zároveň elektrokotel, který zajišťuje vyšší komfort a jednoduchou obsluhu. Další výhodou je bezproblémové parkování přímo před domem, kde je dostatek parkovacích míst pro rezidenty i návštěvy. Energetická náročnost budovy je zařazena do třídy D, což představuje běžný standard u obdobných zděných bytových domů. Planá nad Lužnicí patří mezi vyhledávané lokality díky své výborné občanské vybavenosti a dopravní dostupnosti. V docházkové vzdálenosti se nachází autobusová i vlaková zastávka, mateřská a základní škola, obchody s potravinami, restaurace, zdravotní středisko i další služby potřebné pro pohodlný každodenní život. Velkou výhodou je také blízkost města Tábor, které je vzdálené jen několik minut jízdy a nabízí kompletní občanskou vybavenost i pracovní příležitosti. Pokud hledáte prostorný byt ve zděném domě, v osobním vlastnictví, s výbornou dostupností služeb a možností úprav dle vlastních představ, neváhejte mě kontaktovat. Rád Vám nemovitost osobně představím na prohlídce."
     },
     {
@@ -465,7 +485,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-09-01",
-      "listing_updated_at": "2026-09-07",
+      "listing_updated_at": "2026-09-14",
       "description": "Prodej bytu 2+1 s balkonem, 56 m², Tábor – Husinecká Nabízíme k prodeji zděný byt 2+1 v osobním vlastnictví, situovaný ve 2. patře domu bez výtahu v klidné ulici Husinecká v Táboře. Byt se nachází v příjemné lokalitě s dobrou dostupností do centra města. Podlahová plocha bytu je 56 m², celková výměra včetně příslušenství 63 m². K bytu náleží balkon s výhledem do zeleně a dva sklepy o velikosti 7 m² a 1 m². Parkování je možné u domu. Byt prošel v roce 2021 kompletní rekonstrukcí, při které byla provedena nová elektroinstalace, rozvody vody a odpadů, rekonstrukce podlah, koupelny a WC. V pokojích byly zachovány parkety, všechna okna jsou plastová a součástí rekonstrukce byla také nová kuchyňská linka. V chodbě, koupelně a WC jsou sádrokartonové stropy s LED osvětlením. Koupelna nabízí prostorný sprchový kout a místo pro pračku i sušičku. Praktickým bonusem je samostatná spižírna v chodbě. Kuchyňská linka zůstává součástí prodeje včetně vestavné trouby, elektrického sporáku a digestoře. Orientace bytu je východ–západ – kuchyně je orientována do klidného dvora, oba pokoje a balkon směrem do zeleně. Vytápění i ohřev vody jsou řešeny dálkově. Měsíční náklady na bydlení pro dvě osoby činí přibližně 5 000 Kč, z toho 1 600 Kč tvoří fond oprav. Na domě aktuálně probíhá rekonstrukce balkonů a plánováno je také zateplení štítu domu. Byt je vhodný pro vlastní bydlení i jako investiční příležitost a díky kompletní rekonstrukci je připraven k okamžitému nastěhování bez nutnosti zásadních investic. Pro více informací nebo domluvení prohlídky nás neváhejte kontaktovat. Prodej realizujeme přímo jako majitelé nemovitosti. Prosíme proto realitní kanceláře a realitní makléře, aby nás v souvislosti s nabídkou tohoto bytu nekontaktovali. Děkujeme za respektování."
     },
     {
