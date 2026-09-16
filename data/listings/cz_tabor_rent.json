@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-09-15T11:41:56.248Z",
+  "fetched_at": "2026-09-16T11:26:20.392Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1727737932",
+      "title": "Pronájem bytu 3+1 60 m²",
+      "price": 11000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/1727737932?noredirect=1",
+      "lat": 49.4626738634552,
+      "lng": 14.7698058585005,
+      "sqm": 60,
+      "rooms": 3,
+      "address": "Ratibořské Hory, Ratibořské Hory",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-01",
+      "listing_updated_at": "2026-09-15",
+      "description": "Nabízíme k pronájmu byt v obci Ratibořské Hory, vzdálené cca 20 min od Tábora. Byt o dispozici 3+1 s balkonem a výměře 60 m2 se nachází v prvním patře bytového domu. Byt se pronajímá prázdný bez nábytku a spotřebičů, zařízen pouze kuchyňskou linkou se sporákem. Dispozice bytu - vstupní chodba, tři pokoje, kuchyně, koupelna se sprchovým koutem, samostatné WC a komora. K bytu náleží zděný sklep. Vytápění je řešeno tepelným čerpadlem nebo kotlem na tuhá paliva. V bytě je nová elektřina. Nájemné ve výši 11.000 Kč + záloha na služby 1.902,-Kč. Elektřinu si nájemce hradí na základě samostatné smlouvy s dodavatelem. Možnost parkování u domu. Majitel požaduje vratnou kauci ve výši 21.000 Kč, odměna zprostředkovateli ve výši 11.000,-Kč + 21% DPH. Byt je k dispozici od 1.10.2026. Pro více informací a domluvení prohlídky kontaktujte makléře."
+    },
     {
       "id": "sr_1330827340",
       "title": "Pronájem bytu 2+kk 43 m²",
@@ -225,7 +245,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-17",
-      "listing_updated_at": "2026-09-10",
+      "listing_updated_at": "2026-09-15",
       "description": "Nabízíme k dlouhodobému pronájmu moderní a kompletně vybavený byt o dispozici 1+1 o užitné ploše 30 m², který se nachází v přízemí zrekonstruovaného rodinného domu v klidné obci Zvěrotice nedaleko města Soběslav. Byt se pronajímá plně zařízený a je připraven k nastěhování od 1.10.2026 , dle domluvy s majitelem by byt mohl být k dispozici popřípadě i dříve. Je ideální například pro mladý pár. Dispozice nabízí obývací prostor s kuchyní a vestavěnými spotřebiči, má samostatnou ložnici a koupelnu se sprchovým koutem a toaletou. K dispozici je udržovaná zahrada s bazénem a odpočinkovou zónou. K bytu náleží také jedno vyhrazené parkovací stání přímo u domu. Celkové měsíční nájemné včetně energií, internetu a parkování činí 14.500 Kč. Vratná kauce je ve výši dvou měsíčních nájmů."
     },
     {
@@ -265,7 +285,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-02",
-      "listing_updated_at": "2026-09-10",
+      "listing_updated_at": "2026-09-15",
       "description": "Pronájem sdíleného bydlení, pokoje v 1. patře rodinného domu o CP 20 m2 s koupelnou. Ubytování je pouze pro 1 osobu, nájemné je paušální, včetně záloh. Pokoj je částečně zařízený - skříňky. Společná koupelna s vanou a sprchovým koutem, včetně WC ve společném užívání. Ve společném užívání je také kuchyňská linka kompletně zařízená se spotřebiči a obývací pokoj v přízemí domu. V přízemí domu je terasa a venkovní posezení. K dispozici od srpna 2026."
     },
     {
@@ -529,46 +549,6 @@
       "description": "Nabízím Vám k pronájmu světlý byt o dispozici 1+1 a celkové výměře 39m2, který se nachází v přízemí zatepleného bytového domu v klidné lokalitě města Jistebnice. Byt je nevybavený a dispozičně rozdělen na prostorný pokoj, kuchyň, koupelnu se sprchovým koutem a samostatné WC. Byt je vytápěn elektrokotlem. K bytu náleží větší sklepní kóje. V domě je k dispozici společná kolárna. Parkování je možné přímo u domu. Měsíční náklady na bydlení: 8.000 Kč nájemné 4.000 Kč záloha (elektřina, voda) - 1x ročně bude vyúčtováno dle skutečné spotřeby 16.000 Kč vratná kauce Provize RK činí 11 000 Kč + DPH 21 %. Město Jistebnice nabízí základní občanskou vybavenost a dobrou dostupnost do Tábora. Byt je připraven ihned k nastěhování. Majitel preferuje jednotlivce či pár, ideálně nekuřáky bez domácích mazlíčků. Byt je připraven k okamžitému nastěhování. Pro více informací a termín prohlídky volejte makléřce nabídky! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
-      "id": "sr_1727737932",
-      "title": "Pronájem bytu 3+1 60 m²",
-      "price": 11000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/1727737932?noredirect=1",
-      "lat": 49.4626738634552,
-      "lng": 14.7698058585005,
-      "sqm": 60,
-      "rooms": 3,
-      "address": "Ratibořské Hory, Ratibořské Hory",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-09-01",
-      "listing_updated_at": "2026-09-01",
-      "description": "Nabízíme k pronájmu byt v obci Ratibořské Hory, vzdálené cca 20 min od Tábora. Byt o dispozici 3+1 s balkonem a výměře 60 m2 se nachází v prvním patře bytového domu. Byt se pronajímá prázdný bez nábytku a spotřebičů, zařízen pouze kuchyňskou linkou se sporákem. Dispozice bytu - vstupní chodba, tři pokoje, kuchyně, koupelna se sprchovým koutem, samostatné WC a komora. K bytu náleží zděný sklep. Vytápění je řešeno tepelným čerpadlem nebo kotlem na tuhá paliva. V bytě je nová elektřina. Nájemné ve výši 11.000 Kč + záloha na služby 1.902,-Kč. Elektřinu si nájemce hradí na základě samostatné smlouvy s dodavatelem. Možnost parkování u domu. Majitel požaduje vratnou kauci ve výši 21.000 Kč, odměna zprostředkovateli ve výši 11.000,-Kč + 21% DPH. Byt je k dispozici od 1.10.2026. Pro více informací a domluvení prohlídky kontaktujte makléře."
-    },
-    {
-      "id": "sr_727396428",
-      "title": "Pronájem bytu 2+kk 48 m²",
-      "price": 9800,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/727396428?noredirect=1",
-      "lat": 49.4129262678086,
-      "lng": 14.6723772567775,
-      "sqm": 48,
-      "rooms": 2,
-      "address": "Erbenova, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-31",
-      "listing_updated_at": "2026-08-31",
-      "description": "Nabízíme k pronájmu byt o dispozici 2kk v centru Tábora, ulice Erbenova. Byt se nachází ve 3.NP cihlového domu. Celková podlahová plocha bytu ploše 48,00 m2 sestávající z obytné místnosti s kuchyní o výměře 28,90 m2, místnosti o výměře 8,90 m2, koupelny s WC a sprchovým koutem o výměře 3,90 m2 a chodby o výměře 6,30 m2. Vytápění a ohřev vody centrální plynovým kotlem. Nájemné ve výši 9.800,-Kč + 3000,-služby (SUV, TUV, teplo) + elektřina. Majitel požaduje vratnou kauci ve výši 20.000-Kč, poplatek RK ve výši 9800 Kč + 21% DPH. Byt poskytuje klidné bydlení v centru Tábora. K dispozici je k dispozici po dohodě. Vhodné max pro dvě osoby."
-    },
-    {
       "id": "sr_3367288908",
       "title": "Pronájem bytu 1+1 35 m²",
       "price": 10000,
@@ -607,6 +587,26 @@
       "listing_published_at": "2026-07-18",
       "listing_updated_at": "2026-08-31",
       "description": "K dlouhodobému podnájmu nabízím prostorný a plně vybavený apartmán s přístupem na rozlehlou zahradu o rozloze 2 000 m² s vířivkou, přírodním jezerem a dětským hřištěm, nacházející se uprostřed jihočeské přírody v osadě Nepřejov (Nadějkov), jen hodinu jízdy od Prahy. Apartmán je součástí zrekonstruovaného venkovského stavení a je ideální pro větší rodinu nebo partu přátel jako prázdninový dům. OBJEKT NENÍ MOŽNO DÁLE PODNAJÍMAT/PRONAJÍMAT! Byt má rozlohu 120 m² a je kompletně vybavený včetně spotřebičů i nábytku. V přízemí se nachází prostorná společenská místnost s krbem a kuchyňským koutem (lednice, mrazák, dřez, elektrický vařič). V patře jsou dvě ložnice, každá s manželskou postelí a samostatným jednolůžkem, a koupelna s vanou. K apartmánovému domu patří společná zahrada o rozloze 2 000 m², kterou mohou podnájemníci využívat. Nachází se zde přírodní jezírko, venkovní vířivka, bazén, pergola s posezením, ohniště, gril, dětské hřiště, kolárna. Okolí spadá do turistické oblasti Toulava, známé turistickými stezkami, cyklotrasami a v zimě klasickým lyžováním. Apartmán se nachází 10 minut jízdy autem od lyžařského areálu Monínec, 3 minuty od golfové hřiště Čertovo Břemeno. V docházkové vzdálenosti se nachází biofarma se sadem a včelstvy. Nejbližší město s občanskou vybaveností je vzdáleno 5 km, okresní město Tábor 20km. Cena podnájmu 13 000 Kč/měsíčně Zálohy na energie, vodu a služby (jímka, péče o zahradu, vířivka, bazén, jezero) 7 000 Kč/měsíčně Jistina (kauce) 20 000 Kč Provize realitní kanceláře je ve výši měsíčního podnájmu + DPH (13 000 Kč + DPH) Zaujala Vás tato nabídka? Neváhejte mě kontaktovat pro více informací! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
+    },
+    {
+      "id": "sr_44314700",
+      "title": "Pronájem bytu 1+kk 31 m²",
+      "price": 10000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/44314700?noredirect=1",
+      "lat": 49.402482,
+      "lng": 14.682012,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "U Areálu, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-15",
+      "listing_updated_at": "2026-09-15",
+      "description": "Nabízíme k pronájmu bytovou jednotku 1+kk, 31 m2 v Táboře v lokalitě na Maredově vrchu. Byt se nachází v 1. patře zděného bytového domu v ulici U Areálu 3104. Vybaven je kuchyňskou linkou, el. troubou se sklokeramickou deskou a digestoří. Velkou předností tohoto bytu je prostorný balkón o výměře 7 m2. Dispozice se skládá z chodby, obývacího pokoje s kuchyňským koutem a koupelny s WC. Vytápění a ohřev teplé vody je řešen dálkovým přívodem. Spotřebu elektřiny si nájemník hradí sám u příslušného dodavatele. Jedná se o dlouhodobí pronájem, který je vhodný pro jednu až dvě osoby bez domácích mazlíčků. Parkovat je možné před domem na obecním parkovišti. K dispozici od 1.11.2026. Pro více informací nebo se zájmem o prohlídku mě můžete kontaktovat. Budu se těšit."
     },
     {
       "id": "sr_4139565132",
