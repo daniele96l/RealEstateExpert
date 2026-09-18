@@ -1,13 +1,53 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-09-17T11:35:50.203Z",
+  "fetched_at": "2026-09-18T11:09:43.911Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_590946380",
+      "title": "Pronájem bytu 3+kk 64 m²",
+      "price": 16500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/_/590946380?noredirect=1",
+      "lat": 49.181567147303674,
+      "lng": 16.39012783419765,
+      "sqm": 64,
+      "rooms": 3,
+      "address": "Palackého nám., Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-17",
+      "listing_updated_at": "2026-09-18",
+      "description": "Nabízím k pronájmu zrekonstruovaný prostorný byt 3kk o velikosti 64m2 v 3 NP bytového domu v atraktivní lokalitě v centru města. Byt je vybaven kuchyňskou linkou s vestavěnými spotřebiči (horkovzdušná trouba, varná deska, mikrovlnná trouba, myčka a lednice s mrazákem). Byt není vybaven nábytkem. K nastěhování od 1.října 2026. Odběr elektřiny bude přepsán na nájemníka. Kauce 18.000 Kč. Zálohy na služby 1.500 Kč. Realitky nevolat."
+    },
+    {
+      "id": "sr_2409242700",
+      "title": "Pronájem bytu 5+kk 89 m²",
+      "price": 24500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/5+kk/_/2409242700?noredirect=1",
+      "lat": 49.1825566585232,
+      "lng": 16.3930980394482,
+      "sqm": 89,
+      "rooms": 5,
+      "address": "Wolkerova, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-17",
+      "listing_updated_at": "2026-09-17",
+      "description": "Hledáte útulné a moderní bydlení v klidné lokalitě? Máme pro vás jedinečnou příležitost stát se nájemníkem krásného bytu 5+kk v novostavbě na ulici Wolkerova v Rosicích. Tento byt je ideální volbou pro rodinu, která hledá komfortní a stylové bydlení s veškerým zázemím. Základní informace o bytě: - Dispozice: 5+kk - Užitná plocha: 89 m² - Patro: 3. patro - Podlahové vytápění - Balkon: – ideální místo na ranní kávu nebo večerní relax - Sklep: K dispozici – skvělé pro uskladnění sezónních věcí - Výhoda prvního nájemníka a výběr z několika bytů - Možnost pronájmu garážového nebo parkovacího venkovního stání Byt je navržen s důrazem na moderní styl a funkčnost. Díky promyšlené dispozici 5+kk nabízí dostatek prostoru pro pohodlné bydlení. Obývací část je propojena s kuchyňským koutem, který je vybaven moderními spotřebiči (lednice, mikrovlnná trouba, myčka, varná deska, digestoř, trouba), takže vaření bude radost. Z obývacího pokoje se dostanete na prostorný balkon. Koupelna nabízí umyvadlo, toaletu, vanu, sprchový kout a přípojku na pračku. K bytu náleží také sklep, který poskytuje další úložný prostor. Pokud máte auto, jistě oceníte možnost pronájmu garážového nebo parkovacího venkovního stání (za příplatek) – už žádné starosti s parkováním! Rosice jsou vyhledávanou lokalitou díky své klidné atmosféře a výborné dostupnosti. Ulice Wolkerova se nachází v blízkosti veškeré občanské vybavenosti – obchody, restaurace, školy i sportovní zařízení máte na dosah ruky. Zároveň je zde skvělá dopravní dostupnost do Brna i okolí. Ideální místo pro ty, kteří chtějí bydlet mimo ruch velkoměsta, ale zároveň mít vše na dosah. Prohlídky jsou možné kdykoliv po domluvě s uvedeným makléřem. Možnost zajištění jednorázového či pravidelného úklidu naší úklidovou firmou."
+    },
     {
       "id": "sr_971190348",
       "title": "Pronájem bytu 1+kk 34 m²",
@@ -67,26 +107,6 @@
       "listing_published_at": "2026-09-12",
       "listing_updated_at": "2026-09-14",
       "description": "Nabízíme Vám k pronájmu krásný byt o dispozici 3+kk a celkové užitné ploše 74 m2 v žádané lokalitě Rosice u Brna s vlastní zahradou 228 m2, zastřešenou terasou a vlastním parkovacím stáním pro 2 vozidla přímo před domem. Byt se nachází v prvním patře dvoupodlažního domu z roku 2016 na klidné ulici Petra Hechta a je kompletně bezbariérový. Byt se nabízí vybavený nábytkem a je volný k nastěhování od 1.12.2026. Obrovským bonusem je vlastní zahrada, která náleží k bytu a zastřešená terasa s venkovním posezením a grilem. O ohřev vody a vytápění se stará vlastní plynový kotel, na termostatu v obývacím pokoji si nastavíte Vámi požadovanou teplotu a čas. Průkaz energetické náročnosti budovy (PENB) udává kategorii B (úsporná). Dispozice bytu: - zádveří se zabudovanou šatní skříní (je zde i plynový kotel a pračka): 8,3 m2 - pokoj (dětský, pro hosty nebo pracovna) orientovaný na východ: 12,4 m2 - prostorná koupelna s vanou, sprchovým koutem a toaletou: 8,4 m2 - ložnice orientovaná na západ: 14,3 m2 - obývací pokoj s plně vybaveným kuchyňským koutem: 22,9 m2 - sklad (samostatný vstup ze zahrady): 8,2 m2 - terasa: 24,6 m2 - zahrada: 228 m2 Měsíční nájem činí 25.000 Kč, jednorázová jistina ve výši 50.000 Kč, zálohy na energie ve výši 5.500 Kč (v ceně zahrnuto i internetové připojení), provizi RK ve výši jednoho měsíčního nájmu + DPH hradí nájemce. Pokud Vás tato nabídka zaujala, zavolejte mi a rád Vás nemovitostí provedu. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
-    },
-    {
-      "id": "sr_2378874956",
-      "title": "Pronájem bytu 5+kk 89 m²",
-      "price": 26000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/5+kk/_/2378874956?noredirect=1",
-      "lat": 49.1825566585232,
-      "lng": 16.3930980394482,
-      "sqm": 89,
-      "rooms": 5,
-      "address": "Wolkerova, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-13",
-      "listing_updated_at": "2026-09-16",
-      "description": "Hledáte útulné a moderní bydlení v klidné lokalitě? Máme pro vás jedinečnou příležitost stát se nájemníkem krásného bytu 5+kk v novostavbě na ulici Wolkerova v Rosicích. Tento byt je ideální volbou pro rodinu, která hledá komfortní a stylové bydlení s veškerým zázemím. Základní informace o bytě: - Dispozice: 5+kk - Užitná plocha: 89 m² - Patro: 3. patro - Podlahové vytápění - Balkon: – ideální místo na ranní kávu nebo večerní relax - Sklep: K dispozici – skvělé pro uskladnění sezónních věcí - Výhoda prvního nájemníka a výběr z několika bytů - Možnost pronájmu garážového nebo parkovacího venkovního stání Byt je navržen s důrazem na moderní styl a funkčnost. Díky promyšlené dispozici 5+kk nabízí dostatek prostoru pro pohodlné bydlení. Obývací část je propojena s kuchyňským koutem, který je vybaven moderními spotřebiči (lednice, mikrovlnná trouba, myčka, varná deska, digestoř, trouba), takže vaření bude radost. Z obývacího pokoje se dostanete na prostorný balkon, kde si můžete užívat čerstvý vzduch a výhled do okolí. V koupelně je dostatečně velký prostor s velkým umyvadlem, toaletou, vanou, sprchovým koutem a přípojkou na pračku. K bytu náleží také sklep, který poskytuje další úložný prostor. Pokud máte auto, jistě oceníte možnost pronájmu garážového nebo parkovacího venkovního stání (za příplatek) – už žádné starosti s parkováním! Rosice jsou vyhledávanou lokalitou díky své klidné atmosféře a výborné dostupnosti. Ulice Wolkerova se nachází v blízkosti veškeré občanské vybavenosti – obchody, restaurace, školy i sportovní zařízení máte na dosah ruky. Zároveň je zde skvělá dopravní dostupnost do Brna i okolí. Ideální místo pro ty, kteří chtějí bydlet mimo ruch velkoměsta, ale zároveň mít vše na dosah. Prohlídky jsou možné kdykoliv po domluvě s uvedeným makléřem. V případě Vašeho zájmu Vám můžeme nabídnout video-prohlídky nemovitostí v přímém přenosu. Možnost zajištění jednorázového či pravidelného úklidu naší úklidovou firmou."
     },
     {
       "id": "sr_1259548748",
@@ -149,26 +169,6 @@
       "description": "K dlouhodobému podnájmu nabízíme krásný byt o dispozici 2+kk v klidné a oblíbené lokalitě v Rosicích u Brna. Byt o celkové výměře 55 m2 se nachází ve třetím podlaží panelového domu s výtahem. Jistě vás potěší, že k bytu náleží také parkovací stání, balkón a sklep. Byt se nabízí částečně vybavený. Kuchyně disponuje lednicí, myčkou, elektrickou a mikrovlnou troubou, varnou deskou a digestoří. Soušástí pronájmu je také TV, klimatizace a internet. V koupelně je sprchový kout, toaleta, pračka a umyvadlo. V okolí domu najdeme restaurace, obchod s potravinami, rozsáhlou zeleň a další. Dopravní dostupnost je zajištěna autobusovou zastávkou kousek od domu. Byt je volný k nastěhování od 1. října. Uvedena energetická kategorie G, jelikož nemáme k dispozici PENB. Byt pronajímá Ideální nájemce - služba, se kterou budete bydlet bezstarostně a za férových podmínek. Když se něco přihodí, k dispozici jsou správci, kteří s vámi vše vyřeší. Pomůžeme s veškerou administrativou, s nastavením plateb a zajistíme vám speciální pojištění. Pojďte bydlet s námi!"
     },
     {
-      "id": "sr_2638594124",
-      "title": "Pronájem bytu 2+kk 40 m²",
-      "price": 16000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/2638594124?noredirect=1",
-      "lat": 49.1842206446302,
-      "lng": 16.3886082896326,
-      "sqm": 40,
-      "rooms": 2,
-      "address": "Trávníky, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-28",
-      "listing_updated_at": "2026-08-28",
-      "description": "Ve výhradním zastoupení majitele nabízím k pronájmu podkrovní byt o velikosti 2+kk a celkové ploše cca 40,5 m2 nacházející se ve 2. patře cihlového domu v Rosicích na ul. Trávníky. Kuchyňský kout je vybaven kuchyňskou linkou s varnou deskou, troubou a digestoří. Z tohoto pokoje je vstup na balkon (cca 4 m2) s výhledem do zeleně. Ložnice je nezařízená. V koupelně se nachází sprchový kout, umyvadlo, otopný žebřík, toaleta a přípojka na pračku. K bytu náleží společná zahrada. Možnost grilování, pěstování zeleniny a ovoce. Zahrada nabízí dostatek prostoru k umístění bazénu. Možnost připojení k internetu a TV za příplatek. V blízkosti domu potraviny, restaurace, zastávka MHD, sportovní hřiště, v okolí potřebné a nezbytné instituce a služby. K nastěhování ihned nebo po dohodě. S ohledem na legislativní požadavek jeho zveřejnění, musí být nemovitost označena v energetické třídě G, což ovšem neznamená, že do této en. třídy opravdu patří."
-    },
-    {
       "id": "sr_2751905868",
       "title": "Pronájem bytu 4+1 101 m²",
       "price": 30000,
@@ -185,7 +185,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-27",
-      "listing_updated_at": "2026-08-27",
+      "listing_updated_at": "2026-09-18",
       "description": "Nabízíme 4 +1 k pronájmu, neprůchozí pokoje, s nájemci se lze domluvit takto, byt může být zůstat v původním stavu, který umožňuje okamžité nastěhování s případnou slevou nájemného po domluvě. Další varianta nabízí vyklizený byt, který částečně zrekonstruujeme tzn. Nové podlahy, vymalování, nová kuchyně a nová světla. Rozpis místností a m2: - Kuchyně 9,5 m2 - Pokoj 20,44 m2 - Pokoj 16,02 m2 - Pokoj 13,63 m2 - Pokoj 19,92 m2 - Lodžie 3,79 m2 Celková plocha 101,21 m2"
     },
     {
