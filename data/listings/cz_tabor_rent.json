@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-09-18T11:09:02.132Z",
+  "fetched_at": "2026-09-19T10:51:28.509Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_77144140",
+      "title": "Pronájem bytu 1+1 60 m²",
+      "price": 6500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/77144140?noredirect=1",
+      "lat": 49.4100862642797,
+      "lng": 14.6750241823078,
+      "sqm": 60,
+      "rooms": 1,
+      "address": "Údolní, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-18",
+      "listing_updated_at": "2026-09-18",
+      "description": "Nabízíme na pronájem prostorný byt v centru Tábora o velikosti 1+1 v cihlovém domě v druhém nadzemním podlaží o užitné ploše 60 m2. Byt byl částečně rekonstruován, lakovaná původní podlaha, nová dlažba, obklady, je zde kuchyňská linka, velká koupelna a samostatné WC. Kuchyně a lidově řečno špajz je situována do ulice. Prostorný pokoj, s vchodem na balkón, na druhou stranu do vnitrobloku a zahrady. Výhodou bytu je prostorná komora, k bytu patří sklep o rozloze 3 m2 umístěný v techn. podlaží domu. V domě je ústřední plynové topení. Dům je klidný, čistý a udržovaný. Parkování je možné před domem. Pronájem tohoto bytu je vhodný i pro menší rodinu. Nájem 6.500,- Kč měsíčně + 2.050,- Kč zálohy na topení, voda 350,-Kč osoba, 50,-Kč osvětlení. spol. prostor + vratná kauce 15.000,-Kč + provize RK. Elektřina se převádí na nájemce. Volný od 1.10 . 2026"
+    },
     {
       "id": "sr_2350919756",
       "title": "Pronájem bytu 2+1 57 m²",
@@ -569,26 +589,6 @@
       "description": "Nabízím Vám k pronájmu světlý byt o dispozici 1+1 a celkové výměře 39m2, který se nachází v přízemí zatepleného bytového domu v klidné lokalitě města Jistebnice. Byt je nevybavený a dispozičně rozdělen na prostorný pokoj, kuchyň, koupelnu se sprchovým koutem a samostatné WC. Byt je vytápěn elektrokotlem. K bytu náleží větší sklepní kóje. V domě je k dispozici společná kolárna. Parkování je možné přímo u domu. Měsíční náklady na bydlení: 8.000 Kč nájemné 4.000 Kč záloha (elektřina, voda) - 1x ročně bude vyúčtováno dle skutečné spotřeby 16.000 Kč vratná kauce Provize RK činí 11 000 Kč + DPH 21 %. Město Jistebnice nabízí základní občanskou vybavenost a dobrou dostupnost do Tábora. Byt je připraven ihned k nastěhování. Majitel preferuje jednotlivce či pár, ideálně nekuřáky bez domácích mazlíčků. Byt je připraven k okamžitému nastěhování. Pro více informací a termín prohlídky volejte makléřce nabídky! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
-      "id": "sr_3367288908",
-      "title": "Pronájem bytu 1+1 35 m²",
-      "price": 10000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/3367288908?noredirect=1",
-      "lat": 49.3005361469945,
-      "lng": 14.4698086584297,
-      "sqm": 35,
-      "rooms": 1,
-      "address": "Písecká, Bechyně, Bechyně",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-31",
-      "listing_updated_at": "2026-09-02",
-      "description": "Nabízíme k pronájmu světlý a udržovaný byt o dispozici 1+1 a celkové výměře 35 m², který se nachází v bytovém domě v Bechyni. Byt je díky své dispozici vhodný zejména pro jednotlivce nebo pár. Dispozice bytu zahrnuje vstupní chodbu, prostorný obytný pokoj se vstupem na balkón, samostatnou kuchyni s jídelním koutem a koupelnu se sprchovým koutem a WC. Kuchyně je vybavena kuchyňskou linkou, sporákem a digestoří a nabízí také dostatek prostoru pro jídelní sezení. Obytný pokoj působí díky velkému oknu příjemně, světlým a vzdušným dojmem. Byt je po rekonstrukci a ve velmi dobrém, udržovaném stavu, připravený k pohodlnému užívání včetně kompletního vybavení. K bytu náleží také sklepní kóje, která poskytuje praktický úložný prostor. Obyvatelé domu mohou dále využívat společnou kolárnu a prádelnu. Bytový dům je udržovaný a nachází se v klidném prostředí s dobrou dostupností občanské vybavenosti. Bechyně nabízí příjemné bydlení s kompletní základní vybaveností, možnostmi volnočasových aktivit a dobrou dostupností do okolních měst. Podmínky pronájmu: měsíční nájemné: 10.000 Kč + energie vratná kauce: 10.000 Kč provize RK: 10.000 Kč Jedná se o praktické a příjemné bydlení s rozumnými provozními náklady, vhodné pro dlouhodobý pronájem. Pro více informací nebo domluvení osobní prohlídky mě neváhejte kontaktovat."
-    },
-    {
       "id": "sr_3731284044",
       "title": "Pronájem bytu 3+kk 120 m²",
       "price": 13000,
@@ -607,26 +607,6 @@
       "listing_published_at": "2026-07-18",
       "listing_updated_at": "2026-09-17",
       "description": "K dlouhodobému podnájmu nabízím prostorný a plně vybavený apartmán s přístupem na rozlehlou zahradu o rozloze 2 000 m² s vířivkou, přírodním jezerem a dětským hřištěm, nacházející se uprostřed jihočeské přírody v osadě Nepřejov (Nadějkov), jen hodinu jízdy od Prahy. Apartmán je součástí zrekonstruovaného venkovského stavení a je ideální pro větší rodinu nebo partu přátel jako prázdninový dům. OBJEKT NENÍ MOŽNO DÁLE PODNAJÍMAT/PRONAJÍMAT! Byt má rozlohu 120 m² a je kompletně vybavený včetně spotřebičů i nábytku. V přízemí se nachází prostorná společenská místnost s krbem a kuchyňským koutem (lednice, mrazák, dřez, elektrický vařič). V patře jsou dvě ložnice, každá s manželskou postelí a samostatným jednolůžkem, a koupelna s vanou. K apartmánovému domu patří společná zahrada o rozloze 2 000 m², kterou mohou podnájemníci využívat. Nachází se zde přírodní jezírko, venkovní vířivka, bazén, pergola s posezením, ohniště, gril, dětské hřiště, kolárna. Okolí spadá do turistické oblasti Toulava, známé turistickými stezkami, cyklotrasami a v zimě klasickým lyžováním. Apartmán se nachází 10 minut jízdy autem od lyžařského areálu Monínec, 3 minuty od golfové hřiště Čertovo Břemeno. V docházkové vzdálenosti se nachází biofarma se sadem a včelstvy. Nejbližší město s občanskou vybaveností je vzdáleno 5 km, okresní město Tábor 20km. Cena podnájmu 13 000 Kč/měsíčně Zálohy na energie, vodu a služby (jímka, péče o zahradu, vířivka, bazén, jezero) 7 000 Kč/měsíčně Jistina (kauce) 20 000 Kč Provize realitní kanceláře je ve výši měsíčního podnájmu + DPH (13 000 Kč + DPH) Zaujala Vás tato nabídka? Neváhejte mě kontaktovat pro více informací! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
-    },
-    {
-      "id": "sr_44314700",
-      "title": "Pronájem bytu 1+kk 31 m²",
-      "price": 10000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/44314700?noredirect=1",
-      "lat": 49.402482,
-      "lng": 14.682012,
-      "sqm": 31,
-      "rooms": 1,
-      "address": "U Areálu, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-09-15",
-      "listing_updated_at": "2026-09-15",
-      "description": "Nabízíme k pronájmu bytovou jednotku 1+kk, 31 m2 v Táboře v lokalitě na Maredově vrchu. Byt se nachází v 1. patře zděného bytového domu v ulici U Areálu 3104. Vybaven je kuchyňskou linkou, el. troubou se sklokeramickou deskou a digestoří. Velkou předností tohoto bytu je prostorný balkón o výměře 7 m2. Dispozice se skládá z chodby, obývacího pokoje s kuchyňským koutem a koupelny s WC. Vytápění a ohřev teplé vody je řešen dálkovým přívodem. Spotřebu elektřiny si nájemník hradí sám u příslušného dodavatele. Jedná se o dlouhodobí pronájem, který je vhodný pro jednu až dvě osoby bez domácích mazlíčků. Parkovat je možné před domem na obecním parkovišti. K dispozici od 1.11.2026. Pro více informací nebo se zájmem o prohlídku mě můžete kontaktovat. Budu se těšit."
     },
     {
       "id": "sr_4139565132",
