@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-09-22T11:30:34.794Z",
+  "fetched_at": "2026-09-23T11:24:25.722Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1805459532",
+      "title": "Pronájem bytu 1+kk 23 m²",
+      "price": 8000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/1805459532?noredirect=1",
+      "lat": 49.4190321362462,
+      "lng": 14.6464853348449,
+      "sqm": 23,
+      "rooms": 1,
+      "address": "Kpt. Jaroše, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-23",
+      "listing_updated_at": "2026-09-23",
+      "description": "Nabízíme k pronájmu byt v nově zrekonstruovaném bytovém domě lokalita Dvorce II, ulice Kpt. Jaroše. Byt o dispozici 1kk a podlahové ploše 23 m2, se nachází v přízemí bytového domu. Dispozice vstupní chodba, koupelna se sprchovým koutem a WC, pokoj s kuchyňským koutem. Topení a ohřev vody dálkové s vlastními měřiči. Nájemné ve výši 8.000 Kč + záloha na služby 1.500 Kč + elektřina. Elektřinu si nájemce hradí na základě samostatné smlouvy s dodavatelem. Majitel požaduje vratnou kauci ve výši 16.000 Kč a poplatek zprostředkovateli ve výši jedno měsíčního nájmu + 21% DPH. K dispozici od 1.11.2026, bez domácích mazlíčků a vhodné pro jedno osobu. Prohlídky jsou možné od 5.10.2026. Pro více informací a domluvení prohlídky kontaktujte makléře."
+    },
     {
       "id": "sr_9314380",
       "title": "Pronájem bytu 2+kk 50 m²",
@@ -707,26 +727,6 @@
       "listing_published_at": "2026-07-20",
       "listing_updated_at": "2026-09-08",
       "description": "Rezervováno! Exkluzivně nabízíme k pronájmu bytovou jednotku o velikosti 2+kk, nacházející se ve 2.patře (3.NP) bytového domu na hlavní třídě Husovo nám., v centru Tábora. Bytová jednotka prošla velmi zdařilou, kompletní rekonstrukcí a disponuje kuchyňským koutem, dvěma místnostmi a koupelnou se sprchovým koutem, toaletou a umyvadlem s toaletkou a zrcadlem, pračkou, v celém bytě nové podlahy, interiérové dveře a nová kuchyňská linka s vestavnými spotřebiči (lednice s mrazničkou, varná sklokeramická deska, vestavná trouba, digestoř, myčka). K nastěhování IHNED. Vytápění řešeno plynem. Kauce ve výši 29.000,-Kč, nájemné 14.500,-Kč + majitelka požaduje záloha na vodu 300,-Kč/osobu a měsíc a zálohu na úklid společných prostor 400,-Kč/měsíc, elektrika a plyn - přepis na nájemníka. Provize RK 14.500,-Kč + DPH 21%. V blízkém dosahu veškerá občanská vybavenost a centrum města Tábora. Pro více info volejte RK."
-    },
-    {
-      "id": "sr_3025002572",
-      "title": "Pronájem bytu 1+kk 20 m²",
-      "price": 6500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/3025002572?noredirect=1",
-      "lat": 49.41403194444,
-      "lng": 14.67390888888,
-      "sqm": 20,
-      "rooms": 1,
-      "address": "Šafaříkova, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-09",
-      "listing_updated_at": "2026-08-20",
-      "description": "Realitka Green nabízí k pronájmu byt 1+KK v 1. patře domu s výtahem, o ploše 20 m2. Byt je nově zrekonstruovaný - nová podlahová krytina, kuchyňská linka, koupelna s novým sprchovým koutem, WC, bojlerem, novým obkladem a dlažbou. Vytápění je zajištěno el. přímotopem. Dům se nachází v blízkosti autobusového nádraží a vodní nádrže Jordán. Byt je vhodný pro 1 osobu, bez mazlíčků. Prohlídku si můžete domluvit s makléřerm z Tábora."
     },
     {
       "id": "sr_1806053452",

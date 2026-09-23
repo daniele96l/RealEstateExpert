@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-09-22T11:31:13.847Z",
+  "fetched_at": "2026-09-23T11:25:04.820Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1777147980",
+      "title": "Pronájem bytu 2+1 50 m²",
+      "price": 14000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/1777147980?noredirect=1",
+      "lat": 49.1856087002696,
+      "lng": 16.3958709672321,
+      "sqm": 50,
+      "rooms": 2,
+      "address": "Mrštíkova, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-22",
+      "listing_updated_at": "2026-09-23",
+      "description": "V zastoupení majitele nabízíme k pronájmu velmi pěkný a světlý cihlový byt o dispozici 2+1, se sklepem, s možností využití posezení v zahradě, která náleží k bytovému domu, v původní zástavbě bytových domů v oblíbeném městě Rosice u Brna, které má úplnou občanskou vybavenost, výbornou dopravní dostupnost i směr Brno, Praha. Byt o celkové ploše 50 m2 se nachází v 1. patře bytového domu. Byt je nabízen jako částečně zařízený, k dispozici je i zděný sklep. Byt je řešen: vstupem se dostanete do předsíně o vel. 6 m2 s vestavěnou šatní skříní, po pravé straně se nachází samostatná toaleta, vedle koupelna se sprchovým koutem a přípojkou na pračku. Naproti vchodovým dveřím od bytu je obývací pokoj, podlahy parkety a dále také možný vstup do ložnice, nicméně tento vstup není nutný mít, jelikož se do ložnice také můžete dostat přes kuchyni. Kuchyně je na straně vedle koupelny, tj. orientace oken je zde na dvě světové strany a tím byt získává vzdušnost. Možnost připojení internetu a kabelové televize. Bezproblémové parkování přímo před domem, dětské hřiště cca 150 m od domu. Možnost využití velké společné sušárny a kočárkárny v suterénu domu. Výborná dostupnost na D1, zastávka autobusu cca 10min. pěší chůze od domu, výborné autobusové a vlakové spojení (IDOS) Rosice nabízí veškerou občanskou vybavenost: zdravotní středisko včetně odbor. a zubních lékařů, 2 lékárny, obchody LIDL, PENNY, KIK, Tesco a další , 4 mateřské školky, základní školu 1. - 9.st , kino, Zimní krytý stadion, fotbalový stadion, bowlingovou halu, restaurace. Byt je vhodný pro max. 3 osoby. Nastěhování možné ihned."
+    },
     {
       "id": "sr_3216977996",
       "title": "Pronájem bytu 3+kk 69 m²",
@@ -147,26 +167,6 @@
       "listing_published_at": "2026-08-31",
       "listing_updated_at": "2026-08-31",
       "description": "K dlouhodobému podnájmu nabízíme krásný byt o dispozici 2+kk v klidné a oblíbené lokalitě v Rosicích u Brna. Byt o celkové výměře 55 m2 se nachází ve třetím podlaží panelového domu s výtahem. Jistě vás potěší, že k bytu náleží také parkovací stání, balkón a sklep. Byt se nabízí částečně vybavený. Kuchyně disponuje lednicí, myčkou, elektrickou a mikrovlnou troubou, varnou deskou a digestoří. Soušástí pronájmu je také TV, klimatizace a internet. V koupelně je sprchový kout, toaleta, pračka a umyvadlo. V okolí domu najdeme restaurace, obchod s potravinami, rozsáhlou zeleň a další. Dopravní dostupnost je zajištěna autobusovou zastávkou kousek od domu. Byt je volný k nastěhování od 1. října. Uvedena energetická kategorie G, jelikož nemáme k dispozici PENB. Byt pronajímá Ideální nájemce - služba, se kterou budete bydlet bezstarostně a za férových podmínek. Když se něco přihodí, k dispozici jsou správci, kteří s vámi vše vyřeší. Pomůžeme s veškerou administrativou, s nastavením plateb a zajistíme vám speciální pojištění. Pojďte bydlet s námi!"
-    },
-    {
-      "id": "sr_2751905868",
-      "title": "Pronájem bytu 4+1 101 m²",
-      "price": 30000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/4+1/_/2751905868?noredirect=1",
-      "lat": 49.185885374093715,
-      "lng": 16.38124094868238,
-      "sqm": 101,
-      "rooms": 4,
-      "address": "Kaštanová, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-27",
-      "listing_updated_at": "2026-09-18",
-      "description": "Nabízíme 4 +1 k pronájmu, neprůchozí pokoje, s nájemci se lze domluvit takto, byt může být zůstat v původním stavu, který umožňuje okamžité nastěhování s případnou slevou nájemného po domluvě. Další varianta nabízí vyklizený byt, který částečně zrekonstruujeme tzn. Nové podlahy, vymalování, nová kuchyně a nová světla. Rozpis místností a m2: - Kuchyně 9,5 m2 - Pokoj 20,44 m2 - Pokoj 16,02 m2 - Pokoj 13,63 m2 - Pokoj 19,92 m2 - Lodžie 3,79 m2 Celková plocha 101,21 m2"
     },
     {
       "id": "sr_2226053196",
