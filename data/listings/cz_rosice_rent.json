@@ -1,7 +1,7 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-09-24T11:40:55.009Z",
+  "fetched_at": "2026-09-25T11:47:36.802Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
@@ -70,14 +70,14 @@
     },
     {
       "id": "sr_2409242700",
-      "title": "Pronájem bytu 5+kk 89 m²",
+      "title": "Pronájem bytu 4+kk 89 m²",
       "price": 24500,
       "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/5+kk/_/2409242700?noredirect=1",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/_/2409242700?noredirect=1",
       "lat": 49.1825566585232,
       "lng": 16.3930980394482,
       "sqm": 89,
-      "rooms": 5,
+      "rooms": 4,
       "address": "Wolkerova, Rosice, Rosice",
       "property_type": "flat",
       "property_type_label": "Byt",
@@ -85,8 +85,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-09-17",
-      "listing_updated_at": "2026-09-18",
-      "description": "Hledáte útulné a moderní bydlení v klidné lokalitě? Máme pro vás jedinečnou příležitost stát se nájemníkem krásného bytu 5+kk v novostavbě na ulici Wolkerova v Rosicích. Tento byt je ideální volbou pro rodinu, která hledá komfortní a stylové bydlení s veškerým zázemím. Základní informace o bytě: - Dispozice: 5+kk - Užitná plocha: 89 m² - Patro: 3. patro - Podlahové vytápění - Balkon: – ideální místo na ranní kávu nebo večerní relax - Sklep: K dispozici – skvělé pro uskladnění sezónních věcí - Výhoda prvního nájemníka a výběr z několika bytů - Možnost pronájmu garážového nebo parkovacího venkovního stání Byt je navržen s důrazem na moderní styl a funkčnost. Díky promyšlené dispozici 5+kk nabízí dostatek prostoru pro pohodlné bydlení. Obývací část je propojena s kuchyňským koutem, který je vybaven moderními spotřebiči (lednice, mikrovlnná trouba, myčka, varná deska, digestoř, trouba), takže vaření bude radost. Z obývacího pokoje se dostanete na prostorný balkon. Koupelna nabízí umyvadlo, toaletu, vanu, sprchový kout a přípojku na pračku. K bytu náleží také sklep, který poskytuje další úložný prostor. Pokud máte auto, jistě oceníte možnost pronájmu garážového nebo parkovacího venkovního stání (za příplatek) – už žádné starosti s parkováním! Rosice jsou vyhledávanou lokalitou díky své klidné atmosféře a výborné dostupnosti. Ulice Wolkerova se nachází v blízkosti veškeré občanské vybavenosti – obchody, restaurace, školy i sportovní zařízení máte na dosah ruky. Zároveň je zde skvělá dopravní dostupnost do Brna i okolí. Ideální místo pro ty, kteří chtějí bydlet mimo ruch velkoměsta, ale zároveň mít vše na dosah. Prohlídky jsou možné kdykoliv po domluvě s uvedeným makléřem. Možnost zajištění jednorázového či pravidelného úklidu naší úklidovou firmou."
+      "listing_updated_at": "2026-09-25",
+      "description": "Hledáte útulné a moderní bydlení v klidné lokalitě? Máme pro vás jedinečnou příležitost stát se nájemníkem krásného bytu 4+kk v novostavbě na ulici Wolkerova v Rosicích. Tento byt je ideální volbou pro rodinu, která hledá komfortní a stylové bydlení s veškerým zázemím. Základní informace o bytě: - Dispozice: 5+kk - Užitná plocha: 89 m² - Patro: 3. patro - Podlahové vytápění - Balkon: – ideální místo na ranní kávu nebo večerní relax - Sklep: K dispozici – skvělé pro uskladnění sezónních věcí - Výhoda prvního nájemníka a výběr z několika bytů - Možnost pronájmu garážového nebo parkovacího venkovního stání Byt je navržen s důrazem na moderní styl a funkčnost. Díky promyšlené dispozici 5+kk nabízí dostatek prostoru pro pohodlné bydlení. Obývací část je propojena s kuchyňským koutem, který je vybaven moderními spotřebiči (lednice, mikrovlnná trouba, myčka, varná deska, digestoř, trouba), takže vaření bude radost. Z obývacího pokoje se dostanete na prostorný balkon. Koupelna nabízí umyvadlo, toaletu, vanu, sprchový kout a přípojku na pračku. K bytu náleží také sklep, který poskytuje další úložný prostor. Pokud máte auto, jistě oceníte možnost pronájmu garážového nebo parkovacího venkovního stání (za příplatek) – už žádné starosti s parkováním! Rosice jsou vyhledávanou lokalitou díky své klidné atmosféře a výborné dostupnosti. Ulice Wolkerova se nachází v blízkosti veškeré občanské vybavenosti – obchody, restaurace, školy i sportovní zařízení máte na dosah ruky. Zároveň je zde skvělá dopravní dostupnost do Brna i okolí. Ideální místo pro ty, kteří chtějí bydlet mimo ruch velkoměsta, ale zároveň mít vše na dosah. Prohlídky jsou možné kdykoliv po domluvě s uvedeným makléřem. Možnost zajištění jednorázového či pravidelného úklidu naší úklidovou firmou."
     },
     {
       "id": "sr_3687264332",
