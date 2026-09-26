@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-09-25T11:46:51.132Z",
+  "fetched_at": "2026-09-26T11:21:26.757Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1317150796",
+      "title": "Pronájem bytu 1+kk 31 m²",
+      "price": 7700,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/1317150796?noredirect=1",
+      "lat": 49.39011055555,
+      "lng": 14.68098,
+      "sqm": 31,
+      "rooms": 1,
+      "address": "nám. Přátelství, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-25",
+      "listing_updated_at": "2026-09-25",
+      "description": "Nabízíme k pronájmu částečně zařízenou bytovou jednotku 1+kk, která se nachází v panelovém domě na Sídlišti nad Lužnicí v Táboře. ‌ Byt o užitné ploše 31,36 m2 se nachází v 6. patře domu a má tuto dispozici s vybavením: vstupní předsíň s šatní skříní; pokoj s kuchyňským koutem včetně elektrického sporáku s troubou, lednicí s mrazákem, mikrovlnou troubou, jídelním stolem s židlemi, sedací pohovkou, konferenčním stolkem; koupelna se sprchovým koutem a toaletou. K bytové jednotce náleží sklepní kóje o výměře 2 m2, která se nachází v suterénu domu. ‌ V domě proběhla kompletní revitalizace včetně nových výtahů.Všichni obyvatelé domu dbají na pořádek, čistotu a klid v celém domě. ‌ Měsíční nájemné ve výši 7.700,–Kč, zálohy na služby ve výši 2.300,-Kč + elektřina. Majitel požaduje jistotu/kauci ve výši 15.000,–Kč. ‌ K dispozici od 01.10.2026. ‌ Dům s nabízeným bytem je situován v části města s kompletní občanskou vybaveností a možností parkování přímo před domem. ‌ V případě zájmu o bližší informace nebo sjednání prohlídky mě neváhejte kontaktovat."
+    },
     {
       "id": "sr_3124895820",
       "title": "Pronájem bytu 2+kk 48 m²",

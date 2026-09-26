@@ -1,7 +1,7 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-09-25T11:47:36.802Z",
+  "fetched_at": "2026-09-26T11:22:11.295Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
@@ -107,26 +107,6 @@
       "listing_published_at": "2026-09-12",
       "listing_updated_at": "2026-09-14",
       "description": "Nabízíme Vám k pronájmu krásný byt o dispozici 3+kk a celkové užitné ploše 74 m2 v žádané lokalitě Rosice u Brna s vlastní zahradou 228 m2, zastřešenou terasou a vlastním parkovacím stáním pro 2 vozidla přímo před domem. Byt se nachází v prvním patře dvoupodlažního domu z roku 2016 na klidné ulici Petra Hechta a je kompletně bezbariérový. Byt se nabízí vybavený nábytkem a je volný k nastěhování od 1.12.2026. Obrovským bonusem je vlastní zahrada, která náleží k bytu a zastřešená terasa s venkovním posezením a grilem. O ohřev vody a vytápění se stará vlastní plynový kotel, na termostatu v obývacím pokoji si nastavíte Vámi požadovanou teplotu a čas. Průkaz energetické náročnosti budovy (PENB) udává kategorii B (úsporná). Dispozice bytu: - zádveří se zabudovanou šatní skříní (je zde i plynový kotel a pračka): 8,3 m2 - pokoj (dětský, pro hosty nebo pracovna) orientovaný na východ: 12,4 m2 - prostorná koupelna s vanou, sprchovým koutem a toaletou: 8,4 m2 - ložnice orientovaná na západ: 14,3 m2 - obývací pokoj s plně vybaveným kuchyňským koutem: 22,9 m2 - sklad (samostatný vstup ze zahrady): 8,2 m2 - terasa: 24,6 m2 - zahrada: 228 m2 Měsíční nájem činí 25.000 Kč, jednorázová jistina ve výši 50.000 Kč, zálohy na energie ve výši 5.500 Kč (v ceně zahrnuto i internetové připojení), provizi RK ve výši jednoho měsíčního nájmu + DPH hradí nájemce. Pokud Vás tato nabídka zaujala, zavolejte mi a rád Vás nemovitostí provedu. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
-    },
-    {
-      "id": "sr_1259548748",
-      "title": "Pronájem bytu 3+1 78 m²",
-      "price": 15000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/1259548748?noredirect=1",
-      "lat": 49.1858853740937,
-      "lng": 16.3812409486824,
-      "sqm": 78,
-      "rooms": 3,
-      "address": "Kaštanová, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-09-08",
-      "listing_updated_at": "2026-09-11",
-      "description": "Z důvodu souběžného prodeje nemovitosti je tato nabídka vhodná pro krátkodobý pronájem. Prostorný a světlý byt 3+1 v bytovém domě s výtahem na ulici Kaštanová v Rosicích u Brna. Byt se nachází v 5.p. a má výměru 78 m2, disponuje neprůchozími pokoji, jak znázorňuje přiložený půdorys. Byt se nabízí jako částečně zařízený, v kuchyni jsou veškeré spotřebiče vestavěné: mikrovlnná trouba, lednice s mrazákem, myčka, trouba. Varná deska je plynová se čtyřmi hořáky. V pokojích jsou plovoucí podlahy, v předsíni moderní PVC. Velkou výhodou bytu jsou dvě toalety, z nichž jedna je samostatná a druhá zakomponovaná do koupelny. Prostorná předsíň umožňuje umístění skříní a dalšího úložného prostoru. Zasklená lodžie je orientovaná na jižní stranu. V domě lze využívat společnou kolárnu a kočárkárnu. Ze všech pokojů je krásný výhled, zejména severní strana bytu nabízí líbivý pohled do přírody. Dům má instalovány solární panely pro ohřev vody, také disponuje úpravnou vody pro regulaci její tvrdosti, což zvyšuje kvalitu života všech uživatelů. I proto spadá PENB domu do třídy C. Parkování je zajištěno na veřejných parkovištích před domem i za domem. Přímo před domem je dětské hřiště. Rosice mají veškerou občanskou vybavenost, dopravu do Brna zajišťuje vlak a několik linek autobusů (č. 153, 405 a 423), včetně přímého spojení s FN Brno. Vhodné pro nekuřáckou rodinu, milovníky přírody a cykloturistiky, za domem je možné napojení na cyklotrasu. Nájemníci mohou mít zvíře. Volné od 1.10.2026."
     },
     {
       "id": "sr_2572759116",
