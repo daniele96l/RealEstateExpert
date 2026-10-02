@@ -1,5 +1,53 @@
 [
   {
+    "id": "sr_4147991372",
+    "portal": "sreality",
+    "detected_at": "2026-10-02T12:26:46.637Z",
+    "presumed_rented_at": "2026-10-02T12:26:46.637Z",
+    "first_seen_at": "2026-07-28T09:01:18.266Z",
+    "last_seen_at": "2026-10-01T13:05:36.247Z",
+    "days_on_market": 66,
+    "price": 7499000,
+    "sqm": 101,
+    "rooms": 4,
+    "property_type": "flat",
+    "address": "Kaštanová, Rosice, Rosice",
+    "zone": "Rosice",
+    "url": "https://www.sreality.cz/detail/prodej/byt/4+1/_/4147991372?noredirect=1",
+    "description": "Nabízíme prostorný byt o celkové ploše 101 m2. Byt poskytuje neprůchozí a velké pokoje s centrální chodbou, která umožňuje dostatečný úložný prostor, vhodný pro rodinu s dětmi. Součástí fotografií je i vizualizace možné úpravy bytu do \"velmi moderního stavu\" Rozpis místností a m2: - Kuchyně 9,5 m2 - Pokoj 20,44 m2 - Pokoj 16,02 m2 - Pokoj 13,63 m2 - Pokoj 19,92 m2 - Lodžie 3,79 m2 Celková plocha 101,21 m2 Byt je částečně po rekonstrukci (koupelna, okna, částečně podlahy, omítky, elektrika) Bezproblémové parkování za domem i pro více aut. Byt je alokován v těsné blízkosti Brna se skvělou dopravní dostupností. Prodej přímo od majitele bez RK. Bankovní odhad hodnoty nemovitosti je na 8 mil, prodej tedy dává někomu dostatečný prostor pro následnou rekonstrukci. Cenové zvýhodnění má omezenou dobu platnosti.",
+    "title": "Prodej bytu 4+1 101 m²",
+    "bathrooms": null,
+    "floor": null,
+    "energy_class": null,
+    "energy_kwh_sqm": null,
+    "images": null,
+    "furnished": null,
+    "built_year": null,
+    "lift": null,
+    "garden": null,
+    "terrace": null,
+    "garage": null,
+    "condominio_monthly": null,
+    "advertiser_name": null,
+    "condition": null,
+    "condition_status": null,
+    "needs_renovation": null,
+    "listing_published_at": "2026-03-08",
+    "listing_updated_at": "2026-09-21",
+    "lat": 49.185885374093715,
+    "lng": 16.38124094868238,
+    "price_history": [
+      {
+        "at": "2026-07-28T09:01:18.266Z",
+        "price": 7990000
+      },
+      {
+        "at": "2026-07-31T09:11:55.647Z",
+        "price": 7499000
+      }
+    ]
+  },
+  {
     "id": "sr_519557196",
     "portal": "sreality",
     "detected_at": "2026-09-17T11:35:57.216Z",

@@ -1,5 +1,53 @@
 [
   {
+    "id": "sr_2385956940",
+    "portal": "sreality",
+    "detected_at": "2026-10-02T12:26:36.025Z",
+    "presumed_rented_at": "2026-10-02T12:26:36.025Z",
+    "first_seen_at": "2026-08-08T07:14:20.513Z",
+    "last_seen_at": "2026-10-01T13:05:22.732Z",
+    "days_on_market": 55,
+    "price": 2500000,
+    "sqm": 67,
+    "rooms": 2,
+    "property_type": "flat",
+    "address": "Stádlec, Stádlec",
+    "zone": "Stádlec",
+    "url": "https://www.sreality.cz/detail/prodej/byt/2+1/_/2385956940?noredirect=1",
+    "description": "Nabízíme k prodeji byt 2+167 m2 s garáží v klidné a přírodou obklopené obci Stádlec. Byt v původním stavu je ideální pro zájemce hledající bydlení s možností úprav podle vlastních představ. K bytu náleží prostorný sklep. Orientace bytu je na sever a jih. Klíčové parametry a vybavení: Dispozice: 2+1 Vytápění: elektrokotel Ohřev vody: bojler Garáž o výměře cca 20 m2 Dům prošel revitalizací (zateplení, plastová okna) Pozemek a okolí: Součástí prodeje je také podíl na oploceném pozemku kolem domu, který slouží ke společnému užívání. Okolí nabízí klidné bydlení a dobré možnosti parkování. Občanská vybavenost a doprava: V obci se nachází mateřská škola a základní škola (1. až 5. ročník), vyšší stupeň ZŠ je v 3 km vzdálených Opařanech. Dopravní dostupnost: Tábor 20 km, Milevsko 16 km, Písek 30 km. Pro více informací a termín prohlídky kontaktujte makléře. S financováním vám rád pomůže náš finanční poradce.",
+    "title": "Prodej bytu 2+1 67 m²",
+    "bathrooms": null,
+    "floor": null,
+    "energy_class": null,
+    "energy_kwh_sqm": null,
+    "images": null,
+    "furnished": null,
+    "built_year": null,
+    "lift": null,
+    "garden": null,
+    "terrace": null,
+    "garage": null,
+    "condominio_monthly": null,
+    "advertiser_name": null,
+    "condition": null,
+    "condition_status": null,
+    "needs_renovation": null,
+    "listing_published_at": "2026-08-07",
+    "listing_updated_at": "2026-09-18",
+    "lat": 49.3795953430964,
+    "lng": 14.4950632253257,
+    "price_history": [
+      {
+        "at": "2026-08-08T07:14:20.513Z",
+        "price": 2650000
+      },
+      {
+        "at": "2026-08-27T17:45:33.770Z",
+        "price": 2500000
+      }
+    ]
+  },
+  {
     "id": "sr_1625677900",
     "portal": "sreality",
     "detected_at": "2026-10-01T13:05:22.732Z",
