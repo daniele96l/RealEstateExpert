@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-10-02T12:26:03.298Z",
+  "fetched_at": "2026-10-03T11:37:30.976Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1365254220",
+      "title": "Pronájem bytu 4+kk 75 m²",
+      "price": 19500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/_/1365254220?noredirect=1",
+      "lat": 49.41095192606385,
+      "lng": 14.675102503346803,
+      "sqm": 75,
+      "rooms": 4,
+      "address": "Budějovická, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-28",
+      "listing_updated_at": "2026-10-02",
+      "description": "Bytová jednotka stejně jako celý dům v předchozích 2 letech prošla celkovou rekonstrukcí. Tato bytová jednotka je specifická tím, že se zde dochovaly původní interiérové dveře i s obložkami a původní prkenné podlahy v ložnicích. Vzhledem k jejich vynikajícímu stavu bylo rozhodnuto o jejich renovaci a tím pádem i zachování historického rázu bytové jednotky, ovšem s plnou funkčností. Byt se nachází v 1 nadzemním podlaží (směrem od Budějovické ulice - do vnitrobloku je to 2. nadzemní podlaží) o dispozici 4kk o podlahové ploše cca 75m2. Velká výhoda tohoto bytu je, že jedna ložnice je přístupná jak z bytu, tak ze společné chodby a tudíž lze využít i pro komerční účely (kancelář, provozovna atd). Nájem tohoto bytu je 19.500Kč + 1000Kč služby + 2000Kč záloha na plyn/ měsíc. Jsou zde vinylové podlahy v kuchyni a obývacím pokoji v dekoru dubu. Nově obložená a zařízená koupelna s walk-in sprchovým koutem. Nová kuchyňská linka se spotřebiči Siemens/Bosch. K bytu přísluší 9m2 balkón s podlahou z dřevoplastových prken opět v imitaci dubu. Pro celý dům je instalován nový kondenzační plynový kotel zaručující nízké náklady na vytápění (předpoklad - zálohy 2000Kč/ měsíc). Dům byl kromě historické fasády do Budějovické ulice kompletně zateplen, proto se dají očekávat opravdu nízké náklady na vytápění. Byty jsou zrekonstruovány ve vysokém standardu. K bytu přísluší sklepní kóje. Jednáte přímo s majitelem, proto neplatíte provizi RK."
+    },
     {
       "id": "sr_3223593036",
       "title": "Pronájem bytu 2+kk 44 m²",
@@ -387,26 +407,6 @@
       "listing_published_at": "2026-09-29",
       "listing_updated_at": "2026-10-02",
       "description": "Pronájem světlého slunného bytu 5+kk (107m²) s možností využití společné zahrady, pergoly a bazénu v rodinném domě v ul. Šafaříkova 864, Sezimovo Ústí. Byt se nachází v 1. patře zatepleného rodinného domu. Měsíční nájemné činní 19.000,- Kč + 9.500,- Kč zálohy (topení, elektřina, vodné a stočné). Vytápění domu zajišťuje plynový kotel, je možné topit v kotli na tuhá paliva a v krbových kamnech. Parkování je možné před domem. V okolí se nachází veškerá občanská vybavenost. Doporučuji prohlídku, byt je připraven k nastěhování. Hledáme spolehlivé a klidné nájemce pro bezproblémé užívání bytu i společných prostor. Více informací Vám poskytne realitní makléř Zdeněk Kotěšovec z realitní kanceláře A TEMPO fungující pod ochrannou známkou naše společnost. Ev. číslo: 653071."
-    },
-    {
-      "id": "sr_1365254220",
-      "title": "Pronájem bytu 4+kk 75 m²",
-      "price": 19500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/_/1365254220?noredirect=1",
-      "lat": 49.41095192606385,
-      "lng": 14.675102503346803,
-      "sqm": 75,
-      "rooms": 4,
-      "address": "Budějovická, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-09-28",
-      "listing_updated_at": "2026-09-29",
-      "description": "Bytová jednotka stejně jako celý dům v předchozích 2 letech prošla celkovou rekonstrukcí. Tato bytová jednotka je specifická tím, že se zde dochovaly původní interiérové dveře i s obložkami a původní prkenné podlahy v ložnicích. Vzhledem k jejich vynikajícímu stavu bylo rozhodnuto o jejich renovaci a tím pádem i zachování historického rázu bytové jednotky, ovšem s plnou funkčností. Byt se nachází v 1 nadzemním podlaží (směrem od Budějovické ulice - do vnitrobloku je to 2. nadzemní podlaží) o dispozici 4kk o podlahové ploše cca 75m2. Velká výhoda tohoto bytu je, že jedna ložnice je přístupná jak z bytu, tak ze společné chodby a tudíž lze využít i pro komerční účely (kancelář, provozovna atd). Nájem tohoto bytu je 19.500Kč + 1000Kč služby + 2000Kč záloha na plyn/ měsíc. Jsou zde vinylové podlahy v kuchyni a obývacím pokoji v dekoru dubu. Nově obložená a zařízená koupelna s walk-in sprchovým koutem. Nová kuchyňská linka se spotřebiči Siemens/Bosch. K bytu přísluší 9m2 balkón s podlahou z dřevoplastových prken opět v imitaci dubu. Pro celý dům je instalován nový kondenzační plynový kotel zaručující nízké náklady na vytápění (předpoklad - zálohy 2000Kč/ měsíc). Dům byl kromě historické fasády do Budějovické ulice kompletně zateplen, proto se dají očekávat opravdu nízké náklady na vytápění. Byty jsou zrekonstruovány ve vysokém standardu. K bytu přísluší sklepní kóje. Jednáte přímo s majitelem, proto neplatíte provizi RK."
     },
     {
       "id": "sr_1317150796",
