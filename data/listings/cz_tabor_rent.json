@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-10-04T12:22:13.994Z",
+  "fetched_at": "2026-10-05T14:24:02.088Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1109004364",
+      "title": "Pronájem bytu 2+1 56 m²",
+      "price": 14000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/1109004364?noredirect=1",
+      "lat": 49.180001779166,
+      "lng": 14.6927984636413,
+      "sqm": 56,
+      "rooms": 2,
+      "address": "Pod Markem, Veselí nad Lužnicí I, Veselí nad Lužnicí",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-05",
+      "listing_updated_at": "2026-10-05",
+      "description": "Nabízíme k pronájmu částečně zařízený byt 2+1 s balkonem po kompletní rekonstrukci na velice atraktivním místě ve Veselí nad Lužnicí. Byt po kompletní rekonstukci o celkové výměře 56 m2 je situován ve 2. patře panelového domu s výtahem. Skládá se z chodby, ze které jsou jednotlivé vstupy do koupelny s toaletou a do kuchyně, ze které jsou dále vstupy do ložnice a obývacího pokoje s balkonem. Dispoziční řešení a velikosti jednotlivých místností naleznete na přiloženém půdorysu. Byt je částečně zařízený, je možné užívat i sklepní kóji. Bezplatné parkování je možné přímo před domem na veřejném parkovišti. Byt je určen k dlouhodobému nájmu, volný od 1.11.2026 Energetická třída D - méně úsporná Nájemné činí 14.000 Kč / měsíc + zálohy 4.000 Kč / měsíc (otop, voda, elektřina, poplatky atp.) Kauce 30.000 Kč, bez provize RK!!!"
+    },
     {
       "id": "sr_1365254220",
       "title": "Pronájem bytu 4+kk 75 m²",
@@ -325,7 +345,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-09-30",
-      "listing_updated_at": "2026-09-30",
+      "listing_updated_at": "2026-10-05",
       "description": "PROHLÉDNĚTE SI BYT V KLIDU DOMOVA V PŘILOŽENÉ 3D PROHLÍDCE. Exkluzivně nabízíme pronájem zděného bytu 1+kk o velikosti 24 m² v Táboře na Pražském sídlišti. Byt se nachází v přízemí zděného domu v ul. Pražského povstání. Byt je orientován do zeleně a umístěn ve vchodu mezi domy mimo průjezdnou komunikaci. Dispozice bytu: obytná místnost s kuchyňským koutem, koupelna se sprchovým koutem a WC a vstupní chodbička. V ceně pronájmu nejsou zahrnuty služby ve výši 1.350,-Kč (vytápění, studená a teplá voda a služby spojené se společnými prostory domu), elektřina bude přepsána na nového nájemce a není součástí plateb placených pronajímateli. Majitel požaduje vratnou peněžitou jistotu ve výši 15.000,- Kč. Provize RK 10.000,- Kč. Byt je k dispozici novému nájemci. Majitel preferuje dlouhodobý pronájem. Pro bližší informace volejte makléře zakázky."
     },
     {
@@ -747,6 +767,46 @@
       "listing_published_at": "2026-09-10",
       "listing_updated_at": "2026-09-10",
       "description": "Nabízíme k pronájmu byt s balkonem o dispozici 2+1, výměře 59 m2, který se nachází v pátém patře cihlového domu s výtahem, ulice Budovatelů, Tábor, Kopeček. Dispozice bytu prostorná vstupní chodba, samostatné WC, koupelna se sprchovým koutem, kuchyňská linka s elektrickým sporákem, dva neprůchozí pokoje. K bytu náleží sklepní kóje. Byt se pronajímá bez nábytku, zařízený pouze kuchyňskou linkou. V okolí veškerá občanská vybavenost, parky a zeleň. Možnost parkování u domu. Nájemné ve výši 12.000,-Kč + služby 2.800,-Kč + elektřinu si nájemce hradí na základě samostatné smlouvy s dodavatelem. Majitel požaduje vratnou kauci ve výši 24.000,-Kč + poplatek realitní kanceláři činí jeden měsíční nájem + 21% DPH. Byt je volný od 1.10.2026. Majitel si vyhrazuje právo vybrat nájemníka podle jím zvolených kritérií. Pro domluvení prohlídky kontaktujte makléřku ing. Vendulu Kümmelovou."
+    },
+    {
+      "id": "sr_3631206476",
+      "title": "Pronájem bytu 2+1 85 m²",
+      "price": 11500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/3631206476?noredirect=1",
+      "lat": 49.4127049301727,
+      "lng": 14.6698484969858,
+      "sqm": 85,
+      "rooms": 2,
+      "address": "9. května, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-27",
+      "listing_updated_at": "2026-10-05",
+      "description": "Nabízíme k pronájmu prostorný, slunný, mezonetový byt 2+1 , který se nachází ve 3. NP tichého a klidného cihlového domu přímo v centru Tábora, na ulici 9. května. Lokalita nabízí vynikající dostupnost, vše potřebné máte doslova pár kroků od domu.. Majitelé upřednostňují obsazení bytu maximálně dvěma dospělými osobami s ohledem na poměry v domě. Dispozice bytu - prostorná vstupní hala s vestavěnými skříněmi, koupelna s vanou a WC, dva pokoje , kuchyně s kuchyňskou linkou. Topení je elektrické a ohřev vody zajišťuje elektrický bojler. Nájemné ve výši 11.500,-Kč + záloha na vodu 300,-Kč/os., záloha na elektřinu 3000 Kč/měs. Majitel požaduje vratnou kauci ve výši 15 000,-Kč, poplatek RK ve výši jednoho měsíčního nájmu + 21% DPH. Vybavení bytu si majitel přeje ponechat. Byt se nachází v samotném centru města, v pěší vzdálenosti od veškeré občanské vybavenosti obchodů, služeb, restaurací, škol, zdravotnických zařízení. V blízkosti je také vlakové i autobusové nádraží, což zajišťuje skvělou dopravní dostupnost. Pro domluvení prohlídky kontaktujte makléře."
+    },
+    {
+      "id": "sr_3717779532",
+      "title": "Pronájem bytu 2+1 80 m²",
+      "price": 11000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/3717779532?noredirect=1",
+      "lat": 49.4127049301727,
+      "lng": 14.6698484969858,
+      "sqm": 80,
+      "rooms": 2,
+      "address": "9. května, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-27",
+      "listing_updated_at": "2026-10-05",
+      "description": "Nabízíme k pronájmu prostorný, slunný byt o dispozici 2+1, který se nachází v 1. NP tichého a klidného cihlového domu přímo v centru Tábora, na ulici 9. května. Lokalita nabízí vynikající dostupnost, vše potřebné máte doslova pár kroků od domu. Majitelé upřednostňují obsazení bytu maximálně dvěma dospělými osobami s ohledem na poměry v domě. Dispozice bytu - prostorná vstupní hala s vestavěnými skříněmi, dva velké, světlé pokoje, kuchyně s kuchyňskou linkou, koupelna s vanou, samostatné WC, komora. Topení je elektrické a ohřev vody zajišťuje elektrický bojler. Nájemné ve výši 11.000,-Kč + záloha na vodu 400,-Kč/os., záloha na elektřinu 3000 Kč/měs. Majitel požaduje vratnou kauci ve výši 15 000,-Kč, poplatek RK ve výši 13.310 Kč včetně DPH. Byt se nachází v samotném centru města, v pěší vzdálenosti od veškeré občanské vybavenosti obchodů, služeb, restaurací, škol, zdravotnických zařízení. V blízkosti je také vlakové i autobusové nádraží, což zajišťuje skvělou dopravní dostupnost. Pro domluvení prohlídky kontaktujte makléře."
     },
     {
       "id": "sr_4186124364",
