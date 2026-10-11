@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-10-10T12:26:26.196Z",
+  "fetched_at": "2026-10-11T12:41:39.622Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3609989196",
+      "title": "Pronájem bytu 3+1 74 m²",
+      "price": 13000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/3609989196?noredirect=1",
+      "lat": 49.181222,
+      "lng": 14.696231,
+      "sqm": 74,
+      "rooms": 3,
+      "address": "Ak. Bydžovského, Veselí nad Lužnicí I, Veselí nad Lužnicí",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-11",
+      "listing_updated_at": "2026-10-11",
+      "description": "Nabídka dlouhodobého pronájmu bytu 3+1 (74 m²) s lodžií a garáží v ulici Ak. Bydžovského ve Veselí nad Lužnicí. Byt se nachází ve 2. patře zděného domu bez výtahu. V bytě momentálně probíhá rekonstrukce, fotografie budou zveřejněny později. Prohlídky budou možné začátkem listopadu. Dispozice bytu: • Vstupní chodba: 5,59 m² • 1. pokoj (po levé straně): 9,67 m² • Kuchyně: 12,38 m² (vstup do koupelny a na lodžii) • Obývací pokoj (přístupný z kuchyně): 19,36 m² • 2. pokoj (přístupný z obývacího pokoje): 22,66 m² • Koupelna s toaletou: 4,39 m² • Lodžie s výhledem na dětské hřiště • Dva prostorné sklepy (6,85 m² a 8,44 m²). V bytě jsou plastová okna se žaluziemi a garnyžemi. Na podlahách je položena dlažba, laminát a koberec. Ohřev vody zajišťuje elektrický bojler. Vytápění je řešeno krbovými kamny značky Romotop a v jednom pokoji elektrickým topným panelem, což umožňuje snadnou regulaci tepla a výrazné snížení nákladů na bydlení. Zařízení bytu: kuchyňská linka, plynový sporák s elektrickou troubou, kuchyňský stůl a židle, prostorná šatní skříň. Měsíční náklady na bydlení: • Nájemné: 13 000 Kč • Vodné a stočné: 1 500 Kč (aktuální zálohová platba, vyúčtování dle skutečné spotřeby) • Internet: 250 Kč • Elektřina bude přepsána na nájemce Jednorázové výdaje: • Vratná kauce (jistina): 30 000 Kč • Provize RK: 15 000 Kč Možnost pronájmu garáže: K bytu lze pronajmout řadovou garáž (17 m²) přímo u domu. • Cena: 2 000 Kč/měsíc + kauce 4 000 Kč + provize RK 3 000 Kč. Garáž je k dispozici ihned a taky k dlouhodobému pronájmu. Byt je volný k nastěhování v průběhu listopadu 2026. Pro více informací a dohodnutí termínu prohlídky mě prosím kontaktujte telefonicky."
+    },
     {
       "id": "sr_915214412",
       "title": "Pronájem bytu 2+kk 60 m²",
@@ -387,26 +407,6 @@
       "listing_published_at": "2026-10-02",
       "listing_updated_at": "2026-10-02",
       "description": "Společnost Golden Castle s.r.o. nabízí k pronájmu nově zrekonstruovaný a zcela vybavený podkrovního byt v historické části Tábora v druhém podlaží, 2+kk o výměře 44 m2. Dům, ve kterém se byt nachází, je vzdálen asi 100 m od historického centra Tábora v Kožešnické ulici. Je vybaven kuchyňskou linkou, sporákem, myčkou, ledničkou i veškerým nádobím a náčiním, také lůžkovinami aj. Obývací část spolu s televizí a stylovým nábytkem tvoří příjemné a pohodlné bydlení pro 2 osoby. Dřevěné schody v obývací části vedou ke zvýšenému ložnicovému prostoru, tzv. galerie na spaní. Z předsíně, kde je dostatek úložného prostoru, vedou dveře do koupelny se sprchou, WC a pračkou. Topení – akumulační kamna. ‌ Z okna bytu je pěkný výhled do historické části města. Doporučujeme pro nájemníky kteří chtějí žít v pěkném prostředí historického města. Nájemné 16.000 Kč + voda. Elektřinu si hradí každý sám."
-    },
-    {
-      "id": "sr_2338594892",
-      "title": "Pronájem bytu 1+kk 55 m²",
-      "price": 7000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/2338594892?noredirect=1",
-      "lat": 49.36251185536,
-      "lng": 14.5777574084844,
-      "sqm": 55,
-      "rooms": 1,
-      "address": "náměstí V. Háka, Malšice, Malšice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-02",
-      "listing_updated_at": "2026-10-02",
-      "description": "Nabízíme k pronájmu podkrovní byt o velikosti 1 kk a výměře cca 55 m2 v Malšicích na náměstí V. Háka. Dispozice bytu vstupní chodba, koupelna s WC, kuchyně a obývací prostor. Kuchyně je vybavena elektrickým sporákem, digestoří a myčkou. V koupelně sprchový kout a pračka. K dispozici komora na chodbě domu před bytem. Parkování ve dvoře. Ohřev vody je zajištěn elektrický bojlerem a topení přímotopy. Nájemné ve výši 7.000 Kč/měs. + záloha na vodu a elektřinu 3.000,-Kč, vratná jistota ve výši 20.000 Kč, poplatek RK 10.000 Kč včetně DPH. Vhodné max pro dvě osoby. Pro domluvení prohlídky kontaktujte makléře ing. Vendulu Kümmelovou."
     },
     {
       "id": "sr_782573644",
@@ -887,26 +887,6 @@
       "listing_published_at": "2026-07-27",
       "listing_updated_at": "2026-10-05",
       "description": "Nabízíme k pronájmu prostorný, slunný byt o dispozici 2+1, který se nachází v 1. NP tichého a klidného cihlového domu přímo v centru Tábora, na ulici 9. května. Lokalita nabízí vynikající dostupnost, vše potřebné máte doslova pár kroků od domu. Majitelé upřednostňují obsazení bytu maximálně dvěma dospělými osobami s ohledem na poměry v domě. Dispozice bytu - prostorná vstupní hala s vestavěnými skříněmi, dva velké, světlé pokoje, kuchyně s kuchyňskou linkou, koupelna s vanou, samostatné WC, komora. Topení je elektrické a ohřev vody zajišťuje elektrický bojler. Nájemné ve výši 11.000,-Kč + záloha na vodu 400,-Kč/os., záloha na elektřinu 3000 Kč/měs. Majitel požaduje vratnou kauci ve výši 15 000,-Kč, poplatek RK ve výši 13.310 Kč včetně DPH. Byt se nachází v samotném centru města, v pěší vzdálenosti od veškeré občanské vybavenosti obchodů, služeb, restaurací, škol, zdravotnických zařízení. V blízkosti je také vlakové i autobusové nádraží, což zajišťuje skvělou dopravní dostupnost. Pro domluvení prohlídky kontaktujte makléře."
-    },
-    {
-      "id": "sr_4186124364",
-      "title": "Pronájem bytu 2+kk 37 m²",
-      "price": 10500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/4186124364?noredirect=1",
-      "lat": 49.41856527777,
-      "lng": 14.66235472222,
-      "sqm": 37,
-      "rooms": 2,
-      "address": "Čsl. armády, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-09-08",
-      "listing_updated_at": "2026-09-08",
-      "description": "Nabízíme k pronájmu zrekonstruovaný byt 2+kk s užitnou plochou 37,4 m², který se nachází ve 2. patře zděného domu nedaleko centra Tábora. ‌ Dispozice bytu: zádveří, pokoj s kuchyňským koutem včetně kuchyňské linky se spotřebiči, ložnice, koupelna se sprchovým koutem a toaletou. K bytové jednotce náleží prostorná sklepní kóje v 1. PP. ‌ Zdroj tepla zajišťuje ústřední dálkové vytápění a ohřev teplé vody vlastní bojler pro maximální komfort. ‌ Měsíční nájemné ve výši 10.500,–Kč + 2.400,– služby + elektřina cca 1.200,-Kč. Majitel požaduje jistotu (kauci) ve výši dvou měsíčních nájmů tj. 21.000,-Kč. K dispozici od 1.10.2026. ‌ Dům je situován v blízkosti centra města, což zaručuje snadný přístup ke všem potřebným službám a občanské vybavenosti. Zastávka MHD je v těsné blízkosti a parkování je možné v docházkové vzdálenosti. ‌ V případě zájmu o bližší informace nebo sjednání prohlídky mě neváhejte kontaktovat."
     },
     {
       "id": "sr_3780608076",
