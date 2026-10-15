@@ -1,13 +1,53 @@
 {
   "city": "cz_rosice",
   "operation": "sale",
-  "fetched_at": "2026-10-14T11:45:44.652Z",
+  "fetched_at": "2026-10-15T11:24:26.963Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_4146073676",
+      "title": "Prodej bytu 2+kk 51 m²",
+      "price": 7480000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/4146073676?noredirect=1",
+      "lat": 49.18818651452861,
+      "lng": 16.384469568729404,
+      "sqm": 51,
+      "rooms": 2,
+      "address": "Na Vyhlídce, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-14",
+      "listing_updated_at": "2026-10-14",
+      "description": "A1.06 Hledáte moderní bydlení s nadstandardní terasou a jedinečnými dispozičními výhodami? Nabízíme k prodeji atraktivní byt o dispozici 2+kk v nově vznikajícím projektu Panorama Rosice (ulice Na Vyhlídce). Tento byt je situován na vyhledávané severovýchodní straně bytového domu a díky své krajní poloze nabízí benefity, které u běžných bytů v projektu nenajdete. Maximální komfort: Vstup na terasu z obou pokojů a okno v koupelně • Propojení interiéru s exteriérem: Na velkorysou, na východ orientovanou terasu o velikosti 34,8 m² se pohodlně dostanete jak z obývacího pokoje, tak přímo z ložnice. V letních měsících tak můžete celý byt otevřít do klidného venkovního prostoru. Parametry nemovitosti: • Vnitřní podlahová plocha: 51,2 m² • Terasa: 34,8 m² – ideální pro ranní kávu, relaxaci nebo zahradní nábytek. • Zděný sklep: Velkorysých 7 m² v 1. PP je již zahrnuto v ceně bytu. K bytu lze dokopit garážové stání za 560.000,-Kč umístěné v 1.PP nebo ve 2.PP. Praktické řešení dispozice: Srdcem bytu je obývací pokoj s kuchyňským koutem a ložnice, obě místnosti se samostatnými vstupy na terasu. Při vstupu do bytu vás přivítá velká hala, která chytře počítá s dostatkem prostoru pro vestavěné skříně nebo úložné systémy na míru. Projekt Panorama Rosice nabízí klidné bydlení s výbornou dostupností do Brna (cca 20 minut autem, případně pohodlně vlakem či autobusem). Rosice poskytují kompletní občanskou vybavenost od obchodů po moderní koupaliště a sportoviště. Přímo v areálu projektu navíc vznikla nová mateřská a základní škola. Tento krajní byt je perfektní jako startovací bydlení i jako prémiová investice na pronájem."
+    },
+    {
+      "id": "sr_1698697292",
+      "title": "Prodej bytu 2+kk 60 m²",
+      "price": 6150000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/1698697292?noredirect=1",
+      "lat": 49.18816898423313,
+      "lng": 16.384448111057285,
+      "sqm": 60,
+      "rooms": 2,
+      "address": "Na Vyhlídce, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-14",
+      "listing_updated_at": "2026-10-14",
+      "description": "A 2.04 Nabízíme Vám světlý a skvěle dispozičně řešený byt 2+kk (51 m²) s velkou lodžií (9 m2) a nadstandardně velkým sklepem (7m2)ve 2.NP nově vznikajícího domu Na Vyhlídce v Rosicích. K bytu je možné dokoupit garážové stání v hodnotě 560.000,-Kč. Byt je ideální pro mladé páry, jednotlivce hledající nadstandardní prostor nebo jako investice na pronájem díky skvělému poměru velikosti a úložných prostor. Výhodné financování: Nyní uhradíte pouze 10 % z kupní ceny a zbývajících 90 % doplatíte až po úspěšné kolaudaci v roce 2028. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Na Vyhlídce máte k dispozici mateřskou školu, základní školu a širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Kolaudace a předání bytu leden, únor 2028. Pro více informací na webových stránkách panoramarosice."
+    },
     {
       "id": "sr_935080012",
       "title": "Prodej bytu 2+kk 58 m²",
@@ -51,7 +91,7 @@
     {
       "id": "sr_2249642060",
       "title": "Prodej bytu 3+kk 73 m²",
-      "price": 7190000,
+      "price": 6990000,
       "operation": "sale",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/_/2249642060?noredirect=1",
       "lat": 49.185639798687,
@@ -65,7 +105,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-07",
-      "listing_updated_at": "2026-10-12",
+      "listing_updated_at": "2026-10-14",
       "description": "Nabízíme k prodeji mezonetový byt v osobním vlastnictví situovaný v 5. a 6. nadzemním podlaží bytového domu na ulici Kaštanová v Rosicích. Jeho dvoupodlažní uspořádání představuje zajímavou alternativu ke klasickému bytovému bydlení a přirozeně odděluje společenskou a klidovou část domácnosti. Byt disponuje balkonem, plně využitelným horním patrem a je vybaven dvěma klimatizačními jednotkami a elektricky ovládanými roletami střešních oken. &#8203; &#8203;Dispozice a parametry bytu &#8203; &#8203;Podlahová plocha bytu dle Prohlášení vlastníka činí 62,8 m2, k jednotce dále náleží balkon o výměře 1,2 m2. &#8203;Spodní podlaží tvoří vstupní předsíň, koupelna, WC, kuchyně se vstupem na balkon, obývací pokoj a schodiště do horního patra. &#8203;V horním podlaží vzniklo úpravou původní galerie přibližně 10 m2 další využitelné plochy navíc nad rámec výměry a dispozice 2+1 uvedené v Prohlášení vlastníka. Díky tomu dnešní uspořádání bytu odpovídá dispozici 3+kk. V horním podlaží se nachází dva pokoje a navazující obytný prostor, který lze využít například jako dětský koutek, pracovnu, odpočinkovou zónu nebo jej stavebně oddělit a vytvořit tak další samostatný pokoj. &#8203;Okna jsou orientována na sever a východ. &#8203; &#8203;Stav bytu a vybavení &#8203; &#8203;Byt je v dobrém technickém stavu a během let byl doplněn o několik praktických prvků, které zpříjemňují jeho každodenní užívání. Příjemné klima i během letních měsíců zajišťují dvě klimatizační jednotky umístěné v horním podlaží. Střešní okna jsou vybavena elektricky ovládanými venkovními i vnitřními roletami Velux. Oba systémy lze ovládat jak dálkovým ovladačem, tak prostřednictvím mobilního zařízení. &#8203;Dům a společné prostory &#8203;Bytový dům byl dokončen přibližně v roce 1990 a v minulých letech prošel revitalizací včetně zateplení objektu. Nedávno byl v domě vybudován nový výtah. SVJ v současnosti není zatíženo žádným úvěrem. &#8203; &#8203;Lokalita &#8203; &#8203;Rosice nabízejí příjemné spojení klidnějšího bydlení s dobrou dostupností do Brna. V docházkové vzdálenosti od domu se nachází zámecký park, mateřská a základní škola, několik dětských hřišť i centrum města s další občanskou vybaveností. Přímo na ulici je k dispozici obchod s potravinami. Díky napojení na silnici D1 i veřejné dopravě je Brno pohodlně dostupné během 20-30 minut. &#8203; &#8203;Pro více informací nebo domluvení prohlídky mě neváhejte kontaktovat. Rád Vás bytem osobně provedu. &#8203; &#8203;PENB: G (aktuální průkaz energetické náročnosti budovy je ve zpracování). Dle předchozího průkazu, byla budova zařazena do energetické třídy C. &#8203;"
     },
     {
@@ -125,7 +165,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-09",
-      "listing_updated_at": "2026-10-09",
+      "listing_updated_at": "2026-10-14",
       "description": "B 3.01 Nabízíme Vám moderní a skvěle dispozičně řešený byt 3+kk (84m2)s lodžií (9m2) v novostavbě bytového domu Na Vyhlídce v Rosicích. Tento byt kombinuje komfort nového bydlení, dostatek úložného prostoru a promyšlené soukromí. V bytě najdeme samostatnou komoru (šatnu). Byt je tak ideální pro rodinu s dětmi nebo jako klidné zázemí pro home office. Hlavní obytná zóna s kuchyňským koutem je orientovaná na východ. K bytu náleží sklep o výměře 7 m2. K bytu je možné dokoupit garážové stání v hodnotě 560.000,-Kč. Výhodné financování: Nyní uhradíte pouze 10 % z kupní ceny a zbývajících 90 % doplatíte až po úspěšné kolaudaci v roce 2028. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Kolaudace a předání bytu leden, únor 2028. Pro více informací na webových stránkách panoramarosice."
     },
     {
@@ -287,6 +327,26 @@
       "listing_published_at": "2026-08-04",
       "listing_updated_at": "2026-10-07",
       "description": "B 2.05 Nabízíme k prodeji nový rohový byt 3+kk o podlahové ploše 65 m2 ve 2. patře novostavby. Byt vyniká jedinečnou terasou, která obepíná celý byt a nabízí vstup z každého pokoje. Díky jihozápadní orientaci je interiér krásně prosluněný po velkou část dne. K jednotce náleží také prostorný sklep (7 m2). Ideální volba pro moderní a komfortní bydlení. Skvěle řešená dispozice s plně neprůchozími pokoji zajišťuje maximální soukromí pro všechny členy domácnosti. Francouzská okna v každé místnosti umožňují individuální vstup na jihozápadní terasu, aniž byste rušili ostatní. K bytu je možné dokoupit garážové stání v hodnotě 560.000,-Kč. Výhodné financování: Nyní uhradíte pouze 10 % z kupní ceny a zbývajících 90 % doplatíte až po úspěšné kolaudaci v roce 2028. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Kolaudace a předání bytu leden, únor 2028. Pro více informací na webových stránkách panoramarosice."
+    },
+    {
+      "id": "sr_1857859660",
+      "title": "Prodej bytu 2+kk 71 m²",
+      "price": 6990000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/1857859660?noredirect=1",
+      "lat": 49.1759983655135,
+      "lng": 16.3915409021561,
+      "sqm": 71,
+      "rooms": 2,
+      "address": "Na Štěpnici, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-04-13",
+      "listing_updated_at": "2026-10-14",
+      "description": "Ve výhradním zastoupení vám nabízíme prodej bytu se zahrádkou v Rosicích u Brna. Hledáte místo pro bydlení v bytě se zahrádkou, který je nízkonákladový a je s dobrým dosahem města a dostupností vlakem například od Brna? Hledáte dům, kde není nutné dělat rekonstrukci a stačí se jen nastěhovat? Právě Vám nabízíme byt o dispozici 2+kk se zahrádkou v okrajové části města Rosice. Po vstupu do zádveří, odkud je vstup do koupelny s WC o výměře 5,3 m² a na schodiště do podkroví, se před Vámi otevře světlý a prostorný obývací pokoj s kuchyňským koutem o výměře 27 m² a dále vstup na zahrádku s posezením o výměře 50 m². Podkroví o podlahové ploše 32 m² včetně úložného prostoru pod šikmou střechou. Celková plocha domu je 71 m² + zahrádka s posezením 50 m². Vytápění domu a ohřev vody je plynovým kotlem. Okna jsou plastová s izolačním dvojsklem. Fasáda domu a zateplení bylo realizováno v roce 2020. Jako podlahová krytina jsou použity dlažba a plovoucí podlaha. Průkaz energetické náročnosti: třída D. Rosice jsou město v okrese Brno-venkov v Jihomoravském kraji, 16 km západně od Brna. Leží v katastrálním území Rosice u Brna, tento název nese i místní pošta a železniční zastávka. Je zde veškerá občanská vybavenost. MŠ, ZŠ, obchod s potravinami, restaurace, městský úřad, pošta, lékárna a mnohé další. Dopravu zajištují autobusy a vlaky IDS JMk. Pro více informací nás neváhejte kontaktovat."
     }
   ],
   "provider": "sreality"
