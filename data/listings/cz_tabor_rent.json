@@ -1,13 +1,53 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-10-17T10:38:26.071Z",
+  "fetched_at": "2026-10-18T10:56:14.835Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1233522764",
+      "title": "Pronájem bytu 2+1 56 m²",
+      "price": 12500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/1233522764?noredirect=1",
+      "lat": 49.300017786,
+      "lng": 14.482323381,
+      "sqm": 56,
+      "rooms": 2,
+      "address": "Na Libuši, Bechyně, Bechyně",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-18",
+      "listing_updated_at": "2026-10-18",
+      "description": "Nabízíme k pronájmu pěkný a prostorný byt 2+1 na sídlišti Na Libuši v Bechyni. Byt se nachází v klidné lokalitě s výbornou dostupností a je ideální pro jednotlivce, páry nebo malé rodiny.<br /> <br /> Charakteristika bytu:<br /> • Umístění v 1. patře<br /> • Velký obývací pokoj s parketami <br /> • Kuchyň vybavena kuchyňskou linkou, plynovým sporákem, lednicí a myčkou<br /> • Koupelna s vanou a pračkou<br /> • Samostatné WC<br /> • Chodba s vestavěnými skříněmi<br /> • Vytápění i ohřev vody zajišťuje plynový kotel<br /> <br /> Byt je ve velmi dobrém stavu a ihned k dispozici.<br /> <br /> Cena nájmu: 12.000 Kč/měsíc + energie<br /> <br /> Pokud máte zájem o prohlídku, neváhejte mě kontaktovat."
+    },
+    {
+      "id": "sr_126226508",
+      "title": "Pronájem bytu 4+kk 86 m²",
+      "price": 16800,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/4+kk/_/126226508?noredirect=1",
+      "lat": 49.26164132487,
+      "lng": 14.718584801319,
+      "sqm": 86,
+      "rooms": 4,
+      "address": "Dolní příkopy, Soběslav III, Soběslav",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-17",
+      "listing_updated_at": "2026-10-17",
+      "description": "Pronájem bytu 4+kk (86 m²) po rekonstrukci – Soběslav, ulice Horní Příkopy ‌ Nabízíme k dlouhodobému pronájmu prostorný byt 4+kk o výměře 86 m², který se nachází ve 2. nadzemním podlaží (1. patře) třígeneračního rodinného domu v centru Soběslavi, na ulici Horní Příkopy – jen pár kroků od náměstí. K bytu náleží vlastní vchod zajišťující maximální soukromí. ‌ Byt prošel kompletní rekonstrukcí, zahrnující novou podlahovou krytinu, moderní rozvody, omítky, kuchyňskou linku i koupelnu. Zbývá doladit drobné detaily (např. interiérové dveře). K nastěhování bude byt připraven koncem května či začátkem června 2025. ‌ Dispozice a vybavení: - Dispozice: 4+kk - Užitná plocha: 86 m² - Moderní kuchyňská linka se sporákem, troubou a digestoří - Prosvětlený obývací prostor a 3 samostatné pokoje - Koupelna – upravená jako oáza klidu s vanou a umyvadlem (v koupelně není pračka) - Samostatné WC - Vinylové podlahy v dekoru dřeva, plastová okna, nové radiátory - Špajz/technická místnost vybavená pro prací koutek (ideální pro umístění pračky a sušičky) - Vlastní vchod do bytu zaručuje větší komfort a soukromí - Parkování přímo před domem - Domácí mazlíčci vítáni po dohodě ‌ Lokalita a občanská vybavenost: Byt se nachází v klidné ulici, jen pár minut chůze od centra města, kde najdete: - Supermarkety (Lidl, Billa, COOP) - Základní a mateřské školy, gymnázium - Lékaře, lékárnu, poštu - Knihovnu, kulturní dům, sportoviště - Autobusové i vlakové nádraží ‌ Cena pronájmu: - Nájemné: 16 800 Kč / měsíc - Poplatky včetně elektřiny a plynu: 4 200 Kč / měsíc - Vratná kauce: 48 000 Kč - Provize RK: 16 800 Kč (včetně DPH) ‌ Byt bude k dispozici od května / začátku června 2025. Pro více informací nebo domluvení prohlídky nás neváhejte kontaktovat."
+    },
     {
       "id": "sr_3401977932",
       "title": "Pronájem bytu pokoje 19 m²",
@@ -285,7 +325,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-14",
-      "listing_updated_at": "2026-10-14",
+      "listing_updated_at": "2026-10-18",
       "description": "Nabízíme Vám k pronájmu světlý byt ve zděném domě o dispozici 1+1 a užitné ploše 46 m² v Bechyni. Byt se nachází ve druhém patře. Vytápění zajišťují elektrické přímotopy a krbová kamna. Ohřev vody zajišťuje elektrický bojler. Jako příslušenství k bytu jsou dva zděné sklepy. Velkou předností nemovitosti je skutečnost, že dům prošel kompletním zateplením, což spolu s novými okny zajišťuje nízké provozní náklady a příjemné klima v letních i zimních měsících. Pro více informací a sjednání osobní prohlídky nás kontaktujte."
     },
     {
