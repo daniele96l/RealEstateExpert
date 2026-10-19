@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "sale",
-  "fetched_at": "2026-10-18T10:56:46.749Z",
+  "fetched_at": "2026-10-19T12:59:35.754Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3464557388",
+      "title": "Prodej bytu 3+kk 77 m²",
+      "price": 100000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/_/3464557388?noredirect=1",
+      "lat": 49.42041924587162,
+      "lng": 14.677085861927745,
+      "sqm": 77,
+      "rooms": 3,
+      "address": "Fibichova, Čekanice, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2025-08-26",
+      "listing_updated_at": "2026-10-19",
+      "description": "Nabízíme k prodeji nový byt 3+kk o výměře 77 m² v moderním bytovém domě v klidné lokalitě Čekanice u Tábora. K bytu náleží velká zahrada s terasou ve výlučném užívání vlastníka, která je již zahrnuta v kupní ceně. Součástí bytu je také sklepní kóje. Byt je dokončený, aktuálně probíhá kolaudace a k nastěhování bude přibližně od 10/2026. Bytový dům je napojen na centrální zdroj tepla a splňuje energetickou třídu A – mimořádně úsporná. Čekanice jsou klidnou částí Tábora s dobrou dostupností do centra města, občanskou vybaveností v okolí a dobrým dopravním spojením. V blízkosti se nachází také vlakové nádraží. K bytu je možné dokoupit parkovací stání přímo vedle domu, které je nyní ve výstavbě. Cena: 7 700 000 Kč Zahrada s terasou ve výlučném užívání vlastníka a sklepní kóje jsou zahrnuty v ceně. Pro více informací nebo sjednání prohlídky nás neváhejte kontaktovat."
+    },
     {
       "id": "sr_78237772",
       "title": "Prodej bytu 3+1 78 m²",
@@ -329,26 +349,6 @@
       "description": "Prodej bytu 3+1 s balkonem, ul. Vídeňská, Tábor. Nabízíme k prodeji družstevní byt o dispozici 3+1 s podlahovou plochou 71,55 m², který se nachází ve 3. nadzemním podlaží zatepleného panelového domu s výtahem v oblíbené lokalitě Tábor – Vídeňská. Byt je v původním, udržovaném stavu a nabízí ideální příležitost vytvořit si bydlení přesně podle vlastního vkusu. Díky praktické dispozici je vhodný jak pro rodinu s dětmi, tak pro pár, který hledá dostatek prostoru. Dispozici tvoří prostorný obývací pokoj, dva samostatné pokoje, kuchyně, koupelna, samostatné WC a předsíň. Součástí bytu je také balkon a sklepní kóje. Okna jsou orientována na severovýchod, díky čemuž je byt příjemně prosvětlený ranním sluncem a zároveň si udržuje komfortní klima i během letních měsíců. Velkou předností této nabídky je možnost převodu do osobního vlastnictví, což rozšiřuje možnosti budoucího financování a zvyšuje atraktivitu bytu i z investičního hlediska. Dům prošel revitalizací, je zateplený, má plastová okna a je napojen na centrální dálkové vytápění. Měsíční náklady činí 3 578 Kč, z toho fond oprav pouze 716 Kč. Vídeňská ulice patří mezi vyhledávané části Tábora. V docházkové vzdálenosti najdete mateřské i základní školy, dětská hřiště, zastávky MHD, supermarkety, lékárnu, restaurace i další občanskou vybavenost. Lokalita nabízí pohodlné každodenní bydlení s rychlou dostupností centra města i dostatkem zeleně pro volnočasové aktivity. Pokud hledáte byt, který nabízí prostor, skvělou lokalitu a možnost vytvořit si domov přesně podle svých představ, ráda vás provedu osobně. Základní informace • dispozice 3+1 • podlahová plocha 71,55 m² • balkon 2,25 m² • sklepní kóje 3,65 m² • 3.NP z 9 NP • výtah • družstevní vlastnictví • možnost převodu do osobního vlastnictví • původní stav vhodný k rekonstrukci • plastová okna • dálkové vytápění • elektřina a plyn • panelový, zateplený dům • orientace oken: SV • měsíční náklady: 3 578 Kč • fond oprav: 716 Kč • PENB: D – méně úsporná Bližší informace k ceně v RK. Pro komunikaci uvádějte evidenční číslo zakázky N119264."
     },
     {
-      "id": "sr_3464557388",
-      "title": "Prodej bytu 3+kk 77 m²",
-      "price": 100000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/_/3464557388?noredirect=1",
-      "lat": 49.42041924587162,
-      "lng": 14.677085861927745,
-      "sqm": 77,
-      "rooms": 3,
-      "address": "Fibichova, Čekanice, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2025-08-26",
-      "listing_updated_at": "2026-10-15",
-      "description": "Nabízíme k prodeji nový byt 3+kk o výměře 77 m² v moderním bytovém domě v klidné lokalitě Čekanice u Tábora. K bytu náleží velká zahrada s terasou ve výlučném užívání vlastníka, která je již zahrnuta v kupní ceně. Součástí bytu je také sklepní kóje. Byt je dokončený, aktuálně probíhá kolaudace a k nastěhování bude přibližně od 10/2026. Bytový dům je napojen na centrální zdroj tepla a splňuje energetickou třídu A – mimořádně úsporná. Čekanice jsou klidnou částí Tábora s dobrou dostupností do centra města, občanskou vybaveností v okolí a dobrým dopravním spojením. V blízkosti se nachází také vlakové nádraží. K bytu je možné dokoupit parkovací stání přímo vedle domu, které je nyní ve výstavbě. Cena: 7 700 000 Kč Zahrada s terasou ve výlučném užívání vlastníka a sklepní kóje jsou zahrnuty v ceně. Pro více informací nebo sjednání prohlídky nás neváhejte kontaktovat."
-    },
-    {
       "id": "sr_2749939788",
       "title": "Prodej bytu 2+1 67 m²",
       "price": 4500000,
@@ -445,7 +445,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-02",
-      "listing_updated_at": "2026-10-14",
+      "listing_updated_at": "2026-10-19",
       "description": "Nabízíme byt o dispozici 3+1 (osobní vlastnictví) v samotném centru města Tábor s nádherným výhledem na údolí řeky Lužnice a panorama s hradem Kotnov. Byt je umístěn ve 2.patře ( 3. NP) bytového domu s výtahem. Jedná se o zděný byt, který si můžete přetvořit přesně podle svých představ. Byt je v původním stavu, což z něj činí ideální volbu pro ty, kteří hledají prostor pro kompletní rekonstrukci a chtějí si vytvořit moderní bydlení na míru. Byt nabízí 3 pokoje - na podlahách jednotlivých pokojů jsou parkety. Dva pokoje jsou orientovány na jih a je z nich krásný výhled na řeku a do okolní krajiny. Kuchyň a jeden pokoj jsou orientovány na sever. V galerii jsme pro vás umístili půdorys bytu, pro představu o jeho dispozici. Výtahem se z bytu dostanete na rozlehlou venkovní trasu, kde lze trávit volný čas v klidové zóně. K bytu náleží sklepní prostor v suterénu domu ( o výměře cca. 3 m². Zálohy spojené s užíváním bytu jsou stanoveny na 4.325,-Kč ( z toho FO 680,-Kč). Pro bližší informace volejte makléře zakázky. V případě zájmu vám pomůžeme s financováním."
     },
     {
@@ -609,26 +609,6 @@
       "description": "Nabízíme k prodeji krásný byt o dispozici 2+1 v Táboře ul. Helsinská 2735/6 , který prošel kompletní rekonstrukcí. Nachází se v panelovém domě a je situován v prvním patře, což poskytuje snadný přístup bez zbytečného čekání na výtah. Příjemným bonusem je sklep, který skýtá dostatek úložného prostoru pro sezónní nebo sportovní vybavení. Byt je ideální volbou pro mladý pár nebo menší rodinu hledající útulný a funkční prostor. Rekonstrukce bytu zajistila moderní a svěží vzhled, který je připraven k okamžitému nastěhování bez nutnosti dalších úprav. Obytná plocha 53 m² nabízí praktické uspořádání pokojů s dostatkem přirozeného světla. Energetická náročnost bytu a podmínky provozu Vám sdělí makléř, který je kontaktní osobou u tohoto inzerátu. Prohlídky jsou možné po předchozí domluvě. Pro více informací o této nemovitosti nebo sjednání prohlídky nás prosím kontaktujte nebo vyplňte níže uvedený formulář, rádi Vám pomůžeme."
     },
     {
-      "id": "sr_3323727948",
-      "title": "Prodej bytu 1+1 48 m²",
-      "price": 2100000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/_/3323727948?noredirect=1",
-      "lat": 49.25116115523132,
-      "lng": 14.761561842784019,
-      "sqm": 48,
-      "rooms": 1,
-      "address": "Přehořov, Přehořov",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-11",
-      "listing_updated_at": "2026-10-14",
-      "description": "Prodej prostorného bytu 1+1 (48 m²), Přehořov u Soběslavi – bezproblémové parkování Jako přímý majitel nabízím k prodeji nadstandardně velký byt o dispozici 1+1 a výměře 48 m², který se nachází v klidné obci Přehořov, jen 5 minut jízdy z D3 nebo od Soběslavi. Náklady: nájem 2500 Kč, elektřina 2500 Kč. Byt je situován v podkroví bytového domu, který již prošel zateplením. Stav bytu: Byt je v původním, ale plně obyvatelném a udržovaném stavu. Kompletní nová výmalba. Je ideální pro někoho, kdo hledá dostupné bydlení k okamžitému nastěhování s tím, že si rekonstrukci může dělat postupně, nebo jako skvělý základ pro kompletní přestavbu podle vlastních představ (díky 48 m² se nabízí i úprava na 2+kk). Jsou zde 2 nová plastová okna. Dvě střešní okna jsou zatím původní (bude u nich výhledově vhodná výměna). Byt má prostornou koupelnu s vanou a samostatné WC. Vytápění a úložné prostory: Vytápění je v současnosti řešeno akumulačními kamny (díky zateplené fasádě domu se teplo dobře drží), náklady jsou nízké - doložíme účty. V prostorné předsíni jsou dvě velké vestavěné skříně. V bytě je 1 rok nový sporák a bojler. K bytu navíc patří obrovská výhoda – hned naproti přes chodbu je přístupná společná půda, která je skvělá na odložení sezónních věcí. Okolí a parkování: Přímo před vchodem do domu je položen nový asfalt s možností pohodlného a bezplatného parkování pro minimálně 2 auta – parkujete doslova pár kroků od dveří. V Soběslavi (veškerá občanská vybavenost, železniční koridor Praha-Č.Bud.-Rakousko) jste autem za 5 minut, k nájezdu na D3 za 5 minut, v Táboře za 20 minut. Podkrovní byt se nachází v bytovce postavené ca v r. 1985, klidná lokalita, sousedé v domě jsou pouze české národnosti."
-    },
-    {
       "id": "sr_1625677900",
       "title": "Prodej bytu 1+1 39 m²",
       "price": 3380000,
@@ -645,7 +625,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-07-20",
-      "listing_updated_at": "2026-10-12",
+      "listing_updated_at": "2026-10-19",
       "description": "Nabízíme k prodeji byt 1+1 v os. vlastnictví v Táboře, ulice Budovatelů 2616 v 1. nadzemní podlaží. Byt prošel částečnou rekonstrukcí, celková plocha 42,47 m2, sklep 3,25 m2. Podlaha v pokoji připravena na finální pokládku (nivelační stěrka hotová). Je možné se dohodnout i k pronájmu garáže. Orientace bytu na jihozápad. Doporučujeme k bydlení i jako investici."
     },
     {
