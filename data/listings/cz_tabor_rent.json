@@ -1,13 +1,53 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-10-23T11:35:01.341Z",
+  "fetched_at": "2026-10-24T10:56:19.581Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_2176778316",
+      "title": "Pronájem bytu 2+kk 46 m²",
+      "price": 12000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/2176778316?noredirect=1",
+      "lat": 49.301805,
+      "lng": 14.471687,
+      "sqm": 46,
+      "rooms": 2,
+      "address": "Písecká, Bechyně, Bechyně",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-24",
+      "listing_updated_at": "2026-10-24",
+      "description": "Nabízíme k pronájmu útulný a kompletně zařízený byt o dispozici 2+kk a podlahové ploše 46 m², který se nachází v ulici Písecká v Bechyni. K bytu náleží také sklepní kóje. Byt představuje ideální volbu pro jednotlivce či pár, kteří hledají pohodlné bydlení bez nutnosti pořizovat vlastní vybavení. Velkou výhodou je kompletní vybavení bytu, které zůstává novému nájemci k dispozici. Kuchyňská linka je vybavena dle fotografií a veškerý nábytek, který na fotografiích vidíte, je součástí pronájmu. Stačí si tak přinést osobní věci a můžete bydlet. K dispozici je také kabelová televize. Měsíční náklady na bydlení Nájemné: 12 000 Kč Záloha na vodu: 700 Kč Záloha na vytápění: 1 100 Kč Záloha na elektřinu: 1 500 Kč Celkové měsíční náklady: 15 300 Kč (pro 1 osobu). Elektřina zůstává vedena na majitele nemovitosti, není tedy nutný její přepis na nájemce. Podmínky pronájmu Vratná kauce: 24 000 Kč Provize realitní kanceláři: 12 000 Kč Preferován dlouhodobý pronájem. Pokud hledáte příjemné, plně vybavené bydlení v Bechyni, tento byt může být skvělou volbou. Pro více informací nebo domluvení osobní prohlídky mě neváhejte kontaktovat. Ráda Vás bytem osobně provedu. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
+    },
+    {
+      "id": "sr_3124895820",
+      "title": "Pronájem bytu 2+kk 38 m²",
+      "price": 10600,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/3124895820?noredirect=1",
+      "lat": 49.27044120323,
+      "lng": 14.7409806052421,
+      "sqm": 38,
+      "rooms": 2,
+      "address": "Zvěrotice, Zvěrotice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-25",
+      "listing_updated_at": "2026-10-23",
+      "description": "V exkluzivním zastoupení klienta nabízíme k dlouhodobému pronájmu luxusní byt o dispozici 2+kk a velikosti 38 m2 v rodinném domě. Tato moderní bytová jednotka je kompletně vybavena kuchyňskou linkou s vestavěnými spotřebiči, prostorným obývacím pokojem, útulnou ložnicí a elegantní koupelnou se sprchovým koutem. K bytu dále náleží jedno parkovací stání. V rámci domu je k dispozici bazén, dětský koutek a prostorná zahrada, ke které je přímý přístup. Vytápění je zajištěno moderním tepelným čerpadlem. Tento elegantní byt je ideální pro mladý pár, bez domácích mazlíčků a nekuřáky. Je volný ihned k nastěhování. Nachází se v klidné lokalitě, v kompletně zrekonstruovaném domě, který je obklopen přírodou. Přesto má výhodnou polohu v blízkosti města Soběslav. Nájemné činí 10 600 Kč/měsíc a k tomu je potřeba připočítat zálohy na energie ve výši 3 900Kč. Celkem činí měsíční nájemné 14 500 kč. Vyžaduje se kauce ve výši 1 x nájemného a 1 x odměna RK. Pokud máte zájem o tento byt nebo potřebujete další informace, neváhejte se na mě obrátit."
+    },
     {
       "id": "sr_1805459532",
       "title": "Pronájem bytu 1+kk 23 m²",
@@ -67,26 +107,6 @@
       "listing_published_at": "2026-10-01",
       "listing_updated_at": "2026-10-23",
       "description": "Pronájem bytu 4kk cca 130 m2 s lodžií v objektu ul. U Jednoty, Čekanice, Tábor. Nabízíme k pronájmu byt 4kk o velikosti cca 130 m2 s lodžií umístěno ve 2. NP objektu v klidné a dobře dostupné části Tábora – Čekanice – ideální pro bydlení. V blízkosti obchod, mateřská školka, základní škola, restaurace, autobusová zastávka. K dispozici: přístup po schodišti, chodba cca 7 m2, obývací pokoj s kuchyňským koutem cca 50 m2 a výstupem na lodžii cca 4,5 m2, velký pokoj cca 31 m2, a dva menší pokoje každý cca 15 m2, koupelna s vanou a sprchovým koutem cca 6,8 m2, samostatné WC. Služby hrazené nad rámec nájmu: Voda, plyn – plynový kotel - otop, elektrická energie spotřeba v bytě je nájemcem hrazena na základě vlastní smlouvy s dodavatelem Eon. Jistota: 22.000,- Kč. PENB: třída D – méně úsporná. Volné cca od přelomu října a listopadu 2026. Pro komunikaci uvádějte evidenční číslo zakázky N120106."
-    },
-    {
-      "id": "sr_1226440780",
-      "title": "Pronájem bytu 4+1 86 m²",
-      "price": 13000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/4+1/_/1226440780?noredirect=1",
-      "lat": 49.3894956297,
-      "lng": 14.6808717291546,
-      "sqm": 86,
-      "rooms": 4,
-      "address": "Bukurešťská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-21",
-      "listing_updated_at": "2026-10-23",
-      "description": "Pronájem částečně zařízeného bytu 4 + 1 s balkonem, sklepní kójí a výtahem, ulice Bukurešťská, sídliště nad Lužnicí, Tábor. I na Sídlišti nad Lužnicí se najde pěkné bydlení. Nabízíme Vám k pronájmu prostorný, světlý byt 4+1 s balkonem o celkové výměře přibližně 86 m². Nachází se ve 4. patře panelového domu s výtahem ve spodní části sídliště. Dispozice a vybavení: byt nabízí obývací pokoj o výměře cca 26 m², ložnici cca 12 m², další dva pokoje cca 12,80 m² a 8 m², kuchyň cca 8,20 m² a prostornou předsíň cca 12 m². Součástí je koupelna s vanou cca 3 m², samostatné WC cca 1 m² a praktická technická místnost cca 2,70 m² s prostorem pro pračku a sušičku. K dispozici je také balkon a sklepní kóje o výměře cca 2,30 m². Byt je částečně vybaven nábytkem a elektrospotřebiči, včetně ledničky s mrazákem a myčky nádobí. Zeleň, sport i služby v docházkové vzdálenosti: za domem se nachází park a dětská hřiště. Nedaleké okolí řeky Lužnice nabízí sportovně odpočinkovou zónu i prostor pro procházky. V docházkové vzdálenosti jsou zastávky MHD, obchody, školská zařízení a zdravotní poliklinika. Náklady na bydlení: měsíční zálohy na služby činí přibližně 3.700,- Kč a zahrnují vytápění, teplou a studenou vodu, úklid a osvětlení společných prostor, provoz výtahu a další služby. Spotřeba tepla je sledována měřiči na radiátorech, spotřeba vody vodoměry. Elektřinu a plyn v bytě hradí nájemce samostatně na základě vlastních smluv s dodavateli energií. PENB – skupina B – velmi úsporná. VRATNÁ JISTOTA: 26.000,- Kč BYT K NASTĚHOVÁNÍ - listopad 2026 cca do 14 dnů od podpisu Rezervační smlouvy. Pro komunikaci uvádějte evidenční číslo zakázky N120443."
     },
     {
       "id": "sr_1997013068",
@@ -225,7 +245,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-22",
-      "listing_updated_at": "2026-10-22",
+      "listing_updated_at": "2026-10-23",
       "description": "Nabízíme k pronájmu útulné bydlení o dispozici 1+kk v rodinném domě v Zárybničné Lhotě u Tábora. Byt o obytné ploše cca 40 m² se nachází v 1. patře domu a je částečně zařízený kuchyňskou linkou sklokeramickou deskou a mikrovlnou troubou. V koupelně je prostorný sprchový kout včetně WC. K pronájmu náleží také přízemí domu se dvěma dalšími místnostmi, které nabízí praktický prostor navíc. Součástí přízemí je rovněž částečně vybavená letní kuchyně s kamny a toaleta. Před domem je k dispozici terasa s příjemným posezením. Nájemníci mohou využívat také část zahrady, která je společná s dalším rodinným domem, jenž je rovněž pronajatý. Parkování je možné přímo před domem. Základní informace: Dispozice: 1+kk Obytná plocha: cca 40 m² Umístění: 1. patro rodinného domu Vybavení: kuchyňská linka se sklokeramické. deskou, částečně vybavená letní kuchyně s kamny Další prostory: dvě místnosti v přízemí a WC Venkovní zázemí: terasa s posezením a možnost využívání části zahrady Parkování: před domem Vytápění: elektrické Finanční podmínky: Nájemné včetně záloh na elektřinu a vodu: 10 800 Kč/měsíc Vratná kauce: 15 000 Kč Provize realitní kanceláře: dle podmínek RK K dispozici od 1. 1. 2027. Bydlení je vhodné pro zájemce, kteří hledají klidné prostředí s možností využití venkovního posezení a zahrady. V případě zájmu o více informací nebo sjednání prohlídky nás neváhejte kontaktovat."
     },
     {
@@ -1009,26 +1029,6 @@
       "description": "PROHLÉDNĚTE SI BYT V KLIDU DOMOVA V PŘILOŽENÉ 3D PROHLÍDCE. Nabízíme k pronájmu cihlový byt 2+1 s balkónem v 1. patře v Táboře ul. B. Němcové, v lokalitě \"Na Kopečku\". Dispozice: - z předsíně s vestavěnými skříněmi se vchází do koupelny se sprchovým koutem a WC, dále do kuchyně a do obývacího pokoje - z kuchyně je vchod na balkón - z obývacího pokoje, který je orientovaný na západ, je vchod do ložnice s orientací na východ K bytu je k dispozici sklepní kóje a v rámci domu kolárna. Byt se nachází v klidné části města. V docházkové vzdálenosti se je obchod, školka, zastávka MHD. V ceně pronájmu nejsou zahrnuty služby ve výši 2.500,-Kč (vytápění, studená a teplá voda a služby spojené se společnými prostory domu), elektřina bude přepsána na nového nájemce a není součástí plateb placených pronajímateli. Majitel požaduje vratnou peněžitou jistotu ve výši 20.000,- Kč. Provize RK 14.000,- Kč. Byt je k dispozici novému nájemci. Majitel preferuje dlouhodobý pronájem. Pro bližší informace volejte makléře zakázky."
     },
     {
-      "id": "sr_3124895820",
-      "title": "Pronájem bytu 2+kk 38 m²",
-      "price": 10600,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/3124895820?noredirect=1",
-      "lat": 49.27044120323,
-      "lng": 14.7409806052421,
-      "sqm": 38,
-      "rooms": 2,
-      "address": "Zvěrotice, Zvěrotice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-09-25",
-      "listing_updated_at": "2026-10-14",
-      "description": "V exkluzivním zastoupení klienta nabízíme k dlouhodobému pronájmu luxusní byt o dispozici 2+kk a velikosti 38 m2 v rodinném domě. Tato moderní bytová jednotka je kompletně vybavena kuchyňskou linkou s vestavěnými spotřebiči, prostorným obývacím pokojem, útulnou ložnicí a elegantní koupelnou se sprchovým koutem. K bytu dále náleží jedno parkovací stání. V rámci domu je k dispozici bazén, dětský koutek a prostorná zahrada, ke které je přímý přístup. Vytápění je zajištěno moderním tepelným čerpadlem. Tento elegantní byt je ideální pro mladý pár, bez domácích mazlíčků a nekuřáky. Je volný ihned k nastěhování. Nachází se v klidné lokalitě, v kompletně zrekonstruovaném domě, který je obklopen přírodou. Přesto má výhodnou polohu v blízkosti města Soběslav. Nájemné činí 10 600 Kč/měsíc a k tomu je potřeba připočítat zálohy na energie ve výši 3 900Kč. Celkem činí měsíční nájemné 14 500 kč. Vyžaduje se kauce ve výši 1 x nájemného a 1 x odměna RK. Pokud máte zájem o tento byt nebo potřebujete další informace, neváhejte se na mě obrátit."
-    },
-    {
       "id": "sr_1758666828",
       "title": "Pronájem bytu 1+kk 23 m²",
       "price": 8000,
@@ -1085,7 +1085,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-09-17",
-      "listing_updated_at": "2026-10-12",
+      "listing_updated_at": "2026-10-24",
       "description": "Nabízíme k pronájmu prostorný, světlý byt 3+1 s lodžií o výměře 69 m², situovaný v panelovém domě na Náchodském sídlišti v Táboře (ul. Čsl. armády). Byt se nachází v 1. patře domu s výtahem. Je v původním, ale udržovaném stavu. Byt je pronajímán s vybavením, viz foto. Součástí pronájmu je i možnost používání sklepa (1,3 m²) a společné kolárny. Výměry jednotlivých místností: kuchyně 12,4 m², obývací pokoj 20,7 m², lodžie 3,9 m², pokoj 12,3 m², ložnice 12,3 m², chodba 6 m², komora 1,8 m², koupelna 2,5 m², WC 1 m². K bytu náleží též sklep (1,3 m²). Plánek ve fotogalerii je pouze orientační. Celková užitná plocha je 73,9 m². Byt je vybaven kuchyňskou linkou s plynovým sporákem, elektrickou troubou a digestoří. Součástí vybavení je také lednice a mikrovlnná trouba. V kuchyňské lince je prakticky zabudována pračka. Koupelna je s vanou, WC je samostatné. Služby budou hrazeny v celkové výši 5.012,- Kč, přičemž tato částka obsahuje zálohy na elektřinu ve výši 1.640,- Kč, zálohy na plyn ve výši 300,- Kč, a dále na teplo, teplou a studenou vodu, úklid společných prostor a společnou elektřinu ve výši 3.072,- Kč. Rozpis bude nájemci předložen. Tato částka je koncipována pro tři osoby, v případě více osob v bytě bude příslušně navýšena (400,- Kč/osobu/měsíc voda, 100,- Kč/osobu/měsíc úklid). Byt je vhodný maximálně pro čtyři osoby. Ze strany nájemce bude požadována kauce ve výši dvou nájmů, tj. 22.000,- Kč. Majitel hledá dlouhodobého nájemce. Při podpisu nájemní smlouvy skládá nájemce první nájemné včetně záloh na služby, tj. při obsazenosti bytu např. třemi osobami 16.012,- Kč + kauci ve výši dvou nájmů 22.000,- Kč, tj. celkem 38.012,- Kč. Odměna pro realitní kancelář ve výši 1x nájem + DPH ve výši 21% (tj. celkem 13.310,- Kč) se skládá před podpisem nájemní smlouvy. Jedná se o klidnou a žádanou lokalitu s výbornou občanskou vybaveností a perfektní dopravní dostupností. Úklid domu zajišťuje úklidová služba. Dům je zateplený, s novými okny, dveřmi a výtahem. Hned za domem se nachází dětské hřiště. V blízkosti MHD, školka, škola, zdravotní středisko, nemocnice, supermarkety Billa, Lidl, Albert atd. Parkování možné v blízkosti domu. Byt je k dispozici od 1.10.2026. V případě dalších dotazů mě neváhejte kontaktovat, těším se na osobní setkání. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
