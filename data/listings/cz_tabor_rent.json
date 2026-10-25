@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-10-24T10:56:19.581Z",
+  "fetched_at": "2026-10-25T11:18:19.035Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_4192796748",
+      "title": "Pronájem bytu 2+kk 42 m²",
+      "price": 12500,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/4192796748?noredirect=1",
+      "lat": 49.3734049121,
+      "lng": 14.705483827,
+      "sqm": 42,
+      "rooms": 2,
+      "address": "Průmyslová, Planá nad Lužnicí, Planá nad Lužnicí",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-22",
+      "listing_updated_at": "2026-10-25",
+      "description": "Nabízíme k dlouhodobému pronájmu vybavený byt 2+kk o výměře 42 m², připravený k okamžitému nastěhování. Praktická dispozice s obytnou kuchyní a samostatnou ložnicí z něj dělá ideální bydlení pro jednotlivce nebo pár. Kuchyňská linka je vybavena kombinovaným sporákem, k dispozici je lednice s mrazákem a pračka. Byt má plastová okna s izolačními dvojskly a z ložnice se vstupuje na balkon o ploše 3 m². Vytápění i ohřev teplé vody jsou řešeny dálkově. Měsíční náklady činí pouhých 3.356 Kč + elektřina (cca 500 Kč), která bude převedena přímo na nájemce. Parkování je dostatečné přímo u domu. Byt se nachází v 1. patře (2. NP) zatepleného panelového domu (bez výtahu) v ulici Průmyslová a prošel částečnou rekonstrukcí. Dům patří k energeticky nejúspornějším v okolí: průkaz energetické náročnosti budovy (PENB) ho řadí do nejvyšší klasifikační třídy A – mimořádně úsporná. Lokalita na pomezí Plané nad Lužnicí a Sezimova Ústí spojuje klid s výbornou dostupností. Autobusová zastávka Silon je v těsné blízkosti, cesta do Tábora zabere několik minut a nájezd na dálnici D3 směrem na Prahu i České Budějovice je vzdálený přibližně 3 km. Školy, školky, obchody, lékaře i restaurace máte v pohodlné docházkové vzdálenosti."
+    },
     {
       "id": "sr_2176778316",
       "title": "Pronájem bytu 2+kk 46 m²",
@@ -249,26 +269,6 @@
       "description": "Nabízíme k pronájmu útulné bydlení o dispozici 1+kk v rodinném domě v Zárybničné Lhotě u Tábora. Byt o obytné ploše cca 40 m² se nachází v 1. patře domu a je částečně zařízený kuchyňskou linkou sklokeramickou deskou a mikrovlnou troubou. V koupelně je prostorný sprchový kout včetně WC. K pronájmu náleží také přízemí domu se dvěma dalšími místnostmi, které nabízí praktický prostor navíc. Součástí přízemí je rovněž částečně vybavená letní kuchyně s kamny a toaleta. Před domem je k dispozici terasa s příjemným posezením. Nájemníci mohou využívat také část zahrady, která je společná s dalším rodinným domem, jenž je rovněž pronajatý. Parkování je možné přímo před domem. Základní informace: Dispozice: 1+kk Obytná plocha: cca 40 m² Umístění: 1. patro rodinného domu Vybavení: kuchyňská linka se sklokeramické. deskou, částečně vybavená letní kuchyně s kamny Další prostory: dvě místnosti v přízemí a WC Venkovní zázemí: terasa s posezením a možnost využívání části zahrady Parkování: před domem Vytápění: elektrické Finanční podmínky: Nájemné včetně záloh na elektřinu a vodu: 10 800 Kč/měsíc Vratná kauce: 15 000 Kč Provize realitní kanceláře: dle podmínek RK K dispozici od 1. 1. 2027. Bydlení je vhodné pro zájemce, kteří hledají klidné prostředí s možností využití venkovního posezení a zahrady. V případě zájmu o více informací nebo sjednání prohlídky nás neváhejte kontaktovat."
     },
     {
-      "id": "sr_4192796748",
-      "title": "Pronájem bytu 2+kk 42 m²",
-      "price": 12500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/4192796748?noredirect=1",
-      "lat": 49.3734049121,
-      "lng": 14.705483827,
-      "sqm": 42,
-      "rooms": 2,
-      "address": "Průmyslová, Planá nad Lužnicí, Planá nad Lužnicí",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-22",
-      "listing_updated_at": "2026-10-22",
-      "description": "Nabízíme k dlouhodobému pronájmu kompletně vybavený byt 2+kk o výměře 42 m², připravený k okamžitému nastěhování. Praktická dispozice s obytnou kuchyní a samostatnou ložnicí z něj dělá ideální bydlení pro jednotlivce nebo pár. Kuchyňská linka je vybavena kombinovaným sporákem, k dispozici je lednice s mrazákem a pračka. Byt má plastová okna s izolačními dvojskly a z ložnice se vstupuje na balkon o ploše 3 m². Vytápění i ohřev teplé vody jsou řešeny dálkově. Měsíční náklady činí pouhých 3.356 Kč + elektřina (cca 500 Kč), která bude převedena přímo na nájemce. Parkování je dostatečné přímo u domu. Byt se nachází v 1. patře (2. NP) zatepleného panelového domu (bez výtahu) v ulici Průmyslová a prošel částečnou rekonstrukcí. Dům patří k energeticky nejúspornějším v okolí: průkaz energetické náročnosti budovy (PENB) ho řadí do nejvyšší klasifikační třídy A – mimořádně úsporná. Lokalita na pomezí Plané nad Lužnicí a Sezimova Ústí spojuje klid s výbornou dostupností. Hned u domu se rozprostírají velké travnaté plochy, které ocení rodiny s dětmi, majitelé psů i každý, kdo nechce mít za dveřmi jen další zástavbu. Autobusová zastávka Silon je v těsné blízkosti, cesta do Tábora zabere několik minut a nájezd na dálnici D3 směrem na Prahu i České Budějovice je vzdálený přibližně 3 km. Školy, školky, obchody, lékaře i restaurace máte v pohodlné docházkové vzdálenosti. V případě zájmu o prohlídku nás kontaktujte emailem nebo sms. Ozveme se Vám zpět."
-    },
-    {
       "id": "sr_3308847180",
       "title": "Pronájem bytu 3+1 67 m²",
       "price": 14900,
@@ -367,26 +367,6 @@
       "listing_published_at": "2026-10-21",
       "listing_updated_at": "2026-10-21",
       "description": "Chcete mít svůj klid, vlastní dvorek a přírodu doslova za dveřmi? Tento mezonetový byt 2+kk v obci Opařany nabízí ideální kombinaci soukromí, venkovského prostředí a pohodlného zázemí pro práci i odpočinek. Byt se nachází v zrekonstruovaném rodinném domě a má samostatný vstup i vlastní venkovní prostor, který můžete využít k posezení, práci na čerstvém vzduchu nebo relaxaci v naprostém klidu. Dispozice bytu je praktická a vzdušná v přízemí najdete prostornou vstupní chodbu, obývací pokoj s kuchyňským koutem a koupelnu se sprchovým koutem a WC. Po schodech se dostanete do otevřeného podkroví, které nabízí dostatek světla a prostoru pro ložnici i pracovní zónu. Lokalita vás osloví především svým klidem a okolní přírodou. Dům se nachází v tiché části obce Opařany, přibližně 60 minut od Prahy a 15 minut od Tábora ideální kompromis mezi dostupností a únikem z městského ruchu. Pro zájemce o skutečně venkovský život je k dispozici také možnost pronájmu zázemí pro koně včetně přilehlé louky. Technické zázemí: * vytápění i ohřev vody zajišťuje tepelné čerpadlo * podlahové topení v obytné části, radiátor v podkroví * vlastní studna nulové náklady na vodu (neplatíte vodné ani stočné) Nájemné: 15.000 Kč / měsíc, Zálohy na elektřinu: dle spotřeby, Vratná jistota: 15.000 Kč Provize RK: 1 nájem + 21 % DPH Byt je ideální pro 1 až 2 dospělé osoby, které hledají klidné, samostatné bydlení s venkovním prostorem a možností žít blíž přírodě. Pro více informací nebo domluvení prohlídky kontaktujte makléře."
-    },
-    {
-      "id": "sr_3939610700",
-      "title": "Pronájem bytu 2+kk 46 m²",
-      "price": 12500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/3939610700?noredirect=1",
-      "lat": 49.41147373647677,
-      "lng": 14.68382275133875,
-      "sqm": 46,
-      "rooms": 2,
-      "address": "Zavadilská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-04-16",
-      "listing_updated_at": "2026-10-21",
-      "description": "Nabízíme k pronájmu prostorný a světlý byt o dispozici 2kk a výměře 46,73m2 na ulici Zavadilská v Táboře. Byt se nachází ve 2.nadzemním podlaží moderního bytového domu s výtahem a poskytuje komfortní bydlení pro jednotlivce nebo pár. Dispozice bytu: Kuchyň s kuchyňskou linkou, vestavnou troubou, sklokeramickou deskou, myčkou,dále prostorná vstupní chodba, pokoj,sprchový kout s WC. V celém bytě jsou nová plastová okna, plovoucí podlaha, stropní svítidla a v koupelně dlažba. Vytápění celého bytu - parovod - radiátory (v dnešní době nejlevnější možnost). Bytová jednotka má svůj elektroměr a podružný vodoměr. Bytový dům nabízí pohodlný přístup výtahem. Lokalita zajišťuje veškerou občanskou vybavenost – obchody, školy, školky, lékaře, restaurace i zastávky MHD – vše v docházkové vzdálenosti. Parkování je možné přímo u domu. Cena nájmu činí 12.500.-Kč/měsíc. Zálohy: voda 800 Kč / osoba, topení 2.000.- Kč / měsíc, režie na společné prostory (elektřina, výtah, úklid ex. firmou) 600 Kč / osoba. Elektřina bude přepsána na nájemce. V případě zájmu mě neváhejte kontaktovat."
     },
     {
       "id": "sr_701104204",
@@ -711,7 +691,7 @@
     {
       "id": "sr_1809256524",
       "title": "Pronájem bytu 1+1 45 m²",
-      "price": 12000,
+      "price": 11000,
       "operation": "rent",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/1809256524?noredirect=1",
       "lat": 49.29921027777,
@@ -725,8 +705,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-16",
-      "listing_updated_at": "2026-10-16",
-      "description": "Pronájem světlého bytu 1+1 po kompletní rekonstrukci, nedaleko centra ‌ Přinášíme Vám k pronájmu světlý a příjemný byt o dispozici 1+1, který prošel kompletní rekonstrukcí a je připraven přivítat svého nového nájemníka. ‌ Byt se nachází v 1. patře panelového domu s výtahem, nedaleko centra města. Díky jižní orientaci oken nabízí dostatek denního světla a příjemně slunné prostředí. ‌ Dispozici tvoří vstupní chodba, samostatná kuchyně s prostorem pro jídelní kout, obývací pokoj a koupelna se sprchovým koutem a toaletou. Interiér je laděn do světlých přírodních odstínů, které doplňuje dekor dřeva. Byt se pronajímá bez nábytku, s kuchyňskou linkou, a je volný k okamžitému nastěhování. ‌ **Platební podmínky:** ‌ - Měsíční nájemné: 12 000 Kč - Záloha na služby: 2 664 Kč měsíčně - Záloha na elektřinu: 1 000 Kč měsíčně - Záloha na plyn: 300 Kč měsíčně - Celkové měsíční platby: 15 964 Kč - Vratná kauce: 22 000 Kč - Odměna realitní kanceláře: 12 000 Kč ‌ Pro více informací nebo domluvení prohlídky mě neváhejte kontaktovat. Ráda Vám byt osobně představím. Byt je připraven k nastěhování od 1.12.2026"
+      "listing_updated_at": "2026-10-25",
+      "description": "Pronájem světlého bytu 1+1 po kompletní rekonstrukci, nedaleko centra ‌ Přinášíme Vám k pronájmu světlý a příjemný byt o dispozici 1+1, který prošel kompletní rekonstrukcí a je připraven přivítat svého nového nájemníka. ‌ Byt se nachází v 1. patře panelového domu s výtahem, nedaleko centra města. Díky jižní orientaci oken nabízí dostatek denního světla a příjemně slunné prostředí. ‌ Dispozici tvoří vstupní chodba, samostatná kuchyně s prostorem pro jídelní kout, obývací pokoj a koupelna se sprchovým koutem a toaletou. Interiér je laděn do světlých přírodních odstínů, které doplňuje dekor dřeva. Byt se pronajímá bez nábytku, s kuchyňskou linkou, a je volný k okamžitému nastěhování. ‌ **Platební podmínky:** ‌ - Měsíční nájemné: 11 000 Kč - Záloha na služby: 2 664 Kč měsíčně - Záloha na elektřinu: 1 000 Kč měsíčně - Záloha na plyn: 300 Kč měsíčně - Celkové měsíční platby: 15 964 Kč - Vratná kauce: 22 000 Kč - Odměna realitní kanceláře: 11 000 Kč ‌ Pro více informací nebo domluvení prohlídky mě neváhejte kontaktovat. Ráda Vám byt osobně představím. Byt je připraven k nastěhování od 1.12.2026"
     },
     {
       "id": "sr_4200599628",
@@ -825,7 +805,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-10",
-      "listing_updated_at": "2026-10-21",
+      "listing_updated_at": "2026-10-25",
       "description": "Pronájem nově vybudovaného podkrovního bytu v bytovém domě v Mladé Vožici na Tř. Václava Vaniše. Jedná se o byt 2+kk o rozloze 59,64 m2. Byt je ve 3. nadzemním podlaží bez výtahu. Byt byl vybudován v roce 2023. Nová kuchyňská linka s vestavěnou elektrickou deskou, troubou, digestoří a vestavěnou myčkou. V koupelně sprchový kout, příprava na pračku. Plovoucí podlaha PVC quatrotex v pokojích a keramická dlažba v koupelně a předsíni. Nová plastová okna. Nové veškeré rozvody. Kompletně zateplený celý objekt. Vytápění a ohřev TUV centrálním plynovým kotlem. Velmi nízké provozní náklady. Možnost připojení k internetu. Kompletní kabeláž. Parkování možné v samostatné uzamykatelné garáži v suterénu. Garáž je součástí nájmu. Cena je bez záloh na služby. Nájem splatný předem k 25. dni v měsíci. Požadována kauce ve výši dvou měsíčních nájmů. Volný od 1.11.2026."
     },
     {
