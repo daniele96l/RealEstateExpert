@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-10-26T12:52:18.989Z",
+  "fetched_at": "2026-10-27T12:09:16.537Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_2933837900",
+      "title": "Pronájem bytu 1+1 24 m²",
+      "price": 14000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/2933837900?noredirect=1",
+      "lat": 49.18684,
+      "lng": 16.3852741,
+      "sqm": 24,
+      "rooms": 1,
+      "address": "Na Vyhlídce, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-07-29",
+      "listing_updated_at": "2026-10-26",
+      "description": "K dlouhodobému pronájmu nabízíme byt o dispozici 1+1 který se nachází v 1. patře bytového domu v Rosicích, ulice Na Vyhlídce. Byt je ve velmi dobrém stavu, světlý a prakticky řešený. Byt se nabízí vybavený dle fotografií. Dispozičně je rozdělen na obytný pokoj, samostatnou kuchyň, koupelnu se sprchovým koutem a toaletou a předsíň. Kuchyňská linka je vybavena vestavnou troubou, varnou deskou a digestoří. Součástí bytu je balkon. K dispozici je také parkovací stání. Dům se nachází v klidné lokalitě s dobrou dostupností do centra Rosic i na Brno. V okolí je veškerá občanská vybavenost – obchody, služby, MHD i zeleň. Byt je vhodný ideálně pro jednu osobu nebo pár a je ihned k nastěhování."
+    },
     {
       "id": "sr_716046412",
       "title": "Pronájem bytu 3+1 76 m²",
@@ -29,26 +49,6 @@
       "description": "K dlouhodobému pronájmu nabízíme byt o dispozici 3+1 a podlahové ploše cca 76 m² s balkonem o výměře cca 4 m². Nachází se v 5. nadzemním podlaží (4. patře) bytového domu bez výtahu na Komenského náměstí v Rosicích. K bytu náleží také sklep o výměře cca 2 m². Dispozici tvoří vstupní předsíň, samostatná kuchyň, tři obytné pokoje, koupelna s vanou a oddělená toaleta. Úložné prostory doplňuje komora a spíž. Z obývacího pokoje je přístupný balkon s výhledem do okolí. Byt se pronajímá zařízený dle fotografií. Kuchyňská linka je vybavena sporákem s troubou, mikrovlnnou troubou a lednicí s mrazničkou, nechybí ani jídelní stůl se židlemi. V obývacím pokoji je sedací souprava, křeslo, konferenční stolek a nábytková sestava. Ložnice je zařízena dvojlůžkem a šatní skříní, třetí pokoj lze využít například jako dětský pokoj nebo pracovnu. V koupelně je k dispozici pračka, v předsíni úložná sestava se zrcadlem. Okna jsou opatřena žaluziemi. Vytápění je ústřední. V Rosicích najdete zázemí pro každodenní život včetně základní školy, obchodů a lékáren. Pro dojíždění do Brna lze využít autobusové spojení v rámci IDS JMK. K dispozici od: do 10 dnů od vyřízení formalit Nájemné: 18 500 Kč / měsíc Zálohy na energie a služby: 5 683 Kč / měsíc Jistota (kauce): 25 000 Kč Provize RK: 18 500 Kč PENB: průkaz energetické náročnosti budovy nebyl dodán, proto uvádíme energetickou třídu G. V případě zájmu o více informací nebo prohlídku nás prosím kontaktujte."
     },
     {
-      "id": "sr_2933837900",
-      "title": "Pronájem bytu 1+1 24 m²",
-      "price": 14000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/2933837900?noredirect=1",
-      "lat": 49.18684,
-      "lng": 16.3852741,
-      "sqm": 24,
-      "rooms": 1,
-      "address": "Na Vyhlídce, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-07-29",
-      "listing_updated_at": "2026-10-25",
-      "description": "K dlouhodobému pronájmu nabízíme byt o dispozici 1+1 který se nachází v 1. patře bytového domu v Rosicích, ulice Na Vyhlídce. Byt je ve velmi dobrém stavu, světlý a prakticky řešený. Byt se nabízí vybavený dle fotografií. Dispozičně je rozdělen na obytný pokoj, samostatnou kuchyň, koupelnu se sprchovým koutem a toaletou a předsíň. Kuchyňská linka je vybavena vestavnou troubou, varnou deskou a digestoří. Součástí bytu je balkon. K dispozici je také parkovací stání. Dům se nachází v klidné lokalitě s dobrou dostupností do centra Rosic i na Brno. V okolí je veškerá občanská vybavenost – obchody, služby, MHD i zeleň. Byt je vhodný ideálně pro jednu osobu nebo pár a je ihned k nastěhování."
-    },
-    {
       "id": "sr_2409242700",
       "title": "Pronájem bytu 4+kk 89 m²",
       "price": 24500,
@@ -65,7 +65,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-09-17",
-      "listing_updated_at": "2026-10-25",
+      "listing_updated_at": "2026-10-26",
       "description": "Hledáte útulné a moderní bydlení v klidné lokalitě? Máme pro vás jedinečnou příležitost stát se nájemníkem krásného bytu 4+kk v novostavbě na ulici Wolkerova v Rosicích. Tento byt je ideální volbou pro rodinu, která hledá komfortní a stylové bydlení s veškerým zázemím. Základní informace o bytě: - Dispozice: 4+kk - Užitná plocha: 89 m² - Patro: 3. patro - Podlahové vytápění - Balkon: – ideální místo na ranní kávu nebo večerní relax - Sklep: K dispozici – skvělé pro uskladnění sezónních věcí - Výhoda prvního nájemníka a výběr z několika bytů - Možnost pronájmu garážového nebo parkovacího venkovního stání Byt je navržen s důrazem na moderní styl a funkčnost. Díky promyšlené dispozici 5+kk nabízí dostatek prostoru pro pohodlné bydlení. Obývací část je propojena s kuchyňským koutem, který je vybaven moderními spotřebiči (lednice, mikrovlnná trouba, myčka, varná deska, digestoř, trouba), takže vaření bude radost. Z obývacího pokoje se dostanete na prostorný balkon. Koupelna nabízí umyvadlo, toaletu, vanu, sprchový kout a přípojku na pračku. K bytu náleží také sklep, který poskytuje další úložný prostor. Pokud máte auto, jistě oceníte možnost pronájmu garážového nebo parkovacího venkovního stání (za příplatek) – už žádné starosti s parkováním! Rosice jsou vyhledávanou lokalitou díky své klidné atmosféře a výborné dostupnosti. Ulice Wolkerova se nachází v blízkosti veškeré občanské vybavenosti – obchody, restaurace, školy i sportovní zařízení máte na dosah ruky. Zároveň je zde skvělá dopravní dostupnost do Brna i okolí. Ideální místo pro ty, kteří chtějí bydlet mimo ruch velkoměsta, ale zároveň mít vše na dosah. Prohlídky jsou možné kdykoliv po domluvě s uvedeným makléřem. Možnost zajištění jednorázového či pravidelného úklidu naší úklidovou firmou."
     },
     {
