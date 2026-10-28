@@ -1,13 +1,73 @@
 {
   "city": "cz_tabor",
   "operation": "sale",
-  "fetched_at": "2026-10-27T12:09:10.861Z",
+  "fetched_at": "2026-10-28T12:45:12.685Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_1145241676",
+      "title": "Prodej bytu 3+1 63 m²",
+      "price": 3390000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/_/1145241676?noredirect=1",
+      "lat": 49.299419,
+      "lng": 14.480697,
+      "sqm": 63,
+      "rooms": 3,
+      "address": "Na Libuši, Bechyně, Bechyně",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-28",
+      "listing_updated_at": "2026-10-28",
+      "description": "Dovoluji si Vám exkluzivně nabídnout koupi velmi úsporné (PENB A) bytové jednotky o dispozici 3+1, umístěné ve 3. patře šestipodlažního panelového domu na sídlišti Na Libuši č. p. 825 v Bechyni. Bytová jednotka je v původním, udržovaném stavu a nabízí možnost celkové modernizace a stavebních úprav podle individuálních představ nového vlastníka. Vstupní část bytu tvoří předsíň (6,1 m2), ze které je přístupné samostatné WC (1,0 m2). Z předsíně vstupujeme do obývacího pokoje (16,3 m2) a dále do ložnice (12,2 m2) na straně jedné anebo do dětského pokoje (12,2 m2) na straně druhé. Z chodby, ale i z ložnice vstupujeme do kuchyně (4,5 m2) s jídelnou (7,8 m2), na niž navazuje koupelna (2,5 m2). Podlahová plocha pobytových vnitřních místností bytu činí dle listu vlastnictví 62,39 m2, dle skutečně naměřených hodnot 62,88 m2, příslušenstvím bytu je dřevěná laťková sklepní kóje (2 m2) v přízemí domu. Panelový bytový dům, kolaudovaný v letech 1975–1976, prošel v minulých letech celkovou revitalizací. Obvodový plášť budovy byl opatřen kontaktním zateplovacím systémem realizovaným cca před 15 lety, okna byla vyměněna za plastová s izolačním dvojsklem. Vyměněny byly svislé rozvody vody a kanalizace, střešní plášť prošel kompletní obnovou, v domě je osazen nový osobní výtah. Vytápění budovy zajišťuje nový domovní výměník tepla. Samotný byt je v původním stavu s montovaným umakartovým bytovým jádrem, původní hliníkovou elektroinstalací, a původní kuchyňskou linkou. Měsíční předpis záloh pro 1 osobu čítá 4.305,- Kč, z čehož fond oprav představuje 1.934,- Kč. Plyn přímo v bytě využit není, k vaření slouží elektrický sporák. Přístup k objektu je zajištěn po veřejné asfaltové komunikaci. Z právního hlediska v současnosti vázne na bytové jednotce osobní věcné břemeno užívání, k němuž byl dne 09.10.2026 podán návrh na výmaz z katastru nemovitostí a na LV je vyznačena plomba. Zástavní práva ani jiné právní závady zapsány nejsou. Dle doloženého Průkazu energetické náročnosti budovy (PENB) spadá dům do velmi úsporné energetické třídy A. Bytový dům se nachází na sídlišti Na Libuši v koncové, slepé ulici s minimálním provozem a výhledem do zeleně a přilehlých zahrad. Město Bechyně poskytuje kompletní základní občanskou vybavenost zahrnující školy, SUPŠ keramickou, zdravotní středisko, lékárny, poštu, obchody, restaurace, městský úřad i věhlasné Lázně Bechyně. Kulturní život zajišťuje kulturní dům, kino, knihovna, městské muzeum či Muzeum turistiky. Dopravní obslužnost zajišťují autobusové linky a historická elektrifikovaná železniční trať Bechyňka na trase Tábor - Bechyně. Město leží na křižovatce silnic II/122 a II/135 s dobrým napojením na dálnici D3. Hlavními spádovými centry zaměstnanosti, zdravotní péče a školství jsou Tábor vzdálený cca 25 km (cca 25 min jízdy), České Budějovice vzdálené cca 40 km (cca 40 min jízdy) a Týn nad Vltavou spolu s areálem Jaderné elektrárny Temelín ve vzdálenosti cca 15 až 20 km (cca 20 min jízdy). Region turistické oblasti Toulava nabízí pestré volnočasové aktivity, jako jsou turistická Stezka údolím Lužnice, via ferrata, golfové hřiště v Černické oboře, vodní turistika na řekách Lužnice a říčce Smutná, anebo návštěva historického zámku, či kláštera. Skutečný stav nemovitosti si nejlépe prohlédnete ve virtuální prohlídce (3D sken nemovitosti – Matterport), která je součástí inzerce. Po zaškrtnutí ikony červeného křesílka ve spodním menu virtuální prohlídky se Vám nemovitost zobrazí bez vybavení a zařízení, po zaškrtnutí ikony měřítka se Vám zobrazí rozměry místností. Z důvodu omezení počtu znaků na portálu je popis zkrácen. Kompletní text inzerátu najdete na webových stránkách Reality Horňák."
+    },
+    {
+      "id": "sr_2749939788",
+      "title": "Prodej bytu 2+1 67 m²",
+      "price": 4290000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/_/2749939788?noredirect=1",
+      "lat": 49.406805,
+      "lng": 14.682895,
+      "sqm": 67,
+      "rooms": 2,
+      "address": "Trocnovská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-16",
+      "listing_updated_at": "2026-10-28",
+      "description": "K prodeji nabízíme prostorný byt 2+1 s lodžií a sklepem o celkové využitelné ploše cca 67 m². HLAVNÍ BENEFITY: - zděná koupelna s rohovou vanou - nová elektřina + okna - velký zděný sklep DISPOZICE BYTU Byt je umístěn v 2. podlaží. Celková využitelná plocha činí cca 67 m² a skládá se ze: - samotného bytu 2+1 (56,7 m²) - lodžie (3,4 m²) - sklepa (6,8 m²) Na jedné straně najdete 2 obytné místnosti se vstupem na balkon, na druhé kuchyni s jídelnou. Obě křídla jsou oddělená koupelnou a samostatnou toaletou. Bytové jádro je zde už vyzděné včetně renovovaných rozvodů elektřiny. Byt má k dispozici nadstandardně velký zděný sklep. BYTOVÝ DŮM Dům je smíšené konstrukce. V roce 2020 proběhla výměna oken za nová plastová. Vytápění i ohřev vody v celém objektu je ústřední. V okolí domu je možné parkování na ulici. LOKALITA Lokalita je ideální nejen pro rodiny, ale pro všechny, kdo mají rádi vše po ruce od lékařů po přírodu a sportovní vyžití. V okolí je veškerá občanská vybavenost. A pro fanoušky turistiky, nebo třeba paddleboardu a dalších vodních sportů, stačí patnáct minut pěšky a jste u řeky Lužnice. - 200 metrů fotbalové hřiště - 700 metrů základní škola - 500 metrů mateřská škola - 140 metrů potraviny - 700 metrů Lužnice DALŠÍ KROKY V případě vážného zájmu či doplňujících dotazů mě neváhejte kontaktovat přes přiložený email či formulář. Ozvu se vám následně ohledně domluvy na nejbližším termínu prohlídky."
+    },
+    {
+      "id": "sr_3508273228",
+      "title": "Prodej bytu 1+kk 30 m²",
+      "price": 2590000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+kk/_/3508273228?noredirect=1",
+      "lat": 49.3922863202679,
+      "lng": 14.68108457524902,
+      "sqm": 30,
+      "rooms": 1,
+      "address": "Havanská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-27",
+      "listing_updated_at": "2026-10-27",
+      "description": "Nabízíme k prodeji byt 1+kk v osobním vlastnictví o užitné ploše 30 m² v Táboře .- v dolní části Sídliště nad Lužnicí, ulice Havanská. Byt se nachází ve 2. patře panelového domu, který je v dobrém stavu - dům prošel celkovou revitalizací společných prostor a je zateplený. Díky výtahu a bezbariérovému přístupu je bydlení vhodné také pro zájemce, kteří ocení snadnou dostupnost bytu. Byt prodáváme v původním stavu - bez úprav, s umakartovým jádrem a původní kuchyňskou linkou, na podlahách je původní PVC a byt je nevybavený. K bytu náleží sklep o ploše 2 m², který poskytuje praktický prostor pro uložení věcí. Byt je v současné době pronajatý dlouhodobému nájemci, v případě zájmu může v nájmu pokračovat. Pokud máte zájem o byt bez nájemce, tak máme připravené uvolnění bytu. Dům stojí v klidné části obce s dobrou dopravní dostupností autem i veřejnou dopravou. V dosahu jsou silnice, dálnice, MHD i autobusové spojení. Energetická třída je C. Provozní náklady jsou velmi nízké. Fond oprav a správní poplatky tvoří celkem částku cca 650.-Kč + úhrada zálohových plateb za spotřebu vody teplé a studené, otopu, apod. Pro jednu osobu cca 1.500.-Kč + elektrická energie. Cena nemovitosti činí 2 590 000 Kč. Pokud Vás byt zaujal, neváhejte nám napsat nebo zavolat a rádi Vám vše ukážeme osobně. Prodávající si vyhrazuje právo na výběr nového majitele svého bytu."
+    },
     {
       "id": "sr_3485585484",
       "title": "Prodej bytu 5+kk 163 m²",
@@ -749,26 +809,6 @@
       "description": "Dovoluji si Vám exkluzivně nabídnout koupi bytové jednotky č. 856/2 s dispozicí 2+1 v osobním vlastnictví, situované v přízemí zděného bytového domu č.p. 856 - Písecká ulice. Nemovitost je z hlediska technického stavu a funkčního uspořádání vhodná pro kupující hledající byt v původním stavu určený ke stavebním úpravám, renovaci a celkové modernizaci podle vlastních potřeb, případně jako investiční příležitost k následnému pronájmu po dokončení stavebních úprav. Byt disponuje logickým uspořádáním místností se vstupní předsíní (4,40 m²), se vstupem do obývacího pokoje (15,72 m²) nebo do kuchyně (4,07 m²) s jídelnou (6,82 m²). Z chodby je samostatně přístupná i ložnice (11,75 m²). Bytové jádro nabízí koupelnu (2,43 m²) a WC (0,95 m²). Celková naměřená podlahová plocha bytu bez sklepa činí 46,14 m². K bytu náleží spoluvlastnický podíl na společných částech domu a pozemku. Bytový dům je čtyřpodlažní zděný objekt bez výtahu. Na domě byly provedeny stavební úpravy zahrnující celkové zateplení fasády a osazení nových plastových oken s izolačním zasklením a vnitřními žaluziemi. Byt je napojen na obecní vodovod a obecní kanalizaci. Vytápění bytu a ohřev teplé vody jsou řešeny ústředním dálkovým rozvodem (s litinovými radiátory v místnostech). Vnitřní podlahy tvoří původní krytina z PVC (lina), v obývacím pokoji překrytá kobercem, v koupelně a na WC je položena dlažba s obklady do výšky 150 cm. Stěny v bytě jsou vyštukované. Nemovitost se nachází v ulici Písecká v zástavbě bytových domů širšího centra lázeňského města Bechyně. Místo nabízí kompletní občanskou vybavenost v docházkové vzdálenosti, kde jsou k dispozici supermarkety Tesco, Penny Market a Terno, Mateřská škola Jahůdka, Základní škola Školní, Základní škola Františka Křižíka a Střední uměleckoprůmyslová škola keramická. Zdravotní péči v místě zajišťují ordinace lékařů a lékárny. V obci je v provozu Česká pošta, městský úřad, restaurace, kavárny a sportovní zázemí čítající městský stadion Bechyně, koupaliště a tenisové kurty. Dopravní obslužnost zajišťuje autobusová doprava i železniční trať s historickým elektrifikovaným provozem do Tábora. Silniční síť umožňuje dostupnost spádových měst, přičemž dojezdová vzdálenost do Tábora je přibližně 24 km (okolo 25 minut), do Písku 30 km (okolo 30 minut) a do Českých Budějovic 45 km (okolo 45 minut). Turistický region Toulava nabízí možnosti volnočasových aktivit, mezi něž patří pěší turistika po stezce údolím Lužnice, cykloturistikaa rybaření. Skutečný stav nemovitosti si nejlépe prohlédnete ve virtuální prohlídce (3D sken nemovitosti – Matterport), která je součástí inzerce. Po zaškrtnutí ikony červeného křesílka ve spodním menu virtuální prohlídky se Vám nemovitost zobrazí bez vybavení a zařízení, po zaškrtnutí ikony měřítka se Vám zobrazí rozměry místností. Z důvodu omezení počtu znaků je popis zkrácen. Kompletní text inzerátu najdete na webových stránkách Reality Horňák."
     },
     {
-      "id": "sr_2749939788",
-      "title": "Prodej bytu 2+1 67 m²",
-      "price": 4290000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/_/2749939788?noredirect=1",
-      "lat": 49.406805,
-      "lng": 14.682895,
-      "sqm": 67,
-      "rooms": 2,
-      "address": "Trocnovská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-16",
-      "listing_updated_at": "2026-10-26",
-      "description": "K prodeji nabízíme prostorný byt 2+1 s lodžií a sklepem o celkové využitelné ploše cca 67 m². HLAVNÍ BENEFITY: - zděná koupelna s rohovou vanou - nová elektřina + okna - velký zděný sklep DISPOZICE BYTU Byt je umístěn v 2. podlaží. Celková využitelná plocha činí cca 67 m² a skládá se ze: - samotného bytu 2+1 (56,7 m²) - lodžie (3,4 m²) - sklepa (6,8 m²) Na jedné straně najdete 2 obytné místnosti se vstupem na balkon, na druhé kuchyni s jídelnou. Obě křídla jsou oddělená koupelnou a samostatnou toaletou. Bytové jádro je zde už vyzděné včetně renovovaných rozvodů elektřiny. Byt má k dispozici nadstandardně velký zděný sklep. BYTOVÝ DŮM Dům je smíšené konstrukce. V roce 2020 proběhla výměna oken za nová plastová. Vytápění i ohřev vody v celém objektu je ústřední. V okolí domu je možné parkování na ulici. LOKALITA Lokalita je ideální nejen pro rodiny, ale pro všechny, kdo mají rádi vše po ruce od lékařů po přírodu a sportovní vyžití. V okolí je veškerá občanská vybavenost. A pro fanoušky turistiky, nebo třeba paddleboardu a dalších vodních sportů, stačí patnáct minut pěšky a jste u řeky Lužnice. - 200 metrů fotbalové hřiště - 700 metrů základní škola - 500 metrů mateřská škola - 140 metrů potraviny - 700 metrů Lužnice DALŠÍ KROKY V případě vážného zájmu či doplňujících dotazů mě neváhejte kontaktovat přes přiložený email či formulář. Ozvu se vám následně ohledně domluvy na nejbližším termínu prohlídky."
-    },
-    {
       "id": "sr_1320444748",
       "title": "Prodej bytu 2+1 49 m²",
       "price": 3499999,
@@ -1051,7 +1091,7 @@
     {
       "id": "sr_1854677068",
       "title": "Prodej bytu 2+kk 85 m²",
-      "price": 6490000,
+      "price": 5990000,
       "operation": "sale",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/1854677068?noredirect=1",
       "lat": 49.411237423,
@@ -1065,13 +1105,13 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-09-23",
-      "listing_updated_at": "2026-10-08",
-      "description": "Nabízíme k prodeji prostorný podkrovní byt 2+kk o ploše 85,4 m², situovaný ve 3. nadzemním podlaží bytového domu v Lužnické ulici v Táboře. V domě se nacházejí pouze tři bytové jednotky, přičemž každá z nich zaujímá celé jedno podlaží. Bydlení tak nabízí větší míru soukromí a klidu, než je obvyklé u klasických bytových domů. Srdcem bytu je velkorysý obývací pokoj s kuchyňským koutem o ploše 34,9 m². Otevřený prostor poskytuje dostatek místa pro komfortní obývací i jídelní část, aniž by jednotlivé funkce místnosti působily stísněně. Kuchyňská linka je prakticky umístěna v samostatnější části obytného prostoru a vybavena vestavnými spotřebiči. Přiznané dřevěné trámy dodávají interiéru charakter a příjemně kontrastují s čistým a světlým provedením bytu. Druhá obytná místnost – ložnice o ploše 21,7 m² – nabízí plnohodnotnou spací část a zároveň dostatek prostoru pro vestavěné skříně či pracovní kout. Dispozici bytu dále tvoří koupelna se sprchovým koutem, samostatné WC, předsíň, chodba, komora a spíž, které poskytují praktické úložné prostory. Výsledkem je byt nabízející prostor a komfort, který pro dispozici 2+kk rozhodně není běžný. Celý bytový dům vč. všech bytů byl v roce 2014 rozsáhle rekonstruován a zateplen a jeho technický stav je tak velmi dobrý. Vytápění je zajištěno tepelným čerpadlem, které společně se zateplením domu přispívá k hospodárnému provozu nemovitosti. Významnou praktickou výhodou je, že k bytu náleží vlastní parkovací stání přímo za domem. Parkovací prostor je uzavřený a vjezd zajišťuje elektricky ovládaná brána na dálkové ovládání. Každodenní parkování je tak pohodlné a bez nutnosti hledat volné místo v okolních ulicích. Lužnická ulice nabízí zajímavé spojení městského bydlení s bezprostřední blízkostí řeky Lužnice a jejího okolí. Lokalita je chráněna vybudovanou protipovodňovou ochranou. Do budoucna by ke zvýšení komfortu bydlení mělo přispět také plánované dopravní řešení, jehož cílem je odvést významnou část současné dopravy z Lužnické ulice a celou oblast dále zklidnit. Pokud hledáte prostorný byt s charakterem, malým počtem sousedů, úsporným vytápěním a vlastním parkováním, neváhejte nás kontaktovat - rádi Vám poskytneme doplňující informace nebo Vám byt představíme osobně na prohlídce. V případě zájmu Vám dále nabízíme zajištění financování této nemovitosti prostřednictvím našeho osvědčeného hypotečního specialisty. V případě více zájemců si prodávající vyhrazuje právo upřednostnit zájemce s vyšší nabídkou kupní ceny, případně rozhodnout na základě dalších pro něj relevantních kritérií."
+      "listing_updated_at": "2026-10-28",
+      "description": "Nabízíme k prodeji prostorný podkrovní byt 2+kk o ploše 85,4 m², situovaný ve 3. nadzemním podlaží bytového domu v Lužnické ulici v Táboře. V domě se nacházejí pouze tři bytové jednotky, přičemž každá z nich zaujímá celé jedno podlaží. Bydlení tak nabízí větší míru soukromí a klidu, než je obvyklé u klasických bytových domů. Srdcem bytu je velkorysý obývací pokoj s kuchyňským koutem o ploše 34,9 m². Otevřený prostor poskytuje dostatek místa pro komfortní obývací i jídelní část, aniž by jednotlivé funkce místnosti působily stísněně. Kuchyňská linka je prakticky umístěna v samostatnější části obytného prostoru a vybavena vestavnými spotřebiči. Přiznané dřevěné trámy dodávají interiéru charakter a příjemně kontrastují s čistým a světlým provedením bytu. Druhá obytná místnost – ložnice o ploše 21,7 m² – nabízí plnohodnotnou spací část a zároveň dostatek prostoru pro vestavěné skříně či pracovní kout. Dispozici bytu dále tvoří koupelna se sprchovým koutem, samostatné WC, předsíň, chodba, komora a spíž, které poskytují praktické úložné prostory. Výsledkem je byt nabízející prostor a komfort, který pro dispozici 2+kk rozhodně není běžný. Celý bytový dům vč. všech bytů byl v roce 2014 rozsáhle rekonstruován a zateplen a jeho technický stav je tak velmi dobrý. Vytápění je zajištěno tepelným čerpadlem, které společně se zateplením domu přispívá k hospodárnému provozu nemovitosti. Významnou praktickou výhodou je, že k bytu bude náležet vlastní parkovací stání přímo za domem. Parkovací prostor je uzavřený a vjezd zajišťuje elektricky ovládaná brána na dálkové ovládání. Každodenní parkování je tak pohodlné a bez nutnosti hledat volné místo v okolních ulicích. Budování parkovacích stání (na místě původních garáží), úprava dvora a i modernizace vlastních jednotek dosud probíhá, vše bude dokončeno do konce listopadu. Lužnická ulice nabízí zajímavé spojení městského bydlení s bezprostřední blízkostí řeky Lužnice a jejího okolí. Lokalita je chráněna vybudovanou protipovodňovou ochranou. Do budoucna by ke zvýšení komfortu bydlení mělo přispět také plánované dopravní řešení, jehož cílem je odvést významnou část současné dopravy z Lužnické ulice a celou oblast dále zklidnit. Pokud hledáte prostorný byt s charakterem, malým počtem sousedů, úsporným vytápěním a vlastním parkováním, neváhejte nás kontaktovat - rádi Vám poskytneme doplňující informace nebo Vám byt představíme osobně na prohlídce. V případě zájmu Vám dále nabízíme zajištění financování této nemovitosti prostřednictvím našeho osvědčeného hypotečního specialisty. V případě více zájemců si prodávající vyhrazuje právo upřednostnit zájemce s vyšší nabídkou kupní ceny, případně rozhodnout na základě dalších pro něj relevantních kritérií."
     },
     {
       "id": "sr_1737236556",
       "title": "Prodej bytu 3+kk 88 m²",
-      "price": 6490000,
+      "price": 5990000,
       "operation": "sale",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/_/1737236556?noredirect=1",
       "lat": 49.411237423,
@@ -1085,8 +1125,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-09-23",
-      "listing_updated_at": "2026-10-08",
-      "description": "Nabízíme k prodeji útulný byt o dispozici 3+kk a celkové podlahové ploše 87,5 m², který se nachází v bytovém domě na adrese Lužnická 1803 v Táboře, v bezprostřední blízkosti řeky Lužnice. Byt zaujme především svou prostornou a praktickou dispozicí, kterou tvoří dva samostatné pokoje, obytný prostor s kuchyňskou částí, koupelna, samostatné WC a dostatek úložného prostoru. Součástí bytu je dále balkon a terasa, které nabízí příjemné místo k posezení s výhledem směrem k řece a okolní zeleni. Byt prošel rekonstrukcí a je ve velmi dobrém, udržovaném stavu. Kuchyňská linka je vybavena vestavnými spotřebiči, koupelna disponuje sprchovým koutem a díky dostatku oken působí celý interiér vzdušným a světlým dojmem. Rozměry jednotlivých místností zároveň umožňují zařídit byt pohodlně jak pro pár, tak pro rodinu. Významnou předností je samotný bytový dům, ve kterém se nacházejí pouze tři bytové jednotky. Dům navíc prošel v roce 2014 rozsáhlou rekonstrukcí, je zateplený a jeho technický stav je tak velmi dobrý. O vytápění domu se stará tepelné čerpadlo, což se spolu se zateplením domu příznivě promítá do nízkých provozních nákladů. K bytu náleží také vlastní parkovací stání v uzavřeném prostoru za domem. Vjezd je zabezpečen bránou s elektrickým pohonem a dálkovým ovládáním. Dům stojí přímo u Lužnice, takže okolí nabízí příjemné prostředí pro procházky, sport i každodenní relaxaci, přitom zůstává dobře dostupné centrum Tábora a veškerá občanská vybavenost. Lokalita je chráněna vybudovaným systémem protipovodňové ochrany a dům se nachází mimo záplavovou oblast. Do budoucna by měl komfort bydlení v lokalitě dále zvýšit plánovaný obchvat, který má odvést významnou část současné dopravy z Lužnické ulice. Pokud Vás naše nabídka zaujala, rádi Vám poskytneme doplňujcí informace nebo Vám byt představíme osobně při prohlídce. V případě zájmu Vám dále nabízíme zajištění financování této nemovitosti prostřednictvím našeho osvědčeného hypotečního specialisty. V případě více zájemců si prodávající vyhrazuje právo upřednostnit zájemce s vyšší nabídkou kupní ceny, případně rozhodnout na základě dalších pro něj relevantních kritérií."
+      "listing_updated_at": "2026-10-28",
+      "description": "Nabízíme k prodeji útulný byt o dispozici 3+kk a celkové podlahové ploše 87,5 m², který se nachází v bytovém domě na adrese Lužnická 1803 v Táboře, v bezprostřední blízkosti řeky Lužnice. Byt zaujme především svou prostornou a praktickou dispozicí, kterou tvoří dva samostatné pokoje, obytný prostor s kuchyňskou částí, koupelna, samostatné WC a dostatek úložného prostoru. Součástí bytu je dále balkon a terasa, které nabízí příjemné místo k posezení s výhledem směrem k řece a okolní zeleni. Byt prošel rekonstrukcí a je ve velmi dobrém, udržovaném stavu. Kuchyňská linka je vybavena vestavnými spotřebiči, koupelna disponuje sprchovým koutem a díky dostatku oken působí celý interiér vzdušným a světlým dojmem. Rozměry jednotlivých místností zároveň umožňují zařídit byt pohodlně jak pro pár, tak pro rodinu. Významnou předností je samotný bytový dům, ve kterém se nacházejí pouze tři bytové jednotky. Dům navíc prošel v roce 2014 rozsáhlou rekonstrukcí, je zateplený a jeho technický stav je tak velmi dobrý. O vytápění domu se stará tepelné čerpadlo, což se spolu se zateplením domu příznivě promítá do nízkých provozních nákladů. K bytu náleží také vlastní parkovací stání v uzavřeném prostoru za domem. Vjezd je zabezpečen bránou s elektrickým pohonem a dálkovým ovládáním. Budování parkovacích stání (na místě původních garáží), úprava dvora a i modernizace vlastních jednotek dosud probíhá, vše bude dokončeno do konce listopadu. Dům stojí přímo u Lužnice, takže okolí nabízí příjemné prostředí pro procházky, sport i každodenní relaxaci, přitom zůstává dobře dostupné centrum Tábora a veškerá občanská vybavenost. Lokalita je chráněna vybudovaným systémem protipovodňové ochrany a dům se nachází mimo záplavovou oblast. Do budoucna by měl komfort bydlení v lokalitě dále zvýšit plánovaný obchvat, který má odvést významnou část současné dopravy z Lužnické ulice. Pokud Vás naše nabídka zaujala, rádi Vám poskytneme doplňujcí informace nebo Vám byt představíme osobně při prohlídce. V případě zájmu Vám dále nabízíme zajištění financování této nemovitosti prostřednictvím našeho osvědčeného hypotečního specialisty. V případě více zájemců si prodávající vyhrazuje právo upřednostnit zájemce s vyšší nabídkou kupní ceny, případně rozhodnout na základě dalších pro něj relevantních kritérií."
     },
     {
       "id": "sr_1668161612",
@@ -1711,7 +1751,7 @@
     {
       "id": "sr_79446860",
       "title": "Prodej bytu 4+kk 143 m²",
-      "price": 10452585,
+      "price": 10441860,
       "operation": "sale",
       "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/_/79446860?noredirect=1",
       "lat": 49.4643103470255,
