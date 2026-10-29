@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-10-28T12:44:37.449Z",
+  "fetched_at": "2026-10-29T12:54:34.493Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_2682454092",
+      "title": "Pronájem bytu 2+kk 55 m²",
+      "price": 11000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/2682454092?noredirect=1",
+      "lat": 49.37683699599904,
+      "lng": 14.703345804981762,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Lipová, Sezimovo Ústí, Sezimovo Ústí",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-29",
+      "listing_updated_at": "2026-10-29",
+      "description": "Nabízím tento byt k pronájmu, který se nachází v Sezimově Ústí 2 v ulici Lipová. Jedná se o byt 2+kk s užitnou plochou 55 m², umístěný na 4. patře bez výtahu. Byt je v dobrém stavu a připraven k nastěhování. Byt disponuje: - ložnicí - prostornou kuchyní s jídelnou - chodbou se skříní - koupelnou a wc (+prostor na pračku a sušičku) - komorou naproti bytu pro uložení věcí - sklepním prostorem Nájemné činí 11 000 Kč měsíčně. Zálohy na služby pro rok 2026 činí 3151 Kč. Zálohy na elektrickou energii jsou hrazeny nájemcem samostatně. Kauce činí dva nájmy."
+    },
     {
       "id": "sr_4192796748",
       "title": "Pronájem bytu 2+kk 42 m²",
@@ -249,26 +269,6 @@
       "description": "Nabízíme k pronájmu byt v nově zrekonstruovaném bytovém domě lokalita Dvorce II, ulice Kpt. Jaroše. Byt o dispozici 1kk a podlahové ploše 23 m2, se nachází v přízemí bytového domu. Dispozice vstupní chodba, koupelna se sprchovým koutem a WC, pokoj s kuchyňským koutem. Topení a ohřev vody dálkové s vlastními měřiči. Nájemné ve výši 8.000 Kč + záloha na služby 1.500 Kč + elektřina. Elektřinu si nájemce hradí na základě samostatné smlouvy s dodavatelem. Majitel požaduje vratnou kauci ve výši 16.000 Kč a poplatek zprostředkovateli ve výši jedno měsíčního nájmu + 21% DPH. K dispozici od 1.11.2026, bez domácích mazlíčků a vhodné pro jedno osobu. Prohlídky jsou možné od 5.10.2026. Pro více informací a domluvení prohlídky kontaktujte makléře."
     },
     {
-      "id": "sr_3649638476",
-      "title": "Pronájem bytu 3+1 67 m²",
-      "price": 11500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/3649638476?noredirect=1",
-      "lat": 49.3902836057448,
-      "lng": 14.6793068106077,
-      "sqm": 67,
-      "rooms": 3,
-      "address": "Sofijská, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-06",
-      "listing_updated_at": "2026-10-23",
-      "description": "Pronájem bytu 3+1, Sídliště nad Lužnicí, ul. Sofijská, Tábor. Nabízíme k dlouhodobému pronájmu prostorný byt 3+1 v Sofijské ulici, umístěný v 9. nadzemním podlaží bytového domu. (66,9 m2) s orientací na jih a 2 sklepními kójemi. Byt se v bytovém domě v Sofijské ulici v Táboře – Sídliště nad Lužnicí. Byt je v současné době v původním stavu a nabízí zajímavou příležitost zejména pro nájemce, který nehledá pouze hotový pronájem, ale rád by si nový domov částečně upravil podle vlastního vkusu a potřeb. Velkou výhodou je dohoda s majitelkou na výměně stávajícího lina a kuchyňské linky. Náklady na předem odsouhlasený materiál a vybavení uhradí majitelka, samotnou realizaci si po vzájemné dohodě zajistí nájemce. Budoucí nájemce tak může ovlivnit výslednou podobu kuchyně i podlah a vytvořit si prostředí, ve kterém se bude skutečně cítit doma. Sofijská ulice nabízí především praktické městské bydlení s dobrou dostupností každodenních služeb. Lokalita je vhodná jak pro rodinu, tak pro pár, který hledá dostatek prostoru a zároveň nechce být odkázán na každodenní dojíždění za běžnými potřebami. Byt tak může oslovit zejména zájemce, kteří hledají dlouhodobé a cenově dostupné bydlení 3+1, chtějí mít běžnou občanskou vybavenost v dosahu a současně ocení možnost vytvořit si interiér částečně podle sebe. Podrobné podmínky úprav, rozsah financování ze strany majitelky a způsob realizace budou s vybraným nájemcem předem jasně dohodnuty. Dispozice: pokoj cca 18,4 m2, pokoj cca 8,1 m2, pokoj cca 15 m2, kuchyně 8,6 m2, předsíň cca 13 m2, koupelna cca 2,8 m2. Služby: 3.192,- Kč + zálohy na elektrickou energii v bytě Odměna realitní kanceláře: ve výši jednoho měsíčního nájmu + DPH Dlouhodobý pronájem. Vratná jistota: 23.000,- Kč Volné ihned. Pro komunikaci uvádějte evidenční číslo zakázky N120206."
-    },
-    {
       "id": "sr_2231705676",
       "title": "Pronájem bytu 4+kk 130 m²",
       "price": 22000,
@@ -407,26 +407,6 @@
       "listing_published_at": "2026-07-02",
       "listing_updated_at": "2026-10-22",
       "description": "Pronájem sdíleného bydlení, pokoje v 1. patře rodinného domu. Ubytování je pouze pro 1 osobu, nájemné je paušální, včetně záloh. Pokoj je částečně zařízený - skříňky, stůl, postel. Společná koupelna s vanou a sprchovým koutem, včetně WC ve společném užívání. Ve společném užívání je také kuchyně, kompletně zařízená se spotřebiči a obývací pokoj v přízemí domu. V přízemí domu je terasa a venkovní posezení. K dispozici od listopadu 2026."
-    },
-    {
-      "id": "sr_412680268",
-      "title": "Pronájem bytu 1+kk 40 m²",
-      "price": 10800,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/412680268?noredirect=1",
-      "lat": 49.4056873183412,
-      "lng": 14.7454939599601,
-      "sqm": 40,
-      "rooms": 1,
-      "address": "Na Kopci, Zárybničná Lhota, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-22",
-      "listing_updated_at": "2026-10-23",
-      "description": "Nabízíme k pronájmu útulné bydlení o dispozici 1+kk v rodinném domě v Zárybničné Lhotě u Tábora. Byt o obytné ploše cca 40 m² se nachází v 1. patře domu a je částečně zařízený kuchyňskou linkou sklokeramickou deskou a mikrovlnou troubou. V koupelně je prostorný sprchový kout včetně WC. K pronájmu náleží také přízemí domu se dvěma dalšími místnostmi, které nabízí praktický prostor navíc. Součástí přízemí je rovněž částečně vybavená letní kuchyně s kamny a toaleta. Před domem je k dispozici terasa s příjemným posezením. Nájemníci mohou využívat také část zahrady, která je společná s dalším rodinným domem, jenž je rovněž pronajatý. Parkování je možné přímo před domem. Základní informace: Dispozice: 1+kk Obytná plocha: cca 40 m² Umístění: 1. patro rodinného domu Vybavení: kuchyňská linka se sklokeramické. deskou, částečně vybavená letní kuchyně s kamny Další prostory: dvě místnosti v přízemí a WC Venkovní zázemí: terasa s posezením a možnost využívání části zahrady Parkování: před domem Vytápění: elektrické Finanční podmínky: Nájemné včetně záloh na elektřinu a vodu: 10 800 Kč/měsíc Vratná kauce: 15 000 Kč Provize realitní kanceláře: dle podmínek RK K dispozici od 1. 1. 2027. Bydlení je vhodné pro zájemce, kteří hledají klidné prostředí s možností využití venkovního posezení a zahrady. V případě zájmu o více informací nebo sjednání prohlídky nás neváhejte kontaktovat."
     },
     {
       "id": "sr_3308847180",
@@ -785,8 +765,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-17",
-      "listing_updated_at": "2026-10-27",
-      "description": "Hledáte ubytování pro své zaměstnance nebo potřebujete pokoj k občasnému přespání přímo v centru Tábora? Nabízíme dva samostatné pokoje k dlouhodobému pronájmu, označené jako apartmány č. 303 a č. 304, v budově bývalého hotelu Slávie, v blízkosti vlakového nádraží a hlavní pošty. Lokalita nabízí výbornou dopravní dostupnost a snadnou dostupnost služeb v centru města. Každý pokoj je k pronájmu samostatně. Oba pokoje se nacházejí ve 3. patře budovy s výtahem, která prošla částečnou rekonstrukcí. Jsou podkrovní, mají plastová okna a kobercovou podlahu. Každý pokoj má vlastní koupelnu se sprchovým koutem, umyvadlem a toaletou. Pokoje jsou čisté a upravené a vhodné především pro jednu osobu. Na patře není k dispozici společná kuchyň. Ohřev jídla je možný v mikrovlnné troubě přímo na pokoji. Ubytování je vhodné zejména pro montéry, řemeslníky, pracovníky na služebních cestách, obchodní zástupce a další osoby, které hledají praktické zázemí během pracovního týdne. Měsíční náklady na jeden pokoj: Nájemné: 5 500 Kč Paušální poplatky za služby: 2 200 Kč (vytápění, elektřina a voda) Celkem: 7 700 Kč/měsíc Pronájem je určen pro dlouhodobější užívání. Nájemní smlouva se uzavírá na dobu jednoho roku. Požadovaná kauce činí 16 500 Kč, tedy trojnásobek měsíčního nájemného. Provize realitní kanceláři činí jeden měsíční nájem + DPH, tj. 6 655 Kč. Pokoje budou volné po dohodě. Pro více informací nebo sjednání prohlídky kontaktujte makléřku nabídky. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
+      "listing_updated_at": "2026-10-28",
+      "description": "Hledáte ubytování pro své zaměstnance nebo potřebujete pokoj k občasnému přespání přímo v centru Tábora? Nabízíme dva samostatné pokoje k dlouhodobému pronájmu, označené jako apartmány č. 303 a č. 304, v budově bývalého hotelu Slávie, v blízkosti vlakového nádraží a hlavní pošty. Lokalita nabízí výbornou dopravní dostupnost a snadnou dostupnost služeb v centru města. Každý pokoj je k pronájmu samostatně. Oba pokoje se nacházejí ve 3. patře budovy s výtahem, která prošla částečnou rekonstrukcí. Jsou podkrovní, mají plastová okna a kobercovou podlahu. Každý pokoj má vlastní koupelnu se sprchovým koutem, umyvadlem a toaletou. Pokoje jsou čisté a upravené a vhodné především pro jednu osobu. Na patře není k dispozici společná kuchyň. Ohřev jídla je možný v mikrovlnné troubě přímo na pokoji. Ubytování je vhodné zejména pro montéry, řemeslníky, pracovníky na služebních cestách, obchodní zástupce a další osoby, které hledají praktické zázemí během pracovního týdne. Měsíční náklady na jeden pokoj: Pokoj č. 303, 19 m²: 5 500 Kč, služby 2 200 Kč (vytápění, elektřina a voda), celkem 7 700 Kč Pokoj č. 304, 23 m²: 5 900 Kč, služby 2 200 Kč (vytápění, elektřina a voda), celkem 8 100 Kč Pronájem je určen pro dlouhodobější užívání. Nájemní smlouva se uzavírá na dobu jednoho roku. Požadovaná kauce je ve výši trojnásobku měsíčního nájemného. Provize realitní kanceláři činí jeden měsíční nájem + DPH. Pokoje budou volné po dohodě. Pro více informací nebo sjednání prohlídky kontaktujte makléřku nabídky. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
       "id": "sr_1809256524",
