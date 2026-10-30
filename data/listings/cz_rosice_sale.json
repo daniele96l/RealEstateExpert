@@ -1,33 +1,13 @@
 {
   "city": "cz_rosice",
   "operation": "sale",
-  "fetched_at": "2026-10-29T12:55:19.670Z",
+  "fetched_at": "2026-10-30T12:48:42.688Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
-    {
-      "id": "sr_815988812",
-      "title": "Prodej bytu 2+1 55 m²",
-      "price": 5400000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/_/815988812?noredirect=1",
-      "lat": 49.1807530771158,
-      "lng": 16.4008116230536,
-      "sqm": 55,
-      "rooms": 2,
-      "address": "Husova čtvrť, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-29",
-      "listing_updated_at": "2026-10-29",
-      "description": "Hledáte ke koupi nemovitost s výhledem do zeleně? Právě na Vás čeká příjemný byt 2+1 po rekonstrukci o výměře 55 m2. Byt se nachází ve 2.NP cihlového domu bez výtahu. K dispozici jsou 2 prostorné sklepy a podíl na garáži v domě. Okna orientována na J do zahrady. Topení zajišťuje vlastní plynový kondenzační kotel. Výhodou bytu jsou dva neprůchozí pokoje, je tedy vhodný i jako investice k pronájmu. Dům prošel kompletní revitalizací: zateplení, nová okna, střecha. Husova čtvrť v Rosicích nabízí praktické městské bydlení v lokalitě, která spojuje každodenní pohodlí s možností klidnějšího života mimo ruch velkoměsta. V docházkové vzdálenosti najdete základní občanskou vybavenost včetně obchodu a dětského hřiště. Rodiny ocení blízkost školských zařízení. Velkou předností Rosic je dopravní spojení s Brnem, díky kterému můžete pohodlně dojíždět za prací, studiem i zábavou, a přitom si užívat bydlení mimo ruch velkoměsta. Byt je volný ihned. Pro více info volejte makléřku."
-    },
     {
       "id": "sr_1619509324",
       "title": "Prodej bytu 2+kk 68 m²",
@@ -45,8 +25,28 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-27",
-      "listing_updated_at": "2026-10-28",
+      "listing_updated_at": "2026-10-29",
       "description": "Hledáte takový byt, kde nebudete muset dělat kompromisy ohledně dostatku místa? Pak tento mimořádně prostorný, moderní byt o dipozici 2+kk (68 m²) v Rosicích s vlastním parkováním čeká na váš nový příběh! Hledáte domov, kde budete mít dostatek prostoru? Místo, které dýchá novotou, energií a svobodou? Představujeme vám jedinečnou příležitost v Rosicích u Brna. S užitnou plochou velkorysých 68 m² získáváte prostor, který vás nebude limitovat. Byt je dispozičně vyřešen naprosto perfektně. Aktuální moderní dispozici 2+kk s otevřeným prostorem plným světla můžete díky chytrému architektonickému řešení snadno proměnit na plnohodnotné 2+1. Vaše bydlení tak může růst a měnit se společně s vašimi životními potřebami! Detaily, které tvoří dokonalý komfort: • Moderní novostavba: Žádné starosti s rekonstrukcí, čistý design a moderní materiály. • V bytě je kompletně zařízená kuchyňská linka • Chytrá dispozice: Oddělená koupelna od toalety je detailem, který oceníte každé ráno. Zajišťuje maximální soukromí a pohodlí pro všechny členy domácnosti. • Balkon do klidné ulice: Výhled do klidné zóny vám zaručí zasloužený relax po náročném dni. Vše, co potřebujete, je JIŽ V CENĚ! K tomuto bytu náleží: 1. Vlastní parkovací stání přímo u domu. 2. Prostorný sklep, kam bezpečně uložíte vaše sezónní vybavení. V bytovém domě je vám navíc k dispozici moderní kolárna a kočárkárna, což ocení jak nadšení sportovci, tak mladé rodiny. Rosice – ideální balanc mezi přírodou a městem Žijte v klidu, a přesto mějte vše na dosah ruky. Rosice nabízejí kompletní občanskou vybavenost (školy, školky, obchody, restaurace, lékaře) a perfektní, rychlou dostupnost do Brna. Je to lokalita, která dynamicky roste a v níž hodnota nemovitostí neustále stoupá. Pokud Vás tento byt zaujal, neváhejte si domluvit prohlídku."
+    },
+    {
+      "id": "sr_815988812",
+      "title": "Prodej bytu 2+1 55 m²",
+      "price": 5400000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/_/815988812?noredirect=1",
+      "lat": 49.1807530771158,
+      "lng": 16.4008116230536,
+      "sqm": 55,
+      "rooms": 2,
+      "address": "Husova čtvrť, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-29",
+      "listing_updated_at": "2026-10-30",
+      "description": "Hledáte ke koupi nemovitost s výhledem do zeleně? Právě na Vás čeká příjemný byt 2+1 po rekonstrukci o výměře 55 m2. Byt se nachází ve 2.NP cihlového domu bez výtahu. K dispozici jsou 2 prostorné sklepy a podíl na garáži v domě. Okna orientována na J do zahrady. Topení zajišťuje vlastní plynový kondenzační kotel. Výhodou bytu jsou dva neprůchozí pokoje, je tedy vhodný i jako investice k pronájmu. Dům prošel kompletní revitalizací: zateplení, nová okna, střecha. Husova čtvrť v Rosicích nabízí praktické městské bydlení v lokalitě, která spojuje každodenní pohodlí s možností klidnějšího života mimo ruch velkoměsta. V docházkové vzdálenosti najdete základní občanskou vybavenost včetně obchodu a dětského hřiště. Rodiny ocení blízkost školských zařízení. Velkou předností Rosic je dopravní spojení s Brnem, díky kterému můžete pohodlně dojíždět za prací, studiem i zábavou, a přitom si užívat bydlení mimo ruch velkoměsta. Byt je volný ihned. Pro více info volejte makléřku."
     },
     {
       "id": "sr_935080012",
@@ -65,7 +65,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-09-08",
-      "listing_updated_at": "2026-10-22",
+      "listing_updated_at": "2026-10-29",
       "description": "Hledáte příjemné bydlení po rekonstrukci, s lodžií a výhledem do zeleně? V Rosicích na ulici Na Vyhlídce nabízíme byt v osobním vlastnictví o dispozici 2+kk, který se nachází ve 2. nadzemním podlaží bytového domu s výtahem. Byt je součástí první etapy úspěšného developerského projektu Panorama Rosice. Dispozici tvoří vstupní zádveří, prostorná chodba s dostatkem místa pro úložné prostory, obytný pokoj propojený s kuchyňským koutem, samostatný pokoj, koupelna a samostatné WC. Kuchyňská linka nabízí dostatek pracovní i úložné plochy a prostor doplňuje jídelní kout. Koupelna je vybavena sprchovým koutem a umyvadlem, toaleta je řešena samostatně. Příjemným bonusem bytu je lodžie o velikosti cca 4,6 m², na kterou se vstupuje ze samostatného pokoje. Díky výhledu směrem do zeleně nabízí příjemné místo k posezení a odpočinku. K bytu náleží také sklep o výměře cca 2,38 m². Je zde také možnost dokoupení vlastního parkovacího místa. Rosice jsou vyhledávaným místem pro bydlení díky kombinaci klidnějšího prostředí a dobré dostupnosti do Brna. Součástí areálu je mateřská škola. Nechybí ani možnosti sportovního a kulturního vyžití nebo krásná místa, například v okolí rosického zámku. Město je napojené na veřejnou dopravu a nabízí spojení směrem do Brna vlakem i autobusem. Pokud hledáte byt po rekonstrukci s praktickou dispozicí, vlastním venkovním prostorem a příjemným zázemím v dosahu Brna, tato nabídka určitě stojí za pozornost. Pro více informací nebo domluvení prohlídky nás neváhejte kontaktovat. (SLEVA - Původní cena 5.690.000 Kč)"
     },
     {
