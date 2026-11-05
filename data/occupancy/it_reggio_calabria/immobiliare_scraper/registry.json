@@ -2,8 +2,8 @@
   "city": "Reggio Calabria",
   "market": "it",
   "portal": "immobiliare_scraper",
-  "updated_at": "2026-11-04T14:13:39.128Z",
-  "snapshot_count": 125,
+  "updated_at": "2026-11-05T14:28:42.418Z",
+  "snapshot_count": 126,
   "last_provider": "reggio_rentals",
   "listings": {
     "im_60357824": {
@@ -37,14 +37,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-29T12:42:43.848Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 6,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-29T12:42:43.848Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 500
         }
       ]
@@ -80,14 +80,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 470
         }
       ]
@@ -123,14 +123,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 600
         }
       ]
@@ -185,10 +185,10 @@
       "lng": 15.66064739,
       "sqm": 30,
       "rooms": 1,
-      "address": "Via Cardinale Gennaro Portanova",
+      "address": "Via Cardinale Gennaro Portanova, 128",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-11-04T14:13:39.128Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -207,7 +207,7 @@
       "url": "https://www.immobiliare.it/annunci/97747342/",
       "property_type": "Appartamento",
       "description": "All'interno di un maggiore appartamento, al 4° piano con ascensore, monolocale o bilocale elegantemente arredati (un letto matrimoniale, un divano letto singolo, armadi, tavolo e sedie) con bagno in camera completo di lavatrice, angolo cottura completo di lavello, fuochi, cappa e frigo. Aria condizionata, televisore 40 pollici, finestre o balconi. Monolocale mq 25: € 370/mese + € 30/spese accessorie + consumo luce/mese. Monolocale mq30: €420/mese + €30/mese di spese accessorie + consumo luce/mese. Monolocale mq40: €470/mese + €30/mese di spese accessorie + consumo luce/mese. Bilocale: €570/mese + €30/mese di spese accessorie + consumo luce/mese. Deposito cauzionale una tantum €300 da restituire a fine locazione se non ci sono danni.",
-      "title": "Monolocale via Cardinale Gennaro Portanova 128, Tremulini - Eremo, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 1,
       "floor": "4",
       "energy_class": null,
@@ -308,14 +308,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-11-03T13:58:11.691Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-11-03T13:58:11.691Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1000
         }
       ]
@@ -743,21 +743,21 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 2000
         }
       ]
     },
     "im_118009681": {
       "id": "im_118009681",
-      "price": 1000,
+      "price": 1100,
       "lat": 38.1069,
       "lng": 15.644,
       "sqm": 150,
@@ -767,7 +767,7 @@
       "zone": "Centro Storico, Pineta Zerbi",
       "url": "https://www.immobiliare.it/annunci/118009681/",
       "listing_published_at": "2025-02-02",
-      "listing_updated_at": "2026-10-26",
+      "listing_updated_at": "2026-11-04",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -786,15 +786,15 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-27T11:55:38.999Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 8,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-27T11:55:38.999Z",
-          "price": 1000
+          "at": "2026-11-05T14:28:42.418Z",
+          "price": 1100
         }
       ]
     },
@@ -829,14 +829,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-11-03T13:58:11.691Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-11-03T13:58:11.691Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 700
         }
       ]
@@ -958,14 +958,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-29T12:32:52.006Z",
-      "last_seen_at": "2026-10-04T12:09:18.728Z",
-      "rented_at": "2026-10-05T14:13:07.269Z",
-      "status": "presumed_rented",
-      "days_on_market": 6,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-29T12:32:52.006Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 650
         }
       ]
@@ -1087,14 +1087,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 800
         }
       ]
@@ -1130,14 +1130,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1200
         }
       ]
@@ -1374,14 +1374,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1600
         }
       ]
@@ -1456,18 +1456,18 @@
       "terrace": null,
       "garage": null,
       "condominio_monthly": null,
-      "advertiser_name": "Mantuano Immobiliare",
+      "advertiser_name": null,
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-21T06:56:30.820Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 75,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-21T06:56:30.820Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 550
         }
       ]
@@ -1503,18 +1503,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
-          "price": 1500
-        },
-        {
-          "at": "2026-09-22T11:20:14.118Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 550
         }
       ]
@@ -1550,14 +1546,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-05T14:13:07.269Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 30,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-05T14:13:07.269Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 690
         }
       ]
@@ -1679,14 +1675,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-11-03T13:58:11.691Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-11-03T13:58:11.691Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 450
         }
       ]
@@ -1722,14 +1718,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-11-03T13:58:11.691Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-11-03T13:58:11.691Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 460
         }
       ]
@@ -1765,14 +1761,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-11-03T13:58:11.691Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-11-03T13:58:11.691Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1000
         }
       ]
@@ -1894,14 +1890,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 630
         }
       ]
@@ -1918,7 +1914,7 @@
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "url": "https://www.immobiliare.it/annunci/126463611/",
       "listing_published_at": "2026-02-04",
-      "listing_updated_at": "2026-08-04",
+      "listing_updated_at": "2026-11-04",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -1937,14 +1933,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 450
         }
       ]
@@ -1980,14 +1976,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-11-03T13:58:11.691Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-11-03T13:58:11.691Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 500
         }
       ]
@@ -2156,14 +2152,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 800
         }
       ]
@@ -2391,18 +2387,18 @@
       "terrace": null,
       "garage": null,
       "condominio_monthly": null,
-      "advertiser_name": "Professionecasa Reggio Calabria",
+      "advertiser_name": null,
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-21T06:56:30.820Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 75,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-21T06:56:30.820Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1000
         }
       ]
@@ -2548,14 +2544,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1200
         }
       ]
@@ -2567,10 +2563,10 @@
       "lng": 15.6425,
       "sqm": 150,
       "rooms": 5,
-      "address": "Via fra Gesualdo Melacrino",
+      "address": "Via fra Gesualdo Melacrino, 53",
       "zone": "Terreti, Ortì",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-11-04T14:13:39.128Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -2585,7 +2581,7 @@
       "url": "https://www.immobiliare.it/annunci/128615324/",
       "property_type": "Appartamento",
       "description": "Via Fra Gesualdo Melacrinò Proponiamo in affitto un luminoso appartamento situato al quarto piano di una palazzina servita da ascensore, caratterizzato da una splendida vista panoramica che regala luce naturale durante tutto l’arco della giornata. L’ingresso accoglie in un ambiente funzionale e ben distribuito, che conduce ai vari spazi della casa. La cucina, già parzialmente arredata, è ideale per chi desidera praticità senza rinunciare alla personalizzazione. Il soggiorno, ampio e vivibile, rappresenta il cuore dell’abitazione, perfetto per momenti di relax o convivialità. La zona notte si compone di quattro camere da letto, soluzione ideale per famiglie numerose, professionisti o per chi necessita di spazi dedicati a studio o smart working. I doppi servizi garantiscono comfort e funzionalità nella gestione quotidiana, mentre il pratico ripostiglio offre ulteriore spazio per l’organizzazione della casa. Completano la proprietà i balconi, che permettono di godere di affacci aperti e ariosi, valorizzando ulteriormente la vivibilità degli ambienti. L’immobile si presenta in discrete condizioni interne, dotato di infissi in legno con vetro singolo e climatizzatori, offrendo un buon livello di comfort abitativo. È inoltre parzialmente arredato, garantendo un equilibrio ideale tra praticità e possibilità di personalizzazione. La posizione al piano alto, unita alla presenza dell’ascensore, assicura tranquillità, privacy e facilità di accesso. Soluzione ideale per chi è alla ricerca di spazi generosi, luminosità e una vista aperta, senza rinunciare alla comodità dei servizi. Contattaci per maggiori informazioni o per fissare una visita: questa potrebbe essere la casa che stavi cercando.",
-      "title": "Appartamento via fra Gesualdo Melacrino 53, Centro Storico, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 2,
       "floor": "4",
       "energy_class": null,
@@ -2644,13 +2640,13 @@
       "sqm": 203,
       "rooms": 5,
       "property_type": "Appartamento",
-      "address": "Via Risorgimento",
+      "address": "Via Risorgimento, 18",
       "zone": "Ravagnese, Gallina, Armo",
       "url": "https://www.immobiliare.it/annunci/128635632/",
       "listing_published_at": "2026-04-28",
       "listing_updated_at": "2026-09-02",
       "description": "CATONA – Via Risorgimento Traversa D In contesto centrale e ben servito, L'agenzia Tecnocasa di Catona propone in locazione ampio appartamento di 203 mq catastali, posto al secondo piano di un palazzo signorile servito da ascensore. La soluzione si distingue per gli ambienti spaziosi e ben distribuiti, ideali per famiglie numerose o per chi è alla ricerca di comfort e funzionalità. L’immobile è così composto: ingresso, ampia zona giorno con soggiorno e cucina con uscita su balcone, quattro camere da letto (di cui una con bagno in camera), studio, ripostiglio e secondo bagno finestrato con box doccia. L’appartamento viene locato privo di arredi, permettendo una personalizzazione completa degli spazi secondo le proprie esigenze. Dotazioni e caratteristiche: infissi in legno, videocitofono, posto auto all’interno della corte condominiale chiusa da cancello elettrico, cantina al piano terra. La posizione centrale garantisce la vicinanza ai principali servizi, rendendo la soluzione particolarmente comoda per la vita quotidiana. Ideale per famiglie o professionisti che cercano ampi spazi in zona strategica.",
-      "title": "Appartamento via Risorgimento 18, Catona - Villa San Giuseppe, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 2,
       "floor": "2",
       "energy_class": null,
@@ -2677,7 +2673,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-09-03T10:59:38.746Z",
-      "last_seen_at": "2026-11-04T14:13:39.128Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -3276,18 +3272,18 @@
       "terrace": null,
       "garage": null,
       "condominio_monthly": null,
-      "advertiser_name": "Pustorino Immobiliare",
+      "advertiser_name": null,
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-21T06:56:30.820Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 75,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-21T06:56:30.820Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 400
         }
       ]
@@ -3366,14 +3362,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 900
         }
       ]
@@ -3409,14 +3405,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-05T14:13:07.269Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 30,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-05T14:13:07.269Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1500
         }
       ]
@@ -3773,18 +3769,18 @@
       "terrace": null,
       "garage": null,
       "condominio_monthly": null,
-      "advertiser_name": "Iconacasa Reggio Calabria Piazza De Nava",
+      "advertiser_name": null,
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-21T06:56:30.820Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 75,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-21T06:56:30.820Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 600
         }
       ]
@@ -4244,10 +4240,10 @@
       "lng": 15.6654,
       "sqm": 63,
       "rooms": 1,
-      "address": "Via Strada Provinciale Spirito Santo",
+      "address": "Via Strada Provinciale Spirito Santo, 6",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "first_seen_at": "2026-07-08T15:25:48Z",
-      "last_seen_at": "2026-11-04T14:13:39.128Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -4260,9 +4256,9 @@
       "listing_published_at": "2026-07-07",
       "listing_updated_at": "2026-07-07",
       "url": "https://www.immobiliare.it/annunci/130709348/",
-      "property_type": "Monolocale",
+      "property_type": "Appartamento",
       "description": "Spirito Santo. In ottimo contesto residenziale, all’interno di uno stabile di recente costruzione servito da ascensore, proponiamo in locazione un elegante monolocale arredato di circa 50 mq, posto al sesto ed ultimo piano. L’immobile è composto da un luminoso ambiente unico, con letto a ribalta, cucina attrezzata e accesso diretto a uno splendido terrazzo a livello di circa 55 mq, ideale per trascorrere piacevoli momenti all’aperto godendo di una vista panoramica. Il bagno è finestrato ed è dotato di comoda doccia. Completano la proprietà una cantina al piano seminterrato e le seguenti finiture: portone d’ingresso blindato, infissi con vetrocamera e climatizzazione. Soluzione ideale per single o coppie alla ricerca di un appartamento moderno, confortevole e con ampi spazi esterni. La proprietà richiede contratto a canone concordato e persone altamente referenziate.",
-      "title": "Monolocale via Strada Provinciale Spirito Santo 6, Trabocchetto - Spirito Santo, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 1,
       "floor": "6",
       "energy_class": null,
@@ -4677,14 +4673,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 680
         }
       ]
@@ -4806,14 +4802,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 390
         }
       ]
@@ -4849,14 +4845,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 500
         }
       ]
@@ -4935,14 +4931,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 650
         }
       ]
@@ -4978,14 +4974,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 500
         }
       ]
@@ -5021,14 +5017,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1000
         }
       ]
@@ -5064,14 +5060,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 700
         }
       ]
@@ -5107,14 +5103,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 690
         }
       ]
@@ -5150,14 +5146,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1100
         }
       ]
@@ -5390,14 +5386,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 700
         }
       ]
@@ -5815,18 +5811,18 @@
       "terrace": null,
       "garage": null,
       "condominio_monthly": null,
-      "advertiser_name": "GIEFFE IMMOBILIARE di Giuseppe Ferrante",
+      "advertiser_name": null,
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-08-21T06:56:30.820Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 75,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-08-21T06:56:30.820Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 650
         }
       ]
@@ -6077,14 +6073,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 400
         }
       ]
@@ -6450,13 +6446,13 @@
       "sqm": 180,
       "rooms": 5,
       "property_type": "Appartamento",
-      "address": "Viale Putortì",
+      "address": "Viale Putortì, 9",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/128592020/",
       "listing_published_at": "2026-04-26",
       "listing_updated_at": "2026-10-06",
       "description": "Affittassi appartamento nelle immediate vicinanze del centro, molto luminoso, terzo piano con ascensore, composto da ingresso, con ampio salone e soggiorno (con camino), tre camere da letto, due bagni (uno con doccia idromassaggio e l'altro con vasca), cucina abitabile, ripostiglio/lavanderia e doppio balcone (lato giorno e lato notte). L'appartamento è arredato, in ottime condizioni, riscaldamento indipendente, porta blindata e video citofono. L'appartamento può essere affittato ammobiliato o semi ammobiliato.",
-      "title": "Appartamento viale Putortì 9, Sbarre, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 2,
       "floor": "3",
       "energy_class": null,
@@ -6483,7 +6479,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-08-21T06:56:30.820Z",
-      "last_seen_at": "2026-11-04T14:13:39.128Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -6615,14 +6611,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-21T12:31:15.095Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 44,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-21T12:31:15.095Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 500
         }
       ]
@@ -6744,14 +6740,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 500
         }
       ]
@@ -6978,14 +6974,14 @@
       "lng": 15.6493,
       "sqm": 100,
       "rooms": 3,
-      "property_type": "Trilocale",
-      "address": "VIA MONSIGNOR ENRICO MONTALBETTI",
+      "property_type": "Appartamento",
+      "address": "VIA MONSIGNOR ENRICO MONTALBETTI, 4",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/131894144/",
       "listing_published_at": "2026-08-24",
       "listing_updated_at": "2026-09-22",
       "description": "VIA MONSIGNOR ENRICO MONTALBETTI Appartamento di 100 mq catastali posto al primo piano di un piccolo stabile non ascensorato. Ingresso su disimpegno, ampio soggiorno, cucina abitabile, due spaziose camere da letto, due bagni e balconi che donano luce e sfogo esterno agli ambienti principali. L'immobile conserva le rifiniture originali, mentre i due bagni sono stati ristrutturati nei primi anni 2000 e risultano già funzionali. L'impianto di riscaldamento è assente. Una soluzione perfetta per chi cerca una casa dagli spazi ben distribuiti, in un contesto tranquillo.",
-      "title": "Trilocale via Monsignor Enrico Montalbetti 4, Modena - San Giorgio Extra, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 2,
       "floor": "1",
       "energy_class": null,
@@ -7012,7 +7008,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-08-25T06:57:29.709Z",
-      "last_seen_at": "2026-11-04T14:13:39.128Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -7226,14 +7222,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 800
         }
       ]
@@ -7269,14 +7265,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 800
         }
       ]
@@ -7484,14 +7480,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-09T11:04:43.441Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 56,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-09T11:04:43.441Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1200
         }
       ]
@@ -7527,14 +7523,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-29T12:32:52.006Z",
-      "last_seen_at": "2026-10-04T12:09:18.728Z",
-      "rented_at": "2026-10-05T14:13:07.269Z",
-      "status": "presumed_rented",
-      "days_on_market": 6,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-29T12:32:52.006Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 750
         }
       ]
@@ -7637,7 +7633,7 @@
       "zone": "Centro Storico, Pineta Zerbi",
       "url": "https://www.immobiliare.it/annunci/132341198/",
       "listing_published_at": "2026-09-04",
-      "listing_updated_at": "2026-10-12",
+      "listing_updated_at": "2026-11-04",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 2,
@@ -7656,14 +7652,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-11T10:59:26.220Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 54,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-11T10:59:26.220Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 800
         }
       ]
@@ -7742,14 +7738,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-26T11:09:42.037Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 39,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-26T11:09:42.037Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 300
         }
       ]
@@ -7785,14 +7781,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-29T12:42:43.848Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 6,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-29T12:42:43.848Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 600
         }
       ]
@@ -7871,14 +7867,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-12T10:27:25.847Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 53,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-12T10:27:25.847Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 460
         }
       ]
@@ -8043,14 +8039,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-15T11:29:35.189Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 50,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-15T11:29:35.189Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 450
         }
       ]
@@ -8062,14 +8058,14 @@
       "lng": 15.6423,
       "sqm": 145,
       "rooms": 4,
-      "property_type": "Quadrilocale",
-      "address": "Via Palmi",
+      "property_type": "Appartamento",
+      "address": "Via Palmi, 15",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/132418698/",
       "listing_published_at": "2026-09-14",
       "listing_updated_at": "2026-10-09",
       "description": "Via Palmi, appartamento di 145 mq, situato al terzo piano di un edificio dotato di ascensore. L'immobile, offre spazi ben distribuiti dove all'entrata si trova la zona giorno che dispone di una cucina e un soggiorno spazioso che si apre su due balconi, ideali per momenti di relax all'aperto; la zona notte comprende tre camere da letto luminose e due bagni funzionali. Completa la proprietà un posto auto assegnato all'interno della corte condominiale, garantendo comodità e sicurezza. L'immobile è dotato di aria condizionata e termosifoni alimentati da caldaia, assicurando comfort in ogni stagione. L'appartamento gode di doppia esposizione che assicura un'ottima luminosità. Una soluzione ideale per famiglie o per chi è alla ricerca di ampi spazi abitativi in un contesto comodo e ben servito.",
-      "title": "Quadrilocale via Palmi 15, Sbarre, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 2,
       "floor": "3",
       "energy_class": null,
@@ -8096,7 +8092,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-09-15T11:29:35.189Z",
-      "last_seen_at": "2026-11-04T14:13:39.128Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -8181,14 +8177,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-15T11:29:35.189Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 50,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-15T11:29:35.189Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 600
         }
       ]
@@ -8267,14 +8263,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-15T11:29:35.189Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 50,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-15T11:29:35.189Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 650
         }
       ]
@@ -8353,14 +8349,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-15T11:29:35.189Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 50,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-15T11:29:35.189Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 780
         }
       ]
@@ -8482,14 +8478,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-21T12:31:15.095Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 44,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-21T12:31:15.095Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 850
         }
       ]
@@ -8654,14 +8650,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-24T11:29:53.083Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 41,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-24T11:29:53.083Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 550
         }
       ]
@@ -8826,14 +8822,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-25T11:35:18.280Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-25T11:35:18.280Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 400
         }
       ]
@@ -8912,14 +8908,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-25T11:35:18.280Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-25T11:35:18.280Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 320
         }
       ]
@@ -8955,14 +8951,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-25T11:35:18.280Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-25T11:35:18.280Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 300
         }
       ]
@@ -8998,14 +8994,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-13T13:57:27.364Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 22,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-13T13:57:27.364Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 380
         }
       ]
@@ -9084,18 +9080,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-25T11:35:18.280Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 40,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-25T11:35:18.280Z",
-          "price": 750
-        },
-        {
-          "at": "2026-10-19T12:45:44.302Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 680
         }
       ]
@@ -9389,14 +9381,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-03T11:26:46.736Z",
-      "last_seen_at": "2026-10-04T12:09:18.728Z",
-      "rented_at": "2026-10-05T14:13:07.269Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-03T11:26:46.736Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 600
         }
       ]
@@ -9432,14 +9424,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-09-30T12:17:50.033Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 35,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-09-30T12:17:50.033Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 500
         }
       ]
@@ -9452,13 +9444,13 @@
       "sqm": 142,
       "rooms": 5,
       "property_type": "Appartamento",
-      "address": "Via Pasquale Andiloro",
+      "address": "Via Pasquale Andiloro, 103",
       "zone": "Trabocchetto, Spirito Santo, Tremulini, Eremo",
       "url": "https://www.immobiliare.it/annunci/133139712/",
       "listing_published_at": "2026-10-01",
       "listing_updated_at": "2026-11-04",
       "description": "Via Pasquale Andiloro AMPIO STUDIO DI 142 MQ CON ASCENSORE E DOPPIO BALCONE In palazzo con facciata rifatta nel 2022, proponiamo in locazione un ampio appartamento di 142 mq catastali, posto al primo piano e servito da ascensore. L'immobile è composto da ingresso, cinque stanze, di cui una con comodo ripostiglio, e bagno finestrato. Gli ambienti sono stati completamente ritinteggiati, pronti per essere organizzati secondo le proprie esigenze professionali. La proprietà dispone inoltre di due balconi con doppio affaccio, uno sul lato interno e uno sul lato esterno, che garantiscono luminosità e un piacevole ricambio d'aria. La disposizione interna, con cinque stanze, rende la soluzione ideale per studio professionale, ufficio associato o attività che necessitano di più ambienti di lavoro. L'immobile viene locato esclusivamente come studio professionale e non ad uso abitativo. Una soluzione spaziosa e versatile, pronta ad accogliere la tua attività. Contattaci per maggiori informazioni e per fissare un appuntamento.",
-      "title": "Appartamento via Pasquale Andiloro 103, Trabocchetto - Spirito Santo, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 1,
       "floor": "1",
       "energy_class": null,
@@ -9485,7 +9477,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-10-01T12:52:42.592Z",
-      "last_seen_at": "2026-11-04T14:13:39.128Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -9531,14 +9523,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-01T12:52:42.592Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-01T12:52:42.592Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 480
         }
       ]
@@ -9574,14 +9566,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-01T12:52:42.592Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 34,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-01T12:52:42.592Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 550
         }
       ]
@@ -9746,14 +9738,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-05T14:13:07.269Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 30,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-05T14:13:07.269Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 420
         }
       ]
@@ -9789,14 +9781,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-05T14:13:07.269Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 30,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-05T14:13:07.269Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 600
         }
       ]
@@ -9918,14 +9910,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-08T13:11:25.499Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 27,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-08T13:11:25.499Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 350
         }
       ]
@@ -9961,14 +9953,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-08T13:11:25.499Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 27,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-08T13:11:25.499Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 400
         }
       ]
@@ -10047,14 +10039,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-13T13:57:27.364Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 22,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-13T13:57:27.364Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 650
         }
       ]
@@ -10090,14 +10082,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-14T11:34:39.297Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 21,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-14T11:34:39.297Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1300
         }
       ]
@@ -10133,14 +10125,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-15T11:12:54.366Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 20,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-15T11:12:54.366Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 430
         }
       ]
@@ -10176,14 +10168,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-16T11:07:30.062Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 19,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-16T11:07:30.062Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 550
         }
       ]
@@ -10262,14 +10254,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-17T10:26:58.571Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 18,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-17T10:26:58.571Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 750
         }
       ]
@@ -10305,14 +10297,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-19T12:45:44.302Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 16,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-19T12:45:44.302Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 450
         }
       ]
@@ -10348,14 +10340,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-21T11:32:29.815Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 14,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-21T11:32:29.815Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 550
         }
       ]
@@ -10391,14 +10383,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-21T11:32:29.815Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 14,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-21T11:32:29.815Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 580
         }
       ]
@@ -10434,14 +10426,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-21T11:32:29.815Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 14,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-21T11:32:29.815Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 440
         }
       ]
@@ -10477,14 +10469,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-23T11:22:19.135Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 12,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-23T11:22:19.135Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 550
         }
       ]
@@ -10606,14 +10598,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-26T12:39:02.929Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 9,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-26T12:39:02.929Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1000
         }
       ]
@@ -10735,14 +10727,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-27T11:55:38.999Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 8,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-27T11:55:38.999Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 600
         }
       ]
@@ -10778,14 +10770,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-28T12:30:55.489Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 7,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-28T12:30:55.489Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 450
         }
       ]
@@ -10821,14 +10813,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-10-29T12:42:43.848Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 6,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-10-29T12:42:43.848Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 450
         }
       ]
@@ -10840,14 +10832,14 @@
       "lng": 15.6643,
       "sqm": 122,
       "rooms": 4,
-      "property_type": "Quadrilocale",
-      "address": "Contrada Livari Superiore",
+      "property_type": "Appartamento",
+      "address": "Contrada Livari Superiore, 42",
       "zone": "Archi, Gallico, Catona",
       "url": "https://www.immobiliare.it/annunci/134251177/",
       "listing_published_at": "2026-10-30",
       "listing_updated_at": "2026-10-30",
       "description": "SARACINELLO, Contrada Livari, all’interno della cooperativa “La Bruna”, ampio e luminoso appartamento situato al quinto ed ultimo piano di uno stabile servito da ascensore. L’immobile si compone di una cucina abitabile, un ampio soggiorno, tre camere da letto, due bagni, un comodo ripostiglio, un balcone e una comoda veranda, ideale per godere di uno spazio aggiuntivo da vivere in ogni stagione. Completano la proprietà una cantina al piano seminterrato e un posto auto coperto all’interno della corte condominiale. L’appartamento viene locato non arredato ed è dotato di numerosi comfort, tra cui autoclave privata e condominiale, climatizzatori, scaldino, portone blindato e videocitofono di recente installazione. Si precisa che l'immobile è privo di termosifoni, ma dispone della predisposizione dell'impianto di riscaldamento. La posizione, particolarmente strategica, in prossimità dello svincolo autostradale, rende l'immobile ideale per chi desidera coniugare ampi spazi abitativi e facilità di collegamento.",
-      "title": "Quadrilocale Contrada Livari Superiore 42, Ravagnese, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 2,
       "floor": "5",
       "energy_class": null,
@@ -10874,7 +10866,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-10-30T12:34:08.861Z",
-      "last_seen_at": "2026-11-04T14:13:39.128Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10893,13 +10885,13 @@
       "sqm": 110,
       "rooms": 4,
       "property_type": "Appartamento",
-      "address": "Via Gebbione",
+      "address": "Via Gebbione, 30",
       "zone": "Ferrovieri, Stadio, Sbarre",
       "url": "https://www.immobiliare.it/annunci/134329403/",
       "listing_published_at": "2026-11-02",
       "listing_updated_at": "2026-11-02",
       "description": "A Reggio Calabria, in Via Gebbione, si propone in affitto un appartamento arredato di 110 mq, situato al quinto piano di un edificio dotato di ascensore. L’immobile è composto da quattro locali e dispone di due bagni; la cucina è presente. Lo stato è indicato come ottimo e ristrutturato. Tra le dotazioni sono presenti il riscaldamento autonomo e un impianto di climatizzazione autonomo con funzione freddo e caldo. Sono inoltre disponibili posti auto. La presenza di quattro locali e due bagni, insieme alla cucina e agli arredi, rende l’appartamento adatto a chi cerca una soluzione abitativa in affitto già arredata, con spazi organizzati per la vita quotidiana. L’ascensore consente l’accesso al quinto piano, mentre gli impianti autonomi permettono di gestire riscaldamento e climatizzazione. Contattami per ricevere ulteriori informazioni sull’appartamento o per concordare una visita.",
-      "title": "Quadrilocale via Gebbione 30, Ferrovieri - Stadio, Reggio Calabria",
+      "title": "Appartamento",
       "bathrooms": 2,
       "floor": "5",
       "energy_class": null,
@@ -10926,7 +10918,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-11-02T15:21:42.352Z",
-      "last_seen_at": "2026-11-04T14:13:39.128Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -10949,7 +10941,7 @@
       "zone": "Terreti, Ortì",
       "url": "https://www.immobiliare.it/annunci/134334625/",
       "listing_published_at": "2026-11-02",
-      "listing_updated_at": "2026-11-02",
+      "listing_updated_at": "2026-11-05",
       "description": null,
       "title": "Appartamento",
       "bathrooms": 1,
@@ -10968,14 +10960,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-11-02T15:21:42.352Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 2,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-11-02T15:21:42.352Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 1260
         }
       ]
@@ -11011,14 +11003,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-11-03T13:58:11.691Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-11-03T13:58:11.691Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 700
         }
       ]
@@ -11054,14 +11046,14 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-11-03T13:58:11.691Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-11-03T13:58:11.691Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 350
         }
       ]
@@ -11097,15 +11089,101 @@
       "condition": null,
       "condition_status": null,
       "needs_renovation": null,
-      "first_seen_at": "2026-11-03T13:58:11.691Z",
-      "last_seen_at": "2026-11-03T13:58:11.691Z",
-      "rented_at": "2026-11-04T14:13:39.128Z",
-      "status": "presumed_rented",
-      "days_on_market": 1,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
       "price_history": [
         {
-          "at": "2026-11-03T13:58:11.691Z",
+          "at": "2026-11-05T14:28:42.418Z",
           "price": 400
+        }
+      ]
+    },
+    "im_134333143": {
+      "id": "im_134333143",
+      "price": 600,
+      "lat": 38.1265,
+      "lng": 15.6691,
+      "sqm": 122,
+      "rooms": 4,
+      "property_type": "Appartamento",
+      "address": "Via Veglia",
+      "zone": "Modena, San Giorgio Extra, San Sperato",
+      "url": "https://www.immobiliare.it/annunci/134333143/",
+      "listing_published_at": "2026-11-02",
+      "listing_updated_at": "2026-11-03",
+      "description": null,
+      "title": "Appartamento",
+      "bathrooms": 1,
+      "floor": "T",
+      "energy_class": null,
+      "energy_kwh_sqm": null,
+      "images": null,
+      "furnished": null,
+      "built_year": null,
+      "lift": null,
+      "garden": null,
+      "terrace": null,
+      "garage": null,
+      "condominio_monthly": null,
+      "advertiser_name": null,
+      "condition": null,
+      "condition_status": null,
+      "needs_renovation": null,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-11-05T14:28:42.418Z",
+          "price": 600
+        }
+      ]
+    },
+    "im_105387499": {
+      "id": "im_105387499",
+      "price": 1400,
+      "lat": 38.12039948,
+      "lng": 15.65161991,
+      "sqm": 170,
+      "rooms": 4,
+      "property_type": "Appartamento",
+      "address": "Via Argine Destro Annunziata, 43",
+      "zone": "Centro Storico, Pineta Zerbi",
+      "url": "https://www.immobiliare.it/annunci/105387499/",
+      "listing_published_at": "2023-08-21",
+      "listing_updated_at": "2026-11-03",
+      "description": null,
+      "title": "Appartamento",
+      "bathrooms": 2,
+      "floor": "1",
+      "energy_class": null,
+      "energy_kwh_sqm": null,
+      "images": null,
+      "furnished": null,
+      "built_year": null,
+      "lift": null,
+      "garden": null,
+      "terrace": null,
+      "garage": null,
+      "condominio_monthly": null,
+      "advertiser_name": null,
+      "condition": null,
+      "condition_status": null,
+      "needs_renovation": null,
+      "first_seen_at": "2026-11-05T14:28:42.418Z",
+      "last_seen_at": "2026-11-05T14:28:42.418Z",
+      "rented_at": null,
+      "status": "active",
+      "days_on_market": null,
+      "price_history": [
+        {
+          "at": "2026-11-05T14:28:42.418Z",
+          "price": 1400
         }
       ]
     }
