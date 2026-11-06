@@ -1,7 +1,7 @@
 {
   "city": "cz_rosice",
   "operation": "sale",
-  "fetched_at": "2026-11-05T14:40:41.799Z",
+  "fetched_at": "2026-11-06T14:19:23.290Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
@@ -9,13 +9,33 @@
   },
   "listings": [
     {
+      "id": "sr_1619509324",
+      "title": "Prodej bytu 2+kk 68 m²",
+      "price": 7190000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/1619509324?noredirect=1",
+      "lat": 49.1871191486,
+      "lng": 16.3847467697,
+      "sqm": 68,
+      "rooms": 2,
+      "address": "Na Vyhlídce, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-08-27",
+      "listing_updated_at": "2026-11-06",
+      "description": "Hledáte takový byt, kde nebudete muset dělat kompromisy ohledně dostatku místa? Pak tento mimořádně prostorný, moderní byt o dipozici 2+kk (68 m²) v Rosicích s vlastním parkováním čeká na váš nový příběh! Hledáte domov, kde budete mít dostatek prostoru? Místo, které dýchá novotou, energií a svobodou? Představujeme vám jedinečnou příležitost v Rosicích u Brna. S užitnou plochou velkorysých 68 m² získáváte prostor, který vás nebude limitovat. Byt je dispozičně vyřešen naprosto perfektně. Aktuální moderní dispozici 2+kk s otevřeným prostorem plným světla můžete díky chytrému architektonickému řešení snadno proměnit na plnohodnotné 2+1. Vaše bydlení tak může růst a měnit se společně s vašimi životními potřebami! Detaily, které tvoří dokonalý komfort: • Moderní novostavba: Žádné starosti s rekonstrukcí, čistý design a moderní materiály. • V bytě je kompletně zařízená kuchyňská linka • Chytrá dispozice: Oddělená koupelna od toalety je detailem, který oceníte každé ráno. Zajišťuje maximální soukromí a pohodlí pro všechny členy domácnosti. • Balkon do klidné ulice: Výhled do klidné zóny vám zaručí zasloužený relax po náročném dni. K tomuto bytu náleží: 1. Vlastní parkovací stání přímo u domu. 2. Prostorný sklep, kam bezpečně uložíte vaše sezónní vybavení. V bytovém domě je vám navíc k dispozici moderní kolárna a kočárkárna, což ocení jak nadšení sportovci, tak mladé rodiny. Nad rámec kupní ceny se platí provize RK. Rosice – ideální balanc mezi přírodou a městem Žijte v klidu, a přesto mějte vše na dosah ruky. Rosice nabízejí kompletní občanskou vybavenost (školy, školky, obchody, restaurace, lékaře) a perfektní, rychlou dostupnost do Brna. Je to lokalita, která dynamicky roste a v níž hodnota nemovitostí neustále stoupá. Pokud Vás tento byt zaujal, neváhejte si domluvit prohlídku."
+    },
+    {
       "id": "sr_512032844",
       "title": "Prodej bytu 4+kk 95 m²",
       "price": 12990000,
       "operation": "sale",
       "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/_/512032844?noredirect=1",
-      "lat": 49.18723523996032,
-      "lng": 16.386057437303638,
+      "lat": 49.1872352399603,
+      "lng": 16.3860574373036,
       "sqm": 95,
       "rooms": 4,
       "address": "Na Vyhlídce, Rosice, Rosice",
@@ -67,26 +87,6 @@
       "listing_published_at": "2026-09-08",
       "listing_updated_at": "2026-11-05",
       "description": "Hledáte příjemné bydlení po rekonstrukci, s lodžií a výhledem do zeleně? V Rosicích na ulici Na Vyhlídce nabízíme byt v osobním vlastnictví o dispozici 2+kk, který se nachází ve 2. nadzemním podlaží bytového domu s výtahem. Byt je součástí první etapy úspěšného developerského projektu Panorama Rosice. Dispozici tvoří vstupní zádveří, prostorná chodba s dostatkem místa pro úložné prostory, obytný pokoj propojený s kuchyňským koutem, samostatný pokoj, koupelna a samostatné WC. Kuchyňská linka nabízí dostatek pracovní i úložné plochy a prostor doplňuje jídelní kout. Koupelna je vybavena sprchovým koutem a umyvadlem, toaleta je řešena samostatně. Příjemným bonusem bytu je lodžie o velikosti cca 4,6 m², na kterou se vstupuje ze samostatného pokoje. Díky výhledu směrem do zeleně nabízí příjemné místo k posezení a odpočinku. K bytu náleží také sklep o výměře cca 2,38 m². Je zde také možnost dokoupení vlastního parkovacího místa. Rosice jsou vyhledávaným místem pro bydlení díky kombinaci klidnějšího prostředí a dobré dostupnosti do Brna. Součástí areálu je mateřská škola. Nechybí ani možnosti sportovního a kulturního vyžití nebo krásná místa, například v okolí rosického zámku. Město je napojené na veřejnou dopravu a nabízí spojení směrem do Brna vlakem i autobusem. Pokud hledáte byt po rekonstrukci s praktickou dispozicí, vlastním venkovním prostorem a příjemným zázemím v dosahu Brna, tato nabídka určitě stojí za pozornost. Pro více informací nebo domluvení prohlídky nás neváhejte kontaktovat. (SLEVA - Původní cena 5.690.000 Kč)"
-    },
-    {
-      "id": "sr_1619509324",
-      "title": "Prodej bytu 2+kk 68 m²",
-      "price": 7190000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/1619509324?noredirect=1",
-      "lat": 49.1871191486,
-      "lng": 16.3847467697,
-      "sqm": 68,
-      "rooms": 2,
-      "address": "Na Vyhlídce, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-27",
-      "listing_updated_at": "2026-11-04",
-      "description": "Hledáte takový byt, kde nebudete muset dělat kompromisy ohledně dostatku místa? Pak tento mimořádně prostorný, moderní byt o dipozici 2+kk (68 m²) v Rosicích s vlastním parkováním čeká na váš nový příběh! Hledáte domov, kde budete mít dostatek prostoru? Místo, které dýchá novotou, energií a svobodou? Představujeme vám jedinečnou příležitost v Rosicích u Brna. S užitnou plochou velkorysých 68 m² získáváte prostor, který vás nebude limitovat. Byt je dispozičně vyřešen naprosto perfektně. Aktuální moderní dispozici 2+kk s otevřeným prostorem plným světla můžete díky chytrému architektonickému řešení snadno proměnit na plnohodnotné 2+1. Vaše bydlení tak může růst a měnit se společně s vašimi životními potřebami! Detaily, které tvoří dokonalý komfort: • Moderní novostavba: Žádné starosti s rekonstrukcí, čistý design a moderní materiály. • V bytě je kompletně zařízená kuchyňská linka • Chytrá dispozice: Oddělená koupelna od toalety je detailem, který oceníte každé ráno. Zajišťuje maximální soukromí a pohodlí pro všechny členy domácnosti. • Balkon do klidné ulice: Výhled do klidné zóny vám zaručí zasloužený relax po náročném dni. K tomuto bytu náleží: 1. Vlastní parkovací stání přímo u domu. 2. Prostorný sklep, kam bezpečně uložíte vaše sezónní vybavení. V bytovém domě je vám navíc k dispozici moderní kolárna a kočárkárna, což ocení jak nadšení sportovci, tak mladé rodiny. Nad rámec kupní ceny se platí provize RK. Rosice – ideální balanc mezi přírodou a městem Žijte v klidu, a přesto mějte vše na dosah ruky. Rosice nabízejí kompletní občanskou vybavenost (školy, školky, obchody, restaurace, lékaře) a perfektní, rychlou dostupnost do Brna. Je to lokalita, která dynamicky roste a v níž hodnota nemovitostí neustále stoupá. Pokud Vás tento byt zaujal, neváhejte si domluvit prohlídku."
     },
     {
       "id": "sr_2249642060",
@@ -269,26 +269,6 @@
       "description": "REZERVOVÁNO V rezidenční budově Panorama na Vyhlídce v Rosicích se otevírá nová nabídka pro ty, kteří hledají velkorysý prostor, soukromí a vysoký standard každodenního bydlení. Nabízíme zde byt, který zaujme především množstvím využitelného prostoru, dvěma lodžiemi, otevřenými výhledy a komfortem klimatizace v každé místnosti. Nachází se v 7. nadzemním podlaží bytového domu se dvěma výtahy. Plocha bytu činí cca 76,1 m2 plus lodžie a sklep. V evidenčním listu a ve vyúčtování je byt veden jako 4+kk, zatímco v prohlášení vlastníka je jednotka označena jako 3+kk. Důvodem je samostatně oddělený prostor navíc, který se dá dobře využít jako pracovna, dětská herna, pokoj pro hosty nebo domácí studio. Právě tato část dává bytu větší variabilitu a umožňuje oddělit práci, odpočinek nebo dětské aktivity od hlavní obytné části. – Čistá plocha bytu cca 76,1 m² (samotný obytný prostor bez příslušenství) – Plocha sklepa cca 4,3 m² (v 1. podzemním podlaží, dostupné výtahem) – Plocha dvou lodžií cca 8,4 m² Dvě lodžie, přístupné z hlavní obytné části a z ložnice nabízejí dostatek místa pro posezení a chvíle venku bez nutnosti opouštět byt. Díky umístění v 7. nadzemním podlaží se z nich otevírají nádherné široké výhledy do okolí. Klimatizace v každé místnosti zajišťuje příjemnou teplotu i během teplých letních dnů. Pro práci z domova, streamování i další online zábavu je v domě dostupné vysokorychlostní připojení internetu s rychlostí až 1 Gb/s. Dům je v dobrém a průběžně udržovaném stavu. Na přelomu let 2024 a 2025 byly vyměněny měřiče tepla a vodoměry za moderní zařízení s dálkovým odečtem. V roce 2025 proběhly úpravy fasády a podlah lodžií, úprava vstupu do domu a vybudování krytého prostoru pro komunální odpad. Do dalších let je plánována čisticí zóna pro jízdní kola s vysokotlakým čističem a obnova horní parkovací desky. Současné měsíční zálohy pro rok 2026 jsou při nastavení pro čtyři osoby ve výši cca 8 300 Kč. Částka zahrnuje kompletní náklady spojené s bydlením – tedy fond oprav, provozní fond, vytápění, teplou vodu, studenou vodu i zálohy na elektřinu spotřebovanou přímo v bytě. Výše skutečných nákladů se bude samozřejmě odvíjet od počtu osob a individuální spotřeby. Společenství vlastníků funguje stabilně a dům má vytvořenou finanční rezervu. Průkaz energetické náročnosti budovy uvádí energetickou třídu B, tedy úspornou budovu. K bytu je možné samostatně dokoupit až dvě vyhrazená venkovní parkovací stání. Každé je vedeno jako samostatný pozemek o výměře 13 m² a 14 m² a je k dispozici za cenu 490 000 Kč. Zájemce si tak může podle svých potřeb koupit jedno nebo obě parkovací místa. Rosice poskytují kompletní zázemí pro každodenní život. V dosahu jsou obchody, školy, mateřské školy, zdravotní služby, restaurace, sportoviště i zastávky veřejné dopravy. Výhodou je také dopravní spojení směrem na Brno a do okolních obcí. Kupní cena bytu činí 7 750 000 Kč včetně provize realitní kanceláře, DPH a právního servisu. Parkovací stání nejsou součástí této ceny a lze je dokoupit samostatně, každé za 490 000 Kč. . Pro více informací a sjednání prohlídky mě prosím kontaktujte."
     },
     {
-      "id": "sr_568447052",
-      "title": "Prodej bytu 2+kk 50 m²",
-      "price": 5990000,
-      "operation": "sale",
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/_/568447052?noredirect=1",
-      "lat": 49.1880883447939,
-      "lng": 16.384343504905704,
-      "sqm": 50,
-      "rooms": 2,
-      "address": "Na Vyhlídce, Rosice, Rosice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-08-04",
-      "listing_updated_at": "2026-10-09",
-      "description": "A 1.13 Nabízíme Vám prostorný byt 2+kk o užitné ploše 50,3 m2 v žádané novostavbě na ulici Na Vyhlídce v Rosicích. Byt v 1. patře novostavby disponuje prostornou lodžií (8,4 m2), privátní zahrádkou (21 m2) a velkým sklepem (7 m2). K bytu je možné dokoupit garážové stání v hodnotě 560.000,-Kč. Byt je ideální pro mladé páry, jednotlivce hledající nadstandardní prostor nebo jako investice na pronájem díky skvělému poměru velikosti a úložných prostor. Výhodné financování: Nyní uhradíte pouze 10 % z kupní ceny a zbývajících 90 % doplatíte až po úspěšné kolaudaci v roce 2028. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Kolaudace a předání bytu leden, únor 2028. Pro více informací na webových stránkách panoramarosice."
-    },
-    {
       "id": "sr_1447153740",
       "title": "Prodej bytu 1+kk 30 m²",
       "price": 4500000,
@@ -305,7 +285,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-08-04",
-      "listing_updated_at": "2026-10-13",
+      "listing_updated_at": "2026-11-06",
       "description": "A 1.02 Nabízíme Vám moderní byt 1+kk o velikosti 30 m2 s výjimečně prostornou terasou 22 m2 orientovanou na východ. Součástí ceny bytu je i sklep o velikosti 3,5 m2. K bytu je možné dokoupit garážové stání v hodnotě 560.000,-Kč. Nabízíme bydlení pro mladé, skvělou investici i příjemný domov pro Vaši rodinu. Výhodné financování: Nyní uhradíte pouze 10 % z kupní ceny a zbývajících 90 % doplatíte až po úspěšné kolaudaci v roce 2028. Díky napojení na dálnici D1 a pravidelným autobusovým a vlakovým spojům jsou Rosice perfektním místem pro ty, kteří pracují v Brně, ale volný čas chtějí trávit blíže přírodě a mimo ruch města. Na Vyhlídce máte k dispozici mateřskou školu, širší okolí pak nabízí supermarkety, školy, sportoviště, skvělé nové koupaliště i kulturní vyžití nejen na rosickém zámku. Kolaudace a předání bytu leden, únor 2028. Pro více informací na webových stránkách panoramarosice."
     },
     {
