@@ -1,13 +1,53 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-11-06T14:18:33.307Z",
+  "fetched_at": "2026-11-07T13:02:18.087Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_899379276",
+      "title": "Pronájem bytu 1+kk 45 m²",
+      "price": 15000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/899379276?noredirect=1",
+      "lat": 49.414426228443,
+      "lng": 14.66014684197,
+      "sqm": 45,
+      "rooms": 1,
+      "address": "Kožešnická, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-11-07",
+      "listing_updated_at": "2026-11-07",
+      "description": "Společnost Golden Castle s.r.o. nabízí k pronájmu nově zrekonstruovaný a zcela vybavený byt v historické části Tábora v druhém patře, 1+kk o výměře 45 m2. Dům, ve kterém se byt nachází, je vzdálen cca 100 m od historického centra Tábora v Kožešnické ulici. Je vybaven kuchyňskou linkou, sporákem, myčkou, ledničkou i veškerým nádobím, také lůžkovinami aj. Můžete přijít a hned bydlet. Obývací část spolu s televizí a stylovým nábytkem tvoří příjemné a pohodlné bydlení pro 2 osoby. Z předsíně, kde je dostatek úložného prostoru a vestavné skříně vedou dveře do koupelny se sprchou, WC a pračkou. Topení – akumulační kamna. ‌ Doporučujeme pro nájemníky kteří chtějí žít v pěkném prostředí historického města. Nájemné 15.000 Kč + voda dle spotřeby. Elektřinu si hradí každý sám. Skládá se jistina – kauce."
+    },
+    {
+      "id": "sr_570126412",
+      "title": "Pronájem bytu 2+kk 63 m²",
+      "price": 11050,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/570126412?noredirect=1",
+      "lat": 49.3967790842993,
+      "lng": 14.4813718156207,
+      "sqm": 63,
+      "rooms": 2,
+      "address": "Opařany, Opařany",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-11-06",
+      "listing_updated_at": "2026-11-06",
+      "description": "K pronájmu nabízíme nově zrekonstruovaný, velmi hezký, světlý byt 2+kk, 63 m2, který se nachází v centru obce Opařany (15 km od Tábora). Dominantou tohoto bytu je prostorný obývací pokoj s kuchyňským koutem o velikosti 28,1 m2, na který navazuje ložnice výměře 21,3 m2. Z chodby (6,1 m2) se vchází do koupelny s vanou, sprchovým koutem, umyvadlem a WC (7 m2). Vytápění kotlem, ohřev vody bojlerem. Nové podlahy z PVC. Byt orientovaný na SZ se nachází v přízemí bytového domu o šesti bytových jednotkách, který prošel kompletní rekonstrukcí (zateplení, nové štukové omítky, podlahy, okna, veškeré rozvody, elektřina atd.). Hotová příprava na internet a televizi. K bytu náleží parkovací místo před bytovým domem (v ceně nájmu). V místě je veškerá občanská vybavenost a perfektní dopravní dostupnost. Doporučujeme! Více info u makléře. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
+    },
     {
       "id": "sr_3293278284",
       "title": "Pronájem bytu 2+1 67 m²",
@@ -25,8 +65,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-11-06",
-      "listing_updated_at": "2026-11-06",
-      "description": "K pronájmu nabízíme byt o dispozici 2+1 a celkové výměře 67 m², který se nachází v ulici Husinecká v oblíbené lokalitě Na Kopečku v Táboře. Byt je situován ve zvýšeném přízemí cihlového domu bez výtahu. Byt prošel rekonstrukcí a nabízí příjemné bydlení s praktickým dispozičním řešením. Kuchyň je vybavena kuchyňskou linkou s elektrickým sporákem, elektrickou troubou, digestoří a lednicí. Koupelna je moderně řešená a disponuje vanou, toaleta je samostatná. Součástí vybavení bytu zůstává pračka, na chodbě šatní skříň, v ložnici postel a komoda se zásuvkami a v kuchyni jídelní stůl. Ostatní vybavení zachycené na fotografiích není součástí pronájmu. Na chodbě se nachází prostorná komora, která nabízí další úložný prostor. Podlahy tvoří kombinace plovoucí podlahy a parket. K bytu náleží také sklep. Úklid společných prostor domu zajišťuje úklidová firma. Parkování je možné v blízkosti domu. Měsíční náklady na bydlení: Zálohy na služby činí 3.504 Kč měsíčně v případě obsazenosti bytu dvěma osobami. Zahrnují vytápění (1.700 Kč), teplou a studenou vodu (800 Kč/osobu), úklid společných prostor (85 Kč) a TV přípojku (119 Kč). Při vyšším počtu osob bude tato částka příslušně upravena. Elektřina bude převedena na nájemce. Vratná kauce činí 26.000 Kč, což odpovídá dvěma měsíčním nájmům. Majitel upřednostní nekuřáky, zájemce bez domácích mazlíčků, se stálým příjmem a se zájmem o dlouhodobý pronájem. Byt je vhodný maximálně pro tři osoby. Při podpisu nájemní smlouvy nájemce hradí první nájemné včetně záloh na služby a vratnou kauci ve výši 25 000 Kč. Provize realitní kanceláři činí 15.730 Kč včetně DPH. Byt bude k dispozici od 1. 12. 2026. Těším se na osobní setkání! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
+      "listing_updated_at": "2026-11-07",
+      "description": "K pronájmu nabízíme byt o dispozici 2+1 a celkové výměře 67 m², který se nachází v ulici Husinecká v oblíbené lokalitě Na Kopečku v Táboře. Byt je situován ve zvýšeném přízemí cihlového domu bez výtahu. Byt prošel rekonstrukcí a nabízí příjemné bydlení s praktickým dispozičním řešením. Kuchyň je vybavena kuchyňskou linkou s elektrickým sporákem, elektrickou troubou, digestoří a lednicí. Koupelna je moderně řešená a disponuje vanou, toaleta je samostatná. Součástí vybavení bytu zůstává pračka, na chodbě šatní skříň, v ložnici postel a komoda se zásuvkami a v kuchyni jídelní stůl. Ostatní vybavení zachycené na fotografiích není součástí pronájmu. Na chodbě se nachází prostorná komora, která nabízí další úložný prostor. Podlahy tvoří kombinace plovoucí podlahy a parket. K bytu náleží také sklep. Úklid společných prostor domu zajišťuje úklidová firma. Parkování je možné v blízkosti domu. Měsíční náklady na bydlení: Zálohy na služby činí 3.504 Kč měsíčně v případě obsazenosti bytu dvěma osobami. Zahrnují vytápění (1.700 Kč), teplou a studenou vodu (800 Kč/osobu), úklid společných prostor (85 Kč) a TV přípojku (119 Kč). Při vyšším počtu osob bude tato částka příslušně upravena. Elektřina bude převedena na nájemce. Vratná kauce činí 26.000 Kč, což odpovídá dvěma měsíčním nájmům. Majitel upřednostní nekuřáky, zájemce bez domácích mazlíčků, se stálým příjmem a se zájmem o dlouhodobý pronájem. Byt je vhodný maximálně pro tři osoby. Při podpisu nájemní smlouvy nájemce hradí první nájemné včetně záloh na služby a vratnou kauci ve výši 26 000 Kč. Provize realitní kanceláři činí 15.730 Kč včetně DPH. Byt bude k dispozici od 1. 12. 2026. Těším se na osobní setkání! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
       "id": "sr_1318518860",
@@ -229,26 +269,6 @@
       "description": "K dlouhodobému pronájmu nabízíme bytovou jednotku 3+1 v zrekonstruovaném samostatně stojícím rodinném domě se zahradou v jihočeské vesnici Myslkovice ležící 5 km od města Soběslav a 12 km od města Tábor. Nájezd na D3 vzdálen 5 km. V domě je pouze tato bytová jednotka, nájemníci tak mají k dispozici celý rodinný dům i se zahradou s naprostým soukromím. Dům nabízí užitnou plochu 160 m² a nachází se na pozemku o celkové výměře 250 m². Před domem je zahrada o výměře 105 m². Dům lze pronajmout bez nábytku i s nábytkem (masivní dubový nábytek, sedací souprava), kuchyňská linka je plně vybavená včetně spotřebičů. V domě jsou následující místnosti: - 3 ložnice (dvě ložnice v přízemí a jedna ložnice v podkroví, přičemž jedna přízemní ložnice je průchozí - jde se z ní do podkrovní ložnice) - velmi prostorný obývací pokoj s kuchyní - 2 koupelny - jedna s vanou a WC, druhá se sprchovým koutem a WC, - prostorný půdní prostor Součástí domu je zahrada. Parkování možné před domem. Dům je vhodný zejména pro rodinu, která hledá dlouhodobé bydlení se zahradou a dostatkem prostoru. Obec Myslkovice je obklopena krásnou přírodou (cyklotrasy, koupaliště, turistické cíle), ale zároveň na místě s vynikající dopravní obslužností (5 km od nájezdu na D3, 1 km od vlakové zastávky, 300 m od autobusové zastávky). Nejbližší školy (MŠ, ZŠ, SŠ) v 5 km vzdálené Soběslavi. Kompletní rekonstrukce byla dokončena v roce 2023, dům je ve výborném stavu. Od své rekonstrukce byl dům využíván na rekreační krátkodobý pronájem a na portálech byl hosty hodnocen na 99 %. Technické vybavení: - podlahové vytápění napojené na tepelné čerpadlo - internetové připojení T-MOBILE - ohřev vody tepelným čerpadlem - obecní vodovod Domácí mazlíčci povolení. Preferovaná minimální délka nájmu: 2 roky K nastěhování ihned. Prohlídky dle domluvy. Komunikace přímo s majitelem, provize realitní kanceláři žádná. Nájemné: 21 500 Kč/měsíc Provozní náklady: orientačně 6 000 Kč/měsíc(záloha na otop a ohřev teplé vody: 4.000 Kč; elektřina: 1.500 Kč, záloha na vodné: 150 Kč / osoba) Vratná kauce: 50.000 Kč"
     },
     {
-      "id": "sr_3716481100",
-      "title": "Pronájem bytu 3+1 76 m²",
-      "price": 10900,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/3716481100?noredirect=1",
-      "lat": 49.226358,
-      "lng": 14.704689,
-      "sqm": 76,
-      "rooms": 3,
-      "address": "Dráchov, Dráchov",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-11-05",
-      "listing_updated_at": "2026-11-05",
-      "description": "Hledáte klidné bydlení na venkově, ale nechcete se vzdát městského komfortu? My hledáme nové nájemníky do kompletně zrekonstruovaného bytu 3+1 o celkové výměře 76 m². Byt se nachází ve 2. patře bytového domu v obci Dráchov a bude připraven k nastěhování od prosince 2026. Hlavní přednosti bytu: • Praktická dispozice: Vstupní chodba, samostatná kuchyně a 3 neprůchozí pokoje/ložnice. • Stav bytu: Nová plastová okna a na podlahách praktické, snadno udržovatelné PVC. Byt se pronajímá nevybavený, takže si ho můžete zařídit zcela podle svých představ. • Technické řešení: Ústřední plynové vytápění, ohřev vody zajišťuje spolehlivý elektrický bojler. • Skvělé zázemí: K bytu náleží možnost užívání garáže, sklepa a společné zahrady. Skvělá lokalita a dostupnost: • Vše potřebné po ruce: Veškerá občanská vybavenost (školy, obchody, lékaři) se nachází v Soběslavi a Veselí nad Lužnicí, které jsou vzdálené pouhých 5 km. • Rychlé spojení: Nájezd na dálnici D3 (Praha – České Budějovice) je pouhé 2 km od domu. Měsíční náklady: • Nájemné: 10 900 Kč • Vodné a stočné: 1 500 Kč (počítáno pro 3 osoby) • Teplo: 2 500 Kč • Společné prostory: 150 Kč • Elektřina v bytě se přepisuje přímo na nájemce. Jednorázové platby: • Vratná kauce: 21 800 Kč (výměra dvou nájmů) • Provize RK: 7 000 Kč Máte zájem o prohlídku nebo potřebujete více informací? Neváhejte mě kontaktovat, ráda vás bytem provedu!"
-    },
-    {
       "id": "sr_2647597132",
       "title": "Pronájem bytu 5+kk 127 m²",
       "price": 16000,
@@ -291,7 +311,7 @@
     {
       "id": "sr_3191865420",
       "title": "Pronájem bytu 1+kk 20 m²",
-      "price": 10134,
+      "price": 10200,
       "operation": "rent",
       "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/3191865420?noredirect=1",
       "lat": 49.4210266533654,
@@ -305,8 +325,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-11-02",
-      "listing_updated_at": "2026-11-04",
-      "description": "Exkluzivně nabízíme k pronájmu bytovou jednotku 1kk (garsoniéru) o velikosti podlahové plochy 20m2, nacházející se v klidné části Pražského sídliště v ulici Pražského Povstání. Byt se nachází ve zvýšeném přízemí (1NP) zatepleného bytového domu s výtahem. K bytové jednotce patří sklep. Nemovitost prošla kompletní rekonstrukcí, má nová plastová okna, zděné jádro (rekonstrukce koupelny, nové obklady, rozvody vody a elektřiny), kuchyňskou linku s el. sporákem, digestoří, pračkou, nová podlaha v obytné místnosti i v předsíni. Společná kolárna a sušárna. Parkování před domem. Majitel bytu požaduje nájemné 10.134,-Kč, zálohu na služby 970,-Kč (otop, SUV, TUV) + přepis elektrické energie na nájemce. Kauce 15.000,-Kč, + provize RK Byt je k dispozici od 01.01.2027. Vhodné pro jednu osobu. V blízkém dosahu veškerá občanská vybavenost- škola, školka, obchodní centrum, nemocnice. a zastávka MHD. Pro domluvení prohlídky kontaktujte makléře zakázky."
+      "listing_updated_at": "2026-11-06",
+      "description": "Exkluzivně nabízíme k pronájmu bytovou jednotku 1kk (garsoniéru) o velikosti podlahové plochy 20m2, nacházející se v klidné části Pražského sídliště v ulici Pražského Povstání. Byt se nachází ve zvýšeném přízemí (1NP) zatepleného bytového domu s výtahem. K bytové jednotce patří sklep. Nemovitost prošla kompletní rekonstrukcí, má nová plastová okna, zděné jádro (rekonstrukce koupelny, nové obklady, rozvody vody a elektřiny), kuchyňskou linku s el. sporákem, digestoří, pračkou, nová podlaha v obytné místnosti i v předsíni. Společná kolárna a sušárna. Parkování před domem. Majitel bytu požaduje nájemné 10.200,-Kč, zálohu na služby 970,-Kč (otop, SUV, TUV) + přepis elektrické energie na nájemce. Kauce 15.000,-Kč, + provize RK Byt je k dispozici od 01.01.2027. Vhodné pro jednu osobu. V blízkém dosahu veškerá občanská vybavenost- škola, školka, obchodní centrum, nemocnice. a zastávka MHD. Pro domluvení prohlídky kontaktujte makléře zakázky."
     },
     {
       "id": "sr_3124895820",
@@ -327,26 +347,6 @@
       "listing_published_at": "2026-09-25",
       "listing_updated_at": "2026-11-02",
       "description": "V exkluzivním zastoupení klienta nabízíme k dlouhodobému pronájmu luxusní byt o dispozici 2+kk a velikosti 38 m2 v rodinném domě. Tato moderní bytová jednotka je kompletně vybavena kuchyňskou linkou s vestavěnými spotřebiči, prostorným obývacím pokojem, útulnou ložnicí a elegantní koupelnou se sprchovým koutem. K bytu dále náleží jedno parkovací stání. V rámci domu je k dispozici bazén, dětský koutek a prostorná zahrada, ke které je přímý přístup. Vytápění je zajištěno moderním tepelným čerpadlem. Tento elegantní byt je ideální pro mladý pár, bez domácích mazlíčků a nekuřáky. Je volný ihned k nastěhování. Nachází se v klidné lokalitě, v kompletně zrekonstruovaném domě, který je obklopen přírodou. Přesto má výhodnou polohu v blízkosti města Soběslav. Nájemné činí 10 600 Kč/měsíc a k tomu je potřeba připočítat zálohy na energie ve výši 3 900Kč. Celkem činí měsíční nájemné 14 500 kč. Vyžaduje se kauce ve výši 1 x nájemného a 1 x odměna RK. Pokud máte zájem o tento byt nebo potřebujete další informace, neváhejte se na mě obrátit."
-    },
-    {
-      "id": "sr_850333772",
-      "title": "Pronájem bytu 2+1 56 m²",
-      "price": 13000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+1/_/850333772?noredirect=1",
-      "lat": 49.180963,
-      "lng": 14.694287,
-      "sqm": 56,
-      "rooms": 2,
-      "address": "Pod Markem, Veselí nad Lužnicí I, Veselí nad Lužnicí",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-08",
-      "listing_updated_at": "2026-11-02",
-      "description": "ERA Reality Premiéra nabízí pronájem bytové jednotky ve Veselí nad Lužnicí. Byt s balkonem o dispozici 2+1 se nachází na adrese Pod Markem 469. Hledáte nový domovo velikosti 56 m2 s balkonem ( 2,5m2 ), ze kterého se nabízí hezký výhled do okolí ? Byt je připraven k okamžitému nastěhování. Klidná obytná část města s příjemnou atmosférou a veškerou občanskou vybaveností je ideálním místem pro bydlení. Malé jihočeské město v okrese Tábor leží na soutoku řek Lužnice a Nežárky a nabízí mnoho výhod k pohodlnému a příjemnému bydlení. Město je obklopeno lesy, rybníky, pískovnami a vodními plochami. Nepřeberné množství aktivit od koupání až po rybaření i vodní sporty. V okolí také najdete spoustu cyklostezek a turistických tras. Vodácké trasy po Lužnici a Nežárce patří k místnímu životnímu stylu a lákají milovníky přírody a sportu. Bydlet tady ocení každý, kdo se chce vyhnout velkému městu, ale zároveň vyžaduje plnou občanskou vybavenost. Veselí nad Lužnicí je také důležitým železničním uzlem s přímými spojeními do Prahy, Českých Budějovic, Třeboně, Jindřichova Hradce. Ideální nájezd na dálnici D3 ( směr Tábor, Praha ). Byt se nachází ve 3.patře a nadchne prostorem a dostatkem světla. Celý interiér bytu působí vzdušně a je i částečně zařízen. Po domluvě s majitelem je nábytek možné ponechat, ale lze byt nabídnout i bez vybavení. Nabízíme byt, který je ve velmi dobrém stavu, přestože neprošel celkovou rekonstrukcí. K bytu náleží sklepní koje, bytový dům bez výtahu. Poplatky : nájem 13 000 Kč/měsíc, zálohové platby : 5 000 Kč/měsíc ( včetně elekřiny ) - dle počtu osob, kauce : 26 000 Kč, provize : 6 500 Kč. Hledáme pohodového a spolehlivého nájemce, kterému majitelé bytu nabízí možnost dlouhodobého pronájmu. V případě zájmu uveďte, prosím, základní informace (počet osob, věk, kontakty) a zašlete před sjednáním termínu prohlídky na uvedené kontakty makléře zakázky. Všechny zájemce vyrozumíme. Těším se na setkání. Radka Vacková, ERA Reality Premiéra, Masarykova 972, Hluboká nad Vltavou"
     },
     {
       "id": "sr_1718616140",
@@ -569,26 +569,6 @@
       "description": "Hledáte prostorný a kompletně zrekonstruovaný byt, kam se můžete nastěhovat bez dalších starostí? Pak by vás tahle nabídka mohla zaujmout. V Minské ulici na sídlišti Nad Lužnicí v Táboře nabízíme k dlouhodobému pronájmu byt 3+1 o podlahové ploše 67 m², který se nachází v 7. patře bytového domu. Byt prošel kompletní rekonstrukcí. Nové jsou rozvody elektřiny i vody, štuky, sádrokartonové podhledy, vinylové podlahy i interiérové dveře včetně obložkových zárubní. Rekonstrukcí prošla také koupelna a kuchyně. Kuchyňská linka je vybavena vestavnými spotřebiči – myčkou, indukční varnou deskou, elektrickou troubou, mikrovlnnou troubou, digestoří a lednicí. Byt je tak připravený k pohodlnému nastěhování bez nutnosti řešit další vybavení kuchyně. Dispozice 3+1 nabízí dostatek prostoru pro pár i rodinu. K dispozici je samostatný obývací pokoj, ložnice, další pokoj vhodný například jako dětský pokoj nebo pracovna a oddělená kuchyně. Každý člen domácnosti tak může mít svůj vlastní prostor. Díky umístění v 7. patře je byt světlý, vzdušný a nabízí příjemný odstup od běžného ruchu sídliště. Sídliště Nad Lužnicí patří mezi zavedené části Tábora s kompletní občanskou vybaveností. V pohodlném dosahu máte obchody, školy, školky, služby i zastávky MHD. Do centra Tábora se dostanete během několika minut autem nebo městskou dopravou. Byt je vhodný pro zájemce, kteří hledají dlouhodobé, čisté a komfortní bydlení v hotovém bytě bez nutnosti cokoli upravovat nebo řešit. Pokud vás nabídka zaujala, ozvěte se mi a domluvte si osobní prohlídku."
     },
     {
-      "id": "sr_2478440524",
-      "title": "Pronájem bytu 2+kk 70 m²",
-      "price": 15000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/2478440524?noredirect=1",
-      "lat": 49.3967790842993,
-      "lng": 14.4813718156207,
-      "sqm": 70,
-      "rooms": 2,
-      "address": "Opařany, Opařany",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-21",
-      "listing_updated_at": "2026-10-21",
-      "description": "Chcete mít svůj klid, vlastní dvorek a přírodu doslova za dveřmi? Tento mezonetový byt 2+kk v obci Opařany nabízí ideální kombinaci soukromí, venkovského prostředí a pohodlného zázemí pro práci i odpočinek. Byt se nachází v zrekonstruovaném rodinném domě a má samostatný vstup i vlastní venkovní prostor, který můžete využít k posezení, práci na čerstvém vzduchu nebo relaxaci v naprostém klidu. Dispozice bytu je praktická a vzdušná v přízemí najdete prostornou vstupní chodbu, obývací pokoj s kuchyňským koutem a koupelnu se sprchovým koutem a WC. Po schodech se dostanete do otevřeného podkroví, které nabízí dostatek světla a prostoru pro ložnici i pracovní zónu. Lokalita vás osloví především svým klidem a okolní přírodou. Dům se nachází v tiché části obce Opařany, přibližně 60 minut od Prahy a 15 minut od Tábora ideální kompromis mezi dostupností a únikem z městského ruchu. Pro zájemce o skutečně venkovský život je k dispozici také možnost pronájmu zázemí pro koně včetně přilehlé louky. Technické zázemí: * vytápění i ohřev vody zajišťuje tepelné čerpadlo * podlahové topení v obytné části, radiátor v podkroví * vlastní studna nulové náklady na vodu (neplatíte vodné ani stočné) Nájemné: 15.000 Kč / měsíc, Zálohy na elektřinu: dle spotřeby, Vratná jistota: 15.000 Kč Provize RK: 1 nájem + 21 % DPH Byt je ideální pro 1 až 2 dospělé osoby, které hledají klidné, samostatné bydlení s venkovním prostorem a možností žít blíž přírodě. Pro více informací nebo domluvení prohlídky kontaktujte makléře."
-    },
-    {
       "id": "sr_701104204",
       "title": "Pronájem bytu 2+kk 37 m²",
       "price": 7500,
@@ -745,8 +725,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-17",
-      "listing_updated_at": "2026-10-28",
-      "description": "Hledáte ubytování pro své zaměstnance nebo potřebujete pokoj k občasnému přespání přímo v centru Tábora? Nabízíme dva samostatné pokoje k dlouhodobému pronájmu, označené jako apartmány č. 303 a č. 304, v budově bývalého hotelu Slávie, v blízkosti vlakového nádraží a hlavní pošty. Lokalita nabízí výbornou dopravní dostupnost a snadnou dostupnost služeb v centru města. Každý pokoj je k pronájmu samostatně. Oba pokoje se nacházejí ve 3. patře budovy s výtahem, která prošla částečnou rekonstrukcí. Jsou podkrovní, mají plastová okna a kobercovou podlahu. Každý pokoj má vlastní koupelnu se sprchovým koutem, umyvadlem a toaletou. Pokoje jsou čisté a upravené a vhodné především pro jednu osobu. Na patře není k dispozici společná kuchyň. Ohřev jídla je možný v mikrovlnné troubě přímo na pokoji. Ubytování je vhodné zejména pro montéry, řemeslníky, pracovníky na služebních cestách, obchodní zástupce a další osoby, které hledají praktické zázemí během pracovního týdne. Měsíční náklady na jeden pokoj: Pokoj č. 303, 19 m²: 5 500 Kč, služby 2 200 Kč (vytápění, elektřina a voda), celkem 7 700 Kč Pokoj č. 304, 23 m²: 5 900 Kč, služby 2 200 Kč (vytápění, elektřina a voda), celkem 8 100 Kč Pronájem je určen pro dlouhodobější užívání. Nájemní smlouva se uzavírá na dobu jednoho roku. Požadovaná kauce je ve výši trojnásobku měsíčního nájemného. Provize realitní kanceláři činí jeden měsíční nájem + DPH. Pokoje budou volné po dohodě. Pro více informací nebo sjednání prohlídky kontaktujte makléřku nabídky. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
+      "listing_updated_at": "2026-11-07",
+      "description": "Hledáte ubytování pro své zaměstnance nebo potřebujete pokoj k občasnému přespání přímo v centru Tábora? Nabízíme dva samostatné pokoje k dlouhodobému pronájmu, označené jako apartmány č. 303 a č. 304, v budově bývalého hotelu Slávie, v blízkosti vlakového nádraží a hlavní pošty. Lokalita nabízí výbornou dopravní dostupnost a snadnou dostupnost služeb v centru města. Každý pokoj je k pronájmu samostatně. Oba pokoje se nacházejí ve 3. patře budovy s výtahem, která prošla částečnou rekonstrukcí. Jsou podkrovní, mají plastová okna a kobercovou podlahu. Každý pokoj má vlastní koupelnu se sprchovým koutem, umyvadlem a toaletou. Pokoje jsou čisté a upravené a vhodné především pro jednu osobu. Na patře není k dispozici společná kuchyň. Ohřev jídla je možný v mikrovlnné troubě přímo na pokoji. Ubytování je vhodné zejména pro montéry, řemeslníky, pracovníky na služebních cestách, obchodní zástupce a další osoby, které hledají praktické zázemí během pracovního týdne. Měsíční náklady na jeden pokoj: Pokoj č. 303, 19 m²: 5 500 Kč, služby 2 200 Kč (vytápění, elektřina a voda), celkem 7 700 Kč Pokoj č. 304, 23 m²: 5 500 Kč, služby 2 200 Kč (vytápění, elektřina a voda), celkem 7 700 Kč Pronájem je určen pro dlouhodobější užívání. Nájemní smlouva se uzavírá na dobu jednoho roku. Požadovaná kauce je ve výši trojnásobku měsíčního nájemného. Provize realitní kanceláři činí jeden měsíční nájem + DPH. Pokoje budou volné po dohodě. Pro více informací nebo sjednání prohlídky kontaktujte makléřku nabídky. Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
       "id": "sr_1809256524",
@@ -987,26 +967,6 @@
       "listing_published_at": "2026-09-15",
       "listing_updated_at": "2026-09-15",
       "description": "Rezervováno! Exkluzivně nabízíme k pronájmu bytovou jednotku o velikosti 2+kk (55m2), nacházející se v 1. patře (2.NP) bytového domu na hlavní třídě Husovo nám., v centru Tábora. Bytová jednotka disponuje kuchyňským koutem, dvěma místnostmi a koupelnou se sprchovým koutem, umyvadlem a WC. V bytě byla provedena kompletní rekonstrukce v rovině nové koupelny se sprchovým koutem, WC a umyvadlem s toaletkou a zrcadlem, pračkou, novými podlahami, interiérovými dveřmi a novou rohovou kuchyní s kuchyňskou linkou a vestavnými spotřebiči (lednice s mrazničkou, varná sklokeramická deska, vestavná trouba, komínová digestoř). K nastěhování byt od 1.12.2026. Vytápění řešeno plynem. Kauce ve výši 30.000,-Kč, nájemné 15.000,-Kč + záloha na úklid 400,-Kč/měsíc, vodu 300,-Kč/osobu a měsíc, elektriku a plyn. Provize RK ve výši 15.000,-Kč + DPH. V blízkém dosahu veškerá občanská vybavenost a centrum města Tábora. Pro více info volejte RK."
-    },
-    {
-      "id": "sr_1306898508",
-      "title": "Pronájem bytu 2+kk 90 m²",
-      "price": 15000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/1306898508?noredirect=1",
-      "lat": 49.3967790842993,
-      "lng": 14.4813718156207,
-      "sqm": 90,
-      "rooms": 2,
-      "address": "Opařany, Opařany",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-04-20",
-      "listing_updated_at": "2026-11-05",
-      "description": "Hledáte místo, kde opravdu zpomalíte, nadechnete se a budete mít klid na práci i odpočinek? Nabízíme k pronájmu mezonetový byt 2+kk v citlivě zrekonstruovaném rodinném domě v obci Opařany ideální útočiště mimo ruch města. Byt má samostatný vstup a nabízí jedinečné spojení moderního komfortu s atmosférou venkova. V přízemí se nachází prostorná vstupní chodba, obývací pokoj s kuchyňským koutem a koupelna se sprchovým koutem a WC. Dominantou bytu je vzdušný podkrovní prostor(50 m2), zaplavený denním světlem, který může sloužit jako ložnice, pracovna nebo kreativní zázemí. Okolí domu nabízí naprostý klid, zeleň a přímý kontakt s přírodou ideální pro procházky, práci z domova i relaxaci. Lokalita je vzdálená cca 60 minut od Prahy a pouhých 15 minut od Tábora, takže zůstává dobře dostupná, ale bez kompromisů v kvalitě života. Velkým benefitem je možnost pronájmu zázemí pro koně včetně přilehlé louky ideální pro ty, kteří chtějí žít opravdu venkovským způsobem života. Technické informace: vytápění a ohřev vody zajišťuje úsporné tepelné čerpadlo podlahové vytápění v obývacím prostoru, radiátor v podkroví vlastní studna nulové náklady na vodu (neplatíte vodné ani stočné) Nájemné: 15.000 Kč / měsíc Zálohy na elektřinu: dle spotřeby Vratná jistota: 15.000 Kč Provize RK: 1 nájem + DPH Byt je ideální pro 1 až 2 osoby, které hledají ticho, prostor a blízkost přírody. Pro více informací nebo domluvení prohlídky kontaktujte makléře."
     },
     {
       "id": "sr_979775564",
