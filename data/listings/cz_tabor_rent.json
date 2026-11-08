@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-11-07T13:02:18.087Z",
+  "fetched_at": "2026-11-08T13:18:03.276Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_508194892",
+      "title": "Pronájem bytu 1+kk 14 m²",
+      "price": 6800,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/508194892?noredirect=1",
+      "lat": 49.4074628581974,
+      "lng": 14.6777940971939,
+      "sqm": 14,
+      "rooms": 1,
+      "address": "Smolínova, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-11-08",
+      "listing_updated_at": "2026-11-08",
+      "description": "Nabízíme pronájem pokoje v prvním patře rodinného domu v docházkové vzdálenosti do centra města Tábora, v lokalitě Maredův Vrch - Smolínova ulice. Jedná se o jednu samostatnou, neprůchozí místnost o výměře 14 m². Na chodbě se nachází společná, sdílená kuchyňka, pračka, koupelna se sprchovým koutem a WC. Pronájem je volný ihned a je vhodný pro jednu osobu. U domu je možnost spoluužívat dvorek, kde je například gril s venkovním posezením. Nájemné včetně záloh na služby a včetně internetu ve výši = 6.800,-Kč měsíčně. Požadována vratná kauce ve výši = 6.800,-Kč. Rezervační poplatek RK ve výši = 6.800,-Kč."
+    },
     {
       "id": "sr_899379276",
       "title": "Pronájem bytu 1+kk 45 m²",
@@ -247,26 +267,6 @@
       "listing_published_at": "2026-07-02",
       "listing_updated_at": "2026-11-05",
       "description": "Pronájem sdíleného bydlení, pokoje v 1. patře rodinného domu. Ubytování je pouze pro 1 osobu, nájemné je paušální, včetně záloh. Pokoj je částečně zařízený - skříňky, stůl, postel. Společná koupelna s vanou a sprchovým koutem, včetně WC ve společném užívání. Ve společném užívání je také kuchyně, kompletně zařízená se spotřebiči a obývací pokoj v přízemí domu. V přízemí domu je terasa a venkovní posezení. K dispozici od listopadu 2026."
-    },
-    {
-      "id": "sr_3185573964",
-      "title": "Pronájem bytu 3+1 160 m²",
-      "price": 21500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/3185573964?noredirect=1",
-      "lat": 49.299675661668566,
-      "lng": 14.74750180615558,
-      "sqm": 160,
-      "rooms": 3,
-      "address": "Myslkovice, Myslkovice",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-11-02",
-      "listing_updated_at": "2026-11-05",
-      "description": "K dlouhodobému pronájmu nabízíme bytovou jednotku 3+1 v zrekonstruovaném samostatně stojícím rodinném domě se zahradou v jihočeské vesnici Myslkovice ležící 5 km od města Soběslav a 12 km od města Tábor. Nájezd na D3 vzdálen 5 km. V domě je pouze tato bytová jednotka, nájemníci tak mají k dispozici celý rodinný dům i se zahradou s naprostým soukromím. Dům nabízí užitnou plochu 160 m² a nachází se na pozemku o celkové výměře 250 m². Před domem je zahrada o výměře 105 m². Dům lze pronajmout bez nábytku i s nábytkem (masivní dubový nábytek, sedací souprava), kuchyňská linka je plně vybavená včetně spotřebičů. V domě jsou následující místnosti: - 3 ložnice (dvě ložnice v přízemí a jedna ložnice v podkroví, přičemž jedna přízemní ložnice je průchozí - jde se z ní do podkrovní ložnice) - velmi prostorný obývací pokoj s kuchyní - 2 koupelny - jedna s vanou a WC, druhá se sprchovým koutem a WC, - prostorný půdní prostor Součástí domu je zahrada. Parkování možné před domem. Dům je vhodný zejména pro rodinu, která hledá dlouhodobé bydlení se zahradou a dostatkem prostoru. Obec Myslkovice je obklopena krásnou přírodou (cyklotrasy, koupaliště, turistické cíle), ale zároveň na místě s vynikající dopravní obslužností (5 km od nájezdu na D3, 1 km od vlakové zastávky, 300 m od autobusové zastávky). Nejbližší školy (MŠ, ZŠ, SŠ) v 5 km vzdálené Soběslavi. Kompletní rekonstrukce byla dokončena v roce 2023, dům je ve výborném stavu. Od své rekonstrukce byl dům využíván na rekreační krátkodobý pronájem a na portálech byl hosty hodnocen na 99 %. Technické vybavení: - podlahové vytápění napojené na tepelné čerpadlo - internetové připojení T-MOBILE - ohřev vody tepelným čerpadlem - obecní vodovod Domácí mazlíčci povolení. Preferovaná minimální délka nájmu: 2 roky K nastěhování ihned. Prohlídky dle domluvy. Komunikace přímo s majitelem, provize realitní kanceláři žádná. Nájemné: 21 500 Kč/měsíc Provozní náklady: orientačně 6 000 Kč/měsíc(záloha na otop a ohřev teplé vody: 4.000 Kč; elektřina: 1.500 Kč, záloha na vodné: 150 Kč / osoba) Vratná kauce: 50.000 Kč"
     },
     {
       "id": "sr_2647597132",
@@ -865,7 +865,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-01",
-      "listing_updated_at": "2026-10-31",
+      "listing_updated_at": "2026-11-08",
       "description": "Nabízíme k pronájmu pro 1 osobu byt 1+kk, který se nachází v 1. patře cihlového domu v centru Soběslavi, výměra bytu je 21 m2 (pokoj s kuchyňskou linkou 15 m2, sprchový kout s WC 3 m2, chodba 3 m2), jedná se o zrekonstruovaný byt, vytápění – ÚT (kotel na plyn), TÚV – bojler, cena za pronájem 6.000,-Kč/měsíc + záloha na energie (voda, vytápění, elektro) 3.000,-Kč/měsíc, vratná jistina jeden nájem vč. záloh, tj. 9.000,-Kč, provize rk 6.000,-Kč, v obci Soběslav kompletní občanská vybavenost, výborné dopravní spojení – vlak, autobus, dálnice D3. Penb nebyl předložen, proto uvádíme tř. G."
     },
     {
@@ -887,26 +887,6 @@
       "listing_published_at": "2026-09-30",
       "listing_updated_at": "2026-09-30",
       "description": "Exkluzivně nabízíme k pronájmu bytovou jednotku 1+1 s balkonem, o velikosti 41m2, která se nachází ve 3 patře panelového domu na Náchodském sídlišti v Táboře. Bytový dům prošel kompletní revitalizací v rovině zateplení, nových balkonů, vchodu, zvonků a poštovních schránek, dále renovací společných prostor a nového výtahu. Samotná bytová jednotka je v původním, udržovaném stavu, nabízena kompletně vybavena a zařízena. K bytu patří sklepní kóje. Majitel požaduje nájemné ve výši 9.000,-Kč + zálohu na služby 3.500,-Kč. Kauce 10.000,-Kč, provize RK 9.000,-Kč + DPH 21%. Bytová jednotka je k nastěhování od 1.1.2027. Majitel upřednostní dlouhodobé nájemníky bez domácích mazlíčků. Pro více informací a termíny prohlídek, volejte naší RK."
-    },
-    {
-      "id": "sr_1402413132",
-      "title": "Pronájem bytu 1+kk 24 m²",
-      "price": 6900,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/1+kk/_/1402413132?noredirect=1",
-      "lat": 49.4209166588,
-      "lng": 14.6460760229,
-      "sqm": 24,
-      "rooms": 1,
-      "address": "Pražského povstání, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-09-30",
-      "listing_updated_at": "2026-11-03",
-      "description": "PROHLÉDNĚTE SI BYT V KLIDU DOMOVA V PŘILOŽENÉ 3D PROHLÍDCE. Exkluzivně nabízíme pronájem zděného bytu 1+kk o velikosti 24 m² v Táboře na Pražském sídlišti. Byt se nachází v přízemí zděného domu v ul. Pražského povstání. Byt je orientován do zeleně a umístěn ve vchodu mezi domy mimo průjezdnou komunikaci. Dispozice bytu: obytná místnost s kuchyňským koutem, koupelna se sprchovým koutem a WC a vstupní chodbička. V ceně pronájmu nejsou zahrnuty služby ve výši 1.350,-Kč (vytápění, studená a teplá voda a služby spojené se společnými prostory domu), elektřina bude přepsána na nového nájemce a není součástí plateb placených pronajímateli. Majitel požaduje vratnou peněžitou jistotu ve výši 15.000,- Kč. Provize RK 10.000,- Kč. Byt je k dispozici novému nájemci. Majitel preferuje dlouhodobý pronájem. Pro bližší informace volejte makléře zakázky."
     },
     {
       "id": "sr_3180273740",
