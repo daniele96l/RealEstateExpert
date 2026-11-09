@@ -1,5 +1,153 @@
 [
   {
+    "id": "sr_79446860",
+    "portal": "sreality",
+    "detected_at": "2026-11-09T16:07:14.735Z",
+    "presumed_rented_at": "2026-11-09T16:07:14.735Z",
+    "first_seen_at": "2026-09-30T12:28:07.625Z",
+    "last_seen_at": "2026-11-08T13:18:34.085Z",
+    "days_on_market": 40,
+    "price": 10444005,
+    "sqm": 143,
+    "rooms": 4,
+    "property_type": "flat",
+    "address": "Vodice",
+    "zone": "Vodice",
+    "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/_/79446860?noredirect=1",
+    "description": "Vodice - prodej penthouse v novostavbě ve Vodicích. Byt označený S4 se nachází v budově s celkem 4 byty. Skládá se ze vstupní haly (9,34m2), prádelny (4,25m2), obývacího pokoje s kuchyní a jídelnou (40,85m2), 3 ložnic (12,23m2, 16,22m2 a 13,95m2) a 2 koupelen (6,27m2 a 5,13m2). Východ z obývacího pokoje vede na krytou terasu o rozloze 30,16m2 a nekrytou terasu o rozloze 25,60m2. Budova je vybavena elektrickým podlahovým vytápěním v koupelnách a obývacím pokoji, klimatizací v každém pokoji, je instalována příprava na ohřev bazénu, truhlářské práce jsou z ALU oken a ALU skleněných zdvižně-posuvných stěn, koupelny budou plně vybaveny, keramika v celém bytě a na terasách, neutrální přírodní barvy, ve vnitrobloku kostky a vstupní dveře do vnitrobloku. V nádvoří budovy je instalována biočistička a ke každému bytu náleží 1 parkovací místo. Budova se nachází 1 km od centra a 1,2 km od pláže. Lokalita nabízí klid a pohodlí při užívání letních měsíců nebo příjemném rodinném životě po celý rok. Prodávající si vyhrazuje právo vybrat kupujícího na základě jím zvolených kritérií.",
+    "title": "Prodej bytu 4+kk 143 m²",
+    "bathrooms": null,
+    "floor": null,
+    "energy_class": null,
+    "energy_kwh_sqm": null,
+    "images": null,
+    "furnished": null,
+    "built_year": null,
+    "lift": null,
+    "garden": null,
+    "terrace": null,
+    "garage": null,
+    "condominio_monthly": null,
+    "advertiser_name": null,
+    "condition": null,
+    "condition_status": null,
+    "needs_renovation": null,
+    "listing_published_at": "2026-03-25",
+    "listing_updated_at": "2026-09-30",
+    "lat": 49.4643103470255,
+    "lng": 14.908980077746,
+    "price_history": [
+      {
+        "at": "2026-09-30T12:28:07.625Z",
+        "price": 10474035
+      },
+      {
+        "at": "2026-10-01T13:05:22.732Z",
+        "price": 10484760
+      },
+      {
+        "at": "2026-10-02T12:26:36.025Z",
+        "price": 10495485
+      },
+      {
+        "at": "2026-10-06T13:21:11.030Z",
+        "price": 10493340
+      },
+      {
+        "at": "2026-10-07T13:16:51.402Z",
+        "price": 10469745
+      },
+      {
+        "at": "2026-10-08T13:25:02.437Z",
+        "price": 10480470
+      },
+      {
+        "at": "2026-10-09T13:10:40.009Z",
+        "price": 10467600
+      },
+      {
+        "at": "2026-10-10T12:26:57.421Z",
+        "price": 10452585
+      },
+      {
+        "at": "2026-10-13T14:09:59.333Z",
+        "price": 10463310
+      },
+      {
+        "at": "2026-10-14T11:45:32.532Z",
+        "price": 10456875
+      },
+      {
+        "at": "2026-10-15T11:24:15.265Z",
+        "price": 10448295
+      },
+      {
+        "at": "2026-10-16T11:19:27.490Z",
+        "price": 10446150
+      },
+      {
+        "at": "2026-10-17T10:38:59.890Z",
+        "price": 10435425
+      },
+      {
+        "at": "2026-10-20T11:28:47.545Z",
+        "price": 10441860
+      },
+      {
+        "at": "2026-10-21T11:46:38.826Z",
+        "price": 10435425
+      },
+      {
+        "at": "2026-10-22T11:44:46.339Z",
+        "price": 10407540
+      },
+      {
+        "at": "2026-10-23T11:35:37.389Z",
+        "price": 10409685
+      },
+      {
+        "at": "2026-10-24T10:56:56.409Z",
+        "price": 10439715
+      },
+      {
+        "at": "2026-10-27T12:09:10.861Z",
+        "price": 10452585
+      },
+      {
+        "at": "2026-10-28T12:45:12.685Z",
+        "price": 10441860
+      },
+      {
+        "at": "2026-10-30T12:48:28.292Z",
+        "price": 10439715
+      },
+      {
+        "at": "2026-10-31T12:15:44.719Z",
+        "price": 10450440
+      },
+      {
+        "at": "2026-11-03T14:11:55.082Z",
+        "price": 10446150
+      },
+      {
+        "at": "2026-11-04T14:27:46.454Z",
+        "price": 10441860
+      },
+      {
+        "at": "2026-11-05T14:40:30.564Z",
+        "price": 10428990
+      },
+      {
+        "at": "2026-11-06T14:19:11.134Z",
+        "price": 10420410
+      },
+      {
+        "at": "2026-11-07T13:02:54.693Z",
+        "price": 10444005
+      }
+    ]
+  },
+  {
     "id": "sr_1668161612",
     "portal": "sreality",
     "detected_at": "2026-11-08T13:18:34.085Z",
