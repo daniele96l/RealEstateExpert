@@ -1,13 +1,53 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-11-09T16:06:37.033Z",
+  "fetched_at": "2026-11-10T14:59:05.375Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Jihozápad, Česko"
   },
   "listings": [
+    {
+      "id": "sr_3223593036",
+      "title": "Pronájem bytu 2+kk 44 m²",
+      "price": 15000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/3223593036?noredirect=1",
+      "lat": 49.41444472222,
+      "lng": 14.66011583333,
+      "sqm": 44,
+      "rooms": 2,
+      "address": "Kožešnická, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-10-02",
+      "listing_updated_at": "2026-11-10",
+      "description": "Společnost Golden Castle s.r.o. nabízí k pronájmu nově zrekonstruovaný a zcela vybavený podkrovního byt v historické části Tábora v druhém podlaží, 2+kk o výměře 44 m2. Dům, ve kterém se byt nachází, je vzdálen asi 100 m od historického centra Tábora v Kožešnické ulici. Je vybaven kuchyňskou linkou, sporákem, myčkou, ledničkou i veškerým nádobím a náčiním, také lůžkovinami aj. Obývací část spolu s televizí a stylovým nábytkem tvoří příjemné a pohodlné bydlení pro 2 osoby. Dřevěné schody v obývací části vedou ke zvýšenému ložnicovému prostoru, tzv. galerie na spaní. Z předsíně, kde je dostatek úložného prostoru, vedou dveře do koupelny se sprchou, WC a pračkou. Topení – akumulační kamna. ‌ Z okna bytu je pěkný výhled do historické části města. Doporučujeme pro nájemníky kteří chtějí žít v pěkném prostředí historického města. Nájemné 15.000 Kč + voda čtvrtletně dle aktuální spotřeby. Elektřinu si hradí každý sám."
+    },
+    {
+      "id": "sr_1019834444",
+      "title": "Pronájem bytu 2+kk 33 m²",
+      "price": 10000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/1019834444?noredirect=1",
+      "lat": 49.41856527777,
+      "lng": 14.66235472222,
+      "sqm": 33,
+      "rooms": 2,
+      "address": "Čsl. armády, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-11-09",
+      "listing_updated_at": "2026-11-09",
+      "description": "Nabízíme k pronájmu kompletně zrekonstruovanou bytovou jednotku 2+kk o užitné ploše 33 m2 , která se nachází ve 2.patře zděného domu nedaleko centra Tábora. ‌ Dispozice bytu: vstupní předsíň, pokoj s kuchyňským koutem včetně kuchyňské linky se spotřebiči - vestavná sklokeramická deska a trouba, digestoř, ložnice, koupelna se sprchovým koutem a toaletou. K bytové jednotce náleží sklepní kóje, která se nachází v 1.PP. ‌ Zdroj tepla zajišťuje ústřední dálkové vytápění a ohřev teplé vody vlastní bojler. ‌ Měsíční nájemné ve výši 10.000,–Kč + 2.400,– záloha služby pro 2 osoby + elektřina. Majitelé požadují kauci ve výši 20.000,-Kč. ‌ K dispozici od 15.12.2025. ‌ Dům s nabízeným bytem je situován v centru města s možností parkování v docházkové vzdálenosti. ‌ V těsné blízkosti domu se nachází zastávka MHD. ‌ V této lokalitě najdeme kompletní občanskou vybavenost. ‌"
+    },
     {
       "id": "sr_3335192652",
       "title": "Pronájem bytu 2+kk 76 m²",
@@ -511,7 +551,7 @@
     {
       "id": "sr_1285423180",
       "title": "Pronájem bytu 3+kk 80 m²",
-      "price": 22000,
+      "price": 24000,
       "operation": "rent",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+kk/_/1285423180?noredirect=1",
       "lat": 49.419696876019,
@@ -525,8 +565,8 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-26",
-      "listing_updated_at": "2026-10-27",
-      "description": "Nabízíme pronájem nového nadstandardního zděného bytu 3+kk se dvěma terasami o celkové výměře 80 m2, v ulici Janáčkova v širším centru města Tábor. Byt se nachází v pátém nadzemním podlaží zděného domu s výtahem. Bytová jednotka sestává z předsíně, obývacího pokoje s kuchyňským koutem (nová kuchyňská linka vybavena myčkou, varnou deskou, digestoří, troubou a mikrovlnnou troubou) a vstupem na terasu, ložnicí s vlastní menší terasou, dětského pokoje, koupelny se sprchovým koutem a samostatného WC. Bytová jednotka má centrální podlahové vytápění, klimatizační jednotku a předokenní žaluzie. Veškerá média jsou samostatně měřitelná (topení, elektřina, voda). K bytu dále náleží sklep umístěný v přízemí domu. Byt nabízí dvě prostorné terasy o ploše 19,1 m2 a 5,3 m2 s krásným výhledem na město Tábor a okolí. V docházkové vzdálenosti domu je základní občanská vybavenost. Velmi dobré parkování přímo před domem. Bytová jednotka se nachází v novostavbě bytového domu v žádané lokalitě města Tábor. Měsíční nájemné činí 22.000, -Kč + 3.000, -Kč záloha na energie + elektřina (bude přepsána na nájemce), kauce 45.000, - Kč. Volné od 1.12.2026. Doporučujeme osobní prohlídku."
+      "listing_updated_at": "2026-11-10",
+      "description": "Nabízíme pronájem nového nadstandardního zděného bytu 3+kk se dvěma terasami o celkové výměře 80 m2, v ulici Janáčkova v širším centru města Tábor. Byt se nachází v pátém nadzemním podlaží zděného domu s výtahem. Bytová jednotka sestává z předsíně, obývacího pokoje s kuchyňským koutem (nová kuchyňská linka vybavena myčkou, varnou deskou, digestoří, troubou a mikrovlnnou troubou) a vstupem na terasu, ložnicí s vlastní menší terasou, dětského pokoje, koupelny se sprchovým koutem a samostatného WC. Bytová jednotka má centrální podlahové vytápění, klimatizační jednotku a předokenní žaluzie. Veškerá média jsou samostatně měřitelná (topení, elektřina, voda). K bytu dále náleží sklep umístěný v přízemí domu. Byt nabízí dvě prostorné terasy o ploše 19,1 m2 a 5,3 m2 s krásným výhledem na město Tábor a okolí. V docházkové vzdálenosti domu je základní občanská vybavenost. Velmi dobré parkování přímo před domem. Bytová jednotka se nachází v novostavbě bytového domu v žádané lokalitě města Tábor. Měsíční nájemné činí 24.000, -Kč + 3.000, -Kč záloha na energie + elektřina (bude přepsána na nájemce), kauce 48.000, - Kč + provize RK ve výši jednoho měsíčního nájmu. Volné od 1.12.2026. Doporučujeme osobní prohlídku."
     },
     {
       "id": "sr_2623406156",
@@ -829,26 +869,6 @@
       "description": "Pronájem prostorného podkrovního bytu 5+kk v historickém centru Tábora – Filipovská ulice ‌ Nabízíme k pronájmu prostorný a velmi příjemný podkrovní byt o dispozici 5+kk, který se nachází ve Filipovské ulici přímo v historickém centru Tábora. Výjimečná poloha umožňuje užívat si atmosféru Starého Města a zároveň mít veškerou občanskou vybavenost v pohodlném dosahu. ‌ Byt zaujme především velkorysým prostorem, přiznanými dřevěnými trámy a množstvím denního světla. Kombinace dřeva a podkrovních prvků vytváří útulný interiér s osobitou atmosférou. ‌ Dominantou bytu je prostorná obytná část propojená s kuchyní. Kuchyňská linka je vybavena troubou, varnou deskou a velkou lednicí. Myčku je možné po dohodě odkoupit od současného nájemce. ‌ Byt nabízí několik samostatných místností, které lze využít jako ložnice, dětské pokoje, pracovnu nebo pokoj pro hosty. ‌ Velkým benefitem jsou dvě koupelny. První je vybavena sprchovým koutem, druhá nabízí prostornou rohovou vanu i walk-in sprchový kout. Nechybí ani dostatek praktických úložných prostor včetně vestavěných skříní. ‌ Přestože se jedná o podkrovní byt, díky kvalitnímu zateplení je zde příjemné klima i během letních měsíců, takže byt nabízí komfortní bydlení po celý rok. ‌ Velkou předností je samotná lokalita. Historické centrum Tábora máte doslova za dveřmi, na Žižkovo náměstí i do malebných uliček Starého Města dojdete během několika minut. V okolí se nachází restaurace, kavárny, obchody, školy a další služby potřebné pro každodenní život. ‌ Nájemné: 25 000 Kč/měsíc Zálohy na služby včetně energií: cca 5 000 Kč/měsíc Vratná kauce: 50 000 Kč Provize RK: 25 000 Kč ‌ Pokud hledáte prostorné bydlení s charakterem na výjimečném místě přímo v historickém centru Tábora, rádi vás přivítáme na osobní prohlídce."
     },
     {
-      "id": "sr_3223593036",
-      "title": "Pronájem bytu 2+kk 44 m²",
-      "price": 16000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/3223593036?noredirect=1",
-      "lat": 49.41444472222,
-      "lng": 14.66011583333,
-      "sqm": 44,
-      "rooms": 2,
-      "address": "Kožešnická, Tábor, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-02",
-      "listing_updated_at": "2026-10-02",
-      "description": "Společnost Golden Castle s.r.o. nabízí k pronájmu nově zrekonstruovaný a zcela vybavený podkrovního byt v historické části Tábora v druhém podlaží, 2+kk o výměře 44 m2. Dům, ve kterém se byt nachází, je vzdálen asi 100 m od historického centra Tábora v Kožešnické ulici. Je vybaven kuchyňskou linkou, sporákem, myčkou, ledničkou i veškerým nádobím a náčiním, také lůžkovinami aj. Obývací část spolu s televizí a stylovým nábytkem tvoří příjemné a pohodlné bydlení pro 2 osoby. Dřevěné schody v obývací části vedou ke zvýšenému ložnicovému prostoru, tzv. galerie na spaní. Z předsíně, kde je dostatek úložného prostoru, vedou dveře do koupelny se sprchou, WC a pračkou. Topení – akumulační kamna. ‌ Z okna bytu je pěkný výhled do historické části města. Doporučujeme pro nájemníky kteří chtějí žít v pěkném prostředí historického města. Nájemné 16.000 Kč + voda. Elektřinu si hradí každý sám."
-    },
-    {
       "id": "sr_2434080844",
       "title": "Pronájem bytu 1+kk 21 m²",
       "price": 6000,
@@ -1007,6 +1027,26 @@
       "listing_published_at": "2026-08-18",
       "listing_updated_at": "2026-10-19",
       "description": "REZERVOVÁNO! Exkluzivně nabízíme k okamžitému pronájmu nově zrenovovanou bytovou jednotku 2+1 s balkonem a podlahovou plochou 64m2, která se nachází ve 4 patře panelového domu, v klidné části Tábora na Kopečku, ulici Budovatelů. V bytě proběhla velmi vkusná, kompletní rekonstrukce nového koupelnového jádra - koupelna s vanou a umyvadlem se zrcadlem a toaletkou, připojení na pračku, samostatná toaleta, rozvody vody, elektriky nové, podlahy dlažba/plovoucí. Kuchyně včetně vestavných spotřebičů - myčka Candy, varná indukční deska a trouba Electrolux, zabudovaná digestoř Amica. K dispozici do bytu přivedený optický kabel na internet. Po rekonstrukci je celý bytový dům, v rovině nových vchodových dveří, zvonků, schránek, interiérů chodeb, v současnosti probíhá zateplení domu a výměna balkonů. V blízkém dosahu bytu je veškerá občanská dostupnost, MHD. K bytu patří velký zděný sklep, dále v domě k dispozici kočárkárna, kolárna. Majitel upřednostní dlouhodobé nájemníky. Nájemné 14.500,-Kč + pevná záloha na služby 4.000,-Kč + přepis elektrické energie na nájemníka. Kauce ve výši 2x 14.500,-Kč, přepis elektrické energie na nájemníka. Provize RK 14.500,-Kč + DPH. K nastěhování od 1.11.2026. V případě zájmu o prohlídku, volejte naší RK."
+    },
+    {
+      "id": "sr_3170578508",
+      "title": "Pronájem bytu 1+1 39 m²",
+      "price": 8000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/1+1/_/3170578508?noredirect=1",
+      "lat": 49.48269,
+      "lng": 14.526948,
+      "sqm": 39,
+      "rooms": 1,
+      "address": "Nad Hřištěm, Jistebnice, Jistebnice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-09-01",
+      "listing_updated_at": "2026-10-22",
+      "description": "Nabízím Vám k pronájmu světlý byt o dispozici 1+1 a celkové výměře 39m2, který se nachází v přízemí zatepleného bytového domu v klidné lokalitě města Jistebnice. Byt je nevybavený a dispozičně rozdělen na prostorný pokoj, kuchyň, koupelnu se sprchovým koutem a samostatné WC. Byt je vytápěn elektrokotlem. K bytu náleží větší sklepní kóje. V domě je k dispozici společná kolárna. Parkování je možné přímo u domu. Měsíční náklady na bydlení: 8.000 Kč nájemné 4.000 Kč záloha (elektřina, voda) - 1x ročně bude vyúčtováno dle skutečné spotřeby 16.000 Kč vratná kauce Provize RK činí 11 000 Kč + DPH 21 %. Město Jistebnice nabízí základní občanskou vybavenost a dobrou dostupnost do Tábora. Byt je připraven ihned k nastěhování. Majitel preferuje jednotlivce či pár, ideálně nekuřáky. Byt je připraven k okamžitému nastěhování. Pro více informací a termín prohlídky volejte makléřce nabídky! Pronajímající si vyhrazuje právo vybrat nájemce na základě jím zvolených kritérií."
     },
     {
       "id": "sr_4139565132",

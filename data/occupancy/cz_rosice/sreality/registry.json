@@ -2,8 +2,8 @@
   "city": "Rosice",
   "market": "cz",
   "portal": "sreality",
-  "updated_at": "2026-11-09T16:07:32.243Z",
-  "snapshot_count": 120,
+  "updated_at": "2026-11-10T14:59:45.480Z",
+  "snapshot_count": 121,
   "last_provider": "sreality",
   "listings": {
     "sr_3042828364": {
@@ -1477,7 +1477,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-09-18T11:09:43.911Z",
-      "last_seen_at": "2026-11-09T16:07:32.243Z",
+      "last_seen_at": "2026-11-10T14:59:45.480Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1778,7 +1778,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-10-21T11:46:44.848Z",
-      "last_seen_at": "2026-11-09T16:07:32.243Z",
+      "last_seen_at": "2026-11-10T14:59:45.480Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1826,9 +1826,9 @@
       "needs_renovation": null,
       "first_seen_at": "2026-10-26T12:52:18.989Z",
       "last_seen_at": "2026-11-09T16:07:32.243Z",
-      "rented_at": null,
-      "status": "active",
-      "days_on_market": null,
+      "rented_at": "2026-11-10T14:59:45.480Z",
+      "status": "presumed_rented",
+      "days_on_market": 15,
       "price_history": [
         {
           "at": "2026-10-26T12:52:18.989Z",
