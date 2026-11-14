@@ -1,13 +1,33 @@
 {
   "city": "cz_rosice",
   "operation": "sale",
-  "fetched_at": "2026-11-13T14:39:36.562Z",
+  "fetched_at": "2026-11-14T13:33:59.200Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
     "display_name": "Rosice, okres Brno-venkov, Jihomoravský kraj, 665 01, Česko"
   },
   "listings": [
+    {
+      "id": "sr_2856087628",
+      "title": "Prodej bytu 3+kk 123 m²",
+      "price": 12500000,
+      "operation": "sale",
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/_/2856087628?noredirect=1",
+      "lat": 49.1871191486,
+      "lng": 16.3847467697,
+      "sqm": 123,
+      "rooms": 3,
+      "address": "Na Vyhlídce, Rosice, Rosice",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-11-13",
+      "listing_updated_at": "2026-11-14",
+      "description": "Novější výjimečný byt 3+kk s možností jednoduché dispoziční úpravy na 4+kk, s unikátním obytným atriem, které zvětšuje a prosvětluje hlavní obytnou zónu. Velkým bonusem je sklep o výměře 8,6 m² a vyhrazené parkovací místo přímo u domu. Originální otevřené atrium můžete užívat celoročně, nabízí maximální soukromí pod širým nebem a změní Váš pohled na bydlení v bytě. Můžete zde grilovat, pořádat oslavy, opalovat se, užívat si klidné relaxace a nikdo na Vás neuvidí. Byt se nachází v posledním, tedy v 8.NP bytového domu se 2 výtahy. Jedná se o kompromis mezi bydlením v rodinném domě nebo bytě, zde ovšem bez potřebného času a financí na údržbu, což rodinné domy vyžadují. Vybavení: kuchyňská linka na míru s vestavěnými spotřebiči (sklokeramická varná deska, digestoř, trouba, myčka, lednice s mrazákem), klimatizace (topí i chladí), žaluzie, masívní dubové podlahy, vestavěné skříně v předsíni a v ložnici, videotelefon Tento bytový rezort je vybaven tělocvičnou, mateřskou školou, základní školou, oddychovou i sportovní zónou a umožní rodinám i jednotlivcům klidné a spokojené bydlení. Dispozice bytu a jeho výjimečnost může uspokojit ty nejnáročnější klienty. Neváhejte bydlet Brnu na dosah. Budete mít originální nadstandardní bydlení, za souseda přírodu a dechberoucí výhledy do okolí. Obrazy na Vaší stěně budou živé a širokoúhlé. Stěny jsou po celé šíři prosklené. To je třeba vidět na místě. Ráda Vás v tomto krásném bytě provedu. Je připraven k nastěhování ihned."
+    },
     {
       "id": "sr_935080012",
       "title": "Prodej bytu 2+kk 58 m²",
