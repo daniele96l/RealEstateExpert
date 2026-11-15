@@ -1,13 +1,33 @@
 {
   "city": "cz_tabor",
   "operation": "rent",
-  "fetched_at": "2026-11-14T13:33:08.784Z",
+  "fetched_at": "2026-11-15T14:00:51.334Z",
   "center": {
     "lat": 49.4141533,
     "lng": 14.6587234,
     "display_name": "Tábor, okres Tábor, Jihočeský kraj, Česko"
   },
   "listings": [
+    {
+      "id": "sr_2436657228",
+      "title": "Pronájem bytu 3+1 66 m²",
+      "price": 20000,
+      "operation": "rent",
+      "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/2436657228?noredirect=1",
+      "lat": 49.424209191,
+      "lng": 14.64603958,
+      "sqm": 66,
+      "rooms": 3,
+      "address": "Sokolovská, Tábor, Tábor",
+      "property_type": "flat",
+      "property_type_label": "Byt",
+      "condition_status": null,
+      "condition": null,
+      "needs_renovation": null,
+      "listing_published_at": "2026-11-13",
+      "listing_updated_at": "2026-11-15",
+      "description": "Uvažujete o změně bydlení a chtěli byste bydlet v pěkném, prostorném bytě po rekonstrukci? Nabízíme ve výhradním zastoupení pronájem bytu s dispozicí 3+1 s balkónem o celkové užitné ploše 66 m² ve vyhledávané lokalitě ve městě Tábor, v prvním patře, nedaleko nemocnice, supermarketů, zimního stadionu, tenisového areálu, mateřské školky a základní školy. Z obývacího pokoje je vstup na balkón s příjemným výhledem do okolí, k bytu náleží sklepní kóje. Koupelna je se sprchovým koutem, samostatné WC a dvě prostorné chodby. Jedná se o mimořádně úspornou nemovitost s energetickou náročností A. Byt je volný k nastěhování od 1.12.2026. Město Tábor nabízí veškerou občanskou vybavenost Těším se s vážnými zájemci na prohlídku."
+    },
     {
       "id": "sr_1814851660",
       "title": "Pronájem bytu 2+kk 64 m²",
@@ -185,7 +205,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-09-10",
-      "listing_updated_at": "2026-11-12",
+      "listing_updated_at": "2026-11-14",
       "description": "Nabízíme k pronájmu příjemný byt o dispozici 2+1 a celkové výměře 60 m², který se nachází v 1. patře cihlového domu v centru města. Byt nabízí praktické a příjemné bydlení. Součástí kuchyně je kuchyňská linka vybavená troubou, sklokeramickou varnou deskou a myčkou nádobí. Koupelna je vybavena sprchovým koutem včetně WC a pračkou. Velkou předností bytu je balkon orientovaný na jižní stranu, ze kterého je krásný výhled na řeku Lužnici. Díky umístění v centru města je veškerá občanská vybavenost i služby pohodlně dostupná. K bytu je možné si pronajmout garáž u domu, nájemné 3.000,-Kč. Nájemné nezahrnuje zálohy na vodu a topení ve výši 3.400,- Kč. Elektřina bude převedena na nájemce. Podmínky pronájmu: dispozice: 2+1 podlahová plocha: 60 m² 1. patro cihlového domu balkon s jižní orientací a výhledem na řeku Lužnici kuchyňská linka, trouba, sklokeramická deska a myčka koupelna se sprchovým koutem a WC elektřina – převod na nájemce kauce: 19.400,-Kč provize RK k dispozici od listopadu 2026 Byt je vhodný pro ty, kteří hledají pohodlné bydlení v centru města s příjemným výhledem a balkonem. Pro více informací nebo domluvení prohlídky nás neváhejte kontaktovat."
     },
     {
@@ -267,26 +287,6 @@
       "listing_published_at": "2026-09-21",
       "listing_updated_at": "2026-11-11",
       "description": "Nabízíme k pronájmu prostorný mezonetový byt o dispozici 5+kk a výměře 127,2m², který se nachází v atraktivní lokalitě v centru Tábora, v ulici Střelnická, jen pár minut chůze od Žižkova náměstí. Součástí pronájmu je parkovací stání, které je v této části města velkou výhodou. Byt je dispozičně řešen ve dvou podlažích. V dolním podlaží se nachází kuchyně propojená s obývacím pokojem, ložnice, dětský pokoj, koupelna s vanou a samostatná toaleta. V horním podlaží jsou další dva samostatné pokoje. Kuchyňská linka je vybavena spotřebiči – lednicí, troubou, sklokeramickou varnou deskou, myčkou a mikrovlnnou troubou. Ve všech obytných místnostech jsou dřevěné podlahy, v koupelně a na toaletě je položena dlažba. Vytápění zajišťuje plynový kotel. K bytu náleží prostorný zděný sklep. Velkou předností bytu je jeho poloha v historickém centru Tábora. Žižkovo náměstí je vzdálené jen několik minut chůze a v bezprostředním okolí je k dispozici kompletní občanská vybavenost – obchody, restaurace, kavárny, školy, služby i zastávky MHD. Přesto nabízí byt díky vlastnímu parkovacímu stání pohodlné bydlení i pro nájemce s automobilem. Nájemné: 16.000 Kč/měsíc, záloha na vodu: 1.200 Kč/měsíc, el. společné prostory: 120,-Kč/měsíc. Elektřina ( 1.500,-Kč) a plyn ( 2.000,-Kč) se převádí na nájemce. Kauce ve výši dvou měsíčních nájmů. Byt je k dispozici ihned. Pro více informací nebo sjednání prohlídky mě neváhejte kontaktovat."
-    },
-    {
-      "id": "sr_986976332",
-      "title": "Pronájem bytu 2+kk 55 m²",
-      "price": 17000,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/986976332?noredirect=1",
-      "lat": 49.40311096889659,
-      "lng": 14.69945496183743,
-      "sqm": 55,
-      "rooms": 2,
-      "address": "Svážná, Měšice, Tábor",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-19",
-      "listing_updated_at": "2026-11-10",
-      "description": "Nabízím k pronájmu moderní byt o dispozici 2+kk a podlahové ploše 55 m², který se nachází v novostavbě v oblíbené lokalitě Svatá Anna v Táboře. Byt je ideální pro jednotlivce nebo pár, kteří hledají komfortní bydlení v klidném prostředí s přírodou na dosah a zároveň chtějí mít město i jeho občanskou vybavenost pohodlně dostupné. Byt se nachází ve 3. patře bytového domu s výtahem. Je orientován na jih, díky čemuž je příjemně světlý a nabízí dostatek přirozeného denního světla. Moderní provedení a praktické dispoziční řešení zajišťují pohodlí při každodenním bydlení. Výhodou novostavby jsou také nízké provozní náklady, zejména na vytápění. Kuchyň je vybavena moderní kuchyňskou linkou s vestavěnými spotřebiči, mezi které patří myčka nádobí, indukční varná deska, digestoř, trouba, mikrovlnná trouba a lednice. Velkou předností bytu je prostorný balkon o velikosti 13 m², který nabízí dostatek místa pro ranní kávu, venkovní posezení i odpočinek na čerstvém vzduchu. K bytu dále náleží sklepní kóje o velikosti 3,2 m², která poskytuje praktický úložný prostor, a vlastní parkovací stání na uzavřeném parkovišti. Byt nabízí příjemnou kombinaci moderního bydlení, dostatku denního světla, prostorného balkonu a pohodlí vlastního parkovacího stání. Kauce činí 40 000 Kč, měsíční zálohy na služby jsou 2 500 Kč a elektřina se přepisuje na nájemce, který ji hradí samostatně. V případě zájmu o pronájem nebo domluvení prohlídky mě neváhejte kontaktovat prostřednictvím formuláře pod inzerátem nebo e-mailem."
     },
     {
       "id": "sr_3223593036",
@@ -547,26 +547,6 @@
       "listing_published_at": "2026-10-30",
       "listing_updated_at": "2026-10-30",
       "description": "Exkluzivně nabízíme k pronájmu bytovou jednotku 2+1 s nadstandardně velkým balkonem, nacházející se v klidné lokalitě Tábora - Na Kopečku. Byt o celkové výměře 48 m² vč. balkonu je umístěný ve 2. patře zděného bytového domu bez výtahu. Jednotka je krásně slunná, orientovaná na západ. Největším benefitem tohoto bydlení je naprosto klidná lokalita s jedinečným výhledem do krajiny. Dispozičně je byt řešený na dva pokoje, kuchyň s přístupem na balkon, chodbu a koupelnu s toaletou. Kuchyňská linka disponuje elektrickým sporákem, myčkou, digestoří a lednicí. V roce 2022 prošel byt částečnou modernizací, v rámci které byla instalována nová kuchyňská linka a rekonstrukce koupelny. Také bytový dům prošel revitalizací, a to fasáda se zateplením, výměna oken za plastová, vstupní prostory a stoupačky. Nájemné činí 13.500,–Kč + zálohy na služby včetně spotřeby elektrické energie a úklidu domu jsou ve výši 2.977,–Kč. Majitel požaduje jistotu ve výši 20.000,–Kč. Provize RK 13.000,-Kč + DPH. K dispozici sklep o velikosti 3 m². V blízkosti domu se nachází kompletní občanská vybavenost, velké množství zeleně a dětské hřiště. K nastěhování od 1.12.2026. Podmínka pronájmu: bez zvířat. PENB není k dispozici, proto uvedena energetická třída G."
-    },
-    {
-      "id": "sr_4192796748",
-      "title": "Pronájem bytu 2+kk 42 m²",
-      "price": 12500,
-      "operation": "rent",
-      "url": "https://www.sreality.cz/detail/pronajem/byt/2+kk/_/4192796748?noredirect=1",
-      "lat": 49.3734049121,
-      "lng": 14.705483827,
-      "sqm": 42,
-      "rooms": 2,
-      "address": "Průmyslová, Planá nad Lužnicí, Planá nad Lužnicí",
-      "property_type": "flat",
-      "property_type_label": "Byt",
-      "condition_status": null,
-      "condition": null,
-      "needs_renovation": null,
-      "listing_published_at": "2026-10-22",
-      "listing_updated_at": "2026-11-12",
-      "description": "- Rezervováno - Nabízíme k dlouhodobému pronájmu vybavený byt 2+kk o výměře 42 m², připravený k okamžitému nastěhování. Praktická dispozice s obytnou kuchyní a samostatnou ložnicí z něj dělá ideální bydlení pro jednotlivce nebo pár. Kuchyňská linka je vybavena kombinovaným sporákem, k dispozici je lednice s mrazákem a pračka. Byt má plastová okna s izolačními dvojskly a z ložnice se vstupuje na balkon o ploše 3 m². Vytápění i ohřev teplé vody jsou řešeny dálkově. Měsíční náklady činí pouhých 3.356 Kč + elektřina (cca 500 Kč), která bude převedena přímo na nájemce. Parkování je dostatečné přímo u domu. Byt se nachází v 1. patře (2. NP) zatepleného panelového domu (bez výtahu) v ulici Průmyslová a prošel částečnou rekonstrukcí. Dům patří k energeticky nejúspornějším v okolí: průkaz energetické náročnosti budovy (PENB) ho řadí do nejvyšší klasifikační třídy A – mimořádně úsporná. Lokalita na pomezí Plané nad Lužnicí a Sezimova Ústí spojuje klid s výbornou dostupností. Autobusová zastávka Silon je v těsné blízkosti, cesta do Tábora zabere několik minut a nájezd na dálnici D3 směrem na Prahu i České Budějovice je vzdálený přibližně 3 km. Školy, školky, obchody, lékaře i restaurace máte v pohodlné docházkové vzdálenosti."
     },
     {
       "id": "sr_455934028",
