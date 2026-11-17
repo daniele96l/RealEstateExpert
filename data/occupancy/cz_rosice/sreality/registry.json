@@ -2,8 +2,8 @@
   "city": "Rosice",
   "market": "cz",
   "portal": "sreality",
-  "updated_at": "2026-11-15T14:01:35.038Z",
-  "snapshot_count": 126,
+  "updated_at": "2026-11-17T15:58:24.895Z",
+  "snapshot_count": 127,
   "last_provider": "sreality",
   "listings": {
     "sr_3042828364": {
@@ -1477,7 +1477,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-09-18T11:09:43.911Z",
-      "last_seen_at": "2026-11-15T14:01:35.038Z",
+      "last_seen_at": "2026-11-17T15:58:24.895Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1748,7 +1748,7 @@
     },
     "sr_227213388": {
       "id": "sr_227213388",
-      "price": 23500,
+      "price": 22000,
       "lat": 49.1858853740937,
       "lng": 16.3812409486824,
       "sqm": 80,
@@ -1758,7 +1758,7 @@
       "zone": "Rosice",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/227213388?noredirect=1",
       "listing_published_at": "2026-10-20",
-      "listing_updated_at": "2026-11-02",
+      "listing_updated_at": "2026-11-16",
       "description": "Nabízíme k podnájmu prostorný, světlý a částečně zařízený byt o dispozici 3+1 s celkovou výměrou cca 74 m² a balkonem (3,4 m²), situovaný v klidné a vyhledávané lokalitě na ulici Kaštanová v Rosicích. Byt se nachází v udržovaném bytovém domě s krásným výhledem do okolní přírody i na přilehlou zeleň. Byt tvoří obývací pokoj o ploše zhruba 19 m2, dva neprůchozí pokoje o rozlohách 15 m2a 20 m2, kde z jednoho pokoje je vstup na balkón. Dále je zde kuchyně včetně spotřebičů - elektrická trouba, plynová varná deska, digestoř, myčka nádobí a samostatná lednice s mrazákem. V koupelně je vana a toaleta je samostatně. K bytu patří taktéž sklep a společná kolárna. Dům se nachází v klidné části Rosic s výbornou dostupností do Brna (autem i veřejnou dopravou). V bezprostředním okolí je kompletní občanská vybavenost (školy, školky, obchody, restaurace) a přímo u domu je k dispozici dostatek parkovacích míst.",
       "title": "Pronájem bytu 3+1 80 m²",
       "bathrooms": null,
@@ -1778,7 +1778,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-10-21T11:46:44.848Z",
-      "last_seen_at": "2026-11-15T14:01:35.038Z",
+      "last_seen_at": "2026-11-17T15:58:24.895Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1790,6 +1790,10 @@
         {
           "at": "2026-11-02T15:34:32.963Z",
           "price": 23500
+        },
+        {
+          "at": "2026-11-17T15:58:24.895Z",
+          "price": 22000
         }
       ]
     },
@@ -1868,7 +1872,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-11-11T14:12:11.080Z",
-      "last_seen_at": "2026-11-15T14:01:35.038Z",
+      "last_seen_at": "2026-11-17T15:58:24.895Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,
@@ -1911,7 +1915,7 @@
       "condition_status": null,
       "needs_renovation": null,
       "first_seen_at": "2026-11-11T14:12:11.080Z",
-      "last_seen_at": "2026-11-15T14:01:35.038Z",
+      "last_seen_at": "2026-11-17T15:58:24.895Z",
       "rented_at": null,
       "status": "active",
       "days_on_market": null,

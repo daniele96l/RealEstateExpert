@@ -1,7 +1,7 @@
 {
   "city": "cz_rosice",
   "operation": "rent",
-  "fetched_at": "2026-11-15T14:01:35.038Z",
+  "fetched_at": "2026-11-17T15:58:24.895Z",
   "center": {
     "lat": 49.1825874,
     "lng": 16.3878251,
@@ -71,7 +71,7 @@
     {
       "id": "sr_227213388",
       "title": "Pronájem bytu 3+1 80 m²",
-      "price": 23500,
+      "price": 22000,
       "operation": "rent",
       "url": "https://www.sreality.cz/detail/pronajem/byt/3+1/_/227213388?noredirect=1",
       "lat": 49.1858853740937,
@@ -85,7 +85,7 @@
       "condition": null,
       "needs_renovation": null,
       "listing_published_at": "2026-10-20",
-      "listing_updated_at": "2026-11-02",
+      "listing_updated_at": "2026-11-16",
       "description": "Nabízíme k podnájmu prostorný, světlý a částečně zařízený byt o dispozici 3+1 s celkovou výměrou cca 74 m² a balkonem (3,4 m²), situovaný v klidné a vyhledávané lokalitě na ulici Kaštanová v Rosicích. Byt se nachází v udržovaném bytovém domě s krásným výhledem do okolní přírody i na přilehlou zeleň. Byt tvoří obývací pokoj o ploše zhruba 19 m2, dva neprůchozí pokoje o rozlohách 15 m2a 20 m2, kde z jednoho pokoje je vstup na balkón. Dále je zde kuchyně včetně spotřebičů - elektrická trouba, plynová varná deska, digestoř, myčka nádobí a samostatná lednice s mrazákem. V koupelně je vana a toaleta je samostatně. K bytu patří taktéž sklep a společná kolárna. Dům se nachází v klidné části Rosic s výbornou dostupností do Brna (autem i veřejnou dopravou). V bezprostředním okolí je kompletní občanská vybavenost (školy, školky, obchody, restaurace) a přímo u domu je k dispozici dostatek parkovacích míst."
     }
   ],
